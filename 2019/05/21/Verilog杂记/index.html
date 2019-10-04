@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/zh-CN/images/apple-touch-icon.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/zh-CN/images/favicon-32x32.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/zh-CN/images/favicon-16x16.png?v=7.4.0">
+  <link rel="mask-icon" href="/zh-CN/images/safari-pinned-tab.svg?v=7.4.0" color="#222">
+  <link rel="manifest" href="/zh-CN/images/site.webmanifest">
+  <meta name="msapplication-config" content="/zh-CN/images/browserconfig.xml">
+  <link rel="alternate" href="/zh-CN/atom.xml" title="LeoJhon.Song's Blog" type="application/atom+xml">
+  <meta name="google-site-verification" content="MgaZs4EoTDqCTCMVBOft2UKu2g6AfLiKx2VTQ_KBeH4">
+
+<link rel="stylesheet" href="/zh-CN/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/zh-CN/',
+    scheme: 'Pisces',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="Verilog学习笔记. 这学期上了数字电路课, 从最开始的了解每个逻辑门的物理工作原理到学习每个组合电路, 时序电路元件是如何由逻辑门构成的, 再到后来跟着指导书设计出了很简易的8位CPU, 我个人是觉得很震撼的. 这也让我小时候的一个问题得到了解答: 集成电路这么复杂的东西真的是人能设计出来的吗? 其实我一直是知道答案的, 这些小黑块既不可能是土里长出来的也不可能是从什么动物身上割下来的. 我">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Verilog杂记">
+<meta property="og:url" content="https://leojhonsong.github.io/zh-CN/2019/05/21/Verilog杂记/index.html">
+<meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
+<meta property="og:description" content="Verilog学习笔记. 这学期上了数字电路课, 从最开始的了解每个逻辑门的物理工作原理到学习每个组合电路, 时序电路元件是如何由逻辑门构成的, 再到后来跟着指导书设计出了很简易的8位CPU, 我个人是觉得很震撼的. 这也让我小时候的一个问题得到了解答: 集成电路这么复杂的东西真的是人能设计出来的吗? 其实我一直是知道答案的, 这些小黑块既不可能是土里长出来的也不可能是从什么动物身上割下来的. 我">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-13T13:50:53.649Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Verilog杂记">
+<meta name="twitter:description" content="Verilog学习笔记. 这学期上了数字电路课, 从最开始的了解每个逻辑门的物理工作原理到学习每个组合电路, 时序电路元件是如何由逻辑门构成的, 再到后来跟着指导书设计出了很简易的8位CPU, 我个人是觉得很震撼的. 这也让我小时候的一个问题得到了解答: 集成电路这么复杂的东西真的是人能设计出来的吗? 其实我一直是知道答案的, 这些小黑块既不可能是土里长出来的也不可能是从什么动物身上割下来的. 我">
+  <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2019/05/21/Verilog杂记/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/zh-CN/images/apple-touch-icon.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/zh-CN/images/favicon-32x32.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/zh-CN/images/favicon-16x16.png?v=7.4.0">
+  <link rel="mask-icon" href="/zh-CN/images/safari-pinned-tab.svg?v=7.4.0" color="#222">
+  <link rel="manifest" href="/zh-CN/images/site.webmanifest">
+  <meta name="msapplication-config" content="/zh-CN/images/browserconfig.xml">
+  <meta name="google-site-verification" content="MgaZs4EoTDqCTCMVBOft2UKu2g6AfLiKx2VTQ_KBeH4">
+
+<link rel="stylesheet" href="/zh-CN/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <script src = "https://at.alicdn.com/t/font_980470_nj2qfdk05jb.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/zh-CN/',
+    scheme: 'Pisces',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <title>Verilog杂记 | LeoJhon.Song's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/zh-CN/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LeoJhon.Song's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">欢迎来到我的博客!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/zh-CN/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/zh-CN/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">22</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/zh-CN/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">37</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/zh-CN/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/LeoJhonSong" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://leojhonsong.github.io/zh-CN/zh-CN/2019/05/21/Verilog杂记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LeoJhon.Song">
+      <meta itemprop="description" content="记 / 录 / 与 / 分 / 享">
+      <meta itemprop="image" content="/zh-CN/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LeoJhon.Song's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Verilog杂记
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-21 23:15:54" itemprop="dateCreated datePublished" datetime="2019-05-21T23:15:54+08:00">2019-05-21</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-13 21:50:53" itemprop="dateModified" datetime="2019-09-13T21:50:53+08:00">2019-09-13</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/zh-CN/categories/Verilog/" itemprop="url" rel="index"><span itemprop="name">Verilog</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>3.4k</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Verilog学习笔记.</p>
+<p>这学期上了数字电路课, 从最开始的了解每个逻辑门的物理工作原理到学习每个组合电路, 时序电路元件是如何由逻辑门构成的, 再到后来跟着指导书设计出了很简易的8位CPU, 我个人是觉得很震撼的. 这也让我小时候的一个问题得到了解答: 集成电路这么复杂的东西真的是人能设计出来的吗? 其实我一直是知道答案的,
+这些小黑块既不可能是土里长出来的也不可能是从什么动物身上割下来的. 我只是一直不敢想象这么复杂而精妙的东西 (即便是一根充电线里的小巧电路也不是那时的我能弄清的). 最近我稍微体会到了那群伟大的工程师们是如何设计出了那样精密的芯片的: 不断积累基本模块. 实际上从最开始的黑底白字的电脑系统到现在繁华多样的炫酷系统, 也是很令人震撼的变化. 虽然大佬可能会觉得这些很简单, 但我仍认为该对这些技术保持敬畏之心.</p>
+<a id="more"></a>
+
+<h1 id="Quartus与Modelsim的安装"><a href="#Quartus与Modelsim的安装" class="headerlink" title="Quartus与Modelsim的安装"></a>Quartus与Modelsim的安装</h1><p>🔗 <a href="https://blog.csdn.net/weixin_38071135/article/details/82531594" target="_blank" rel="noopener">quartus16.1和modelsim-altera for linux的安装</a><br>🔗 <a href="https://coldnew.github.io/ce6f7a0a/" target="_blank" rel="noopener">DE2-115 開發紀錄: 在 Linux 下使用 ModelSim</a></p>
+<p>参考上面两个链接 (后者算是对前者的补充)我成功在Ubuntu1804下安装了Quartus和Modelsim. 因为我懒得注册论坛帐号, 我并没有使用第一个链接中提供的破解文件, 而是使用了<a href="https://tsuhuai.wordpress.com/2015/02/17/altera-quartus-crack-for-linux-version/" target="_blank" rel="noopener">这里</a>提供的
+15.0版的crack. 我装的也是15.0版的Quartus和Modelsim, 但问题和解决方法是一样的.</p>
+<p>⭐️后来我发现Linux下用<a href="http://www.geda-project.org/" target="_blank" rel="noopener">gEDA</a>这个项目应该体验也很不错.
+其中用<strong>icarus</strong>综合, 编译verilog代码, 用<strong>gscheme</strong>生成原理图, 用<strong>gtkwave</strong>看仿真波形图.</p>
+<h1 id="verilog开发流程"><a href="#verilog开发流程" class="headerlink" title="verilog开发流程"></a>verilog开发流程</h1><p>🔗<a href="https://copyfuture.com/blogs-details/83fc5f52af0e6c318e3c5cfa5baf2ac0" target="_blank" rel="noopener">Verilog代码和FPGA硬件的映射关系</a> 这里通过一个例子清晰的展示了Verilog代码是怎样一步步映射到FPGA的基本逻辑单元的👍</p>
+<h2 id="编写代码实现功能"><a href="#编写代码实现功能" class="headerlink" title="编写代码实现功能"></a>编写代码实现功能</h2><h2 id="验证功能-仿真"><a href="#验证功能-仿真" class="headerlink" title="验证功能(仿真)"></a>验证功能(仿真)</h2><h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><h3 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h3><h3 id="综合"><a href="#综合" class="headerlink" title="综合"></a>综合</h3><p>综合是把RTL级别的, 抽象层次较高的硬件代码综合成抽象层次较低的电路网表, 是一个具体优化+映射的过程,
+能够对应到门级逻辑.</p>
+<h3 id="适配"><a href="#适配" class="headerlink" title="适配"></a>适配</h3><p>把综合后的具体数字逻辑映射到指定型号的FPGA器件中去, 包括选择哪一些基本逻辑单元 (主要包含LUT和寄存器单元) 以及布局布线等.</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>下载是将整个编译过程完成的可下载二进制信息通过下载线从计算机端传递到FPGA开发板端, 并完成FPGA
+内部电路的具体配置(LUT中的存储信息以及连接线的连接开关设置等等), 形成具有相应功能的功能电路.</p>
+<h1 id="代码风格与语法纪要"><a href="#代码风格与语法纪要" class="headerlink" title="代码风格与语法纪要"></a>代码风格与语法纪要</h1><h2 id="有关模块"><a href="#有关模块" class="headerlink" title="有关模块"></a>有关模块</h2><p>🔗 <a href="http://jason0214.lofter.com/post/30cbe4_12a8f72" target="_blank" rel="noopener">关于Verilog的模块思想和模块的引用</a></p>
+<blockquote>
+<p>Verilog的开发应是<strong>自顶向下</strong>的，<strong>模块化</strong>的.</p>
+</blockquote>
+<p>一个系统由总设计师先进行系统描述(Spec), 将系统划分为若干模块, 编写模块模型(一般为行为级), 仿真验证后, 再把这些模块分配给下一层的设计师, 由他们完成模块的具体设计, 而总设计师负责各模块的接口定义.</p>
+<blockquote>
+<p>链接引用模块端口时, 注意括号内的是当前模块的端口, 括号外的是引用模块的端口.</p>
+</blockquote>
+<p>❗️一开始我看到Verilog中模块就像面向对象中的类一样, 调用模块也神似类的实例化, 曾以为其中有面向对象的思想, 后来发现我太想当然了: 面向对象的三大特征 (封装, 继承, 多态) 它只满足了封装, 显然不能算面向对象. 硬要说的话verilog包含了<strong>面向对象</strong>的思想, 而面向过程的程序设计方法正是:
+“自顶向下, 逐步求精”. 当然, <strong>要时刻牢记Verilog是一门硬件语言</strong>.</p>
+<p>一个模块可以采用以下方式描述设计:</p>
+<ul>
+<li>数据流方式</li>
+<li>行为方式</li>
+<li>结构方式</li>
+<li>混合</li>
+</ul>
+<h2 id="有关always"><a href="#有关always" class="headerlink" title="有关always"></a>有关always</h2><p><code>always</code>实际上就是循环关键字, 而<code>always @()</code>则是条件循环关键字.</p>
+<p>always块的讲究很多:</p>
+<ol>
+<li><p>写在括号内的称<strong>敏感事件列表</strong>, 当这些事件 (电平信号变化或者出现边沿信号) 发生时触发这个块. 一个敏感事件列表中不能同时包含电平敏感事件和边沿敏感事件. <strong>电平敏感事件意味着这是一个描述组合逻辑的always块</strong> (我们也可以在描述组合逻辑的always块的敏感事件列表中填<code>*</code>来让综合器根据always块内容来自动添加敏感事件), <strong>边沿敏感事件意味着这是一个描述时序逻辑的always
+块</strong>.</p>
+</li>
+<li><p><strong>尽量只使用主时钟 (clk, rst) 作为always块的边沿敏感事件</strong>, 避免出错. 如果有其他信号边沿触发的事件可以通过<a href="https://blog.csdn.net/phenixyf/article/details/46364193" target="_blank" rel="noopener">这里</a>
+提到的clk周期延时法将边沿触发转换为电平触发.</p>
+</li>
+<li><p><strong>不要将同一信号的上升沿敏感事件和下降沿包含在同一敏感事件列表</strong>, 因为它们可以合为一个电平敏感事件.</p>
+</li>
+<li><p><strong>尽量不要在多个always块中给同一变量赋值</strong>, 这样容易产生竞争冒险 (所有always块同时运行),
+且无法综合. 如果一个变量的值与两个always块都有关且这两个always块无法合并, 可以参考<a href="https://blog.csdn.net/gududeyhc/article/details/8795202" target="_blank" rel="noopener">这种方法</a>. 另外也可以考虑用两个
+always块的敏感事件生成一组新的敏感事件 (参考第二条).</p>
+</li>
+<li><p><strong>一个always块中不能混用阻塞赋值 (=) 和非阻塞赋值 (&lt;=)</strong>, 在描述组合逻辑的always块中使用
+<code>=</code>, 在描述时序逻辑的always块中使用<code>&lt;=</code>.</p>
+</li>
+<li><p><strong>always块中的条件语句要与敏感事件相对应.</strong> 比如以下两段代码前者是错误的, 后者是正确的.</p>
+<figure class="highlight verilog"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rst)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(rst)</span><br><span class="line">        ...</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight verilog"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rst)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(!rst)</span><br><span class="line">        ...</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<h2 id="关于default"><a href="#关于default" class="headerlink" title="关于default"></a>关于default</h2><p>在写case块时发现所有示例里都写出了default这种情况, 无论情况是否完备. 这让我有了两个问题:</p>
+<ul>
+<li>为什么一定要有default这种情况?</li>
+<li>default情况该给变量赋什么值?</li>
+</ul>
+<h3 id="为什么一定要有default这种情况"><a href="#为什么一定要有default这种情况" class="headerlink" title="为什么一定要有default这种情况"></a>为什么一定要有default这种情况</h3><p>一些参考资料:</p>
+<p>🔗<a href="https://blog.csdn.net/wordwarwordwar/article/details/80299636" target="_blank" rel="noopener">FPGA 和ASIC开发的区别</a></p>
+<p>🔗<a href="https://www.eetoday.com/application/control/201806/1537.html" target="_blank" rel="noopener">当ASIC和FPGA之间的界限日益模糊，FPGA跟ASIC还有啥区别</a></p>
+<p>🔗<a href="https://www.zhihu.com/question/20555065/answer/20357525" target="_blank" rel="noopener">知乎-请问：FPGA,PLD,CPLD,PLC,DSP什么区别？看他们的定义觉着都是可编程的逻辑器件</a></p>
+<p>🔗<a href="https://forums.xilinx.com/t5/%E7%BB%BC%E5%90%88%E8%AE%A8%E8%AE%BA/%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E6%AF%9B%E5%88%BA%E7%8E%B0%E8%B1%A1/td-p/295029" target="_blank" rel="noopener">组合逻辑设计中的毛刺现象</a></p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8">🔗</span><a href="https://blog.csdn.net/surgeddd/article/details/4683657" target="_blank" rel="noopener">锁存器、触发器、寄存器和缓冲器的区别</a></p>
+<ol>
+<li><p>避免产生Latch.</p>
+<blockquote>
+<p>latch是一种对脉冲电平敏感的存储单元路径，可以在特定输入脉冲作用下改变电平</p>
+</blockquote>
+<p>由这个描述我们可以看出<strong>在if-else结构和case结构中很容易产生latch</strong>: 当遇到在当前情况没有赋值的变量或遇到没有定义的情况时需要沿用上一时刻的值, 因此我们需要一个<strong>存储上一时刻状态的器件</strong>,
+并且是电平触发的 (if-else和case的判断条件都是电平), 这就是为什么latch会出现. 在
+<a href="https://blog.csdn.net/u012923751/article/details/79475568?comment_content=%E6%84%9F%E8%B0%A2%21&amp;comment_replyId=&amp;article_id=79475568&amp;comment_userId=&amp;commentId=" target="_blank" rel="noopener">这篇文章</a>有控制语句产生latch的实例, 在<a href="https://zhuanlan.zhihu.com/p/34408492" target="_blank" rel="noopener">这篇文章</a>中有latch产生原因的详细讨论.</p>
+<p>❗️ 值得注意的是, 即便if-else结构或者case结构完整了也并不能保证不会产生latch, 只是避免了因这种情况产生的latch.</p>
+<p>至于为什么要避免产生latch, 因为此处产生的latch容易产生毛刺.</p>
+<p>❗️ 此处的Latch特指PLD中的latch. 因为latch在实现同一功能时需要的门比用FF实现少, 在ASIC
+开发中latch使用较多 (ASIC的设计中可以保证latch信号的质量). 而由于PLD芯片中的基本单元是查找表和触发器, 没有标准的latch单元, 因此FGPA中的latch更耗资源, 也容易产生毛刺. 并不是所有latch都容易产生毛刺.</p>
+</li>
+<li><p>方便调试</p>
+<p>如果default对应的情况是不应当出现的情况, 在仿真时可以将default情况下的变量赋值为不定态X,
+方便看出问题.</p>
+</li>
+<li><p>这已经是一种代码规范, 最好养成严谨的习惯, 避免出错.</p>
+</li>
+</ol>
+<h3 id="default情况下该赋什么值"><a href="#default情况下该赋什么值" class="headerlink" title="default情况下该赋什么值"></a>default情况下该赋什么值</h3><p>如果default对应的情况不应当出现, 在仿真时将变量都赋值为不定态X, 方便看出错误 (在Modelsim里不定态的信号会显示为红色), 在实际应用时全部置零 (复位态).</p>
+<h2 id="关于wire和reg"><a href="#关于wire和reg" class="headerlink" title="关于wire和reg"></a>关于wire和reg</h2><p>🔗<a href="https://www.zhihu.com/question/21021718/answer/17195122" target="_blank" rel="noopener">知乎-Verilog 中定义信号为什么要区分 wire 和 reg 两种类型？-屯屯屯屯的回答</a></p>
+<p>🔗<a href="https://www.zhihu.com/question/21021718/answer/28802850https://www.zhihu.com/question/21021718" target="_blank" rel="noopener">知乎-Verilog 中定义信号为什么要区分 wire 和 reg 两种类型？-BruceX的回答</a></p>
+<p>🔗<a href="https://link.zhihu.com/?target=http%3A//inst.eecs.berkeley.edu/~cs150/Documents/Nets.pdf" target="_blank" rel="noopener">UC Berkley讲义-Verilog: wire VS. reg</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+    </div>
+
+    
+    
+    
+        
+      
+        <div id="reward-container">
+  <div>感谢您的认可!</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/zh-CN/images/wechatpay.png" alt="LeoJhon.Song 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="/zh-CN/images/alipay.jpg" alt="LeoJhon.Song 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+      
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/zh-CN/2019/05/17/为什么我用Linux而不是Windows/" rel="next" title="为什么我用Linux而不是Windows">
+                  <i class="fa fa-chevron-left"></i> 为什么我用Linux而不是Windows
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/zh-CN/2019/05/29/有关字符集与编码/" rel="prev" title="有关字符集与编码">
+                  有关字符集与编码 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NjkzNi8yMzQzNw=="></div>
+  </div>
+  
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Quartus与Modelsim的安装"><span class="nav-number">1.</span> <span class="nav-text">Quartus与Modelsim的安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#verilog开发流程"><span class="nav-number">2.</span> <span class="nav-text">verilog开发流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编写代码实现功能"><span class="nav-number">2.1.</span> <span class="nav-text">编写代码实现功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证功能-仿真"><span class="nav-number">2.2.</span> <span class="nav-text">验证功能(仿真)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译"><span class="nav-number">2.3.</span> <span class="nav-text">编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法分析"><span class="nav-number">2.3.1.</span> <span class="nav-text">语法分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#综合"><span class="nav-number">2.3.2.</span> <span class="nav-text">综合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适配"><span class="nav-number">2.3.3.</span> <span class="nav-text">适配</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载"><span class="nav-number">2.4.</span> <span class="nav-text">下载</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码风格与语法纪要"><span class="nav-number">3.</span> <span class="nav-text">代码风格与语法纪要</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#有关模块"><span class="nav-number">3.1.</span> <span class="nav-text">有关模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有关always"><span class="nav-number">3.2.</span> <span class="nav-text">有关always</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于default"><span class="nav-number">3.3.</span> <span class="nav-text">关于default</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么一定要有default这种情况"><span class="nav-number">3.3.1.</span> <span class="nav-text">为什么一定要有default这种情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#default情况下该赋什么值"><span class="nav-number">3.3.2.</span> <span class="nav-text">default情况下该赋什么值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于wire和reg"><span class="nav-number">3.4.</span> <span class="nav-text">关于wire和reg</span></a></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/zh-CN/images/avatar.gif"
+      alt="LeoJhon.Song">
+  <p class="site-author-name" itemprop="name">LeoJhon.Song</p>
+  <div class="site-description" itemprop="description">记 / 录 / 与 / 分 / 享</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/zh-CN/archives/">
+        
+          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/zh-CN/categories/">
+          
+        
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/zh-CN/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+        
+      
+        <a href="https://github.com/LeoJhonSong" title="GitHub &rarr; https://github.com/LeoJhonSong" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github"></use></svg>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+        
+      
+        <a href="mailto:LeoJhon.Song@outlook.com" title="Email &rarr; mailto:LeoJhon.Song@outlook.com" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-OUTLOOK"></use></svg>Email</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+        
+      
+        <a href="https://www.facebook.com/jhon.leo.100" title="FB Page &rarr; https://www.facebook.com/jhon.leo.100" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-Facebook"></use></svg>FB Page</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+        
+      
+        <a href="https://user.qzone.qq.com/719957017" title="QQ &rarr; https://user.qzone.qq.com/719957017" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-QQ"></use></svg>QQ</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+        
+      
+        <a href="https://wakatime.com/@LeoJhonSong" title="WakaTime &rarr; https://wakatime.com/@LeoJhonSong" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-waka-time"></use></svg>WakaTime</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-hand-peace-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LeoJhon.Song</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">80k</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/zh-CN/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/zh-CN/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/zh-CN/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/zh-CN/js/utils.js?v=7.4.0"></script><script src="/zh-CN/js/motion.js?v=7.4.0"></script>
+<script src="/zh-CN/js/schemes/pisces.js?v=7.4.0"></script>
+<script src="/zh-CN/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/zh-CN/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  <script src="/js/hexo_resize_image.js"></script>
+</body>
+</html>

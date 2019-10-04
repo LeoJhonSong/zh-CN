@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/zh-CN/images/apple-touch-icon.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/zh-CN/images/favicon-32x32.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/zh-CN/images/favicon-16x16.png?v=7.4.0">
+  <link rel="mask-icon" href="/zh-CN/images/safari-pinned-tab.svg?v=7.4.0" color="#222">
+  <link rel="manifest" href="/zh-CN/images/site.webmanifest">
+  <meta name="msapplication-config" content="/zh-CN/images/browserconfig.xml">
+  <link rel="alternate" href="/zh-CN/atom.xml" title="LeoJhon.Song's Blog" type="application/atom+xml">
+  <meta name="google-site-verification" content="MgaZs4EoTDqCTCMVBOft2UKu2g6AfLiKx2VTQ_KBeH4">
+
+<link rel="stylesheet" href="/zh-CN/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/zh-CN/',
+    scheme: 'Pisces',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="当我在解决Linux下解压zip文件的问题时发现编码方面的问题还蛮多的, 在此记录.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="有关字符集与编码">
+<meta property="og:url" content="https://leojhonsong.github.io/zh-CN/2019/05/29/有关字符集与编码/index.html">
+<meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
+<meta property="og:description" content="当我在解决Linux下解压zip文件的问题时发现编码方面的问题还蛮多的, 在此记录.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-13T07:38:48.442Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="有关字符集与编码">
+<meta name="twitter:description" content="当我在解决Linux下解压zip文件的问题时发现编码方面的问题还蛮多的, 在此记录.">
+  <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2019/05/29/有关字符集与编码/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/zh-CN/images/apple-touch-icon.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/zh-CN/images/favicon-32x32.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/zh-CN/images/favicon-16x16.png?v=7.4.0">
+  <link rel="mask-icon" href="/zh-CN/images/safari-pinned-tab.svg?v=7.4.0" color="#222">
+  <link rel="manifest" href="/zh-CN/images/site.webmanifest">
+  <meta name="msapplication-config" content="/zh-CN/images/browserconfig.xml">
+  <meta name="google-site-verification" content="MgaZs4EoTDqCTCMVBOft2UKu2g6AfLiKx2VTQ_KBeH4">
+
+<link rel="stylesheet" href="/zh-CN/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <script src = "https://at.alicdn.com/t/font_980470_nj2qfdk05jb.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/zh-CN/',
+    scheme: 'Pisces',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <title>有关字符集与编码 | LeoJhon.Song's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/zh-CN/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LeoJhon.Song's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">欢迎来到我的博客!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/zh-CN/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/zh-CN/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">22</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/zh-CN/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">37</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/zh-CN/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/LeoJhonSong" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://leojhonsong.github.io/zh-CN/zh-CN/2019/05/29/有关字符集与编码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LeoJhon.Song">
+      <meta itemprop="description" content="记 / 录 / 与 / 分 / 享">
+      <meta itemprop="image" content="/zh-CN/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LeoJhon.Song's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">有关字符集与编码
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-29 18:24:23" itemprop="dateCreated datePublished" datetime="2019-05-29T18:24:23+08:00">2019-05-29</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-13 15:38:48" itemprop="dateModified" datetime="2019-09-13T15:38:48+08:00">2019-09-13</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/zh-CN/categories/编码/" itemprop="url" rel="index"><span itemprop="name">编码</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>2.4k</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>当我在解决<a href="https://leojhonsong.github.io/zh-CN/Linux%E6%9D%82%E8%AE%B0/#%E8%A7%A3%E5%8E%8B%20-zip%20%E5%8E%8B%E7%BC%A9%E5%8C%85%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%90%8D%E4%B8%BA%E4%B9%B1%E7%A0%81">Linux下解压zip文件的问题</a>时发现编码方面的问题还蛮多的, 在此记录.</p>
+<a id="more"></a>
+
+<h1 id="Windows下编码方式的坑"><a href="#Windows下编码方式的坑" class="headerlink" title="Windows下编码方式的坑"></a>Windows下编码方式的坑</h1><p>🔗 <a href="https://www.zhihu.com/question/20650946/answer/15745831" target="_blank" rel="noopener">知乎-Windows记事本的ANSI, Unicode, UTF-8这三种编码模式有什么区别？</a></p>
+<p>🔗 <a href="https://www.zhihu.com/question/20167122" target="_blank" rel="noopener">「带 BOM 的 UTF-8」和「无 BOM 的 UTF-8」有什么区别？网页代码一般使用哪个</a></p>
+<ul>
+<li>所谓的「ANSI」指的是对应当前系统 locale 的遗留（legacy）编码</li>
+<li>所谓的「Unicode」指的是带有 BOM 的小端序 UTF-16</li>
+<li>所谓的「UTF-8」指的是带 BOM 的 UTF-8</li>
+</ul>
+<p>之前一直听说Windows自带的记事本不要用, 会自动在文件开头加一个东西, 导致一些地方显示该文件开头有一个 “?” , 一直不知道是多了个啥, 原来是UTF-8/UTF-16编码的文件会在文件开头多一个
+BOM. <strong>UTF-8与带BOM的UTF-8的区别在于带BOM的UTF-8文件开头有U+FEFF.</strong> 微软使用带BOM的UTF-8
+的目的是将UTF-8与ASCII等编码方式区分开, 但这就导致了在很多时候UTF-8默认是不带BOM时文件读取有误.</p>
+<h1 id="GBK不是一种编码格式"><a href="#GBK不是一种编码格式" class="headerlink" title="GBK不是一种编码格式"></a>GBK不是一种编码格式</h1><p>GBK并不是一种编码格式, 而是一个字符集. 我觉得很low的是GBK的全称是 <strong>Guojia Biaozhun
+Kuozhan</strong> 🤦‍…low得不要不要的. 不过也可以理解, 毕竟这三个字母是从”国标”的首拼发展来的.</p>
+<h2 id="自整理的中文字符集发展史"><a href="#自整理的中文字符集发展史" class="headerlink" title="自整理的中文字符集发展史"></a>自整理的中文字符集发展史</h2><p>以下是我整理的中文字符集发展史:</p>
+<ul>
+<li>最开始中国国家标准化管理委员会发布了
+<a href="http://www.std.gov.cn/gb/search/gbDetailed?id=71F772D79E19D3A7E05397BE0A0AB82A" target="_blank" rel="noopener"><code>GB/T2312-1980</code></a> (<strong>GB</strong>为<strong>国标</strong>首拼, <strong>T</strong>是<strong>推</strong>, 指推广,
+非强制性的标准), 包括了<strong>6763</strong>个常用汉字, 发布以后许多有汉字的语言也采用了这个字符集. 但这个字符集很不够, 缺少很多生僻字, 繁体字, 对日本, 韩国汉字收录也很不全.</li>
+<li>微软根据GB2312做出了<code>cp936</code> (code page936), 字符集方案为GB2312, 编码方案为
+<strong>EUC-CN</strong>.</li>
+<li>1993年<strong>Unicode1.1</strong>发布后国标委抄过来发布了<a href="http://www.std.gov.cn/gb/search/gbDetailed?id=71F772D7860AD3A7E05397BE0A0AB82A" target="_blank" rel="noopener"><code>GB 13000.1-1993</code></a>.</li>
+<li>这时微软利用<strong>cp936</strong>中收录GB2312-1980后未使用完的码位收录了GB13000.1-1993的全部字符,
+这样既兼容了GB2312又添加了许多字符. 这个新版本cp936最早实现于<strong>Windows95简体中文版</strong>.
+这之后微软又陆陆续续给cp936加了几个字符. 直到2002年<a href="https://www.iana.org/assignments/charset-reg/GBK" target="_blank" rel="noopener">IANA将cp936的字符集注册为<code>GBK</code></a>. GBK共收录<strong>21886</strong>个汉字和图形符号.</li>
+<li>再后来因为字符还是不全 (比如emoji什么的)以及其他原因发布了<a href="http://www.std.gov.cn/gb/search/gbDetailed?id=71F772D79585D3A7E05397BE0A0AB82A" target="_blank" rel="noopener"><code>GB 18030-2000</code></a>, 在
+Windows的对应代码页为<code>cp54936</code>. 但值得一提的是尽管2000年就有了新标准, 但Windows系统的系统语言为简体中文时的默认代码页仍为<strong>cp936</strong>. 原因可以参考<a href="https://linux.cn/article-1213-1.html" target="_blank" rel="noopener">这里</a>. 文章大意: 微软划水, 国家也没上心.</li>
+<li>最近的一版标准字符集是<a href="http://www.std.gov.cn/gb/search/gbDetailed?id=71F772D800B5D3A7E05397BE0A0AB82A" target="_blank" rel="noopener"><code>GB 18030-2005</code></a>. 但这个好像有点复杂, 我并没有太看懂, 反正和之前的几个标准很不同. 怎么个不一样可以参考<a href="https://zhuanlan.zhihu.com/p/31643128" target="_blank" rel="noopener">这里</a>.</li>
+</ul>
+<h1 id="Unicode与UTF-8是不同层面的东西"><a href="#Unicode与UTF-8是不同层面的东西" class="headerlink" title="Unicode与UTF-8是不同层面的东西"></a>Unicode与UTF-8是不同层面的东西</h1><p>我曾经以为Unicode是一种编码格式, 就像UTF-8是一种编码格式, 但后来我发现这两者根本是不同层面上的东西.</p>
+<h2 id="Unicode与UCS"><a href="#Unicode与UCS" class="headerlink" title="Unicode与UCS"></a>Unicode与UCS</h2><h3 id="两者关系"><a href="#两者关系" class="headerlink" title="两者关系"></a>两者关系</h3><p>与<strong>Unicode</strong> (统一码) 同一层面的概念是<strong>UCS</strong> (Universal Character Set, 通用字符集).
+UCS和Unicode分别由<strong>ISO</strong> (国际标准化组织) 和<strong>一帮软件制造商</strong> (Xerox, 苹果等成立了个统一码联盟) 先后发起. 后来他们才合并工作. 实际上两者是差不多的玩意. 我并不相信统一码联盟在成立时不知道ISO已经在开发UCS了
+(UCS项目启动比Unicode早<strong>4年</strong>), 而在这样的情况下还要开发Unicode, 个人认为是商业原因.
+直到现在这仍然是两个独立的项目, 但项目进度同步且两个组织都宣称要和对方<strong>保持兼容</strong>. 个人觉得很蠢🤷‍</p>
+<h3 id="两者差异"><a href="#两者差异" class="headerlink" title="两者差异"></a>两者差异</h3><p>硬要说的话其实Unicode与UCS有一些细节不同.</p>
+<p>比如ISO/IEC 10646-1使用四种不同风格的变体来显示简体中文, 繁体中文, 日语, 韩语汉字, 但Unicode2.0中只有简体中文的变体. 因此有过日本人无法接受Unicode的说法. (现在应该是没这问题了)</p>
+<p>应该还有小区别吧? 其他区别我不知道, 也懒得找了😁</p>
+<h2 id="现代编码模型"><a href="#现代编码模型" class="headerlink" title="现代编码模型"></a>现代编码模型</h2><p>Unicode是一套有些复杂的编码系统, 并不是单纯一个字符集方案或是一个编码方案, 而是构建出了一个
+<strong>现代编码模型</strong>. (这段话对UCS同理)</p>
+<p>这个模型分五层:</p>
+<ul>
+<li>抽象字符集(Abstract character repertoire)</li>
+<li>编码字符集(Coded Character Set)</li>
+<li>字符编码方式(Character Encoding Form)</li>
+<li>字符编码方案(Character Encoding Scheme)</li>
+<li>传输编码语法(Transfer Encoding Syntax)</li>
+</ul>
+<p>按我的理解: 抽象字符集是一个抽象字符的<strong>集合</strong>, 不关注字形, 更关注字意. 比如钟和鐘的抽象字符是同一个, 而编码字符集是一个<strong>映射</strong>, 规定把一个抽象字符映射到哪个<a href="https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#%E5%9F%BA%E6%9C%AC%E5%A4%9A%E6%96%87%E7%A7%8D%E5%B9%B3%E9%9D%A2" target="_blank" rel="noopener">字符平面</a>, 哪个<strong>码点</strong>. 但这并不是一一映射, 为了兼容或者有的字 (比如CJK字) 可能有多个变体. 字符编码方式又称为”storage format”, 我猜这是因为这一层<strong>将码点编码成码元</strong>(这里的编码方式就是<strong>U</strong>nicode <strong>T</strong>ransformation <strong>F</strong>ormat,
+包括UTF-8, UTF-16, UTF-32等方法), 而码元正是每次从文件中读取到的字符的格式.</p>
+<p>Unicode编码模型详细阐述可以参考<a href="https://zhuanlan.zhihu.com/p/27026033" target="_blank" rel="noopener">这里</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+    </div>
+
+    
+    
+    
+        
+      
+        <div id="reward-container">
+  <div>感谢您的认可!</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/zh-CN/images/wechatpay.png" alt="LeoJhon.Song 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="/zh-CN/images/alipay.jpg" alt="LeoJhon.Song 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+      
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/zh-CN/2019/05/21/Verilog杂记/" rel="next" title="Verilog杂记">
+                  <i class="fa fa-chevron-left"></i> Verilog杂记
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/zh-CN/2019/06/10/当我安利软体机器人时我在谈什么/" rel="prev" title="当我安利软体机器人时我在谈什么">
+                  当我安利软体机器人时我在谈什么 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NjkzNi8yMzQzNw=="></div>
+  </div>
+  
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows下编码方式的坑"><span class="nav-number">1.</span> <span class="nav-text">Windows下编码方式的坑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GBK不是一种编码格式"><span class="nav-number">2.</span> <span class="nav-text">GBK不是一种编码格式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自整理的中文字符集发展史"><span class="nav-number">2.1.</span> <span class="nav-text">自整理的中文字符集发展史</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Unicode与UTF-8是不同层面的东西"><span class="nav-number">3.</span> <span class="nav-text">Unicode与UTF-8是不同层面的东西</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Unicode与UCS"><span class="nav-number">3.1.</span> <span class="nav-text">Unicode与UCS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#两者关系"><span class="nav-number">3.1.1.</span> <span class="nav-text">两者关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两者差异"><span class="nav-number">3.1.2.</span> <span class="nav-text">两者差异</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#现代编码模型"><span class="nav-number">3.2.</span> <span class="nav-text">现代编码模型</span></a></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/zh-CN/images/avatar.gif"
+      alt="LeoJhon.Song">
+  <p class="site-author-name" itemprop="name">LeoJhon.Song</p>
+  <div class="site-description" itemprop="description">记 / 录 / 与 / 分 / 享</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/zh-CN/archives/">
+        
+          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/zh-CN/categories/">
+          
+        
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/zh-CN/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+        
+      
+        <a href="https://github.com/LeoJhonSong" title="GitHub &rarr; https://github.com/LeoJhonSong" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github"></use></svg>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+        
+      
+        <a href="mailto:LeoJhon.Song@outlook.com" title="Email &rarr; mailto:LeoJhon.Song@outlook.com" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-OUTLOOK"></use></svg>Email</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+        
+      
+        <a href="https://www.facebook.com/jhon.leo.100" title="FB Page &rarr; https://www.facebook.com/jhon.leo.100" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-Facebook"></use></svg>FB Page</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+        
+      
+        <a href="https://user.qzone.qq.com/719957017" title="QQ &rarr; https://user.qzone.qq.com/719957017" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-QQ"></use></svg>QQ</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+        
+      
+        <a href="https://wakatime.com/@LeoJhonSong" title="WakaTime &rarr; https://wakatime.com/@LeoJhonSong" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-waka-time"></use></svg>WakaTime</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-hand-peace-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LeoJhon.Song</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">80k</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/zh-CN/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/zh-CN/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/zh-CN/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/zh-CN/js/utils.js?v=7.4.0"></script><script src="/zh-CN/js/motion.js?v=7.4.0"></script>
+<script src="/zh-CN/js/schemes/pisces.js?v=7.4.0"></script>
+<script src="/zh-CN/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/zh-CN/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  <script src="/js/hexo_resize_image.js"></script>
+</body>
+</html>
