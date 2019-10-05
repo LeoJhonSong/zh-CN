@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="最近写的程序会在终端给出大量输出, 如果都是黑底白字那这一大堆字刷刷刷往上冒一会就能把人看眼晕, 但我发现了一个很实用而简单的技巧: 让特定类型的输出显示为特定的颜色!">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-05T22:04:33.791Z">
+<meta property="og:updated_time" content="2019-10-05T19:52:59.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux终端呈现彩色输出">
 <meta name="twitter:description" content="最近写的程序会在终端给出大量输出, 如果都是黑底白字那这一大堆字刷刷刷往上冒一会就能把人看眼晕, 但我发现了一个很实用而简单的技巧: 让特定类型的输出显示为特定的颜色!">
@@ -340,7 +340,7 @@
                 
               
 
-              <time title="创建时间：2019-09-12 02:35:48" itemprop="dateCreated datePublished" datetime="2019-09-12T02:35:48+00:00">2019-09-12</time>
+              <time title="创建时间：2019-09-12 02:35:48" itemprop="dateCreated datePublished" datetime="2019-09-12T02:35:48+08:00">2019-09-12</time>
             </span>
           
             
@@ -351,7 +351,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-05 22:04:33" itemprop="dateModified" datetime="2019-10-05T22:04:33+00:00">2019-10-05</time>
+                <time title="修改时间：2019-10-06 03:52:59" itemprop="dateModified" datetime="2019-10-06T03:52:59+08:00">2019-10-06</time>
               </span>
             
           
@@ -401,6 +401,7 @@
       
         <p>最近写的程序会在终端给出大量输出, 如果都是黑底白字那这一大堆字刷刷刷往上冒一会就能把人看眼晕, 但我发现了一个很实用而简单的技巧: <strong>让特定类型的输出显示为特定的颜色</strong>!</p>
 <a id="more"></a>
+
 <p>比如这样:</p>
 <p style="color:purple">
 [MESSAGE] Turning left
@@ -444,8 +445,7 @@
 <th>颜色</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>30</td>
 <td>40</td>
 <td>黑色</td>
@@ -485,8 +485,7 @@
 <td>47</td>
 <td>白色</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h2 id="字体效果表"><a href="#字体效果表" class="headerlink" title="字体效果表"></a>字体效果表</h2><table>
 <thead>
 <tr>
@@ -494,8 +493,7 @@
 <th>效果</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>0</td>
 <td>默认</td>
 </tr>
@@ -519,24 +517,30 @@
 <td>8</td>
 <td>不可见</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="shell语法"><a href="#shell语法" class="headerlink" title="shell语法"></a>shell语法</h3><p>举例:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo "\e[31;43;1mError\!\e[0m"</span><br></pre></td></tr></tbody></table></figure>
+
 <p>💡 如果上面这条命令不是彩色的, 执行<code>echo -e "\e[31;43;1mError\!\e[0m"</code></p>
 <p>运行上面这条命令会输出一个黄底红色粗体字的”Error!”. 前景色, 背景色和字体效果的代码没有先后顺序之分. 建议每个<code>\e[a;b;c</code>都接一个<code>\e[0m</code>将字体效果恢复默认, 不然后续输出还是带特殊效果的.</p>
 <h3 id="python语法"><a href="#python语法" class="headerlink" title="python语法"></a>python语法</h3><p>在<code>print()</code>中使用的示例:</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"\033[31;43;1mError!\033[0m"</span>)</span><br></pre></td></tr></tbody></table></figure>
+
 <p>或者可以通过python执行shell命令:</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.system(<span class="string">'echo "\e[31;43;1mError!\e[0m"'</span>)</span><br></pre></td></tr></tbody></table></figure>
+
 <h3 id="C-语法"><a href="#C-语法" class="headerlink" title="C++语法"></a>C++语法</h3><p>在C++中使用的语法和在python中是一样的:</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>:<span class="built_in">cout</span> &lt;&lt; <span class="string">"\033[31;43;1m"</span> &lt;&lt; <span class="string">"Error!"</span> &lt;&lt; <span class="string">"\033[0m"</span> &lt;&lt; <span class="built_in">std</span>:<span class="built_in">endl</span>;</span><br></pre></td></tr></tbody></table></figure>
+
 <p>一个小技巧是可以单独写一个<code>color_print.h</code>, 内容示例:</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> COLOR_PRINT_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> COLOR_PRINT_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RESET   <span class="meta-string">"\033[0m"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BLACK   <span class="meta-string">"\033[30m"</span>      <span class="comment">/* Black */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RED     <span class="meta-string">"\033[31m"</span>      <span class="comment">/* Red */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> GREEN   <span class="meta-string">"\033[32m"</span>      <span class="comment">/* Green */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> YELLOW  <span class="meta-string">"\033[33m"</span>      <span class="comment">/* Yellow */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BLUE    <span class="meta-string">"\033[34m"</span>      <span class="comment">/* Blue */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAGENTA <span class="meta-string">"\033[35m"</span>      <span class="comment">/* Magenta */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CYAN    <span class="meta-string">"\033[36m"</span>      <span class="comment">/* Cyan */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WHITE   <span class="meta-string">"\033[37m"</span>      <span class="comment">/* White */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BOLDBLACK   <span class="meta-string">"\033[1m\033[30m"</span>      <span class="comment">/* Bold Black */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BOLDRED     <span class="meta-string">"\033[1m\033[31m"</span>      <span class="comment">/* Bold Red */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BOLDGREEN   <span class="meta-string">"\033[1m\033[32m"</span>      <span class="comment">/* Bold Green */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BOLDYELLOW  <span class="meta-string">"\033[1m\033[33m"</span>      <span class="comment">/* Bold Yellow */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BOLDBLUE    <span class="meta-string">"\033[1m\033[34m"</span>      <span class="comment">/* Bold Blue */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BOLDMAGENTA <span class="meta-string">"\033[1m\033[35m"</span>      <span class="comment">/* Bold Magenta */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BOLDCYAN    <span class="meta-string">"\033[1m\033[36m"</span>      <span class="comment">/* Bold Cyan */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BOLDWHITE   <span class="meta-string">"\033[1m\033[37m"</span>      <span class="comment">/* Bold White */</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> print(color, context) std::cout &lt;&lt; color &lt;&lt; context &lt;&lt; RESET &lt;&lt; std::endl</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></tbody></table></figure>
+
 <p>然后在要显示彩色输出的cpp文件中引用这个头文件, 打印语句示例:</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(BOLDRED, <span class="string">"Error!"</span>);</span><br></pre></td></tr></tbody></table></figure>
+
 <p>因为是宏替换因此<code>context</code>字段其实可以随意填, 比如有一个变量<code>depth</code>, 用下面语句来打印深度是可以的:</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(BOLDGREEN, <span class="string">"depth: "</span> &lt;&lt; depth &lt;&lt; <span class="string">"m"</span>)</span><br></pre></td></tr></tbody></table></figure>
+
 <p>超好用!😆</p>
 <script>
         document.querySelectorAll('.github-emoji')

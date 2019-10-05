@@ -66,12 +66,12 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="我把shell从bash换到zsh了. 原本我是根本没动过换shell的念头的, 但因为这段时间用的笔记本被别人装好了zsh, 我就将就着用了, 谁知真香…">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/09/02/我将shell换为了zsh/我将shell换为了zsh/screencast.gif">
-<meta property="og:updated_time" content="2019-10-05T22:04:33.803Z">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/09/02/我将shell换为了zsh/%E6%88%91%E5%B0%86shell%E6%8D%A2%E4%B8%BA%E4%BA%86zsh/screencast.gif">
+<meta property="og:updated_time" content="2019-10-05T19:52:59.417Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我将Shell换为了zsh">
 <meta name="twitter:description" content="我把shell从bash换到zsh了. 原本我是根本没动过换shell的念头的, 但因为这段时间用的笔记本被别人装好了zsh, 我就将就着用了, 谁知真香…">
-<meta name="twitter:image" content="https://leojhonsong.github.io/zh-CN/2019/09/02/我将shell换为了zsh/我将shell换为了zsh/screencast.gif">
+<meta name="twitter:image" content="https://leojhonsong.github.io/zh-CN/2019/09/02/我将shell换为了zsh/%E6%88%91%E5%B0%86shell%E6%8D%A2%E4%B8%BA%E4%BA%86zsh/screencast.gif">
   <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2019/09/02/我将shell换为了zsh/">
 
 
@@ -342,7 +342,7 @@
                 
               
 
-              <time title="创建时间：2019-09-02 09:22:25" itemprop="dateCreated datePublished" datetime="2019-09-02T09:22:25+00:00">2019-09-02</time>
+              <time title="创建时间：2019-09-02 09:22:25" itemprop="dateCreated datePublished" datetime="2019-09-02T09:22:25+08:00">2019-09-02</time>
             </span>
           
             
@@ -353,7 +353,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-05 22:04:33" itemprop="dateModified" datetime="2019-10-05T22:04:33+00:00">2019-10-05</time>
+                <time title="修改时间：2019-10-06 03:52:59" itemprop="dateModified" datetime="2019-10-06T03:52:59+08:00">2019-10-06</time>
               </span>
             
           
@@ -410,6 +410,7 @@
       
         <p>我把shell从<strong>bash</strong>换到<strong>zsh</strong>了. 原本我是根本没动过换shell的念头的, 但因为这段时间用的笔记本被别人装好了zsh, 我就将就着用了, 谁知真香…</p>
 <a id="more"></a>
+
 <p>不得不说zsh比bash确实好了许多:</p>
 <ul>
 <li>补全智能了太多! 比如切换路径时的补全不必区分大小写, 比如会根据历史命令给出建议, 比如如果命令里有<code>$(pwd)</code>这样的取值操作, 按一下<kbd>Tab</kbd>zsh会将其补全为对应的值.</li>
@@ -420,7 +421,7 @@
 </ul>
 <p>总之我要到zsh去了, bash再见👋</p>
 <p>下面是部分功能的展示</p>
-<p><img src="我将shell换为了zsh/screencast.gif" alt=""></p>
+<p><img src="%E6%88%91%E5%B0%86shell%E6%8D%A2%E4%B8%BA%E4%BA%86zsh/screencast.gif" alt=""></p>
 <p>下面我大致说一下我的zsh配置</p>
 <ul>
 <li>zsh配置管理工具: <a href="https://ohmyz.sh" target="_blank" rel="noopener">Oh My Zsh</a></li>
@@ -430,6 +431,7 @@
 <p>以下是我的<code>~/.zshrc</code>中部分代码.</p>
 <p>有关Powerlevel9k:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">POWERLEVEL9K_MODE='nerdfont-complete'</span><br><span class="line">POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND="black"</span><br><span class="line">POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND="blue"</span><br><span class="line">POWERLEVEL9K_CUSTOM_OS_ICON="echo   $(whoami) "</span><br><span class="line">POWERLEVEL9K_CUSTOM_OS_ICON_BACKGROUND="purple"</span><br><span class="line">POWERLEVEL9K_CUSTOM_OS_ICON_FOREGROUND="white"</span><br><span class="line">POWERLEVEL9K_ANACONDA_BACKGROUND="chartreuse3"</span><br><span class="line">POWERLEVEL9K_ANACONDA_LEFT_DELIMITER=""</span><br><span class="line">POWERLEVEL9K_ANACONDA_RIGHT_DELIMITER=""</span><br><span class="line">POWERLEVEL9K_DIR_HOME_BACKGROUND='123'</span><br><span class="line">POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='123'</span><br><span class="line"><span class="meta">#</span><span class="bash"> POWERLEVEL9K_DIR_ETC_BACKGROUND=<span class="string">'123'</span></span></span><br><span class="line">POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_os_icon ssh anaconda root_indicator dir dir_writable vcs)</span><br><span class="line">POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status background_jobs time)</span><br><span class="line">ZSH_THEME="powerlevel9k/powerlevel9k"</span><br></pre></td></tr></tbody></table></figure>
+
 <p>有关zsh插件:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Which plugins would you like to load?</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Standard plugins can be found <span class="keyword">in</span> ~/.oh-my-zsh/plugins/*</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Example format: plugins=(rails git textmate ruby lighthouse)</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Add wisely, as too many plugins slow down shell startup.</span></span><br><span class="line">source ~/Desktop/backup/zsh/antigen.zsh</span><br><span class="line"><span class="meta">#</span><span class="bash"> Load the oh-my-zsh<span class="string">'s library.</span></span></span><br><span class="line">antigen use oh-my-zsh</span><br><span class="line"><span class="meta">#</span><span class="bash"> Bundles from the default repo (robbyrussell<span class="string">'s oh-my-zsh).</span></span></span><br><span class="line">antigen bundle git</span><br><span class="line">antigen bundle pip</span><br><span class="line">antigen bundle command-not-found</span><br><span class="line"><span class="meta">#</span><span class="bash"> custom plugins</span></span><br><span class="line">antigen bundle zsh-users/zsh-syntax-highlighting</span><br><span class="line">antigen bundle zsh-users/zsh-autosuggestions</span><br><span class="line">antigen bundle sobolevn/wakatime-zsh-plugin</span><br><span class="line"><span class="meta">#</span><span class="bash"> Load the theme.</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> antigen theme powerlevel9k/powerlevel9k</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Tell Antigen that you<span class="string">'re done.</span></span></span><br><span class="line">antigen apply</span><br></pre></td></tr></tbody></table></figure><script>
         document.querySelectorAll('.github-emoji')

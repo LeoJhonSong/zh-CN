@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="这篇是学习笔记, 因为我决定最近专门重新学习一下C语言. 经常有人说自己入门C语言时觉得C语言很简单, 不到一个月就能入门, 但用久了会觉得C语言很难, 觉得自己还没有入门. 而我现在觉得当时速成的C语言已经全部不记得了… 虽然我目前并没有使用C的需求, 但总是看到各种C系代码, 一直头疼也不是办法, 不如温故而知新, 再次”速成”一下.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-05T22:04:33.791Z">
+<meta property="og:updated_time" content="2019-10-05T19:52:59.397Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C语言学习笔记">
 <meta name="twitter:description" content="这篇是学习笔记, 因为我决定最近专门重新学习一下C语言. 经常有人说自己入门C语言时觉得C语言很简单, 不到一个月就能入门, 但用久了会觉得C语言很难, 觉得自己还没有入门. 而我现在觉得当时速成的C语言已经全部不记得了… 虽然我目前并没有使用C的需求, 但总是看到各种C系代码, 一直头疼也不是办法, 不如温故而知新, 再次”速成”一下.">
@@ -340,7 +340,7 @@
                 
               
 
-              <time title="创建时间：2019-07-12 16:22:42" itemprop="dateCreated datePublished" datetime="2019-07-12T16:22:42+00:00">2019-07-12</time>
+              <time title="创建时间：2019-07-12 16:22:42" itemprop="dateCreated datePublished" datetime="2019-07-12T16:22:42+08:00">2019-07-12</time>
             </span>
           
             
@@ -351,7 +351,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-05 22:04:33" itemprop="dateModified" datetime="2019-10-05T22:04:33+00:00">2019-10-05</time>
+                <time title="修改时间：2019-10-06 03:52:59" itemprop="dateModified" datetime="2019-10-06T03:52:59+08:00">2019-10-06</time>
               </span>
             
           
@@ -402,18 +402,23 @@
         <p>这篇是学习笔记, 因为我决定最近专门重新学习一下C语言.</p>
 <p>经常有人说自己入门C语言时觉得C语言很简单, 不到一个月就能入门, 但用久了会觉得C语言很难, 觉得自己还没有入门. 而我现在觉得当时速成的C语言已经全部不记得了… 虽然我目前并没有使用C的需求, 但总是看到各种C系代码, 一直头疼也不是办法, 不如温故而知新, 再次”速成”一下.</p>
 <a id="more"></a>
+
 <h1 id="语句与行"><a href="#语句与行" class="headerlink" title="语句与行"></a>语句与行</h1><p>C语言我感觉对格式要求蛮宽松的, 可以一行多个语句 (每个语句必须以<code>;</code>结尾), 也可以跨行写语句(在行末写<code>\</code>折行), 不像python对缩进都有严格要求.</p>
 <p>🌟 代码风格的话我只认<strong>VS风</strong>, 就是Visual Studio格式化出来的样式. 是的我是<strong>大括号换行派</strong>!</p>
 <p>💡 要注意的是预编译指令必须一行不能写多个语句, 但可以折行.</p>
 <h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p>有两种方式</p>
 <h2 id="推荐的方式"><a href="#推荐的方式" class="headerlink" title="推荐的方式"></a>推荐的方式</h2><p>👇这种注释可以跨行写, 也可以在行内写</p>
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="comment">/*comment*/</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="comment">/*comment</span></span><br><span class="line"><span class="comment">comment</span></span><br><span class="line"><span class="comment">comment*/</span></span><br></pre></td></tr></tbody></table></figure>
+
 <p>💡值得一提的是只要出现 <strong>/*</strong> 就会被识别为注释的开始, 如果想把y除z指向的内存的值赋给x写成下面这样是不行的.</p>
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = y<span class="comment">/*z</span></span><br></pre></td></tr></tbody></table></figure>
+
 <p>但这个问题也很好解决, 用空格或括号就能解决.</p>
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = y / *z</span><br><span class="line">x = y/(*z)</span><br></pre></td></tr></tbody></table></figure>
+
 <h2 id="不推荐的方式"><a href="#不推荐的方式" class="headerlink" title="不推荐的方式"></a>不推荐的方式</h2><p>这样只能单行注释</p>
 <figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code  <span class="comment">// comment</span></span><br></pre></td></tr></tbody></table></figure>
+
 <p>❗️要注意这种注释方式是借鉴自C++, 在C99中才被标准化, 而目前使用最广泛的是C89标准,
 也就是说不使用是比较保险的.</p>
 <h1 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h1><p>C语言对内存的操作似乎很多, 也很注重内存管理.</p>
@@ -443,8 +448,8 @@ Segment). 和其他段一样, 堆栈段也有自己的大小, 不能被越界访
 <p>不同操作系统的回车换行符是不一致的. Windows是“\r”和“\n”两个字符,Linux是“\n”,而
 MacOS是“\r”. 如果在Windows下读取Windows文件, fgetc和getchar会把“\r””吃掉”, 只剩下“\n”; 但如果要在Linux下读取同样一个文件, 它们会忠实地先读取“\r”, 然后才是“\n”.</p>
 <p>很有意思的一个小问题: “5”, ‘5’ 和 5 有什么区别?<br>“5”是一个字符串, ‘5’是一个字符常量, 5是一个数字常量</p>
-<h1 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h1><p>用int<em> a声明的变量a是指向int型变量的指针. 赋值a = &amp;b的含义是把变量b的地址存放在指针a中, 表达式</em>a代表a指向的变量, 既可以放在赋值符号的左边(左值), 也可以放在右边
-(右值) 注意: <em>a是指“a指向的变量”, 而不仅是“a指向的变量所拥有的值”. 理解这一点相当重要. 例如, </em>a = <em>a + 1就是让a指向的变量自增1. 甚至可以把它写成(</em>a)++. 注意不要写成<em>a++, 因为<code>++</code>运算符的优先级高于取内容运算符 `</em>`, 实际上会被解释成*(a++).</p>
+<h1 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h1><p>用int* a声明的变量a是指向int型变量的指针. 赋值a = &amp;b的含义是把变量b的地址存放在指针a中, 表达式<em>a代表a指向的变量, 既可以放在赋值符号的左边(左值), 也可以放在右边
+(右值) 注意: <em>a是指“a指向的变量”, 而不仅是“a指向的变量所拥有的值”. 理解这一点相当重要. 例如, *a = *a + 1就是让a指向的变量自增1. 甚至可以把它写成(</em>a)++. 注意不要写成<em>a++, 因为<code>++</code>运算符的优先级高于取内容运算符 `</em>`, 实际上会被解释成</em>(a++).</p>
 <h2 id="指针的运算"><a href="#指针的运算" class="headerlink" title="指针的运算"></a>指针的运算</h2><ul>
 <li>一个指针变量加/减一个整数是将该指针变量的原值(是一个地址)和它指向的变量所占用的内存单元字节数相加或相减.</li>
 <li>两个指针变量间可以做减法, 但前提是这两个指针是指向同一个数组的元素. 两指针变量差是两个指针之间的元素个数</li>
@@ -452,11 +457,13 @@ MacOS是“\r”. 如果在Windows下读取Windows文件, fgetc和getchar会把�
 NULL进行相等/不想等比较.</li>
 </ul>
 <h1 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h1><h2 id="宏定义"><a href="#宏定义" class="headerlink" title="宏定义"></a>宏定义</h2><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> 宏名 字符串</span></span><br></pre></td></tr></tbody></table></figure>
+
 <p>宏名一般为大写, 以下划线连接单词.</p>
 <p>看了网上资料我感觉在C中宏定义主要是以下作用</p>
 <h3 id="增加代码抽象性"><a href="#增加代码抽象性" class="headerlink" title="增加代码抽象性"></a>增加代码抽象性</h3><p>用宏定义替代magic number, 或者嵌入式中一些寄存器的位操作, 一方面增强代码可读性
 (不像魔数让人不明所以, 而寄存器的位操作也很不直观), 一方面增强代码可移植性 (比如从一种单片机移植到另一种单片机, 只需更改宏定义即可)</p>
 <h3 id="防止重复定义"><a href="#防止重复定义" class="headerlink" title="防止重复定义"></a>防止重复定义</h3><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> XXXX</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> XXXX</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></tbody></table></figure>
+
 <p>在头文件里用这样的语句来防止头文件被重复引用. 有一些头文件被重复引用会增加编译器工作, 降低编译效率, 而有一些头文件被重复引用会引起冲突 (比如如果头文件里定义了全局变量, 会发生重复定义错误).</p>
 <h3 id="控制代码编译"><a href="#控制代码编译" class="headerlink" title="控制代码编译"></a>控制代码编译</h3><p>通过Makefile控制编译选项.</p>
 <p>还能像轮子哥<a href="https://www.zhihu.com/question/22608939/answer/21963056" target="_blank" rel="noopener">这样</a>当模板用.</p>
@@ -473,8 +480,7 @@ NULL进行相等/不想等比较.</li>
 <th>含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>-o [filename]</td>
 <td>output</td>
 <td>指定输出文件名</td>
@@ -514,8 +520,7 @@ NULL进行相等/不想等比较.</li>
 <td>define XX</td>
 <td>在编译时定义XX符号 (此处XX是随意什么大写单词的意思), 位于#ifdef XX和#endif中间的语句会被编译</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="gcc与g"><a href="#gcc与g" class="headerlink" title="gcc与g++"></a>gcc与g++</h3><p><code>gcc</code>到底能不能编译C++程序?</p>
 <p>在某种程度上<code>gcc</code>和<code>g++</code>都可以编译 <strong>.cpp</strong> 后缀的程序, 但是<code>gcc</code>命令不能自动和
 C++程序使用的库链接. <code>gcc</code>把后缀为 <strong>.c</strong> 的当作是C程序,而<code>g++</code>将其当作C++程序.
@@ -531,8 +536,7 @@ C++程序使用的库链接. <code>gcc</code>把后缀为 <strong>.c</strong> �
 <th>含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>l</td>
 <td>list</td>
 <td>列出十行代码. 但可以通过<code>set listsize</code>来更改显示多少行, 用<code>show listsize</code>能查看listsize. l后可以接行号, 函数名</td>
@@ -612,8 +616,7 @@ C++程序使用的库链接. <code>gcc</code>把后缀为 <strong>.c</strong> �
 <td>quit</td>
 <td>退出gdb</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
