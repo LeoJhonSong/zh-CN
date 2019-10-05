@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="Language: English 中文   这里是为我在VSCode插件市场发布的 C/C++扩展包 写的Windows下VSCode中C/C++配置教程🎉">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-13T07:39:35.606Z">
+<meta property="og:updated_time" content="2019-10-05T21:29:11.186Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="配置VSCode中调试C&#x2F;C++环境">
 <meta name="twitter:description" content="Language: English 中文   这里是为我在VSCode插件市场发布的 C/C++扩展包 写的Windows下VSCode中C/C++配置教程🎉">
@@ -340,7 +340,7 @@
                 
               
 
-              <time title="创建时间：2018-12-30 02:43:35" itemprop="dateCreated datePublished" datetime="2018-12-30T02:43:35+08:00">2018-12-30</time>
+              <time title="创建时间：2018-12-30 02:43:35" itemprop="dateCreated datePublished" datetime="2018-12-30T02:43:35+00:00">2018-12-30</time>
             </span>
           
             
@@ -351,7 +351,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-13 15:39:35" itemprop="dateModified" datetime="2019-09-13T15:39:35+08:00">2019-09-13</time>
+                <time title="修改时间：2019-10-05 21:29:11" itemprop="dateModified" datetime="2019-10-05T21:29:11+00:00">2019-10-05</time>
               </span>
             
           
@@ -361,14 +361,14 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/zh-CN/categories/配置/" itemprop="url" rel="index"><span itemprop="name">配置</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/zh-CN/categories/工具/" itemprop="url" rel="index"><span itemprop="name">工具</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/zh-CN/categories/工具/" itemprop="url" rel="index"><span itemprop="name">工具</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/zh-CN/categories/配置/" itemprop="url" rel="index"><span itemprop="name">配置</span></a></span>
 
                 
                 
@@ -393,7 +393,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>6.7k</span>
+              <span>0</span>
             </span>
           
 
@@ -415,7 +415,6 @@
 <a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.ccpp-extension-pack" target="_blank" rel="noopener">C/C++扩展包</a>
 写的Windows下VSCode中C/C++配置教程<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8">🎉</span></p>
 <a id="more"></a>
-
 <p>实际上在<a href="https://code.visualstudio.com/docs/languages/cpp" target="_blank" rel="noopener">VSCode的说明文档中C++部分</a>
 对如何配置环境有十分详细的说明, 本文仅是对其的部分整理和解读<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span> 因此如果你的能力足够看官方文档当然是更好的选择<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8">👍</span></p>
 <p>P.S.其实只要右键翻译成中文我觉得不难懂…</p>
@@ -457,8 +456,7 @@
 </li>
 <li><p>macOS: <a href="http://releases.llvm.org/download.html" target="_blank" rel="noopener">clang</a></p>
 </li>
-<li><p>Linux: <a href="https://gcc.gnu.org/" target="_blank" rel="noopener">gcc</a></p>
-</li>
+<li>Linux: <a href="https://gcc.gnu.org/" target="_blank" rel="noopener">gcc</a></li>
 </ul>
 <p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8">❗</span>因为我没钱买Mac, 暂时也没需求在Linux配置VSCode, 本文仅针对<strong>Windows</strong>
 平台, 当然也可以作为其他平台的参考. 甚至<a href="https://pimylifeup.com/raspberry-pi-visual-studio-code/" target="_blank" rel="noopener">有人在树莓派安装VSCode</a>.</p>
@@ -484,11 +482,9 @@ C/C++程序实际上就是在内置命令行中调用MinGW)</p>
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>这之后! 我们测试一下, 在命令行输入<code>gcc</code></p>
 <p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> 你看到的应当是:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\LeoJh&gt;gcc</span><br><span class="line">gcc: fatal error: no input files</span><br><span class="line">compilation terminated.</span><br></pre></td></tr></tbody></table></figure>
-
 <p>这是说gcc被成功唤起,我们已经成功完成编译器的配置了, 但你没告诉它要编译的文件路径, 所以他就报错了.</p>
 <p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8">❌</span>而如果你看到的是:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\LeoJh&gt;gcc</span><br><span class="line">'gcc' 不是内部或外部命令，也不是可运行的程序</span><br><span class="line">或批处理文件。</span><br></pre></td></tr></tbody></table></figure>
-
 <p>这是说无法从命令行调用gcc. 一种情况是没有把正确的路径加入<strong>Path</strong>, 另一种情况是该换电脑了
 <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8">😁</span></p>
 <h2 id="VSCode插件"><a href="#VSCode插件" class="headerlink" title="VSCode插件"></a>VSCode插件</h2><p>搞定了编译器我们就离完成不远了! 实际上你现在已经可以开始开发C/C++了, 只不过是硬核一些.
@@ -508,18 +504,15 @@ C/C++程序实际上就是在内置命令行中调用MinGW)</p>
 IntelliSence是<strong>cpptools</strong>这个插件很重要的一部分, 通过在<code>settings.json</code> (原本是
 <code>c_cpp_properties.json</code>)中进行设置来设定IntelliSense的模式. 主要设置以下几个:</p>
 <figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">"C_Cpp.autocomplete": "Default",</span><br><span class="line">"C_Cpp.clang_format_style": "{BasedOnStyleStyle: Google, IndentWidth: 4}",</span><br><span class="line">"C_Cpp.clang_format_fallbackStyle": "{BasedOnStyleStyle: Google, IndentWidth: 4}",</span><br><span class="line">"C_Cpp.default.compilerPath": "D:\\Softwares\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe",</span><br><span class="line">"C_Cpp.default.cStandard": "c99",</span><br><span class="line">"C_Cpp.default.cppStandard": "c++11",</span><br><span class="line">"C_Cpp.default.intelliSenseMode": "gcc-x64",</span><br><span class="line">"C_Cpp.intelliSenseEngine": "Default",</span><br><span class="line">"C_Cpp.errorSquiggles": "Enabled",</span><br></pre></td></tr></tbody></table></figure>
-
 <h2 id="配置编译配置文件"><a href="#配置编译配置文件" class="headerlink" title="配置编译配置文件"></a>配置编译配置文件</h2><p>然后配置编译用的<code>tasks.json</code>.</p>
 <p>:heavy_check_mark: 这个文件和之后配置的<code>launch.json</code>都是针对特定程序的,
 如何生成这两个文件请参见VSCode官方文档. 但你可以将满意的<code>tasks.json</code>和<code>launch.json</code>放在一个包含许多工程的目录中, 那么这些工程都将使用这两个配置文件. 如果你想给这之中某个工程配置不同的配置你可以在这个工程的根目录另外生成<code>tasks.json</code>和<code>launch.json</code>, 会覆盖上一层的配置.</p>
 <p>当你跟随VSCode官方文档创建了一个 <code>tasks.json</code> 之后, 将下面这个任务添加到tasks的列表,
 至于自带的label为 <strong>echo</strong> 的任务你可以删掉或者不管他.</p>
 <figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">   <span class="attr">"label"</span>: <span class="string">"Compile"</span>,</span><br><span class="line">   <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">   <span class="attr">"command"</span>: <span class="string">"gcc"</span>,</span><br><span class="line">   <span class="attr">"args"</span>: [</span><br><span class="line">         <span class="string">"${file}"</span>,</span><br><span class="line">         <span class="string">"-o"</span>,</span><br><span class="line">         <span class="string">"${fileDirname}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">         <span class="string">"-g"</span>,</span><br><span class="line">         <span class="string">"-Wall"</span>,</span><br><span class="line">         <span class="string">"-std=c++17"</span></span><br><span class="line">   ],</span><br><span class="line">   <span class="attr">"group"</span>: {</span><br><span class="line">         <span class="attr">"kind"</span>: <span class="string">"build"</span>,</span><br><span class="line">         <span class="attr">"isDefault"</span>: <span class="literal">true</span></span><br><span class="line">   }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
 <p><code>label</code>的意思是给这个任务取名为<strong>Compile</strong>, <a href="#启动前编译">稍后</a>会用到.</p>
 <p>从中我们可以看出实际上当我们调用这个叫<strong>Compile</strong>的task的时候会在shell中输入:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc ${file} -o ${fileDirname}/${fileBasenameNoExtension}.exe -g -Wall -std=c++17</span><br></pre></td></tr></tbody></table></figure>
-
 <p>其中<strong>${file}</strong>等是<a href="https://code.visualstudio.com/docs/editor/variables-reference" target="_blank" rel="noopener">VSCode中定义的变量</a></p>
 <p><code>-o</code>选项使我们可以<a href="http://www.runoob.com/note/28613" target="_blank" rel="noopener">指定生成文件的名字</a></p>
 <p>其他几个选项可以上网查查.</p>
@@ -527,28 +520,22 @@ IntelliSence是<strong>cpptools</strong>这个插件很重要的一部分, 通�
 参见<a href="https://code.visualstudio.com/docs/editor/tasks#_typescript-hello-world" target="_blank" rel="noopener">这里</a></p>
 <h3 id="合起来"><a href="#合起来" class="headerlink" title="合起来!"></a>合起来!</h3><p>因此我的 <code>tashs.json</code> 长这样:</p>
 <figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">    // See https://go.microsoft.com/fwlink/?LinkId=733558</span><br><span class="line">    // for the documentation about the tasks.json format</span><br><span class="line">    "version": "2.0.0",</span><br><span class="line">    "tasks": [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"label"</span>: <span class="string">"Compile"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">            <span class="attr">"command"</span>: <span class="string">"gcc"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [</span><br><span class="line">                <span class="string">"${file}"</span>,</span><br><span class="line">                <span class="string">"-o"</span>,</span><br><span class="line">                <span class="string">"${fileDirname}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">                <span class="string">"-g"</span>,</span><br><span class="line">                <span class="string">"-Wall"</span>,</span><br><span class="line">                <span class="string">"-std=c++17"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"group"</span>: {</span><br><span class="line">                <span class="attr">"kind"</span>: <span class="string">"build"</span>,</span><br><span class="line">                <span class="attr">"isDefault"</span>: <span class="literal">true</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
 <h2 id="配置调试配置文件"><a href="#配置调试配置文件" class="headerlink" title="配置调试配置文件"></a>配置调试配置文件</h2><p>最后配置的这个是<code>launch.json</code>. 实际上这很简单, 因为VSCode已经提供了很多种模板, 需要改动的非常少.</p>
 <p>通常我们选择 <strong>(gdb) Launch</strong> 这种模板. Launch指的是要调试的程序是在开始调试时才开始运行,
 Attach指的是开始调试时程序已经在运行了 (比如在服务器上的程序)</p>
 <p>需要改动/添加的非常少:</p>
 <h3 id="调试对象"><a href="#调试对象" class="headerlink" title="调试对象"></a>调试对象</h3><figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"program": "${workspaceFolder}/a.exe"</span><br></pre></td></tr></tbody></table></figure>
-
 <p><code>program</code>指的是要调试的程序. 如果不特别指出的话大多数编译器默认将编译出来的可执行文件命名为 <strong>a.exe</strong>. 而如果你的<code>tasks.json</code>也像我一样加了
-“-o ${fileDirname}/${fileBasenameNoExtension}.exe” 这个选项的话, 将会生成和源文件同名的可执行文件, 因此要用:</p>
+“-o \${fileDirname}/${fileBasenameNoExtension}.exe” 这个选项的话, 将会生成和源文件同名的可执行文件, 因此要用:</p>
 <figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"program": "${workspaceFolder}/${fileBasenameNoExtension}.exe"</span><br></pre></td></tr></tbody></table></figure>
-
 <h3 id="Debugger路径及选项"><a href="#Debugger路径及选项" class="headerlink" title="Debugger路径及选项"></a>Debugger路径及选项</h3><p>如果你在命令行输入 <code>gdb</code> 你会发现首先映入眼帘的是一串废话, 因此我们可以加上<code>-q</code>这个选项来让它少说废话.</p>
 <figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">"miDebuggerPath": "gdb.exe",</span><br><span class="line">"miDebuggerArgs": "-q"</span><br></pre></td></tr></tbody></table></figure>
-
 <h3 id="启动前编译"><a href="#启动前编译" class="headerlink" title="启动前编译"></a>启动前编译</h3><p>如果你担心自己忘记每次调试前先编译一遍已更改的代码 (不然你会哭出声响), 可以添加一个
 <strong>preLaunchTask</strong>, 这个task指定为刚配置的那个<strong>Compile</strong>任务.
 这样每次调试前程序都会被先编译一遍<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8">👍</span></p>
 <figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"preLaunchTask": "Compile"</span><br></pre></td></tr></tbody></table></figure>
-
 <h3 id="合起来-1"><a href="#合起来-1" class="headerlink" title="合起来!"></a>合起来!</h3><p>因此我的<code>launch.json</code>长这样:</p>
 <figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">    // Use IntelliSense to learn about possible attributes.</span><br><span class="line">    // Hover to view descriptions of existing attributes.</span><br><span class="line">    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">    "version": "0.2.0",</span><br><span class="line">    "configurations": [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"(gdb) Launch"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>,</span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"${workspaceFolder}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [],</span><br><span class="line">            <span class="attr">"stopAtEntry"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"cwd"</span>: <span class="string">"${workspaceFolder}"</span>,</span><br><span class="line">            <span class="attr">"environment"</span>: [],</span><br><span class="line">            <span class="attr">"externalConsole"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"MIMode"</span>: <span class="string">"gdb"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerPath"</span>: <span class="string">"gdb.exe"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerArgs"</span>: <span class="string">"-q"</span>,</span><br><span class="line">            <span class="attr">"setupCommands"</span>: [</span><br><span class="line">                {</span><br><span class="line">                    <span class="attr">"description"</span>: <span class="string">"Enable pretty-printing for gdb"</span>,</span><br><span class="line">                    <span class="attr">"text"</span>: <span class="string">"-enable-pretty-printing"</span>,</span><br><span class="line">                    <span class="attr">"ignoreFailures"</span>: <span class="literal">true</span></span><br><span class="line">                }</span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"preLaunchTask"</span>: <span class="string">"Compile"</span></span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
 <h1 id="Enjoy"><a href="#Enjoy" class="headerlink" title="Enjoy"></a>Enjoy</h1><p>这下我们可以轻松愉快的开发C/C++了! 祝各位水平日益提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8">🎉</span></p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -805,7 +792,7 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">80k</span>
+    <span title="站点总字数">108k</span>
 </div>
 
         

@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="Verilog学习笔记. 这学期上了数字电路课, 从最开始的了解每个逻辑门的物理工作原理到学习每个组合电路, 时序电路元件是如何由逻辑门构成的, 再到后来跟着指导书设计出了很简易的8位CPU, 我个人是觉得很震撼的. 这也让我小时候的一个问题得到了解答: 集成电路这么复杂的东西真的是人能设计出来的吗? 其实我一直是知道答案的, 这些小黑块既不可能是土里长出来的也不可能是从什么动物身上割下来的. 我">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-13T13:50:53.649Z">
+<meta property="og:updated_time" content="2019-10-05T21:29:11.206Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Verilog杂记">
 <meta name="twitter:description" content="Verilog学习笔记. 这学期上了数字电路课, 从最开始的了解每个逻辑门的物理工作原理到学习每个组合电路, 时序电路元件是如何由逻辑门构成的, 再到后来跟着指导书设计出了很简易的8位CPU, 我个人是觉得很震撼的. 这也让我小时候的一个问题得到了解答: 集成电路这么复杂的东西真的是人能设计出来的吗? 其实我一直是知道答案的, 这些小黑块既不可能是土里长出来的也不可能是从什么动物身上割下来的. 我">
@@ -340,7 +340,7 @@
                 
               
 
-              <time title="创建时间：2019-05-21 23:15:54" itemprop="dateCreated datePublished" datetime="2019-05-21T23:15:54+08:00">2019-05-21</time>
+              <time title="创建时间：2019-05-21 23:15:54" itemprop="dateCreated datePublished" datetime="2019-05-21T23:15:54+00:00">2019-05-21</time>
             </span>
           
             
@@ -351,7 +351,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-13 21:50:53" itemprop="dateModified" datetime="2019-09-13T21:50:53+08:00">2019-09-13</time>
+                <time title="修改时间：2019-10-05 21:29:11" itemprop="dateModified" datetime="2019-10-05T21:29:11+00:00">2019-10-05</time>
               </span>
             
           
@@ -386,7 +386,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>3.4k</span>
+              <span>0</span>
             </span>
           
 
@@ -403,7 +403,6 @@
 <p>这学期上了数字电路课, 从最开始的了解每个逻辑门的物理工作原理到学习每个组合电路, 时序电路元件是如何由逻辑门构成的, 再到后来跟着指导书设计出了很简易的8位CPU, 我个人是觉得很震撼的. 这也让我小时候的一个问题得到了解答: 集成电路这么复杂的东西真的是人能设计出来的吗? 其实我一直是知道答案的,
 这些小黑块既不可能是土里长出来的也不可能是从什么动物身上割下来的. 我只是一直不敢想象这么复杂而精妙的东西 (即便是一根充电线里的小巧电路也不是那时的我能弄清的). 最近我稍微体会到了那群伟大的工程师们是如何设计出了那样精密的芯片的: 不断积累基本模块. 实际上从最开始的黑底白字的电脑系统到现在繁华多样的炫酷系统, 也是很令人震撼的变化. 虽然大佬可能会觉得这些很简单, 但我仍认为该对这些技术保持敬畏之心.</p>
 <a id="more"></a>
-
 <h1 id="Quartus与Modelsim的安装"><a href="#Quartus与Modelsim的安装" class="headerlink" title="Quartus与Modelsim的安装"></a>Quartus与Modelsim的安装</h1><p>🔗 <a href="https://blog.csdn.net/weixin_38071135/article/details/82531594" target="_blank" rel="noopener">quartus16.1和modelsim-altera for linux的安装</a><br>🔗 <a href="https://coldnew.github.io/ce6f7a0a/" target="_blank" rel="noopener">DE2-115 開發紀錄: 在 Linux 下使用 ModelSim</a></p>
 <p>参考上面两个链接 (后者算是对前者的补充)我成功在Ubuntu1804下安装了Quartus和Modelsim. 因为我懒得注册论坛帐号, 我并没有使用第一个链接中提供的破解文件, 而是使用了<a href="https://tsuhuai.wordpress.com/2015/02/17/altera-quartus-crack-for-linux-version/" target="_blank" rel="noopener">这里</a>提供的
 15.0版的crack. 我装的也是15.0版的Quartus和Modelsim, 但问题和解决方法是一样的.</p>
@@ -435,26 +434,19 @@
 <h2 id="有关always"><a href="#有关always" class="headerlink" title="有关always"></a>有关always</h2><p><code>always</code>实际上就是循环关键字, 而<code>always @()</code>则是条件循环关键字.</p>
 <p>always块的讲究很多:</p>
 <ol>
-<li><p>写在括号内的称<strong>敏感事件列表</strong>, 当这些事件 (电平信号变化或者出现边沿信号) 发生时触发这个块. 一个敏感事件列表中不能同时包含电平敏感事件和边沿敏感事件. <strong>电平敏感事件意味着这是一个描述组合逻辑的always块</strong> (我们也可以在描述组合逻辑的always块的敏感事件列表中填<code>*</code>来让综合器根据always块内容来自动添加敏感事件), <strong>边沿敏感事件意味着这是一个描述时序逻辑的always
-块</strong>.</p>
-</li>
-<li><p><strong>尽量只使用主时钟 (clk, rst) 作为always块的边沿敏感事件</strong>, 避免出错. 如果有其他信号边沿触发的事件可以通过<a href="https://blog.csdn.net/phenixyf/article/details/46364193" target="_blank" rel="noopener">这里</a>
-提到的clk周期延时法将边沿触发转换为电平触发.</p>
-</li>
-<li><p><strong>不要将同一信号的上升沿敏感事件和下降沿包含在同一敏感事件列表</strong>, 因为它们可以合为一个电平敏感事件.</p>
-</li>
-<li><p><strong>尽量不要在多个always块中给同一变量赋值</strong>, 这样容易产生竞争冒险 (所有always块同时运行),
+<li>写在括号内的称<strong>敏感事件列表</strong>, 当这些事件 (电平信号变化或者出现边沿信号) 发生时触发这个块. 一个敏感事件列表中不能同时包含电平敏感事件和边沿敏感事件. <strong>电平敏感事件意味着这是一个描述组合逻辑的always块</strong> (我们也可以在描述组合逻辑的always块的敏感事件列表中填<code>*</code>来让综合器根据always块内容来自动添加敏感事件), <strong>边沿敏感事件意味着这是一个描述时序逻辑的always
+块</strong>.</li>
+<li><strong>尽量只使用主时钟 (clk, rst) 作为always块的边沿敏感事件</strong>, 避免出错. 如果有其他信号边沿触发的事件可以通过<a href="https://blog.csdn.net/phenixyf/article/details/46364193" target="_blank" rel="noopener">这里</a>
+提到的clk周期延时法将边沿触发转换为电平触发.</li>
+<li><strong>不要将同一信号的上升沿敏感事件和下降沿包含在同一敏感事件列表</strong>, 因为它们可以合为一个电平敏感事件.</li>
+<li><strong>尽量不要在多个always块中给同一变量赋值</strong>, 这样容易产生竞争冒险 (所有always块同时运行),
 且无法综合. 如果一个变量的值与两个always块都有关且这两个always块无法合并, 可以参考<a href="https://blog.csdn.net/gududeyhc/article/details/8795202" target="_blank" rel="noopener">这种方法</a>. 另外也可以考虑用两个
-always块的敏感事件生成一组新的敏感事件 (参考第二条).</p>
-</li>
-<li><p><strong>一个always块中不能混用阻塞赋值 (=) 和非阻塞赋值 (&lt;=)</strong>, 在描述组合逻辑的always块中使用
-<code>=</code>, 在描述时序逻辑的always块中使用<code>&lt;=</code>.</p>
-</li>
+always块的敏感事件生成一组新的敏感事件 (参考第二条).</li>
+<li><strong>一个always块中不能混用阻塞赋值 (=) 和非阻塞赋值 (&lt;=)</strong>, 在描述组合逻辑的always块中使用
+<code>=</code>, 在描述时序逻辑的always块中使用<code>&lt;=</code>.</li>
 <li><p><strong>always块中的条件语句要与敏感事件相对应.</strong> 比如以下两段代码前者是错误的, 后者是正确的.</p>
 <figure class="highlight verilog"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rst)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(rst)</span><br><span class="line">        ...</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></tbody></table></figure>
-
 <figure class="highlight verilog"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rst)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(!rst)</span><br><span class="line">        ...</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></tbody></table></figure>
-
 </li>
 </ol>
 <h2 id="关于default"><a href="#关于default" class="headerlink" title="关于default"></a>关于default</h2><p>在写case块时发现所有示例里都写出了default这种情况, 无论情况是否完备. 这让我有了两个问题:</p>
@@ -747,7 +739,7 @@ always块的敏感事件生成一组新的敏感事件 (参考第二条).</p>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">80k</span>
+    <span title="站点总字数">108k</span>
 </div>
 
         
