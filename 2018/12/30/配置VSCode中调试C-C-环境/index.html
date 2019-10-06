@@ -66,10 +66,12 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="Language: English 中文   这里是为我在VSCode插件市场发布的 C/C++扩展包 写的Windows下VSCode中C/C++配置教程🎉">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-05T23:05:34.079Z">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/配置VSCode中调试C-C-环境/%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/example.gif">
+<meta property="og:updated_time" content="2019-10-06T21:32:58.129Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="配置VSCode中调试C&#x2F;C++环境">
 <meta name="twitter:description" content="Language: English 中文   这里是为我在VSCode插件市场发布的 C/C++扩展包 写的Windows下VSCode中C/C++配置教程🎉">
+<meta name="twitter:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/配置VSCode中调试C-C-环境/%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/example.gif">
   <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2018/12/30/配置VSCode中调试C-C-环境/">
 
 
@@ -351,7 +353,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-05 23:05:34" itemprop="dateModified" datetime="2019-10-05T23:05:34+00:00">2019-10-05</time>
+                <time title="修改时间：2019-10-06 21:32:58" itemprop="dateModified" datetime="2019-10-06T21:32:58+00:00">2019-10-06</time>
               </span>
             
           
@@ -393,7 +395,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>6.7k</span>
+              <span>7.5k</span>
             </span>
           
 
@@ -499,18 +501,27 @@ C/C++程序实际上就是在内置命令行中调用MinGW)</p>
 <p>当然你看不上我的扩展包也没事<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8">😢</span>只需要安装了<a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools" target="_blank" rel="noopener">官方C/C++支持扩展</a>
 就能体验到很强大的支持了.</p>
 <h1 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h1><p>在有些教程中, 要在VSCode中开发C/C++需要配置<code>c_cpp_properties.json</code>, <code>tasks.json</code>,
-<code>launch.json</code>三样, 但现在不是这样了! :tada: 现在<code>c_cpp_properties.json</code>已经完全被
-<code>settings.json</code>取代了, 也就是说在设置中就可以进行原来在<code>c_cpp_properties.json</code>中进行的配置! 这样的好处是我们可以针对不同的工作区进行不同的设置等.</p>
-<p>:link:关于设置取代了<code>c_cpp_properties.json</code>的说明参见<a href="https://github.com/Microsoft/vscode-cpptools/blob/master/Documentation/LanguageServer/Customizing%20Default%20Settings.md" target="_blank" rel="noopener">这里</a>,
+<code>launch.json</code>三样, 但现在不是这样了! 🎉 现在<code>c_cpp_properties.json</code>已经完全被
+<code>settings.json</code>取代了, 也就是说在设置中就可以进行原来在<code>c_cpp_properties.json</code>中进行的配置! 这样的好处是我们可以针对不同的工作区进行不同的设置等. 另外, 稍后你也会看到随着VSC的更新<code>tasks.json</code>和<code>launch.json</code>的生成也变得十分简单!</p>
+<p>🔗 关于设置取代了<code>c_cpp_properties.json</code>的说明参见<a href="https://github.com/Microsoft/vscode-cpptools/blob/master/Documentation/LanguageServer/Customizing%20Default%20Settings.md" target="_blank" rel="noopener">这里</a>,
 另外给出对原本可以在<code>c_cpp_properties.json</code>中配置的内容的描述的<a href="https://github.com/Microsoft/vscode-cpptools/blob/master/Documentation/LanguageServer/c_cpp_properties.json.md" target="_blank" rel="noopener">链接</a></p>
 <p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 以下配置文件内容都以我的配置文件为例</p>
 <h2 id="配置IntelliSense"><a href="#配置IntelliSense" class="headerlink" title="配置IntelliSense"></a>配置IntelliSense</h2><p>正如前面所说, 我们不需要VSCode就可以编译/调试C/C++, 因此能够提供智能补全功能的
 IntelliSence是<strong>cpptools</strong>这个插件很重要的一部分, 通过在<code>settings.json</code> (原本是
 <code>c_cpp_properties.json</code>)中进行设置来设定IntelliSense的模式. 主要设置以下几个:</p>
-<figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">"C_Cpp.autocomplete": "Default",</span><br><span class="line">"C_Cpp.clang_format_style": "{BasedOnStyleStyle: Google, IndentWidth: 4}",</span><br><span class="line">"C_Cpp.clang_format_fallbackStyle": "{BasedOnStyleStyle: Google, IndentWidth: 4}",</span><br><span class="line">"C_Cpp.default.compilerPath": "D:\\Softwares\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe",</span><br><span class="line">"C_Cpp.default.cStandard": "c99",</span><br><span class="line">"C_Cpp.default.cppStandard": "c++11",</span><br><span class="line">"C_Cpp.default.intelliSenseMode": "gcc-x64",</span><br><span class="line">"C_Cpp.intelliSenseEngine": "Default",</span><br><span class="line">"C_Cpp.errorSquiggles": "Enabled",</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">"C_Cpp.autocomplete": "Default",</span><br><span class="line">"C_Cpp.clang_format_style": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Allman, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4 }",</span><br><span class="line">"C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Allman, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4 }",</span><br><span class="line">"C_Cpp.default.compilerPath": "D:\\Softwares\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe",</span><br><span class="line">"C_Cpp.default.cStandard": "c99",</span><br><span class="line">"C_Cpp.default.cppStandard": "c++11",</span><br><span class="line">"C_Cpp.default.intelliSenseMode": "gcc-x64",</span><br><span class="line">"C_Cpp.intelliSenseEngine": "Default",</span><br><span class="line">"C_Cpp.errorSquiggles": "Enabled",</span><br></pre></td></tr></tbody></table></figure>
 
+<p>💡 其中<strong>C_Cpp.clang_format_style</strong>, <strong>C_Cpp.clang_format_fallbackStyle</strong>是VSC格式化C/C++代码的风格.
+上面的配置是近似于<strong>Visual Studio</strong>格式化C/C++代码的风格.
+我偏爱VS风格, 而如果你喜欢Google风格, 可以用下面这个值:</p>
+<figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">"C_Cpp.clang_format_style": "{BasedOnStyleStyle: Google, IndentWidth: 4}",</span><br><span class="line">"C_Cpp.clang_format_fallbackStyle": "{BasedOnStyleStyle: Google, IndentWidth: 4}",</span><br></pre></td></tr></tbody></table></figure>
+
+<p>随着VSC的更新, VSC提供了一些<code>tasks.json</code>和<code>launch.json</code>的模板, 这让生成这两个文件变得十分容易!
+下面这个gif👇 是一个生成<code>tasks.json</code>和<code>launch.json</code>的示例.</p>
+<p><img src="%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/example.gif" alt=""></p>
+<p>下面则是对这两个文件内容的一些解释.</p>
 <h2 id="配置编译配置文件"><a href="#配置编译配置文件" class="headerlink" title="配置编译配置文件"></a>配置编译配置文件</h2><p>然后配置编译用的<code>tasks.json</code>.</p>
-<p>:heavy_check_mark: 这个文件和之后配置的<code>launch.json</code>都是针对特定程序的,
+<p>✔️ 这个文件和之后配置的<code>launch.json</code>都是针对特定程序的,
 如何生成这两个文件请参见VSCode官方文档. 但你可以将满意的<code>tasks.json</code>和<code>launch.json</code>放在一个包含许多工程的目录中, 那么这些工程都将使用这两个配置文件. 如果你想给这之中某个工程配置不同的配置你可以在这个工程的根目录另外生成<code>tasks.json</code>和<code>launch.json</code>, 会覆盖上一层的配置.</p>
 <p>当你跟随VSCode官方文档创建了一个 <code>tasks.json</code> 之后, 将下面这个任务添加到tasks的列表,
 至于自带的label为 <strong>echo</strong> 的任务你可以删掉或者不管他.</p>
@@ -805,7 +816,7 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">80k</span>
+    <span title="站点总字数">82k</span>
 </div>
 
         
