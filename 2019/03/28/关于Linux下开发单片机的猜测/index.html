@@ -59,17 +59,17 @@
   };
 </script>
 
-  <meta name="description" content="现在也算个Linux爱好者啦, 但在Linux下怎么进行单片机开发我一直一头雾水, 直到最近我找到了相关文章!">
+  <meta name="description" content="现在也算个Linux爱好者啦, 但在Linux下怎么配置单片机开发环境我一直一头雾水, 直到最近我找到了相关文章!">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于Linux下开发单片机的猜测">
 <meta property="og:url" content="https://leojhonsong.github.io/zh-CN/2019/03/28/关于Linux下开发单片机的猜测/index.html">
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
-<meta property="og:description" content="现在也算个Linux爱好者啦, 但在Linux下怎么进行单片机开发我一直一头雾水, 直到最近我找到了相关文章!">
+<meta property="og:description" content="现在也算个Linux爱好者啦, 但在Linux下怎么配置单片机开发环境我一直一头雾水, 直到最近我找到了相关文章!">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-15T12:29:37.269Z">
+<meta property="og:updated_time" content="2019-10-18T10:11:57.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Linux下开发单片机的猜测">
-<meta name="twitter:description" content="现在也算个Linux爱好者啦, 但在Linux下怎么进行单片机开发我一直一头雾水, 直到最近我找到了相关文章!">
+<meta name="twitter:description" content="现在也算个Linux爱好者啦, 但在Linux下怎么配置单片机开发环境我一直一头雾水, 直到最近我找到了相关文章!">
   <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2019/03/28/关于Linux下开发单片机的猜测/">
 
 
@@ -351,7 +351,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-15 20:29:37" itemprop="dateModified" datetime="2019-10-15T20:29:37+08:00">2019-10-15</time>
+                <time title="修改时间：2019-10-18 18:11:57" itemprop="dateModified" datetime="2019-10-18T18:11:57+08:00">2019-10-18</time>
               </span>
             
           
@@ -400,7 +400,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>645</span>
+              <span>896</span>
             </span>
           
 
@@ -413,21 +413,28 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>现在也算个Linux爱好者啦, 但在Linux下怎么进行单片机开发我一直一头雾水, 直到最近我找到了相关文章!</p>
+        <p>现在也算个Linux爱好者啦, 但在Linux下怎么配置单片机开发环境我一直一头雾水, 直到最近我找到了相关文章!</p>
 <a id="more"></a>
 
+<p>💡 目前已经有
+<a href="http://docs.platformio.org/en/stable/what-is-platformio.html" target="_blank" rel="noopener">PlatformIO</a>可以让我们进行大部分单片机, 嵌入式系统的开发, 但也有部分开发板他们还没有收录, 除了向项目提issue, 我们也可以尝试不用PlatformIO配置一套Linux下单片机开发环境.</p>
 <p>网上虽然也有那么些讲在Linux开发单片机的文章, 但我看到的基本是开发C51, 顶多是有开发STM32的.
 我是觉得没人会费事在 Linux 下开发C51, 反正我想开发的比如
 <a href="https://www.infineon.com/cms/en/product/microcontroller/16-bit-c166-microcontroller/xc2200-family-body/xc22xxm-series/sak-xc2267m-104f80lr-ab/" target="_blank" rel="noopener">英飞凌 (infineon) 的 XC2267M</a>,
 <a href="https://www.nxp.com/products/processors-and-microcontrollers/arm-based-processors-and-mcus/kinetis-cortex-m-mcus/k-seriesperformancem4/k6x-ethernet/kinetis-k60-100-mhz-mixed-signal-integration-microcontrollers-based-on-arm-cortex-m4-core:K60_100" target="_blank" rel="noopener">飞思卡尔 (Freescale) 的 k60</a>
 之类是没看到相关文章🤷‍</p>
+<p>🌟🌟🌟 最近我看到了两篇配置英飞凌XMC系列单片机开发环境的文章!
+<a href="https://github.com/notandy/xmc4500-relax-linux" target="_blank" rel="noopener">xmc4500-relax-linux</a>讲述了在
+Linux开发xmc4500需要什么工具以及编译方式,
+<a href="https://github.com/furtnerthomas/Linux-XMC-Development" target="_blank" rel="noopener">Linux-XMC-Development</a>
+则<strong>十分详细</strong>地讲述了如何配置基于<strong>eclipse</strong>的XMC系列单片机开发环境.</p>
 <p>🔗 参考:</p>
 <ul>
 <li><a href="https://blog.csdn.net/thinkerleo1997/article/details/53145972" target="_blank" rel="noopener">在Linux下搭建51单片机的开发烧写环境</a></li>
 <li><a href="https://www.amobbs.com/thread-5568167-1-1.html" target="_blank" rel="noopener">ubuntu下安装stm32开发环境 秒杀keil和IAR</a></li>
 <li><a href="https://www.cnblogs.com/amanlikethis/p/3803736.html#lab35" target="_blank" rel="noopener">Linux下STM32开发环境的搭建</a></li>
 </ul>
-<p>但参考以上两篇文章我明白了单片机开发都是以下流程, 那我猜只要找到对应工具就OK了:</p>
+<p>参考以上几篇文章我明白了单片机开发都是以下流程, 那我猜只要找到对应工具就OK了:</p>
 <ol>
 <li>交叉编译生成 bin 或者 hex 文件</li>
 <li>烧录到单片机</li>
@@ -440,7 +447,7 @@
 列了出来! 当然有些工具是收费的, 但<a href="http://www.infineonic.org/module/forum/thread-554295-1-1.html" target="_blank" rel="noopener">这都不是事</a>😁. 不过似乎这个免费版<a href="http://www.infineonic.org/module/forum/thread-487158-1-1.html" target="_blank" rel="noopener">有点点局限</a></p>
 <p>另一款我提到的k60芯片也在介绍页面给出了相关工具的链接.</p>
 <p>不过看起来很多工具都是基于Eclipse的. (但我觉得Eclipse的图标不好看所以就用过一次)</p>
-<p>🔗 参考:</p>
+<p>🔗 更多相关链接</p>
 <ul>
 <li><a href="https://blog.csdn.net/passerbyyuan/article/details/51404226" target="_blank" rel="noopener">单片机的下载方式分类</a></li>
 <li><a href="https://blog.csdn.net/qlexcel/article/details/84374768" target="_blank" rel="noopener">程序编译生成的Hex、Bin、axf和elf格式</a></li>
