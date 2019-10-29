@@ -3751,8 +3751,8 @@ VSCode之后发现这个选项没被勾上.</p>
           });
       </script>]]></content>
       <categories>
-        <category>工具</category>
         <category>配置</category>
+        <category>工具</category>
       </categories>
   </entry>
   <entry>
@@ -3932,8 +3932,8 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
           });
       </script>]]></content>
       <categories>
-        <category>工具</category>
         <category>配置</category>
+        <category>工具</category>
       </categories>
   </entry>
   <entry>
