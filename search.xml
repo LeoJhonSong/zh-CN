@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>我开始用集成开发工具部署我的博客</title>
-    <url>/zh-CN/2019/10/05/%E6%88%91%E5%BC%80%E5%A7%8B%E7%94%A8%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E9%83%A8%E7%BD%B2%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+    <url>/zh-CN/2019/10/06/%E6%88%91%E5%BC%80%E5%A7%8B%E7%94%A8%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E9%83%A8%E7%BD%B2%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p>这几天分别尝试了用<strong>Travis CI</strong>和<strong>GitHub Action</strong>部署博客. 集成开发确实十分方便, 让人可以专注于写作, 而且对本地环境依赖性更小了 (在线写作也是可以的). 两者比较下来我更喜欢<strong>GitHub Action</strong>, 因为它就是Github的, 集成度更高. 而且<strong>Github Action</strong>支持的触发条件更多样一些.</p>
 <a id="more"></a>
 <script>
@@ -200,7 +200,7 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
   </entry>
   <entry>
     <title>更好的Shebang使用方式</title>
-    <url>/zh-CN/2019/09/12/%E6%9B%B4%E5%A5%BD%E7%9A%84shebang%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</url>
+    <url>/zh-CN/2019/09/13/%E6%9B%B4%E5%A5%BD%E7%9A%84shebang%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<p>在Linux系统的脚本第一行我们通常用
 <a href="https://zh.wikipedia.org/wiki/Shebang" target="_blank" rel="noopener">shebang</a>语句来指明解释器路径, 一方面有的脚本没有文件后缀名, 需要通过shebang语句指明系统才知道要用什么解释器运行. 另一方面有时候为了兼容性我们会指明使用标准位置的系统安装版本解释器.</p>
 <p>但我发现有时候我们并不能确定使用者把我们需要类型的解释器装到了地方, 如果我们只想指出<strong>使用的解释器类型</strong>而不是具体路径, 可以使用<code>/usr/bin/env</code>命令. 比如如果我们想用Python3解释器执行一个脚本, 可以在第一行加:</p>
@@ -234,7 +234,7 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
   </entry>
   <entry>
     <title>Python基础语法</title>
-    <url>/zh-CN/2019/09/11/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
+    <url>/zh-CN/2019/09/12/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<p>前阵子带学弟学妹们入门Python时自己整理的一些觉得初学者需要知道的Python知识. 我本身既不是计算机专业的也说不出自己对Python还是挺了解的这样的话, 说实话心里还是有一点忐忑. 如有错误欢迎指出🙇</p>
 <a id="more"></a>
 
@@ -509,7 +509,7 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
   </entry>
   <entry>
     <title>Linux终端呈现彩色输出</title>
-    <url>/zh-CN/2019/09/11/Linux%E7%BB%88%E7%AB%AF%E5%91%88%E7%8E%B0%E5%BD%A9%E8%89%B2%E8%BE%93%E5%87%BA/</url>
+    <url>/zh-CN/2019/09/12/Linux%E7%BB%88%E7%AB%AF%E5%91%88%E7%8E%B0%E5%BD%A9%E8%89%B2%E8%BE%93%E5%87%BA/</url>
     <content><![CDATA[<p>最近写的程序会在终端给出大量输出, 如果都是黑底白字那这一大堆字刷刷刷往上冒一会就能把人看眼晕, 但我发现了一个很实用而简单的技巧: <strong>让特定类型的输出显示为特定的颜色</strong>!</p>
 <a id="more"></a>
 
@@ -1470,7 +1470,7 @@ reverse flag can be set to request the result in descending order.</p>
   </entry>
   <entry>
     <title>机器人案例学习</title>
-    <url>/zh-CN/2019/06/09/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0/</url>
+    <url>/zh-CN/2019/06/10/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<p>正如我在 <a href="https://leojhonsong.github.io/zh-CN/about/">about</a> 中提到的, <strong>我立志为软体机器人领域贡献一份力</strong>, 那就先从积累开始吧. 在此记录我觉得很精妙的机器人,
 或可以用于机器人的”东西”, 参考学习💪</p>
 <a id="more"></a>
@@ -1501,7 +1501,7 @@ reverse flag can be set to request the result in descending order.</p>
   </entry>
   <entry>
     <title>当我安利软体机器人时我在谈什么</title>
-    <url>/zh-CN/2019/06/09/%E5%BD%93%E6%88%91%E5%AE%89%E5%88%A9%E8%BD%AF%E4%BD%93%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%97%B6%E6%88%91%E5%9C%A8%E8%B0%88%E4%BB%80%E4%B9%88/</url>
+    <url>/zh-CN/2019/06/10/%E5%BD%93%E6%88%91%E5%AE%89%E5%88%A9%E8%BD%AF%E4%BD%93%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%97%B6%E6%88%91%E5%9C%A8%E8%B0%88%E4%BB%80%E4%B9%88/</url>
     <content><![CDATA[<p>从小我就喜欢仿生机器人. 我敬畏着各种精妙的仿生设计和它们的设计者, 渴望着有朝一日我也能参与这样的工作. 当我看到波士顿动力的Atlas的仿生腿部结构时, 我就在想: 我们能不能造出人造人呢? 那时的我并没有想很多, 并不会去想这样浩大的工程的性价比, 并没有意识到背后的伦理问题, 只是出于一种探索, 好奇. 我也曾听到一句很有趣的话:</p>
 <blockquote>
 <p>“在一项技术成熟前不要谈论他的价值”</p>
@@ -2052,7 +2052,7 @@ Linux开发xmc4500需要什么工具以及编译方式,
   </entry>
   <entry>
     <title>传感器滤波有感</title>
-    <url>/zh-CN/2019/03/05/%E4%BC%A0%E6%84%9F%E5%99%A8%E6%BB%A4%E6%B3%A2%E6%9C%89%E6%84%9F/</url>
+    <url>/zh-CN/2019/03/06/%E4%BC%A0%E6%84%9F%E5%99%A8%E6%BB%A4%E6%B3%A2%E6%9C%89%E6%84%9F/</url>
     <content><![CDATA[<p>TODO</p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -2080,7 +2080,7 @@ Linux开发xmc4500需要什么工具以及编译方式,
   </entry>
   <entry>
     <title>常见术语缩写</title>
-    <url>/zh-CN/2019/03/01/%E5%B8%B8%E8%A7%81%E6%9C%AF%E8%AF%AD%E7%BC%A9%E5%86%99/</url>
+    <url>/zh-CN/2019/03/02/%E5%B8%B8%E8%A7%81%E6%9C%AF%E8%AF%AD%E7%BC%A9%E5%86%99/</url>
     <content><![CDATA[<p>作为一个非英语母语的程序员, 经常看到各种奇奇怪怪的缩写让人摸不到头脑, 而如果能知道这些拼凑起来的字母是什么的缩写的话, 不仅便于记忆, 也便于理解. 另外能知道点冷知识还是很有意思
 <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f62c.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f62c.png?v8">😬</span>因此在此记录我看到的各种缩写.
 (英文中缩写分为Acronym, 首字母缩写和Abbreviation, 单词简写两种, 此处所说缩写<strong>主要指
@@ -3241,7 +3241,7 @@ Address already in use</strong>, 我的服务器端监听的端口处于 <strong
   </entry>
   <entry>
     <title>麦语言速成</title>
-    <url>/zh-CN/2019/01/16/%E9%BA%A6%E8%AF%AD%E8%A8%80%E9%80%9F%E6%88%90/</url>
+    <url>/zh-CN/2019/01/17/%E9%BA%A6%E8%AF%AD%E8%A8%80%E9%80%9F%E6%88%90/</url>
     <content><![CDATA[<blockquote>
 <p>因为父亲经常炒期货，我速成一下<a href="https://www.wenhua.com.cn/myy/" target="_blank" rel="noopener">麦语言</a>来减轻一下他的工作量吧。</p>
 </blockquote>
@@ -3378,7 +3378,7 @@ Address already in use</strong>, 我的服务器端监听的端口处于 <strong
   </entry>
   <entry>
     <title>当VSCode成为一种生活方式</title>
-    <url>/zh-CN/2019/01/06/%E5%BD%93VSCode%E6%88%90%E4%B8%BA%E4%B8%80%E7%A7%8D%E7%94%9F%E6%B4%BB%E6%96%B9%E5%BC%8F/</url>
+    <url>/zh-CN/2019/01/07/%E5%BD%93VSCode%E6%88%90%E4%B8%BA%E4%B8%80%E7%A7%8D%E7%94%9F%E6%B4%BB%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<div align="right">Language:
 <a href="/2018/12/25/When-VSCode-Becomes-A-Lifestyle"><kbd>English</kbd></a>
 <a href="/zh-CN/2019/01/07/当VSCode成为一种生活方式"><kbd>中文</kbd></a>
@@ -3438,7 +3438,7 @@ VSCode之后发现这个选项没被勾上.</p>
   </entry>
   <entry>
     <title>搓一个Python/C++的简易卡尔曼滤波器</title>
-    <url>/zh-CN/2019/01/06/%E6%90%93%E4%B8%80%E4%B8%AAPython-C-%E7%9A%84%E7%AE%80%E6%98%93%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%E5%99%A8/</url>
+    <url>/zh-CN/2019/01/07/%E6%90%93%E4%B8%80%E4%B8%AAPython-C-%E7%9A%84%E7%AE%80%E6%98%93%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%E5%99%A8/</url>
     <content><![CDATA[<div align="right">Language:
 <a href="/Struggling-a-Simple-Kalman-Filter-by-Python-C"><code>English</code></a>
 <a href="/zh-CN/搓一个Python-C-的简易卡尔曼滤波器"><code>中文</code></a>
@@ -3471,7 +3471,7 @@ VSCode之后发现这个选项没被勾上.</p>
   </entry>
   <entry>
     <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
-    <url>/zh-CN/2019/01/06/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
+    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<div align="right">Language:
 <a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a>
 <a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a>
@@ -3515,7 +3515,7 @@ VSCode之后发现这个选项没被勾上.</p>
   </entry>
   <entry>
     <title>记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历</title>
-    <url>/zh-CN/2018/12/29/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/</url>
+    <url>/zh-CN/2018/12/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/</url>
     <content><![CDATA[<p><strong>前言</strong> ：博主是个不怎么懂软件的菜鸟，前几天为了学习Soft Robotics企图装一个带SoftRobots插件的SOFA，但我搜了半天也没有较新的安装教程（连下载方式都变了好吗）。虽然有官网的安装教程但我在安装过程中还是出了很多意外。感慨于在身边诸多大佬们的帮助下我这个对软件一窍不通的人才安装成功，我以一个不怎么接触编程的人的角度写下这篇博客帮助也想学习Soft Robotics的各位。(博主为了写这篇教程忍痛把安好的SOFA删了又下了一遍）</p>
 <a id="more"></a>
 <p><strong>P.S.</strong> 由于我并不是软件相关专业的有很多理解和做法可能并不准确，仅供参考，也欢迎指教。</p>
@@ -3736,7 +3736,7 @@ VSCode之后发现这个选项没被勾上.</p>
   </entry>
   <entry>
     <title>配置VSCode中调试C/C++环境</title>
-    <url>/zh-CN/2018/12/29/%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/</url>
+    <url>/zh-CN/2018/12/30/%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/</url>
     <content><![CDATA[<div align="right">Language:
 <a href="/2018/12/30/Configure-C-C-environment-in-VSCode"><kbd>English</kbd></a>
 <a href="/zh-CN/2018/12/30/配置VSCode中调试C-C-环境"><kbd>中文</kbd></a>
