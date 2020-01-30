@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="稍微记录一下常用git命令">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-29T21:48:50.135Z">
+<meta property="og:updated_time" content="2020-01-30T09:11:52.593Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git杂记">
 <meta name="twitter:description" content="稍微记录一下常用git命令">
@@ -351,7 +351,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-30 05:48:50" itemprop="dateModified" datetime="2019-10-30T05:48:50+08:00">2019-10-30</time>
+                <time title="修改时间：2020-01-30 17:11:52" itemprop="dateModified" datetime="2020-01-30T17:11:52+08:00">2020-01-30</time>
               </span>
             
           
@@ -386,7 +386,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>1.3k</span>
+              <span>2k</span>
             </span>
           
 
@@ -404,7 +404,7 @@
 
 <!-- TODO -->
 
-<h1 id="登陆git"><a href="#登陆git" class="headerlink" title="登陆git"></a>登陆git</h1><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name "Your Name"</span><br><span class="line">git config --global user.email "email@example.com"</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="登陆git"><a href="#登陆git" class="headerlink" title="登陆git"></a>登陆git</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name "Your Name"</span><br><span class="line">git config --global user.email "email@example.com"</span><br></pre></td></tr></tbody></table></figure>
 
 <p>:warning: 每台机器要使用不同的<code>user.name</code>! 为了方便记忆可以统一使用<strong>昵称-机器型号</strong>
 的命名方式.</p>
@@ -413,35 +413,75 @@
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config -e</span><br></pre></td></tr></tbody></table></figure>
 
 <p>要注意默认情况下<code>git config -e</code>访问<strong>仓库级配置文件</strong>.</p>
-<h1 id="有关SSH"><a href="#有关SSH" class="headerlink" title="有关SSH"></a>有关SSH</h1><p>用ssh方式登录git的话只是生成秘钥和在远程端添加秘钥麻烦一次, 后面就可以免密码, 而用http登录的话每次push都需要输入密码, 略微麻烦.</p>
-<h2 id="获取SSH-Key"><a href="#获取SSH-Key" class="headerlink" title="获取SSH Key"></a>获取SSH Key</h2><p>首先查看有没有<strong>~/.ssh</strong>这个文件夹以及文件夹下有没有<code>id_rsa</code>和<code>id_rsa.pub</code>两个文件.
+<h2 id="有关SSH"><a href="#有关SSH" class="headerlink" title="有关SSH"></a>有关SSH</h2><p>用ssh方式登录git的话只是生成秘钥和在远程端添加秘钥麻烦一次, 后面就可以免密码, 而用http登录的话每次push都需要输入密码, 略微麻烦.</p>
+<h3 id="获取SSH-Key"><a href="#获取SSH-Key" class="headerlink" title="获取SSH Key"></a>获取SSH Key</h3><p>首先查看有没有<strong>~/.ssh</strong>这个文件夹以及文件夹下有没有<code>id_rsa</code>和<code>id_rsa.pub</code>两个文件.
 如果有, 那就不用生成了.</p>
 <p>这两个就是SSH Key的秘钥对，<code>id_rsa</code>是私钥，不能泄露出去，<code>id_rsa.pub</code>是公钥可以放心地告诉任何人. 比如加入GitHub的SSH Key.</p>
-<h2 id="生成key"><a href="#生成key" class="headerlink" title="生成key"></a>生成key</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="生成key"><a href="#生成key" class="headerlink" title="生成key"></a>生成key</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span></span><br></pre></td></tr></tbody></table></figure>
 
 <p>如果没有特别需求(比如甚至想设置密码), 直接连敲三次回车.</p>
 <p>💡 其实在输入命令后第一个选项是指定生成的秘钥文件名, 可以指定为<code>id_rsa_github</code>,
 <code>id_rsa_gitee</code>这样, 加上远程端的名字, 这样有多个远程端时也不会混乱.</p>
 <p>有趣的是我发现同一台机器, 如果仍是敲三次回车生成的Key每次是一样的.</p>
-<h2 id="同时上传到多个远程端"><a href="#同时上传到多个远程端" class="headerlink" title="同时上传到多个远程端"></a>同时上传到多个远程端</h2><p>新建<code>~/.ssh/config</code>, 如果远程端是github和gitee, github和gitee的ssh key是像上面说的这样命名的, 那么内容如下:</p>
+<h3 id="同时上传到多个远程端"><a href="#同时上传到多个远程端" class="headerlink" title="同时上传到多个远程端"></a>同时上传到多个远程端</h3><p>新建<code>~/.ssh/config</code>, 如果远程端是github和gitee, github和gitee的ssh key是像上面说的这样命名的, 那么内容如下:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> github</span></span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_github</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> gitee</span></span><br><span class="line">Host gitee.com</span><br><span class="line">HostName gitee.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_gitee</span><br></pre></td></tr></tbody></table></figure>
 
-<h1 id="下载一个repository"><a href="#下载一个repository" class="headerlink" title="下载一个repository"></a>下载一个repository</h1><p>:warning: 有http和ssh两种链接, 推荐使用ssh, 有时http形式并不被支持, 比如hexo的git
+<h2 id="下载一个repository"><a href="#下载一个repository" class="headerlink" title="下载一个repository"></a>下载一个repository</h2><p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 有http和ssh两种链接, 推荐使用ssh, 有时http形式并不被支持, 比如hexo的git
 上传功能.</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone [url]</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="下载特定分支"><a href="#下载特定分支" class="headerlink" title="下载特定分支"></a>下载特定分支</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone -b [branch] [url]</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="下载特定分支"><a href="#下载特定分支" class="headerlink" title="下载特定分支"></a>下载特定分支</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone -b [branch] [url]</span><br></pre></td></tr></tbody></table></figure>
 
-<h1 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h1><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></tbody></table></figure>
 
-<h1 id="暂存所有更改"><a href="#暂存所有更改" class="headerlink" title="暂存所有更改"></a>暂存所有更改</h1><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="暂存所有更改"><a href="#暂存所有更改" class="headerlink" title="暂存所有更改"></a>暂存所有更改</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></tbody></table></figure>
 
-<h1 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h1><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit</span><br></pre></td></tr></tbody></table></figure>
 
-<h1 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h1><pre><code class="git"></code></pre>
+<h2 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></tbody></table></figure>
+
 <p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 个人仓库的话提交之后一定不要忘记上传! 我在格式化电脑前忘记将本地commit
 上传, 失去了好几篇博文啊<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8">😢</span> (但应该一般没有我这么蠢的)</p>
-<script>
+<h2 id="git仓库瘦身"><a href="#git仓库瘦身" class="headerlink" title="git仓库瘦身"></a>git仓库瘦身</h2><p>我也终于遇到了git仓库被搞太大需要瘦身的情况了.</p>
+<blockquote>
+<p><a href="http://rtyley.github.io/bfg-repo-cleaner/" target="_blank" rel="noopener">BFG</a> 是为将像大文件或者密码这些不想要的数据从 Git 仓库中删除而专门设计的，所以它有一一个简单的标志用来删除那些大的历史文件（不在当前的提交里面）：<code>--strip-blobs-bigger-than</code></p>
+</blockquote>
+<p>⚠️ 要用bfg你需要有java</p>
+<ol>
+<li>首先以<code>--mirror</code>选项从远程端下载仓库. 按照bfg的说法这样下到的是一个”bare repo”.</li>
+</ol>
+<blockquote>
+<p>This is a bare repo, which means your normal files won’t be visible, but it is a full copy of the Git database of your repository</p>
+</blockquote>
+<p>(我试了一下普通clone的仓库操作完最后推送不上去…)</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone --mirror git://example.com/some-big-repo.git</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>然后进入仓库, 然后按照文件大小或者文件名清理文件.</li>
+</ol>
+<p>❗️ 在这一步文件并没有在物理上被删除, 在这一步bfg会清理所有commit, branch, tag, 去掉该文件的记录.</p>
+<ul>
+<li>清理大于指定值的文件</li>
+</ul>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar bfg.jar --strip-blobs-bigger-than 100M</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>大小超过 100MB 的任何文件（不包含在你<em>最近的</em>提交中的文件——因为 BFG <a href="http://rtyley.github.io/bfg-repo-cleaner/#protected-commits" target="_blank" rel="noopener">默认会保护你的最新提交的内容</a>）将会从你的Git仓库的历史记录中删除.</p>
+</blockquote>
+<ul>
+<li>清理指定文件名文件:</li>
+</ul>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar bfg.jar --delete-files *.mp4</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="3">
+<li>将上面清理出来的文件删除</li>
+</ol>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="4">
+<li>当你觉得删得差不多就可以推送了. ❗️ 这样会改变远程端所有ref.</li>
+</ol>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></tbody></table></figure><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -566,7 +606,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#登陆git"><span class="nav-number">1.</span> <span class="nav-text">登陆git</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有关SSH"><span class="nav-number">2.</span> <span class="nav-text">有关SSH</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取SSH-Key"><span class="nav-number">2.1.</span> <span class="nav-text">获取SSH Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成key"><span class="nav-number">2.2.</span> <span class="nav-text">生成key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同时上传到多个远程端"><span class="nav-number">2.3.</span> <span class="nav-text">同时上传到多个远程端</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#下载一个repository"><span class="nav-number">3.</span> <span class="nav-text">下载一个repository</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载特定分支"><span class="nav-number">3.1.</span> <span class="nav-text">下载特定分支</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看状态"><span class="nav-number">4.</span> <span class="nav-text">查看状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#暂存所有更改"><span class="nav-number">5.</span> <span class="nav-text">暂存所有更改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#提交"><span class="nav-number">6.</span> <span class="nav-text">提交</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上传"><span class="nav-number">7.</span> <span class="nav-text">上传</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#登陆git"><span class="nav-number">1.</span> <span class="nav-text">登陆git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有关SSH"><span class="nav-number">2.</span> <span class="nav-text">有关SSH</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取SSH-Key"><span class="nav-number">2.1.</span> <span class="nav-text">获取SSH Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成key"><span class="nav-number">2.2.</span> <span class="nav-text">生成key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同时上传到多个远程端"><span class="nav-number">2.3.</span> <span class="nav-text">同时上传到多个远程端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载一个repository"><span class="nav-number">3.</span> <span class="nav-text">下载一个repository</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载特定分支"><span class="nav-number">3.1.</span> <span class="nav-text">下载特定分支</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看状态"><span class="nav-number">4.</span> <span class="nav-text">查看状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#暂存所有更改"><span class="nav-number">5.</span> <span class="nav-text">暂存所有更改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交"><span class="nav-number">6.</span> <span class="nav-text">提交</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上传"><span class="nav-number">7.</span> <span class="nav-text">上传</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git仓库瘦身"><span class="nav-number">8.</span> <span class="nav-text">git仓库瘦身</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -690,7 +730,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-hand-peace-o"></i>
   </span>
@@ -701,7 +741,7 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">79k</span>
+    <span title="站点总字数">80k</span>
 </div>
 
         

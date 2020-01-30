@@ -10,20 +10,20 @@
 <p>🔗 <a href="https://github.com/LeoJhonSong/LeoJhonSong.github.io/blob/02ce864f1cbe09d82c0dfe6f617b36737344d41e/.travis.yml" target="_blank" rel="noopener">Travis配置文件</a></p>
 <p>🔗 <a href="https://github.com/LeoJhonSong/LeoJhonSong.github.io/tree/Root/.github/workflows" target="_blank" rel="noopener">GitHub Action配置文件</a></p>
 <h2 id="GitHub-Action的缺点"><a href="#GitHub-Action的缺点" class="headerlink" title="GitHub Action的缺点"></a>GitHub Action的缺点</h2><p>可以看出Travis要更<strong>成熟</strong>一些, 提供了一些很方便的功能, 比如要添加ssh known hosts, travis只需要</p>
-<figure class="highlight yml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">addons:</span></span><br><span class="line"><span class="attr">  ssh_known_hosts:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">github.com</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">ssh.github.com</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight yml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">addons:</span></span><br><span class="line">  <span class="attr">ssh_known_hosts:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">github.com</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">ssh.github.com</span></span><br></pre></td></tr></tbody></table></figure>
 
 <p>而在GitHub Action中需要</p>
-<figure class="highlight yml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">- name:</span> <span class="string">login</span> <span class="string">ssh</span> <span class="string">and</span> <span class="string">git</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        mkdir ~/.ssh</span></span><br><span class="line"><span class="string">        echo -e "Host github.com\nStrictHostKeyChecking no\nIdentityFile ~/.ssh/id_rsa_github_action" &gt; ~/.ssh/config</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight yml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">login</span> <span class="string">ssh</span> <span class="string">and</span> <span class="string">git</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">mkdir</span> <span class="string">~/.ssh</span></span><br><span class="line">        <span class="string">echo</span> <span class="string">-e</span> <span class="string">"Host github.com\nStrictHostKeyChecking no\nIdentityFile ~/.ssh/id_rsa_github_action"</span> <span class="string">&gt;</span> <span class="string">~/.ssh/config</span></span><br></pre></td></tr></tbody></table></figure>
 
 <p>看起来GitHub Action的配置更短, 但这句是强行不验证github.com的服务器, 并没有Travis中的配置直观, 合理.</p>
 <p>另外GitHub Action暂时还不支持<strong>缓存</strong>, 照<a href="https://help.github.com/en/github/automating-your-workflow-with-github-actions/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">这个样子</a>即便实现了也是很别扭的东西… 我觉得缓存还是一个很重要的功能. 一个最简单的例子: 没有缓存的public文件夹导致刚换到GitHub Action时我的每篇博客<strong>更新时间与我的最后一次上传时间相同</strong> (hexo通过对比source文件夹和public文件夹的时间戳来判断更新时间). 目前我是通过将master分支下载到public文件夹来蛮力解决的.</p>
 <h2 id="GitHub-Action的优点"><a href="#GitHub-Action的优点" class="headerlink" title="GitHub Action的优点"></a>GitHub Action的优点</h2><p>当然GitHub Action的优点也是明显的, 比如我的代码的<strong>托管平台和持续集成平台合二为一</strong>, 不说管理起来方便了多少至少内心通达了😆</p>
 <p>另外GitHub Action的支持的触发条件更加丰富, 比如用下面代码可以指定只有<code>Root</code>分支有推送且有<strong>source/en</strong>文件夹以外的文件变动时才运行. 换句话说只有配置文件或者中文博客内容发生变动时才运行.</p>
-<figure class="highlight yml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">Root</span></span><br><span class="line"><span class="attr">    paths-ignore:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">'source/en/**'</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight yml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">Root</span></span><br><span class="line">    <span class="attr">paths-ignore:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">'source/en/**'</span></span><br></pre></td></tr></tbody></table></figure>
 
 <p>在<a href="https://docs.travis-ci.com/user/conditional-builds-stages-jobs/" target="_blank" rel="noopener">Travis的文档</a>中我并没有看到可以这么操作.</p>
 <p>再有就是GitHub Action支持一个项目有<strong>多个</strong>workflow, 比如我的博客就同时在运行两个工作流: 一个生成并部署中文博客, 一个生成并部署英文博客. 这是一个十分吸引人的功能! 并且GitHub正试图将workflow打造成能<strong>轻松分享, 引用</strong>的东西, 这能极大减少人们写这些繁琐低级的配置文件的时间. 实际上GitHub已经<a href="https://github.com/marketplace?type=actions" target="_blank" rel="noopener">初步成功了</a>. 在我的配置中就引用了两个GitHub官方发布的action.</p>
-<figure class="highlight yml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">steps:</span></span><br><span class="line"><span class="attr">- uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">- name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="number">8.10</span><span class="number">.0</span></span><br><span class="line"><span class="attr">  uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line"><span class="attr">  with:</span></span><br><span class="line"><span class="attr">    node-version:</span> <span class="number">8.10</span><span class="number">.0</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight yml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">steps:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="number">8.10</span><span class="number">.0</span></span><br><span class="line">  <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">  <span class="attr">with:</span></span><br><span class="line">    <span class="attr">node-version:</span> <span class="number">8.10</span><span class="number">.0</span></span><br></pre></td></tr></tbody></table></figure>
 
 <p>目前来说GitHub Action体验着很不错!</p>
 <script>
@@ -50,7 +50,7 @@
       </categories>
   </entry>
   <entry>
-    <title>Markdown安利&Typora简要使用教程</title>
+    <title>Markdown安利&amp;Typora简要使用教程</title>
     <url>/zh-CN/2019/09/23/Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<p>在此我来安利一下<strong>Markdown</strong>和<strong>Typora</strong>.</p>
 <a id="more"></a>
@@ -2905,7 +2905,7 @@ Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可�
 
 <!-- TODO -->
 
-<h1 id="登陆git"><a href="#登陆git" class="headerlink" title="登陆git"></a>登陆git</h1><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git config --global user.name "Your Name"</span><br><span class="line">git config --global user.email "email@example.com"</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="登陆git"><a href="#登陆git" class="headerlink" title="登陆git"></a>登陆git</h2><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git config --global user.name "Your Name"</span><br><span class="line">git config --global user.email "email@example.com"</span><br></pre></td></tr></tbody></table></figure>
 
 <p>:warning: 每台机器要使用不同的<code>user.name</code>! 为了方便记忆可以统一使用<strong>昵称-机器型号</strong>
 的命名方式.</p>
@@ -2914,35 +2914,75 @@ Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可�
 <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git config -e</span><br></pre></td></tr></tbody></table></figure>
 
 <p>要注意默认情况下<code>git config -e</code>访问<strong>仓库级配置文件</strong>.</p>
-<h1 id="有关SSH"><a href="#有关SSH" class="headerlink" title="有关SSH"></a>有关SSH</h1><p>用ssh方式登录git的话只是生成秘钥和在远程端添加秘钥麻烦一次, 后面就可以免密码, 而用http登录的话每次push都需要输入密码, 略微麻烦.</p>
-<h2 id="获取SSH-Key"><a href="#获取SSH-Key" class="headerlink" title="获取SSH Key"></a>获取SSH Key</h2><p>首先查看有没有<strong>~/.ssh</strong>这个文件夹以及文件夹下有没有<code>id_rsa</code>和<code>id_rsa.pub</code>两个文件.
+<h2 id="有关SSH"><a href="#有关SSH" class="headerlink" title="有关SSH"></a>有关SSH</h2><p>用ssh方式登录git的话只是生成秘钥和在远程端添加秘钥麻烦一次, 后面就可以免密码, 而用http登录的话每次push都需要输入密码, 略微麻烦.</p>
+<h3 id="获取SSH-Key"><a href="#获取SSH-Key" class="headerlink" title="获取SSH Key"></a>获取SSH Key</h3><p>首先查看有没有<strong>~/.ssh</strong>这个文件夹以及文件夹下有没有<code>id_rsa</code>和<code>id_rsa.pub</code>两个文件.
 如果有, 那就不用生成了.</p>
 <p>这两个就是SSH Key的秘钥对，<code>id_rsa</code>是私钥，不能泄露出去，<code>id_rsa.pub</code>是公钥可以放心地告诉任何人. 比如加入GitHub的SSH Key.</p>
-<h2 id="生成key"><a href="#生成key" class="headerlink" title="生成key"></a>生成key</h2><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="生成key"><a href="#生成key" class="headerlink" title="生成key"></a>生成key</h3><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span></span><br></pre></td></tr></tbody></table></figure>
 
 <p>如果没有特别需求(比如甚至想设置密码), 直接连敲三次回车.</p>
 <p>💡 其实在输入命令后第一个选项是指定生成的秘钥文件名, 可以指定为<code>id_rsa_github</code>,
 <code>id_rsa_gitee</code>这样, 加上远程端的名字, 这样有多个远程端时也不会混乱.</p>
 <p>有趣的是我发现同一台机器, 如果仍是敲三次回车生成的Key每次是一样的.</p>
-<h2 id="同时上传到多个远程端"><a href="#同时上传到多个远程端" class="headerlink" title="同时上传到多个远程端"></a>同时上传到多个远程端</h2><p>新建<code>~/.ssh/config</code>, 如果远程端是github和gitee, github和gitee的ssh key是像上面说的这样命名的, 那么内容如下:</p>
+<h3 id="同时上传到多个远程端"><a href="#同时上传到多个远程端" class="headerlink" title="同时上传到多个远程端"></a>同时上传到多个远程端</h3><p>新建<code>~/.ssh/config</code>, 如果远程端是github和gitee, github和gitee的ssh key是像上面说的这样命名的, 那么内容如下:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> github</span></span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_github</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> gitee</span></span><br><span class="line">Host gitee.com</span><br><span class="line">HostName gitee.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_gitee</span><br></pre></td></tr></tbody></table></figure>
 
-<h1 id="下载一个repository"><a href="#下载一个repository" class="headerlink" title="下载一个repository"></a>下载一个repository</h1><p>:warning: 有http和ssh两种链接, 推荐使用ssh, 有时http形式并不被支持, 比如hexo的git
+<h2 id="下载一个repository"><a href="#下载一个repository" class="headerlink" title="下载一个repository"></a>下载一个repository</h2><p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 有http和ssh两种链接, 推荐使用ssh, 有时http形式并不被支持, 比如hexo的git
 上传功能.</p>
 <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git clone [url]</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="下载特定分支"><a href="#下载特定分支" class="headerlink" title="下载特定分支"></a>下载特定分支</h2><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git clone -b [branch] [url]</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="下载特定分支"><a href="#下载特定分支" class="headerlink" title="下载特定分支"></a>下载特定分支</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git clone -b [branch] [url]</span><br></pre></td></tr></tbody></table></figure>
 
-<h1 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h1><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h2><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></tbody></table></figure>
 
-<h1 id="暂存所有更改"><a href="#暂存所有更改" class="headerlink" title="暂存所有更改"></a>暂存所有更改</h1><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="暂存所有更改"><a href="#暂存所有更改" class="headerlink" title="暂存所有更改"></a>暂存所有更改</h2><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></tbody></table></figure>
 
-<h1 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h1><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git commit</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h2><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git commit</span><br></pre></td></tr></tbody></table></figure>
 
-<h1 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h1><pre><code class="git"></code></pre>
+<h2 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h2><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></tbody></table></figure>
+
 <p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 个人仓库的话提交之后一定不要忘记上传! 我在格式化电脑前忘记将本地commit
 上传, 失去了好几篇博文啊<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8">😢</span> (但应该一般没有我这么蠢的)</p>
-<script>
+<h2 id="git仓库瘦身"><a href="#git仓库瘦身" class="headerlink" title="git仓库瘦身"></a>git仓库瘦身</h2><p>我也终于遇到了git仓库被搞太大需要瘦身的情况了.</p>
+<blockquote>
+<p><a href="http://rtyley.github.io/bfg-repo-cleaner/" target="_blank" rel="noopener">BFG</a> 是为将像大文件或者密码这些不想要的数据从 Git 仓库中删除而专门设计的，所以它有一一个简单的标志用来删除那些大的历史文件（不在当前的提交里面）：<code>--strip-blobs-bigger-than</code></p>
+</blockquote>
+<p>⚠️ 要用bfg你需要有java</p>
+<ol>
+<li>首先以<code>--mirror</code>选项从远程端下载仓库. 按照bfg的说法这样下到的是一个”bare repo”.</li>
+</ol>
+<blockquote>
+<p>This is a bare repo, which means your normal files won’t be visible, but it is a full copy of the Git database of your repository</p>
+</blockquote>
+<p>(我试了一下普通clone的仓库操作完最后推送不上去…)</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git clone --mirror git://example.com/some-big-repo.git</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>然后进入仓库, 然后按照文件大小或者文件名清理文件.</li>
+</ol>
+<p>❗️ 在这一步文件并没有在物理上被删除, 在这一步bfg会清理所有commit, branch, tag, 去掉该文件的记录.</p>
+<ul>
+<li>清理大于指定值的文件</li>
+</ul>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">java -jar bfg.jar --strip-blobs-bigger-than 100M</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>大小超过 100MB 的任何文件（不包含在你<em>最近的</em>提交中的文件——因为 BFG <a href="http://rtyley.github.io/bfg-repo-cleaner/#protected-commits" target="_blank" rel="noopener">默认会保护你的最新提交的内容</a>）将会从你的Git仓库的历史记录中删除.</p>
+</blockquote>
+<ul>
+<li>清理指定文件名文件:</li>
+</ul>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">java -jar bfg.jar --delete-files *.mp4</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="3">
+<li>将上面清理出来的文件删除</li>
+</ol>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="4">
+<li>当你觉得删得差不多就可以推送了. ❗️ 这样会改变远程端所有ref.</li>
+</ol>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></tbody></table></figure><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -3751,8 +3791,8 @@ VSCode之后发现这个选项没被勾上.</p>
           });
       </script>]]></content>
       <categories>
-        <category>配置</category>
         <category>工具</category>
+        <category>配置</category>
       </categories>
   </entry>
   <entry>
@@ -3888,7 +3928,7 @@ IntelliSence是<strong>cpptools</strong>这个插件很重要的一部分, 通�
 <p><code>group</code>这里的配置是我们能通过快捷键 <code>Ctrl+shift+B</code>来执行该任务.
 参见<a href="https://code.visualstudio.com/docs/editor/tasks#_typescript-hello-world" target="_blank" rel="noopener">这里</a></p>
 <h3 id="合起来"><a href="#合起来" class="headerlink" title="合起来!"></a>合起来!</h3><p>因此我的 <code>tashs.json</code> 长这样:</p>
-<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    // See https://go.microsoft.com/fwlink/?LinkId=733558</span><br><span class="line">    // for the documentation about the tasks.json format</span><br><span class="line">    "version": "2.0.0",</span><br><span class="line">    "tasks": [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"label"</span>: <span class="string">"Compile"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">            <span class="attr">"command"</span>: <span class="string">"gcc"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [</span><br><span class="line">                <span class="string">"${file}"</span>,</span><br><span class="line">                <span class="string">"-o"</span>,</span><br><span class="line">                <span class="string">"${fileDirname}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">                <span class="string">"-g"</span>,</span><br><span class="line">                <span class="string">"-Wall"</span>,</span><br><span class="line">                <span class="string">"-std=c++17"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"group"</span>: {</span><br><span class="line">                <span class="attr">"kind"</span>: <span class="string">"build"</span>,</span><br><span class="line">                <span class="attr">"isDefault"</span>: <span class="literal">true</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="comment">// See https://go.microsoft.com/fwlink/?LinkId=733558</span></span><br><span class="line">    <span class="comment">// for the documentation about the tasks.json format</span></span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"2.0.0"</span>,</span><br><span class="line">    <span class="attr">"tasks"</span>: [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"label"</span>: <span class="string">"Compile"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">            <span class="attr">"command"</span>: <span class="string">"gcc"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [</span><br><span class="line">                <span class="string">"${file}"</span>,</span><br><span class="line">                <span class="string">"-o"</span>,</span><br><span class="line">                <span class="string">"${fileDirname}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">                <span class="string">"-g"</span>,</span><br><span class="line">                <span class="string">"-Wall"</span>,</span><br><span class="line">                <span class="string">"-std=c++17"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"group"</span>: {</span><br><span class="line">                <span class="attr">"kind"</span>: <span class="string">"build"</span>,</span><br><span class="line">                <span class="attr">"isDefault"</span>: <span class="literal">true</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="配置调试配置文件"><a href="#配置调试配置文件" class="headerlink" title="配置调试配置文件"></a>配置调试配置文件</h2><p>最后配置的这个是<code>launch.json</code>. 实际上这很简单, 因为VSCode已经提供了很多种模板, 需要改动的非常少.</p>
 <p>通常我们选择 <strong>(gdb) Launch</strong> 这种模板. Launch指的是要调试的程序是在开始调试时才开始运行,
@@ -3909,7 +3949,7 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
 <figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"preLaunchTask": "Compile"</span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="合起来-1"><a href="#合起来-1" class="headerlink" title="合起来!"></a>合起来!</h3><p>因此我的<code>launch.json</code>长这样:</p>
-<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    // Use IntelliSense to learn about possible attributes.</span><br><span class="line">    // Hover to view descriptions of existing attributes.</span><br><span class="line">    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">    "version": "0.2.0",</span><br><span class="line">    "configurations": [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"(gdb) Launch"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>,</span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"${workspaceFolder}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [],</span><br><span class="line">            <span class="attr">"stopAtEntry"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"cwd"</span>: <span class="string">"${workspaceFolder}"</span>,</span><br><span class="line">            <span class="attr">"environment"</span>: [],</span><br><span class="line">            <span class="attr">"externalConsole"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"MIMode"</span>: <span class="string">"gdb"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerPath"</span>: <span class="string">"gdb.exe"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerArgs"</span>: <span class="string">"-q"</span>,</span><br><span class="line">            <span class="attr">"setupCommands"</span>: [</span><br><span class="line">                {</span><br><span class="line">                    <span class="attr">"description"</span>: <span class="string">"Enable pretty-printing for gdb"</span>,</span><br><span class="line">                    <span class="attr">"text"</span>: <span class="string">"-enable-pretty-printing"</span>,</span><br><span class="line">                    <span class="attr">"ignoreFailures"</span>: <span class="literal">true</span></span><br><span class="line">                }</span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"preLaunchTask"</span>: <span class="string">"Compile"</span></span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="comment">// Use IntelliSense to learn about possible attributes.</span></span><br><span class="line">    <span class="comment">// Hover to view descriptions of existing attributes.</span></span><br><span class="line">    <span class="comment">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span></span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"0.2.0"</span>,</span><br><span class="line">    <span class="attr">"configurations"</span>: [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"(gdb) Launch"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>,</span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"${workspaceFolder}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [],</span><br><span class="line">            <span class="attr">"stopAtEntry"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"cwd"</span>: <span class="string">"${workspaceFolder}"</span>,</span><br><span class="line">            <span class="attr">"environment"</span>: [],</span><br><span class="line">            <span class="attr">"externalConsole"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"MIMode"</span>: <span class="string">"gdb"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerPath"</span>: <span class="string">"gdb.exe"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerArgs"</span>: <span class="string">"-q"</span>,</span><br><span class="line">            <span class="attr">"setupCommands"</span>: [</span><br><span class="line">                {</span><br><span class="line">                    <span class="attr">"description"</span>: <span class="string">"Enable pretty-printing for gdb"</span>,</span><br><span class="line">                    <span class="attr">"text"</span>: <span class="string">"-enable-pretty-printing"</span>,</span><br><span class="line">                    <span class="attr">"ignoreFailures"</span>: <span class="literal">true</span></span><br><span class="line">                }</span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"preLaunchTask"</span>: <span class="string">"Compile"</span></span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <h1 id="Enjoy"><a href="#Enjoy" class="headerlink" title="Enjoy"></a>Enjoy</h1><p>这下我们可以轻松愉快的开发C/C++了! 祝各位水平日益提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8">🎉</span></p>
 <script>
@@ -3932,8 +3972,8 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
           });
       </script>]]></content>
       <categories>
-        <category>配置</category>
         <category>工具</category>
+        <category>配置</category>
       </categories>
   </entry>
   <entry>

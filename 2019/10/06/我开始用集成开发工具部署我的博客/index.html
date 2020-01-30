@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="这几天分别尝试了用Travis CI和GitHub Action部署博客. 集成开发确实十分方便, 让人可以专注于写作, 而且对本地环境依赖性更小了 (在线写作也是可以的). 两者比较下来我更喜欢GitHub Action, 因为它就是Github的, 集成度更高. 而且Github Action支持的触发条件更多样一些.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-29T21:48:50.179Z">
+<meta property="og:updated_time" content="2020-01-30T09:11:52.641Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我开始用集成开发工具部署我的博客">
 <meta name="twitter:description" content="这几天分别尝试了用Travis CI和GitHub Action部署博客. 集成开发确实十分方便, 让人可以专注于写作, 而且对本地环境依赖性更小了 (在线写作也是可以的). 两者比较下来我更喜欢GitHub Action, 因为它就是Github的, 集成度更高. 而且Github Action支持的触发条件更多样一些.">
@@ -351,7 +351,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-30 05:48:50" itemprop="dateModified" datetime="2019-10-30T05:48:50+08:00">2019-10-30</time>
+                <time title="修改时间：2020-01-30 17:11:52" itemprop="dateModified" datetime="2020-01-30T17:11:52+08:00">2020-01-30</time>
               </span>
             
           
@@ -406,20 +406,20 @@
 <p>🔗 <a href="https://github.com/LeoJhonSong/LeoJhonSong.github.io/blob/02ce864f1cbe09d82c0dfe6f617b36737344d41e/.travis.yml" target="_blank" rel="noopener">Travis配置文件</a></p>
 <p>🔗 <a href="https://github.com/LeoJhonSong/LeoJhonSong.github.io/tree/Root/.github/workflows" target="_blank" rel="noopener">GitHub Action配置文件</a></p>
 <h2 id="GitHub-Action的缺点"><a href="#GitHub-Action的缺点" class="headerlink" title="GitHub Action的缺点"></a>GitHub Action的缺点</h2><p>可以看出Travis要更<strong>成熟</strong>一些, 提供了一些很方便的功能, 比如要添加ssh known hosts, travis只需要</p>
-<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">addons:</span></span><br><span class="line"><span class="attr">  ssh_known_hosts:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">github.com</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">ssh.github.com</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">addons:</span></span><br><span class="line">  <span class="attr">ssh_known_hosts:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">github.com</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">ssh.github.com</span></span><br></pre></td></tr></tbody></table></figure>
 
 <p>而在GitHub Action中需要</p>
-<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">- name:</span> <span class="string">login</span> <span class="string">ssh</span> <span class="string">and</span> <span class="string">git</span></span><br><span class="line"><span class="attr">      run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">        mkdir ~/.ssh</span></span><br><span class="line"><span class="string">        echo -e "Host github.com\nStrictHostKeyChecking no\nIdentityFile ~/.ssh/id_rsa_github_action" &gt; ~/.ssh/config</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">login</span> <span class="string">ssh</span> <span class="string">and</span> <span class="string">git</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">mkdir</span> <span class="string">~/.ssh</span></span><br><span class="line">        <span class="string">echo</span> <span class="string">-e</span> <span class="string">"Host github.com\nStrictHostKeyChecking no\nIdentityFile ~/.ssh/id_rsa_github_action"</span> <span class="string">&gt;</span> <span class="string">~/.ssh/config</span></span><br></pre></td></tr></tbody></table></figure>
 
 <p>看起来GitHub Action的配置更短, 但这句是强行不验证github.com的服务器, 并没有Travis中的配置直观, 合理.</p>
 <p>另外GitHub Action暂时还不支持<strong>缓存</strong>, 照<a href="https://help.github.com/en/github/automating-your-workflow-with-github-actions/persisting-workflow-data-using-artifacts" target="_blank" rel="noopener">这个样子</a>即便实现了也是很别扭的东西… 我觉得缓存还是一个很重要的功能. 一个最简单的例子: 没有缓存的public文件夹导致刚换到GitHub Action时我的每篇博客<strong>更新时间与我的最后一次上传时间相同</strong> (hexo通过对比source文件夹和public文件夹的时间戳来判断更新时间). 目前我是通过将master分支下载到public文件夹来蛮力解决的.</p>
 <h2 id="GitHub-Action的优点"><a href="#GitHub-Action的优点" class="headerlink" title="GitHub Action的优点"></a>GitHub Action的优点</h2><p>当然GitHub Action的优点也是明显的, 比如我的代码的<strong>托管平台和持续集成平台合二为一</strong>, 不说管理起来方便了多少至少内心通达了😆</p>
 <p>另外GitHub Action的支持的触发条件更加丰富, 比如用下面代码可以指定只有<code>Root</code>分支有推送且有<strong>source/en</strong>文件夹以外的文件变动时才运行. 换句话说只有配置文件或者中文博客内容发生变动时才运行.</p>
-<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line"><span class="attr">  push:</span></span><br><span class="line"><span class="attr">    branches:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">Root</span></span><br><span class="line"><span class="attr">    paths-ignore:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">'source/en/**'</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">Root</span></span><br><span class="line">    <span class="attr">paths-ignore:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">'source/en/**'</span></span><br></pre></td></tr></tbody></table></figure>
 
 <p>在<a href="https://docs.travis-ci.com/user/conditional-builds-stages-jobs/" target="_blank" rel="noopener">Travis的文档</a>中我并没有看到可以这么操作.</p>
 <p>再有就是GitHub Action支持一个项目有<strong>多个</strong>workflow, 比如我的博客就同时在运行两个工作流: 一个生成并部署中文博客, 一个生成并部署英文博客. 这是一个十分吸引人的功能! 并且GitHub正试图将workflow打造成能<strong>轻松分享, 引用</strong>的东西, 这能极大减少人们写这些繁琐低级的配置文件的时间. 实际上GitHub已经<a href="https://github.com/marketplace?type=actions" target="_blank" rel="noopener">初步成功了</a>. 在我的配置中就引用了两个GitHub官方发布的action.</p>
-<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">steps:</span></span><br><span class="line"><span class="attr">- uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="attr">- name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="number">8.10</span><span class="number">.0</span></span><br><span class="line"><span class="attr">  uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line"><span class="attr">  with:</span></span><br><span class="line"><span class="attr">    node-version:</span> <span class="number">8.10</span><span class="number">.0</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">steps:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v1</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="number">8.10</span><span class="number">.0</span></span><br><span class="line">  <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">  <span class="attr">with:</span></span><br><span class="line">    <span class="attr">node-version:</span> <span class="number">8.10</span><span class="number">.0</span></span><br></pre></td></tr></tbody></table></figure>
 
 <p>目前来说GitHub Action体验着很不错!</p>
 <script>
@@ -667,7 +667,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-hand-peace-o"></i>
   </span>
@@ -678,7 +678,7 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">79k</span>
+    <span title="站点总字数">80k</span>
 </div>
 
         
