@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>文件命名规则总结</title>
+    <url>/zh-CN/2020/02/06/%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p>如果待处理文件的文件名中含有一些特殊字符, 有许多程序会因为考虑不完善 (或者说程序员偷懒) 而出现识别不到文件, 文件处理出错, 结果不符合意图, 甚至程序崩溃的问题. 而为了方便自己偷懒, 我总结了一些命名文件的规则.</p>
+<a id="more"></a>
+
+<p>💡 我并不是说文件名命名必须遵循这些准则, 只是在程序设计/输入不够严谨 (也就是想偷懒的情况下) 这样的命名准则是最不容易导致错误的👍</p>
+<h2 id="文件名中只应该包含数字-字母-汉字-下划线-连字符-句点"><a href="#文件名中只应该包含数字-字母-汉字-下划线-连字符-句点" class="headerlink" title="文件名中只应该包含数字, 字母, 汉字, 下划线, 连字符, 句点"></a>文件名中只应该包含数字, 字母, 汉字, 下划线, 连字符, 句点</h2><p>许多特殊字符会让程序出错, 下面举几个例子:</p>
+<ul>
+<li><code>文件名里 有空格.jpg</code> 这样的文件名很可能让程序以为要处理的文件的名字是<code>文件名里</code>, 因而找不到文件或者处理了错误的文件. 而<code>有空格.jpg</code>会被当成无效参数, 多余字符.</li>
+<li><code>文件名里/有左斜杠.avi</code> 这样的文件名在很多程序里会被认为是一个名为<code>文件名里</code>的文件夹下的<code>有左斜杠.avi</code>文件, 因此可能得到<strong>没有<code>文件名里</code>这个文件夹</strong>的报错</li>
+<li><code>文件名里(有)括号.gif</code> 比如在markdown文档中用<code>![](文件名里(有)括号.gif)</code>来引用这个gif, 在有的markdown渲染器会被渲染为<strong>)括号.gif</strong>. 因为前一个)被认为是markdown引用图片的<code>![]()</code>语法的结束符了.</li>
+<li>在一些较老的程序中汉字也算是一种特殊字符. 比如在python2中如果不特意注意编码格式转换问题的话中文很容易被读取为乱码. 当然现在的程序大多是兼容汉字的. (Python2在已经终止维护了🕯)</li>
+</ul>
+<blockquote>
+<p>空格用下划线代替, 其他字符用连字符代替</p>
+</blockquote>
+<p>如果你原本想要包含这些特殊字符在文件名中来表达一些逻辑关系, 我的做法是用_来代替空格, 用-来代替其他字符.</p>
+<h2 id="当文件名包含有排序意图的数字时应当用阿拉伯数字而不是汉字-并且位数不足的用0在左侧占位"><a href="#当文件名包含有排序意图的数字时应当用阿拉伯数字而不是汉字-并且位数不足的用0在左侧占位" class="headerlink" title="当文件名包含有排序意图的数字时应当用阿拉伯数字而不是汉字, 并且位数不足的用0在左侧占位"></a>当文件名包含有排序意图的数字时应当用阿拉伯数字而不是汉字, 并且位数不足的用0在左侧占位</h2><p>曾经我很困惑下面这两种情况的文件夹排序为什么不是从小到大的, 后来我发现前者是因为文件系统<strong>不把汉字数字作为排序用的数字</strong> (有意思的是我Ubuntu系统和Windows系统里图一情况排序不一样), 后一个是因为文件系统是<strong>逐字比较</strong>而不是把一串数字作为一个数 (windows系统和Ubuntu系统排序图2情况时都能正常排序)</p>
+<blockquote>
+<p>图一 Ubuntu系统下含汉字数字文件名排序</p>
+</blockquote>
+<p><img src="%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/image-20200207181027438.png" alt=""></p>
+<blockquote>
+<p>图二 百度云里含数字文件名排序</p>
+</blockquote>
+<p><img src="%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/Screenshot_20200207_181843.jpg" alt=""></p>
+<p>因此如果想在文件名中包含有排序功能的数字, 或者表达顺序之意时应当<strong>用阿拉伯数字而不是汉字, 并且位数不足的用0在左侧占位</strong>.</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>技巧</category>
+      </categories>
+  </entry>
+  <entry>
     <title>我开始用集成开发工具部署我的博客</title>
     <url>/zh-CN/2019/10/06/%E6%88%91%E5%BC%80%E5%A7%8B%E7%94%A8%E9%9B%86%E6%88%90%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E9%83%A8%E7%BD%B2%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p>这几天分别尝试了用<strong>Travis CI</strong>和<strong>GitHub Action</strong>部署博客. 集成开发确实十分方便, 让人可以专注于写作, 而且对本地环境依赖性更小了 (在线写作也是可以的). 两者比较下来我更喜欢<strong>GitHub Action</strong>, 因为它就是Github的, 集成度更高. 而且<strong>Github Action</strong>支持的触发条件更多样一些.</p>
