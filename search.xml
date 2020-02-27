@@ -3002,7 +3002,7 @@ Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可�
 
 <h2 id="登陆git"><a href="#登陆git" class="headerlink" title="登陆git"></a>登陆git</h2><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git config --global user.name "Your Name"</span><br><span class="line">git config --global user.email "email@example.com"</span><br></pre></td></tr></tbody></table></figure>
 
-<p>:warning: 每台机器要使用不同的<code>user.name</code>! 为了方便记忆可以统一使用<strong>昵称-机器型号</strong>
+<p>⚠ 每台设备要使用不同的<code>user.name</code>, 这样才能区分它们. 为了方便记忆可以统一使用<strong>昵称-机器型号</strong>
 的命名方式.</p>
 <p>值得一提的是git的配置文件分三级: 系统级(所有用户的), 全局级(当前用户的), 仓库级.
 在配置时分别使用<code>--system</code>, <code>--global</code>, <code>--local</code>参数来访问.如果想直接进入配置文件而不是一个参数一个参数地设置可以使用:</p>
