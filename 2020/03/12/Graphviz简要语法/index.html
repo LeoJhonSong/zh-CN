@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/zh-CN/images/apple-touch-icon.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/zh-CN/images/favicon-32x32.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/zh-CN/images/favicon-16x16.png?v=7.4.0">
+  <link rel="mask-icon" href="/zh-CN/images/safari-pinned-tab.svg?v=7.4.0" color="#222">
+  <link rel="manifest" href="/zh-CN/images/site.webmanifest">
+  <meta name="msapplication-config" content="/zh-CN/images/browserconfig.xml">
+  <link rel="alternate" href="/zh-CN/atom.xml" title="LeoJhon.Song's Blog" type="application/atom+xml">
+  <meta name="google-site-verification" content="MgaZs4EoTDqCTCMVBOft2UKu2g6AfLiKx2VTQ_KBeH4">
+
+<link rel="stylesheet" href="/zh-CN/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/zh-CN/',
+    scheme: 'Pisces',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="Graphviz是一个很强大的图形可视化工具. 它使用DOT语言来描述图形, 但它并不单纯是个绘图软件, 而是能接入程序, 进行函数调用流程, 决策树, 数据结构, 日志系统等图形关系生成, 而且可以是交互式的 (不过我暂时没研究过所以不太了解). 暂且不提这些扩展功能, graphviz的语法允许我们仅通过文字描述能绘制出样式极其丰富的图形, 这大大方便了对图形的改动的跟踪.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Graphviz简要语法">
+<meta property="og:url" content="https://leojhonsong.github.io/zh-CN/2020/03/12/Graphviz简要语法/index.html">
+<meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
+<meta property="og:description" content="Graphviz是一个很强大的图形可视化工具. 它使用DOT语言来描述图形, 但它并不单纯是个绘图软件, 而是能接入程序, 进行函数调用流程, 决策树, 数据结构, 日志系统等图形关系生成, 而且可以是交互式的 (不过我暂时没研究过所以不太了解). 暂且不提这些扩展功能, graphviz的语法允许我们仅通过文字描述能绘制出样式极其丰富的图形, 这大大方便了对图形的改动的跟踪.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/03/12/Graphviz简要语法/Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/helloworld.svg">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/03/12/Graphviz简要语法/Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312100508926.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/03/12/Graphviz简要语法/Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312100945593.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/03/12/Graphviz简要语法/Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312101117320.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/03/12/Graphviz简要语法/Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312101209335.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/03/12/Graphviz简要语法/Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312101336250.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/03/12/Graphviz简要语法/Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312101447921.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/03/12/Graphviz简要语法/Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/attr.svg">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/03/12/Graphviz简要语法/Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/image-20200313010630547.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/03/12/Graphviz简要语法/Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/image-20200313010749024.png">
+<meta property="og:updated_time" content="2020-03-12T20:29:39.221Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Graphviz简要语法">
+<meta name="twitter:description" content="Graphviz是一个很强大的图形可视化工具. 它使用DOT语言来描述图形, 但它并不单纯是个绘图软件, 而是能接入程序, 进行函数调用流程, 决策树, 数据结构, 日志系统等图形关系生成, 而且可以是交互式的 (不过我暂时没研究过所以不太了解). 暂且不提这些扩展功能, graphviz的语法允许我们仅通过文字描述能绘制出样式极其丰富的图形, 这大大方便了对图形的改动的跟踪.">
+<meta name="twitter:image" content="https://leojhonsong.github.io/zh-CN/2020/03/12/Graphviz简要语法/Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/helloworld.svg">
+  <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2020/03/12/Graphviz简要语法/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/zh-CN/images/apple-touch-icon.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/zh-CN/images/favicon-32x32.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/zh-CN/images/favicon-16x16.png?v=7.4.0">
+  <link rel="mask-icon" href="/zh-CN/images/safari-pinned-tab.svg?v=7.4.0" color="#222">
+  <link rel="manifest" href="/zh-CN/images/site.webmanifest">
+  <meta name="msapplication-config" content="/zh-CN/images/browserconfig.xml">
+  <meta name="google-site-verification" content="MgaZs4EoTDqCTCMVBOft2UKu2g6AfLiKx2VTQ_KBeH4">
+
+<link rel="stylesheet" href="/zh-CN/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <script src = "https://at.alicdn.com/t/font_980470_nj2qfdk05jb.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/zh-CN/',
+    scheme: 'Pisces',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <title>Graphviz简要语法 | LeoJhon.Song's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/zh-CN/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LeoJhon.Song's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">欢迎来到我的博客!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/zh-CN/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/zh-CN/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">23</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/zh-CN/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">42</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/zh-CN/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/LeoJhonSong" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://leojhonsong.github.io/zh-CN/zh-CN/2020/03/12/Graphviz简要语法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LeoJhon.Song">
+      <meta itemprop="description" content="记 / 录 / 与 / 分 / 享">
+      <meta itemprop="image" content="/zh-CN/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LeoJhon.Song's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Graphviz简要语法
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-12 03:46:33" itemprop="dateCreated datePublished" datetime="2020-03-12T03:46:33+08:00">2020-03-12</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-13 04:29:39" itemprop="dateModified" datetime="2020-03-13T04:29:39+08:00">2020-03-13</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/zh-CN/categories/graphviz/" itemprop="url" rel="index"><span itemprop="name">graphviz</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span>3.4k</span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a href="https://emden.github.io/" target="_blank" rel="noopener">Graphviz</a>是一个很强大的<strong>图形可视化工具</strong>. 它使用<strong>DOT</strong>语言来描述图形, 但它并不单纯是个绘图软件, 而是能接入程序, 进行函数调用流程, 决策树, 数据结构, 日志系统等图形关系生成, 而且可以是<strong>交互式</strong>的 (不过我暂时没研究过所以不太了解). 暂且不提这些扩展功能, graphviz的语法允许我们仅通过文字描述能绘制出样式极其丰富的图形, 这大大方便了对图形的改动的跟踪.</p>
+<a id="more"></a>
+
+<h2 id="有关官方文档"><a href="#有关官方文档" class="headerlink" title="有关官方文档"></a>有关官方文档</h2><p>graphviz.org这个网站也不知道是不是停止维护了, 所有除了指向其他人的项目的链接都是无效链接了… 我在上面放的graphviz的官网链接是<a href="https://gitlab.com/graphviz/graphviz" target="_blank" rel="noopener">graphviz的GitLab repo</a>提供的地址. (实际上我觉得这个项目对文档的维护<strong>很烂</strong>, 描述得很不清楚, 有些地方甚至有错误. 这也是为什么我要自己总结一篇常用语法).</p>
+<p>官方给出的有助于编写DOT文件的文档我觉得就这几个:</p>
+<ul>
+<li><a href="https://emden.github.io/_pages/doc/info/lang.html" target="_blank" rel="noopener">DOT语言概述</a></li>
+<li><a href="https://emden.github.io/_pages/doc/info/attrs.html" target="_blank" rel="noopener">节点, 边线, 图形的属性列表</a></li>
+<li><a href="https://emden.github.io/_pages/doc/info/shapes.html" target="_blank" rel="noopener">节点的三种形状设定方式及节点的样式详解</a> (此处又不得不吐槽graphviz开发组的文档组织真的差)</li>
+<li><a href="https://emden.github.io/_pages/doc/info/arrows.html" target="_blank" rel="noopener">箭头的头部形状参数详解</a></li>
+<li><a href="https://emden.github.io/_pages/doc/info/colors.html" target="_blank" rel="noopener">graphviz中可用颜色及颜色主题列表</a></li>
+</ul>
+<p>但其实给我帮助最大的是<a href="https://emden.github.io/_pages/pdf/dotguide.pdf" target="_blank" rel="noopener"><strong>被graphviz开发组嫌弃的旧版文档 (dot布局版)</strong></a></p>
+<p>❗️ 因为我最常使用的是<strong>dot</strong>布局所以此处涉及的内容大部分为dot布局下的情况.</p>
+<h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h3><p>还是先来个Hello World 😏</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">digraph G{</span><br><span class="line">    Hello -&gt; World;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/helloworld.svg" alt=""></p>
+<h3 id="常见用法"><a href="#常见用法" class="headerlink" title="常见用法"></a>常见用法</h3><p>因为graphviz许多概念解释起来会套娃, 要理解概念A要先理解概念B, 要理解概念B则需要先知道什么是概念A 🤤 因此这里先放上一些常见用法来快速入门.</p>
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>属性名</th>
+<th>可选值</th>
+<th>作用对象</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>轮廓颜色</td>
+<td><code>color</code></td>
+<td><a href="https://emden.github.io/_pages/doc/info/colors.html" target="_blank" rel="noopener">可用颜色及颜色主题列表</a></td>
+<td>节点, 边线, 簇</td>
+<td></td>
+</tr>
+<tr>
+<td>填充颜色</td>
+<td><code>bgcolor</code></td>
+<td><a href="https://emden.github.io/_pages/doc/info/colors.html" target="_blank" rel="noopener">可用颜色及颜色主题列表</a></td>
+<td>簇, 图</td>
+<td><code>fillcolor</code>会覆盖<code>bgcolor</code></td>
+</tr>
+<tr>
+<td>填充颜色</td>
+<td><code>fillcolor</code></td>
+<td><a href="https://emden.github.io/_pages/doc/info/colors.html" target="_blank" rel="noopener">可用颜色及颜色主题列表</a></td>
+<td>节点, 边线, 簇</td>
+<td>需要与<code>style=filled</code>一起使用. 如果设置了<code>style=filled</code>但没有设置<code>fillcolor</code>那么<code>color</code>的值将被同时用于轮廓和填充</td>
+</tr>
+<tr>
+<td>字体颜色</td>
+<td><code>fontcolor</code></td>
+<td><a href="https://emden.github.io/_pages/doc/info/colors.html" target="_blank" rel="noopener">可用颜色及颜色主题列表</a></td>
+<td>节点, 边线, 簇, 图</td>
+<td></td>
+</tr>
+<tr>
+<td>箭头方向</td>
+<td><code>dir</code></td>
+<td>“forward”, “back”, “both”, “none”</td>
+<td>边线</td>
+<td>正向/反向/双向/无箭头</td>
+</tr>
+<tr>
+<td>箭头形状</td>
+<td><code>arrowhead</code> <code>arrortail</code></td>
+<td>见备注</td>
+<td>边线</td>
+<td>graphviz提供了极其丰富的箭头形状值, 常用值参见<a href="https://emden.github.io/_pages/doc/info/attrs.html#k:arrowType" target="_blank" rel="noopener">这里</a>, 箭头形状值的完整说明见<a href="https://emden.github.io/_pages/doc/info/arrows.html" target="_blank" rel="noopener">这里</a></td>
+</tr>
+<tr>
+<td>样式</td>
+<td><code>style</code></td>
+<td><a href="https://emden.github.io/_pages/doc/info/attrs.html#k:style" target="_blank" rel="noopener">各对象样式说明</a></td>
+<td>节点, 边线, 簇, 图</td>
+<td>emmm这个style很难准确地翻译为中文, 因为这个属性被很笼统地赋予了四种对象…总的来说是在描述这个对象长什么样</td>
+</tr>
+<tr>
+<td>边线风格</td>
+<td><code>splines</code></td>
+<td>none, line, polyline, curved, ortho, spline</td>
+<td>图</td>
+<td>不显示边线/线段 (false)/线段 (true)/弧线/直角折线/常规. 到底什么样详见<a href="https://emden.github.io/_pages/doc/info/attrs.html#d:splines" target="_blank" rel="noopener">splines说明</a> emmmm我感觉<strong>polyline</strong>和<strong>spline</strong>并没有区别…再次吐槽graphviz开发组的混乱逻辑 😩</td>
+</tr>
+</tbody></table>
+<h3 id="Layout-布局"><a href="#Layout-布局" class="headerlink" title="Layout (布局)"></a>Layout (布局)</h3><p>💡 graphviz有一点不好的是节点在画布上的位置是<strong>由算法决定</strong>的, 不能自己设定, 因此有时候不能让图变得足够美观.</p>
+<p>graphviz提供了多种用于排布节点, 边线箭头头部, 边线标签位置的布局算法.</p>
+<p>按照<a href="https://emden.github.io/_pages/pdf/dotguide.pdf" target="_blank" rel="noopener">被现在graphviz开发组嫌弃的旧版文档 (dot布局版)</a>说法, <strong>dot布局</strong>的图形绘制主要有四步:</p>
+<ol>
+<li>通过反转一些边线的指向来打破输入图形 (我猜这个输入图形说的是.dot文件) 中出现的所有循环 (因为dot布局算法是基于非循环图形的)</li>
+<li>给各节点赋予不同的等级 (<code>rank</code>). (比如在一个top-to-bottom方向的图中等级决定了节点的纵坐标) 连接跨度超过一个等级的节点的边线会被分割成一串”虚拟”节点以及单位长度的边线</li>
+<li>给同等级的节点排序, 避免绘图时出现边线的交叉 (估计只是减少交叉?)</li>
+<li>在让边线尽可能短的情况下设定节点的横坐标, 然后绘制边线 (同样是假设是top-to-bottom方向的图)</li>
+</ol>
+<h4 id="dot"><a href="#dot" class="headerlink" title="dot"></a>dot</h4><p>用于绘制<strong>有向图</strong>, 他的布局算法原理上面已经说了, 特点是绘制出的图<strong>很有层次</strong>.</p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312100508926.png" alt="在这里插入图片描述"></p>
+<h4 id="neato"><a href="#neato" class="headerlink" title="neato"></a>neato</h4><p>用于绘制<strong>无向图</strong>. neato布局算法的原理是构建一个虚拟物理模型并不断对其迭代最终得到一个<strong>最低总能量排布</strong> (low-energy configuration). 这个虚拟物理模型具体指的是在每个节点间放置一个<strong>理想弹簧</strong>, 这样得到的布局通常很合理. (在统计学中这种算法也被称作<strong>多维缩放</strong>). neato布局很适合<strong>通信网络</strong>及<strong>程序</strong>.</p>
+<p>💡 当图较大 (超过100个节点)时就该考虑换成fdp或者sfdp布局了</p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312100945593.png" alt="在这里插入图片描述"></p>
+<h4 id="fdp"><a href="#fdp" class="headerlink" title="fdp"></a>fdp</h4><p>同样是基于弹簧模型. 区别在于fdp算法的迭代是在试图减小节点间弹簧的力的大小而不是弹簧能量大小.</p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312101117320.png" alt="在这里插入图片描述"></p>
+<h4 id="sfdp"><a href="#sfdp" class="headerlink" title="sfdp"></a>sfdp</h4><p>为大规模图而生的多尺度版fdp</p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312101209335.png" alt="在这里插入图片描述"></p>
+<h4 id="twopi"><a href="#twopi" class="headerlink" title="twopi"></a>twopi</h4><p>径向布局.</p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312101336250.png" alt="在这里插入图片描述"></p>
+<h4 id="circo"><a href="#circo" class="headerlink" title="circo"></a>circo</h4><p>圆形布局. 很适合有许多环路结构的图, 比如电信网络.</p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312101447921.png" alt="在这里插入图片描述"></p>
+<h3 id="有关三种主要描述对象"><a href="#有关三种主要描述对象" class="headerlink" title="有关三种主要描述对象"></a>有关三种主要描述对象</h3><p>DOT语言主要描述三种对象:</p>
+<ul>
+<li><strong>graph</strong>: 最外层的graph (main graph)可以被设定为<strong>有向图</strong><code>digraph</code>(directed graph)或是<strong>无向图</strong><code>graph</code>(undirected graph). main graph内可以用<code>subgraph</code>来定义一个节点和边线的集合. 也可以通过<code>strict digraph</code>或者<code>strict graph</code>来禁用<strong>multi-edges</strong>. 也就是说<code>strict digraph</code>会让有向图中一个指向节点和一个被指向节点间只能有一条边线 (反过来还可以有一条), <code>strict graph</code>会让无向图中两节点间只能有一条边线.</li>
+<li><strong>node</strong>: 一个节点会在第一次在DOT文件中出现时被创建. 节点的默认属性是:<ul>
+<li>shape=ellipse</li>
+<li>width=0.75</li>
+<li>height=0.5</li>
+<li>标签为节点名</li>
+</ul>
+</li>
+<li><strong>edge</strong>: 一条边线会在几个节点被用<code>-&gt;</code>边线操作符连接时被创建.</li>
+</ul>
+<p>💡 <strong>在graphviz中可以直接用中文作为节点名.</strong></p>
+<h3 id="Label-标签"><a href="#Label-标签" class="headerlink" title="Label (标签)"></a>Label (标签)</h3><p>如果你想要显示的标签中有空格, 那通过把节点名用<code>""</code>括起来可以实现, 当然显式声明标签内容是更好的选择. 而<strong>如果你想让一些节点显示相同的标签那就必须显式声明节点的标签了</strong>, 因为节点名不能重复.</p>
+<p>💡 label中可以使用转义字符比如<code>\n</code>来实现多行标签.</p>
+<h4 id="HTML-like-Label"><a href="#HTML-like-Label" class="headerlink" title="HTML-like Label"></a>HTML-like Label</h4><p>TODO</p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>属性是通过<code>name=value</code>形式来设置的. 节点与边线的属性需要放在<code>[]</code>方括号中.</p>
+<blockquote>
+<p>一个展示属性写法以及属性能做些什么的例子</p>
+</blockquote>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">digraph G {</span><br><span class="line">    size ="4,4"; //设置图形尺寸为4英寸长宽</span><br><span class="line">    方形节点 [shape=box];  /*这是一种注释写法*/</span><br><span class="line">    方形节点 -&gt; 上面是加粗线 [style=bold];</span><br><span class="line">    上面是加粗线 -&gt; 和下面的对比;</span><br><span class="line">    方形节点 -&gt; 上面是虚线 [style=dotted];</span><br><span class="line">    方形节点 -&gt; 重量更大导致垂直指下的节点[weight=4];</span><br><span class="line">    "和下面的对比" -&gt; { make_string; 上面是有标签的红线}  //可以一次连接多个节点</span><br><span class="line">    上面是虚线 -&gt; make_string;</span><br><span class="line">    edge [color=red];  // 这是另一种注释写法</span><br><span class="line">    方形节点 -&gt; 上面是有标签的红线 [label="100 times"];</span><br><span class="line">    make_string [label="多行\n标签"];</span><br><span class="line">    node [shape=box,style=filled,color=".7 .3 1.0"];</span><br><span class="line">    和下面的对比 -&gt; 在节点默认属性改变后才创建的节点;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/attr.svg" alt=""></p>
+<h3 id="Cluster"><a href="#Cluster" class="headerlink" title="Cluster"></a>Cluster</h3><p>TODO</p>
+<h2 id="高级语法"><a href="#高级语法" class="headerlink" title="高级语法"></a>高级语法</h2><h3 id="优化布局"><a href="#优化布局" class="headerlink" title="优化布局"></a>优化布局</h3><!-- TODO: 关于ratio, rankdir -->
+
+<p>知道了上面提到的<a href="#Layout-布局">布局的原理</a>我们就可以进行一些更个性化的布局, 比如设置节点的<code>rank</code>属性我们可以改变节点的布局. <code>rank</code>的可选值有: <strong>same</strong>, <strong>min</strong>, <strong>source</strong>, <strong>max</strong>, <strong>sink</strong>.</p>
+<blockquote>
+<p>一个展示设置rank属性能达到什么效果的例子 (代码和图形都截自旧版文档, 因为代码没给全我也懒得写就这么放着吧👍)</p>
+</blockquote>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/image-20200313010630547.png" alt="image-20200313010630547"></p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/image-20200313010749024.png" alt="image-20200313010749024"></p>
+<h3 id="Node-Port"><a href="#Node-Port" class="headerlink" title="Node Port"></a>Node Port</h3><p>TODO</p>
+<h2 id="相关工具"><a href="#相关工具" class="headerlink" title="相关工具"></a>相关工具</h2><h3 id="VSC的dot语言支持插件"><a href="#VSC的dot语言支持插件" class="headerlink" title="VSC的dot语言支持插件"></a>VSC的dot语言支持插件</h3><p>TODO</p>
+<h3 id="在线编辑器"><a href="#在线编辑器" class="headerlink" title="在线编辑器"></a>在线编辑器</h3><p>手绘风 <a href="https://sketchviz.com/new" target="_blank" rel="noopener">sketchviz</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+    </div>
+
+    
+    
+    
+        
+      
+        <div id="reward-container">
+  <div>感谢您的认可!</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/zh-CN/images/wechatpay.png" alt="LeoJhon.Song 微信支付">
+        <p>微信支付</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="/zh-CN/images/alipay.jpg" alt="LeoJhon.Song 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+      
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/zh-CN/2020/03/06/VSC与PyPyCharm体验比较/" rel="next" title="VSC与PyPyCharm体验比较">
+                  <i class="fa fa-chevron-left"></i> VSC与PyPyCharm体验比较
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80NjkzNi8yMzQzNw=="></div>
+  </div>
+  
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#有关官方文档"><span class="nav-number">1.</span> <span class="nav-text">有关官方文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础语法"><span class="nav-number">2.</span> <span class="nav-text">基础语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hello-World"><span class="nav-number">2.1.</span> <span class="nav-text">Hello World</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见用法"><span class="nav-number">2.2.</span> <span class="nav-text">常见用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Layout-布局"><span class="nav-number">2.3.</span> <span class="nav-text">Layout (布局)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dot"><span class="nav-number">2.3.1.</span> <span class="nav-text">dot</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#neato"><span class="nav-number">2.3.2.</span> <span class="nav-text">neato</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fdp"><span class="nav-number">2.3.3.</span> <span class="nav-text">fdp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sfdp"><span class="nav-number">2.3.4.</span> <span class="nav-text">sfdp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#twopi"><span class="nav-number">2.3.5.</span> <span class="nav-text">twopi</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#circo"><span class="nav-number">2.3.6.</span> <span class="nav-text">circo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有关三种主要描述对象"><span class="nav-number">2.4.</span> <span class="nav-text">有关三种主要描述对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Label-标签"><span class="nav-number">2.5.</span> <span class="nav-text">Label (标签)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-like-Label"><span class="nav-number">2.5.1.</span> <span class="nav-text">HTML-like Label</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性"><span class="nav-number">2.6.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cluster"><span class="nav-number">2.7.</span> <span class="nav-text">Cluster</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级语法"><span class="nav-number">3.</span> <span class="nav-text">高级语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优化布局"><span class="nav-number">3.1.</span> <span class="nav-text">优化布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-Port"><span class="nav-number">3.2.</span> <span class="nav-text">Node Port</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关工具"><span class="nav-number">4.</span> <span class="nav-text">相关工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VSC的dot语言支持插件"><span class="nav-number">4.1.</span> <span class="nav-text">VSC的dot语言支持插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在线编辑器"><span class="nav-number">4.2.</span> <span class="nav-text">在线编辑器</span></a></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/zh-CN/images/avatar.gif"
+      alt="LeoJhon.Song">
+  <p class="site-author-name" itemprop="name">LeoJhon.Song</p>
+  <div class="site-description" itemprop="description">记 / 录 / 与 / 分 / 享</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/zh-CN/archives/">
+        
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/zh-CN/categories/">
+          
+        
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/zh-CN/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+        
+      
+        <a href="https://github.com/LeoJhonSong" title="GitHub &rarr; https://github.com/LeoJhonSong" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github"></use></svg> GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+        
+      
+        <a href="mailto:LeoJhon.Song@outlook.com" title="Email &rarr; mailto:LeoJhon.Song@outlook.com" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-OUTLOOK"></use></svg> Email</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+        
+      
+        <a href="https://www.facebook.com/jhon.leo.100" title="FB Page &rarr; https://www.facebook.com/jhon.leo.100" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-Facebook"></use></svg> FB Page</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+        
+      
+        <a href="https://user.qzone.qq.com/719957017" title="QQ &rarr; https://user.qzone.qq.com/719957017" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-QQ"></use></svg> QQ</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+        
+      
+        <a href="https://wakatime.com/@LeoJhonSong" title="WakaTime &rarr; https://wakatime.com/@LeoJhonSong" rel="noopener" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-waka-time"></use></svg> WakaTime</a>
+      </span>
+    
+  </div>
+
+<div>
+<script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=bFSXKampqeUl7LSBi0lk9EqEYCDXkOi6RQZJE54uQIk&co=2d78ad&cmo=3acc3a&cmn=ff5353&ct=ffffff'>
+</script>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-hand-peace-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LeoJhon.Song</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">85k</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/zh-CN/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/zh-CN/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/zh-CN/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/zh-CN/js/utils.js?v=7.4.0"></script><script src="/zh-CN/js/motion.js?v=7.4.0"></script>
+<script src="/zh-CN/js/schemes/pisces.js?v=7.4.0"></script>
+<script src="/zh-CN/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/zh-CN/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  <script src="/js/hexo_resize_image.js"></script>
+</body>
+</html>

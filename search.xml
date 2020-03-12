@@ -1,6 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Graphviz简要语法</title>
+    <url>/zh-CN/2020/03/12/Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<p><a href="https://emden.github.io/" target="_blank" rel="noopener">Graphviz</a>是一个很强大的<strong>图形可视化工具</strong>. 它使用<strong>DOT</strong>语言来描述图形, 但它并不单纯是个绘图软件, 而是能接入程序, 进行函数调用流程, 决策树, 数据结构, 日志系统等图形关系生成, 而且可以是<strong>交互式</strong>的 (不过我暂时没研究过所以不太了解). 暂且不提这些扩展功能, graphviz的语法允许我们仅通过文字描述能绘制出样式极其丰富的图形, 这大大方便了对图形的改动的跟踪.</p>
+<a id="more"></a>
+
+<h2 id="有关官方文档"><a href="#有关官方文档" class="headerlink" title="有关官方文档"></a>有关官方文档</h2><p>graphviz.org这个网站也不知道是不是停止维护了, 所有除了指向其他人的项目的链接都是无效链接了… 我在上面放的graphviz的官网链接是<a href="https://gitlab.com/graphviz/graphviz" target="_blank" rel="noopener">graphviz的GitLab repo</a>提供的地址. (实际上我觉得这个项目对文档的维护<strong>很烂</strong>, 描述得很不清楚, 有些地方甚至有错误. 这也是为什么我要自己总结一篇常用语法).</p>
+<p>官方给出的有助于编写DOT文件的文档我觉得就这几个:</p>
+<ul>
+<li><a href="https://emden.github.io/_pages/doc/info/lang.html" target="_blank" rel="noopener">DOT语言概述</a></li>
+<li><a href="https://emden.github.io/_pages/doc/info/attrs.html" target="_blank" rel="noopener">节点, 边线, 图形的属性列表</a></li>
+<li><a href="https://emden.github.io/_pages/doc/info/shapes.html" target="_blank" rel="noopener">节点的三种形状设定方式及节点的样式详解</a> (此处又不得不吐槽graphviz开发组的文档组织真的差)</li>
+<li><a href="https://emden.github.io/_pages/doc/info/arrows.html" target="_blank" rel="noopener">箭头的头部形状参数详解</a></li>
+<li><a href="https://emden.github.io/_pages/doc/info/colors.html" target="_blank" rel="noopener">graphviz中可用颜色及颜色主题列表</a></li>
+</ul>
+<p>但其实给我帮助最大的是<a href="https://emden.github.io/_pages/pdf/dotguide.pdf" target="_blank" rel="noopener"><strong>被graphviz开发组嫌弃的旧版文档 (dot布局版)</strong></a></p>
+<p>❗️ 因为我最常使用的是<strong>dot</strong>布局所以此处涉及的内容大部分为dot布局下的情况.</p>
+<h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h3><p>还是先来个Hello World 😏</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">digraph G{</span><br><span class="line">    Hello -&gt; World;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/helloworld.svg" alt=""></p>
+<h3 id="常见用法"><a href="#常见用法" class="headerlink" title="常见用法"></a>常见用法</h3><p>因为graphviz许多概念解释起来会套娃, 要理解概念A要先理解概念B, 要理解概念B则需要先知道什么是概念A 🤤 因此这里先放上一些常见用法来快速入门.</p>
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>属性名</th>
+<th>可选值</th>
+<th>作用对象</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>轮廓颜色</td>
+<td><code>color</code></td>
+<td><a href="https://emden.github.io/_pages/doc/info/colors.html" target="_blank" rel="noopener">可用颜色及颜色主题列表</a></td>
+<td>节点, 边线, 簇</td>
+<td></td>
+</tr>
+<tr>
+<td>填充颜色</td>
+<td><code>bgcolor</code></td>
+<td><a href="https://emden.github.io/_pages/doc/info/colors.html" target="_blank" rel="noopener">可用颜色及颜色主题列表</a></td>
+<td>簇, 图</td>
+<td><code>fillcolor</code>会覆盖<code>bgcolor</code></td>
+</tr>
+<tr>
+<td>填充颜色</td>
+<td><code>fillcolor</code></td>
+<td><a href="https://emden.github.io/_pages/doc/info/colors.html" target="_blank" rel="noopener">可用颜色及颜色主题列表</a></td>
+<td>节点, 边线, 簇</td>
+<td>需要与<code>style=filled</code>一起使用. 如果设置了<code>style=filled</code>但没有设置<code>fillcolor</code>那么<code>color</code>的值将被同时用于轮廓和填充</td>
+</tr>
+<tr>
+<td>字体颜色</td>
+<td><code>fontcolor</code></td>
+<td><a href="https://emden.github.io/_pages/doc/info/colors.html" target="_blank" rel="noopener">可用颜色及颜色主题列表</a></td>
+<td>节点, 边线, 簇, 图</td>
+<td></td>
+</tr>
+<tr>
+<td>箭头方向</td>
+<td><code>dir</code></td>
+<td>“forward”, “back”, “both”, “none”</td>
+<td>边线</td>
+<td>正向/反向/双向/无箭头</td>
+</tr>
+<tr>
+<td>箭头形状</td>
+<td><code>arrowhead</code> <code>arrortail</code></td>
+<td>见备注</td>
+<td>边线</td>
+<td>graphviz提供了极其丰富的箭头形状值, 常用值参见<a href="https://emden.github.io/_pages/doc/info/attrs.html#k:arrowType" target="_blank" rel="noopener">这里</a>, 箭头形状值的完整说明见<a href="https://emden.github.io/_pages/doc/info/arrows.html" target="_blank" rel="noopener">这里</a></td>
+</tr>
+<tr>
+<td>样式</td>
+<td><code>style</code></td>
+<td><a href="https://emden.github.io/_pages/doc/info/attrs.html#k:style" target="_blank" rel="noopener">各对象样式说明</a></td>
+<td>节点, 边线, 簇, 图</td>
+<td>emmm这个style很难准确地翻译为中文, 因为这个属性被很笼统地赋予了四种对象…总的来说是在描述这个对象长什么样</td>
+</tr>
+<tr>
+<td>边线风格</td>
+<td><code>splines</code></td>
+<td>none, line, polyline, curved, ortho, spline</td>
+<td>图</td>
+<td>不显示边线/线段 (false)/线段 (true)/弧线/直角折线/常规. 到底什么样详见<a href="https://emden.github.io/_pages/doc/info/attrs.html#d:splines" target="_blank" rel="noopener">splines说明</a> emmmm我感觉<strong>polyline</strong>和<strong>spline</strong>并没有区别…再次吐槽graphviz开发组的混乱逻辑 😩</td>
+</tr>
+</tbody></table>
+<h3 id="Layout-布局"><a href="#Layout-布局" class="headerlink" title="Layout (布局)"></a>Layout (布局)</h3><p>💡 graphviz有一点不好的是节点在画布上的位置是<strong>由算法决定</strong>的, 不能自己设定, 因此有时候不能让图变得足够美观.</p>
+<p>graphviz提供了多种用于排布节点, 边线箭头头部, 边线标签位置的布局算法.</p>
+<p>按照<a href="https://emden.github.io/_pages/pdf/dotguide.pdf" target="_blank" rel="noopener">被现在graphviz开发组嫌弃的旧版文档 (dot布局版)</a>说法, <strong>dot布局</strong>的图形绘制主要有四步:</p>
+<ol>
+<li>通过反转一些边线的指向来打破输入图形 (我猜这个输入图形说的是.dot文件) 中出现的所有循环 (因为dot布局算法是基于非循环图形的)</li>
+<li>给各节点赋予不同的等级 (<code>rank</code>). (比如在一个top-to-bottom方向的图中等级决定了节点的纵坐标) 连接跨度超过一个等级的节点的边线会被分割成一串”虚拟”节点以及单位长度的边线</li>
+<li>给同等级的节点排序, 避免绘图时出现边线的交叉 (估计只是减少交叉?)</li>
+<li>在让边线尽可能短的情况下设定节点的横坐标, 然后绘制边线 (同样是假设是top-to-bottom方向的图)</li>
+</ol>
+<h4 id="dot"><a href="#dot" class="headerlink" title="dot"></a>dot</h4><p>用于绘制<strong>有向图</strong>, 他的布局算法原理上面已经说了, 特点是绘制出的图<strong>很有层次</strong>.</p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312100508926.png" alt="在这里插入图片描述"></p>
+<h4 id="neato"><a href="#neato" class="headerlink" title="neato"></a>neato</h4><p>用于绘制<strong>无向图</strong>. neato布局算法的原理是构建一个虚拟物理模型并不断对其迭代最终得到一个<strong>最低总能量排布</strong> (low-energy configuration). 这个虚拟物理模型具体指的是在每个节点间放置一个<strong>理想弹簧</strong>, 这样得到的布局通常很合理. (在统计学中这种算法也被称作<strong>多维缩放</strong>). neato布局很适合<strong>通信网络</strong>及<strong>程序</strong>.</p>
+<p>💡 当图较大 (超过100个节点)时就该考虑换成fdp或者sfdp布局了</p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312100945593.png" alt="在这里插入图片描述"></p>
+<h4 id="fdp"><a href="#fdp" class="headerlink" title="fdp"></a>fdp</h4><p>同样是基于弹簧模型. 区别在于fdp算法的迭代是在试图减小节点间弹簧的力的大小而不是弹簧能量大小.</p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312101117320.png" alt="在这里插入图片描述"></p>
+<h4 id="sfdp"><a href="#sfdp" class="headerlink" title="sfdp"></a>sfdp</h4><p>为大规模图而生的多尺度版fdp</p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312101209335.png" alt="在这里插入图片描述"></p>
+<h4 id="twopi"><a href="#twopi" class="headerlink" title="twopi"></a>twopi</h4><p>径向布局.</p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312101336250.png" alt="在这里插入图片描述"></p>
+<h4 id="circo"><a href="#circo" class="headerlink" title="circo"></a>circo</h4><p>圆形布局. 很适合有许多环路结构的图, 比如电信网络.</p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312101447921.png" alt="在这里插入图片描述"></p>
+<h3 id="有关三种主要描述对象"><a href="#有关三种主要描述对象" class="headerlink" title="有关三种主要描述对象"></a>有关三种主要描述对象</h3><p>DOT语言主要描述三种对象:</p>
+<ul>
+<li><strong>graph</strong>: 最外层的graph (main graph)可以被设定为<strong>有向图</strong><code>digraph</code>(directed graph)或是<strong>无向图</strong><code>graph</code>(undirected graph). main graph内可以用<code>subgraph</code>来定义一个节点和边线的集合. 也可以通过<code>strict digraph</code>或者<code>strict graph</code>来禁用<strong>multi-edges</strong>. 也就是说<code>strict digraph</code>会让有向图中一个指向节点和一个被指向节点间只能有一条边线 (反过来还可以有一条), <code>strict graph</code>会让无向图中两节点间只能有一条边线.</li>
+<li><strong>node</strong>: 一个节点会在第一次在DOT文件中出现时被创建. 节点的默认属性是:<ul>
+<li>shape=ellipse</li>
+<li>width=0.75</li>
+<li>height=0.5</li>
+<li>标签为节点名</li>
+</ul>
+</li>
+<li><strong>edge</strong>: 一条边线会在几个节点被用<code>-&gt;</code>边线操作符连接时被创建.</li>
+</ul>
+<p>💡 <strong>在graphviz中可以直接用中文作为节点名.</strong></p>
+<h3 id="Label-标签"><a href="#Label-标签" class="headerlink" title="Label (标签)"></a>Label (标签)</h3><p>如果你想要显示的标签中有空格, 那通过把节点名用<code>""</code>括起来可以实现, 当然显式声明标签内容是更好的选择. 而<strong>如果你想让一些节点显示相同的标签那就必须显式声明节点的标签了</strong>, 因为节点名不能重复.</p>
+<p>💡 label中可以使用转义字符比如<code>\n</code>来实现多行标签.</p>
+<h4 id="HTML-like-Label"><a href="#HTML-like-Label" class="headerlink" title="HTML-like Label"></a>HTML-like Label</h4><p>TODO</p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>属性是通过<code>name=value</code>形式来设置的. 节点与边线的属性需要放在<code>[]</code>方括号中.</p>
+<blockquote>
+<p>一个展示属性写法以及属性能做些什么的例子</p>
+</blockquote>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">digraph G {</span><br><span class="line">    size ="4,4"; //设置图形尺寸为4英寸长宽</span><br><span class="line">    方形节点 [shape=box];  /*这是一种注释写法*/</span><br><span class="line">    方形节点 -&gt; 上面是加粗线 [style=bold];</span><br><span class="line">    上面是加粗线 -&gt; 和下面的对比;</span><br><span class="line">    方形节点 -&gt; 上面是虚线 [style=dotted];</span><br><span class="line">    方形节点 -&gt; 重量更大导致垂直指下的节点[weight=4];</span><br><span class="line">    "和下面的对比" -&gt; { make_string; 上面是有标签的红线}  //可以一次连接多个节点</span><br><span class="line">    上面是虚线 -&gt; make_string;</span><br><span class="line">    edge [color=red];  // 这是另一种注释写法</span><br><span class="line">    方形节点 -&gt; 上面是有标签的红线 [label="100 times"];</span><br><span class="line">    make_string [label="多行\n标签"];</span><br><span class="line">    node [shape=box,style=filled,color=".7 .3 1.0"];</span><br><span class="line">    和下面的对比 -&gt; 在节点默认属性改变后才创建的节点;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/attr.svg" alt=""></p>
+<h3 id="Cluster"><a href="#Cluster" class="headerlink" title="Cluster"></a>Cluster</h3><p>TODO</p>
+<h2 id="高级语法"><a href="#高级语法" class="headerlink" title="高级语法"></a>高级语法</h2><h3 id="优化布局"><a href="#优化布局" class="headerlink" title="优化布局"></a>优化布局</h3><!-- TODO: 关于ratio, rankdir -->
+
+<p>知道了上面提到的<a href="#Layout-布局">布局的原理</a>我们就可以进行一些更个性化的布局, 比如设置节点的<code>rank</code>属性我们可以改变节点的布局. <code>rank</code>的可选值有: <strong>same</strong>, <strong>min</strong>, <strong>source</strong>, <strong>max</strong>, <strong>sink</strong>.</p>
+<blockquote>
+<p>一个展示设置rank属性能达到什么效果的例子 (代码和图形都截自旧版文档, 因为代码没给全我也懒得写就这么放着吧👍)</p>
+</blockquote>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/image-20200313010630547.png" alt="image-20200313010630547"></p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/image-20200313010749024.png" alt="image-20200313010749024"></p>
+<h3 id="Node-Port"><a href="#Node-Port" class="headerlink" title="Node Port"></a>Node Port</h3><p>TODO</p>
+<h2 id="相关工具"><a href="#相关工具" class="headerlink" title="相关工具"></a>相关工具</h2><h3 id="VSC的dot语言支持插件"><a href="#VSC的dot语言支持插件" class="headerlink" title="VSC的dot语言支持插件"></a>VSC的dot语言支持插件</h3><p>TODO</p>
+<h3 id="在线编辑器"><a href="#在线编辑器" class="headerlink" title="在线编辑器"></a>在线编辑器</h3><p>手绘风 <a href="https://sketchviz.com/new" target="_blank" rel="noopener">sketchviz</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>graphviz</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>VSC与PyPyCharm体验比较</title>
+    <url>/zh-CN/2020/03/06/VSC%E4%B8%8EPyPyCharm%E4%BD%93%E9%AA%8C%E6%AF%94%E8%BE%83/</url>
+    <content><![CDATA[<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+  </entry>
+  <entry>
     <title>广受好评的数学/IT类网课列表</title>
     <url>/zh-CN/2020/02/22/%E5%B9%BF%E5%8F%97%E5%A5%BD%E8%AF%84%E7%9A%84%E6%95%B0%E5%AD%A6-IT%E7%B1%BB%E7%BD%91%E8%AF%BE%E5%88%97%E8%A1%A8/</url>
     <content><![CDATA[<p>最近很多国内学校因为疫情开始在网上上课, 不过我们学校的网课体验很差… 网络问题暂且不说, 既然都是网课何不去学习那些广受好评的版本? 列出一些广受好评的课程链接, 希望能帮到一些同样在被迫害的同学们 (也方便我以后极速复习) 💩</p>
