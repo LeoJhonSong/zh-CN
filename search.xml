@@ -2354,8 +2354,8 @@ Linux开发xmc4500需要什么工具以及编译方式,
           });
       </script>]]></content>
       <categories>
-        <category>控制</category>
         <category>算法</category>
+        <category>控制</category>
       </categories>
   </entry>
   <entry>
@@ -2382,8 +2382,8 @@ Linux开发xmc4500需要什么工具以及编译方式,
           });
       </script>]]></content>
       <categories>
-        <category>滤波</category>
         <category>算法</category>
+        <category>滤波</category>
       </categories>
   </entry>
   <entry>
@@ -3813,8 +3813,8 @@ VSCode之后发现这个选项没被勾上.</p>
           });
       </script>]]></content>
       <categories>
-        <category>滤波</category>
         <category>算法</category>
+        <category>滤波</category>
       </categories>
   </entry>
   <entry>
