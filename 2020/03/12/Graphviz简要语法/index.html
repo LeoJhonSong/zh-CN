@@ -74,9 +74,10 @@
 <meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/03/12/Graphviz简要语法/Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/twopi2.png?50">
 <meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/03/12/Graphviz简要语法/Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/circo.png?30">
 <meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/03/12/Graphviz简要语法/Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/attr.svg">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/03/12/Graphviz简要语法/Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/cluster.svg?20">
 <meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/03/12/Graphviz简要语法/Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/image-20200313010630547.png?60">
 <meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/03/12/Graphviz简要语法/Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/image-20200313010749024.png?80">
-<meta property="og:updated_time" content="2020-03-16T14:31:48.471Z">
+<meta property="og:updated_time" content="2020-03-16T15:42:02.346Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Graphviz简要语法">
 <meta name="twitter:description" content="Graphviz是一个很强大的图形可视化工具. 它使用DOT语言来描述图形, 但它并不单纯是个绘图软件, 而是能接入程序, 进行函数调用流程, 决策树, 数据结构, 日志系统等图形关系生成, 而且可以是交互式的 (不过我暂时没研究过所以不太了解). 暂且不提这些扩展功能, graphviz的语法允许我们仅通过文字描述能绘制出样式极其丰富的图形, 这大大方便了对图形的改动的跟踪.">
@@ -362,7 +363,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-16 22:31:48" itemprop="dateModified" datetime="2020-03-16T22:31:48+08:00">2020-03-16</time>
+                <time title="修改时间：2020-03-16 23:42:02" itemprop="dateModified" datetime="2020-03-16T23:42:02+08:00">2020-03-16</time>
               </span>
             
           
@@ -397,7 +398,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>4k</span>
+              <span>4.9k</span>
             </span>
           
 
@@ -543,22 +544,10 @@
 <h4 id="circo"><a href="#circo" class="headerlink" title="circo"></a>circo</h4><p>圆形布局. 很适合有许多环路结构的图, 比如电信网络.</p>
 <p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/circo.png?30" alt="在这里插入图片描述"></p>
 <h3 id="有关三种主要描述对象"><a href="#有关三种主要描述对象" class="headerlink" title="有关三种主要描述对象"></a>有关三种主要描述对象</h3><p>DOT语言主要描述三种对象: <strong>graph</strong>, <strong>node</strong>, <strong>edge</strong>. 这里分别翻译为<strong>图</strong>, <strong>节点</strong>, <strong>边线</strong>. 每一种对象有各自可以设置的一组属性.</p>
-<h4 id="graph-图"><a href="#graph-图" class="headerlink" title="graph (图)"></a>graph (图)</h4><p>最外层的graph (main graph)可以被设定为<strong>有向图</strong><code>digraph</code>(directed graph)或是<strong>无向图</strong><code>graph</code>(undirected graph). main graph内可以用<code>subgraph</code>来定义一个节点和边线的集合. 也可以通过设定最外层图为<code>strict digraph</code>或者<code>strict graph</code>来禁用<strong>multi-edges</strong>. 也就是说<code>strict digraph</code>会让有向图中一个指向节点和一个被指向节点间只能有一条边线 (不过反过来还可以有一条, 也就是两节点间最多两条边线), <code>strict graph</code>则会让无向图中两节点间只能有一条边线.</p>
-<p>图的默认属性:</p>
-<ul>
-<li>labeljust=”c”</li>
-<li>labelloc=”b” (簇的默认值为”t”)</li>
-</ul>
-<h4 id="node-节点"><a href="#node-节点" class="headerlink" title="node (节点)"></a>node (节点)</h4><p>一个节点会<strong>在第一次在DOT文件中出现时被创建</strong>.</p>
-<p>节点的默认属性是:</p>
-<ul>
-<li>shape=ellipse</li>
-<li>width=0.75</li>
-<li>height=0.5</li>
-<li>标签为节点名</li>
-<li>labelloc=”c”</li>
-</ul>
-<h4 id="edge-边线"><a href="#edge-边线" class="headerlink" title="edge (边线)"></a>edge (边线)</h4><p>一条边线会在几个节点被用<code>-&gt;</code>边线操作符连接时被创建.</p>
+<h4 id="Graph-图"><a href="#Graph-图" class="headerlink" title="Graph (图)"></a>Graph (图)</h4><p>最外层的graph (main graph)可以被设定为<strong>有向图</strong><code>digraph</code>(directed graph)或是<strong>无向图</strong><code>graph</code>(undirected graph). main graph内可以用<code>subgraph</code>来定义一个节点和边线的集合. 也可以通过设定最外层图为<code>strict digraph</code>或者<code>strict graph</code>来禁用<strong>multi-edges</strong>. 也就是说<code>strict digraph</code>会让有向图中一个指向节点和一个被指向节点间只能有一条边线 (不过反过来还可以有一条, 也就是两节点间最多两条边线), <code>strict graph</code>则会让无向图中两节点间只能有一条边线.</p>
+<p>最外层的图又称top-level graph, root graph (反正开发组文档都没能统一这东西的叫法). 图可以有子图 (subgraph), 子图会继承父级的显式设置的大部分属性. 有一种特殊的子图被称为<a href="#Cluster-簇"><strong>簇</strong></a>.</p>
+<h4 id="Node-节点"><a href="#Node-节点" class="headerlink" title="Node (节点)"></a>Node (节点)</h4><p>一个节点会<strong>在第一次在DOT文件中出现时被创建</strong>.</p>
+<h4 id="Edge-边线"><a href="#Edge-边线" class="headerlink" title="Edge (边线)"></a>Edge (边线)</h4><p>一条边线会在几个节点被用<code>-&gt;</code>边线操作符连接时被创建.</p>
 <p>💡 <strong>在graphviz中可以直接用中文作为节点名.</strong></p>
 <h3 id="Label-标签"><a href="#Label-标签" class="headerlink" title="Label (标签)"></a>Label (标签)</h3><p>如果你想要显示的标签中有空格, 那通过把节点名用<code>""</code>括起来可以实现, 当然显式声明标签内容是更好的选择. 而<strong>如果你想让一些节点显示相同的标签那就必须显式声明节点的标签了</strong>, 因为节点名不能重复.</p>
 <p>💡 label中可以使用转义字符比如<code>\n</code>来实现多行标签.</p>
@@ -570,8 +559,36 @@
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">digraph G {</span><br><span class="line">    size ="4,4"; //设置图形尺寸为4英寸长宽</span><br><span class="line">    方形节点 [shape=box];  /*这是一种注释写法*/</span><br><span class="line">    方形节点 -&gt; 上面是加粗线 [style=bold];</span><br><span class="line">    上面是加粗线 -&gt; 和下面的对比;</span><br><span class="line">    方形节点 -&gt; 上面是虚线 [style=dotted];</span><br><span class="line">    方形节点 -&gt; 重量更大导致垂直指下的节点[weight=4];</span><br><span class="line">    "和下面的对比" -&gt; { make_string; 上面是有标签的红线}  //可以一次连接多个节点</span><br><span class="line">    上面是虚线 -&gt; make_string;</span><br><span class="line">    edge [color=red];  // 这是另一种注释写法</span><br><span class="line">    方形节点 -&gt; 上面是有标签的红线 [label="100 times"];</span><br><span class="line">    make_string [label="多行\n标签"];</span><br><span class="line">    node [shape=box,style=filled,color=".7 .3 1.0"];</span><br><span class="line">    和下面的对比 -&gt; 在节点默认属性改变后才创建的节点;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/attr.svg" alt=""></p>
-<h3 id="Cluster"><a href="#Cluster" class="headerlink" title="Cluster"></a>Cluster</h3><p>TODO</p>
-<h2 id="高级语法"><a href="#高级语法" class="headerlink" title="高级语法"></a>高级语法</h2><h3 id="优化布局"><a href="#优化布局" class="headerlink" title="优化布局"></a>优化布局</h3><!-- TODO: 关于ratio, rankdir -->
+<h4 id="常用属性的默认值"><a href="#常用属性的默认值" class="headerlink" title="常用属性的默认值"></a>常用属性的默认值</h4><p><strong>图</strong>的默认属性:</p>
+<ul>
+<li>labeljust=”c”</li>
+<li>labelloc=”b” (簇的默认值为”t”)</li>
+<li>clusterrank=”local”</li>
+<li>compound=false</li>
+</ul>
+<p><strong>节点</strong>的默认属性是:</p>
+<ul>
+<li>shape=ellipse</li>
+<li>width=0.75</li>
+<li>height=0.5</li>
+<li>标签为节点名</li>
+<li>labelloc=”c”</li>
+</ul>
+<h3 id="Cluster-簇"><a href="#Cluster-簇" class="headerlink" title="Cluster (簇)"></a>Cluster (簇)</h3><p>簇是一种会将属于这个子图的元素都<strong>框在一个长方形里</strong>的特殊子图. 如果一个子图的名字以<strong>cluster</strong>开头那么这个子图就会被认为是一个簇 (这个判定方式好暴力😅). 但是如果在根图中设置了<code>clusterrank=none</code>那么簇这种特殊的子图会被禁用.</p>
+<p>这里我又要来吐槽graphviz开发组了! 看看他们是怎么<a href="https://emden.github.io/_pages/doc/info/attrs.html#a:clusterrank" target="_blank" rel="noopener">说明clusterrank这个属性</a>的:</p>
+<blockquote>
+<p>the modes “global” and “none” <strong>appear</strong> to be identical, both turning off the special cluster processing.</p>
+</blockquote>
+<p>为什么官方开发组都在用这种表推测的语气啊… 🙃这也太迷惑了</p>
+<p>如果根图中设置了<code>compound=true</code>, 那么dot布局允许用边线连接节点和簇的边框. 这是通过设置边线的<code>lhead</code>和<code>ltail</code>属性来实现的. 这样以来, 虽然边线仍然是从一个节点指向另一个节点的, 但是设置了<code>lhead</code>或者<code>ltail</code>的一侧<strong>会看起来像是被簇的边框盖住了</strong>.</p>
+<blockquote>
+<p>一个使用簇, 并且有连接节点与簇的边线的例子</p>
+</blockquote>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">digraph G {</span><br><span class="line">    compound=true;</span><br><span class="line">    subgraph cluster0 {</span><br><span class="line">        a -&gt; b;</span><br><span class="line">        a -&gt; c;</span><br><span class="line">        b -&gt; d;</span><br><span class="line">        c -&gt; d;</span><br><span class="line">    }</span><br><span class="line">    subgraph cluster1 {</span><br><span class="line">        e -&gt; g;</span><br><span class="line">        e -&gt; f;</span><br><span class="line">    }</span><br><span class="line">    b -&gt; f [lhead=cluster1];</span><br><span class="line">    d -&gt; e;</span><br><span class="line">    c -&gt; g [ltail=cluster0,lhead=cluster1];</span><br><span class="line">    c -&gt; e [ltail=cluster0];</span><br><span class="line">    d -&gt; h;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/cluster.svg?20" alt=""></p>
+<h2 id="高级语法"><a href="#高级语法" class="headerlink" title="高级语法"></a>高级语法</h2><p>以下是几条我认为<strong>用来提示图的美观程度</strong>的语法.</p>
+<h3 id="优化布局"><a href="#优化布局" class="headerlink" title="优化布局"></a>优化布局</h3><!-- TODO: 关于ratio, rankdir -->
 
 <p>知道了上面提到的<a href="#Layout-布局">布局的原理</a>我们就可以进行一些更个性化的布局, 比如设置节点的<code>rank</code>属性我们可以改变节点的布局. <code>rank</code>的可选值有: <strong>same</strong>, <strong>min</strong>, <strong>source</strong>, <strong>max</strong>, <strong>sink</strong>.</p>
 <blockquote>
@@ -580,6 +597,13 @@
 <p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/image-20200313010630547.png?60" alt="image-20200313010630547"></p>
 <p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/image-20200313010749024.png?80" alt="image-20200313010749024"></p>
 <h3 id="Node-Port"><a href="#Node-Port" class="headerlink" title="Node Port"></a>Node Port</h3><p>TODO</p>
+<h3 id="Concentrators-边线合并"><a href="#Concentrators-边线合并" class="headerlink" title="Concentrators (边线合并)"></a>Concentrators (边线合并)</h3><p>在根图中设置<code>concentrate=true</code>将允许边线融合来避免图变得一团乱麻.</p>
+<p>边线合并的条件是:</p>
+<ul>
+<li>他们的方向相同</li>
+<li>他们有相同的起点或终点</li>
+<li>他们的长度大于1</li>
+</ul>
 <h2 id="相关工具"><a href="#相关工具" class="headerlink" title="相关工具"></a>相关工具</h2><h3 id="VSC的dot语言支持插件"><a href="#VSC的dot语言支持插件" class="headerlink" title="VSC的dot语言支持插件"></a>VSC的dot语言支持插件</h3><p>TODO</p>
 <h3 id="在线编辑器"><a href="#在线编辑器" class="headerlink" title="在线编辑器"></a>在线编辑器</h3><p>手绘风 <a href="https://sketchviz.com/new" target="_blank" rel="noopener">sketchviz</a></p>
 <script>
@@ -703,7 +727,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#有关官方文档"><span class="nav-number">1.</span> <span class="nav-text">有关官方文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础语法"><span class="nav-number">2.</span> <span class="nav-text">基础语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hello-World"><span class="nav-number">2.1.</span> <span class="nav-text">Hello World</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见用法"><span class="nav-number">2.2.</span> <span class="nav-text">常见用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Layout-布局"><span class="nav-number">2.3.</span> <span class="nav-text">Layout (布局)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dot"><span class="nav-number">2.3.1.</span> <span class="nav-text">dot</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#neato"><span class="nav-number">2.3.2.</span> <span class="nav-text">neato</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fdp"><span class="nav-number">2.3.3.</span> <span class="nav-text">fdp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sfdp"><span class="nav-number">2.3.4.</span> <span class="nav-text">sfdp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#twopi"><span class="nav-number">2.3.5.</span> <span class="nav-text">twopi</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#circo"><span class="nav-number">2.3.6.</span> <span class="nav-text">circo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有关三种主要描述对象"><span class="nav-number">2.4.</span> <span class="nav-text">有关三种主要描述对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#graph-图"><span class="nav-number">2.4.1.</span> <span class="nav-text">graph (图)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#node-节点"><span class="nav-number">2.4.2.</span> <span class="nav-text">node (节点)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#edge-边线"><span class="nav-number">2.4.3.</span> <span class="nav-text">edge (边线)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Label-标签"><span class="nav-number">2.5.</span> <span class="nav-text">Label (标签)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-like-Label"><span class="nav-number">2.5.1.</span> <span class="nav-text">HTML-like Label</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性"><span class="nav-number">2.6.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cluster"><span class="nav-number">2.7.</span> <span class="nav-text">Cluster</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级语法"><span class="nav-number">3.</span> <span class="nav-text">高级语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优化布局"><span class="nav-number">3.1.</span> <span class="nav-text">优化布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-Port"><span class="nav-number">3.2.</span> <span class="nav-text">Node Port</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关工具"><span class="nav-number">4.</span> <span class="nav-text">相关工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VSC的dot语言支持插件"><span class="nav-number">4.1.</span> <span class="nav-text">VSC的dot语言支持插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在线编辑器"><span class="nav-number">4.2.</span> <span class="nav-text">在线编辑器</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#有关官方文档"><span class="nav-number">1.</span> <span class="nav-text">有关官方文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础语法"><span class="nav-number">2.</span> <span class="nav-text">基础语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hello-World"><span class="nav-number">2.1.</span> <span class="nav-text">Hello World</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见用法"><span class="nav-number">2.2.</span> <span class="nav-text">常见用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Layout-布局"><span class="nav-number">2.3.</span> <span class="nav-text">Layout (布局)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dot"><span class="nav-number">2.3.1.</span> <span class="nav-text">dot</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#neato"><span class="nav-number">2.3.2.</span> <span class="nav-text">neato</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fdp"><span class="nav-number">2.3.3.</span> <span class="nav-text">fdp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sfdp"><span class="nav-number">2.3.4.</span> <span class="nav-text">sfdp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#twopi"><span class="nav-number">2.3.5.</span> <span class="nav-text">twopi</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#circo"><span class="nav-number">2.3.6.</span> <span class="nav-text">circo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有关三种主要描述对象"><span class="nav-number">2.4.</span> <span class="nav-text">有关三种主要描述对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Graph-图"><span class="nav-number">2.4.1.</span> <span class="nav-text">Graph (图)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Node-节点"><span class="nav-number">2.4.2.</span> <span class="nav-text">Node (节点)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Edge-边线"><span class="nav-number">2.4.3.</span> <span class="nav-text">Edge (边线)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Label-标签"><span class="nav-number">2.5.</span> <span class="nav-text">Label (标签)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-like-Label"><span class="nav-number">2.5.1.</span> <span class="nav-text">HTML-like Label</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性"><span class="nav-number">2.6.</span> <span class="nav-text">属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用属性的默认值"><span class="nav-number">2.6.1.</span> <span class="nav-text">常用属性的默认值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cluster-簇"><span class="nav-number">2.7.</span> <span class="nav-text">Cluster (簇)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级语法"><span class="nav-number">3.</span> <span class="nav-text">高级语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优化布局"><span class="nav-number">3.1.</span> <span class="nav-text">优化布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node-Port"><span class="nav-number">3.2.</span> <span class="nav-text">Node Port</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Concentrators-边线合并"><span class="nav-number">3.3.</span> <span class="nav-text">Concentrators (边线合并)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关工具"><span class="nav-number">4.</span> <span class="nav-text">相关工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VSC的dot语言支持插件"><span class="nav-number">4.1.</span> <span class="nav-text">VSC的dot语言支持插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在线编辑器"><span class="nav-number">4.2.</span> <span class="nav-text">在线编辑器</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -838,7 +862,7 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">85k</span>
+    <span title="站点总字数">86k</span>
 </div>
 
         
