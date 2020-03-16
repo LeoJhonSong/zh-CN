@@ -20,8 +20,9 @@
 <h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h3><p>还是先来个Hello World 😏</p>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">digraph G{</span><br><span class="line">    Hello -&gt; World;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/helloworld.svg" alt=""></p>
-<h3 id="常见用法"><a href="#常见用法" class="headerlink" title="常见用法"></a>常见用法</h3><p>因为graphviz许多概念解释起来会套娃, 要理解概念A要先理解概念B, 要理解概念B则需要先知道什么是概念A 🤤 因此这里先放上一些常见用法来快速入门.</p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/helloworld.svg?20" alt=""></p>
+<h3 id="常见用法"><a href="#常见用法" class="headerlink" title="常见用法"></a>常见用法</h3><p>因为graphviz许多概念解释起来会套娃, 要理解概念A要先理解概念B, 要理解概念B则需要先知道什么是概念A 🤤 因此这里先放上一些常用属性来快速入门.</p>
+<p>不明白到底如何使用属性的话点<a href="#属性">这里</a>快速跳转后文的实例.</p>
 <table>
 <thead>
 <tr>
@@ -79,7 +80,7 @@
 <td><code>style</code></td>
 <td><a href="https://emden.github.io/_pages/doc/info/attrs.html#k:style" target="_blank" rel="noopener">各对象样式说明</a></td>
 <td>节点, 边线, 簇, 图</td>
-<td>emmm这个style很难准确地翻译为中文, 因为这个属性被很笼统地赋予了四种对象…总的来说是在描述这个对象长什么样</td>
+<td>emmm这个style很难准确地翻译为中文, 因为这个属性被很笼统地赋予了四种对象…总的来说是在描述这个对象长什么样, 是虚线的还是加粗的又或是点点的</td>
 </tr>
 <tr>
 <td>边线风格</td>
@@ -88,41 +89,69 @@
 <td>图</td>
 <td>不显示边线/线段 (false)/线段 (true)/弧线/直角折线/常规. 到底什么样详见<a href="https://emden.github.io/_pages/doc/info/attrs.html#d:splines" target="_blank" rel="noopener">splines说明</a> emmmm我感觉<strong>polyline</strong>和<strong>spline</strong>并没有区别…再次吐槽graphviz开发组的混乱逻辑 😩</td>
 </tr>
+<tr>
+<td>label水平对齐方式</td>
+<td><code>labeljust</code></td>
+<td>“l”, “r”</td>
+<td>图, 簇</td>
+<td>“l”就是和图/簇的左边界对齐, “r”就是和图/簇的右边界对齐. 如果父级显性设置了这一属性, 子图会继承这一属性. <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8">❗</span> 实际上还有一个可选值, 就是不设置这个属性, 那么label就会居中对齐.</td>
+</tr>
+<tr>
+<td>label垂直对齐方式</td>
+<td><code>labelloc</code></td>
+<td>“t”, “b”, “c”</td>
+<td>节点, 图, 簇</td>
+<td>对于图和簇只有”t”和”b”是可用的, 即标签只能设置在图/簇的顶部或者底部. 如果父级显性设置了这一属性, 子图会继承这一属性. 而对于一个节点, 只有当它的高度大于label这个属性才是可用的.</td>
+</tr>
 </tbody></table>
-<h3 id="Layout-布局"><a href="#Layout-布局" class="headerlink" title="Layout (布局)"></a>Layout (布局)</h3><p>💡 graphviz有一点不好的是节点在画布上的位置是<strong>由算法决定</strong>的, 不能自己设定, 因此有时候不能让图变得足够美观.</p>
+<h3 id="Layout-布局"><a href="#Layout-布局" class="headerlink" title="Layout (布局)"></a>Layout (布局)</h3><p>💡 graphviz有一点不好的是节点在画布上的位置是<strong>由算法决定</strong>的, 不能<strong>完全</strong>自己设定, 因此有时候不能让图变得那么美观.</p>
 <p>graphviz提供了多种用于排布节点, 边线箭头头部, 边线标签位置的布局算法.</p>
-<p>按照<a href="https://emden.github.io/_pages/pdf/dotguide.pdf" target="_blank" rel="noopener">被现在graphviz开发组嫌弃的旧版文档 (dot布局版)</a>说法, <strong>dot布局</strong>的图形绘制主要有四步:</p>
+<p>因为了解graphviz的布局算法有助于我们更好的布局, 此处简单翻译一下<a href="https://emden.github.io/_pages/pdf/dotguide.pdf" target="_blank" rel="noopener">被现在graphviz开发组嫌弃的旧版文档 (dot布局版)</a>描述的<strong>dot布局</strong>的图形绘制主要的四步:</p>
 <ol>
-<li>通过反转一些边线的指向来打破输入图形 (我猜这个输入图形说的是.dot文件) 中出现的所有循环 (因为dot布局算法是基于非循环图形的)</li>
-<li>给各节点赋予不同的等级 (<code>rank</code>). (比如在一个top-to-bottom方向的图中等级决定了节点的纵坐标) 连接跨度超过一个等级的节点的边线会被分割成一串”虚拟”节点以及单位长度的边线</li>
-<li>给同等级的节点排序, 避免绘图时出现边线的交叉 (估计只是减少交叉?)</li>
-<li>在让边线尽可能短的情况下设定节点的横坐标, 然后绘制边线 (同样是假设是top-to-bottom方向的图)</li>
+<li><p>通过反转一些边线的指向来打破输入图形 (我猜这个输入图形说的是.dot文件) 中出现的所有循环 (因为dot布局算法是基于非循环图形的)</p>
+</li>
+<li><p>给各节点赋予不同的等级 (<code>rank</code>). (比如在一个top-to-bottom方向的图中等级决定了节点的纵坐标) 连接跨度超过一个等级的节点的边线会被分割成一串”虚拟”节点以及单位长度的边线</p>
+<p>💡 后文会提及对节点的rank是可以进行一些设置的.</p>
+</li>
+<li><p>给同等级的节点排序, 避免绘图时出现边线的交叉 (估计只是减少交叉?)</p>
+</li>
+<li><p>在让边线尽可能短的情况下设定节点的横坐标, 然后绘制边线 (同样是假设是top-to-bottom方向的图)</p>
+</li>
 </ol>
+<p>下面给出一些主要布局算法的简单说明和图例.</p>
+<p>💡 以下布局的图例除了最后一个都来自<a href="https://emden.github.io/gallery/" target="_blank" rel="noopener">graphviz-gallary</a></p>
 <h4 id="dot"><a href="#dot" class="headerlink" title="dot"></a>dot</h4><p>用于绘制<strong>有向图</strong>, 他的布局算法原理上面已经说了, 特点是绘制出的图<strong>很有层次</strong>.</p>
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312100508926.png" alt="在这里插入图片描述"></p>
-<h4 id="neato"><a href="#neato" class="headerlink" title="neato"></a>neato</h4><p>用于绘制<strong>无向图</strong>. neato布局算法的原理是构建一个虚拟物理模型并不断对其迭代最终得到一个<strong>最低总能量排布</strong> (low-energy configuration). 这个虚拟物理模型具体指的是在每个节点间放置一个<strong>理想弹簧</strong>, 这样得到的布局通常很合理. (在统计学中这种算法也被称作<strong>多维缩放</strong>). neato布局很适合<strong>通信网络</strong>及<strong>程序</strong>.</p>
+<p>❗️ 注意dot布局和DOT语言不是一个东西.</p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/cluster.png?20" alt="img"></p>
+<h4 id="neato"><a href="#neato" class="headerlink" title="neato"></a>neato</h4><p>用于绘制<strong>无向图</strong>. neato布局算法的原理是构建一个虚拟物理模型并不断对其迭代最终得到一个<strong>最低总能量排布</strong> (low-energy configuration). 这个虚拟物理模型具体指的是在每个节点间放置一个<strong>理想弹簧</strong>, 这样得到的布局通常很合理. (在统计学中这种算法也被称作<strong>多维缩放</strong>). neato布局很适合用于<strong>通信网络</strong>及<strong>计算机程序</strong>的绘制.</p>
 <p>💡 当图较大 (超过100个节点)时就该考虑换成fdp或者sfdp布局了</p>
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312100945593.png" alt="在这里插入图片描述"></p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/ER.png?30" alt="在这里插入图片描述"></p>
 <h4 id="fdp"><a href="#fdp" class="headerlink" title="fdp"></a>fdp</h4><p>同样是基于弹簧模型. 区别在于fdp算法的迭代是在试图减小节点间弹簧的力的大小而不是弹簧能量大小.</p>
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312101117320.png" alt="在这里插入图片描述"></p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/fdpclust.png?40" alt="在这里插入图片描述"></p>
 <h4 id="sfdp"><a href="#sfdp" class="headerlink" title="sfdp"></a>sfdp</h4><p>为大规模图而生的多尺度版fdp</p>
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312101209335.png" alt="在这里插入图片描述"></p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/JGD_BIBD@bibd_17_3.gif?40" alt="在这里插入图片描述"></p>
+<p>上面这个图得自🔗 <a href="http://yifanhu.net/GALLERY/GRAPHS/index.html" target="_blank" rel="noopener">A Gallery of Large Graphs</a>. 这个网站还有<strong>很多</strong>很壮观的图😳</p>
 <h4 id="twopi"><a href="#twopi" class="headerlink" title="twopi"></a>twopi</h4><p>径向布局.</p>
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312101336250.png" alt="在这里插入图片描述"></p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/twopi2.png?50" alt="在这里插入图片描述"></p>
 <h4 id="circo"><a href="#circo" class="headerlink" title="circo"></a>circo</h4><p>圆形布局. 很适合有许多环路结构的图, 比如电信网络.</p>
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/20190312101447921.png" alt="在这里插入图片描述"></p>
-<h3 id="有关三种主要描述对象"><a href="#有关三种主要描述对象" class="headerlink" title="有关三种主要描述对象"></a>有关三种主要描述对象</h3><p>DOT语言主要描述三种对象:</p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/circo.png?30" alt="在这里插入图片描述"></p>
+<h3 id="有关三种主要描述对象"><a href="#有关三种主要描述对象" class="headerlink" title="有关三种主要描述对象"></a>有关三种主要描述对象</h3><p>DOT语言主要描述三种对象: <strong>graph</strong>, <strong>node</strong>, <strong>edge</strong>. 这里分别翻译为<strong>图</strong>, <strong>节点</strong>, <strong>边线</strong>. 每一种对象有各自可以设置的一组属性.</p>
+<h4 id="graph-图"><a href="#graph-图" class="headerlink" title="graph (图)"></a>graph (图)</h4><p>最外层的graph (main graph)可以被设定为<strong>有向图</strong><code>digraph</code>(directed graph)或是<strong>无向图</strong><code>graph</code>(undirected graph). main graph内可以用<code>subgraph</code>来定义一个节点和边线的集合. 也可以通过设定最外层图为<code>strict digraph</code>或者<code>strict graph</code>来禁用<strong>multi-edges</strong>. 也就是说<code>strict digraph</code>会让有向图中一个指向节点和一个被指向节点间只能有一条边线 (不过反过来还可以有一条, 也就是两节点间最多两条边线), <code>strict graph</code>则会让无向图中两节点间只能有一条边线.</p>
+<p>图的默认属性:</p>
 <ul>
-<li><strong>graph</strong>: 最外层的graph (main graph)可以被设定为<strong>有向图</strong><code>digraph</code>(directed graph)或是<strong>无向图</strong><code>graph</code>(undirected graph). main graph内可以用<code>subgraph</code>来定义一个节点和边线的集合. 也可以通过<code>strict digraph</code>或者<code>strict graph</code>来禁用<strong>multi-edges</strong>. 也就是说<code>strict digraph</code>会让有向图中一个指向节点和一个被指向节点间只能有一条边线 (反过来还可以有一条), <code>strict graph</code>会让无向图中两节点间只能有一条边线.</li>
-<li><strong>node</strong>: 一个节点会在第一次在DOT文件中出现时被创建. 节点的默认属性是:<ul>
+<li>labeljust=”c”</li>
+<li>labelloc=”b” (簇的默认值为”t”)</li>
+</ul>
+<h4 id="node-节点"><a href="#node-节点" class="headerlink" title="node (节点)"></a>node (节点)</h4><p>一个节点会<strong>在第一次在DOT文件中出现时被创建</strong>.</p>
+<p>节点的默认属性是:</p>
+<ul>
 <li>shape=ellipse</li>
 <li>width=0.75</li>
 <li>height=0.5</li>
 <li>标签为节点名</li>
+<li>labelloc=”c”</li>
 </ul>
-</li>
-<li><strong>edge</strong>: 一条边线会在几个节点被用<code>-&gt;</code>边线操作符连接时被创建.</li>
-</ul>
+<h4 id="edge-边线"><a href="#edge-边线" class="headerlink" title="edge (边线)"></a>edge (边线)</h4><p>一条边线会在几个节点被用<code>-&gt;</code>边线操作符连接时被创建.</p>
 <p>💡 <strong>在graphviz中可以直接用中文作为节点名.</strong></p>
 <h3 id="Label-标签"><a href="#Label-标签" class="headerlink" title="Label (标签)"></a>Label (标签)</h3><p>如果你想要显示的标签中有空格, 那通过把节点名用<code>""</code>括起来可以实现, 当然显式声明标签内容是更好的选择. 而<strong>如果你想让一些节点显示相同的标签那就必须显式声明节点的标签了</strong>, 因为节点名不能重复.</p>
 <p>💡 label中可以使用转义字符比如<code>\n</code>来实现多行标签.</p>
@@ -141,8 +170,8 @@
 <blockquote>
 <p>一个展示设置rank属性能达到什么效果的例子 (代码和图形都截自旧版文档, 因为代码没给全我也懒得写就这么放着吧👍)</p>
 </blockquote>
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/image-20200313010630547.png" alt="image-20200313010630547"></p>
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/image-20200313010749024.png" alt="image-20200313010749024"></p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/image-20200313010630547.png?60" alt="image-20200313010630547"></p>
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/image-20200313010749024.png?80" alt="image-20200313010749024"></p>
 <h3 id="Node-Port"><a href="#Node-Port" class="headerlink" title="Node Port"></a>Node Port</h3><p>TODO</p>
 <h2 id="相关工具"><a href="#相关工具" class="headerlink" title="相关工具"></a>相关工具</h2><h3 id="VSC的dot语言支持插件"><a href="#VSC的dot语言支持插件" class="headerlink" title="VSC的dot语言支持插件"></a>VSC的dot语言支持插件</h3><p>TODO</p>
 <h3 id="在线编辑器"><a href="#在线编辑器" class="headerlink" title="在线编辑器"></a>在线编辑器</h3><p>手绘风 <a href="https://sketchviz.com/new" target="_blank" rel="noopener">sketchviz</a></p>
@@ -2354,8 +2383,8 @@ Linux开发xmc4500需要什么工具以及编译方式,
           });
       </script>]]></content>
       <categories>
-        <category>算法</category>
         <category>控制</category>
+        <category>算法</category>
       </categories>
   </entry>
   <entry>
@@ -2382,8 +2411,8 @@ Linux开发xmc4500需要什么工具以及编译方式,
           });
       </script>]]></content>
       <categories>
-        <category>算法</category>
         <category>滤波</category>
+        <category>算法</category>
       </categories>
   </entry>
   <entry>
@@ -3813,8 +3842,8 @@ VSCode之后发现这个选项没被勾上.</p>
           });
       </script>]]></content>
       <categories>
-        <category>算法</category>
         <category>滤波</category>
+        <category>算法</category>
       </categories>
   </entry>
   <entry>
