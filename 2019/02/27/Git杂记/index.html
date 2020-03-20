@@ -59,17 +59,20 @@
   };
 </script>
 
-  <meta name="description" content="稍微记录一下常用git命令">
+  <meta name="description" content="先有git, 许久后才有了GitHub等代码托管平台. git是一个软件而GitHub是一个网站. 他们的关系是你可以通过git将你的代码托管给GitHub (就是把你的代码存到GitHub的服务器上)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git杂记">
 <meta property="og:url" content="https://leojhonsong.github.io/zh-CN/2019/02/27/Git杂记/index.html">
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
-<meta property="og:description" content="稍微记录一下常用git命令">
+<meta property="og:description" content="先有git, 许久后才有了GitHub等代码托管平台. git是一个软件而GitHub是一个网站. 他们的关系是你可以通过git将你的代码托管给GitHub (就是把你的代码存到GitHub的服务器上)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-17T02:04:03.640Z">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/02/27/Git杂记/Git%E6%9D%82%E8%AE%B0/image-20200227141011525.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/02/27/Git杂记/Git%E6%9D%82%E8%AE%B0/image-202002271546.png">
+<meta property="og:updated_time" content="2020-03-20T15:51:54.929Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git杂记">
-<meta name="twitter:description" content="稍微记录一下常用git命令">
+<meta name="twitter:description" content="先有git, 许久后才有了GitHub等代码托管平台. git是一个软件而GitHub是一个网站. 他们的关系是你可以通过git将你的代码托管给GitHub (就是把你的代码存到GitHub的服务器上)">
+<meta name="twitter:image" content="https://leojhonsong.github.io/zh-CN/2019/02/27/Git杂记/Git%E6%9D%82%E8%AE%B0/image-20200227141011525.png">
   <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2019/02/27/Git杂记/">
 
 
@@ -227,7 +230,7 @@
       
     
 
-    <a href="/zh-CN/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">29</span></a>
+    <a href="/zh-CN/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">28</span></a>
 
   </li>
       
@@ -364,7 +367,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-17 10:04:03" itemprop="dateModified" datetime="2020-03-17T10:04:03+08:00">2020-03-17</time>
+                <time title="修改时间：2020-03-20 23:51:54" itemprop="dateModified" datetime="2020-03-20T23:51:54+08:00">2020-03-20</time>
               </span>
             
           
@@ -413,7 +416,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>2k</span>
+              <span>4.2k</span>
             </span>
           
 
@@ -426,50 +429,77 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>稍微记录一下常用git命令</p>
+        <p>先有git, 许久后才有了GitHub等代码托管平台. git是一个软件而GitHub是一个网站. 他们的关系是你可以通过git将你的代码托管给GitHub (就是把你的代码存到GitHub的服务器上)</p>
 <a id="more"></a>
 
-<!-- TODO -->
+<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><p>git是一个<strong>分布式版本控制</strong>软件. 与它齐名的另一个版本控制软件是<strong>SVN</strong>.</p>
+<p>🔗 <a href="https://blog.csdn.net/xiaoqiangyonghu/article/details/78400313" target="_blank" rel="noopener">为什么要版本控制及分布式版本控制原理</a></p>
+<h3 id="图形化软件"><a href="#图形化软件" class="headerlink" title="图形化软件"></a>图形化软件</h3><p>虽然有人仍喜欢用纯命令行, 并且有的命令确实只能在命令行输入 (很多命令图形界面无法提供), 但我平时更喜欢使用图形化软件来操作git. 此处推荐三款软件.</p>
+<h4 id="GitHub-Desktop"><a href="#GitHub-Desktop" class="headerlink" title="GitHub Desktop"></a>GitHub Desktop</h4><p>🔗 <a href="https://desktop.github.com/" target="_blank" rel="noopener">下载地址</a></p>
+<p>GitHub官方客户端. 我自己也在用. 它的缺点是<strong>只能管理托管在GitHub的git仓库</strong>. (不过我们仓库都在GitHub所以没影响) 它很有用的一点是<strong>能在一个面板上看到你每个仓库的更新情况</strong>. (我经常忘记哪个仓库有没有上传)</p>
+<p>❗️ 要打开软件等它检测一会才会显示出来状态.</p>
+<p><img src="Git%E6%9D%82%E8%AE%B0/image-20200227141011525.png" alt="image-20200227141011525"></p>
+<blockquote>
+<p>仓库名字后有蓝色点表示有本地更改未提交, 有向上箭头表示有本地提交未上传, 有向下箭头表示有远程端有比本地更新的提交需要拉取.</p>
+</blockquote>
+<p>🔗 <a href="https://help.github.com/cn/desktop/contributing-to-projects" target="_blank" rel="noopener">GitHub Desktop使用帮助</a></p>
+<h4 id="Tower"><a href="#Tower" class="headerlink" title="Tower"></a>Tower</h4><p>🔗 <a href="https://www.git-tower.com/" target="_blank" rel="noopener">下载地址</a></p>
+<p>这个软件看起来比GitHub Desktop功能强大些, 并且不像后者只能管理托管在GitHub的git仓库. 这个软件只能免费试用, 但申请了这个<a href="https://education.github.com/pack" target="_blank" rel="noopener">GitHub学生大礼包</a>的话可以免费用一年.</p>
+<h4 id="开发工具集成的git管理"><a href="#开发工具集成的git管理" class="headerlink" title="开发工具集成的git管理"></a>开发工具集成的git管理</h4><p>🌟 实际上这是我最常使用的方式</p>
+<p><img src="Git%E6%9D%82%E8%AE%B0/image-202002271546.png" alt="img"></p>
+<p>这是装了<strong>GitLens</strong>插件的<strong>Visual Studio Code</strong>的源代码控制面板和编辑窗口截图. 可以看到左下角显示了当前分支及同步状态, 编辑窗口里有颜色条标示文件更改情况, 右上角有可以对文件进行的一些git操作, etc…</p>
+<h3 id="登陆git"><a href="#登陆git" class="headerlink" title="登陆git"></a>登陆git</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name "Your Name"</span><br><span class="line">git config --global user.email "email@example.com"</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="登陆git"><a href="#登陆git" class="headerlink" title="登陆git"></a>登陆git</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name "Your Name"</span><br><span class="line">git config --global user.email "email@example.com"</span><br></pre></td></tr></tbody></table></figure>
-
-<p>⚠ 每台设备要使用不同的<code>user.name</code>, 这样才能区分它们. 为了方便记忆可以统一使用<strong>昵称-机器型号</strong>
-的命名方式.</p>
-<p>值得一提的是git的配置文件分三级: 系统级(所有用户的), 全局级(当前用户的), 仓库级.
-在配置时分别使用<code>--system</code>, <code>--global</code>, <code>--local</code>参数来访问.如果想直接进入配置文件而不是一个参数一个参数地设置可以使用:</p>
+<p>⚠ 每台设备要使用不同的<code>user.name</code>, 这样才能区分它们. 为了方便记忆可以统一使用<strong>昵称-设备型号</strong>的命名方式.</p>
+<p>值得一提的是git的配置文件分三级: 系统级(所有用户的), 全局级(当前用户的), 仓库级. 在配置时分别使用<code>--system</code>, <code>--global</code>, <code>--local</code>参数来访问. 如果想直接进入配置文件而不是一个参数一个参数地设置可以使用:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config -e</span><br></pre></td></tr></tbody></table></figure>
 
 <p>要注意默认情况下<code>git config -e</code>访问<strong>仓库级配置文件</strong>.</p>
-<h2 id="有关SSH"><a href="#有关SSH" class="headerlink" title="有关SSH"></a>有关SSH</h2><p>用ssh方式登录git的话只是生成秘钥和在远程端添加秘钥麻烦一次, 后面就可以免密码, 而用http登录的话每次push都需要输入密码, 略微麻烦.</p>
-<h3 id="获取SSH-Key"><a href="#获取SSH-Key" class="headerlink" title="获取SSH Key"></a>获取SSH Key</h3><p>首先查看有没有<strong>~/.ssh</strong>这个文件夹以及文件夹下有没有<code>id_rsa</code>和<code>id_rsa.pub</code>两个文件.
+<h3 id="http连接与ssh连接"><a href="#http连接与ssh连接" class="headerlink" title="http连接与ssh连接"></a>http连接与ssh连接</h3><p>通常有http, ssh, svn三种方式连接git远程仓库, 常见的是使用http或者ssh.</p>
+<p>我建议使用http连接, 一方面http连接无论从远程端下载还是上传到远程端都会比用ssh<strong>快许多</strong> (原因我不清楚, 但确实是这样), 另方面对于普通用户来说http连接<strong>麻烦事少一些</strong>. 这里的麻烦事指的是如果想通过ssh连接远程端那么需要在本地生成ssh秘钥对并把生成的公钥添加到github账户. 在多个设备上使用了许久ssh连接的我已经厌烦它了🤷‍♂</p>
+<p>💡 也许有人说通过http连接每次push都需要输入账号密码, 但其实可以设置git记住账号密码:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></tbody></table></figure>
+
+<p>另外在github的<a href="https://help.github.com/en/github/using-git/which-remote-url-should-i-use" target="_blank" rel="noopener">在克隆仓库时使用什么协议</a>中也是推荐使用http协议😏</p>
+<h4 id="有关SSH"><a href="#有关SSH" class="headerlink" title="有关SSH"></a>有关SSH</h4><h5 id="获取SSH-Key"><a href="#获取SSH-Key" class="headerlink" title="获取SSH Key"></a>获取SSH Key</h5><p>首先查看有没有<strong>~/.ssh</strong>这个文件夹以及文件夹下有没有类似<code>id_rsa</code>和<code>id_rsa.pub</code>的文件.
 如果有, 那就不用生成了.</p>
 <p>这两个就是SSH Key的秘钥对，<code>id_rsa</code>是私钥，不能泄露出去，<code>id_rsa.pub</code>是公钥可以放心地告诉任何人. 比如加入GitHub的SSH Key.</p>
-<h3 id="生成key"><a href="#生成key" class="headerlink" title="生成key"></a>生成key</h3><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span></span><br></pre></td></tr></tbody></table></figure>
+<h6 id="生成key"><a href="#生成key" class="headerlink" title="生成key"></a>生成key</h6><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span></span><br></pre></td></tr></tbody></table></figure>
 
 <p>如果没有特别需求(比如甚至想设置密码), 直接连敲三次回车.</p>
 <p>💡 其实在输入命令后第一个选项是指定生成的秘钥文件名, 可以指定为<code>id_rsa_github</code>,
 <code>id_rsa_gitee</code>这样, 加上远程端的名字, 这样有多个远程端时也不会混乱.</p>
-<p>有趣的是我发现同一台机器, 如果仍是敲三次回车生成的Key每次是一样的.</p>
-<h3 id="同时上传到多个远程端"><a href="#同时上传到多个远程端" class="headerlink" title="同时上传到多个远程端"></a>同时上传到多个远程端</h3><p>新建<code>~/.ssh/config</code>, 如果远程端是github和gitee, github和gitee的ssh key是像上面说的这样命名的, 那么内容如下:</p>
+<h5 id="同时上传到多个远程端"><a href="#同时上传到多个远程端" class="headerlink" title="同时上传到多个远程端"></a>同时上传到多个远程端</h5><p>新建<code>~/.ssh/config</code>, 如果远程端是github和gitee, github和gitee的ssh key是像上面说的这样命名的, 那么内容如下:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> github</span></span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_github</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> gitee</span></span><br><span class="line">Host gitee.com</span><br><span class="line">HostName gitee.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_gitee</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="下载一个repository"><a href="#下载一个repository" class="headerlink" title="下载一个repository"></a>下载一个repository</h2><p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 有http和ssh两种链接, 推荐使用ssh, 有时http形式并不被支持, 比如hexo的git
-上传功能.</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone [url]</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><h4 id="克隆一个repository"><a href="#克隆一个repository" class="headerlink" title="克隆一个repository"></a>克隆一个repository</h4><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone [url]</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="下载特定分支"><a href="#下载特定分支" class="headerlink" title="下载特定分支"></a>下载特定分支</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone -b [branch] [url]</span><br></pre></td></tr></tbody></table></figure>
+<p>🔗 <a href="https://help.github.com/cn/github/creating-cloning-and-archiving-repositories/cloning-a-repository" target="_blank" rel="noopener">GitHub中文帮助文档-如何从GitHub克隆仓库</a></p>
+<h5 id="克隆特定分支"><a href="#克隆特定分支" class="headerlink" title="克隆特定分支"></a>克隆特定分支</h5><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone -b [branch] [url]</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></tbody></table></figure>
+<p>💡 <strong>克隆与下载的区别</strong>: 如果下载一个仓库的压缩包, 你获得的只是这个仓库<strong>当前版本</strong>的代码, 而如果克隆一个仓库则首先得到的是记录了该仓库所有版本的版本库, 然后git从中释放出了当前版本. 这个版本库就是仓库根目录的<code>.git</code>文件夹. 因此经常出现到开发后期.git文件夹大小比当前版本的代码大很多的情况.</p>
+<h5 id="让克隆更快"><a href="#让克隆更快" class="headerlink" title="让克隆更快"></a>让克隆更快</h5><h6 id="利用代理"><a href="#利用代理" class="headerlink" title="利用代理"></a>利用代理</h6><p>很多人的代码托管在GitHub (这意味着服务器在美国), 因此可能下载/上传速度很慢. 如果你知道你的翻墙工具的代理端口那么你可以设置git使用这个端口, 速度会好很多. (如果你的翻墙工具是直接全局代理了所有流量那么不需要这一步)</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 比如我知道自己VPN的http代理端口为: 127.0.0.1:1234,</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> socks代理端口为: 127.0.0.1:5678</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置git使用http代理端口</span></span><br><span class="line">git config --global http.proxy http://127.0.0.1:1234</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置git使用socks代理端口</span></span><br><span class="line">git config --global http.proxy socks5://127.0.0.1:5678</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取消git使用代理</span></span><br><span class="line">git config --global --unset http.proxy</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="暂存所有更改"><a href="#暂存所有更改" class="headerlink" title="暂存所有更改"></a>暂存所有更改</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></tbody></table></figure>
+<h6 id="利用gitee"><a href="#利用gitee" class="headerlink" title="利用gitee"></a>利用gitee</h6><p>如果你没有翻墙工具或者你的翻墙工具失效了😏, 那么还有一种曲折一点的方式可以快速克隆下来.</p>
+<p>正如上面所说, 之所以从github克隆仓库速度很慢是因为它的服务器离我们太远了, 因此如果你习惯了直连github克隆仓库的破速度再体验从国内服务器克隆仓库的MB级速度你一定会感动得泪流满面👍</p>
+<p>而我要说的就是利用一个国内的很棒的代码托管平台<strong>gitee</strong>提供的一个很贴心的功能: <strong>从github/gitlab导入仓库</strong>! (推荐大家也体验一下gitee, 它还提供了许多很贴心的github所没有的小功能)</p>
+<p>利用gitee可以从github导入仓库, 我们可以轻松将一个仓库从遥不可及的服务器移到国内服务器来🎉 gitee导入仓库的时间可以忽略不计, 然后与从github克隆仓库一样的流程急速将仓库克隆到本地! 但一般网烂到这种程度我们还选择克隆仓库而不是下载压缩包是因为要加入开发, 因此从gitee克隆下来仓库后需要<strong>更改远程端的地址为github的仓库地址</strong>.</p>
+<p>打开仓库根目录下<code>.git/config</code>文件, 你会看到类似下面这样的字段:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[remote "origin"]</span><br><span class="line">    url = https://gitee.com/someone/something.git</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit</span><br></pre></td></tr></tbody></table></figure>
+<p>你只需要把url中的<code>gitee</code>改为<code>github</code>就可以了😏神不神奇</p>
+<h4 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h4><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="暂存所有更改"><a href="#暂存所有更改" class="headerlink" title="暂存所有更改"></a>暂存所有更改</h4><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></tbody></table></figure>
 
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 个人仓库的话提交之后一定不要忘记上传! 我在格式化电脑前忘记将本地commit
-上传, 失去了好几篇博文啊<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8">😢</span> (但应该一般没有我这么蠢的)</p>
-<h2 id="git仓库瘦身"><a href="#git仓库瘦身" class="headerlink" title="git仓库瘦身"></a>git仓库瘦身</h2><p>我也终于遇到了git仓库被搞太大需要瘦身的情况了.</p>
+<h4 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h4><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h4><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></tbody></table></figure>
+
+<p>⚠️ 个人仓库的话提交之后一定不要忘记上传! 我在格式化电脑前忘记将本地commit上传, 失去了好几篇博文啊😢 (但应该一般没有我这么蠢的)</p>
+<p>我通常将以上暂存, 提交, 推送三步合称git三连😏</p>
+<h3 id="git仓库瘦身"><a href="#git仓库瘦身" class="headerlink" title="git仓库瘦身"></a>git仓库瘦身</h3><p>我也终于遇到了git仓库被搞太大需要瘦身的情况了.</p>
 <blockquote>
 <p><a href="http://rtyley.github.io/bfg-repo-cleaner/" target="_blank" rel="noopener">BFG</a> 是为将像大文件或者密码这些不想要的数据从 Git 仓库中删除而专门设计的，所以它有一一个简单的标志用来删除那些大的历史文件（不在当前的提交里面）：<code>--strip-blobs-bigger-than</code></p>
 </blockquote>
@@ -508,7 +538,14 @@
 <ol start="4">
 <li>当你觉得删得差不多就可以推送了. ❗️ 这样会改变远程端所有ref.</li>
 </ol>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></tbody></table></figure><script>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><p>我认为github现在已经远不止是托管代码 (也就是单纯把代码放在他的服务器) 那么简单的, 它已经建立起了一个<strong>远程协作生态</strong>.</p>
+<p>关于github入门我很推荐他们的官方文档, 大部分是有中文版的, 比如:</p>
+<p>🔗 <a href="https://help.github.com/cn/github/getting-started-with-github/github-glossary" target="_blank" rel="noopener">GitHub术语表</a></p>
+<p>🔗 <a href="https://github.github.com/training-kit/downloads/zh_CN/github-git-cheat-sheet/" target="_blank" rel="noopener">GitHub官方出品git使用cheat sheet</a></p>
+<p>🔗 <a href="https://help.github.com/cn/github/getting-started-with-github/signing-up-for-github" target="_blank" rel="noopener">如何注册GitHub账号</a> (在这个页面左侧你可以看到还有辣么多页面值得你去看👍)</p>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -633,7 +670,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#登陆git"><span class="nav-number">1.</span> <span class="nav-text">登陆git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有关SSH"><span class="nav-number">2.</span> <span class="nav-text">有关SSH</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取SSH-Key"><span class="nav-number">2.1.</span> <span class="nav-text">获取SSH Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成key"><span class="nav-number">2.2.</span> <span class="nav-text">生成key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同时上传到多个远程端"><span class="nav-number">2.3.</span> <span class="nav-text">同时上传到多个远程端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载一个repository"><span class="nav-number">3.</span> <span class="nav-text">下载一个repository</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载特定分支"><span class="nav-number">3.1.</span> <span class="nav-text">下载特定分支</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看状态"><span class="nav-number">4.</span> <span class="nav-text">查看状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#暂存所有更改"><span class="nav-number">5.</span> <span class="nav-text">暂存所有更改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交"><span class="nav-number">6.</span> <span class="nav-text">提交</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上传"><span class="nav-number">7.</span> <span class="nav-text">上传</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git仓库瘦身"><span class="nav-number">8.</span> <span class="nav-text">git仓库瘦身</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git"><span class="nav-number">1.</span> <span class="nav-text">git</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图形化软件"><span class="nav-number">1.1.</span> <span class="nav-text">图形化软件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GitHub-Desktop"><span class="nav-number">1.1.1.</span> <span class="nav-text">GitHub Desktop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tower"><span class="nav-number">1.1.2.</span> <span class="nav-text">Tower</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开发工具集成的git管理"><span class="nav-number">1.1.3.</span> <span class="nav-text">开发工具集成的git管理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#登陆git"><span class="nav-number">1.2.</span> <span class="nav-text">登陆git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http连接与ssh连接"><span class="nav-number">1.3.</span> <span class="nav-text">http连接与ssh连接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#有关SSH"><span class="nav-number">1.3.1.</span> <span class="nav-text">有关SSH</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#获取SSH-Key"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">获取SSH Key</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#生成key"><span class="nav-number">1.3.1.1.1.</span> <span class="nav-text">生成key</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#同时上传到多个远程端"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">同时上传到多个远程端</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令"><span class="nav-number">1.4.</span> <span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#克隆一个repository"><span class="nav-number">1.4.1.</span> <span class="nav-text">克隆一个repository</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#克隆特定分支"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">克隆特定分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#让克隆更快"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">让克隆更快</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#利用代理"><span class="nav-number">1.4.1.2.1.</span> <span class="nav-text">利用代理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#利用gitee"><span class="nav-number">1.4.1.2.2.</span> <span class="nav-text">利用gitee</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看状态"><span class="nav-number">1.4.2.</span> <span class="nav-text">查看状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#暂存所有更改"><span class="nav-number">1.4.3.</span> <span class="nav-text">暂存所有更改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提交"><span class="nav-number">1.4.4.</span> <span class="nav-text">提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推送"><span class="nav-number">1.4.5.</span> <span class="nav-text">推送</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git仓库瘦身"><span class="nav-number">1.5.</span> <span class="nav-text">git仓库瘦身</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub"><span class="nav-number">2.</span> <span class="nav-text">GitHub</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -664,7 +701,7 @@
             <a href="/zh-CN/categories/">
           
         
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -768,7 +805,7 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">86k</span>
+    <span title="站点总字数">89k</span>
 </div>
 
         
