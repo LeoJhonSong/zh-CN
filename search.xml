@@ -3233,8 +3233,8 @@ Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可�
           });
       </script>]]></content>
       <categories>
-        <category>技巧</category>
         <category>配置</category>
+        <category>技巧</category>
       </categories>
   </entry>
   <entry>
@@ -3871,8 +3871,8 @@ VSCode之后发现这个选项没被勾上.</p>
           });
       </script>]]></content>
       <categories>
-        <category>技巧</category>
         <category>配置</category>
+        <category>技巧</category>
       </categories>
   </entry>
   <entry>
@@ -4193,29 +4193,29 @@ VSCode之后发现这个选项没被勾上.</p>
 <li><a href="#准备工作">准备工作</a><ol>
 <li><a href="#编译器">编译器</a><ol>
 <li><a href="#安装">安装</a></li>
-<li><a href="#添加至path">添加至Path</a></li>
+<li><a href="#添加至Path">添加至Path</a></li>
 <li><a href="#测试">测试</a></li>
 </ol>
 </li>
-<li><a href="#vscode插件">VSCode插件</a></li>
+<li><a href="#VSCode插件">VSCode插件</a></li>
 </ol>
 </li>
 <li><a href="#配置文件">配置文件</a><ol>
-<li><a href="#配置intellisense">配置IntelliSense</a></li>
+<li><a href="#配置IntelliSense">配置IntelliSense</a></li>
 <li><a href="#配置编译配置文件">配置编译配置文件</a><ol>
 <li><a href="#合起来">合起来!</a></li>
 </ol>
 </li>
 <li><a href="#配置调试配置文件">配置调试配置文件</a><ol>
 <li><a href="#调试对象">调试对象</a></li>
-<li><a href="#debugger路径及选项">Debugger路径及选项</a></li>
+<li><a href="#Debugger路径及选项">Debugger路径及选项</a></li>
 <li><a href="#启动前编译">启动前编译</a></li>
 <li><a href="#合起来-1">合起来!</a></li>
 </ol>
 </li>
 </ol>
 </li>
-<li><a href="#enjoy">Enjoy</a></li>
+<li><a href="#Enjoy">Enjoy</a></li>
 </ol>
 <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>VSCode本身只是一个编辑器, 也就是一个记事本, 是不包含编译器的. 即便我们安装了cpptools
 这个扩展, 他也并没有为我们安装编译器 (如果你想看看cpptools这个扩展里都有什么可以前往自己电脑的 <strong>%HOMEPATH%\.vscode\extensions</strong>, 找到<strong>ms-vscode.cpptools</strong> 去看看)</p>
@@ -4363,10 +4363,10 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
 </div>
 
 <hr>
-<p><strong>大家好！这里是我的第一篇博文！</strong>我猜你会看到这里的唯一原因是你太闲了<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f609.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f609.png?v8">😉</span></p><div><sub><sub><sup><sup>也可能是除了这个我啥也没写</sup></sup></sub></sub></div><p></p>
+<p><strong>大家好！这里是我的第一篇博文！</strong>我猜你会看到这里的唯一原因是你太闲了😉</p><div><sub><sub><sup><sup>也可能是除了这个我啥也没写</sup></sup></sub></sub></div><p></p>
 <hr>
 <p>OK，我终于独立于那些恶心的C*DN等中文博客网站建立了自己可爱的博客。完美。</p>
-<p>我建立博客<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/0031-20e3.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/0031-20e3.png?v8">1⃣</span>是为了<strong>记录我的学习心得</strong>（我发现在博客立Flag能强迫我继续学下去不然我可能就摸了。）也可能看心情写点随笔。在当今这个知识碎片满天飞的时代这真的是一种很好的整理方式。另一个很重要的原因是<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/0032-20e3.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/0032-20e3.png?v8">2⃣</span>我想安利一些我觉得很nb的东西。安利使我快乐。</p>
+<p>我建立博客1️⃣是为了<strong>记录我的学习心得</strong>（我发现在博客立Flag能强迫我继续学下去不然我可能就摸了。）也可能看心情写点随笔。在当今这个知识碎片满天飞的时代这真的是一种很好的整理方式。另一个很重要的原因是2️⃣我想安利一些我觉得很nb的东西。安利使我快乐。</p>
 <p>希望日后的我能谨记初衷。</p>
 <script>
         document.querySelectorAll('.github-emoji')
