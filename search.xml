@@ -590,8 +590,8 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
           });
       </script>]]></content>
       <categories>
-        <category>Linux</category>
         <category>技巧</category>
+        <category>Linux</category>
       </categories>
   </entry>
   <entry>
@@ -1036,8 +1036,8 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
           });
       </script>]]></content>
       <categories>
-        <category>Linux</category>
         <category>技巧</category>
+        <category>Linux</category>
         <category>调试</category>
       </categories>
   </entry>
@@ -1779,8 +1779,8 @@ reverse flag can be set to request the result in descending order.</p>
           });
       </script>]]></content>
       <categories>
-        <category>语言</category>
         <category>技巧</category>
+        <category>语言</category>
         <category>Python</category>
       </categories>
   </entry>
@@ -1833,6 +1833,37 @@ reverse flag can be set to request the result in descending order.</p>
       </script>]]></content>
       <categories>
         <category>杂记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>机器人案例学习</title>
+    <url>/zh-CN/2019/06/10/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p>正如我在 <a href="https://leojhonsong.github.io/zh-CN/about/">about</a> 中提到的, <strong>我立志为软体机器人领域贡献一份力</strong>, 那就先从积累开始吧. 在此记录我觉得很精妙的机器人,
+或可以用于机器人的”东西”, 参考学习💪</p>
+<a id="more"></a>
+
+<p>TODO</p>
+<h1 id="Cassie家族"><a href="#Cassie家族" class="headerlink" title="Cassie家族"></a>Cassie家族</h1><h1 id="BDC家族"><a href="#BDC家族" class="headerlink" title="BDC家族"></a>BDC家族</h1><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Robotics</category>
       </categories>
   </entry>
   <entry>
@@ -2367,8 +2398,8 @@ Linux开发xmc4500需要什么工具以及编译方式,
           });
       </script>]]></content>
       <categories>
-        <category>控制</category>
         <category>算法</category>
+        <category>控制</category>
       </categories>
   </entry>
   <entry>
@@ -2395,8 +2426,8 @@ Linux开发xmc4500需要什么工具以及编译方式,
           });
       </script>]]></content>
       <categories>
-        <category>滤波</category>
         <category>算法</category>
+        <category>滤波</category>
       </categories>
   </entry>
   <entry>
@@ -3193,8 +3224,8 @@ Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可�
           });
       </script>]]></content>
       <categories>
-        <category>配置</category>
         <category>技巧</category>
+        <category>配置</category>
       </categories>
   </entry>
   <entry>
@@ -3831,8 +3862,8 @@ VSCode之后发现这个选项没被勾上.</p>
           });
       </script>]]></content>
       <categories>
-        <category>配置</category>
         <category>技巧</category>
+        <category>配置</category>
       </categories>
   </entry>
   <entry>
@@ -3864,8 +3895,8 @@ VSCode之后发现这个选项没被勾上.</p>
           });
       </script>]]></content>
       <categories>
-        <category>滤波</category>
         <category>算法</category>
+        <category>滤波</category>
       </categories>
   </entry>
   <entry>
