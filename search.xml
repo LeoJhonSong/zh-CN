@@ -35,6 +35,187 @@
       </script>]]></content>
   </entry>
   <entry>
+    <title>配置VSCode中调试C/C++环境</title>
+    <url>/zh-CN/2018/12/30/%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<div align="right">Language:
+<a href="/2018/12/30/Configure-C-C-environment-in-VSCode"><kbd>English</kbd></a>
+<a href="/zh-CN/2018/12/30/配置VSCode中调试C-C-环境"><kbd>中文</kbd></a>
+</div>
+
+<p>这里是为我在VSCode插件市场发布的
+<a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.ccpp-extension-pack" target="_blank" rel="noopener">C/C++扩展包</a>
+写的Windows下VSCode中C/C++配置教程<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8">🎉</span></p>
+<a id="more"></a>
+
+<p>实际上在<a href="https://code.visualstudio.com/docs/languages/cpp" target="_blank" rel="noopener">VSCode的说明文档中C++部分</a>
+对如何配置环境有十分详细的说明, 本文仅是对其的部分整理和解读<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span> 因此如果你的能力足够看官方文档当然是更好的选择<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8">👍</span></p>
+<p>P.S.其实只要右键翻译成中文我觉得不难懂…</p>
+<ol>
+<li><a href="#准备工作">准备工作</a><ol>
+<li><a href="#编译器">编译器</a><ol>
+<li><a href="#安装">安装</a></li>
+<li><a href="#添加至Path">添加至Path</a></li>
+<li><a href="#测试">测试</a></li>
+</ol>
+</li>
+<li><a href="#VSCode插件">VSCode插件</a></li>
+</ol>
+</li>
+<li><a href="#配置文件">配置文件</a><ol>
+<li><a href="#配置IntelliSense">配置IntelliSense</a></li>
+<li><a href="#配置编译配置文件">配置编译配置文件</a><ol>
+<li><a href="#合起来">合起来!</a></li>
+</ol>
+</li>
+<li><a href="#配置调试配置文件">配置调试配置文件</a><ol>
+<li><a href="#调试对象">调试对象</a></li>
+<li><a href="#Debugger路径及选项">Debugger路径及选项</a></li>
+<li><a href="#启动前编译">启动前编译</a></li>
+<li><a href="#合起来-1">合起来!</a></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a href="#Enjoy">Enjoy</a></li>
+</ol>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>VSCode本身只是一个编辑器, 也就是一个记事本, 是不包含编译器的. 即便我们安装了cpptools
+这个扩展, 他也并没有为我们安装编译器 (如果你想看看cpptools这个扩展里都有什么可以前往自己电脑的 <strong>%HOMEPATH%\.vscode\extensions</strong>, 找到<strong>ms-vscode.cpptools</strong> 去看看)</p>
+<h2 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h2><p>因此第一步我们需要安装编译器. 编译器不止一家, 在VSCode官方文档中推荐的是:</p>
+<ul>
+<li><p>Windows平台: <a href="https://sourceforge.net/projects/mingw-w64/" target="_blank" rel="noopener">MinGW-w64</a></p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 要注意另有一个叫MinGW的东西, 虽然功能差不多, 但那个已经很久没更新了,
+安装没MinGW-w64容易, 还不是官宣, 因此不推荐. 后面所说的MinGW实际指的是MinGW-w64, 我只是懒得打那么多字了</p>
+</li>
+<li><p>macOS: <a href="http://releases.llvm.org/download.html" target="_blank" rel="noopener">clang</a></p>
+</li>
+<li><p>Linux: <a href="https://gcc.gnu.org/" target="_blank" rel="noopener">gcc</a></p>
+</li>
+</ul>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8">❗</span>因为我没钱买Mac, 暂时也没需求在Linux配置VSCode, 本文仅针对<strong>Windows</strong>
+平台, 当然也可以作为其他平台的参考. 甚至<a href="https://pimylifeup.com/raspberry-pi-visual-studio-code/" target="_blank" rel="noopener">有人在树莓派安装VSCode</a>.</p>
+<p>P.S. 实际上编译器的选择并不是个令人头疼的事, 我们随时可以轻易的更换VSCode使用的编译器</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>将MinGW-w64下载下来之后点击安装, 以下几点要注意, 其余选项默认即可:</p>
+<ul>
+<li><p>安装向导第一页有一项是选择<code>Architecture</code> (即电脑的架构, 此处i386代指32位电脑,
+x86_64代指64位电脑), 此处选择<strong>x86_64</strong>. (当然如果你的电脑竟然是32位的话不用变)</p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> 如何查看自己电脑是32位还是64位?</p>
+<p>Windows10的话, 前往 <strong>设置</strong> &gt; <strong>系统</strong> &gt; <strong>关于</strong> &gt; <strong>设备规格</strong> &gt; <strong>系统类型</strong></p>
+<p>其他Windows的话上网搜索一下好啦 <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f609.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f609.png?v8">😉</span></p>
+</li>
+<li><p>安装在哪里都可以, 但一定要是你找得到的地方, 因为安装完成后还要手动将MinGW加入<strong>Path</strong>.</p>
+</li>
+</ul>
+<h3 id="添加至Path"><a href="#添加至Path" class="headerlink" title="添加至Path"></a>添加至Path</h3><p>安装完毕后我们需要将MinGW添加至<strong>Path</strong>, 这样我们通过命令行就可以调用它啦 (VSCode编译/调试
+C/C++程序实际上就是在内置命令行中调用MinGW)</p>
+<p>要将什么路径添加到<strong>Path</strong>呢? 因为添加到Path的路径是要调用的程序的exe文件所在的文件夹比如我将MinGW安装到了 <strong>D:\Softwares\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0</strong>
+这个文件夹下, 那么我将
+<strong>D:\Softwares\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin</strong>加入环境变量.
+你会看到我们将要调用的<code>gcc</code>和<code>gdb</code>两个程序正在其中.</p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8">🔗</span> 关于如何添加系统变量, <a href="https://jingyan.baidu.com/article/ca41422f17107a1eaf99ed64.html" target="_blank" rel="noopener">这篇百度知道</a>应该就够了</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>这之后! 我们测试一下, 在命令行输入<code>gcc</code></p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> 你看到的应当是:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">C:\Users\LeoJh&gt;gcc</span><br><span class="line">gcc: fatal error: no input files</span><br><span class="line">compilation terminated.</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这是说gcc被成功唤起,我们已经成功完成编译器的配置了, 但你没告诉它要编译的文件路径, 所以他就报错了.</p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8">❌</span>而如果你看到的是:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">C:\Users\LeoJh&gt;gcc</span><br><span class="line">'gcc' 不是内部或外部命令，也不是可运行的程序</span><br><span class="line">或批处理文件。</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这是说无法从命令行调用gcc. 一种情况是没有把正确的路径加入<strong>Path</strong>, 另一种情况是该换电脑了
+<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8">😁</span></p>
+<h2 id="VSCode插件"><a href="#VSCode插件" class="headerlink" title="VSCode插件"></a>VSCode插件</h2><p>搞定了编译器我们就离完成不远了! 实际上你现在已经可以开始开发C/C++了, 只不过是硬核一些.
+不信你可以搓一段hello world放进一个.c文件, 比如<strong>test.c</strong>, 在该文件所在文件夹空白处按住<code>shift</code>同时按右键, 在此打开powershell, 输入<code>gcc test.c</code>, 然后你就会发现文件夹里多了一个<strong>a.exe</strong>. 这便是编译好的可执行文件了!</p>
+<p>但这样无论是编辑还是编译还是调试体验都太差了, 于是我们安装一些好用的扩展提高效率.</p>
+<p>因为我并不常在VSCode中编写C/C++, 因此<a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.ccpp-extension-pack" target="_blank" rel="noopener">我的扩展包</a>
+中并没有几个插件. 但我认为这几个很不错的<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<p>当然你看不上我的扩展包也没事<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8">😢</span>只需要安装了<a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools" target="_blank" rel="noopener">官方C/C++支持扩展</a>
+就能体验到很强大的支持了.</p>
+<h1 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h1><p>在有些教程中, 要在VSCode中开发C/C++需要配置<code>c_cpp_properties.json</code>, <code>tasks.json</code>,
+<code>launch.json</code>三样, 但现在不是这样了! 🎉 现在<code>c_cpp_properties.json</code>已经完全被
+<code>settings.json</code>取代了, 也就是说在设置中就可以进行原来在<code>c_cpp_properties.json</code>中进行的配置! 这样的好处是我们可以针对不同的工作区进行不同的设置等. 另外, 稍后你也会看到随着VSC的更新<code>tasks.json</code>和<code>launch.json</code>的生成也变得十分简单!</p>
+<p>🔗 关于设置取代了<code>c_cpp_properties.json</code>的说明参见<a href="https://github.com/Microsoft/vscode-cpptools/blob/master/Documentation/LanguageServer/Customizing%20Default%20Settings.md" target="_blank" rel="noopener">这里</a>,
+另外给出对原本可以在<code>c_cpp_properties.json</code>中配置的内容的描述的<a href="https://github.com/Microsoft/vscode-cpptools/blob/master/Documentation/LanguageServer/c_cpp_properties.json.md" target="_blank" rel="noopener">链接</a></p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 以下配置文件内容都以我的配置文件为例</p>
+<h2 id="配置IntelliSense"><a href="#配置IntelliSense" class="headerlink" title="配置IntelliSense"></a>配置IntelliSense</h2><p>正如前面所说, 我们不需要VSCode就可以编译/调试C/C++, 因此能够提供智能补全功能的
+IntelliSence是<strong>cpptools</strong>这个插件很重要的一部分, 通过在<code>settings.json</code> (原本是
+<code>c_cpp_properties.json</code>)中进行设置来设定IntelliSense的模式. 主要设置以下几个:</p>
+<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"C_Cpp.autocomplete": "Default",</span><br><span class="line">"C_Cpp.clang_format_style": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Allman, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4 }",</span><br><span class="line">"C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Allman, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4 }",</span><br><span class="line">"C_Cpp.default.compilerPath": "D:\\Softwares\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe",</span><br><span class="line">"C_Cpp.default.cStandard": "c99",</span><br><span class="line">"C_Cpp.default.cppStandard": "c++11",</span><br><span class="line">"C_Cpp.default.intelliSenseMode": "gcc-x64",</span><br><span class="line">"C_Cpp.intelliSenseEngine": "Default",</span><br><span class="line">"C_Cpp.errorSquiggles": "Enabled",</span><br></pre></td></tr></tbody></table></figure>
+
+<p>💡 其中<strong>C_Cpp.clang_format_style</strong>, <strong>C_Cpp.clang_format_fallbackStyle</strong>是VSC格式化C/C++代码的风格.
+上面的配置是近似于<strong>Visual Studio</strong>格式化C/C++代码的风格.
+我偏爱VS风格, 而如果你喜欢Google风格, 可以用下面这个值:</p>
+<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"C_Cpp.clang_format_style": "{BasedOnStyleStyle: Google, IndentWidth: 4}",</span><br><span class="line">"C_Cpp.clang_format_fallbackStyle": "{BasedOnStyleStyle: Google, IndentWidth: 4}",</span><br></pre></td></tr></tbody></table></figure>
+
+<p>随着VSC的更新, VSC提供了一些<code>tasks.json</code>和<code>launch.json</code>的模板, 这让生成这两个文件变得十分容易!
+下面这个gif👇 是一个生成<code>tasks.json</code>和<code>launch.json</code>的示例.</p>
+<p><img src="%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/example.gif" alt=""></p>
+<p>💡 这个gif是在Linux系统 (Ubuntu) 下录制的.</p>
+<p>下面则是对这两个文件内容的一些解释.</p>
+<h2 id="配置编译配置文件"><a href="#配置编译配置文件" class="headerlink" title="配置编译配置文件"></a>配置编译配置文件</h2><p>然后配置编译用的<code>tasks.json</code>.</p>
+<p>✔️ 这个文件和之后配置的<code>launch.json</code>都是针对特定程序的,
+如何生成这两个文件请参见VSCode官方文档. 但你可以将满意的<code>tasks.json</code>和<code>launch.json</code>放在一个包含许多工程的目录中, 那么这些工程都将使用这两个配置文件. 如果你想给这之中某个工程配置不同的配置你可以在这个工程的根目录另外生成<code>tasks.json</code>和<code>launch.json</code>, 会覆盖上一层的配置.</p>
+<p>当你跟随VSCode官方文档创建了一个 <code>tasks.json</code> 之后, 将下面这个任务添加到tasks的列表,
+至于自带的label为 <strong>echo</strong> 的任务你可以删掉或者不管他.</p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">   <span class="attr">"label"</span>: <span class="string">"Compile"</span>,</span><br><span class="line">   <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">   <span class="attr">"command"</span>: <span class="string">"gcc"</span>,</span><br><span class="line">   <span class="attr">"args"</span>: [</span><br><span class="line">         <span class="string">"${file}"</span>,</span><br><span class="line">         <span class="string">"-o"</span>,</span><br><span class="line">         <span class="string">"${fileDirname}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">         <span class="string">"-g"</span>,</span><br><span class="line">         <span class="string">"-Wall"</span>,</span><br><span class="line">         <span class="string">"-std=c++17"</span></span><br><span class="line">   ],</span><br><span class="line">   <span class="attr">"group"</span>: {</span><br><span class="line">         <span class="attr">"kind"</span>: <span class="string">"build"</span>,</span><br><span class="line">         <span class="attr">"isDefault"</span>: <span class="literal">true</span></span><br><span class="line">   }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>label</code>的意思是给这个任务取名为<strong>Compile</strong>, <a href="#启动前编译">稍后</a>会用到.</p>
+<p>从中我们可以看出实际上当我们调用这个叫<strong>Compile</strong>的task的时候会在shell中输入:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">gcc ${file} -o ${fileDirname}/${fileBasenameNoExtension}.exe -g -Wall -std=c++17</span><br></pre></td></tr></tbody></table></figure>
+
+<p>其中<strong>${file}</strong>等是<a href="https://code.visualstudio.com/docs/editor/variables-reference" target="_blank" rel="noopener">VSCode中定义的变量</a></p>
+<p><code>-o</code>选项使我们可以<a href="http://www.runoob.com/note/28613" target="_blank" rel="noopener">指定生成文件的名字</a></p>
+<p>其他几个选项可以上网查查.</p>
+<p><code>group</code>这里的配置是我们能通过快捷键 <code>Ctrl+shift+B</code>来执行该任务.
+参见<a href="https://code.visualstudio.com/docs/editor/tasks#_typescript-hello-world" target="_blank" rel="noopener">这里</a></p>
+<h3 id="合起来"><a href="#合起来" class="headerlink" title="合起来!"></a>合起来!</h3><p>因此我的 <code>tashs.json</code> 长这样:</p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="comment">// See https://go.microsoft.com/fwlink/?LinkId=733558</span></span><br><span class="line">    <span class="comment">// for the documentation about the tasks.json format</span></span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"2.0.0"</span>,</span><br><span class="line">    <span class="attr">"tasks"</span>: [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"label"</span>: <span class="string">"Compile"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">            <span class="attr">"command"</span>: <span class="string">"gcc"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [</span><br><span class="line">                <span class="string">"${file}"</span>,</span><br><span class="line">                <span class="string">"-o"</span>,</span><br><span class="line">                <span class="string">"${fileDirname}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">                <span class="string">"-g"</span>,</span><br><span class="line">                <span class="string">"-Wall"</span>,</span><br><span class="line">                <span class="string">"-std=c++17"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"group"</span>: {</span><br><span class="line">                <span class="attr">"kind"</span>: <span class="string">"build"</span>,</span><br><span class="line">                <span class="attr">"isDefault"</span>: <span class="literal">true</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="配置调试配置文件"><a href="#配置调试配置文件" class="headerlink" title="配置调试配置文件"></a>配置调试配置文件</h2><p>最后配置的这个是<code>launch.json</code>. 实际上这很简单, 因为VSCode已经提供了很多种模板, 需要改动的非常少.</p>
+<p>通常我们选择 <strong>(gdb) Launch</strong> 这种模板. Launch指的是要调试的程序是在开始调试时才开始运行,
+Attach指的是开始调试时程序已经在运行了 (比如在服务器上的程序)</p>
+<p>需要改动/添加的非常少:</p>
+<h3 id="调试对象"><a href="#调试对象" class="headerlink" title="调试对象"></a>调试对象</h3><figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"program": "${workspaceFolder}/a.exe"</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>program</code>指的是要调试的程序. 如果不特别指出的话大多数编译器默认将编译出来的可执行文件命名为 <strong>a.exe</strong>. 而如果你的<code>tasks.json</code>也像我一样加了
+“-o ${fileDirname}/${fileBasenameNoExtension}.exe” 这个选项的话, 将会生成和源文件同名的可执行文件, 因此要用:</p>
+<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"program": "${workspaceFolder}/${fileBasenameNoExtension}.exe"</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Debugger路径及选项"><a href="#Debugger路径及选项" class="headerlink" title="Debugger路径及选项"></a>Debugger路径及选项</h3><p>如果你在命令行输入 <code>gdb</code> 你会发现首先映入眼帘的是一串废话, 因此我们可以加上<code>-q</code>这个选项来让它少说废话.</p>
+<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"miDebuggerPath": "gdb.exe",</span><br><span class="line">"miDebuggerArgs": "-q"</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="启动前编译"><a href="#启动前编译" class="headerlink" title="启动前编译"></a>启动前编译</h3><p>如果你担心自己忘记每次调试前先编译一遍已更改的代码 (不然你会哭出声响), 可以添加一个
+<strong>preLaunchTask</strong>, 这个task指定为刚配置的那个<strong>Compile</strong>任务.
+这样每次调试前程序都会被先编译一遍<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8">👍</span></p>
+<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"preLaunchTask": "Compile"</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="合起来-1"><a href="#合起来-1" class="headerlink" title="合起来!"></a>合起来!</h3><p>因此我的<code>launch.json</code>长这样:</p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="comment">// Use IntelliSense to learn about possible attributes.</span></span><br><span class="line">    <span class="comment">// Hover to view descriptions of existing attributes.</span></span><br><span class="line">    <span class="comment">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span></span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"0.2.0"</span>,</span><br><span class="line">    <span class="attr">"configurations"</span>: [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"(gdb) Launch"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>,</span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"${workspaceFolder}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [],</span><br><span class="line">            <span class="attr">"stopAtEntry"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"cwd"</span>: <span class="string">"${workspaceFolder}"</span>,</span><br><span class="line">            <span class="attr">"environment"</span>: [],</span><br><span class="line">            <span class="attr">"externalConsole"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"MIMode"</span>: <span class="string">"gdb"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerPath"</span>: <span class="string">"gdb.exe"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerArgs"</span>: <span class="string">"-q"</span>,</span><br><span class="line">            <span class="attr">"setupCommands"</span>: [</span><br><span class="line">                {</span><br><span class="line">                    <span class="attr">"description"</span>: <span class="string">"Enable pretty-printing for gdb"</span>,</span><br><span class="line">                    <span class="attr">"text"</span>: <span class="string">"-enable-pretty-printing"</span>,</span><br><span class="line">                    <span class="attr">"ignoreFailures"</span>: <span class="literal">true</span></span><br><span class="line">                }</span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"preLaunchTask"</span>: <span class="string">"Compile"</span></span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="Enjoy"><a href="#Enjoy" class="headerlink" title="Enjoy"></a>Enjoy</h1><p>这下我们可以轻松愉快的开发C/C++了! 祝各位水平日益提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8">🎉</span></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>配置</category>
+      </categories>
+  </entry>
+  <entry>
     <title>记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历</title>
     <url>/zh-CN/2018/12/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/</url>
     <content><![CDATA[<p><strong>前言</strong> ：博主是个不怎么懂软件的菜鸟，前几天为了学习Soft Robotics企图装一个带SoftRobots插件的SOFA，但我搜了半天也没有较新的安装教程（连下载方式都变了好吗）。虽然有官网的安装教程但我在安装过程中还是出了很多意外。感慨于在身边诸多大佬们的帮助下我这个对软件一窍不通的人才安装成功，我以一个不怎么接触编程的人的角度写下这篇博客帮助也想学习Soft Robotics的各位。(博主为了写这篇教程忍痛把安好的SOFA删了又下了一遍）</p>
@@ -231,187 +412,6 @@
 <blockquote>
 <p>顺带一提，电子科大微软学生俱乐部真是个好地方，里面人才又多，说话又好听</p>
 </blockquote>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>配置</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>配置VSCode中调试C/C++环境</title>
-    <url>/zh-CN/2018/12/30/%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/</url>
-    <content><![CDATA[<div align="right">Language:
-<a href="/2018/12/30/Configure-C-C-environment-in-VSCode"><kbd>English</kbd></a>
-<a href="/zh-CN/2018/12/30/配置VSCode中调试C-C-环境"><kbd>中文</kbd></a>
-</div>
-
-<p>这里是为我在VSCode插件市场发布的
-<a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.ccpp-extension-pack" target="_blank" rel="noopener">C/C++扩展包</a>
-写的Windows下VSCode中C/C++配置教程<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8">🎉</span></p>
-<a id="more"></a>
-
-<p>实际上在<a href="https://code.visualstudio.com/docs/languages/cpp" target="_blank" rel="noopener">VSCode的说明文档中C++部分</a>
-对如何配置环境有十分详细的说明, 本文仅是对其的部分整理和解读<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span> 因此如果你的能力足够看官方文档当然是更好的选择<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8">👍</span></p>
-<p>P.S.其实只要右键翻译成中文我觉得不难懂…</p>
-<ol>
-<li><a href="#准备工作">准备工作</a><ol>
-<li><a href="#编译器">编译器</a><ol>
-<li><a href="#安装">安装</a></li>
-<li><a href="#添加至Path">添加至Path</a></li>
-<li><a href="#测试">测试</a></li>
-</ol>
-</li>
-<li><a href="#VSCode插件">VSCode插件</a></li>
-</ol>
-</li>
-<li><a href="#配置文件">配置文件</a><ol>
-<li><a href="#配置IntelliSense">配置IntelliSense</a></li>
-<li><a href="#配置编译配置文件">配置编译配置文件</a><ol>
-<li><a href="#合起来">合起来!</a></li>
-</ol>
-</li>
-<li><a href="#配置调试配置文件">配置调试配置文件</a><ol>
-<li><a href="#调试对象">调试对象</a></li>
-<li><a href="#Debugger路径及选项">Debugger路径及选项</a></li>
-<li><a href="#启动前编译">启动前编译</a></li>
-<li><a href="#合起来-1">合起来!</a></li>
-</ol>
-</li>
-</ol>
-</li>
-<li><a href="#Enjoy">Enjoy</a></li>
-</ol>
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>VSCode本身只是一个编辑器, 也就是一个记事本, 是不包含编译器的. 即便我们安装了cpptools
-这个扩展, 他也并没有为我们安装编译器 (如果你想看看cpptools这个扩展里都有什么可以前往自己电脑的 <strong>%HOMEPATH%\.vscode\extensions</strong>, 找到<strong>ms-vscode.cpptools</strong> 去看看)</p>
-<h2 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h2><p>因此第一步我们需要安装编译器. 编译器不止一家, 在VSCode官方文档中推荐的是:</p>
-<ul>
-<li><p>Windows平台: <a href="https://sourceforge.net/projects/mingw-w64/" target="_blank" rel="noopener">MinGW-w64</a></p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 要注意另有一个叫MinGW的东西, 虽然功能差不多, 但那个已经很久没更新了,
-安装没MinGW-w64容易, 还不是官宣, 因此不推荐. 后面所说的MinGW实际指的是MinGW-w64, 我只是懒得打那么多字了</p>
-</li>
-<li><p>macOS: <a href="http://releases.llvm.org/download.html" target="_blank" rel="noopener">clang</a></p>
-</li>
-<li><p>Linux: <a href="https://gcc.gnu.org/" target="_blank" rel="noopener">gcc</a></p>
-</li>
-</ul>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8">❗</span>因为我没钱买Mac, 暂时也没需求在Linux配置VSCode, 本文仅针对<strong>Windows</strong>
-平台, 当然也可以作为其他平台的参考. 甚至<a href="https://pimylifeup.com/raspberry-pi-visual-studio-code/" target="_blank" rel="noopener">有人在树莓派安装VSCode</a>.</p>
-<p>P.S. 实际上编译器的选择并不是个令人头疼的事, 我们随时可以轻易的更换VSCode使用的编译器</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>将MinGW-w64下载下来之后点击安装, 以下几点要注意, 其余选项默认即可:</p>
-<ul>
-<li><p>安装向导第一页有一项是选择<code>Architecture</code> (即电脑的架构, 此处i386代指32位电脑,
-x86_64代指64位电脑), 此处选择<strong>x86_64</strong>. (当然如果你的电脑竟然是32位的话不用变)</p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> 如何查看自己电脑是32位还是64位?</p>
-<p>Windows10的话, 前往 <strong>设置</strong> &gt; <strong>系统</strong> &gt; <strong>关于</strong> &gt; <strong>设备规格</strong> &gt; <strong>系统类型</strong></p>
-<p>其他Windows的话上网搜索一下好啦 <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f609.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f609.png?v8">😉</span></p>
-</li>
-<li><p>安装在哪里都可以, 但一定要是你找得到的地方, 因为安装完成后还要手动将MinGW加入<strong>Path</strong>.</p>
-</li>
-</ul>
-<h3 id="添加至Path"><a href="#添加至Path" class="headerlink" title="添加至Path"></a>添加至Path</h3><p>安装完毕后我们需要将MinGW添加至<strong>Path</strong>, 这样我们通过命令行就可以调用它啦 (VSCode编译/调试
-C/C++程序实际上就是在内置命令行中调用MinGW)</p>
-<p>要将什么路径添加到<strong>Path</strong>呢? 因为添加到Path的路径是要调用的程序的exe文件所在的文件夹比如我将MinGW安装到了 <strong>D:\Softwares\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0</strong>
-这个文件夹下, 那么我将
-<strong>D:\Softwares\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin</strong>加入环境变量.
-你会看到我们将要调用的<code>gcc</code>和<code>gdb</code>两个程序正在其中.</p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8">🔗</span> 关于如何添加系统变量, <a href="https://jingyan.baidu.com/article/ca41422f17107a1eaf99ed64.html" target="_blank" rel="noopener">这篇百度知道</a>应该就够了</p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>这之后! 我们测试一下, 在命令行输入<code>gcc</code></p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> 你看到的应当是:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">C:\Users\LeoJh&gt;gcc</span><br><span class="line">gcc: fatal error: no input files</span><br><span class="line">compilation terminated.</span><br></pre></td></tr></tbody></table></figure>
-
-<p>这是说gcc被成功唤起,我们已经成功完成编译器的配置了, 但你没告诉它要编译的文件路径, 所以他就报错了.</p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8">❌</span>而如果你看到的是:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">C:\Users\LeoJh&gt;gcc</span><br><span class="line">'gcc' 不是内部或外部命令，也不是可运行的程序</span><br><span class="line">或批处理文件。</span><br></pre></td></tr></tbody></table></figure>
-
-<p>这是说无法从命令行调用gcc. 一种情况是没有把正确的路径加入<strong>Path</strong>, 另一种情况是该换电脑了
-<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8">😁</span></p>
-<h2 id="VSCode插件"><a href="#VSCode插件" class="headerlink" title="VSCode插件"></a>VSCode插件</h2><p>搞定了编译器我们就离完成不远了! 实际上你现在已经可以开始开发C/C++了, 只不过是硬核一些.
-不信你可以搓一段hello world放进一个.c文件, 比如<strong>test.c</strong>, 在该文件所在文件夹空白处按住<code>shift</code>同时按右键, 在此打开powershell, 输入<code>gcc test.c</code>, 然后你就会发现文件夹里多了一个<strong>a.exe</strong>. 这便是编译好的可执行文件了!</p>
-<p>但这样无论是编辑还是编译还是调试体验都太差了, 于是我们安装一些好用的扩展提高效率.</p>
-<p>因为我并不常在VSCode中编写C/C++, 因此<a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.ccpp-extension-pack" target="_blank" rel="noopener">我的扩展包</a>
-中并没有几个插件. 但我认为这几个很不错的<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<p>当然你看不上我的扩展包也没事<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8">😢</span>只需要安装了<a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools" target="_blank" rel="noopener">官方C/C++支持扩展</a>
-就能体验到很强大的支持了.</p>
-<h1 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h1><p>在有些教程中, 要在VSCode中开发C/C++需要配置<code>c_cpp_properties.json</code>, <code>tasks.json</code>,
-<code>launch.json</code>三样, 但现在不是这样了! 🎉 现在<code>c_cpp_properties.json</code>已经完全被
-<code>settings.json</code>取代了, 也就是说在设置中就可以进行原来在<code>c_cpp_properties.json</code>中进行的配置! 这样的好处是我们可以针对不同的工作区进行不同的设置等. 另外, 稍后你也会看到随着VSC的更新<code>tasks.json</code>和<code>launch.json</code>的生成也变得十分简单!</p>
-<p>🔗 关于设置取代了<code>c_cpp_properties.json</code>的说明参见<a href="https://github.com/Microsoft/vscode-cpptools/blob/master/Documentation/LanguageServer/Customizing%20Default%20Settings.md" target="_blank" rel="noopener">这里</a>,
-另外给出对原本可以在<code>c_cpp_properties.json</code>中配置的内容的描述的<a href="https://github.com/Microsoft/vscode-cpptools/blob/master/Documentation/LanguageServer/c_cpp_properties.json.md" target="_blank" rel="noopener">链接</a></p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 以下配置文件内容都以我的配置文件为例</p>
-<h2 id="配置IntelliSense"><a href="#配置IntelliSense" class="headerlink" title="配置IntelliSense"></a>配置IntelliSense</h2><p>正如前面所说, 我们不需要VSCode就可以编译/调试C/C++, 因此能够提供智能补全功能的
-IntelliSence是<strong>cpptools</strong>这个插件很重要的一部分, 通过在<code>settings.json</code> (原本是
-<code>c_cpp_properties.json</code>)中进行设置来设定IntelliSense的模式. 主要设置以下几个:</p>
-<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"C_Cpp.autocomplete": "Default",</span><br><span class="line">"C_Cpp.clang_format_style": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Allman, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4 }",</span><br><span class="line">"C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Allman, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4 }",</span><br><span class="line">"C_Cpp.default.compilerPath": "D:\\Softwares\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe",</span><br><span class="line">"C_Cpp.default.cStandard": "c99",</span><br><span class="line">"C_Cpp.default.cppStandard": "c++11",</span><br><span class="line">"C_Cpp.default.intelliSenseMode": "gcc-x64",</span><br><span class="line">"C_Cpp.intelliSenseEngine": "Default",</span><br><span class="line">"C_Cpp.errorSquiggles": "Enabled",</span><br></pre></td></tr></tbody></table></figure>
-
-<p>💡 其中<strong>C_Cpp.clang_format_style</strong>, <strong>C_Cpp.clang_format_fallbackStyle</strong>是VSC格式化C/C++代码的风格.
-上面的配置是近似于<strong>Visual Studio</strong>格式化C/C++代码的风格.
-我偏爱VS风格, 而如果你喜欢Google风格, 可以用下面这个值:</p>
-<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"C_Cpp.clang_format_style": "{BasedOnStyleStyle: Google, IndentWidth: 4}",</span><br><span class="line">"C_Cpp.clang_format_fallbackStyle": "{BasedOnStyleStyle: Google, IndentWidth: 4}",</span><br></pre></td></tr></tbody></table></figure>
-
-<p>随着VSC的更新, VSC提供了一些<code>tasks.json</code>和<code>launch.json</code>的模板, 这让生成这两个文件变得十分容易!
-下面这个gif👇 是一个生成<code>tasks.json</code>和<code>launch.json</code>的示例.</p>
-<p><img src="%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/example.gif" alt=""></p>
-<p>💡 这个gif是在Linux系统 (Ubuntu) 下录制的.</p>
-<p>下面则是对这两个文件内容的一些解释.</p>
-<h2 id="配置编译配置文件"><a href="#配置编译配置文件" class="headerlink" title="配置编译配置文件"></a>配置编译配置文件</h2><p>然后配置编译用的<code>tasks.json</code>.</p>
-<p>✔️ 这个文件和之后配置的<code>launch.json</code>都是针对特定程序的,
-如何生成这两个文件请参见VSCode官方文档. 但你可以将满意的<code>tasks.json</code>和<code>launch.json</code>放在一个包含许多工程的目录中, 那么这些工程都将使用这两个配置文件. 如果你想给这之中某个工程配置不同的配置你可以在这个工程的根目录另外生成<code>tasks.json</code>和<code>launch.json</code>, 会覆盖上一层的配置.</p>
-<p>当你跟随VSCode官方文档创建了一个 <code>tasks.json</code> 之后, 将下面这个任务添加到tasks的列表,
-至于自带的label为 <strong>echo</strong> 的任务你可以删掉或者不管他.</p>
-<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">   <span class="attr">"label"</span>: <span class="string">"Compile"</span>,</span><br><span class="line">   <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">   <span class="attr">"command"</span>: <span class="string">"gcc"</span>,</span><br><span class="line">   <span class="attr">"args"</span>: [</span><br><span class="line">         <span class="string">"${file}"</span>,</span><br><span class="line">         <span class="string">"-o"</span>,</span><br><span class="line">         <span class="string">"${fileDirname}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">         <span class="string">"-g"</span>,</span><br><span class="line">         <span class="string">"-Wall"</span>,</span><br><span class="line">         <span class="string">"-std=c++17"</span></span><br><span class="line">   ],</span><br><span class="line">   <span class="attr">"group"</span>: {</span><br><span class="line">         <span class="attr">"kind"</span>: <span class="string">"build"</span>,</span><br><span class="line">         <span class="attr">"isDefault"</span>: <span class="literal">true</span></span><br><span class="line">   }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<p><code>label</code>的意思是给这个任务取名为<strong>Compile</strong>, <a href="#启动前编译">稍后</a>会用到.</p>
-<p>从中我们可以看出实际上当我们调用这个叫<strong>Compile</strong>的task的时候会在shell中输入:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">gcc ${file} -o ${fileDirname}/${fileBasenameNoExtension}.exe -g -Wall -std=c++17</span><br></pre></td></tr></tbody></table></figure>
-
-<p>其中<strong>${file}</strong>等是<a href="https://code.visualstudio.com/docs/editor/variables-reference" target="_blank" rel="noopener">VSCode中定义的变量</a></p>
-<p><code>-o</code>选项使我们可以<a href="http://www.runoob.com/note/28613" target="_blank" rel="noopener">指定生成文件的名字</a></p>
-<p>其他几个选项可以上网查查.</p>
-<p><code>group</code>这里的配置是我们能通过快捷键 <code>Ctrl+shift+B</code>来执行该任务.
-参见<a href="https://code.visualstudio.com/docs/editor/tasks#_typescript-hello-world" target="_blank" rel="noopener">这里</a></p>
-<h3 id="合起来"><a href="#合起来" class="headerlink" title="合起来!"></a>合起来!</h3><p>因此我的 <code>tashs.json</code> 长这样:</p>
-<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="comment">// See https://go.microsoft.com/fwlink/?LinkId=733558</span></span><br><span class="line">    <span class="comment">// for the documentation about the tasks.json format</span></span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"2.0.0"</span>,</span><br><span class="line">    <span class="attr">"tasks"</span>: [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"label"</span>: <span class="string">"Compile"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">            <span class="attr">"command"</span>: <span class="string">"gcc"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [</span><br><span class="line">                <span class="string">"${file}"</span>,</span><br><span class="line">                <span class="string">"-o"</span>,</span><br><span class="line">                <span class="string">"${fileDirname}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">                <span class="string">"-g"</span>,</span><br><span class="line">                <span class="string">"-Wall"</span>,</span><br><span class="line">                <span class="string">"-std=c++17"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"group"</span>: {</span><br><span class="line">                <span class="attr">"kind"</span>: <span class="string">"build"</span>,</span><br><span class="line">                <span class="attr">"isDefault"</span>: <span class="literal">true</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="配置调试配置文件"><a href="#配置调试配置文件" class="headerlink" title="配置调试配置文件"></a>配置调试配置文件</h2><p>最后配置的这个是<code>launch.json</code>. 实际上这很简单, 因为VSCode已经提供了很多种模板, 需要改动的非常少.</p>
-<p>通常我们选择 <strong>(gdb) Launch</strong> 这种模板. Launch指的是要调试的程序是在开始调试时才开始运行,
-Attach指的是开始调试时程序已经在运行了 (比如在服务器上的程序)</p>
-<p>需要改动/添加的非常少:</p>
-<h3 id="调试对象"><a href="#调试对象" class="headerlink" title="调试对象"></a>调试对象</h3><figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"program": "${workspaceFolder}/a.exe"</span><br></pre></td></tr></tbody></table></figure>
-
-<p><code>program</code>指的是要调试的程序. 如果不特别指出的话大多数编译器默认将编译出来的可执行文件命名为 <strong>a.exe</strong>. 而如果你的<code>tasks.json</code>也像我一样加了
-“-o ${fileDirname}/${fileBasenameNoExtension}.exe” 这个选项的话, 将会生成和源文件同名的可执行文件, 因此要用:</p>
-<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"program": "${workspaceFolder}/${fileBasenameNoExtension}.exe"</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="Debugger路径及选项"><a href="#Debugger路径及选项" class="headerlink" title="Debugger路径及选项"></a>Debugger路径及选项</h3><p>如果你在命令行输入 <code>gdb</code> 你会发现首先映入眼帘的是一串废话, 因此我们可以加上<code>-q</code>这个选项来让它少说废话.</p>
-<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"miDebuggerPath": "gdb.exe",</span><br><span class="line">"miDebuggerArgs": "-q"</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="启动前编译"><a href="#启动前编译" class="headerlink" title="启动前编译"></a>启动前编译</h3><p>如果你担心自己忘记每次调试前先编译一遍已更改的代码 (不然你会哭出声响), 可以添加一个
-<strong>preLaunchTask</strong>, 这个task指定为刚配置的那个<strong>Compile</strong>任务.
-这样每次调试前程序都会被先编译一遍<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8">👍</span></p>
-<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"preLaunchTask": "Compile"</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="合起来-1"><a href="#合起来-1" class="headerlink" title="合起来!"></a>合起来!</h3><p>因此我的<code>launch.json</code>长这样:</p>
-<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="comment">// Use IntelliSense to learn about possible attributes.</span></span><br><span class="line">    <span class="comment">// Hover to view descriptions of existing attributes.</span></span><br><span class="line">    <span class="comment">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span></span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"0.2.0"</span>,</span><br><span class="line">    <span class="attr">"configurations"</span>: [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"(gdb) Launch"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>,</span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"${workspaceFolder}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [],</span><br><span class="line">            <span class="attr">"stopAtEntry"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"cwd"</span>: <span class="string">"${workspaceFolder}"</span>,</span><br><span class="line">            <span class="attr">"environment"</span>: [],</span><br><span class="line">            <span class="attr">"externalConsole"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"MIMode"</span>: <span class="string">"gdb"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerPath"</span>: <span class="string">"gdb.exe"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerArgs"</span>: <span class="string">"-q"</span>,</span><br><span class="line">            <span class="attr">"setupCommands"</span>: [</span><br><span class="line">                {</span><br><span class="line">                    <span class="attr">"description"</span>: <span class="string">"Enable pretty-printing for gdb"</span>,</span><br><span class="line">                    <span class="attr">"text"</span>: <span class="string">"-enable-pretty-printing"</span>,</span><br><span class="line">                    <span class="attr">"ignoreFailures"</span>: <span class="literal">true</span></span><br><span class="line">                }</span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"preLaunchTask"</span>: <span class="string">"Compile"</span></span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h1 id="Enjoy"><a href="#Enjoy" class="headerlink" title="Enjoy"></a>Enjoy</h1><p>这下我们可以轻松愉快的开发C/C++了! 祝各位水平日益提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8">🎉</span></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -740,8 +740,6 @@ VSCode之后发现这个选项没被勾上.</p>
 <a href="https://www.multicharts.cn/" target="_blank" rel="noopener">MultiCharts</a>(简称<strong>MC</strong>)也经常被提及。</p>
 </blockquote>
 <h2 id="主要参考资料"><a href="#主要参考资料" class="headerlink" title="主要参考资料"></a>主要参考资料</h2><p>我觉得最蛋疼的是这玩意好像没法debug啊!!<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f627.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f627.png?v8">😧</span></p>
-<!-- TODO -->
-
 <ul>
 <li><a href="麦语言速成/教程.zip">网上找到的一套PPT教程</a>，并附上对应视频教程的<a href="https://pan.baidu.com/s/1foE6ORfqdGHyTQ-ZW9NPVg" target="_blank" rel="noopener">百度云链接</a></li>
 <li><a href="http://www.wenhua.com.cn/guide/wh8/index.htm" target="_blank" rel="noopener">智赢wh8使用说明书</a></li>
@@ -814,10 +812,6 @@ VSCode之后发现这个选项没被勾上.</p>
 <tr>
 <td>IF, THEN</td>
 <td>参见<a href="http://www.wenhua.com.cn/guide/views41a3.htm" target="_blank" rel="noopener">这里</a></td>
-</tr>
-<tr>
-<td><!-- TODO --></td>
-<td></td>
 </tr>
 </tbody></table>
 <h3 id="模组"><a href="#模组" class="headerlink" title="模组"></a>模组</h3><p>算法交易模型中可以调用的一大串函数有类似<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f447.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f447.png?v8">👇</span>这样的函数说明.</p>
@@ -1005,150 +999,6 @@ Address already in use</strong>, 我的服务器端监听的端口处于 <strong
       </script>]]></content>
       <categories>
         <category>Bug List</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Git杂记</title>
-    <url>/zh-CN/2019/02/27/Git%E6%9D%82%E8%AE%B0/</url>
-    <content><![CDATA[<p>先有git, 许久后才有了GitHub等代码托管平台. git是一个软件而GitHub是一个网站. 他们的关系是你可以通过git将你的代码托管给GitHub (就是把你的代码存到GitHub的服务器上)</p>
-<a id="more"></a>
-
-<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><p>git是一个<strong>分布式版本控制</strong>软件. 与它齐名的另一个版本控制软件是<strong>SVN</strong>.</p>
-<p>🔗 <a href="https://blog.csdn.net/xiaoqiangyonghu/article/details/78400313" target="_blank" rel="noopener">为什么要版本控制及分布式版本控制原理</a></p>
-<h3 id="图形化软件"><a href="#图形化软件" class="headerlink" title="图形化软件"></a>图形化软件</h3><p>虽然有人仍喜欢用纯命令行, 并且有的命令确实只能在命令行输入 (很多命令图形界面无法提供), 但我平时更喜欢使用图形化软件来操作git. 此处推荐三款软件.</p>
-<h4 id="GitHub-Desktop"><a href="#GitHub-Desktop" class="headerlink" title="GitHub Desktop"></a>GitHub Desktop</h4><p>🔗 <a href="https://desktop.github.com/" target="_blank" rel="noopener">下载地址</a></p>
-<p>GitHub官方客户端. 我自己也在用. 它的缺点是<strong>只能管理托管在GitHub的git仓库</strong>. (不过我们仓库都在GitHub所以没影响) 它很有用的一点是<strong>能在一个面板上看到你每个仓库的更新情况</strong>. (我经常忘记哪个仓库有没有上传)</p>
-<p>❗️ 要打开软件等它检测一会才会显示出来状态.</p>
-<p><img src="Git%E6%9D%82%E8%AE%B0/image-20200227141011525.png" alt="image-20200227141011525"></p>
-<blockquote>
-<p>仓库名字后有蓝色点表示有本地更改未提交, 有向上箭头表示有本地提交未上传, 有向下箭头表示有远程端有比本地更新的提交需要拉取.</p>
-</blockquote>
-<p>🔗 <a href="https://help.github.com/cn/desktop/contributing-to-projects" target="_blank" rel="noopener">GitHub Desktop使用帮助</a></p>
-<h4 id="Tower"><a href="#Tower" class="headerlink" title="Tower"></a>Tower</h4><p>🔗 <a href="https://www.git-tower.com/" target="_blank" rel="noopener">下载地址</a></p>
-<p>这个软件看起来比GitHub Desktop功能强大些, 并且不像后者只能管理托管在GitHub的git仓库. 这个软件只能免费试用, 但申请了这个<a href="https://education.github.com/pack" target="_blank" rel="noopener">GitHub学生大礼包</a>的话可以免费用一年.</p>
-<h4 id="开发工具集成的git管理"><a href="#开发工具集成的git管理" class="headerlink" title="开发工具集成的git管理"></a>开发工具集成的git管理</h4><p>🌟 实际上这是我最常使用的方式</p>
-<p><img src="Git%E6%9D%82%E8%AE%B0/image-202002271546.png" alt="img"></p>
-<p>这是装了<strong>GitLens</strong>插件的<strong>Visual Studio Code</strong>的源代码控制面板和编辑窗口截图. 可以看到左下角显示了当前分支及同步状态, 编辑窗口里有颜色条标示文件更改情况, 右上角有可以对文件进行的一些git操作, etc…</p>
-<h3 id="登陆git"><a href="#登陆git" class="headerlink" title="登陆git"></a>登陆git</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git config --global user.name "Your Name"</span><br><span class="line">git config --global user.email "email@example.com"</span><br></pre></td></tr></tbody></table></figure>
-
-<p>⚠ 每台设备要使用不同的<code>user.name</code>, 这样才能区分它们. 为了方便记忆可以统一使用<strong>昵称-设备型号</strong>的命名方式.</p>
-<p>值得一提的是git的配置文件分三级: 系统级(所有用户的), 全局级(当前用户的), 仓库级. 在配置时分别使用<code>--system</code>, <code>--global</code>, <code>--local</code>参数来访问. 如果想直接进入配置文件而不是一个参数一个参数地设置可以使用:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git config -e</span><br></pre></td></tr></tbody></table></figure>
-
-<p>要注意默认情况下<code>git config -e</code>访问<strong>仓库级配置文件</strong>.</p>
-<h3 id="http连接与ssh连接"><a href="#http连接与ssh连接" class="headerlink" title="http连接与ssh连接"></a>http连接与ssh连接</h3><p>通常有http, ssh, svn三种方式连接git远程仓库, 常见的是使用http或者ssh.</p>
-<p>我建议使用http连接, 一方面http连接无论从远程端下载还是上传到远程端都会比用ssh<strong>快许多</strong> (原因我不清楚, 但确实是这样), 另方面对于普通用户来说http连接<strong>麻烦事少一些</strong>. 这里的麻烦事指的是如果想通过ssh连接远程端那么需要在本地生成ssh秘钥对并把生成的公钥添加到github账户. 在多个设备上使用了许久ssh连接的我已经厌烦它了🤷‍♂</p>
-<p>💡 也许有人说通过http连接每次push都需要输入账号密码, 但其实可以设置git记住账号密码:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></tbody></table></figure>
-
-<p>另外在github的<a href="https://help.github.com/en/github/using-git/which-remote-url-should-i-use" target="_blank" rel="noopener">在克隆仓库时使用什么协议</a>中也是推荐使用http协议😏</p>
-<h4 id="有关SSH"><a href="#有关SSH" class="headerlink" title="有关SSH"></a>有关SSH</h4><h5 id="获取SSH-Key"><a href="#获取SSH-Key" class="headerlink" title="获取SSH Key"></a>获取SSH Key</h5><p>首先查看有没有<strong>~/.ssh</strong>这个文件夹以及文件夹下有没有类似<code>id_rsa</code>和<code>id_rsa.pub</code>的文件.
-如果有, 那就不用生成了.</p>
-<p>这两个就是SSH Key的秘钥对，<code>id_rsa</code>是私钥，不能泄露出去，<code>id_rsa.pub</code>是公钥可以放心地告诉任何人. 比如加入GitHub的SSH Key.</p>
-<h6 id="生成key"><a href="#生成key" class="headerlink" title="生成key"></a>生成key</h6><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>如果没有特别需求(比如甚至想设置密码), 直接连敲三次回车.</p>
-<p>💡 其实在输入命令后第一个选项是指定生成的秘钥文件名, 可以指定为<code>id_rsa_github</code>,
-<code>id_rsa_gitee</code>这样, 加上远程端的名字, 这样有多个远程端时也不会混乱.</p>
-<h5 id="同时上传到多个远程端"><a href="#同时上传到多个远程端" class="headerlink" title="同时上传到多个远程端"></a>同时上传到多个远程端</h5><p>新建<code>~/.ssh/config</code>, 如果远程端是github和gitee, github和gitee的ssh key是像上面说的这样命名的, 那么内容如下:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> github</span></span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_github</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> gitee</span></span><br><span class="line">Host gitee.com</span><br><span class="line">HostName gitee.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_gitee</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><h4 id="克隆一个repository"><a href="#克隆一个repository" class="headerlink" title="克隆一个repository"></a>克隆一个repository</h4><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git clone [url]</span><br></pre></td></tr></tbody></table></figure>
-
-<p>🔗 <a href="https://help.github.com/cn/github/creating-cloning-and-archiving-repositories/cloning-a-repository" target="_blank" rel="noopener">GitHub中文帮助文档-如何从GitHub克隆仓库</a></p>
-<h5 id="克隆特定分支"><a href="#克隆特定分支" class="headerlink" title="克隆特定分支"></a>克隆特定分支</h5><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git clone -b [branch] [url]</span><br></pre></td></tr></tbody></table></figure>
-
-<p>💡 <strong>克隆与下载的区别</strong>: 如果下载一个仓库的压缩包, 你获得的只是这个仓库<strong>当前版本</strong>的代码, 而如果克隆一个仓库则首先得到的是记录了该仓库所有版本的版本库, 然后git从中释放出了当前版本. 这个版本库就是仓库根目录的<code>.git</code>文件夹. 因此经常出现到开发后期.git文件夹大小比当前版本的代码大很多的情况.</p>
-<h5 id="让克隆更快"><a href="#让克隆更快" class="headerlink" title="让克隆更快"></a>让克隆更快</h5><h6 id="利用代理"><a href="#利用代理" class="headerlink" title="利用代理"></a>利用代理</h6><p>很多人的代码托管在GitHub (这意味着服务器在美国), 因此可能下载/上传速度很慢. 如果你知道你的翻墙工具的代理端口那么你可以设置git使用这个端口, 速度会好很多. (如果你的翻墙工具是直接全局代理了所有流量那么不需要这一步)</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 比如我知道自己VPN的http代理端口为: 127.0.0.1:1234,</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> socks代理端口为: 127.0.0.1:5678</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置git使用http代理端口</span></span><br><span class="line">git config --global http.proxy http://127.0.0.1:1234</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置git使用socks代理端口</span></span><br><span class="line">git config --global http.proxy socks5://127.0.0.1:5678</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取消git使用代理</span></span><br><span class="line">git config --global --unset http.proxy</span><br></pre></td></tr></tbody></table></figure>
-
-<h6 id="利用gitee"><a href="#利用gitee" class="headerlink" title="利用gitee"></a>利用gitee</h6><p>如果你没有翻墙工具或者你的翻墙工具失效了😏, 那么还有一种曲折一点的方式可以快速克隆下来.</p>
-<p>正如上面所说, 之所以从github克隆仓库速度很慢是因为它的服务器离我们太远了, 因此如果你习惯了直连github克隆仓库的破速度再体验从国内服务器克隆仓库的MB级速度你一定会感动得泪流满面👍</p>
-<p>而我要说的就是利用一个国内的很棒的代码托管平台<strong>gitee</strong>提供的一个很贴心的功能: <strong>从github/gitlab导入仓库</strong>! (推荐大家也体验一下gitee, 它还提供了许多很贴心的github所没有的小功能)</p>
-<p>利用gitee可以从github导入仓库, 我们可以轻松将一个仓库从遥不可及的服务器移到国内服务器来🎉 gitee导入仓库的时间可以忽略不计, 然后与从github克隆仓库一样的流程急速将仓库克隆到本地! 但一般网烂到这种程度我们还选择克隆仓库而不是下载压缩包是因为要加入开发, 因此从gitee克隆下来仓库后需要<strong>更改远程端的地址为github的仓库地址</strong>.</p>
-<p>打开仓库根目录下<code>.git/config</code>文件, 你会看到类似下面这样的字段:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">[remote "origin"]</span><br><span class="line">    url = https://gitee.com/someone/something.git</span><br></pre></td></tr></tbody></table></figure>
-
-<p>你只需要把url中的<code>gitee</code>改为<code>github</code>就可以了😏神不神奇</p>
-<h4 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h4><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="暂存所有更改"><a href="#暂存所有更改" class="headerlink" title="暂存所有更改"></a>暂存所有更改</h4><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h4><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git commit</span><br></pre></td></tr></tbody></table></figure>
-
-<h4 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h4><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></tbody></table></figure>
-
-<p>⚠️ 个人仓库的话提交之后一定不要忘记上传! 我在格式化电脑前忘记将本地commit上传, 失去了好几篇博文啊😢 (但应该一般没有我这么蠢的)</p>
-<p>我通常将以上暂存, 提交, 推送三步合称git三连😏</p>
-<h3 id="git仓库瘦身"><a href="#git仓库瘦身" class="headerlink" title="git仓库瘦身"></a>git仓库瘦身</h3><p>我也终于遇到了git仓库被搞太大需要瘦身的情况了.</p>
-<blockquote>
-<p><a href="http://rtyley.github.io/bfg-repo-cleaner/" target="_blank" rel="noopener">BFG</a> 是为将像大文件或者密码这些不想要的数据从 Git 仓库中删除而专门设计的，所以它有一一个简单的标志用来删除那些大的历史文件（不在当前的提交里面）：<code>--strip-blobs-bigger-than</code></p>
-</blockquote>
-<p>⚠️ 要用bfg你需要有java</p>
-<ol>
-<li>首先以<code>--mirror</code>选项从远程端下载仓库. 按照bfg的说法这样下到的是一个”bare repo”.</li>
-</ol>
-<blockquote>
-<p>This is a bare repo, which means your normal files won’t be visible, but it is a full copy of the Git database of your repository</p>
-</blockquote>
-<p>(我试了一下普通clone的仓库操作完最后推送不上去…)</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git clone --mirror git://example.com/some-big-repo.git</span><br></pre></td></tr></tbody></table></figure>
-
-<ol start="2">
-<li>然后进入仓库, 然后按照文件大小或者文件名清理文件.</li>
-</ol>
-<p>❗️ 在这一步文件并没有在物理上被删除, 在这一步bfg会清理所有commit, branch, tag, 去掉该文件的记录.</p>
-<ul>
-<li>清理大于指定值的文件</li>
-</ul>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">java -jar bfg.jar --strip-blobs-bigger-than 100M</span><br></pre></td></tr></tbody></table></figure>
-
-<blockquote>
-<p>大小超过 100MB 的任何文件（不包含在你<em>最近的</em>提交中的文件——因为 BFG <a href="http://rtyley.github.io/bfg-repo-cleaner/#protected-commits" target="_blank" rel="noopener">默认会保护你的最新提交的内容</a>）将会从你的Git仓库的历史记录中删除.</p>
-</blockquote>
-<ul>
-<li>清理指定文件名文件:</li>
-</ul>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">java -jar bfg.jar --delete-files *.mp4</span><br></pre></td></tr></tbody></table></figure>
-
-<ol start="3">
-<li>将上面清理出来的文件删除</li>
-</ol>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive</span><br></pre></td></tr></tbody></table></figure>
-
-<ol start="4">
-<li>当你觉得删得差不多就可以推送了. ❗️ 这样会改变远程端所有ref.</li>
-</ol>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><p>我认为github现在已经远不止是托管代码 (也就是单纯把代码放在他的服务器) 那么简单的, 它已经建立起了一个<strong>远程协作生态</strong>.</p>
-<p>关于github入门我很推荐他们的官方文档, 大部分是有中文版的, 比如:</p>
-<p>🔗 <a href="https://help.github.com/cn/github/getting-started-with-github/github-glossary" target="_blank" rel="noopener">GitHub术语表</a></p>
-<p>🔗 <a href="https://github.github.com/training-kit/downloads/zh_CN/github-git-cheat-sheet/" target="_blank" rel="noopener">GitHub官方出品git使用cheat sheet</a></p>
-<p>🔗 <a href="https://help.github.com/cn/github/getting-started-with-github/signing-up-for-github" target="_blank" rel="noopener">如何注册GitHub账号</a> (在这个页面左侧你可以看到还有辣么多页面值得你去看👍)</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>版本控制</category>
-        <category>语言</category>
-        <category>Git</category>
       </categories>
   </entry>
   <entry>
@@ -1785,6 +1635,150 @@ Linux开发xmc4500需要什么工具以及编译方式,
       <categories>
         <category>算法</category>
         <category>控制</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Git杂记</title>
+    <url>/zh-CN/2019/02/27/Git%E6%9D%82%E8%AE%B0/</url>
+    <content><![CDATA[<p>先有git, 许久后才有了GitHub等代码托管平台. git是一个软件而GitHub是一个网站. 他们的关系是你可以通过git将你的代码托管给GitHub (就是把你的代码存到GitHub的服务器上)</p>
+<a id="more"></a>
+
+<h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><p>git是一个<strong>分布式版本控制</strong>软件. 与它齐名的另一个版本控制软件是<strong>SVN</strong>.</p>
+<p>🔗 <a href="https://blog.csdn.net/xiaoqiangyonghu/article/details/78400313" target="_blank" rel="noopener">为什么要版本控制及分布式版本控制原理</a></p>
+<h3 id="图形化软件"><a href="#图形化软件" class="headerlink" title="图形化软件"></a>图形化软件</h3><p>虽然有人仍喜欢用纯命令行, 并且有的命令确实只能在命令行输入 (很多命令图形界面无法提供), 但我平时更喜欢使用图形化软件来操作git. 此处推荐三款软件.</p>
+<h4 id="GitHub-Desktop"><a href="#GitHub-Desktop" class="headerlink" title="GitHub Desktop"></a>GitHub Desktop</h4><p>🔗 <a href="https://desktop.github.com/" target="_blank" rel="noopener">下载地址</a></p>
+<p>GitHub官方客户端. 我自己也在用. 它的缺点是<strong>只能管理托管在GitHub的git仓库</strong>. (不过我们仓库都在GitHub所以没影响) 它很有用的一点是<strong>能在一个面板上看到你每个仓库的更新情况</strong>. (我经常忘记哪个仓库有没有上传)</p>
+<p>❗️ 要打开软件等它检测一会才会显示出来状态.</p>
+<p><img src="Git%E6%9D%82%E8%AE%B0/image-20200227141011525.png" alt="image-20200227141011525"></p>
+<blockquote>
+<p>仓库名字后有蓝色点表示有本地更改未提交, 有向上箭头表示有本地提交未上传, 有向下箭头表示有远程端有比本地更新的提交需要拉取.</p>
+</blockquote>
+<p>🔗 <a href="https://help.github.com/cn/desktop/contributing-to-projects" target="_blank" rel="noopener">GitHub Desktop使用帮助</a></p>
+<h4 id="Tower"><a href="#Tower" class="headerlink" title="Tower"></a>Tower</h4><p>🔗 <a href="https://www.git-tower.com/" target="_blank" rel="noopener">下载地址</a></p>
+<p>这个软件看起来比GitHub Desktop功能强大些, 并且不像后者只能管理托管在GitHub的git仓库. 这个软件只能免费试用, 但申请了这个<a href="https://education.github.com/pack" target="_blank" rel="noopener">GitHub学生大礼包</a>的话可以免费用一年.</p>
+<h4 id="开发工具集成的git管理"><a href="#开发工具集成的git管理" class="headerlink" title="开发工具集成的git管理"></a>开发工具集成的git管理</h4><p>🌟 实际上这是我最常使用的方式</p>
+<p><img src="Git%E6%9D%82%E8%AE%B0/image-202002271546.png" alt="img"></p>
+<p>这是装了<strong>GitLens</strong>插件的<strong>Visual Studio Code</strong>的源代码控制面板和编辑窗口截图. 可以看到左下角显示了当前分支及同步状态, 编辑窗口里有颜色条标示文件更改情况, 右上角有可以对文件进行的一些git操作, etc…</p>
+<h3 id="登陆git"><a href="#登陆git" class="headerlink" title="登陆git"></a>登陆git</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git config --global user.name "Your Name"</span><br><span class="line">git config --global user.email "email@example.com"</span><br></pre></td></tr></tbody></table></figure>
+
+<p>⚠ 每台设备要使用不同的<code>user.name</code>, 这样才能区分它们. 为了方便记忆可以统一使用<strong>昵称-设备型号</strong>的命名方式.</p>
+<p>值得一提的是git的配置文件分三级: 系统级(所有用户的), 全局级(当前用户的), 仓库级. 在配置时分别使用<code>--system</code>, <code>--global</code>, <code>--local</code>参数来访问. 如果想直接进入配置文件而不是一个参数一个参数地设置可以使用:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git config -e</span><br></pre></td></tr></tbody></table></figure>
+
+<p>要注意默认情况下<code>git config -e</code>访问<strong>仓库级配置文件</strong>.</p>
+<h3 id="http连接与ssh连接"><a href="#http连接与ssh连接" class="headerlink" title="http连接与ssh连接"></a>http连接与ssh连接</h3><p>通常有http, ssh, svn三种方式连接git远程仓库, 常见的是使用http或者ssh.</p>
+<p>我建议使用http连接, 一方面http连接无论从远程端下载还是上传到远程端都会比用ssh<strong>快许多</strong> (原因我不清楚, 但确实是这样), 另方面对于普通用户来说http连接<strong>麻烦事少一些</strong>. 这里的麻烦事指的是如果想通过ssh连接远程端那么需要在本地生成ssh秘钥对并把生成的公钥添加到github账户. 在多个设备上使用了许久ssh连接的我已经厌烦它了🤷‍♂</p>
+<p>💡 也许有人说通过http连接每次push都需要输入账号密码, 但其实可以设置git记住账号密码:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></tbody></table></figure>
+
+<p>另外在github的<a href="https://help.github.com/en/github/using-git/which-remote-url-should-i-use" target="_blank" rel="noopener">在克隆仓库时使用什么协议</a>中也是推荐使用http协议😏</p>
+<h4 id="有关SSH"><a href="#有关SSH" class="headerlink" title="有关SSH"></a>有关SSH</h4><h5 id="获取SSH-Key"><a href="#获取SSH-Key" class="headerlink" title="获取SSH Key"></a>获取SSH Key</h5><p>首先查看有没有<strong>~/.ssh</strong>这个文件夹以及文件夹下有没有类似<code>id_rsa</code>和<code>id_rsa.pub</code>的文件.
+如果有, 那就不用生成了.</p>
+<p>这两个就是SSH Key的秘钥对，<code>id_rsa</code>是私钥，不能泄露出去，<code>id_rsa.pub</code>是公钥可以放心地告诉任何人. 比如加入GitHub的SSH Key.</p>
+<h6 id="生成key"><a href="#生成key" class="headerlink" title="生成key"></a>生成key</h6><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>如果没有特别需求(比如甚至想设置密码), 直接连敲三次回车.</p>
+<p>💡 其实在输入命令后第一个选项是指定生成的秘钥文件名, 可以指定为<code>id_rsa_github</code>,
+<code>id_rsa_gitee</code>这样, 加上远程端的名字, 这样有多个远程端时也不会混乱.</p>
+<h5 id="同时上传到多个远程端"><a href="#同时上传到多个远程端" class="headerlink" title="同时上传到多个远程端"></a>同时上传到多个远程端</h5><p>新建<code>~/.ssh/config</code>, 如果远程端是github和gitee, github和gitee的ssh key是像上面说的这样命名的, 那么内容如下:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> github</span></span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_github</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> gitee</span></span><br><span class="line">Host gitee.com</span><br><span class="line">HostName gitee.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_gitee</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><h4 id="克隆一个repository"><a href="#克隆一个repository" class="headerlink" title="克隆一个repository"></a>克隆一个repository</h4><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git clone [url]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>🔗 <a href="https://help.github.com/cn/github/creating-cloning-and-archiving-repositories/cloning-a-repository" target="_blank" rel="noopener">GitHub中文帮助文档-如何从GitHub克隆仓库</a></p>
+<h5 id="克隆特定分支"><a href="#克隆特定分支" class="headerlink" title="克隆特定分支"></a>克隆特定分支</h5><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git clone -b [branch] [url]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>💡 <strong>克隆与下载的区别</strong>: 如果下载一个仓库的压缩包, 你获得的只是这个仓库<strong>当前版本</strong>的代码, 而如果克隆一个仓库则首先得到的是记录了该仓库所有版本的版本库, 然后git从中释放出了当前版本. 这个版本库就是仓库根目录的<code>.git</code>文件夹. 因此经常出现到开发后期.git文件夹大小比当前版本的代码大很多的情况.</p>
+<h5 id="让克隆更快"><a href="#让克隆更快" class="headerlink" title="让克隆更快"></a>让克隆更快</h5><h6 id="利用代理"><a href="#利用代理" class="headerlink" title="利用代理"></a>利用代理</h6><p>很多人的代码托管在GitHub (这意味着服务器在美国), 因此可能下载/上传速度很慢. 如果你知道你的翻墙工具的代理端口那么你可以设置git使用这个端口, 速度会好很多. (如果你的翻墙工具是直接全局代理了所有流量那么不需要这一步)</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 比如我知道自己VPN的http代理端口为: 127.0.0.1:1234,</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> socks代理端口为: 127.0.0.1:5678</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置git使用http代理端口</span></span><br><span class="line">git config --global http.proxy http://127.0.0.1:1234</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置git使用socks代理端口</span></span><br><span class="line">git config --global http.proxy socks5://127.0.0.1:5678</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取消git使用代理</span></span><br><span class="line">git config --global --unset http.proxy</span><br></pre></td></tr></tbody></table></figure>
+
+<h6 id="利用gitee"><a href="#利用gitee" class="headerlink" title="利用gitee"></a>利用gitee</h6><p>如果你没有翻墙工具或者你的翻墙工具失效了😏, 那么还有一种曲折一点的方式可以快速克隆下来.</p>
+<p>正如上面所说, 之所以从github克隆仓库速度很慢是因为它的服务器离我们太远了, 因此如果你习惯了直连github克隆仓库的破速度再体验从国内服务器克隆仓库的MB级速度你一定会感动得泪流满面👍</p>
+<p>而我要说的就是利用一个国内的很棒的代码托管平台<strong>gitee</strong>提供的一个很贴心的功能: <strong>从github/gitlab导入仓库</strong>! (推荐大家也体验一下gitee, 它还提供了许多很贴心的github所没有的小功能)</p>
+<p>利用gitee可以从github导入仓库, 我们可以轻松将一个仓库从遥不可及的服务器移到国内服务器来🎉 gitee导入仓库的时间可以忽略不计, 然后与从github克隆仓库一样的流程急速将仓库克隆到本地! 但一般网烂到这种程度我们还选择克隆仓库而不是下载压缩包是因为要加入开发, 因此从gitee克隆下来仓库后需要<strong>更改远程端的地址为github的仓库地址</strong>.</p>
+<p>打开仓库根目录下<code>.git/config</code>文件, 你会看到类似下面这样的字段:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">[remote "origin"]</span><br><span class="line">    url = https://gitee.com/someone/something.git</span><br></pre></td></tr></tbody></table></figure>
+
+<p>你只需要把url中的<code>gitee</code>改为<code>github</code>就可以了😏神不神奇</p>
+<h4 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h4><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="暂存所有更改"><a href="#暂存所有更改" class="headerlink" title="暂存所有更改"></a>暂存所有更改</h4><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h4><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git commit</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h4><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></tbody></table></figure>
+
+<p>⚠️ 个人仓库的话提交之后一定不要忘记上传! 我在格式化电脑前忘记将本地commit上传, 失去了好几篇博文啊😢 (但应该一般没有我这么蠢的)</p>
+<p>我通常将以上暂存, 提交, 推送三步合称git三连😏</p>
+<h3 id="git仓库瘦身"><a href="#git仓库瘦身" class="headerlink" title="git仓库瘦身"></a>git仓库瘦身</h3><p>我也终于遇到了git仓库被搞太大需要瘦身的情况了.</p>
+<blockquote>
+<p><a href="http://rtyley.github.io/bfg-repo-cleaner/" target="_blank" rel="noopener">BFG</a> 是为将像大文件或者密码这些不想要的数据从 Git 仓库中删除而专门设计的，所以它有一一个简单的标志用来删除那些大的历史文件（不在当前的提交里面）：<code>--strip-blobs-bigger-than</code></p>
+</blockquote>
+<p>⚠️ 要用bfg你需要有java</p>
+<ol>
+<li>首先以<code>--mirror</code>选项从远程端下载仓库. 按照bfg的说法这样下到的是一个”bare repo”.</li>
+</ol>
+<blockquote>
+<p>This is a bare repo, which means your normal files won’t be visible, but it is a full copy of the Git database of your repository</p>
+</blockquote>
+<p>(我试了一下普通clone的仓库操作完最后推送不上去…)</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git clone --mirror git://example.com/some-big-repo.git</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="2">
+<li>然后进入仓库, 然后按照文件大小或者文件名清理文件.</li>
+</ol>
+<p>❗️ 在这一步文件并没有在物理上被删除, 在这一步bfg会清理所有commit, branch, tag, 去掉该文件的记录.</p>
+<ul>
+<li>清理大于指定值的文件</li>
+</ul>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">java -jar bfg.jar --strip-blobs-bigger-than 100M</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>大小超过 100MB 的任何文件（不包含在你<em>最近的</em>提交中的文件——因为 BFG <a href="http://rtyley.github.io/bfg-repo-cleaner/#protected-commits" target="_blank" rel="noopener">默认会保护你的最新提交的内容</a>）将会从你的Git仓库的历史记录中删除.</p>
+</blockquote>
+<ul>
+<li>清理指定文件名文件:</li>
+</ul>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">java -jar bfg.jar --delete-files *.mp4</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="3">
+<li>将上面清理出来的文件删除</li>
+</ol>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git reflog expire --expire=now --all &amp;&amp; git gc --prune=now --aggressive</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="4">
+<li>当你觉得删得差不多就可以推送了. ❗️ 这样会改变远程端所有ref.</li>
+</ol>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><p>我认为github现在已经远不止是托管代码 (也就是单纯把代码放在他的服务器) 那么简单的, 它已经建立起了一个<strong>远程协作生态</strong>.</p>
+<p>关于github入门我很推荐他们的官方文档, 大部分是有中文版的, 比如:</p>
+<p>🔗 <a href="https://help.github.com/cn/github/getting-started-with-github/github-glossary" target="_blank" rel="noopener">GitHub术语表</a></p>
+<p>🔗 <a href="https://github.github.com/training-kit/downloads/zh_CN/github-git-cheat-sheet/" target="_blank" rel="noopener">GitHub官方出品git使用cheat sheet</a></p>
+<p>🔗 <a href="https://help.github.com/cn/github/getting-started-with-github/signing-up-for-github" target="_blank" rel="noopener">如何注册GitHub账号</a> (在这个页面左侧你可以看到还有辣么多页面值得你去看👍)</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>版本控制</category>
+        <category>语言</category>
+        <category>Git</category>
       </categories>
   </entry>
   <entry>
@@ -3867,44 +3861,6 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
       </categories>
   </entry>
   <entry>
-    <title>意识到了我的中文有多差</title>
-    <url>/zh-CN/2019/09/13/%E6%84%8F%E8%AF%86%E5%88%B0%E4%BA%86%E6%88%91%E7%9A%84%E4%B8%AD%E6%96%87%E6%9C%89%E5%A4%9A%E5%B7%AE/</url>
-    <content><![CDATA[<p>前阵子别人给我分享了<a href="https://www.byvoid.com/" target="_blank" rel="noopener">这个博客</a>, 看了以后我意识到自己语文学得太不到家了, 实在对不起初高中语文老师!</p>
-<a id="more"></a>
-
-<p>先不提这个博主喜爱音韵学, 单说同样是理工科出身的博主, 我的表达能力和思想深度比他差了太多.</p>
-<p>通常在解释一段程序时我会想好一会来组织语言, <strong>将我使用这段代码的意图尽可能体现出来, 描述尽可能准确, 有条理</strong>. 我对此体会良多: 当我刚开始接触一个领域, 在网上看资料时常常无法确定我理解得对不对, 需要结合多篇文章才能确定. 这是因为<strong>作者们自身接触这些许久, 无意识的省略了一些话</strong>. 但我认为文章既然要写出来就应该能让所有人无障碍的看懂, 不然只给自己看的话何不就放到自己github仓库?</p>
-<p><a href="https://akaedu.github.io/book/index.html" target="_blank" rel="noopener">Linux C编程一站式学习</a>和
-<a href="https://www.pyimagesearch.com" target="_blank" rel="noopener">pyimagesearch</a>的文章就让人觉得文章读起来很流畅很易懂, 不会浪费时间在理解文章上. 比如<a href="https://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/" target="_blank" rel="noopener">这篇文章</a>
-曾带我轻松完成了困扰了我好几天的如何在树莓派上安装OpenCV的问题. 这个问题现在当然不会像前年那样困扰我, 但能有这样一篇好懂的文章指导我迅速完成我当然是十分乐意的.</p>
-<p>因此我总是试图让我的文章能达到同样水准. 但我发现这很难. 说来可笑, 很多时候我甚至不知道怎么样去描述我的操作🤦‍ 而让文章有条理同样不是一件容易的事. 我感觉这和写一篇议论文围绕一个中心套用总分总的文章结构就可以写不一样, 我总是喜欢把一个主题的东西一股脑放到一篇文章里, 但我发现一方面<strong>文章太长会让人失去读下去的兴趣</strong>, 另一方面<strong>什么东西都往一篇文章里放会让文章失其重点</strong>. 我又不是在写书, 不如将一个主题的内容再按照几个重点分成几篇文章. 可<strong>将一篇文章分割为主题更明确的多篇文章</strong>对我来说并不是易事…</p>
-<p>至于说<strong>byvoid</strong>的文章有思想深度, 从<a href="https://www.byvoid.com/zht/blog/why-the-usa-is-so-boring-1" target="_blank" rel="noopener">这篇文章</a>可见一斑. 我也喜欢旅游, 并且因为我小时候见了许多很美的自然景观, 我更倾向于体验一处的文化. 到一处游览后能有像<strong>byvoid</strong>这种深度的心得正是我所想努力做到的. 但一是我的文笔不够好,
-二是我并没有做功课去研究旅游地的文化.</p>
-<p>从<strong>byvoid</strong>的文章能体会到中文的魅力: 用得好了读起来十分流畅, 四字成语言简意赅地表达出了意思, 很多用以佐证的诗句更是回味无穷… 这只是我个人的体会, 我也知道很粗浅. 当然我并不后悔初高中没有投入大量精力背诵各种诗句, 品鉴各大文豪的文章: 体会不到这些的魅力时我背下来又有什么用呢?</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>杂记</category>
-      </categories>
-  </entry>
-  <entry>
     <title>我将Shell换为了zsh</title>
     <url>/zh-CN/2019/09/02/%E6%88%91%E5%B0%86shell%E6%8D%A2%E4%B8%BA%E4%BA%86zsh/</url>
     <content><![CDATA[<p>我把shell从<strong>bash</strong>换到<strong>zsh</strong>了. 原本我是根本没动过换shell的念头的, 但因为这段时间用的笔记本被别人装好了zsh, 我就将就着用了, 谁知真香…</p>
@@ -4135,6 +4091,44 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
       </categories>
   </entry>
   <entry>
+    <title>意识到了我的中文有多差</title>
+    <url>/zh-CN/2019/09/13/%E6%84%8F%E8%AF%86%E5%88%B0%E4%BA%86%E6%88%91%E7%9A%84%E4%B8%AD%E6%96%87%E6%9C%89%E5%A4%9A%E5%B7%AE/</url>
+    <content><![CDATA[<p>前阵子别人给我分享了<a href="https://www.byvoid.com/" target="_blank" rel="noopener">这个博客</a>, 看了以后我意识到自己语文学得太不到家了, 实在对不起初高中语文老师!</p>
+<a id="more"></a>
+
+<p>先不提这个博主喜爱音韵学, 单说同样是理工科出身的博主, 我的表达能力和思想深度比他差了太多.</p>
+<p>通常在解释一段程序时我会想好一会来组织语言, <strong>将我使用这段代码的意图尽可能体现出来, 描述尽可能准确, 有条理</strong>. 我对此体会良多: 当我刚开始接触一个领域, 在网上看资料时常常无法确定我理解得对不对, 需要结合多篇文章才能确定. 这是因为<strong>作者们自身接触这些许久, 无意识的省略了一些话</strong>. 但我认为文章既然要写出来就应该能让所有人无障碍的看懂, 不然只给自己看的话何不就放到自己github仓库?</p>
+<p><a href="https://akaedu.github.io/book/index.html" target="_blank" rel="noopener">Linux C编程一站式学习</a>和
+<a href="https://www.pyimagesearch.com" target="_blank" rel="noopener">pyimagesearch</a>的文章就让人觉得文章读起来很流畅很易懂, 不会浪费时间在理解文章上. 比如<a href="https://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/" target="_blank" rel="noopener">这篇文章</a>
+曾带我轻松完成了困扰了我好几天的如何在树莓派上安装OpenCV的问题. 这个问题现在当然不会像前年那样困扰我, 但能有这样一篇好懂的文章指导我迅速完成我当然是十分乐意的.</p>
+<p>因此我总是试图让我的文章能达到同样水准. 但我发现这很难. 说来可笑, 很多时候我甚至不知道怎么样去描述我的操作🤦‍ 而让文章有条理同样不是一件容易的事. 我感觉这和写一篇议论文围绕一个中心套用总分总的文章结构就可以写不一样, 我总是喜欢把一个主题的东西一股脑放到一篇文章里, 但我发现一方面<strong>文章太长会让人失去读下去的兴趣</strong>, 另一方面<strong>什么东西都往一篇文章里放会让文章失其重点</strong>. 我又不是在写书, 不如将一个主题的内容再按照几个重点分成几篇文章. 可<strong>将一篇文章分割为主题更明确的多篇文章</strong>对我来说并不是易事…</p>
+<p>至于说<strong>byvoid</strong>的文章有思想深度, 从<a href="https://www.byvoid.com/zht/blog/why-the-usa-is-so-boring-1" target="_blank" rel="noopener">这篇文章</a>可见一斑. 我也喜欢旅游, 并且因为我小时候见了许多很美的自然景观, 我更倾向于体验一处的文化. 到一处游览后能有像<strong>byvoid</strong>这种深度的心得正是我所想努力做到的. 但一是我的文笔不够好,
+二是我并没有做功课去研究旅游地的文化.</p>
+<p>从<strong>byvoid</strong>的文章能体会到中文的魅力: 用得好了读起来十分流畅, 四字成语言简意赅地表达出了意思, 很多用以佐证的诗句更是回味无穷… 这只是我个人的体会, 我也知道很粗浅. 当然我并不后悔初高中没有投入大量精力背诵各种诗句, 品鉴各大文豪的文章: 体会不到这些的魅力时我背下来又有什么用呢?</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>杂记</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Graphviz简要语法</title>
     <url>/zh-CN/2020/03/12/Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<p><a href="https://emden.github.io/" target="_blank" rel="noopener">Graphviz</a>是一个很强大的<strong>图形可视化工具</strong>. 它使用<strong>DOT</strong>语言来描述图形, 但它并不单纯是个绘图软件, 而是能接入程序, 进行函数调用流程, 决策树, 数据结构, 日志系统等图形关系生成, 而且可以是<strong>交互式</strong>的 (不过我暂时没研究过所以不太了解). 暂且不提这些扩展功能, graphviz的语法允许我们仅通过文字描述能绘制出样式极其丰富的图形, 这大大方便了对图形的改动的跟踪.</p>
@@ -4237,6 +4231,13 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 <td>节点, 图, 簇</td>
 <td>对于图和簇只有”t”和”b”是可用的, 即标签只能设置在图/簇的顶部或者底部. 如果父级显性设置了这一属性, 子图会继承这一属性. 而对于一个节点, 只有当它的高度大于label这个属性才是可用的.</td>
 </tr>
+<tr>
+<td>节点排布方向</td>
+<td>rankdir</td>
+<td>TB, BT, LR, RL</td>
+<td>图</td>
+<td>从上到下/从下到上/从左到右/从右到左</td>
+</tr>
 </tbody></table>
 <h3 id="Layout-布局"><a href="#Layout-布局" class="headerlink" title="Layout (布局)"></a>Layout (布局)</h3><p>💡 graphviz有一点不好的是节点在画布上的位置是<strong>由算法决定</strong>的, 不能<strong>完全</strong>自己设定, 因此有时候无法让图变得那么美观.</p>
 <p>graphviz提供了多种<strong>用于排布节点, 边线箭头头部, 边线标签位置</strong>的布局算法.</p>
@@ -4277,7 +4278,30 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 <p>💡 <strong>在graphviz中可以直接用中文作为节点名.</strong></p>
 <h3 id="Label-标签"><a href="#Label-标签" class="headerlink" title="Label (标签)"></a>Label (标签)</h3><p>如果你想要显示的标签中有空格, 那通过把节点名用<code>""</code>括起来可以实现, 当然显式声明标签内容是更好的选择. 而<strong>如果你想让一些节点显示相同的标签那就必须显式声明节点的标签了</strong>, 因为节点名不能重复.</p>
 <p>💡 label中可以使用转义字符比如<code>\n</code>来实现多行标签.</p>
-<h4 id="HTML-like-Label"><a href="#HTML-like-Label" class="headerlink" title="HTML-like Label"></a>HTML-like Label</h4><p>TODO</p>
+<h4 id="HTML-like-Label"><a href="#HTML-like-Label" class="headerlink" title="HTML-like Label"></a>HTML-like Label</h4><p>为了能提供更丰富的样式, dot布局支持使用HTML语法的HTML-like标签 (看了下似乎其他布局不支持这种东西).</p>
+<p>具体可用语法格式参见<a href="https://emden.github.io/_pages/doc/info/shapes.html#html" target="_blank" rel="noopener">graphviz官方文档-HTML-Like Labels</a>. 总结下来就是目前支持以下几种类HTML元素:</p>
+<ul>
+<li>斜体 &lt;i&gt;</li>
+<li>粗体 &lt;b&gt;</li>
+<li>下划线 &lt;u&gt;</li>
+<li>上划线 &lt;o&gt;</li>
+<li>删除线 &lt;s&gt;</li>
+<li>下角标 &lt;sub&gt;</li>
+<li>上角标 &lt;sup&gt;</li>
+<li>指定字体 &lt;font&gt;</li>
+<li>换行符 &lt;br /&gt;</li>
+<li>表格 &lt;table&gt; &lt;tr&gt; &lt;td&gt;</li>
+<li>图片 &lt;img&gt;</li>
+<li>水平/竖直分割线 &lt;hr&gt; &lt;vr&gt;</li>
+</ul>
+<p>❗️ 要注意这种类HTML标签只是<strong>借鉴自HTML</strong>, 和HTML元素并不完全一样, 因此<strong>并不支持html中其他写法和属性</strong>. 再比如HTML中是没有上面这个<code>&lt;vr&gt;</code>tag的😅</p>
+<p>不得不说类HTML标签确实极大地提升了灵活性, 让我们能写出奇形怪状的节点形状, 能在标签中嵌入图片等, 详情参见<a href="https://emden.github.io/_pages/doc/info/shapes.html#html" target="_blank" rel="noopener">graphviz官方文档-HTML-Like Labels</a>. 不过这东西写起来确实麻烦一些…</p>
+<blockquote>
+<p>一个展示类HTML标签能带来的丰富样式的例子</p>
+</blockquote>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">digraph G {</span><br><span class="line">  rankdir=LR</span><br><span class="line">  node [shape=plaintext]</span><br><span class="line">  a [</span><br><span class="line">    label=&lt;</span><br><span class="line">      &lt;TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD ROWSPAN="3" BGCOLOR="yellow"&gt;class&lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD PORT="here" BGCOLOR="lightblue"&gt;qualifier&lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">      &lt;/TABLE&gt;</span><br><span class="line">    &gt;</span><br><span class="line">  ]</span><br><span class="line">  b [shape=ellipse style=filled</span><br><span class="line">    label=&lt;</span><br><span class="line">      &lt;TABLE BGCOLOR="bisque"&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD COLSPAN="3"&gt;elephant&lt;/TD&gt;</span><br><span class="line">          &lt;TD ROWSPAN="2" BGCOLOR="chartreuse" VALIGN="bottom" ALIGN="right"&gt;two&lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD COLSPAN="2" ROWSPAN="2"&gt;</span><br><span class="line">            &lt;TABLE BGCOLOR="grey"&gt;</span><br><span class="line">              &lt;TR&gt; &lt;TD&gt;corn&lt;/TD&gt; &lt;/TR&gt;</span><br><span class="line">              &lt;TR&gt; &lt;TD BGCOLOR="yellow"&gt;c&lt;/TD&gt; &lt;/TR&gt;</span><br><span class="line">              &lt;TR&gt; &lt;TD&gt;f&lt;/TD&gt; &lt;/TR&gt;</span><br><span class="line">            &lt;/TABLE&gt;</span><br><span class="line">          &lt;/TD&gt;</span><br><span class="line">          &lt;TD BGCOLOR="white"&gt;penguin&lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD COLSPAN="2" BORDER="4" ALIGN="right" PORT="there"&gt;4&lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">      &lt;/TABLE&gt;</span><br><span class="line">    &gt;</span><br><span class="line">  ]</span><br><span class="line">  c [</span><br><span class="line">    label=&lt;long line 1&lt;BR/&gt;line 2&lt;BR ALIGN="LEFT"/&gt;line 3&lt;BR ALIGN="RIGHT"/&gt;&gt;</span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line">  subgraph { rank=same b c }</span><br><span class="line">  a:here -&gt; b:there [dir=both arrowtail=diamond]</span><br><span class="line">  c -&gt; b</span><br><span class="line">  d [shape=triangle]</span><br><span class="line">  d -&gt; c [</span><br><span class="line">    label=&lt;</span><br><span class="line">      &lt;TABLE&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD BGCOLOR="red" WIDTH="10"&gt; &lt;/TD&gt;</span><br><span class="line">          &lt;TD&gt;Edge labels&lt;BR/&gt;also&lt;/TD&gt;</span><br><span class="line">          &lt;TD BGCOLOR="blue" WIDTH="10"&gt; &lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">      &lt;/TABLE&gt;</span><br><span class="line">    &gt;</span><br><span class="line">  ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/html-like_label.svg?60" alt=""></p>
 <h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>属性是通过<code>name=value</code>形式来设置的. 节点与边线的属性需要放在<code>[]</code>方括号中.</p>
 <blockquote>
 <p>一个展示属性写法以及属性能做些什么的例子</p>
@@ -4291,6 +4315,7 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 <li>labelloc=”b” (簇的默认值为”t”)</li>
 <li>clusterrank=”local”</li>
 <li>compound=false</li>
+<li>rankdir=TB</li>
 </ul>
 <p><strong>节点</strong>的默认属性是:</p>
 <ul>
@@ -4314,11 +4339,10 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 
 <p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/cluster.svg?20" alt=""></p>
 <h2 id="高级语法"><a href="#高级语法" class="headerlink" title="高级语法"></a>高级语法</h2><p>以下是几条我认为<strong>用来提示图的美观程度</strong>的语法.</p>
-<h3 id="优化布局"><a href="#优化布局" class="headerlink" title="优化布局"></a>优化布局</h3><!-- TODO: 关于ratio, rankdir -->
-
-<p>知道了上面提到的<a href="#Layout-布局">布局的原理</a>我们就可以进行一些更个性化的布局, 比如设置节点的<code>rank</code>属性我们可以改变节点的布局. <code>rank</code>的可选值有: <strong>same</strong>, <strong>min</strong>, <strong>source</strong>, <strong>max</strong>, <strong>sink</strong>.</p>
+<h3 id="优化布局"><a href="#优化布局" class="headerlink" title="优化布局"></a>优化布局</h3><p>知道了上面提到的<a href="#Layout-布局">布局的原理</a>我们就可以进行一些更个性化的布局, 比如设置<code>rankdir</code>可以设置节点的排布方向, 默认为<strong>TB</strong>, top to bottom, 也就是从上到下. 可选值有<strong>TB</strong>, <strong>BT</strong>, <strong>LR</strong>, <strong>RL</strong>.</p>
+<p>再比如设置节点的<code>rank</code>属性我们可以改变节点的布局. <code>rank</code>的可选值有: <strong>same</strong>, <strong>min</strong>, <strong>source</strong>, <strong>max</strong>, <strong>sink</strong>.</p>
 <blockquote>
-<p>一个展示设置rank属性能达到什么效果的例子 (代码和图形都截自旧版文档, 因为代码没给全我也懒得写就这么放着吧👍)</p>
+<p>一个展示设置rank属性能达到什么效果的例子 (代码和图形都截自旧版文档, 因为代码没给全我也懒得写, 就这么放着吧👍)</p>
 </blockquote>
 <p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/image-20200313010630547.png?60" alt="image-20200313010630547"></p>
 <p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/image-20200313010749024.png?80" alt="image-20200313010749024"></p>
@@ -4326,7 +4350,7 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 <p>一共有两种节点端口:</p>
 <ul>
 <li>基于方位的8个端口: n,ne, e, se, s, sw, w, nw</li>
-<li>由<code>shape=record</code>的节点的record structure提供的端口. 这是借助了有表格的HTML-like label的每个&lt;td&gt;元素都有PORT属性的特点.</li>
+<li>基<code>record</code>结构的端口: <code>shape=record</code>的节点可以以记录结构来定义端口. 而因为有&lt;TABLE&gt;元素的<a href="#html-like-label">HTML-like标签</a>与可以作为<code>shape=record</code>的扩展甚至替代品, 每个&lt;TD&gt;元素的<strong>PORT</strong>属性也都提供了一个到该单元格的端口名.</li>
 </ul>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">digraph G {</span><br><span class="line">    node [shape = box]</span><br><span class="line">    node0:n -&gt; node1:n [label = "n"]</span><br><span class="line">    node2:ne -&gt; node3:ne [label = "ne"]</span><br><span class="line">    node4:e -&gt; node5:e [label = "e"]</span><br><span class="line">    node6:se -&gt; node7:se [label = "se"]</span><br><span class="line">    node8:s -&gt; node9:s [label = "s"]</span><br><span class="line">    node10:sw -&gt; node11:sw [label = "sw"]</span><br><span class="line">    node12:w -&gt; node13:w [label = "w"]</span><br><span class="line">    node14:nw -&gt; node15:nw [label = "nw"]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
@@ -4338,8 +4362,10 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 <li>他们有相同的起点或终点</li>
 <li>他们的长度大于1</li>
 </ul>
-<h2 id="相关工具"><a href="#相关工具" class="headerlink" title="相关工具"></a>相关工具</h2><h3 id="VSC的dot语言支持插件"><a href="#VSC的dot语言支持插件" class="headerlink" title="VSC的dot语言支持插件"></a>VSC的dot语言支持插件</h3><p>我最喜欢的画graphviz图的工具是VSC里的<a href="https://marketplace.visualstudio.com/items?itemName=joaompinto.vscode-graphviz" target="_blank" rel="noopener">Graphviz(dot)语言支持插件</a>, 是的它<strong>只支持dot布局</strong>, 不过无伤大雅, 我基本只画dot布局的图. VSC里也有提供直接在markdown文档中渲染graphviz的dot布局图的插件, 不过我觉得这样的兼容性太低, 没有这个插件的人只会看到一串代码, 因此我选择的是一个能提供<strong>DOT语法高亮</strong>, 能提供<strong>自动刷新</strong>的预览图, <strong>能生成svg图</strong>的插件. 只要把这个svg插入markdown就能在文档看到graphviz图了, 而每次更改图片后只需要覆盖原本的svg即可更新md文档中的图, 也很方便的👍</p>
+<h2 id="相关工具"><a href="#相关工具" class="headerlink" title="相关工具"></a>相关工具</h2><h3 id="VSC的dot语言支持插件"><a href="#VSC的dot语言支持插件" class="headerlink" title="VSC的dot语言支持插件"></a>VSC的dot语言支持插件</h3><p>我最喜欢的画graphviz图的工具是VSC里的<a href="https://marketplace.visualstudio.com/items?itemName=joaompinto.vscode-graphviz" target="_blank" rel="noopener">Graphviz(dot)语言支持插件</a>, 是的它<strong>只支持dot布局</strong>. 虽然也可以用graph来声明顶层图, 但绘制出来的仍然是有向图🤦‍♂ 不过无伤大雅, 我基本只画dot布局的图.</p>
+<p>VSC里也有提供直接在markdown文档中渲染graphviz的dot布局图的插件, 不过我觉得这样的兼容性太低, 没有这个插件的人只会看到一串代码, 因此我选择的是一个能提供<strong>DOT语法高亮</strong>, 能提供<strong>自动刷新</strong>的预览图, <strong>能生成svg图</strong>的插件. 只要把这个svg插入markdown就能在文档看到graphviz图了, 而每次更改图片后只需要覆盖原本的svg即可更新md文档中的图, 也很方便的👍</p>
 <h3 id="在线编辑器"><a href="#在线编辑器" class="headerlink" title="在线编辑器"></a>在线编辑器</h3><p>也有很多在线网站提供在线绘制graphviz图的服务, 上网一搜就有, 不过我感觉做得都半斤八两, 体验不算好, 我认为只能拿来救急用, 因此也不给出推荐了.</p>
+<p>💡 实际上有些工具绘制出的图都有细微风格差异, 你可以挨个体验出一个最喜欢的风格的工具.</p>
 <p>不过比较有意思的是这个<a href="https://sketchviz.com/new" target="_blank" rel="noopener">sketchviz</a>, 绘制出的是<strong>手绘风</strong>的图.</p>
 <script>
         document.querySelectorAll('.github-emoji')
