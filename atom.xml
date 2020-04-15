@@ -6,7 +6,7 @@
   <link href="/zh-CN/atom.xml" rel="self"/>
   
   <link href="https://leojhonsong.github.io/zh-CN/"/>
-  <updated>2020-04-04T06:59:20.000Z</updated>
+  <updated>2020-04-04T07:04:15.000Z</updated>
   <id>https://leojhonsong.github.io/zh-CN/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>单硬盘三系统安装记录</title>
+    <link href="https://leojhonsong.github.io/zh-CN/2020/04/04/%E5%8D%95%E7%A1%AC%E7%9B%98%E4%B8%89%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95/"/>
+    <id>https://leojhonsong.github.io/zh-CN/2020/04/04/%E5%8D%95%E7%A1%AC%E7%9B%98%E4%B8%89%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95/</id>
+    <published>2020-04-04T07:04:15.000Z</published>
+    <updated>2020-04-04T07:04:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>分享一下我在同一个SSD里同时安装Ubuntu, Windows, macOS三个系统并以GRUB作为开机引导的经验. 说实话过程并不复杂.</p><a id="more"></a><p>也不知道最近自己时间都浪费哪里去了😑 3月7号弄好的东西现在才得以闲下来记录一番. 先秀一张GRUB界面😏</p><h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><p>说说我的心路历程😏</p><p>直到上大学我都对电脑了解甚少, <strong>只知道有Windows系统</strong>, 并不知道还可以有其他系统, 更别说在这之上的骚操作了😂 上大学后<strong>我逐渐熟悉了Windows系统</strong>并且喜欢上了这个很有现代感的系统. 但随着我对编程的学习逐渐深入, 以及我为了尽早熟悉机器人相关知识而想要了解Linux系统, 在听人介绍后我费了些力气<strong>在虚拟机里装上了Ubuntu16.04</strong>, 不过那时候了解的还是太少, 只是跟着网上的教程将这个东西装好了, 没什么收获. 装好后因为那时也没什么夸张到要开虚拟机在Ubuntu里编程的项目, 所以就体验了几下就束之高阁了. 毕竟那时对于编程, 甚至查找资料的经验都太少了, 只看过一些令人头大的辣鸡资料, 因此并没能学到什么.</p><p>大一下的时候我选了一门叫智能嵌入式的课, 其中有个课题是要编写一个能手势识别的程序并移植到树莓派上. 因此我就买了一个树莓派3b+. 不过那时懵懂的我对于怎么给一个SD卡安装系统手足无措, 就在网上搜资料给树莓派依次装了Ubuntu Mate, ArchLinux, 最后才是Raspbian😂 (我记得Mate是因为我当时没有找到arm架构的国内源就抛弃了, 而ArchLinux我就没装上…) 费劲心力我最后总算是把那个课题做完了, 但一方面我写得很差, 再加上树莓派3b+对图像处理的性能很一般, 所以我的手势识别程序移植到树莓派后十分卡顿😅 那是我<strong>第一次将程序移植到Linux平台, 也是第一次接触Linux嵌入式</strong></p><p>后来在一个实验室学习时接触到了ROS, 而那时Ubuntu18.04已经较为成熟了, 我就安装了个Ubuntu18.04的虚拟机在里面跟着你刷了一遍ROS基础教程, 这回算是<strong>对Ubuntu的基本使用比较了解了</strong>. 不过那时其实并完全不了解ROS的最大作用是什么, 只是知道很牛逼, 跟着教程做了一遍, 没多久就忘了, 只是知道有那么些概念😁 那时我以为Linux系统也就那样, 我在虚拟机体验到的就是它的全部了. 因此那时有同学和我讨论装Linux虚拟机好还是Windows, Linux双系统好时, 我的想法就是这系统又没那么便利, 误操作带来的危险性又那么大, 当然是装在虚拟机好.</p><p>而我装Windows, Ubuntu双系统的契机应该是我电脑的机械硬盘开始老化, 速度变得极慢. 那应该是我大二下刚开学的时候, 我实在忍受不了在机械硬盘运行很耗资源的Windows系统, 而那时我的编程活动也开始多起来, 再加上我偶然得知Ubuntu能识别到已经存在的Windows系统并无脑安装, 我就给自己<strong>装了个Windows, Ubuntu双系统</strong>. 不久后我的机械硬盘彻底不行了就买个一个1T的SSD. 不过换了硬盘后我也还是装的双系统, 因为我<strong>逐渐尝到了Linux系统的甜头</strong>.</p><blockquote><p>我在<a href="https://leojhonsong.github.io/zh-CN/2019/05/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E7%94%A8Linux%E8%80%8C%E4%B8%8D%E6%98%AFWindows/">另一篇文章</a>写了自己对Linux和Windows的对比</p></blockquote><p>而随着我逐渐熟悉Ubuntu, 我开始像大多数Linux用户那样折腾自己的配置, 美化环境😏 期间也尝试了挺多东西, 到现在也形成了自己的使用习惯. 不过很尴尬的是在美化方面, 我经常看到这个好康的在Linux没有但macOS有的字眼. 所以<strong>我开始眼馋macOS</strong>. 不过那时我也就是眼馋, 因为我对比了一番, 发现macOS从接口, 生态等角度都不太适合做嵌入式开发就没有想过安一个试试. (我也在VMware里折腾过macOS虚拟机, 但和Ubuntu虚拟机一样装了没多久就删了)</p><p>而知道最近, 我看到了很详细的黑苹果安装教程, 加上我一个同学根据那份教程成功安上了黑苹果, 我也蠢蠢欲动了. 毕竟疫情期间闲着也是闲着+都用双系统了再多一个也不多. 于是我折腾一番<strong>给单硬盘安装了三个系统</strong>😁</p><p>P.S. 第一次体验macOS的本土包一开始连怎么删除文件都没搞懂, 还是现查的😅 使用逻辑与Windows/Linux差得真的太多了! 甚至因为别扭一度弃用了几天. 不过光是macOS下终端的美观程度就把俺勾回来了🤤</p><!-- TODO --><p>之前也看到网上有人装三系统的文章, 但基本都用了些杂牌子工具一通瞎操作… 所以我分享一下自己较为清爽的安装方法.</p><p>❗️ 我的电脑是真的一点不矫情, 安装很顺利, 不保证你的电脑上同样的不会出幺蛾子.</p><h2 id="关于镜像烧录"><a href="#关于镜像烧录" class="headerlink" title="关于镜像烧录"></a>关于镜像烧录</h2><h3 id="镜像烧录工具"><a href="#镜像烧录工具" class="headerlink" title="镜像烧录工具"></a>镜像烧录工具</h3><p>镜像烧录工具是唯一需要的第三方工具了. 这里给出两个我推荐的镜像烧录工具.</p><ul><li><a href="https://rufus.ie/" target="_blank" rel="noopener">Rufus</a> 这是一个干净而强大的镜像烧录工具, 我还<strong>没遇到过它不能烧录的镜像</strong>, 操作简单的同时也提供了一定的可自定义选项. 问题在于它只有Windows端和macOS端, <strong>没有Linux端</strong></li><li><a href="https://www.balena.io/etcher/" target="_blank" rel="noopener">balenaEtcher</a> 这个工具是<strong>全平台</strong>的, 这点很棒, 但是它的问题是它<strong>无法烧录Windows镜像</strong>.</li></ul><h3 id="推荐的镜像烧录顺序"><a href="#推荐的镜像烧录顺序" class="headerlink" title="推荐的镜像烧录顺序"></a>推荐的镜像烧录顺序</h3><p>我推荐的镜像烧录顺序:</p><ol><li><p>将三个系统镜像都放到移动硬盘里, 提前下好balenaEthcer的便携版Linux客户端, Rufus便携版也都放在移动硬盘里. 这样有需要我同时插上硬盘和一个U盘, 无需安装烧录工具就可以烧录系统.</p><p>❗️balenaEtcher网站直连下载速度有些慢, 建议在有翻墙工具的时候就翻墙下好 (如果你本来就没有当我没说😁)</p></li><li><p>在Windows下用<strong>Rufus</strong>提前烧录好<strong>Windows安装盘</strong>备用.</p></li><li><p>在Ubuntu下用<strong>balenaEtcher</strong>烧录了<strong>macOS安装盘</strong>然后安装macOS, 然后用之前准备的Windows安装盘安装Windows. (此处为什么会在Ubuntu操作会在<a href="#更改EFI分区文件">后文</a>说明)</p></li><li><p>在Windows下把刚才的macOS安装盘或者Windows安装盘随便哪个用<strong>Rufus</strong>重新烧录成<strong>Ubuntu安装盘</strong>, 安装Ubuntu.</p></li><li><p>没了</p></li></ol><p>💡 也就是说推荐准备<strong>两个</strong>U盘. 如果你没有两个U盘那你可以跳过第二步, 然后只要保证身边有另外一台Windows电脑就好了.</p><p>烧录一个镜像大致十分钟, 而安装每个系统平均下来十五分钟, 因此全过程<strong>一个多小时</strong>就能搞定.</p><h2 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h2><p>我安装系统的顺序是:</p><ol><li>macOS10.15.4</li><li>Windows10</li><li>Ubuntu18.04</li></ol><p>之所以是先安装macOS是因为看网上都说<strong>macOS要求EFI分区不小于200MB</strong>, 否则在安装时会提示无法安装. 然后我搜了搜EFI分区扩容, 似乎并没什么清爽的办法. 因此时刻准备着重装系统的我判定<strong>还是直接格式化硬盘来得清爽</strong>. 然后在安装的时候先安装macOS那它自己就会处理好这个事情, 不需要我担心😁</p><p>(不过我把三个系统都装完这个EFI分区也才用了120MB, 也不知道它要那么大干嘛)</p><p>而最后才安装Ubuntu是基于两方面考虑:</p><ol><li>如果先装Ubuntu就意味着得给Windows系统留下一定空间. 那么就需要在安装Ubuntu过程中”Installation Type”这一页选择<code>Something else</code>来<strong>自己给Linux系统分区</strong> (如果不选这种方式, 另外两种方式都会使用硬盘剩余的所有空间). 然而麻烦的是你不光需要给Ubuntu系统分一个主分区, 你还需要讲这个主分区分成几个逻辑分区, 而且每个逻辑分区的大小有一定的讲究. 我目前没有研究过这里的门道并且我对Ubuntu安装程序帮我规划的各个分区的大小没有不满. 因此我决定不去管这种事, <strong>我选择最后来安装Ubuntu, 让安装程序用我给它剩下的空间自己看着办</strong>😏</li><li>Ubuntu安装程序能识别电脑里已经安装的Windows系统 (识别不到我的黑苹果系统), 并<strong>自动处理好与Windows系统共存的配置</strong>, 将Windows添加到GRUB引导项中. 因为我的主力系统是Ubuntu而且我也很喜欢使用GRUB作为开机引导程序, 因此这帮我省了一些事.</li></ol><h3 id="macOS安装"><a href="#macOS安装" class="headerlink" title="macOS安装"></a>macOS安装</h3><p>我使用的黑苹果镜像是<a href="https://blog.daliansky.net/macOS-Catalina-10.15.4-19E266-Release-version-with-Clover-5107-original-image-Double-EFI-Version-UEFI-and-MBR.html" target="_blank" rel="noopener">在这个文章最后的百度云链接</a></p><p>❗️ 我安装完之后才从使用苹果系统的同学们那得知macOS10.15, 也就是Catalina目前bug还比较多, 外观上和10.14也没什么区别, 因此建议安装macOS<strong>10.14</strong>, 而不是10.15.</p><p>这个镜像很棒的一点是它不止包含一个macOS系统安装程序, <strong>还有一个Windows PE</strong>, 也就是一个可以从U盘启动的专门魔改过, 用于修复系统的Windows系统. 这个Windows PE中包含了大多数你在网上教你修复系统发中文教程中提到的各种看起来有点不靠谱的工具 😂</p><p>我安装macOS使用的是<a href="https://blog.daliansky.net/MacOS-installation-tutorial-XiaoMi-Pro-installation-process-records.html" target="_blank" rel="noopener">这个教程</a>. 跟着一步步操作就可以了. 安装好后发现有驱动问题等先放着不管, 把三个系统都装好再来看上面那个镜像的链接里提供的问题解决方案好了, 不然容易心情变得焦躁的 🤗</p><h4 id="更改EFI分区文件"><a href="#更改EFI分区文件" class="headerlink" title="更改EFI分区文件"></a>更改EFI分区文件</h4><p>看到网上说装黑苹果最重要的就是要有对应自己电脑型号的EFI文件, 过了这一关就八九不离十了.</p><p><a href="https://github.com/daliansky/Hackintosh#%E9%BB%91%E8%8B%B9%E6%9E%9C%E9%95%BF%E6%9C%9F%E7%BB%B4%E6%8A%A4%E6%9C%BA%E5%9E%8B%E6%95%B4%E7%90%86-by-%E6%88%91%E6%84%8F" target="_blank" rel="noopener">这里</a>是一份黑苹果爱好者们提供了EFI分区文件的笔记本和台式机的型号列表, 也有他们自己的安装过程分享. 我使用的是其中的<a href="https://github.com/YGQ8988/dell-3568" target="_blank" rel="noopener">Dell Inspiron 3568</a></p><p>💡 在安装前我也曾担心后续两个系统的安装会不会破坏已经安装好的macOS的EFI文件, 实验表明他们是互不干扰的, 不会看对方不顺眼就删掉对方 😏</p><h4 id="网卡问题"><a href="#网卡问题" class="headerlink" title="网卡问题"></a>网卡问题</h4><p>这似乎是在实体机安装黑苹果一定会有的问题, 有人是直接买了一个苹果能识别的网卡换上, 而我懒一点, 我买了一个有macOS驱动的外置网卡, Comfast的<strong>CF-811 AC</strong>, 很小一个, 不贵, 速度也很不错. macOS在使用这个外置网卡时不会认为在使用WiFi, 而是认为是接入了一个以太网. 唯一缺点是我还没有搞清如何让使用这样外置网卡的macOS连接上星巴克WiFi这样需要等它弹出登录页面才能用的公共WiFi–并不会有什么页面弹出 😓</p><h3 id="Windows安装"><a href="#Windows安装" class="headerlink" title="Windows安装"></a>Windows安装</h3><p>Windows的官方镜像可以在<a href="https://msdn.itellyou.cn/" target="_blank" rel="noopener">I Tell You</a>的操作系统一栏找到, 而激活码在淘宝就可以买到, 只是需要一些搜索技巧 😏</p><p>在安装系统的第一步就会要你选择安装在哪里, 在此时创建一个想要的大小的分区选中就可以进行安装了. 因为我的硬盘是1TSSD, 所以我分了一个274G的分区给Windows, 绰绰有余. 如果我真用满了也意味着我该重装了.</p><h4 id="System-Reserved分区"><a href="#System-Reserved分区" class="headerlink" title="System Reserved分区"></a>System Reserved分区</h4><p>当你安好Windows系统后会发现在给Windows划分的分区前后多了两个分区, 一个叫<strong>System Reserved</strong>, 一个叫<strong>Microsoft Windows Recovery Environment</strong>如果你断定自己不会用到安装在硬盘的Windows系统的恢复模式 (实际上Windows安装盘的恢复模式或者Windows PE盘可能会是你遇到麻烦时的更好选择), 那么<strong>Microsoft Windows Recovery Environment</strong>这个分区可以随便删. 而<strong>System Reserved</strong>这个分区<strong>绝对不能随便删, 最好是别动</strong>. 血泪教训啊! 一次我看这分区不爽一气之下删掉了, 然后就因为缺少文件而无法启动Windows了…</p><p>🔗 <a href="https://www.zhihu.com/question/60154583" target="_blank" rel="noopener">Windows的System Reserved分区是什么以及能否删除</a></p><p>我找到了这个<a href="http://www.uefi.org/sites/default/files/resources/UEFI-Plugfest-WindowsBootEnvironment.pdf" target="_blank" rel="noopener">Windows Boot Environment - Murali Ravirala (Microsoft)</a>, 里面讲述了Windows系统的启动过程, 提到了这个分区的作用.</p><p>总结下来意思就是<strong>System Reserved</strong>这个分区不能随便删, 要删还要不会出错操作很麻烦, 因此就别动它了 🤦‍♂</p><p>💡 值得一提的是Windows现在有了<strong>开发人员模式</strong>, 开启这个模式后在Windows开发的体验会好很多, 不会经常弄出些乱七八糟的错误.</p><h3 id="Ubuntu安装"><a href="#Ubuntu安装" class="headerlink" title="Ubuntu安装"></a>Ubuntu安装</h3><p>Ubuntu系统的安装就跟着<a href="https://ubuntu.com/tutorials/tutorial-install-ubuntu-desktop#1-overview" target="_blank" rel="noopener">官网安装教程</a>来是最简洁正确的. 唯一需要注意的是在官网教程第六步时, 因为之前安装了Windows系统, Ubuntu安装程序会检测到已安装的Windows系统, 并给出一个<strong>Install Ubuntu alongside Windows 10</strong>的选项. 选择这个是最简单的方式. 另外选择这个的话Ubuntu安装程序会自动把Windows系统加入到GRUB中, 属实舒服.</p><p><strong>系统安装就全部完成了!</strong></p><h2 id="GRUB配置及开机美化"><a href="#GRUB配置及开机美化" class="headerlink" title="GRUB配置及开机美化"></a>GRUB配置及开机美化</h2><h3 id="引导项设置"><a href="#引导项设置" class="headerlink" title="引导项设置"></a>引导项设置</h3><p><code>etc/grub.d/</code></p><h3 id="Grub-tone"><a href="#Grub-tone" class="headerlink" title="Grub tone"></a>Grub tone</h3><p><code>etc/default/grub</code></p><h3 id="最后微调"><a href="#最后微调" class="headerlink" title="最后微调"></a>最后微调</h3><p><code>/boot/grub/grub.cfg</code></p><h3 id="开机美化"><a href="#开机美化" class="headerlink" title="开机美化"></a>开机美化</h3><p>Ubuntu开机过程中一共有三处可以美化:</p><ul><li>GRUB theme</li><li><a href="https://wiki.archlinux.org/index.php/plymouth" target="_blank" rel="noopener">Plymouth</a> theme</li><li><a href="https://wiki.archlinux.org/index.php/GDM" target="_blank" rel="noopener">GDM</a> theme</li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;分享一下我在同一个SSD里同时安装Ubuntu, Windows, macOS三个系统并以GRUB作为开机引导的经验. 说实话过程并不复杂.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="配置" scheme="https://leojhonsong.github.io/zh-CN/categories/%E9%85%8D%E7%BD%AE/"/>
+    
+      <category term="Linux" scheme="https://leojhonsong.github.io/zh-CN/categories/Linux/"/>
+    
+      <category term="macOS" scheme="https://leojhonsong.github.io/zh-CN/categories/macOS/"/>
+    
+      <category term="启动" scheme="https://leojhonsong.github.io/zh-CN/categories/%E5%90%AF%E5%8A%A8/"/>
+    
+      <category term="GRUB" scheme="https://leojhonsong.github.io/zh-CN/categories/%E5%90%AF%E5%8A%A8/GRUB/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Graphviz简要语法</title>
@@ -459,28 +488,6 @@
     
     
       <category term="杂记" scheme="https://leojhonsong.github.io/zh-CN/categories/%E6%9D%82%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>机器人案例学习</title>
-    <link href="https://leojhonsong.github.io/zh-CN/2019/06/10/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://leojhonsong.github.io/zh-CN/2019/06/10/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0/</id>
-    <published>2019-06-09T18:03:33.000Z</published>
-    <updated>2019-06-09T18:03:33.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>正如我在 <a href="https://leojhonsong.github.io/zh-CN/about/">about</a> 中提到的, <strong>我立志为软体机器人领域贡献一份力</strong>, 那就先从积累开始吧. 在此记录我觉得很精妙的机器人,或可以用于机器人的”东西”, 参考学习💪</p><a id="more"></a><p>TODO</p><h1 id="Cassie家族"><a href="#Cassie家族" class="headerlink" title="Cassie家族"></a>Cassie家族</h1><h1 id="BDC家族"><a href="#BDC家族" class="headerlink" title="BDC家族"></a>BDC家族</h1><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;正如我在 &lt;a href=&quot;https://leojhonsong.github.io/zh-CN/about/&quot;&gt;about&lt;/a&gt; 中提到的, &lt;strong&gt;我立志为软体机器人领域贡献一份力&lt;/strong&gt;, 那就先从积累开始吧. 在此记录我觉得很精妙的机器人,
-或可以用于机器人的”东西”, 参考学习💪&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Robotics" scheme="https://leojhonsong.github.io/zh-CN/categories/Robotics/"/>
     
     
   </entry>
