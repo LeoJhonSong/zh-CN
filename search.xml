@@ -4078,6 +4078,57 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
       </categories>
   </entry>
   <entry>
+    <title>文件命名规则总结</title>
+    <url>/zh-CN/2020/02/06/%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p>如果待处理文件的文件名中含有一些特殊字符, 有许多程序会因为考虑不完善 (或者说程序员偷懒) 而出现识别不到文件, 文件处理出错, 结果不符合意图, 甚至程序崩溃的问题. 而为了方便自己偷懒, 我总结了一些命名文件的规则.</p>
+<a id="more"></a>
+
+<p>💡 我并不是说文件名命名必须遵循这些准则, 只是在程序设计/输入不够严谨 (也就是想偷懒的情况下) 这样的命名准则是最不容易导致错误的👍</p>
+<h2 id="文件名中只应该包含数字-字母-汉字-下划线-连字符-句点"><a href="#文件名中只应该包含数字-字母-汉字-下划线-连字符-句点" class="headerlink" title="文件名中只应该包含数字, 字母, 汉字, 下划线, 连字符, 句点"></a>文件名中只应该包含数字, 字母, 汉字, 下划线, 连字符, 句点</h2><p>许多特殊字符会让程序出错, 下面举几个例子:</p>
+<ul>
+<li><code>文件名里 有空格.jpg</code> 这样的文件名很可能让程序以为要处理的文件的名字是<code>文件名里</code>, 因而找不到文件或者处理了错误的文件. 而<code>有空格.jpg</code>会被当成无效参数, 多余字符.</li>
+<li><code>文件名里/有左斜杠.avi</code> 这样的文件名在很多程序里会被认为是一个名为<code>文件名里</code>的文件夹下的<code>有左斜杠.avi</code>文件, 因此可能得到<strong>没有<code>文件名里</code>这个文件夹</strong>的报错</li>
+<li><code>文件名里(有)括号.gif</code> 比如在markdown文档中用<code>![](文件名里(有)括号.gif)</code>来引用这个gif, 在有的markdown渲染器会被渲染为<strong>)括号.gif</strong>. 因为前一个)被认为是markdown引用图片的<code>![]()</code>语法的结束符了.</li>
+<li>在一些较老的程序中汉字也算是一种特殊字符. 比如在python2中如果不特意注意编码格式转换问题的话中文很容易被读取为乱码. 当然现在的程序大多是兼容汉字的. (Python2在已经终止维护了🕯)</li>
+</ul>
+<blockquote>
+<p>空格用下划线代替, 其他字符用连字符代替</p>
+</blockquote>
+<p>如果你原本想要包含这些特殊字符在文件名中来表达一些逻辑关系, 我的做法是用_来代替空格, 用-来代替其他字符.</p>
+<h2 id="当文件名包含有排序意图的数字时应当用阿拉伯数字而不是汉字-并且位数不足的用0在左侧占位"><a href="#当文件名包含有排序意图的数字时应当用阿拉伯数字而不是汉字-并且位数不足的用0在左侧占位" class="headerlink" title="当文件名包含有排序意图的数字时应当用阿拉伯数字而不是汉字, 并且位数不足的用0在左侧占位"></a>当文件名包含有排序意图的数字时应当用阿拉伯数字而不是汉字, 并且位数不足的用0在左侧占位</h2><p>曾经我很困惑下面这两种情况的文件夹排序为什么不是从小到大的, 后来我发现前者是因为文件系统<strong>不把汉字数字作为排序用的数字</strong> (有意思的是我Ubuntu系统和Windows系统里图一情况排序不一样), 后一个是因为文件系统是<strong>逐字比较</strong>而不是把一串数字作为一个数 (windows系统和Ubuntu系统排序图2情况时都能正常排序)</p>
+<blockquote>
+<p>图一 Ubuntu系统下含汉字数字文件名排序</p>
+</blockquote>
+<p><img src="%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/image-20200207181027438.png" alt=""></p>
+<blockquote>
+<p>图二 百度云里含数字文件名排序</p>
+</blockquote>
+<p><img src="%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/Screenshot_20200207_181843.jpg" alt=""></p>
+<p>因此如果想在文件名中包含有排序功能的数字, 或者表达顺序之意时应当<strong>用阿拉伯数字而不是汉字, 并且位数不足的用0在左侧占位</strong>.</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>技巧</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Graphviz简要语法</title>
     <url>/zh-CN/2020/03/12/Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<p><a href="https://emden.github.io/" target="_blank" rel="noopener">Graphviz</a>是一个很强大的<strong>图形可视化工具</strong>. 它使用<strong>DOT</strong>语言来描述图形, 但它并不单纯是个绘图软件, 而是能接入程序, 进行函数调用流程, 决策树, 数据结构, 日志系统等图形关系生成, 而且可以是<strong>交互式</strong>的 (不过我暂时没研究过所以不太了解). 暂且不提这些扩展功能, graphviz的语法允许我们仅通过文字描述能绘制出样式极其丰富的图形, 这大大方便了对图形的改动的跟踪.</p>
@@ -4371,19 +4422,19 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 
 <p>也不知道最近自己时间都浪费哪里去了😑 3月7号弄好的东西现在才得以闲下来记录一番. 先秀一张GRUB界面😏</p>
 <h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><p>说说我的心路历程😏</p>
-<p>直到上大学我都对电脑了解甚少, <strong>只知道有Windows系统</strong>, 并不知道还可以有其他系统, 更别说在这之上的骚操作了😂 上大学后<strong>我逐渐熟悉了Windows系统</strong>并且喜欢上了这个很有现代感的系统. 但随着我对编程的学习逐渐深入, 以及我为了尽早熟悉机器人相关知识而想要了解Linux系统, 在听人介绍后我费了些力气<strong>在虚拟机里装上了Ubuntu16.04</strong>, 不过那时候了解的还是太少, 只是跟着网上的教程将这个东西装好了, 没什么收获. 装好后因为那时也没什么夸张到要开虚拟机在Ubuntu里编程的项目, 所以就体验了几下就束之高阁了. 毕竟那时对于编程, 甚至查找资料的经验都太少了, 只看过一些令人头大的辣鸡资料, 因此并没能学到什么.</p>
-<p>大一下的时候我选了一门叫智能嵌入式的课, 其中有个课题是要编写一个能手势识别的程序并移植到树莓派上. 因此我就买了一个树莓派3b+. 不过那时懵懂的我对于怎么给一个SD卡安装系统手足无措, 就在网上搜资料给树莓派依次装了Ubuntu Mate, ArchLinux, 最后才是Raspbian😂 (我记得Mate是因为我当时没有找到arm架构的国内源就抛弃了, 而ArchLinux我就没装上…) 费劲心力我最后总算是把那个课题做完了, 但一方面我写得很差, 再加上树莓派3b+对图像处理的性能很一般, 所以我的手势识别程序移植到树莓派后十分卡顿😅 那是我<strong>第一次将程序移植到Linux平台, 也是第一次接触Linux嵌入式</strong></p>
-<p>后来在一个实验室学习时接触到了ROS, 而那时Ubuntu18.04已经较为成熟了, 我就安装了个Ubuntu18.04的虚拟机在里面跟着你刷了一遍ROS基础教程, 这回算是<strong>对Ubuntu的基本使用比较了解了</strong>. 不过那时其实并完全不了解ROS的最大作用是什么, 只是知道很牛逼, 跟着教程做了一遍, 没多久就忘了, 只是知道有那么些概念😁 那时我以为Linux系统也就那样, 我在虚拟机体验到的就是它的全部了. 因此那时有同学和我讨论装Linux虚拟机好还是Windows, Linux双系统好时, 我的想法就是这系统又没那么便利, 误操作带来的危险性又那么大, 当然是装在虚拟机好.</p>
-<p>而我装Windows, Ubuntu双系统的契机应该是我电脑的机械硬盘开始老化, 速度变得极慢. 那应该是我大二下刚开学的时候, 我实在忍受不了在机械硬盘运行很耗资源的Windows系统, 而那时我的编程活动也开始多起来, 再加上我偶然得知Ubuntu能识别到已经存在的Windows系统并无脑安装, 我就给自己<strong>装了个Windows, Ubuntu双系统</strong>. 不久后我的机械硬盘彻底不行了就买个一个1T的SSD. 不过换了硬盘后我也还是装的双系统, 因为我<strong>逐渐尝到了Linux系统的甜头</strong>.</p>
+<p>直到上大学我都对电脑了解甚少, <strong>只知道有Windows系统</strong>, 并不知道还可以有其他系统, 更别说在这之上的骚操作了😂 上大学后<strong>我逐渐熟悉了Windows系统</strong>并且喜欢上了这个很有现代感的系统. 但随着我对编程的学习逐渐深入, 以及我为了尽早熟悉机器人相关知识而想要了解Linux系统, 在听人介绍后我费了些力气<strong>在虚拟机里装上了Ubuntu16.04</strong>, 不过那时候了解的还是太少, 只是跟着网上的教程将这个东西装好了, 没什么收获. 装好后因为那时也没什么夸张到要开虚拟机在Ubuntu里编程的项目, 所以就体验了几下就束之高阁了. 毕竟那时对于编程, 甚至查找资料的经验都太少了, 只看到一些令人头大的辣鸡资料, 因此并没能学到什么.</p>
+<p>大一下的时候我选了一门叫智能嵌入式的课, 其中有个课题是要编写一个能手势识别的程序并移植到树莓派上. 因此我就买了一个树莓派3b+. 不过那时懵懂的我对于怎么给一个SD卡安装系统手足无措, 就在网上搜资料给树莓派依次装了Ubuntu Mate, ArchLinux, 最后才是Raspbian😂 (我记得Mate是因为我当时没有找到arm架构的国内源就抛弃了, 而ArchLinux我就根本没装上…) 费劲心力我最后总算是把那个课题做完了, 但一方面我写得很差, 再加上树莓派3b+对图像处理的性能很一般, 所以我的手势识别程序移植到树莓派后十分卡顿😅 那是我<strong>第一次将程序移植到Linux平台, 也是第一次接触Linux嵌入式</strong></p>
+<p>后来在一个实验室学习时接触到了ROS, 而那时Ubuntu18.04已经较为成熟了, 我就安装了个Ubuntu18.04的虚拟机在里面跟着刷了一遍ROS基础教程, 这回算是<strong>对Ubuntu的基本使用比较了解了</strong>. 不过那时其实并完全不了解ROS的最大作用是什么, 只是知道很牛逼, 跟着教程做了一遍, 没多久就忘了, 只是了解到有那么些概念😁 那时我以为Linux系统也就那样, 我在虚拟机体验到的就是它的全部了. 因此那时有同学和我讨论装Linux虚拟机好还是Windows, Linux双系统好时, 我的想法就是这系统又没那么便利, 误操作带来的危险性又那么大, 当然是装在虚拟机好.</p>
+<p>而我装Windows, Ubuntu双系统的契机应该是<a href="/zh-CN/2019/03/30/我打算换电脑了/">我电脑的机械硬盘开始老化</a>, 速度变得极慢. 那应该是我大二下刚开学的时候, 我实在忍受不了在机械硬盘运行本身就很耗资源的Windows系统了, 而那时我的编程活动也开始多起来, 再加上我偶然得知Ubuntu能识别到已经存在的Windows系统并傻瓜式安装, 我就给自己<strong>装了个Windows, Ubuntu双系统</strong>. 不久后我的机械硬盘彻底不行了就买个一个1T的SSD. 不过换了硬盘后我也还是装的双系统, 因为我<strong>逐渐尝到了Linux系统的甜头</strong>.</p>
 <blockquote>
 <p>我在<a href="https://leojhonsong.github.io/zh-CN/2019/05/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E7%94%A8Linux%E8%80%8C%E4%B8%8D%E6%98%AFWindows/">另一篇文章</a>写了自己对Linux和Windows的对比</p>
 </blockquote>
 <p>而随着我逐渐熟悉Ubuntu, 我开始像大多数Linux用户那样折腾自己的配置, 美化环境😏 期间也尝试了挺多东西, 到现在也形成了自己的使用习惯. 不过很尴尬的是在美化方面, 我经常看到这个好康的在Linux没有但macOS有的字眼. 所以<strong>我开始眼馋macOS</strong>. 不过那时我也就是眼馋, 因为我对比了一番, 发现macOS从接口, 生态等角度都不太适合做嵌入式开发就没有想过安一个试试. (我也在VMware里折腾过macOS虚拟机, 但和Ubuntu虚拟机一样装了没多久就删了)</p>
-<p>而知道最近, 我看到了很详细的黑苹果安装教程, 加上我一个同学根据那份教程成功安上了黑苹果, 我也蠢蠢欲动了. 毕竟疫情期间闲着也是闲着+都用双系统了再多一个也不多. 于是我折腾一番<strong>给单硬盘安装了三个系统</strong>😁</p>
+<p>而直到最近, 我看到了很详细的黑苹果安装教程, 加上我一个同学根据那份教程成功安上了黑苹果, 我也蠢蠢欲动了. 毕竟疫情期间闲着也是闲着+都用双系统了再多一个也不多. 于是我折腾一番<strong>给单硬盘安装了三个系统</strong>😁</p>
 <p>P.S. 第一次体验macOS的本土包一开始连怎么删除文件都没搞懂, 还是现查的😅 使用逻辑与Windows/Linux差得真的太多了! 甚至因为别扭一度弃用了几天. 不过光是macOS下终端的美观程度就把俺勾回来了🤤</p>
 <!-- TODO -->
 
-<p>之前也看到网上有人装三系统的文章, 但基本都用了些杂牌子工具一通瞎操作… 所以我分享一下自己较为清爽的安装方法.</p>
+<p>之前也看到网上有人装三系统的文章, 但基本都用了些杂牌子工具一通瞎操作… 所以我分享一下自己较为<strong>清爽</strong>的安装方法.</p>
 <p>❗️ 我的电脑是真的一点不矫情, 安装很顺利, 不保证你的电脑上同样的不会出幺蛾子.</p>
 <h2 id="关于镜像烧录"><a href="#关于镜像烧录" class="headerlink" title="关于镜像烧录"></a>关于镜像烧录</h2><h3 id="镜像烧录工具"><a href="#镜像烧录工具" class="headerlink" title="镜像烧录工具"></a>镜像烧录工具</h3><p>镜像烧录工具是唯一需要的第三方工具了. 这里给出两个我推荐的镜像烧录工具.</p>
 <ul>
@@ -4470,57 +4521,6 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
         <category>macOS</category>
         <category>启动</category>
         <category>GRUB</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>文件命名规则总结</title>
-    <url>/zh-CN/2020/02/06/%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<p>如果待处理文件的文件名中含有一些特殊字符, 有许多程序会因为考虑不完善 (或者说程序员偷懒) 而出现识别不到文件, 文件处理出错, 结果不符合意图, 甚至程序崩溃的问题. 而为了方便自己偷懒, 我总结了一些命名文件的规则.</p>
-<a id="more"></a>
-
-<p>💡 我并不是说文件名命名必须遵循这些准则, 只是在程序设计/输入不够严谨 (也就是想偷懒的情况下) 这样的命名准则是最不容易导致错误的👍</p>
-<h2 id="文件名中只应该包含数字-字母-汉字-下划线-连字符-句点"><a href="#文件名中只应该包含数字-字母-汉字-下划线-连字符-句点" class="headerlink" title="文件名中只应该包含数字, 字母, 汉字, 下划线, 连字符, 句点"></a>文件名中只应该包含数字, 字母, 汉字, 下划线, 连字符, 句点</h2><p>许多特殊字符会让程序出错, 下面举几个例子:</p>
-<ul>
-<li><code>文件名里 有空格.jpg</code> 这样的文件名很可能让程序以为要处理的文件的名字是<code>文件名里</code>, 因而找不到文件或者处理了错误的文件. 而<code>有空格.jpg</code>会被当成无效参数, 多余字符.</li>
-<li><code>文件名里/有左斜杠.avi</code> 这样的文件名在很多程序里会被认为是一个名为<code>文件名里</code>的文件夹下的<code>有左斜杠.avi</code>文件, 因此可能得到<strong>没有<code>文件名里</code>这个文件夹</strong>的报错</li>
-<li><code>文件名里(有)括号.gif</code> 比如在markdown文档中用<code>![](文件名里(有)括号.gif)</code>来引用这个gif, 在有的markdown渲染器会被渲染为<strong>)括号.gif</strong>. 因为前一个)被认为是markdown引用图片的<code>![]()</code>语法的结束符了.</li>
-<li>在一些较老的程序中汉字也算是一种特殊字符. 比如在python2中如果不特意注意编码格式转换问题的话中文很容易被读取为乱码. 当然现在的程序大多是兼容汉字的. (Python2在已经终止维护了🕯)</li>
-</ul>
-<blockquote>
-<p>空格用下划线代替, 其他字符用连字符代替</p>
-</blockquote>
-<p>如果你原本想要包含这些特殊字符在文件名中来表达一些逻辑关系, 我的做法是用_来代替空格, 用-来代替其他字符.</p>
-<h2 id="当文件名包含有排序意图的数字时应当用阿拉伯数字而不是汉字-并且位数不足的用0在左侧占位"><a href="#当文件名包含有排序意图的数字时应当用阿拉伯数字而不是汉字-并且位数不足的用0在左侧占位" class="headerlink" title="当文件名包含有排序意图的数字时应当用阿拉伯数字而不是汉字, 并且位数不足的用0在左侧占位"></a>当文件名包含有排序意图的数字时应当用阿拉伯数字而不是汉字, 并且位数不足的用0在左侧占位</h2><p>曾经我很困惑下面这两种情况的文件夹排序为什么不是从小到大的, 后来我发现前者是因为文件系统<strong>不把汉字数字作为排序用的数字</strong> (有意思的是我Ubuntu系统和Windows系统里图一情况排序不一样), 后一个是因为文件系统是<strong>逐字比较</strong>而不是把一串数字作为一个数 (windows系统和Ubuntu系统排序图2情况时都能正常排序)</p>
-<blockquote>
-<p>图一 Ubuntu系统下含汉字数字文件名排序</p>
-</blockquote>
-<p><img src="%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/image-20200207181027438.png" alt=""></p>
-<blockquote>
-<p>图二 百度云里含数字文件名排序</p>
-</blockquote>
-<p><img src="%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/Screenshot_20200207_181843.jpg" alt=""></p>
-<p>因此如果想在文件名中包含有排序功能的数字, 或者表达顺序之意时应当<strong>用阿拉伯数字而不是汉字, 并且位数不足的用0在左侧占位</strong>.</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>技巧</category>
       </categories>
   </entry>
 </search>
