@@ -35,6 +35,187 @@
       </script>]]></content>
   </entry>
   <entry>
+    <title>配置VSCode中调试C/C++环境</title>
+    <url>/zh-CN/2018/12/30/%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<div align="right">Language:
+<a href="/2018/12/30/Configure-C-C-environment-in-VSCode"><kbd>English</kbd></a>
+<a href="/zh-CN/2018/12/30/配置VSCode中调试C-C-环境"><kbd>中文</kbd></a>
+</div>
+
+<p>这里是为我在VSCode插件市场发布的
+<a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.ccpp-extension-pack" target="_blank" rel="noopener">C/C++扩展包</a>
+写的Windows下VSCode中C/C++配置教程<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8">🎉</span></p>
+<a id="more"></a>
+
+<p>实际上在<a href="https://code.visualstudio.com/docs/languages/cpp" target="_blank" rel="noopener">VSCode的说明文档中C++部分</a>
+对如何配置环境有十分详细的说明, 本文仅是对其的部分整理和解读<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span> 因此如果你的能力足够看官方文档当然是更好的选择<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8">👍</span></p>
+<p>P.S.其实只要右键翻译成中文我觉得不难懂…</p>
+<ol>
+<li><a href="#准备工作">准备工作</a><ol>
+<li><a href="#编译器">编译器</a><ol>
+<li><a href="#安装">安装</a></li>
+<li><a href="#添加至Path">添加至Path</a></li>
+<li><a href="#测试">测试</a></li>
+</ol>
+</li>
+<li><a href="#VSCode插件">VSCode插件</a></li>
+</ol>
+</li>
+<li><a href="#配置文件">配置文件</a><ol>
+<li><a href="#配置IntelliSense">配置IntelliSense</a></li>
+<li><a href="#配置编译配置文件">配置编译配置文件</a><ol>
+<li><a href="#合起来">合起来!</a></li>
+</ol>
+</li>
+<li><a href="#配置调试配置文件">配置调试配置文件</a><ol>
+<li><a href="#调试对象">调试对象</a></li>
+<li><a href="#Debugger路径及选项">Debugger路径及选项</a></li>
+<li><a href="#启动前编译">启动前编译</a></li>
+<li><a href="#合起来-1">合起来!</a></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a href="#Enjoy">Enjoy</a></li>
+</ol>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>VSCode本身只是一个编辑器, 也就是一个记事本, 是不包含编译器的. 即便我们安装了cpptools
+这个扩展, 他也并没有为我们安装编译器 (如果你想看看cpptools这个扩展里都有什么可以前往自己电脑的 <strong>%HOMEPATH%\.vscode\extensions</strong>, 找到<strong>ms-vscode.cpptools</strong> 去看看)</p>
+<h2 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h2><p>因此第一步我们需要安装编译器. 编译器不止一家, 在VSCode官方文档中推荐的是:</p>
+<ul>
+<li><p>Windows平台: <a href="https://sourceforge.net/projects/mingw-w64/" target="_blank" rel="noopener">MinGW-w64</a></p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 要注意另有一个叫MinGW的东西, 虽然功能差不多, 但那个已经很久没更新了,
+安装没MinGW-w64容易, 还不是官宣, 因此不推荐. 后面所说的MinGW实际指的是MinGW-w64, 我只是懒得打那么多字了</p>
+</li>
+<li><p>macOS: <a href="http://releases.llvm.org/download.html" target="_blank" rel="noopener">clang</a></p>
+</li>
+<li><p>Linux: <a href="https://gcc.gnu.org/" target="_blank" rel="noopener">gcc</a></p>
+</li>
+</ul>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8">❗</span>因为我没钱买Mac, 暂时也没需求在Linux配置VSCode, 本文仅针对<strong>Windows</strong>
+平台, 当然也可以作为其他平台的参考. 甚至<a href="https://pimylifeup.com/raspberry-pi-visual-studio-code/" target="_blank" rel="noopener">有人在树莓派安装VSCode</a>.</p>
+<p>P.S. 实际上编译器的选择并不是个令人头疼的事, 我们随时可以轻易的更换VSCode使用的编译器</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>将MinGW-w64下载下来之后点击安装, 以下几点要注意, 其余选项默认即可:</p>
+<ul>
+<li><p>安装向导第一页有一项是选择<code>Architecture</code> (即电脑的架构, 此处i386代指32位电脑,
+x86_64代指64位电脑), 此处选择<strong>x86_64</strong>. (当然如果你的电脑竟然是32位的话不用变)</p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> 如何查看自己电脑是32位还是64位?</p>
+<p>Windows10的话, 前往 <strong>设置</strong> &gt; <strong>系统</strong> &gt; <strong>关于</strong> &gt; <strong>设备规格</strong> &gt; <strong>系统类型</strong></p>
+<p>其他Windows的话上网搜索一下好啦 <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f609.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f609.png?v8">😉</span></p>
+</li>
+<li><p>安装在哪里都可以, 但一定要是你找得到的地方, 因为安装完成后还要手动将MinGW加入<strong>Path</strong>.</p>
+</li>
+</ul>
+<h3 id="添加至Path"><a href="#添加至Path" class="headerlink" title="添加至Path"></a>添加至Path</h3><p>安装完毕后我们需要将MinGW添加至<strong>Path</strong>, 这样我们通过命令行就可以调用它啦 (VSCode编译/调试
+C/C++程序实际上就是在内置命令行中调用MinGW)</p>
+<p>要将什么路径添加到<strong>Path</strong>呢? 因为添加到Path的路径是要调用的程序的exe文件所在的文件夹比如我将MinGW安装到了 <strong>D:\Softwares\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0</strong>
+这个文件夹下, 那么我将
+<strong>D:\Softwares\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin</strong>加入环境变量.
+你会看到我们将要调用的<code>gcc</code>和<code>gdb</code>两个程序正在其中.</p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8">🔗</span> 关于如何添加系统变量, <a href="https://jingyan.baidu.com/article/ca41422f17107a1eaf99ed64.html" target="_blank" rel="noopener">这篇百度知道</a>应该就够了</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>这之后! 我们测试一下, 在命令行输入<code>gcc</code></p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> 你看到的应当是:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">C:\Users\LeoJh&gt;gcc</span><br><span class="line">gcc: fatal error: no input files</span><br><span class="line">compilation terminated.</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这是说gcc被成功唤起,我们已经成功完成编译器的配置了, 但你没告诉它要编译的文件路径, 所以他就报错了.</p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8">❌</span>而如果你看到的是:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">C:\Users\LeoJh&gt;gcc</span><br><span class="line">'gcc' 不是内部或外部命令，也不是可运行的程序</span><br><span class="line">或批处理文件。</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这是说无法从命令行调用gcc. 一种情况是没有把正确的路径加入<strong>Path</strong>, 另一种情况是该换电脑了
+<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8">😁</span></p>
+<h2 id="VSCode插件"><a href="#VSCode插件" class="headerlink" title="VSCode插件"></a>VSCode插件</h2><p>搞定了编译器我们就离完成不远了! 实际上你现在已经可以开始开发C/C++了, 只不过是硬核一些.
+不信你可以搓一段hello world放进一个.c文件, 比如<strong>test.c</strong>, 在该文件所在文件夹空白处按住<code>shift</code>同时按右键, 在此打开powershell, 输入<code>gcc test.c</code>, 然后你就会发现文件夹里多了一个<strong>a.exe</strong>. 这便是编译好的可执行文件了!</p>
+<p>但这样无论是编辑还是编译还是调试体验都太差了, 于是我们安装一些好用的扩展提高效率.</p>
+<p>因为我并不常在VSCode中编写C/C++, 因此<a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.ccpp-extension-pack" target="_blank" rel="noopener">我的扩展包</a>
+中并没有几个插件. 但我认为这几个很不错的<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<p>当然你看不上我的扩展包也没事<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8">😢</span>只需要安装了<a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools" target="_blank" rel="noopener">官方C/C++支持扩展</a>
+就能体验到很强大的支持了.</p>
+<h1 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h1><p>在有些教程中, 要在VSCode中开发C/C++需要配置<code>c_cpp_properties.json</code>, <code>tasks.json</code>,
+<code>launch.json</code>三样, 但现在不是这样了! 🎉 现在<code>c_cpp_properties.json</code>已经完全被
+<code>settings.json</code>取代了, 也就是说在设置中就可以进行原来在<code>c_cpp_properties.json</code>中进行的配置! 这样的好处是我们可以针对不同的工作区进行不同的设置等. 另外, 稍后你也会看到随着VSC的更新<code>tasks.json</code>和<code>launch.json</code>的生成也变得十分简单!</p>
+<p>🔗 关于设置取代了<code>c_cpp_properties.json</code>的说明参见<a href="https://github.com/Microsoft/vscode-cpptools/blob/master/Documentation/LanguageServer/Customizing%20Default%20Settings.md" target="_blank" rel="noopener">这里</a>,
+另外给出对原本可以在<code>c_cpp_properties.json</code>中配置的内容的描述的<a href="https://github.com/Microsoft/vscode-cpptools/blob/master/Documentation/LanguageServer/c_cpp_properties.json.md" target="_blank" rel="noopener">链接</a></p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 以下配置文件内容都以我的配置文件为例</p>
+<h2 id="配置IntelliSense"><a href="#配置IntelliSense" class="headerlink" title="配置IntelliSense"></a>配置IntelliSense</h2><p>正如前面所说, 我们不需要VSCode就可以编译/调试C/C++, 因此能够提供智能补全功能的
+IntelliSence是<strong>cpptools</strong>这个插件很重要的一部分, 通过在<code>settings.json</code> (原本是
+<code>c_cpp_properties.json</code>)中进行设置来设定IntelliSense的模式. 主要设置以下几个:</p>
+<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"C_Cpp.autocomplete": "Default",</span><br><span class="line">"C_Cpp.clang_format_style": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Allman, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4 }",</span><br><span class="line">"C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Allman, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4 }",</span><br><span class="line">"C_Cpp.default.compilerPath": "D:\\Softwares\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe",</span><br><span class="line">"C_Cpp.default.cStandard": "c99",</span><br><span class="line">"C_Cpp.default.cppStandard": "c++11",</span><br><span class="line">"C_Cpp.default.intelliSenseMode": "gcc-x64",</span><br><span class="line">"C_Cpp.intelliSenseEngine": "Default",</span><br><span class="line">"C_Cpp.errorSquiggles": "Enabled",</span><br></pre></td></tr></tbody></table></figure>
+
+<p>💡 其中<strong>C_Cpp.clang_format_style</strong>, <strong>C_Cpp.clang_format_fallbackStyle</strong>是VSC格式化C/C++代码的风格.
+上面的配置是近似于<strong>Visual Studio</strong>格式化C/C++代码的风格.
+我偏爱VS风格, 而如果你喜欢Google风格, 可以用下面这个值:</p>
+<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"C_Cpp.clang_format_style": "{BasedOnStyleStyle: Google, IndentWidth: 4}",</span><br><span class="line">"C_Cpp.clang_format_fallbackStyle": "{BasedOnStyleStyle: Google, IndentWidth: 4}",</span><br></pre></td></tr></tbody></table></figure>
+
+<p>随着VSC的更新, VSC提供了一些<code>tasks.json</code>和<code>launch.json</code>的模板, 这让生成这两个文件变得十分容易!
+下面这个gif👇 是一个生成<code>tasks.json</code>和<code>launch.json</code>的示例.</p>
+<p><img src="%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/example.gif" alt=""></p>
+<p>💡 这个gif是在Linux系统 (Ubuntu) 下录制的.</p>
+<p>下面则是对这两个文件内容的一些解释.</p>
+<h2 id="配置编译配置文件"><a href="#配置编译配置文件" class="headerlink" title="配置编译配置文件"></a>配置编译配置文件</h2><p>然后配置编译用的<code>tasks.json</code>.</p>
+<p>✔️ 这个文件和之后配置的<code>launch.json</code>都是针对特定程序的,
+如何生成这两个文件请参见VSCode官方文档. 但你可以将满意的<code>tasks.json</code>和<code>launch.json</code>放在一个包含许多工程的目录中, 那么这些工程都将使用这两个配置文件. 如果你想给这之中某个工程配置不同的配置你可以在这个工程的根目录另外生成<code>tasks.json</code>和<code>launch.json</code>, 会覆盖上一层的配置.</p>
+<p>当你跟随VSCode官方文档创建了一个 <code>tasks.json</code> 之后, 将下面这个任务添加到tasks的列表,
+至于自带的label为 <strong>echo</strong> 的任务你可以删掉或者不管他.</p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">   <span class="attr">"label"</span>: <span class="string">"Compile"</span>,</span><br><span class="line">   <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">   <span class="attr">"command"</span>: <span class="string">"gcc"</span>,</span><br><span class="line">   <span class="attr">"args"</span>: [</span><br><span class="line">         <span class="string">"${file}"</span>,</span><br><span class="line">         <span class="string">"-o"</span>,</span><br><span class="line">         <span class="string">"${fileDirname}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">         <span class="string">"-g"</span>,</span><br><span class="line">         <span class="string">"-Wall"</span>,</span><br><span class="line">         <span class="string">"-std=c++17"</span></span><br><span class="line">   ],</span><br><span class="line">   <span class="attr">"group"</span>: {</span><br><span class="line">         <span class="attr">"kind"</span>: <span class="string">"build"</span>,</span><br><span class="line">         <span class="attr">"isDefault"</span>: <span class="literal">true</span></span><br><span class="line">   }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>label</code>的意思是给这个任务取名为<strong>Compile</strong>, <a href="#启动前编译">稍后</a>会用到.</p>
+<p>从中我们可以看出实际上当我们调用这个叫<strong>Compile</strong>的task的时候会在shell中输入:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">gcc ${file} -o ${fileDirname}/${fileBasenameNoExtension}.exe -g -Wall -std=c++17</span><br></pre></td></tr></tbody></table></figure>
+
+<p>其中<strong>${file}</strong>等是<a href="https://code.visualstudio.com/docs/editor/variables-reference" target="_blank" rel="noopener">VSCode中定义的变量</a></p>
+<p><code>-o</code>选项使我们可以<a href="http://www.runoob.com/note/28613" target="_blank" rel="noopener">指定生成文件的名字</a></p>
+<p>其他几个选项可以上网查查.</p>
+<p><code>group</code>这里的配置是我们能通过快捷键 <code>Ctrl+shift+B</code>来执行该任务.
+参见<a href="https://code.visualstudio.com/docs/editor/tasks#_typescript-hello-world" target="_blank" rel="noopener">这里</a></p>
+<h3 id="合起来"><a href="#合起来" class="headerlink" title="合起来!"></a>合起来!</h3><p>因此我的 <code>tashs.json</code> 长这样:</p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="comment">// See https://go.microsoft.com/fwlink/?LinkId=733558</span></span><br><span class="line">    <span class="comment">// for the documentation about the tasks.json format</span></span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"2.0.0"</span>,</span><br><span class="line">    <span class="attr">"tasks"</span>: [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"label"</span>: <span class="string">"Compile"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">            <span class="attr">"command"</span>: <span class="string">"gcc"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [</span><br><span class="line">                <span class="string">"${file}"</span>,</span><br><span class="line">                <span class="string">"-o"</span>,</span><br><span class="line">                <span class="string">"${fileDirname}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">                <span class="string">"-g"</span>,</span><br><span class="line">                <span class="string">"-Wall"</span>,</span><br><span class="line">                <span class="string">"-std=c++17"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"group"</span>: {</span><br><span class="line">                <span class="attr">"kind"</span>: <span class="string">"build"</span>,</span><br><span class="line">                <span class="attr">"isDefault"</span>: <span class="literal">true</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="配置调试配置文件"><a href="#配置调试配置文件" class="headerlink" title="配置调试配置文件"></a>配置调试配置文件</h2><p>最后配置的这个是<code>launch.json</code>. 实际上这很简单, 因为VSCode已经提供了很多种模板, 需要改动的非常少.</p>
+<p>通常我们选择 <strong>(gdb) Launch</strong> 这种模板. Launch指的是要调试的程序是在开始调试时才开始运行,
+Attach指的是开始调试时程序已经在运行了 (比如在服务器上的程序)</p>
+<p>需要改动/添加的非常少:</p>
+<h3 id="调试对象"><a href="#调试对象" class="headerlink" title="调试对象"></a>调试对象</h3><figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"program": "${workspaceFolder}/a.exe"</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>program</code>指的是要调试的程序. 如果不特别指出的话大多数编译器默认将编译出来的可执行文件命名为 <strong>a.exe</strong>. 而如果你的<code>tasks.json</code>也像我一样加了
+“-o ${fileDirname}/${fileBasenameNoExtension}.exe” 这个选项的话, 将会生成和源文件同名的可执行文件, 因此要用:</p>
+<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"program": "${workspaceFolder}/${fileBasenameNoExtension}.exe"</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Debugger路径及选项"><a href="#Debugger路径及选项" class="headerlink" title="Debugger路径及选项"></a>Debugger路径及选项</h3><p>如果你在命令行输入 <code>gdb</code> 你会发现首先映入眼帘的是一串废话, 因此我们可以加上<code>-q</code>这个选项来让它少说废话.</p>
+<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"miDebuggerPath": "gdb.exe",</span><br><span class="line">"miDebuggerArgs": "-q"</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="启动前编译"><a href="#启动前编译" class="headerlink" title="启动前编译"></a>启动前编译</h3><p>如果你担心自己忘记每次调试前先编译一遍已更改的代码 (不然你会哭出声响), 可以添加一个
+<strong>preLaunchTask</strong>, 这个task指定为刚配置的那个<strong>Compile</strong>任务.
+这样每次调试前程序都会被先编译一遍<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8">👍</span></p>
+<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"preLaunchTask": "Compile"</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="合起来-1"><a href="#合起来-1" class="headerlink" title="合起来!"></a>合起来!</h3><p>因此我的<code>launch.json</code>长这样:</p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="comment">// Use IntelliSense to learn about possible attributes.</span></span><br><span class="line">    <span class="comment">// Hover to view descriptions of existing attributes.</span></span><br><span class="line">    <span class="comment">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span></span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"0.2.0"</span>,</span><br><span class="line">    <span class="attr">"configurations"</span>: [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"(gdb) Launch"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>,</span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"${workspaceFolder}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [],</span><br><span class="line">            <span class="attr">"stopAtEntry"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"cwd"</span>: <span class="string">"${workspaceFolder}"</span>,</span><br><span class="line">            <span class="attr">"environment"</span>: [],</span><br><span class="line">            <span class="attr">"externalConsole"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"MIMode"</span>: <span class="string">"gdb"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerPath"</span>: <span class="string">"gdb.exe"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerArgs"</span>: <span class="string">"-q"</span>,</span><br><span class="line">            <span class="attr">"setupCommands"</span>: [</span><br><span class="line">                {</span><br><span class="line">                    <span class="attr">"description"</span>: <span class="string">"Enable pretty-printing for gdb"</span>,</span><br><span class="line">                    <span class="attr">"text"</span>: <span class="string">"-enable-pretty-printing"</span>,</span><br><span class="line">                    <span class="attr">"ignoreFailures"</span>: <span class="literal">true</span></span><br><span class="line">                }</span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"preLaunchTask"</span>: <span class="string">"Compile"</span></span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="Enjoy"><a href="#Enjoy" class="headerlink" title="Enjoy"></a>Enjoy</h1><p>这下我们可以轻松愉快的开发C/C++了! 祝各位水平日益提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8">🎉</span></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>配置</category>
+      </categories>
+  </entry>
+  <entry>
     <title>记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历</title>
     <url>/zh-CN/2018/12/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/</url>
     <content><![CDATA[<p><strong>前言</strong> ：博主是个不怎么懂软件的菜鸟，前几天为了学习Soft Robotics企图装一个带SoftRobots插件的SOFA，但我搜了半天也没有较新的安装教程（连下载方式都变了好吗）。虽然有官网的安装教程但我在安装过程中还是出了很多意外。感慨于在身边诸多大佬们的帮助下我这个对软件一窍不通的人才安装成功，我以一个不怎么接触编程的人的角度写下这篇博客帮助也想学习Soft Robotics的各位。(博主为了写这篇教程忍痛把安好的SOFA删了又下了一遍）</p>
@@ -256,187 +437,6 @@
       </categories>
   </entry>
   <entry>
-    <title>配置VSCode中调试C/C++环境</title>
-    <url>/zh-CN/2018/12/30/%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/</url>
-    <content><![CDATA[<div align="right">Language:
-<a href="/2018/12/30/Configure-C-C-environment-in-VSCode"><kbd>English</kbd></a>
-<a href="/zh-CN/2018/12/30/配置VSCode中调试C-C-环境"><kbd>中文</kbd></a>
-</div>
-
-<p>这里是为我在VSCode插件市场发布的
-<a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.ccpp-extension-pack" target="_blank" rel="noopener">C/C++扩展包</a>
-写的Windows下VSCode中C/C++配置教程<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8">🎉</span></p>
-<a id="more"></a>
-
-<p>实际上在<a href="https://code.visualstudio.com/docs/languages/cpp" target="_blank" rel="noopener">VSCode的说明文档中C++部分</a>
-对如何配置环境有十分详细的说明, 本文仅是对其的部分整理和解读<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span> 因此如果你的能力足够看官方文档当然是更好的选择<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8">👍</span></p>
-<p>P.S.其实只要右键翻译成中文我觉得不难懂…</p>
-<ol>
-<li><a href="#准备工作">准备工作</a><ol>
-<li><a href="#编译器">编译器</a><ol>
-<li><a href="#安装">安装</a></li>
-<li><a href="#添加至Path">添加至Path</a></li>
-<li><a href="#测试">测试</a></li>
-</ol>
-</li>
-<li><a href="#VSCode插件">VSCode插件</a></li>
-</ol>
-</li>
-<li><a href="#配置文件">配置文件</a><ol>
-<li><a href="#配置IntelliSense">配置IntelliSense</a></li>
-<li><a href="#配置编译配置文件">配置编译配置文件</a><ol>
-<li><a href="#合起来">合起来!</a></li>
-</ol>
-</li>
-<li><a href="#配置调试配置文件">配置调试配置文件</a><ol>
-<li><a href="#调试对象">调试对象</a></li>
-<li><a href="#Debugger路径及选项">Debugger路径及选项</a></li>
-<li><a href="#启动前编译">启动前编译</a></li>
-<li><a href="#合起来-1">合起来!</a></li>
-</ol>
-</li>
-</ol>
-</li>
-<li><a href="#Enjoy">Enjoy</a></li>
-</ol>
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>VSCode本身只是一个编辑器, 也就是一个记事本, 是不包含编译器的. 即便我们安装了cpptools
-这个扩展, 他也并没有为我们安装编译器 (如果你想看看cpptools这个扩展里都有什么可以前往自己电脑的 <strong>%HOMEPATH%\.vscode\extensions</strong>, 找到<strong>ms-vscode.cpptools</strong> 去看看)</p>
-<h2 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h2><p>因此第一步我们需要安装编译器. 编译器不止一家, 在VSCode官方文档中推荐的是:</p>
-<ul>
-<li><p>Windows平台: <a href="https://sourceforge.net/projects/mingw-w64/" target="_blank" rel="noopener">MinGW-w64</a></p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 要注意另有一个叫MinGW的东西, 虽然功能差不多, 但那个已经很久没更新了,
-安装没MinGW-w64容易, 还不是官宣, 因此不推荐. 后面所说的MinGW实际指的是MinGW-w64, 我只是懒得打那么多字了</p>
-</li>
-<li><p>macOS: <a href="http://releases.llvm.org/download.html" target="_blank" rel="noopener">clang</a></p>
-</li>
-<li><p>Linux: <a href="https://gcc.gnu.org/" target="_blank" rel="noopener">gcc</a></p>
-</li>
-</ul>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8">❗</span>因为我没钱买Mac, 暂时也没需求在Linux配置VSCode, 本文仅针对<strong>Windows</strong>
-平台, 当然也可以作为其他平台的参考. 甚至<a href="https://pimylifeup.com/raspberry-pi-visual-studio-code/" target="_blank" rel="noopener">有人在树莓派安装VSCode</a>.</p>
-<p>P.S. 实际上编译器的选择并不是个令人头疼的事, 我们随时可以轻易的更换VSCode使用的编译器</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>将MinGW-w64下载下来之后点击安装, 以下几点要注意, 其余选项默认即可:</p>
-<ul>
-<li><p>安装向导第一页有一项是选择<code>Architecture</code> (即电脑的架构, 此处i386代指32位电脑,
-x86_64代指64位电脑), 此处选择<strong>x86_64</strong>. (当然如果你的电脑竟然是32位的话不用变)</p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> 如何查看自己电脑是32位还是64位?</p>
-<p>Windows10的话, 前往 <strong>设置</strong> &gt; <strong>系统</strong> &gt; <strong>关于</strong> &gt; <strong>设备规格</strong> &gt; <strong>系统类型</strong></p>
-<p>其他Windows的话上网搜索一下好啦 <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f609.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f609.png?v8">😉</span></p>
-</li>
-<li><p>安装在哪里都可以, 但一定要是你找得到的地方, 因为安装完成后还要手动将MinGW加入<strong>Path</strong>.</p>
-</li>
-</ul>
-<h3 id="添加至Path"><a href="#添加至Path" class="headerlink" title="添加至Path"></a>添加至Path</h3><p>安装完毕后我们需要将MinGW添加至<strong>Path</strong>, 这样我们通过命令行就可以调用它啦 (VSCode编译/调试
-C/C++程序实际上就是在内置命令行中调用MinGW)</p>
-<p>要将什么路径添加到<strong>Path</strong>呢? 因为添加到Path的路径是要调用的程序的exe文件所在的文件夹比如我将MinGW安装到了 <strong>D:\Softwares\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0</strong>
-这个文件夹下, 那么我将
-<strong>D:\Softwares\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin</strong>加入环境变量.
-你会看到我们将要调用的<code>gcc</code>和<code>gdb</code>两个程序正在其中.</p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8">🔗</span> 关于如何添加系统变量, <a href="https://jingyan.baidu.com/article/ca41422f17107a1eaf99ed64.html" target="_blank" rel="noopener">这篇百度知道</a>应该就够了</p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>这之后! 我们测试一下, 在命令行输入<code>gcc</code></p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> 你看到的应当是:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">C:\Users\LeoJh&gt;gcc</span><br><span class="line">gcc: fatal error: no input files</span><br><span class="line">compilation terminated.</span><br></pre></td></tr></tbody></table></figure>
-
-<p>这是说gcc被成功唤起,我们已经成功完成编译器的配置了, 但你没告诉它要编译的文件路径, 所以他就报错了.</p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8">❌</span>而如果你看到的是:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">C:\Users\LeoJh&gt;gcc</span><br><span class="line">'gcc' 不是内部或外部命令，也不是可运行的程序</span><br><span class="line">或批处理文件。</span><br></pre></td></tr></tbody></table></figure>
-
-<p>这是说无法从命令行调用gcc. 一种情况是没有把正确的路径加入<strong>Path</strong>, 另一种情况是该换电脑了
-<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8">😁</span></p>
-<h2 id="VSCode插件"><a href="#VSCode插件" class="headerlink" title="VSCode插件"></a>VSCode插件</h2><p>搞定了编译器我们就离完成不远了! 实际上你现在已经可以开始开发C/C++了, 只不过是硬核一些.
-不信你可以搓一段hello world放进一个.c文件, 比如<strong>test.c</strong>, 在该文件所在文件夹空白处按住<code>shift</code>同时按右键, 在此打开powershell, 输入<code>gcc test.c</code>, 然后你就会发现文件夹里多了一个<strong>a.exe</strong>. 这便是编译好的可执行文件了!</p>
-<p>但这样无论是编辑还是编译还是调试体验都太差了, 于是我们安装一些好用的扩展提高效率.</p>
-<p>因为我并不常在VSCode中编写C/C++, 因此<a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.ccpp-extension-pack" target="_blank" rel="noopener">我的扩展包</a>
-中并没有几个插件. 但我认为这几个很不错的<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<p>当然你看不上我的扩展包也没事<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8">😢</span>只需要安装了<a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools" target="_blank" rel="noopener">官方C/C++支持扩展</a>
-就能体验到很强大的支持了.</p>
-<h1 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h1><p>在有些教程中, 要在VSCode中开发C/C++需要配置<code>c_cpp_properties.json</code>, <code>tasks.json</code>,
-<code>launch.json</code>三样, 但现在不是这样了! 🎉 现在<code>c_cpp_properties.json</code>已经完全被
-<code>settings.json</code>取代了, 也就是说在设置中就可以进行原来在<code>c_cpp_properties.json</code>中进行的配置! 这样的好处是我们可以针对不同的工作区进行不同的设置等. 另外, 稍后你也会看到随着VSC的更新<code>tasks.json</code>和<code>launch.json</code>的生成也变得十分简单!</p>
-<p>🔗 关于设置取代了<code>c_cpp_properties.json</code>的说明参见<a href="https://github.com/Microsoft/vscode-cpptools/blob/master/Documentation/LanguageServer/Customizing%20Default%20Settings.md" target="_blank" rel="noopener">这里</a>,
-另外给出对原本可以在<code>c_cpp_properties.json</code>中配置的内容的描述的<a href="https://github.com/Microsoft/vscode-cpptools/blob/master/Documentation/LanguageServer/c_cpp_properties.json.md" target="_blank" rel="noopener">链接</a></p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 以下配置文件内容都以我的配置文件为例</p>
-<h2 id="配置IntelliSense"><a href="#配置IntelliSense" class="headerlink" title="配置IntelliSense"></a>配置IntelliSense</h2><p>正如前面所说, 我们不需要VSCode就可以编译/调试C/C++, 因此能够提供智能补全功能的
-IntelliSence是<strong>cpptools</strong>这个插件很重要的一部分, 通过在<code>settings.json</code> (原本是
-<code>c_cpp_properties.json</code>)中进行设置来设定IntelliSense的模式. 主要设置以下几个:</p>
-<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"C_Cpp.autocomplete": "Default",</span><br><span class="line">"C_Cpp.clang_format_style": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Allman, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4 }",</span><br><span class="line">"C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Allman, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4 }",</span><br><span class="line">"C_Cpp.default.compilerPath": "D:\\Softwares\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe",</span><br><span class="line">"C_Cpp.default.cStandard": "c99",</span><br><span class="line">"C_Cpp.default.cppStandard": "c++11",</span><br><span class="line">"C_Cpp.default.intelliSenseMode": "gcc-x64",</span><br><span class="line">"C_Cpp.intelliSenseEngine": "Default",</span><br><span class="line">"C_Cpp.errorSquiggles": "Enabled",</span><br></pre></td></tr></tbody></table></figure>
-
-<p>💡 其中<strong>C_Cpp.clang_format_style</strong>, <strong>C_Cpp.clang_format_fallbackStyle</strong>是VSC格式化C/C++代码的风格.
-上面的配置是近似于<strong>Visual Studio</strong>格式化C/C++代码的风格.
-我偏爱VS风格, 而如果你喜欢Google风格, 可以用下面这个值:</p>
-<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"C_Cpp.clang_format_style": "{BasedOnStyleStyle: Google, IndentWidth: 4}",</span><br><span class="line">"C_Cpp.clang_format_fallbackStyle": "{BasedOnStyleStyle: Google, IndentWidth: 4}",</span><br></pre></td></tr></tbody></table></figure>
-
-<p>随着VSC的更新, VSC提供了一些<code>tasks.json</code>和<code>launch.json</code>的模板, 这让生成这两个文件变得十分容易!
-下面这个gif👇 是一个生成<code>tasks.json</code>和<code>launch.json</code>的示例.</p>
-<p><img src="%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/example.gif" alt=""></p>
-<p>💡 这个gif是在Linux系统 (Ubuntu) 下录制的.</p>
-<p>下面则是对这两个文件内容的一些解释.</p>
-<h2 id="配置编译配置文件"><a href="#配置编译配置文件" class="headerlink" title="配置编译配置文件"></a>配置编译配置文件</h2><p>然后配置编译用的<code>tasks.json</code>.</p>
-<p>✔️ 这个文件和之后配置的<code>launch.json</code>都是针对特定程序的,
-如何生成这两个文件请参见VSCode官方文档. 但你可以将满意的<code>tasks.json</code>和<code>launch.json</code>放在一个包含许多工程的目录中, 那么这些工程都将使用这两个配置文件. 如果你想给这之中某个工程配置不同的配置你可以在这个工程的根目录另外生成<code>tasks.json</code>和<code>launch.json</code>, 会覆盖上一层的配置.</p>
-<p>当你跟随VSCode官方文档创建了一个 <code>tasks.json</code> 之后, 将下面这个任务添加到tasks的列表,
-至于自带的label为 <strong>echo</strong> 的任务你可以删掉或者不管他.</p>
-<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">   <span class="attr">"label"</span>: <span class="string">"Compile"</span>,</span><br><span class="line">   <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">   <span class="attr">"command"</span>: <span class="string">"gcc"</span>,</span><br><span class="line">   <span class="attr">"args"</span>: [</span><br><span class="line">         <span class="string">"${file}"</span>,</span><br><span class="line">         <span class="string">"-o"</span>,</span><br><span class="line">         <span class="string">"${fileDirname}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">         <span class="string">"-g"</span>,</span><br><span class="line">         <span class="string">"-Wall"</span>,</span><br><span class="line">         <span class="string">"-std=c++17"</span></span><br><span class="line">   ],</span><br><span class="line">   <span class="attr">"group"</span>: {</span><br><span class="line">         <span class="attr">"kind"</span>: <span class="string">"build"</span>,</span><br><span class="line">         <span class="attr">"isDefault"</span>: <span class="literal">true</span></span><br><span class="line">   }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<p><code>label</code>的意思是给这个任务取名为<strong>Compile</strong>, <a href="#启动前编译">稍后</a>会用到.</p>
-<p>从中我们可以看出实际上当我们调用这个叫<strong>Compile</strong>的task的时候会在shell中输入:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">gcc ${file} -o ${fileDirname}/${fileBasenameNoExtension}.exe -g -Wall -std=c++17</span><br></pre></td></tr></tbody></table></figure>
-
-<p>其中<strong>${file}</strong>等是<a href="https://code.visualstudio.com/docs/editor/variables-reference" target="_blank" rel="noopener">VSCode中定义的变量</a></p>
-<p><code>-o</code>选项使我们可以<a href="http://www.runoob.com/note/28613" target="_blank" rel="noopener">指定生成文件的名字</a></p>
-<p>其他几个选项可以上网查查.</p>
-<p><code>group</code>这里的配置是我们能通过快捷键 <code>Ctrl+shift+B</code>来执行该任务.
-参见<a href="https://code.visualstudio.com/docs/editor/tasks#_typescript-hello-world" target="_blank" rel="noopener">这里</a></p>
-<h3 id="合起来"><a href="#合起来" class="headerlink" title="合起来!"></a>合起来!</h3><p>因此我的 <code>tashs.json</code> 长这样:</p>
-<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="comment">// See https://go.microsoft.com/fwlink/?LinkId=733558</span></span><br><span class="line">    <span class="comment">// for the documentation about the tasks.json format</span></span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"2.0.0"</span>,</span><br><span class="line">    <span class="attr">"tasks"</span>: [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"label"</span>: <span class="string">"Compile"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">            <span class="attr">"command"</span>: <span class="string">"gcc"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [</span><br><span class="line">                <span class="string">"${file}"</span>,</span><br><span class="line">                <span class="string">"-o"</span>,</span><br><span class="line">                <span class="string">"${fileDirname}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">                <span class="string">"-g"</span>,</span><br><span class="line">                <span class="string">"-Wall"</span>,</span><br><span class="line">                <span class="string">"-std=c++17"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"group"</span>: {</span><br><span class="line">                <span class="attr">"kind"</span>: <span class="string">"build"</span>,</span><br><span class="line">                <span class="attr">"isDefault"</span>: <span class="literal">true</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="配置调试配置文件"><a href="#配置调试配置文件" class="headerlink" title="配置调试配置文件"></a>配置调试配置文件</h2><p>最后配置的这个是<code>launch.json</code>. 实际上这很简单, 因为VSCode已经提供了很多种模板, 需要改动的非常少.</p>
-<p>通常我们选择 <strong>(gdb) Launch</strong> 这种模板. Launch指的是要调试的程序是在开始调试时才开始运行,
-Attach指的是开始调试时程序已经在运行了 (比如在服务器上的程序)</p>
-<p>需要改动/添加的非常少:</p>
-<h3 id="调试对象"><a href="#调试对象" class="headerlink" title="调试对象"></a>调试对象</h3><figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"program": "${workspaceFolder}/a.exe"</span><br></pre></td></tr></tbody></table></figure>
-
-<p><code>program</code>指的是要调试的程序. 如果不特别指出的话大多数编译器默认将编译出来的可执行文件命名为 <strong>a.exe</strong>. 而如果你的<code>tasks.json</code>也像我一样加了
-“-o ${fileDirname}/${fileBasenameNoExtension}.exe” 这个选项的话, 将会生成和源文件同名的可执行文件, 因此要用:</p>
-<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"program": "${workspaceFolder}/${fileBasenameNoExtension}.exe"</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="Debugger路径及选项"><a href="#Debugger路径及选项" class="headerlink" title="Debugger路径及选项"></a>Debugger路径及选项</h3><p>如果你在命令行输入 <code>gdb</code> 你会发现首先映入眼帘的是一串废话, 因此我们可以加上<code>-q</code>这个选项来让它少说废话.</p>
-<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"miDebuggerPath": "gdb.exe",</span><br><span class="line">"miDebuggerArgs": "-q"</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="启动前编译"><a href="#启动前编译" class="headerlink" title="启动前编译"></a>启动前编译</h3><p>如果你担心自己忘记每次调试前先编译一遍已更改的代码 (不然你会哭出声响), 可以添加一个
-<strong>preLaunchTask</strong>, 这个task指定为刚配置的那个<strong>Compile</strong>任务.
-这样每次调试前程序都会被先编译一遍<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8">👍</span></p>
-<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"preLaunchTask": "Compile"</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="合起来-1"><a href="#合起来-1" class="headerlink" title="合起来!"></a>合起来!</h3><p>因此我的<code>launch.json</code>长这样:</p>
-<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="comment">// Use IntelliSense to learn about possible attributes.</span></span><br><span class="line">    <span class="comment">// Hover to view descriptions of existing attributes.</span></span><br><span class="line">    <span class="comment">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span></span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"0.2.0"</span>,</span><br><span class="line">    <span class="attr">"configurations"</span>: [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"(gdb) Launch"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>,</span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"${workspaceFolder}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [],</span><br><span class="line">            <span class="attr">"stopAtEntry"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"cwd"</span>: <span class="string">"${workspaceFolder}"</span>,</span><br><span class="line">            <span class="attr">"environment"</span>: [],</span><br><span class="line">            <span class="attr">"externalConsole"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"MIMode"</span>: <span class="string">"gdb"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerPath"</span>: <span class="string">"gdb.exe"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerArgs"</span>: <span class="string">"-q"</span>,</span><br><span class="line">            <span class="attr">"setupCommands"</span>: [</span><br><span class="line">                {</span><br><span class="line">                    <span class="attr">"description"</span>: <span class="string">"Enable pretty-printing for gdb"</span>,</span><br><span class="line">                    <span class="attr">"text"</span>: <span class="string">"-enable-pretty-printing"</span>,</span><br><span class="line">                    <span class="attr">"ignoreFailures"</span>: <span class="literal">true</span></span><br><span class="line">                }</span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"preLaunchTask"</span>: <span class="string">"Compile"</span></span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h1 id="Enjoy"><a href="#Enjoy" class="headerlink" title="Enjoy"></a>Enjoy</h1><p>这下我们可以轻松愉快的开发C/C++了! 祝各位水平日益提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8">🎉</span></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>配置</category>
-      </categories>
-  </entry>
-  <entry>
     <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
     <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<div align="right">Language:
@@ -608,49 +608,74 @@ VSCode之后发现这个选项没被勾上.</p>
   <entry>
     <title>树莓派杂记</title>
     <url>/zh-CN/2019/01/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/</url>
-    <content><![CDATA[<p>因为我是一个记性很差并且接触东西很杂的人, 很多很基础的命令根本记不住,但每次都去查一遍很浪费时间,于是整理一下。这是树莓派相关的.</p>
+    <content><![CDATA[<p>因为我是一个记性很差并且接触东西很杂的人, 很多很基础的命令根本记不住,但每次都去查一遍很浪费时间, 于是整理一下. 这是树莓派相关的.</p>
 <a id="more"></a>
 
-<h1 id="状态图标"><a href="#状态图标" class="headerlink" title="状态图标"></a>状态图标</h1><p>有时候显示画面右上角会有状态图标出现, 图标及对应含义如下:</p>
+<p>首先不得不说<a href="https://www.raspberrypi.org/documentation" target="_blank" rel="noopener">树莓派官方文档</a>实在是文档范本! 即便是初学者也能得到<strong>友好全面</strong>的帮助! 文档里包含了使用树莓派的绝大多数完整, 深入的教程, 而且方法都十分清爽 😆</p>
+<p><img src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/15826242887468.jpg" alt="img"></p>
+<blockquote>
+<p>放一张树莓派4B布局图</p>
+</blockquote>
+<h2 id="关于树莓派4"><a href="#关于树莓派4" class="headerlink" title="关于树莓派4"></a>关于树莓派4</h2><p>我买了一个4GB的DDR4内存的树莓派4B, 性能确实比树莓派3B+强大很多! 运行图像识别的python程序完全不成问题, 通过VNC的虚拟桌面, 用网页看b站高清视频只有40%的内存在被使用, 温度也并不高. 属实牛皮.</p>
+<p>而我觉得最神奇的是树莓派4B的UART. 在树莓派3上使用UART一直是个麻烦事, 因为一共只内置两个UART, 其中一共是阉割版, 仅有的一个PL011 UART (硬件UART) 还默认被蓝牙模块占用了. 而树莓派4就很🐮🍺了. 他内置<strong>六个</strong>UART, 5个PL011 UART, 1个阉割UART. 开始看树莓派4引脚分配表时还以为我理解错了, 直到我看到这句话</p>
+<blockquote>
+<p>11.1. Overview</p>
+<p>The  BCM2711  device  has  six  UARTs.  One  mini  UART  (UART1)  and  five  PL011  UARTs  (UART0,  UART2,UART3,  UART4  &amp;  UART5).  This  section  describes  the  PL011  UARTs</p>
+</blockquote>
+<p>🔗 参见<a href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2711/rpi_DATA_2711_1p0.pdf" target="_blank" rel="noopener">树莓派4片上系统datasheet</a></p>
+<h2 id="GPIO"><a href="#GPIO" class="headerlink" title="GPIO"></a>GPIO</h2><p>🔗 <a href="https://www.raspberrypi.org/documentation/usage/gpio/" target="_blank" rel="noopener">树莓派官方GPIO部分文档</a></p>
+<blockquote>
+<p>放两张好看的树莓派引脚对照表 (实际上两张都不完善)</p>
+</blockquote>
+<p><img src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/175605x4nx4ryrywnn7hyw.jpg" alt="img"></p>
+<p><img src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/GPIO-Pi4-1587126749653.png" alt="Raspberry Pi 4 Model B GPIO Pinout Diagram | element14 | Raspberry Pi"></p>
+<p>🔗 这个<a href="http://pinout.xyz/" target="_blank" rel="noopener">交互式引脚排布图</a>很棒.</p>
+<p>运行<code>gpio readall</code>可以打印一张包含引脚真实输入/输出值的引脚表. 对于树莓派4需要手动操作一下更新<strong>wiringPi</strong>至版本<code>2.52</code>, 否则无法识别. 操作参考<a href="http://wiringpi.com/wiringpi-updated-to-2-52-for-the-raspberry-pi-4b/" target="_blank" rel="noopener">wiringPi updated to 2.52 for the Raspberry Pi 4B</a></p>
+<p><img src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/image-20200417205537326.png" alt="image-20200417205537326"></p>
+<p>但<code>gpio readall</code>无法打印出每个引脚所有可用功能, 而运行<code>raspi-gpio funcs</code>可用打印所有gpio的上拉/下拉, 所有可用功能.</p>
+<p>树莓派官方文档列出了几个很好用的gpio库, 其中这个<a href="https://gpiozero.readthedocs.io/" target="_blank" rel="noopener">GPIO Zero</a>将GPIO分类封装成了一些很简洁的类, 看起来很值得一试.</p>
+<h3 id="串口"><a href="#串口" class="headerlink" title="串口"></a>串口</h3><p>如前面提到的, 树莓派4内置6个UART. 关于如何同时使用多个UART可用看看<a href="https://www.raspberrypi.org/forums/viewtopic.php?f=107&amp;t=244827&amp;sid=478967f5e58d920a422de08085f343d8" target="_blank" rel="noopener">这个讨论</a>. 截止目前树莓派还没有就此更新官方文档.</p>
+<p>至于PL011 UART与mini UART的区别根据树莓派官方文档总结下来就是:</p>
 <ul>
-<li>闪电: 电压低</li>
-<li>彩虹方块: 电流不足</li>
-<li>温度计: 温度太高</li>
+<li>mini UART的FIFO更小而没有流控制功能, 因此在高波特率下更容易丢帧</li>
+<li>mini UART的时钟参考源是系统时钟, 因此很可能一直在变化, 因此波特率是不稳定的</li>
+<li>mini UART没有断线检测</li>
+<li>mini UART没有没有帧错误检测</li>
+<li>mini UART没有奇偶校验位</li>
+<li>mini UART没有接收超时中断</li>
+<li>mini UART没有DCD，DSR，DTR或RI信号</li>
 </ul>
-<h1 id="开启VNC"><a href="#开启VNC" class="headerlink" title="开启VNC"></a>开启VNC</h1><p>其实我总觉得Raspbian系统自带了VNC, 但还是码一下好了</p>
-<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo apt-get install tightvncserver</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="开启VNC的server与viewer的剪贴板共享"><a href="#开启VNC的server与viewer的剪贴板共享" class="headerlink" title="开启VNC的server与viewer的剪贴板共享"></a>开启VNC的server与viewer的剪贴板共享</h2><p>在linux中执行</p>
+<p>emmm看起来就是个废物呢. 不过问题不大, 树莓派开发人员给它的定位只是一个控制台 (应该就是用来ssh的意思吧)</p>
+<p>关于如何在树莓派3B+等设备上禁用蓝牙并启动PL011 UART的操作可以看<a href="https://www.raspberrypi.org/documentation/configuration/uart.md" target="_blank" rel="noopener">官方教程</a></p>
+<h2 id="固件警告图标"><a href="#固件警告图标" class="headerlink" title="固件警告图标"></a>固件警告图标</h2><p>有时候屏幕右上角会有表示异常状态图标出现 (如果你有显示屏的话), 图标及对应含义如下:</p>
+<ul>
+<li>⚡ 闪电 : 电源电压不足</li>
+<li>🌡 温度计: 温度过高</li>
+</ul>
+<p>🔗 <a href="https://www.raspberrypi.org/documentation/configuration/warning-icons.md" target="_blank" rel="noopener">对应官方文档</a></p>
+<p>(以前还有种表示电源电流不足的彩虹图标, 看文档现在似乎没有这个了)</p>
+<h2 id="VNC使用"><a href="#VNC使用" class="headerlink" title="VNC使用"></a>VNC使用</h2><p><a href="https://www.raspberrypi.org/documentation/remote-access/vnc/README.md" target="_blank" rel="noopener">VNC使用的官方文档</a>已经把大多数东西都说清了. 值得一提的是如果树莓派没有连接显示器, (这特么不是废话吗, 如果有屏幕谁还需要VNC😅) 直接用RealVNC访问树莓派ip很可能看到的不是树莓派界面, 而是看到<a href="https://www.raspberrypi.org/forums/viewtopic.php?t=216737" target="_blank" rel="noopener">Cannot currently show the dekstop</a>这样的字样. 树莓派官方对这种情况给出的办法是使用虚拟桌面, 每次需要手动启动. 而上面这个链接里提到其实只需在<code>raspi-config</code>中手动指定一个分辨率就能正常使用了, 亲测有效.</p>
+<p>💡 我觉得VNC也就是偷懒用的, 虽然ssh无法看到画面但大多数需要看到画面的需求都可以用别的方式满足. 比如使用<a href="https://www.raspberrypi.org/documentation/remote-access/ssh/sshfs.md" target="_blank" rel="noopener">sshfs</a>来将树莓派文件当做本地文件编辑, 比如通过创建RTSP (实时视频流)或者使用<a href="https://elinux.org/RPi-Cam-Web-Interface#Remote_access_to_website_with_User.2FPass_and_changing_port" target="_blank" rel="noopener">RPi-Cam-Web-Interface</a>这样成熟的工具实现远程查看摄像头输出/自定义视频流.</p>
+<p>当然如果你想玩树莓派自带的那些推荐软件那当我没说 😁</p>
+<h3 id="开启VNC的server与viewer的剪贴板共享"><a href="#开启VNC的server与viewer的剪贴板共享" class="headerlink" title="开启VNC的server与viewer的剪贴板共享"></a>开启VNC的server与viewer的剪贴板共享</h3><p>在linux中执行</p>
 <figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">vncconfig -nowin&amp;</span><br></pre></td></tr></tbody></table></figure>
 
-<h1 id="安装中文输入法"><a href="#安装中文输入法" class="headerlink" title="安装中文输入法"></a>安装中文输入法</h1><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo apt-get install fcitx fcitx-googlepinyin fcitx-module-cloudpinyin fcitx-sunpinyin</span><br></pre></td></tr></tbody></table></figure>
-
-<h1 id="利用网线提高远程连接速度"><a href="#利用网线提高远程连接速度" class="headerlink" title="利用网线提高远程连接速度"></a>利用网线提高远程连接速度</h1><p>参考这篇<a href="https://www.linuxidc.com/Linux/2016-09/135474.htm" target="_blank" rel="noopener">博文</a></p>
-<p>但要补充的是树莓派的IP地址也可能是静态的,比如我的(难道我之前设置静态地址了?), 总之
-<strong>192.168.137.255</strong>并不是,这个是电脑本身的什么. 另外<strong>192.168.137.1</strong>这个接口看起来是以太网的接口.</p>
-<h1 id="更改主机名"><a href="#更改主机名" class="headerlink" title="更改主机名"></a>更改主机名</h1><h2 id="临时修改主机名："><a href="#临时修改主机名：" class="headerlink" title="临时修改主机名："></a>临时修改主机名：</h2><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo hostname &lt;新的主机名&gt;</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="永久修改主机名："><a href="#永久修改主机名：" class="headerlink" title="永久修改主机名："></a>永久修改主机名：</h2><p>主机名存储在两个地方，两个地方都要修改</p>
-<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo <span class="built_in">echo</span> [new_hostname] &gt; /etc/hostname</span><br></pre></td></tr></tbody></table></figure>
-
-<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">sudo <span class="built_in">echo</span> [new_hostname] &gt; /etc/hosts</span><br></pre></td></tr></tbody></table></figure>
-
-<h1 id="屏幕调节"><a href="#屏幕调节" class="headerlink" title="屏幕调节"></a>屏幕调节</h1><h2 id="禁止息屏"><a href="#禁止息屏" class="headerlink" title="禁止息屏"></a>禁止息屏</h2><p>最近买了一块7寸触摸显示屏<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8">😁</span> (不我没有在炫耀), 发现他有息屏功能, 但我的应用场景要求屏幕常亮. 问题不大, 这个可以禁用. 在网上看到了两种方法:</p>
-<h3 id="通过Raspbian默认桌面显示管理器lightdm"><a href="#通过Raspbian默认桌面显示管理器lightdm" class="headerlink" title="通过Raspbian默认桌面显示管理器lightdm"></a>通过Raspbian默认桌面显示管理器lightdm</h3><p>进入 <strong>/etc/lightdm/lightdm.cfg</strong>, 找到 <strong>[Seat:*]</strong> 字段, 取消<code>xserver-command</code>
+<h2 id="屏幕调节"><a href="#屏幕调节" class="headerlink" title="屏幕调节"></a>屏幕调节</h2><h3 id="禁止息屏"><a href="#禁止息屏" class="headerlink" title="禁止息屏"></a>禁止息屏</h3><p>最近买了一块7寸触摸显示屏😁 (不我没有在炫耀), 发现系统默认开启了息屏功能, 但我的应用场景要求屏幕常亮. 问题不大, 这个可以禁用. 在网上看到了两种方法:</p>
+<h4 id="通过Raspbian默认桌面显示管理器lightdm"><a href="#通过Raspbian默认桌面显示管理器lightdm" class="headerlink" title="通过Raspbian默认桌面显示管理器lightdm"></a>通过Raspbian默认桌面显示管理器lightdm</h4><p>进入 <code>/etc/lightdm/lightdm.cfg</code>, 找到 <strong>[Seat:*]</strong> 字段, 取消<code>xserver-command</code>
 的注释, 设置为:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">xserver-command=X -s 0 -dpms</span><br></pre></td></tr></tbody></table></figure>
 
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span>需要重启树莓派</p>
+<p>⚠️ 需要重启树莓派</p>
 <p>其中:</p>
 <ul>
 <li><code>-s</code> 设置屏幕保护不启用</li>
 <li><code>-dpms</code> 关闭电源节能管理, 我猜这是 <strong>D</strong>isplay <strong>P</strong>ower <strong>M</strong>anagemant
 <strong>S</strong>ystem的缩写</li>
 </ul>
-<h3 id="通过Screen-sh"><a href="#通过Screen-sh" class="headerlink" title="通过Screen.sh"></a>通过Screen.sh</h3><p>在 <strong>/etc/profile.d/</strong> 下新建 <strong>Screen.sh</strong>, 写入:</p>
+<h4 id="使用Screen-sh"><a href="#使用Screen-sh" class="headerlink" title="使用Screen.sh"></a>使用<code>Screen.sh</code></h4><p>在 <code>/etc/profile.d/</code>下新建<code>Screen.sh</code>, 写入:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">xsetdpms 0 0 0</span><br><span class="line">xsets off</span><br></pre></td></tr></tbody></table></figure>
 
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span>需要重启树莓派</p>
+<p>⚠️ 需要重启树莓派</p>
 <p>列出一些相关指令及其含义</p>
 <table>
 <thead>
@@ -688,14 +713,14 @@ VSCode之后发现这个选项没被勾上.</p>
 <td>强制屏幕进入暂停状态</td>
 </tr>
 </tbody></table>
-<h2 id="屏幕亮度调节"><a href="#屏幕亮度调节" class="headerlink" title="屏幕亮度调节"></a>屏幕亮度调节</h2><p>调节范围为0-255</p>
+<h3 id="屏幕亮度调节"><a href="#屏幕亮度调节" class="headerlink" title="屏幕亮度调节"></a>屏幕亮度调节</h3><p>调节范围为0-255</p>
 <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">echo [value] &gt; /sys/class/backlight/rpi-backlight/brightness</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="关闭背光"><a href="#关闭背光" class="headerlink" title="关闭背光"></a>关闭背光</h2><p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2753.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2753.png?v8">❓</span> 我有点不确定背光是什么, 屏幕光? 为啥只关他? 感觉有点沙雕</p>
+<h3 id="关闭背光"><a href="#关闭背光" class="headerlink" title="关闭背光"></a>关闭背光</h3><p>看网上说法关闭背光和关闭显示屏的区别在于只关闭背光的话屏幕其实仍在工作, 如果自己拿光照还是能看到画面的. 也就是说关闭背光应该和将屏幕亮度调至0效果一样.</p>
 <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">echo 0 &gt; /sys/class/backlight/rpi_backlight/bl_power</span><br></pre></td></tr></tbody></table></figure>
 
-<p>0为开，1为关</p>
-<h1 id="查看CPU温度"><a href="#查看CPU温度" class="headerlink" title="查看CPU温度"></a>查看CPU温度</h1><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">cat /sys/class/thermal/thermal_zone0/temp</span><br></pre></td></tr></tbody></table></figure>
+<p>0为开启背光，1为关闭背光. (我总觉得这和通常对01的理解不同)</p>
+<h2 id="查看CPU温度"><a href="#查看CPU温度" class="headerlink" title="查看CPU温度"></a>查看CPU温度</h2><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">cat /sys/class/thermal/thermal_zone0/temp</span><br></pre></td></tr></tbody></table></figure>
 
 <p>这个返回值除1000就是一个<strong>摄氏度</strong>单位的CPU温度值了</p>
 <script>
@@ -3585,6 +3610,44 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
       </categories>
   </entry>
   <entry>
+    <title>意识到了我的中文有多差</title>
+    <url>/zh-CN/2019/09/13/%E6%84%8F%E8%AF%86%E5%88%B0%E4%BA%86%E6%88%91%E7%9A%84%E4%B8%AD%E6%96%87%E6%9C%89%E5%A4%9A%E5%B7%AE/</url>
+    <content><![CDATA[<p>前阵子别人给我分享了<a href="https://www.byvoid.com/" target="_blank" rel="noopener">这个博客</a>, 看了以后我意识到自己语文学得太不到家了, 实在对不起初高中语文老师!</p>
+<a id="more"></a>
+
+<p>先不提这个博主喜爱音韵学, 单说同样是理工科出身的博主, 我的表达能力和思想深度比他差了太多.</p>
+<p>通常在解释一段程序时我会想好一会来组织语言, <strong>将我使用这段代码的意图尽可能体现出来, 描述尽可能准确, 有条理</strong>. 我对此体会良多: 当我刚开始接触一个领域, 在网上看资料时常常无法确定我理解得对不对, 需要结合多篇文章才能确定. 这是因为<strong>作者们自身接触这些许久, 无意识的省略了一些话</strong>. 但我认为文章既然要写出来就应该能让所有人无障碍的看懂, 不然只给自己看的话何不就放到自己github仓库?</p>
+<p><a href="https://akaedu.github.io/book/index.html" target="_blank" rel="noopener">Linux C编程一站式学习</a>和
+<a href="https://www.pyimagesearch.com" target="_blank" rel="noopener">pyimagesearch</a>的文章就让人觉得文章读起来很流畅很易懂, 不会浪费时间在理解文章上. 比如<a href="https://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/" target="_blank" rel="noopener">这篇文章</a>
+曾带我轻松完成了困扰了我好几天的如何在树莓派上安装OpenCV的问题. 这个问题现在当然不会像前年那样困扰我, 但能有这样一篇好懂的文章指导我迅速完成我当然是十分乐意的.</p>
+<p>因此我总是试图让我的文章能达到同样水准. 但我发现这很难. 说来可笑, 很多时候我甚至不知道怎么样去描述我的操作🤦‍ 而让文章有条理同样不是一件容易的事. 我感觉这和写一篇议论文围绕一个中心套用总分总的文章结构就可以写不一样, 我总是喜欢把一个主题的东西一股脑放到一篇文章里, 但我发现一方面<strong>文章太长会让人失去读下去的兴趣</strong>, 另一方面<strong>什么东西都往一篇文章里放会让文章失其重点</strong>. 我又不是在写书, 不如将一个主题的内容再按照几个重点分成几篇文章. 可<strong>将一篇文章分割为主题更明确的多篇文章</strong>对我来说并不是易事…</p>
+<p>至于说<strong>byvoid</strong>的文章有思想深度, 从<a href="https://www.byvoid.com/zht/blog/why-the-usa-is-so-boring-1" target="_blank" rel="noopener">这篇文章</a>可见一斑. 我也喜欢旅游, 并且因为我小时候见了许多很美的自然景观, 我更倾向于体验一处的文化. 到一处游览后能有像<strong>byvoid</strong>这种深度的心得正是我所想努力做到的. 但一是我的文笔不够好,
+二是我并没有做功课去研究旅游地的文化.</p>
+<p>从<strong>byvoid</strong>的文章能体会到中文的魅力: 用得好了读起来十分流畅, 四字成语言简意赅地表达出了意思, 很多用以佐证的诗句更是回味无穷… 这只是我个人的体会, 我也知道很粗浅. 当然我并不后悔初高中没有投入大量精力背诵各种诗句, 品鉴各大文豪的文章: 体会不到这些的魅力时我背下来又有什么用呢?</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>杂记</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Python基础语法</title>
     <url>/zh-CN/2019/09/12/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<p>前阵子带学弟学妹们入门Python时自己整理的一些觉得初学者需要知道的Python知识. 我本身既不是计算机专业的也说不出自己对Python还是挺了解的这样的话, 说实话心里还是有一点忐忑. 如有错误欢迎指出🙇</p>
@@ -3858,44 +3921,6 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
       <categories>
         <category>语言</category>
         <category>Python</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>意识到了我的中文有多差</title>
-    <url>/zh-CN/2019/09/13/%E6%84%8F%E8%AF%86%E5%88%B0%E4%BA%86%E6%88%91%E7%9A%84%E4%B8%AD%E6%96%87%E6%9C%89%E5%A4%9A%E5%B7%AE/</url>
-    <content><![CDATA[<p>前阵子别人给我分享了<a href="https://www.byvoid.com/" target="_blank" rel="noopener">这个博客</a>, 看了以后我意识到自己语文学得太不到家了, 实在对不起初高中语文老师!</p>
-<a id="more"></a>
-
-<p>先不提这个博主喜爱音韵学, 单说同样是理工科出身的博主, 我的表达能力和思想深度比他差了太多.</p>
-<p>通常在解释一段程序时我会想好一会来组织语言, <strong>将我使用这段代码的意图尽可能体现出来, 描述尽可能准确, 有条理</strong>. 我对此体会良多: 当我刚开始接触一个领域, 在网上看资料时常常无法确定我理解得对不对, 需要结合多篇文章才能确定. 这是因为<strong>作者们自身接触这些许久, 无意识的省略了一些话</strong>. 但我认为文章既然要写出来就应该能让所有人无障碍的看懂, 不然只给自己看的话何不就放到自己github仓库?</p>
-<p><a href="https://akaedu.github.io/book/index.html" target="_blank" rel="noopener">Linux C编程一站式学习</a>和
-<a href="https://www.pyimagesearch.com" target="_blank" rel="noopener">pyimagesearch</a>的文章就让人觉得文章读起来很流畅很易懂, 不会浪费时间在理解文章上. 比如<a href="https://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/" target="_blank" rel="noopener">这篇文章</a>
-曾带我轻松完成了困扰了我好几天的如何在树莓派上安装OpenCV的问题. 这个问题现在当然不会像前年那样困扰我, 但能有这样一篇好懂的文章指导我迅速完成我当然是十分乐意的.</p>
-<p>因此我总是试图让我的文章能达到同样水准. 但我发现这很难. 说来可笑, 很多时候我甚至不知道怎么样去描述我的操作🤦‍ 而让文章有条理同样不是一件容易的事. 我感觉这和写一篇议论文围绕一个中心套用总分总的文章结构就可以写不一样, 我总是喜欢把一个主题的东西一股脑放到一篇文章里, 但我发现一方面<strong>文章太长会让人失去读下去的兴趣</strong>, 另一方面<strong>什么东西都往一篇文章里放会让文章失其重点</strong>. 我又不是在写书, 不如将一个主题的内容再按照几个重点分成几篇文章. 可<strong>将一篇文章分割为主题更明确的多篇文章</strong>对我来说并不是易事…</p>
-<p>至于说<strong>byvoid</strong>的文章有思想深度, 从<a href="https://www.byvoid.com/zht/blog/why-the-usa-is-so-boring-1" target="_blank" rel="noopener">这篇文章</a>可见一斑. 我也喜欢旅游, 并且因为我小时候见了许多很美的自然景观, 我更倾向于体验一处的文化. 到一处游览后能有像<strong>byvoid</strong>这种深度的心得正是我所想努力做到的. 但一是我的文笔不够好,
-二是我并没有做功课去研究旅游地的文化.</p>
-<p>从<strong>byvoid</strong>的文章能体会到中文的魅力: 用得好了读起来十分流畅, 四字成语言简意赅地表达出了意思, 很多用以佐证的诗句更是回味无穷… 这只是我个人的体会, 我也知道很粗浅. 当然我并不后悔初高中没有投入大量精力背诵各种诗句, 品鉴各大文豪的文章: 体会不到这些的魅力时我背下来又有什么用呢?</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>杂记</category>
       </categories>
   </entry>
   <entry>
