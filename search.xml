@@ -4552,7 +4552,7 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 <p><strong>系统安装就全部完成了!</strong> 🎉</p>
 <h2 id="GRUB配置及开机美化"><a href="#GRUB配置及开机美化" class="headerlink" title="GRUB配置及开机美化"></a>GRUB配置及开机美化</h2><p>然后是我在这次重装前一直不确定的事: 是否能把macOS引导项也加入GRUB? 经过我的尝试答案是可以!</p>
 <p>在网上搜索后我知道了怎么样来配置GRUB的引导项, 其实真心不难.</p>
-<h3 id="引导项设置"><a href="#引导项设置" class="headerlink" title="引导项设置"></a>引导项设置</h3><p>第一步是进入<code>etc/grub.d/</code>, 添加/编辑引导项. ❗️ 建议在先备份这个路径下的文件, 等确认改动成功了再删除备份也不迟.</p>
+<h3 id="引导项设置"><a href="#引导项设置" class="headerlink" title="引导项设置"></a>引导项设置</h3><p>第一步是进入<code>/etc/grub.d/</code>, 添加/编辑引导项. ❗️ 建议在先备份这个路径下的文件, 等确认改动成功了再删除备份也不迟.</p>
 <p>在我的这个路径下有这样一些文件. 是的这里甚至有一个README 😂</p>
 <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">00_header</span><br><span class="line">05_debian_theme</span><br><span class="line">10_linux</span><br><span class="line">20_linux_xen</span><br><span class="line">20_memtest86+</span><br><span class="line">30_os-prober</span><br><span class="line">30_uefi-firmware</span><br><span class="line">40_custom</span><br><span class="line">41_custom</span><br><span class="line">README</span><br></pre></td></tr></tbody></table></figure>
 
