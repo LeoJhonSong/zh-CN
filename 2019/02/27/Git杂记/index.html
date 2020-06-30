@@ -442,7 +442,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>5.1k</span>
+              <span>5.3k</span>
             </span>
           
 
@@ -503,10 +503,16 @@
 
 <p>🔗 <a href="https://help.github.com/cn/github/creating-cloning-and-archiving-repositories/cloning-a-repository" target="_blank" rel="noopener">GitHub中文帮助文档-如何从GitHub克隆仓库</a></p>
 <h5 id="让克隆更快"><a href="#让克隆更快" class="headerlink" title="让克隆更快"></a>让克隆更快</h5><h6 id="克隆特定分支"><a href="#克隆特定分支" class="headerlink" title="克隆特定分支"></a>克隆特定分支</h6><p>一个社区活跃的项目通常会有许多分支, 其中会有很多是你不需要关注的, 别人正在开发feature或者修bug等的分支, 可以通过只克隆指定分支来减少不必要的下载时间.</p>
-<p>❗️ 这样的坏处是看不到其他分支.</p>
+<p>❗️ 这样的坏处是在本地看不到其他分支.</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone -b &lt;branch&gt; --single-branch &lt;url&gt;</span><br></pre></td></tr></tbody></table></figure>
 
-<p>❗️ 如果不带<code>--single-branch</code>这个参数那效果仅仅是在完成克隆后切换到你指定的这个分支, 克隆的仍是完整的, 有多个分支的仓库 (如果你的仓库有多个分支的话)</p>
+<p>❗️ 如果不带<code>--single-branch</code>这个参数那效果仅仅是在完成克隆后切换到你指定的这个分支, 克隆的仍是<strong>完整的, 有多个分支的仓库</strong> (如果你的仓库有多个分支的话)</p>
+<p>当你想要从远程端再弄下来一个分支<code>B</code>, 但仍不想要其他分支:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote set-branches --add origin B</span><br><span class="line">git fetch</span><br><span class="line">git checkout B</span><br></pre></td></tr></tbody></table></figure>
+
+<p>当你强迫症犯了想要把所有分支都下下来时:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"</span><br><span class="line">git fetch</span><br></pre></td></tr></tbody></table></figure>
+
 <h6 id="浅克隆"><a href="#浅克隆" class="headerlink" title="浅克隆"></a>浅克隆</h6><p>随着时间推移版本库的迭代次数可能越来越多, 多到对你来说并不是所有版本都是有意义的了. 比如涉及到某个文件的提交次数可能有100次, 但可能只有后20次对你是有意义, 你可能会查看的, 那么此时可以通过指定克隆深度来减少不必要的下载时间.</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone --depth &lt;depth&gt; &lt;url&gt;</span><br></pre></td></tr></tbody></table></figure>
 
@@ -516,9 +522,9 @@
 <p>当你发现你克隆的提交次数少了, 你需要看更往前的提交但仍不想把所有提交都克隆下来的时候, 你可以:</p>
 <ol>
 <li>再往前多下几个提交 <code>git fetch --deepen=&lt;depth&gt;</code></li>
-<li>把直到一个日期的提交都下下来 <code>git fetch --shallow-since=15/11/2012</code></li>
+<li>把直到一个指定日期的提交都下下来 <code>git fetch --shallow-since=15/11/2012</code></li>
 </ol>
-<p>而当你有时间了又想要将这个浅克隆转为一个完整深度的克隆时, 输入:</p>
+<p>而当你又犯强迫症了😏想要将这个浅克隆转为一个完整深度的克隆时, 输入:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch --unshallow</span><br></pre></td></tr></tbody></table></figure>
 
 <h6 id="利用代理"><a href="#利用代理" class="headerlink" title="利用代理"></a>利用代理</h6><p>很多人的代码托管在GitHub (这意味着服务器在美国), 因此可能下载/上传速度很慢. 如果你知道你的翻墙工具的代理端口那么你可以设置git使用这个端口, 速度会好很多. (如果你的翻墙工具是直接全局代理了所有流量那么不需要这一步)</p>
