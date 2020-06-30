@@ -6,7 +6,7 @@
   <link href="/zh-CN/atom.xml" rel="self"/>
   
   <link href="https://leojhonsong.github.io/zh-CN/"/>
-  <updated>2020-04-20T09:01:34.000Z</updated>
+  <updated>2020-05-08T07:26:17.000Z</updated>
   <id>https://leojhonsong.github.io/zh-CN/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>笔记本电脑性能提升/选购指南</title>
+    <link href="https://leojhonsong.github.io/zh-CN/2020/05/08/%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%94%B5%E8%84%91%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87-%E9%80%89%E8%B4%AD%E6%8C%87%E5%8D%97/"/>
+    <id>https://leojhonsong.github.io/zh-CN/2020/05/08/%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%94%B5%E8%84%91%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87-%E9%80%89%E8%B4%AD%E6%8C%87%E5%8D%97/</id>
+    <published>2020-05-08T07:26:17.000Z</published>
+    <updated>2020-05-08T07:26:17.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>自去年三月多开始有意识了解电脑配件至今已有一年多, 对这些乱七八糟的了解多了许多, 整理一下我对<strong>笔记本</strong>性能提升的经验以及选购指南. 因为我很了解在不了解这些时听到这些陌生概念的望而畏怯以及半信半疑, 我尽量解释得小白些.</p><p>❗️ 因为我自己没有台式机所以这里只谈笔记本相关.</p><a id="more"></a><h2 id="性能提升"><a href="#性能提升" class="headerlink" title="性能提升"></a>性能提升</h2><p>不同于台式机里什么配件都可以换,  比如很多笔记本的CPU, 显卡是焊死在主板上的. 即便你的笔记本支持更换这两样, 这也不是容易事. 因为笔记本的散热是精打细算设计好的, 更换了更好的CPU或者显卡通常以为着更大的发热量, 很容易导致过热然后出奇奇怪怪的问题.</p><p>因此为了提升笔记本性能常见的操作是<strong>更换硬盘和内存</strong>.</p><h3 id="更换硬盘"><a href="#更换硬盘" class="headerlink" title="更换硬盘"></a>更换硬盘</h3><h3 id="更换内存"><a href="#更换内存" class="headerlink" title="更换内存"></a>更换内存</h3><h2 id="选购指南"><a href="#选购指南" class="headerlink" title="选购指南"></a>选购指南</h2><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;自去年三月多开始有意识了解电脑配件至今已有一年多, 对这些乱七八糟的了解多了许多, 整理一下我对&lt;strong&gt;笔记本&lt;/strong&gt;性能提升的经验以及选购指南. 因为我很了解在不了解这些时听到这些陌生概念的望而畏怯以及半信半疑, 我尽量解释得小白些.&lt;/p&gt;
+&lt;p&gt;❗️ 因为我自己没有台式机所以这里只谈笔记本相关.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="杂记" scheme="https://leojhonsong.github.io/zh-CN/categories/%E6%9D%82%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>2020年4月12日 Vim经验分享</title>
@@ -465,31 +487,6 @@
     
     
       <category term="vim" scheme="https://leojhonsong.github.io/zh-CN/categories/vim/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Python中的小技巧</title>
-    <link href="https://leojhonsong.github.io/zh-CN/2019/07/03/Python%E4%B8%AD%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
-    <id>https://leojhonsong.github.io/zh-CN/2019/07/03/Python%E4%B8%AD%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</id>
-    <published>2019-07-03T14:23:43.000Z</published>
-    <updated>2020-03-16T16:14:59.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>俺也记不住语法, 在这里记录一下常见语句.</p><a id="more"></a><h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="查看自带的帮助文档"><a href="#查看自带的帮助文档" class="headerlink" title="查看自带的帮助文档"></a>查看自带的帮助文档</h2><p>用<code>help()</code>函数, 以<code>q</code>退出.</p><p>❗️ 使用help(module_name)时首先需要import该模块</p><h2 id="查看当前python解释器路径"><a href="#查看当前python解释器路径" class="headerlink" title="查看当前python解释器路径"></a>查看当前python解释器路径</h2><p>有时候写程序会发现莫名其妙的bug比如找不到某库, 路径不对等, 可能是因为用错了解释器. 用下面语句可以查看当前解释器的路径:</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.executable</span><br></pre></td></tr></tbody></table></figure><h2 id="在python解释器里清屏"><a href="#在python解释器里清屏" class="headerlink" title="在python解释器里清屏"></a>在python解释器里清屏</h2><p>搜了一下python里似乎没有很简短的清屏命令, 要用命令只能用类似以下这种:</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">a = os.system(<span class="string">'clear'</span>)</span><br></pre></td></tr></tbody></table></figure><p>💡 这是在Linux下清屏的命令, 在Windows要用<code>os.system('cls')</code></p><p>💡 将这条命令赋值给一个变量是为了窗口顶部不出现一个0. 你可以单独输入<code>os.system('clear')</code>试试</p><p>但如果你是在<strong>Bash</strong>中打开的python可以用 <code>Ctrl + L</code>, 这是Bash的清屏快捷键.</p><h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><h2 id="生成等差数列"><a href="#生成等差数列" class="headerlink" title="生成等差数列"></a>生成等差数列</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list(range(begin, end, step))</span><br></pre></td></tr></tbody></table></figure><h2 id="生成任意指定列表"><a href="#生成任意指定列表" class="headerlink" title="生成任意指定列表"></a>生成任意指定列表</h2><h3 id="利用列表推导式"><a href="#利用列表推导式" class="headerlink" title="利用列表推导式"></a>利用列表推导式</h3><p><strong>推导式comprehensions</strong>（又称解析式）, 是Python的一种独有特性. <strong>推导式是可以从一个数据序列构建另一个新的数据序列的结构体</strong>. 换句话说能从一组数据中求出满足条件的新数据, 比如a, b两个等长列表中都为偶数的项的乘积. 共有三种推导式, 在Python2和3中都有支持:</p><ul><li>列表(list)推导式</li><li>字典(dict)推导式</li><li>集合(set)推导式</li></ul><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list = [output_expression <span class="keyword">for</span> out_exp <span class="keyword">in</span> input_list <span class="keyword">if</span> expression]</span><br></pre></td></tr></tbody></table></figure><p>e.g.</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1</span></span><br><span class="line">a = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">30</span>) <span class="keyword">if</span> i % <span class="number">3</span> <span class="keyword">is</span> <span class="number">0</span>]</span><br><span class="line"><span class="comment">#2</span></span><br><span class="line">names = [<span class="string">'Bob'</span>,<span class="string">'Tom'</span>,<span class="string">'alice'</span>,<span class="string">'Jerry'</span>,<span class="string">'Wendy'</span>,<span class="string">'Smith'</span>]</span><br><span class="line">LONG_NAMES = [name.upper() <span class="keyword">for</span> name <span class="keyword">in</span> names <span class="keyword">if</span> len(name)&gt;<span class="number">3</span>]</span><br><span class="line"><span class="comment">#3</span></span><br><span class="line">a = [x*y <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">5</span>) <span class="keyword">if</span> x &gt; <span class="number">2</span> <span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">4</span>) <span class="keyword">if</span> y &lt; <span class="number">3</span>]</span><br></pre></td></tr></tbody></table></figure><h3 id="利用lambda函数"><a href="#利用lambda函数" class="headerlink" title="利用lambda函数"></a>利用lambda函数</h3><p>lambda函数在python, C++, Java等语言中都有, 我理解的作用主要有三:</p><ul><li>少写几个字</li><li>能将一个”函数”以参数的形式传入另一个函数, ❗️注意此处普通函数能被传递并不是什么稀罕事, 更重要的是类似<a href="https://www.zhihu.com/question/20125256/answer/29733906" target="_blank" rel="noopener">这里</a>提到的”伪函数”</li><li>避免污染命名空间, 需要一个函数但不知道命什么名时用lambda函数</li></ul><p>lambda函数主要用在filter(), map(), reduce()中</p><p>💡 在python3中<code>reduce()</code>从内建函数中移除了, 被移到了functools模块中</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>foo = [<span class="number">2</span>, <span class="number">18</span>, <span class="number">9</span>, <span class="number">22</span>, <span class="number">17</span>, <span class="number">24</span>, <span class="number">8</span>, <span class="number">12</span>, <span class="number">27</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> filter(<span class="keyword">lambda</span> x: x % <span class="number">3</span> == <span class="number">0</span>, foo)</span><br><span class="line">[<span class="number">18</span>, <span class="number">9</span>, <span class="number">24</span>, <span class="number">12</span>, <span class="number">27</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> map(<span class="keyword">lambda</span> x: x * <span class="number">2</span> + <span class="number">10</span>, foo)</span><br><span class="line">[<span class="number">14</span>, <span class="number">46</span>, <span class="number">28</span>, <span class="number">54</span>, <span class="number">44</span>, <span class="number">58</span>, <span class="number">26</span>, <span class="number">34</span>, <span class="number">64</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> reduce(<span class="keyword">lambda</span> x, y: x + y, foo)</span><br><span class="line"><span class="number">139</span></span><br></pre></td></tr></tbody></table></figure><h1 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h1><h2 id="由列表生成字典"><a href="#由列表生成字典" class="headerlink" title="由列表生成字典"></a>由列表生成字典</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</span><br><span class="line">c = dict(zip(a, b))</span><br></pre></td></tr></tbody></table></figure><h2 id="对字典按值排序"><a href="#对字典按值排序" class="headerlink" title="对字典按值排序"></a>对字典按值排序</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d = {<span class="string">'a'</span>:<span class="number">1</span>, <span class="string">'b'</span>:<span class="number">2</span>, <span class="string">'c'</span>: <span class="number">5</span>, <span class="string">'d'</span>:<span class="number">4</span>, <span class="string">'e'</span>:<span class="number">3</span>}</span><br><span class="line"></span><br><span class="line">sorted(d.items(), key=<span class="keyword">lambda</span> i: i[<span class="number">1</span>])</span><br></pre></td></tr></tbody></table></figure><blockquote><p>sorted(iterable, /, *, key=None, reverse=False)</p><p>Return a new list containing all items from the iterable in ascending order.</p><p>A custom key function can be supplied to customize the sort order, and thereverse flag can be set to request the result in descending order.</p></blockquote><p>即<code>iterable</code>处放一个可迭代的对象, <code>key</code>处放自定义函数来选取比较的参数, <code>reverse</code>处设定是否反向</p><p><code>d.items()</code>返回可遍历的(键, 值) 元组数组, <code>key=lambda i: i[1]</code>即此处参与比较的参数是d的值</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;俺也记不住语法, 在这里记录一下常见语句.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="技巧" scheme="https://leojhonsong.github.io/zh-CN/categories/%E6%8A%80%E5%B7%A7/"/>
-    
-      <category term="语言" scheme="https://leojhonsong.github.io/zh-CN/categories/%E8%AF%AD%E8%A8%80/"/>
-    
-      <category term="Python" scheme="https://leojhonsong.github.io/zh-CN/categories/%E8%AF%AD%E8%A8%80/Python/"/>
     
     
   </entry>

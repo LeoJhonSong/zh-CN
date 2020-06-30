@@ -1029,14 +1029,14 @@ Address already in use</strong>, 我的服务器端监听的端口处于 <strong
   <entry>
     <title>Git杂记</title>
     <url>/zh-CN/2019/02/27/Git%E6%9D%82%E8%AE%B0/</url>
-    <content><![CDATA[<p>先有git, 许久后才有了GitHub等代码托管平台. git是一个软件而GitHub是一个网站. 他们的关系是你可以通过git将你的代码托管给GitHub (就是把你的代码存到GitHub的服务器上)</p>
+    <content><![CDATA[<p>先有git, 许久后才有了GitHub等代码托管平台. git是一个软件而GitHub是一个网站. 他们的关系是你可以通过git将你的代码托管给GitHub (就是把你的代码存到GitHub的服务器上). 不过随着发展, 这些代码托管平台现在提供极为丰富的服务, 我认为其中生态做得最好的还得是github. 从github自带的github pages, github action到应用市场的各种应用, 应有尽有.</p>
 <a id="more"></a>
 
 <h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><p>git是一个<strong>分布式版本控制</strong>软件. 与它齐名的另一个版本控制软件是<strong>SVN</strong>.</p>
 <p>🔗 <a href="https://blog.csdn.net/xiaoqiangyonghu/article/details/78400313" target="_blank" rel="noopener">为什么要版本控制及分布式版本控制原理</a></p>
 <h3 id="图形化软件"><a href="#图形化软件" class="headerlink" title="图形化软件"></a>图形化软件</h3><p>虽然有人仍喜欢用纯命令行, 并且有的命令确实只能在命令行输入 (很多命令图形界面无法提供), 但我平时更喜欢使用图形化软件来操作git. 此处推荐三款软件.</p>
 <h4 id="GitHub-Desktop"><a href="#GitHub-Desktop" class="headerlink" title="GitHub Desktop"></a>GitHub Desktop</h4><p>🔗 <a href="https://desktop.github.com/" target="_blank" rel="noopener">下载地址</a></p>
-<p>GitHub官方客户端. 我自己也在用. 它的缺点是<strong>只能管理托管在GitHub的git仓库</strong>. (不过我们仓库都在GitHub所以没影响) 它很有用的一点是<strong>能在一个面板上看到你每个仓库的更新情况</strong>. (我经常忘记哪个仓库有没有上传)</p>
+<p>GitHub官方客户端. 这是一个对新手很友好的客户端, 我自己也在用. 它的缺点是<strong>只能管理托管在GitHub的git仓库</strong>. 它很有用的一点是<strong>能在一个面板上看到你每个仓库的更新情况</strong>. (我经常忘记哪个仓库有没有上传)</p>
 <p>❗️ 要打开软件等它检测一会才会显示出来状态.</p>
 <p><img src="Git%E6%9D%82%E8%AE%B0/image-20200227141011525.png" alt="image-20200227141011525"></p>
 <blockquote>
@@ -1050,18 +1050,18 @@ Address already in use</strong>, 我的服务器端监听的端口处于 <strong
 <p>这是装了<strong>GitLens</strong>插件的<strong>Visual Studio Code</strong>的源代码控制面板和编辑窗口截图. 可以看到左下角显示了当前分支及同步状态, 编辑窗口里有颜色条标示文件更改情况, 右上角有可以对文件进行的一些git操作, etc…</p>
 <h3 id="登陆git"><a href="#登陆git" class="headerlink" title="登陆git"></a>登陆git</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git config --global user.name "Your Name"</span><br><span class="line">git config --global user.email "email@example.com"</span><br></pre></td></tr></tbody></table></figure>
 
-<p>⚠ 每台设备要使用不同的<code>user.name</code>, 这样才能区分它们. 为了方便记忆可以统一使用<strong>昵称-设备型号</strong>的命名方式.</p>
+<p>⚠ 建议每台设备使用不同的<code>user.name</code>, 这样才能区分它们. 为了方便记忆可以统一使用<strong>昵称-设备型号</strong>的命名方式.</p>
 <p>值得一提的是git的配置文件分三级: 系统级(所有用户的), 全局级(当前用户的), 仓库级. 在配置时分别使用<code>--system</code>, <code>--global</code>, <code>--local</code>参数来访问. 如果想直接进入配置文件而不是一个参数一个参数地设置可以使用:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git config -e</span><br></pre></td></tr></tbody></table></figure>
 
 <p>要注意默认情况下<code>git config -e</code>访问<strong>仓库级配置文件</strong>.</p>
-<h3 id="http连接与ssh连接"><a href="#http连接与ssh连接" class="headerlink" title="http连接与ssh连接"></a>http连接与ssh连接</h3><p>通常有http, ssh, svn三种方式连接git远程仓库, 常见的是使用http或者ssh.</p>
-<p>我建议使用http连接, 一方面http连接无论从远程端下载还是上传到远程端都会比用ssh<strong>快许多</strong> (原因我不清楚, 但确实是这样), 另方面对于普通用户来说http连接<strong>麻烦事少一些</strong>. 这里的麻烦事指的是如果想通过ssh连接远程端那么需要在本地生成ssh秘钥对并把生成的公钥添加到github账户. 在多个设备上使用了许久ssh连接的我已经厌烦它了🤷‍♂</p>
+<h3 id="http连接与ssh连接"><a href="#http连接与ssh连接" class="headerlink" title="http连接与ssh连接"></a>http连接与ssh连接</h3><p>最常用的连接git远程仓库的方式是通过http, ssh这两种协议.</p>
+<p><strong>我建议使用http连接</strong>, 一方面http连接无论从远程端下载还是上传到远程端都会比用ssh<strong>快许多</strong> (原因我不清楚, 但确实是这样), 另一方面对于普通用户来说http连接<strong>麻烦事少一些</strong>. 这里的麻烦事指的是如果想通过ssh连接远程端那么需要在本地生成ssh秘钥对并把生成的公钥添加到远程端.</p>
 <p>💡 也许有人说通过http连接每次push都需要输入账号密码, 但其实可以设置git记住账号密码:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></tbody></table></figure>
 
 <p>另外在github的<a href="https://help.github.com/en/github/using-git/which-remote-url-should-i-use" target="_blank" rel="noopener">在克隆仓库时使用什么协议</a>中也是推荐使用http协议😏</p>
-<h4 id="有关SSH"><a href="#有关SSH" class="headerlink" title="有关SSH"></a>有关SSH</h4><h5 id="获取SSH-Key"><a href="#获取SSH-Key" class="headerlink" title="获取SSH Key"></a>获取SSH Key</h5><p>首先查看有没有<strong>~/.ssh</strong>这个文件夹以及文件夹下有没有类似<code>id_rsa</code>和<code>id_rsa.pub</code>的文件.
+<h4 id="有关SSH"><a href="#有关SSH" class="headerlink" title="有关SSH"></a>有关SSH</h4><h5 id="获取SSH-Key"><a href="#获取SSH-Key" class="headerlink" title="获取SSH Key"></a>获取SSH Key</h5><p>首先查看有没有<code>~/.ssh</code>这个文件夹以及文件夹下有没有类似<code>id_rsa</code>和<code>id_rsa.pub</code>的文件.
 如果有, 那就不用生成了.</p>
 <p>这两个就是SSH Key的秘钥对，<code>id_rsa</code>是私钥，不能泄露出去，<code>id_rsa.pub</code>是公钥可以放心地告诉任何人. 比如加入GitHub的SSH Key.</p>
 <h6 id="生成key"><a href="#生成key" class="headerlink" title="生成key"></a>生成key</h6><figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span></span><br></pre></td></tr></tbody></table></figure>
@@ -1072,18 +1072,35 @@ Address already in use</strong>, 我的服务器端监听的端口处于 <strong
 <h5 id="同时上传到多个远程端"><a href="#同时上传到多个远程端" class="headerlink" title="同时上传到多个远程端"></a>同时上传到多个远程端</h5><p>新建<code>~/.ssh/config</code>, 如果远程端是github和gitee, github和gitee的ssh key是像上面说的这样命名的, 那么内容如下:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> github</span></span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_github</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> gitee</span></span><br><span class="line">Host gitee.com</span><br><span class="line">HostName gitee.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa_gitee</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><h4 id="克隆一个repository"><a href="#克隆一个repository" class="headerlink" title="克隆一个repository"></a>克隆一个repository</h4><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git clone [url]</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><h4 id="克隆一个repository"><a href="#克隆一个repository" class="headerlink" title="克隆一个repository"></a>克隆一个repository</h4><p>💡 <strong>克隆与下载的区别</strong>: 如果下载一个仓库的压缩包, 你获得的只是这个仓库<strong>当前版本</strong>的代码, 而如果克隆一个仓库则首先得到的是记录了该仓库所有版本的版本库, 然后git从中释放出了当前版本. 这个版本库就是仓库根目录的<code>.git</code>文件夹. 因此经常出现到开发后期.git文件夹大小比当前版本的代码大很多的情况.</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git clone [url]</span><br></pre></td></tr></tbody></table></figure>
 
 <p>🔗 <a href="https://help.github.com/cn/github/creating-cloning-and-archiving-repositories/cloning-a-repository" target="_blank" rel="noopener">GitHub中文帮助文档-如何从GitHub克隆仓库</a></p>
-<h5 id="克隆特定分支"><a href="#克隆特定分支" class="headerlink" title="克隆特定分支"></a>克隆特定分支</h5><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git clone -b [branch] [url]</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="让克隆更快"><a href="#让克隆更快" class="headerlink" title="让克隆更快"></a>让克隆更快</h5><h6 id="克隆特定分支"><a href="#克隆特定分支" class="headerlink" title="克隆特定分支"></a>克隆特定分支</h6><p>一个社区活跃的项目通常会有许多分支, 其中会有很多是你不需要关注的, 别人正在开发feature或者修bug等的分支, 可以通过只克隆指定分支来减少不必要的下载时间.</p>
+<p>❗️ 这样的坏处是看不到其他分支.</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git clone -b &lt;branch&gt; --single-branch &lt;url&gt;</span><br></pre></td></tr></tbody></table></figure>
 
-<p>💡 <strong>克隆与下载的区别</strong>: 如果下载一个仓库的压缩包, 你获得的只是这个仓库<strong>当前版本</strong>的代码, 而如果克隆一个仓库则首先得到的是记录了该仓库所有版本的版本库, 然后git从中释放出了当前版本. 这个版本库就是仓库根目录的<code>.git</code>文件夹. 因此经常出现到开发后期.git文件夹大小比当前版本的代码大很多的情况.</p>
-<h5 id="让克隆更快"><a href="#让克隆更快" class="headerlink" title="让克隆更快"></a>让克隆更快</h5><h6 id="利用代理"><a href="#利用代理" class="headerlink" title="利用代理"></a>利用代理</h6><p>很多人的代码托管在GitHub (这意味着服务器在美国), 因此可能下载/上传速度很慢. 如果你知道你的翻墙工具的代理端口那么你可以设置git使用这个端口, 速度会好很多. (如果你的翻墙工具是直接全局代理了所有流量那么不需要这一步)</p>
+<p>❗️ 如果不带<code>--single-branch</code>这个参数那效果仅仅是在完成克隆后切换到你指定的这个分支, 克隆的仍是完整的, 有多个分支的仓库 (如果你的仓库有多个分支的话)</p>
+<h6 id="浅克隆"><a href="#浅克隆" class="headerlink" title="浅克隆"></a>浅克隆</h6><p>随着时间推移版本库的迭代次数可能越来越多, 多到对你来说并不是所有版本都是有意义的了. 比如涉及到某个文件的提交次数可能有100次, 但可能只有后20次对你是有意义, 你可能会查看的, 那么此时可以通过指定克隆深度来减少不必要的下载时间.</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git clone --depth &lt;depth&gt; &lt;url&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>克隆 <a href="https://github.com/LeoJhonSong/vimrc" target="_blank" rel="noopener">https://github.com/LeoJhonSong/vimrc</a> 这个仓库master分支最新一次提交到用户主目录下的<code>.vimrc</code>文件夹:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git clone -b master --single-branch --depth 1 https://github.com/LeoJhonSong/vimrc ~/.vimrc</span><br></pre></td></tr></tbody></table></figure>
+
+<p>当你发现你克隆的提交次数少了, 你需要看更往前的提交但仍不想把所有提交都克隆下来的时候, 你可以:</p>
+<ol>
+<li>再往前多下几个提交 <code>git fetch --deepen=&lt;depth&gt;</code></li>
+<li>把直到一个日期的提交都下下来 <code>git fetch --shallow-since=15/11/2012</code></li>
+</ol>
+<p>而当你有时间了又想要将这个浅克隆转为一个完整深度的克隆时, 输入:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git fetch --unshallow</span><br></pre></td></tr></tbody></table></figure>
+
+<h6 id="利用代理"><a href="#利用代理" class="headerlink" title="利用代理"></a>利用代理</h6><p>很多人的代码托管在GitHub (这意味着服务器在美国), 因此可能下载/上传速度很慢. 如果你知道你的翻墙工具的代理端口那么你可以设置git使用这个端口, 速度会好很多. (如果你的翻墙工具是直接全局代理了所有流量那么不需要这一步)</p>
 <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 比如我知道自己VPN的http代理端口为: 127.0.0.1:1234,</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> socks代理端口为: 127.0.0.1:5678</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置git使用http代理端口</span></span><br><span class="line">git config --global http.proxy http://127.0.0.1:1234</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置git使用socks代理端口</span></span><br><span class="line">git config --global http.proxy socks5://127.0.0.1:5678</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取消git使用代理</span></span><br><span class="line">git config --global --unset http.proxy</span><br></pre></td></tr></tbody></table></figure>
 
 <h6 id="利用gitee"><a href="#利用gitee" class="headerlink" title="利用gitee"></a>利用gitee</h6><p>如果你没有翻墙工具或者你的翻墙工具失效了😏, 那么还有一种曲折一点的方式可以快速克隆下来.</p>
 <p>正如上面所说, 之所以从github克隆仓库速度很慢是因为它的服务器离我们太远了, 因此如果你习惯了直连github克隆仓库的破速度再体验从国内服务器克隆仓库的MB级速度你一定会感动得泪流满面👍</p>
-<p>而我要说的就是利用一个国内的很棒的代码托管平台<strong>gitee</strong>提供的一个很贴心的功能: <strong>从github/gitlab导入仓库</strong>! (推荐大家也体验一下gitee, 它还提供了许多很贴心的github所没有的小功能)</p>
+<p>而我要说的就是利用一个国内的很棒的代码托管平台<strong>gitee</strong>提供的一个很贴心的功能: <strong>从github/gitlab导入仓库</strong>! (推荐大家也体验一下gitee, 它还提供了一些很贴心的github所没有的小功能)</p>
 <p>利用gitee可以从github导入仓库, 我们可以轻松将一个仓库从遥不可及的服务器移到国内服务器来🎉 gitee导入仓库的时间可以忽略不计, 然后与从github克隆仓库一样的流程急速将仓库克隆到本地! 但一般网烂到这种程度我们还选择克隆仓库而不是下载压缩包是因为要加入开发, 因此从gitee克隆下来仓库后需要<strong>更改远程端的地址为github的仓库地址</strong>.</p>
 <p>打开仓库根目录下<code>.git/config</code>文件, 你会看到类似下面这样的字段:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">[remote "origin"]</span><br><span class="line">    url = https://gitee.com/someone/something.git</span><br></pre></td></tr></tbody></table></figure>
@@ -1098,7 +1115,7 @@ Address already in use</strong>, 我的服务器端监听的端口处于 <strong
 <h4 id="推送"><a href="#推送" class="headerlink" title="推送"></a>推送</h4><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></tbody></table></figure>
 
 <p>⚠️ 个人仓库的话提交之后一定不要忘记上传! 我在格式化电脑前忘记将本地commit上传, 失去了好几篇博文啊😢 (但应该一般没有我这么蠢的)</p>
-<p>我通常将以上暂存, 提交, 推送三步合称git三连😏</p>
+<p>💡 在VSC中可以通过设置<code>git.enableSmartCommit</code>, <code>git.postCommitCommand</code>两项来实现<strong>暂存所有更改, 提交, 推送的一键三连</strong>😏 不过我只在自己随意写的版本库中这样用, <strong>在正规开发流程中十分不推荐提交后立即推送</strong>, 因为传到了远程端再想更改提交的内容会很麻烦. 应当完成一个阶段后再进行推送. (另外可能还需要<code>git rebase</code>等)</p>
 <h3 id="git仓库瘦身"><a href="#git仓库瘦身" class="headerlink" title="git仓库瘦身"></a>git仓库瘦身</h3><p>我也终于遇到了git仓库被搞太大需要瘦身的情况了.</p>
 <blockquote>
 <p><a href="http://rtyley.github.io/bfg-repo-cleaner/" target="_blank" rel="noopener">BFG</a> 是为将像大文件或者密码这些不想要的数据从 Git 仓库中删除而专门设计的，所以它有一一个简单的标志用来删除那些大的历史文件（不在当前的提交里面）：<code>--strip-blobs-bigger-than</code></p>
@@ -4628,6 +4645,38 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
         <category>macOS</category>
         <category>启动</category>
         <category>GRUB</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>笔记本电脑性能提升/选购指南</title>
+    <url>/zh-CN/2020/05/08/%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%94%B5%E8%84%91%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87-%E9%80%89%E8%B4%AD%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p>自去年三月多开始有意识了解电脑配件至今已有一年多, 对这些乱七八糟的了解多了许多, 整理一下我对<strong>笔记本</strong>性能提升的经验以及选购指南. 因为我很了解在不了解这些时听到这些陌生概念的望而畏怯以及半信半疑, 我尽量解释得小白些.</p>
+<p>❗️ 因为我自己没有台式机所以这里只谈笔记本相关.</p>
+<a id="more"></a>
+
+<h2 id="性能提升"><a href="#性能提升" class="headerlink" title="性能提升"></a>性能提升</h2><p>不同于台式机里什么配件都可以换,  比如很多笔记本的CPU, 显卡是焊死在主板上的. 即便你的笔记本支持更换这两样, 这也不是容易事. 因为笔记本的散热是精打细算设计好的, 更换了更好的CPU或者显卡通常以为着更大的发热量, 很容易导致过热然后出奇奇怪怪的问题.</p>
+<p>因此为了提升笔记本性能常见的操作是<strong>更换硬盘和内存</strong>.</p>
+<h3 id="更换硬盘"><a href="#更换硬盘" class="headerlink" title="更换硬盘"></a>更换硬盘</h3><h3 id="更换内存"><a href="#更换内存" class="headerlink" title="更换内存"></a>更换内存</h3><h2 id="选购指南"><a href="#选购指南" class="headerlink" title="选购指南"></a>选购指南</h2><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>杂记</category>
       </categories>
   </entry>
 </search>
