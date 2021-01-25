@@ -75,9 +75,9 @@
     </summary>
     
     
-      <category term="杂记" scheme="https://leojhonsong.github.io/zh-CN/categories/%E6%9D%82%E8%AE%B0/"/>
-    
       <category term="硬件" scheme="https://leojhonsong.github.io/zh-CN/categories/%E7%A1%AC%E4%BB%B6/"/>
+    
+      <category term="杂记" scheme="https://leojhonsong.github.io/zh-CN/categories/%E6%9D%82%E8%AE%B0/"/>
     
     
   </entry>
@@ -98,11 +98,11 @@
     </summary>
     
     
+      <category term="工具" scheme="https://leojhonsong.github.io/zh-CN/categories/%E5%B7%A5%E5%85%B7/"/>
+    
       <category term="杂记" scheme="https://leojhonsong.github.io/zh-CN/categories/%E6%9D%82%E8%AE%B0/"/>
     
-      <category term="编辑器" scheme="https://leojhonsong.github.io/zh-CN/categories/%E7%BC%96%E8%BE%91%E5%99%A8/"/>
-    
-      <category term="vim" scheme="https://leojhonsong.github.io/zh-CN/categories/%E7%BC%96%E8%BE%91%E5%99%A8/vim/"/>
+      <category term="vim" scheme="https://leojhonsong.github.io/zh-CN/categories/%E5%B7%A5%E5%85%B7/vim/"/>
     
     
   </entry>
@@ -346,7 +346,9 @@
     
       <category term="技巧" scheme="https://leojhonsong.github.io/zh-CN/categories/%E6%8A%80%E5%B7%A7/"/>
     
-      <category term="操作系统， Linux" scheme="https://leojhonsong.github.io/zh-CN/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%8C-Linux/"/>
+      <category term="操作系统" scheme="https://leojhonsong.github.io/zh-CN/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+      <category term="Linux" scheme="https://leojhonsong.github.io/zh-CN/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/"/>
     
       <category term="调试" scheme="https://leojhonsong.github.io/zh-CN/categories/%E8%B0%83%E8%AF%95/"/>
     

@@ -744,6 +744,7 @@ VSCode之后发现这个选项没被勾上.</p>
           });
       </script>]]></content>
       <categories>
+        <category>硬件</category>
         <category>树莓派</category>
       </categories>
   </entry>
@@ -1684,34 +1685,6 @@ Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可�
       <categories>
         <category>技巧</category>
         <category>软件配置</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>传感器滤波有感</title>
-    <url>/zh-CN/2019/03/06/%E4%BC%A0%E6%84%9F%E5%99%A8%E6%BB%A4%E6%B3%A2%E6%9C%89%E6%84%9F/</url>
-    <content><![CDATA[<p>TODO</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>滤波</category>
       </categories>
   </entry>
   <entry>
@@ -3159,7 +3132,7 @@ shift 字母</kbd>和<kbd>Ctrl 字母</kbd>的输出没有区别.</p>
           });
       </script>]]></content>
       <categories>
-        <category>编辑器</category>
+        <category>工具</category>
         <category>vim</category>
       </categories>
   </entry>
@@ -3513,7 +3486,8 @@ C/C++接口时.其他部分全部用Python糊!</p>
       </script>]]></content>
       <categories>
         <category>技巧</category>
-        <category>操作系统， Linux</category>
+        <category>操作系统</category>
+        <category>Linux</category>
         <category>调试</category>
       </categories>
   </entry>
@@ -4503,8 +4477,8 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
           });
       </script>]]></content>
       <categories>
+        <category>工具</category>
         <category>杂记</category>
-        <category>编辑器</category>
         <category>vim</category>
       </categories>
   </entry>
@@ -4690,8 +4664,8 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
           });
       </script>]]></content>
       <categories>
-        <category>杂记</category>
         <category>硬件</category>
+        <category>杂记</category>
       </categories>
   </entry>
   <entry>
