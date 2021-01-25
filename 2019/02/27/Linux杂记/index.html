@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="最近使用Linux频繁了起来, 接触到更多各种各样的命令, 然后我脑容量不够了😁 由于有TLDR这种神器, 在这里并不会无脑记录所有看到的命令, 而是小白最常用或者不太容易懂含义的几个命令. 🔗如果弄不清命令的含义, 我在 另一篇博客 记录了一些缩写及对应含义, 希望有所帮助. 💡 推荐一个觉得很不错的Linux命令入门教程LGCB">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-13T19:02:24.000Z">
+<meta property="og:updated_time" content="2021-01-25T03:50:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux杂记">
 <meta name="twitter:description" content="最近使用Linux频繁了起来, 接触到更多各种各样的命令, 然后我脑容量不够了😁 由于有TLDR这种神器, 在这里并不会无脑记录所有看到的命令, 而是小白最常用或者不太容易懂含义的几个命令. 🔗如果弄不清命令的含义, 我在 另一篇博客 记录了一些缩写及对应含义, 希望有所帮助. 💡 推荐一个觉得很不错的Linux命令入门教程LGCB">
@@ -227,7 +227,7 @@
       
     
 
-    <a href="/zh-CN/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">33</span></a>
+    <a href="/zh-CN/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">39</span></a>
 
   </li>
       
@@ -240,7 +240,7 @@
       
     
 
-    <a href="/zh-CN/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">47</span></a>
+    <a href="/zh-CN/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">46</span></a>
 
   </li>
       
@@ -390,7 +390,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-14 03:02:24" itemprop="dateModified" datetime="2019-09-14T03:02:24+08:00">2019-09-14</time>
+                <time title="修改时间：2021-01-25 11:50:37" itemprop="dateModified" datetime="2021-01-25T11:50:37+08:00">2021-01-25</time>
               </span>
             
           
@@ -400,7 +400,21 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/zh-CN/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/zh-CN/categories/操作系统/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/zh-CN/categories/杂记/" itemprop="url" rel="index"><span itemprop="name">杂记</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/zh-CN/categories/操作系统/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
                 
                 
@@ -677,16 +691,16 @@ rar工具:</p>
 <td>后</td>
 </tr>
 </tbody></table>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8">🔗</span>关于何时哪个文件会被加载也可以参考<a href="http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_01_02.html" target="_blank" rel="noopener">这里</a></p>
-<p>:warning: 在有些系统中不是<code>/etc/bash.bashrc</code>, 而是<code>/etc/bashrc</code></p>
-<p>:warning: <code>/etc/profile</code>仅针对Bourne系shell是指当shell为Bourne Shell, Bash, ksh
+<p>🔗 实际上在Linux系统中有非常多配置文件可以用来设置环境变量, 可以看看<a href="https://blog.lilydjwg.me/2020/7/22/linux-environment-variables.215496.html" target="_blank" rel="noopener">Linux的环境变量怎么设</a></p>
+<p>⚠️ 在有些系统中不是<code>/etc/bash.bashrc</code>, 而是<code>/etc/bashrc</code></p>
+<p>⚠️ <code>/etc/profile</code>仅针对Bourne系shell是指当shell为Bourne Shell, Bash, ksh
 等的时候<code>/etc/profile</code>才可能被加载, 而当我唤起一个<strong>zsh</strong>时, <strong>以上四个初始化文件都没有被加载</strong>
 <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f937-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f937-2642.png?v8">🤷♂</span></p>
-<p>:warning: 在用户目录可能还存在<code>~/.bash_profile</code>, <code>~/.bash_login</code>这两文件, 系统会依次查找<code>~/.bash_profile</code>, <code>~/.bash_login</code> 和 <code>~/.profile</code>这三个配置文件, 读取和执行这三个中的<strong>第一个</strong>存在且可读的文件中命令, 因此建议将三个合并为一个.</p>
-<p>:warning: 当<strong>bashrc</strong>一系和<strong>profile</strong>一系都会被加载时两者哪个会先被加载并不一定, 有点玄学… 经我测试运行<code>bash -cl bash</code> <strong>profile</strong>一系会先被加载, 而运行
+<p>⚠️ 在用户目录可能还存在<code>~/.bash_profile</code>, <code>~/.bash_login</code>这两文件, 系统会依次查找<code>~/.bash_profile</code>, <code>~/.bash_login</code> 和 <code>~/.profile</code>这三个配置文件, 读取和执行这三个中的<strong>第一个</strong>存在且可读的文件中命令, 因此建议将三个合并为一个.</p>
+<p>⚠️ 当<strong>bashrc</strong>一系和<strong>profile</strong>一系都会被加载时两者哪个会先被加载并不一定, 有点玄学… 经我测试运行<code>bash -cl bash</code> <strong>profile</strong>一系会先被加载, 而运行
 <code>bash -l</code>则<strong>bashrc</strong>一系会先被加载<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8">🤦♂</span> 但很明确的一点是:
 系统级初始化文件一定会先与用户级文件被加载. 即便根据应当允许用户个性化设置这种尝试也能推断出 (用户级初始化文件后于系统级初始化文件被加载, 所以用户级文件中的配置会覆盖系统级文件的对应配置)</p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span>有关四种shell模式个人感觉坑挺多的:</p>
+<p>✔️ 有关四种shell模式个人感觉坑挺多的:</p>
 <ul>
 <li><p><strong>login shell</strong>: 笼统地理解就是有<strong>输入用户名和密码</strong>这一过程才能进入的shell, 比如
 <strong>通过ssh访问远程服务器</strong>, 否则就是<strong>non-login shell</strong> 但是! 比如<strong>通过<code>su</code>切换用户</strong>时默认进入的是<strong>non-login shell</strong>,
@@ -700,7 +714,7 @@ rar工具:</p>
 如果是<strong>bash</strong>, 那就是在non-login shell中.</p>
 </li>
 </ul>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f31f.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f31f.png?v8">🌟</span>有了以上的知识储备我们就知道需要将环境变量添加到什么文件里了.</p>
+<p>🌟 有了以上的知识储备我们就知道需要将环境变量添加到什么文件里了.</p>
 <h2 id="删除一个环境变量"><a href="#删除一个环境变量" class="headerlink" title="删除一个环境变量"></a>删除一个环境变量</h2><h3 id="临时删除"><a href="#临时删除" class="headerlink" title="临时删除"></a>临时删除</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export -n [VARIABLE]</span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="永久删除"><a href="#永久删除" class="headerlink" title="永久删除"></a>永久删除</h3><p>参考永久添加的操作.</p>
@@ -977,7 +991,7 @@ Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可�
         
           <a href="/zh-CN/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -990,7 +1004,7 @@ Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可�
             <a href="/zh-CN/categories/">
           
         
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
