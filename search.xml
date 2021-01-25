@@ -3621,6 +3621,7 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
           });
       </script>]]></content>
       <categories>
+        <category>工具</category>
         <category>杂记</category>
         <category>语言</category>
         <category>Markdown</category>
