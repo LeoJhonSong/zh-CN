@@ -1688,6 +1688,59 @@ Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可�
       </categories>
   </entry>
   <entry>
+    <title>对伺服电机PID的理解</title>
+    <url>/zh-CN/2019/03/27/%E5%AF%B9%E4%BC%BA%E6%9C%8D%E7%94%B5%E6%9C%BAPID%E7%9A%84%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<p>行吧, 继上次手搓简单卡尔曼算法后我又接触到了更多控制方面的东西. 想我一个电子工程的弟弟在这里研究术语都不知道几个的控制… 命苦啊! 最近在调机械腿, 应该说还在调那条腿, 对伺服电机里的PID算法有了些许感悟.</p>
+<a id="more"></a>
+
+<p>这条腿的传感噪声问题因为换了传感器已经解决了, 最近的问题是<strong>不能快速, 稳定, 准确的到达指定位置</strong>. 目前通过<strong>限制电机的加速度</strong>改善了情况.</p>
+<h1 id="PID也没有那么简单"><a href="#PID也没有那么简单" class="headerlink" title="PID也没有那么简单"></a>PID也没有那么简单</h1><p>在改动前机械腿在低速状态 (很低速那种) 下表现得还是蛮好的, 但速度一旦快起来就明显有<strong>过冲</strong>, 是一抖一抖运动的, 到达位置时间反而比低速还长… 虽然我以前买了一个很简陋的四轴穿越机调过一点点PID, 感觉这算法也不难理解 (至少比卡尔曼好理解😁), 但这次发现要达到一定的精度PID也不是那么简单的东西: 经常是 “这参数加了20了怎么毛的变化都没有啊 黑人问号”, 但实际用起来又确实地感受到了差别. 并且当情况复杂的时候一个普通PID是不能满足的, 可能会用串级PID, 分段PID, 模糊PID, 专家系统PID, 容错PID, 前馈, 非线性控制之类的来改善😵</p>
+<p>🔗 参考: <a href="https://www.zhihu.com/question/22603676/answer/28847509" target="_blank" rel="noopener">关于永磁同步电机交流伺服控制系统的算法问题？ - 小心假设的回答 - 知乎</a></p>
+<h1 id="PI-·-PD-·-PID"><a href="#PI-·-PD-·-PID" class="headerlink" title="PI · PD · PID"></a>PI · PD · PID</h1><p>另外我知道了在工业中说是说PID控制器, 但<strong>实际大多是PI控制器</strong>, 因为D虽然可以增大系统阻尼, 使系统具有一定预见性, 增强了对微小变化的响应, 但也因此造成系统容易震荡, 不稳定. 而根据网上说的<strong>I比D更容易引起不稳定, 因为I引入了另一个极点.</strong> 具体啥时候用PI, PD, PID我还没有头绪.</p>
+<p>🔗 参考:</p>
+<ul>
+<li><a href="https://www.zhihu.com/question/26944678/answer/44687208" target="_blank" rel="noopener">哪些控制类的算法惊艳了你？ - 三郎的回答 - 知乎</a></li>
+<li><a href="http://www.sohu.com/a/155185294_464086" target="_blank" rel="noopener">PID控制算法精华和参数整定三大招</a></li>
+</ul>
+<h1 id="三环控制"><a href="#三环控制" class="headerlink" title="三环控制"></a>三环控制</h1><p>再有就是我大致理解了伺服电机三环PID是一种多么精妙而自然的设计.</p>
+<p>在调PID的时候我和师兄一度绝望, 我就说: “要不我们只保留转距环, 上层的我们重新写一遍.”当时我们使用的是<strong>位置模式</strong>控制电机. 我看电机驱动器的说明书都看得晕呼呼的, 还没怎么理解三环控制.
+但我要保留转距环的想法是很正常的:</p>
+<p>电机最基本的控制方式就是控制流过电机的电流, 也就是控制电机输出的转距. 在这一环里不是单纯的PID, 驱动器还设置了一些阈值, 防止过流烧坏电机什么的. 这一环是驱动器自整定的, 但效果也不错, 因此我认为不必自己重写这一环.</p>
+<p>然后我说:”上层我们用一个PID, 达到: 当当前位置比目标位置小就加正向转距, 当当前位置比目标位置大时加逆向转距的效果.”</p>
+<p>学长立即指出这样机械腿到达位置时的<strong>速度是不定的</strong>.我:”那就加一环速度PID, 生成一个百分数乘以转距来达到控制达到目标位置时的速度的效果”</p>
+<p>说完我一愣, 我特么这不是说了一遍<strong>电流环, 速度环, 位置环</strong>的所谓<strong>三环控制</strong>🐴</p>
+<p>🔗 参考:</p>
+<ul>
+<li><a href="http://www.voidcn.com/article/p-hxjakzgh-pw.html" target="_blank" rel="noopener">伺服电机三环控制的原理（位置环，运动环，电流环）</a></li>
+<li><a href="https://blog.csdn.net/Andy20081251/article/details/79457911" target="_blank" rel="noopener">浅谈伺服电机三种控制方式</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/21311021" target="_blank" rel="noopener">伺服电机的控制方式简述</a></li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>随笔</category>
+        <category>自动控制</category>
+      </categories>
+  </entry>
+  <entry>
     <title>关于Linux下开发单片机的猜测</title>
     <url>/zh-CN/2019/03/28/%E5%85%B3%E4%BA%8ELinux%E4%B8%8B%E5%BC%80%E5%8F%91%E5%8D%95%E7%89%87%E6%9C%BA%E7%9A%84%E7%8C%9C%E6%B5%8B/</url>
     <content><![CDATA[<p>现在也算个Linux爱好者啦, 但在Linux下怎么配置单片机开发环境我一直一头雾水, 直到最近我找到了相关文章!</p>
@@ -1754,59 +1807,6 @@ Linux开发xmc4500需要什么工具以及编译方式,
         <category>操作系统</category>
         <category>Linux</category>
         <category>嵌入式</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>对伺服电机PID的理解</title>
-    <url>/zh-CN/2019/03/27/%E5%AF%B9%E4%BC%BA%E6%9C%8D%E7%94%B5%E6%9C%BAPID%E7%9A%84%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[<p>行吧, 继上次手搓简单卡尔曼算法后我又接触到了更多控制方面的东西. 想我一个电子工程的弟弟在这里研究术语都不知道几个的控制… 命苦啊! 最近在调机械腿, 应该说还在调那条腿, 对伺服电机里的PID算法有了些许感悟.</p>
-<a id="more"></a>
-
-<p>这条腿的传感噪声问题因为换了传感器已经解决了, 最近的问题是<strong>不能快速, 稳定, 准确的到达指定位置</strong>. 目前通过<strong>限制电机的加速度</strong>改善了情况.</p>
-<h1 id="PID也没有那么简单"><a href="#PID也没有那么简单" class="headerlink" title="PID也没有那么简单"></a>PID也没有那么简单</h1><p>在改动前机械腿在低速状态 (很低速那种) 下表现得还是蛮好的, 但速度一旦快起来就明显有<strong>过冲</strong>, 是一抖一抖运动的, 到达位置时间反而比低速还长… 虽然我以前买了一个很简陋的四轴穿越机调过一点点PID, 感觉这算法也不难理解 (至少比卡尔曼好理解😁), 但这次发现要达到一定的精度PID也不是那么简单的东西: 经常是 “这参数加了20了怎么毛的变化都没有啊 黑人问号”, 但实际用起来又确实地感受到了差别. 并且当情况复杂的时候一个普通PID是不能满足的, 可能会用串级PID, 分段PID, 模糊PID, 专家系统PID, 容错PID, 前馈, 非线性控制之类的来改善😵</p>
-<p>🔗 参考: <a href="https://www.zhihu.com/question/22603676/answer/28847509" target="_blank" rel="noopener">关于永磁同步电机交流伺服控制系统的算法问题？ - 小心假设的回答 - 知乎</a></p>
-<h1 id="PI-·-PD-·-PID"><a href="#PI-·-PD-·-PID" class="headerlink" title="PI · PD · PID"></a>PI · PD · PID</h1><p>另外我知道了在工业中说是说PID控制器, 但<strong>实际大多是PI控制器</strong>, 因为D虽然可以增大系统阻尼, 使系统具有一定预见性, 增强了对微小变化的响应, 但也因此造成系统容易震荡, 不稳定. 而根据网上说的<strong>I比D更容易引起不稳定, 因为I引入了另一个极点.</strong> 具体啥时候用PI, PD, PID我还没有头绪.</p>
-<p>🔗 参考:</p>
-<ul>
-<li><a href="https://www.zhihu.com/question/26944678/answer/44687208" target="_blank" rel="noopener">哪些控制类的算法惊艳了你？ - 三郎的回答 - 知乎</a></li>
-<li><a href="http://www.sohu.com/a/155185294_464086" target="_blank" rel="noopener">PID控制算法精华和参数整定三大招</a></li>
-</ul>
-<h1 id="三环控制"><a href="#三环控制" class="headerlink" title="三环控制"></a>三环控制</h1><p>再有就是我大致理解了伺服电机三环PID是一种多么精妙而自然的设计.</p>
-<p>在调PID的时候我和师兄一度绝望, 我就说: “要不我们只保留转距环, 上层的我们重新写一遍.”当时我们使用的是<strong>位置模式</strong>控制电机. 我看电机驱动器的说明书都看得晕呼呼的, 还没怎么理解三环控制.
-但我要保留转距环的想法是很正常的:</p>
-<p>电机最基本的控制方式就是控制流过电机的电流, 也就是控制电机输出的转距. 在这一环里不是单纯的PID, 驱动器还设置了一些阈值, 防止过流烧坏电机什么的. 这一环是驱动器自整定的, 但效果也不错, 因此我认为不必自己重写这一环.</p>
-<p>然后我说:”上层我们用一个PID, 达到: 当当前位置比目标位置小就加正向转距, 当当前位置比目标位置大时加逆向转距的效果.”</p>
-<p>学长立即指出这样机械腿到达位置时的<strong>速度是不定的</strong>.我:”那就加一环速度PID, 生成一个百分数乘以转距来达到控制达到目标位置时的速度的效果”</p>
-<p>说完我一愣, 我特么这不是说了一遍<strong>电流环, 速度环, 位置环</strong>的所谓<strong>三环控制</strong>🐴</p>
-<p>🔗 参考:</p>
-<ul>
-<li><a href="http://www.voidcn.com/article/p-hxjakzgh-pw.html" target="_blank" rel="noopener">伺服电机三环控制的原理（位置环，运动环，电流环）</a></li>
-<li><a href="https://blog.csdn.net/Andy20081251/article/details/79457911" target="_blank" rel="noopener">浅谈伺服电机三种控制方式</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/21311021" target="_blank" rel="noopener">伺服电机的控制方式简述</a></li>
-</ul>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>随笔</category>
-        <category>自动控制</category>
       </categories>
   </entry>
   <entry>
@@ -2538,6 +2538,37 @@ UCS和Unicode分别由<strong>ISO</strong> (国际标准化组织) 和<strong>�
       </categories>
   </entry>
   <entry>
+    <title>机器人案例学习</title>
+    <url>/zh-CN/2019/06/10/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p>正如我在 <a href="https://leojhonsong.github.io/zh-CN/about/">about</a> 中提到的, <strong>我立志为软体机器人领域贡献一份力</strong>, 那就先从积累开始吧. 在此记录我觉得很精妙的机器人,
+或可以用于机器人的”东西”, 参考学习💪</p>
+<a id="more"></a>
+
+<p>TODO</p>
+<h1 id="Cassie家族"><a href="#Cassie家族" class="headerlink" title="Cassie家族"></a>Cassie家族</h1><h1 id="BDC家族"><a href="#BDC家族" class="headerlink" title="BDC家族"></a>BDC家族</h1><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Robotics</category>
+      </categories>
+  </entry>
+  <entry>
     <title>有关人工智能的一点思考</title>
     <url>/zh-CN/2019/06/21/%E6%9C%89%E5%85%B3%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%9D%E8%80%83/</url>
     <content><![CDATA[<p>以下仅为个人见解</p>
@@ -2586,37 +2617,6 @@ UCS和Unicode分别由<strong>ISO</strong> (国际标准化组织) 和<strong>�
       </script>]]></content>
       <categories>
         <category>随笔</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>机器人案例学习</title>
-    <url>/zh-CN/2019/06/10/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<p>正如我在 <a href="https://leojhonsong.github.io/zh-CN/about/">about</a> 中提到的, <strong>我立志为软体机器人领域贡献一份力</strong>, 那就先从积累开始吧. 在此记录我觉得很精妙的机器人,
-或可以用于机器人的”东西”, 参考学习💪</p>
-<a id="more"></a>
-
-<p>TODO</p>
-<h1 id="Cassie家族"><a href="#Cassie家族" class="headerlink" title="Cassie家族"></a>Cassie家族</h1><h1 id="BDC家族"><a href="#BDC家族" class="headerlink" title="BDC家族"></a>BDC家族</h1><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>Robotics</category>
       </categories>
   </entry>
   <entry>
@@ -4485,6 +4485,39 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
       </categories>
   </entry>
   <entry>
+    <title>笔记本电脑性能提升/选购指南</title>
+    <url>/zh-CN/2020/05/08/%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%94%B5%E8%84%91%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87-%E9%80%89%E8%B4%AD%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p>自去年三月多开始有意识了解电脑配件至今已有一年多, 对这些乱七八糟的了解多了许多, 整理一下我对<strong>笔记本</strong>性能提升的经验以及选购指南. 因为我很了解在不了解这些时听到这些陌生概念的望而畏怯以及半信半疑, 我尽量解释得小白些.</p>
+<p>❗️ 因为我自己没有台式机所以这里只谈笔记本相关.</p>
+<a id="more"></a>
+
+<h2 id="性能提升"><a href="#性能提升" class="headerlink" title="性能提升"></a>性能提升</h2><p>不同于台式机里什么配件都可以换,  比如很多笔记本的CPU, 显卡是焊死在主板上的. 即便你的笔记本支持更换这两样, 这也不是容易事. 因为笔记本的散热是精打细算设计好的, 更换了更好的CPU或者显卡通常以为着更大的发热量, 很容易导致过热然后出奇奇怪怪的问题.</p>
+<p>因此为了提升笔记本性能常见的操作是<strong>更换硬盘和内存</strong>.</p>
+<h3 id="更换硬盘"><a href="#更换硬盘" class="headerlink" title="更换硬盘"></a>更换硬盘</h3><h3 id="更换内存"><a href="#更换内存" class="headerlink" title="更换内存"></a>更换内存</h3><h2 id="选购指南"><a href="#选购指南" class="headerlink" title="选购指南"></a>选购指南</h2><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>硬件</category>
+        <category>杂记</category>
+      </categories>
+  </entry>
+  <entry>
     <title>单硬盘三系统安装记录</title>
     <url>/zh-CN/2020/04/04/%E5%8D%95%E7%A1%AC%E7%9B%98%E4%B8%89%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<p>分享一下我在同一个SSD里同时安装Ubuntu, Windows, macOS三个系统并以GRUB作为开机引导的经验. 说实话过程并不复杂.</p>
@@ -4635,39 +4668,6 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
         <category>macOS</category>
         <category>启动</category>
         <category>GRUB</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>笔记本电脑性能提升/选购指南</title>
-    <url>/zh-CN/2020/05/08/%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%94%B5%E8%84%91%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87-%E9%80%89%E8%B4%AD%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<p>自去年三月多开始有意识了解电脑配件至今已有一年多, 对这些乱七八糟的了解多了许多, 整理一下我对<strong>笔记本</strong>性能提升的经验以及选购指南. 因为我很了解在不了解这些时听到这些陌生概念的望而畏怯以及半信半疑, 我尽量解释得小白些.</p>
-<p>❗️ 因为我自己没有台式机所以这里只谈笔记本相关.</p>
-<a id="more"></a>
-
-<h2 id="性能提升"><a href="#性能提升" class="headerlink" title="性能提升"></a>性能提升</h2><p>不同于台式机里什么配件都可以换,  比如很多笔记本的CPU, 显卡是焊死在主板上的. 即便你的笔记本支持更换这两样, 这也不是容易事. 因为笔记本的散热是精打细算设计好的, 更换了更好的CPU或者显卡通常以为着更大的发热量, 很容易导致过热然后出奇奇怪怪的问题.</p>
-<p>因此为了提升笔记本性能常见的操作是<strong>更换硬盘和内存</strong>.</p>
-<h3 id="更换硬盘"><a href="#更换硬盘" class="headerlink" title="更换硬盘"></a>更换硬盘</h3><h3 id="更换内存"><a href="#更换内存" class="headerlink" title="更换内存"></a>更换内存</h3><h2 id="选购指南"><a href="#选购指南" class="headerlink" title="选购指南"></a>选购指南</h2><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>硬件</category>
-        <category>杂记</category>
       </categories>
   </entry>
   <entry>
@@ -4846,21 +4846,51 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <li>做人工呼吸时隔一层布或纸</li>
 </ul>
 <h5 id="判断有无意识"><a href="#判断有无意识" class="headerlink" title="判断有无意识"></a>判断有无意识</h5><p>要判断有无意识, 对于成人, 拍打双肩, 在耳边大声呼唤; 对于婴儿, 拍打足底. 可以给予”睁开眼睛”, “动动手指”这样的简单指令.</p>
-<p>如伤病员无反应:</p>
+<p><strong>如伤病员无反应</strong>:</p>
 <ol>
 <li>向周围人表明急救员身份</li>
 <li><strong>指定</strong>一个人拨打120</li>
 <li>寻求他人帮助 (比如寻找AED)</li>
-<li>向他人问明伤员情况, 如是否有内出血/骨折/脊柱损失等. (周围人也许就知道)</li>
+<li>向他人问明伤员情况, 如是否有内出血/骨折/脊柱损失等. (周围人也许就知道, 也有可能就有人目睹了心脏骤停)</li>
 </ol>
-<p>如伤病员有反应:</p>
+<p><strong>如伤病员有反应</strong>:</p>
 <ol>
 <li>表明急救员身份</li>
 <li>心理安慰</li>
 <li><strong>视情况</strong>拨打120</li>
 <li>帮助调整伤员体位, 排除气道异物, 打开气道</li>
 </ol>
-<h5 id="判断有无呼吸"><a href="#判断有无呼吸" class="headerlink" title="判断有无呼吸"></a>判断有无呼吸</h5><h3 id="气道异物梗阻"><a href="#气道异物梗阻" class="headerlink" title="气道异物梗阻"></a>气道异物梗阻</h3><h3 id="创伤"><a href="#创伤" class="headerlink" title="创伤"></a>创伤</h3><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><script>
+<h5 id="判断有无呼吸"><a href="#判断有无呼吸" class="headerlink" title="判断有无呼吸"></a>判断有无呼吸</h5><p>此处提供两种方法, 一种是培训班老师教的, 一种是我在网上看到的, 同样有效且我觉得操作难度更低的.</p>
+<h6 id="老师教的方法"><a href="#老师教的方法" class="headerlink" title="老师教的方法"></a>老师教的方法</h6><p>伏低身子, 以伤病员头至脚方向观察胸部起伏. 从<strong>1001数到1008</strong> (数四位数是以实际的发音代替了停顿, 这样数得更精确), 这期间应当观察到<strong>两次起伏</strong>. ❗到底数多快见下方<a href="#参考视频">参考视频</a>, 基本上一秒数一下.</p>
+<p>💡 正常人3<del>4秒一次呼吸, 一分钟15</del>20次呼吸.</p>
+<h6 id="我更推荐的方法"><a href="#我更推荐的方法" class="headerlink" title="我更推荐的方法"></a>我更推荐的方法</h6><p>将眼镜或者手机屏幕等玻璃凑到伤病员鼻子前, 如果观察到水汽则有呼吸.</p>
+<p>之所以我更推荐这个方法是因为实际上微弱的胸部起伏很难观察到, 一般还需要解开伤病员衣服. 而观察是否有水汽是一件非常容易的事情, 而且很灵敏 👍</p>
+<p>如果伤病员有呼吸:</p>
+<ol>
+<li>调整伤病员为侧卧体位, 清理气道异物, 打开气道</li>
+<li>密切关注其呼吸是否衰竭</li>
+</ol>
+<h4 id="几种心肺复苏方式"><a href="#几种心肺复苏方式" class="headerlink" title="几种心肺复苏方式"></a>几种心肺复苏方式</h4><p>根据急救员水平, 现场环境, 伤病员情况等有几种方式可选:</p>
+<ol>
+<li>标准心肺复苏 (<strong>C</strong>ardio<strong>P</strong>ulmonary <strong>R</strong>esuscitation)</li>
+<li>单纯胸外按压 (<strong>C</strong>ardio<strong>C</strong>erebral <strong>R</strong>esuscitation)</li>
+<li>标准心肺复苏 + AED</li>
+</ol>
+<p>其中， <strong>未经培训或仅受过最低等级培训的急救员推荐只进行单纯胸外按压心肺复苏</strong>, 而对于专业人士, 则推荐进行标准心肺复苏. 造成这种差异的原因是多方面的. 实际上&lt;2011年国际急救与复苏指南&gt;这本书里列举了大量实验, 都是试图探究标准心肺复苏与单纯胸外按压的效果差异, 但目前并没有实验能证明两者中哪个有明显优势. 但是对于非专业人士来说, 是有许多理由推荐只进行单纯胸外按压心肺复苏的:</p>
+<ol>
+<li>非专业人士更能接受不需要进行人工呼吸的单纯胸外按压心肺复苏, 不会因为对标准心肺复苏的犹豫而耽误抢救.</li>
+<li>心肺复苏讲究<strong>胸外按压的连贯性以及按压深度要够</strong>. 然而标准心肺复苏30:2的按压/通气比导致胸外按压会被频繁打断, 因此非专业人士很容易耗费大量时间在人工呼吸上, 导致胸外按压不够连贯, 按压深度逐渐达不到标准.</li>
+<li>据统计非专业人士的人工呼吸效果很差, 达不到标准.</li>
+<li>单纯胸外按压比标准心肺复苏操作要简单些, 更方便120电话指导进行.</li>
+</ol>
+<h4 id="参考视频"><a href="#参考视频" class="headerlink" title="参考视频"></a>参考视频</h4><p>因为涉及到许多文字无法描述出的节奏, 最后还是放一个我看来看去觉得说明最详细, 正规的心肺复苏教学视频. ❗视频里是老师没有没有检查病人是否有呼吸， 而是检查的病人的大动脉搏动. 这其实是更加专业的做法, 但是基于”检查脉搏不应增加判断时间, 未经训练判断是否有脉搏难度较大”这样的因素, 对于初级急救员这样面向大众的急救标准只要求了检查呼吸. 毕竟对专业急救人员来说也是:</p>
+<blockquote>
+<p>专业救援人员应该检查脉搏，如果不能确定是否有搏动，应该认作无脉搏。</p>
+</blockquote>
+<iframe src="//player.bilibili.com/player.html?aid=17883263&amp;bvid=BV1oW411q7hG&amp;cid=29195038&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
+<h3 id="气道异物梗阻"><a href="#气道异物梗阻" class="headerlink" title="气道异物梗阻"></a>气道异物梗阻</h3><h3 id="创伤"><a href="#创伤" class="headerlink" title="创伤"></a>创伤</h3><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
