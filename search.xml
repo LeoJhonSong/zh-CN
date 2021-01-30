@@ -482,6 +482,38 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
       </categories>
   </entry>
   <entry>
+    <title>几个提高效率的小技巧</title>
+    <url>/zh-CN/2019/01/18/%E5%87%A0%E4%B8%AA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>记录和分享一些我觉得提高了自己效率的技巧。</p>
+<a id="more"></a>
+
+<h1 id="虚拟桌面分割任务"><a href="#虚拟桌面分割任务" class="headerlink" title="虚拟桌面分割任务"></a>虚拟桌面分割任务</h1><p>Windows有一个我觉得蛮有意思的功能, <strong>虚拟桌面</strong>. 按 <code>Windows+Tab</code> 或者点击任务栏上有个长得有点奇怪的图标可以打开<strong>任务视图</strong>, 然后可以新建桌面, 管理桌面. 通过把应用界面分别放到不同桌面可以让任务栏不会堆积很多页面. 有时候同时写多个项目的时候会用浏览器搜好几个主题 (是的我就是浏览器选手) 如果都放到一起太乱太多了, 因此放到不同桌面是个非常不错的选择. 我经常将娱乐的玩意, 什么网易云, 百度云之类放一个桌面, 然后一个项目放一个桌面, 心情愉悦让效率大大提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<h1 id="更改输入法符号"><a href="#更改输入法符号" class="headerlink" title="更改输入法符号"></a>更改输入法符号</h1><p>有时, 比如写中文文档时, 我们需要频繁切换中英文输入法, 而代码中打符号的时候我总是忘记切换成英文输入法, 打出万恶的中文字符, 比如；什么的. 而我发现快捷键 <code>Ctrl+.</code>可以只切换符号的中英文! 也就是说你可以在中文输入法下打出英文标点 (比如我的句号是英文句号). 这样就解决了中英文标点易混淆的烦恼<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<!-- TODO -->
+<!-- chrom --><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>技巧</category>
+      </categories>
+  </entry>
+  <entry>
     <title>当VSCode成为一种生活方式</title>
     <url>/zh-CN/2019/01/07/%E5%BD%93VSCode%E6%88%90%E4%B8%BA%E4%B8%80%E7%A7%8D%E7%94%9F%E6%B4%BB%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<div align="right">Language:
@@ -539,38 +571,6 @@ VSCode之后发现这个选项没被勾上.</p>
       <categories>
         <category>技巧</category>
         <category>软件配置</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>几个提高效率的小技巧</title>
-    <url>/zh-CN/2019/01/18/%E5%87%A0%E4%B8%AA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<p>记录和分享一些我觉得提高了自己效率的技巧。</p>
-<a id="more"></a>
-
-<h1 id="虚拟桌面分割任务"><a href="#虚拟桌面分割任务" class="headerlink" title="虚拟桌面分割任务"></a>虚拟桌面分割任务</h1><p>Windows有一个我觉得蛮有意思的功能, <strong>虚拟桌面</strong>. 按 <code>Windows+Tab</code> 或者点击任务栏上有个长得有点奇怪的图标可以打开<strong>任务视图</strong>, 然后可以新建桌面, 管理桌面. 通过把应用界面分别放到不同桌面可以让任务栏不会堆积很多页面. 有时候同时写多个项目的时候会用浏览器搜好几个主题 (是的我就是浏览器选手) 如果都放到一起太乱太多了, 因此放到不同桌面是个非常不错的选择. 我经常将娱乐的玩意, 什么网易云, 百度云之类放一个桌面, 然后一个项目放一个桌面, 心情愉悦让效率大大提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<h1 id="更改输入法符号"><a href="#更改输入法符号" class="headerlink" title="更改输入法符号"></a>更改输入法符号</h1><p>有时, 比如写中文文档时, 我们需要频繁切换中英文输入法, 而代码中打符号的时候我总是忘记切换成英文输入法, 打出万恶的中文字符, 比如；什么的. 而我发现快捷键 <code>Ctrl+.</code>可以只切换符号的中英文! 也就是说你可以在中文输入法下打出英文标点 (比如我的句号是英文句号). 这样就解决了中英文标点易混淆的烦恼<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<!-- TODO -->
-<!-- chrom --><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>技巧</category>
       </categories>
   </entry>
   <entry>
@@ -2301,84 +2301,6 @@ always块的敏感事件生成一组新的敏感事件 (参考第二条).</p>
       </categories>
   </entry>
   <entry>
-    <title>有关字符集与编码</title>
-    <url>/zh-CN/2019/05/29/%E6%9C%89%E5%85%B3%E5%AD%97%E7%AC%A6%E9%9B%86%E4%B8%8E%E7%BC%96%E7%A0%81/</url>
-    <content><![CDATA[<p>当我在解决<a href="https://leojhonsong.github.io/zh-CN/Linux%E6%9D%82%E8%AE%B0/#%E8%A7%A3%E5%8E%8B%20-zip%20%E5%8E%8B%E7%BC%A9%E5%8C%85%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%90%8D%E4%B8%BA%E4%B9%B1%E7%A0%81">Linux下解压zip文件的问题</a>时发现编码方面的问题还蛮多的, 在此记录.</p>
-<a id="more"></a>
-
-<h1 id="Windows下编码方式的坑"><a href="#Windows下编码方式的坑" class="headerlink" title="Windows下编码方式的坑"></a>Windows下编码方式的坑</h1><p>🔗 <a href="https://www.zhihu.com/question/20650946/answer/15745831" target="_blank" rel="noopener">知乎-Windows记事本的ANSI, Unicode, UTF-8这三种编码模式有什么区别？</a></p>
-<p>🔗 <a href="https://www.zhihu.com/question/20167122" target="_blank" rel="noopener">「带 BOM 的 UTF-8」和「无 BOM 的 UTF-8」有什么区别？网页代码一般使用哪个</a></p>
-<p>总结一下, 在Windows中:</p>
-<ul>
-<li>所谓的「ANSI」指的是对应当前系统 locale 的遗留（legacy）编码</li>
-<li>所谓的「Unicode」指的是带有 BOM 的小端序 UTF-16</li>
-<li>所谓的「UTF-8」指的是带 BOM 的 UTF-8</li>
-</ul>
-<p>之前一直听说Windows自带的记事本不要用, 会自动在文件开头加一个东西, 导致一些地方显示该文件开头有一个 “?” , 一直不知道是多了个啥, 原来是UTF-8/UTF-16编码的文件会在文件开头多一个
-BOM. <strong>UTF-8与带BOM的UTF-8的区别在于带BOM的UTF-8文件开头有U+FEFF.</strong> 微软使用带BOM的UTF-8
-的目的是将UTF-8与ASCII等编码方式区分开, 但这就导致了在很多时候UTF-8默认是不带BOM时文件读取有误.</p>
-<h1 id="GBK不是一种编码格式"><a href="#GBK不是一种编码格式" class="headerlink" title="GBK不是一种编码格式"></a>GBK不是一种编码格式</h1><p>GBK并不是一种编码格式, 而<strong>是一个字符集</strong>. 我觉得很low的是GBK的全称是 <strong>Guojia Biaozhun
-Kuozhan</strong> 🤦‍…low得不要不要的. 不过也可以理解, 毕竟这三个字母是从”国标扩”的首拼发展来的.</p>
-<h2 id="自整理的中文字符集发展史"><a href="#自整理的中文字符集发展史" class="headerlink" title="自整理的中文字符集发展史"></a>自整理的中文字符集发展史</h2><p>以下是我整理的中文字符集发展史:</p>
-<ul>
-<li>最开始中国国家标准化管理委员会发布了
-<a href="http://www.std.gov.cn/gb/search/gbDetailed?id=71F772D79E19D3A7E05397BE0A0AB82A" target="_blank" rel="noopener"><code>GB/T2312-1980</code></a> (<strong>GB</strong>为<strong>国标</strong>首拼, <strong>T</strong>是<strong>推</strong>, 指推广,
-非强制性的标准), 包括了<strong>6763</strong>个常用汉字, 发布以后许多有汉字的语言也采用了这个字符集. 但这个字符集很不够, 缺少很多生僻字, 繁体字, 对日本, 韩国汉字收录也很不全.</li>
-<li>微软根据GB2312做出了<code>cp936</code> (code page936), 字符集方案为GB2312, 编码方案为
-<strong>EUC-CN</strong>.</li>
-<li>1993年<strong>Unicode1.1</strong>发布后国标委抄过来发布了<a href="http://www.std.gov.cn/gb/search/gbDetailed?id=71F772D7860AD3A7E05397BE0A0AB82A" target="_blank" rel="noopener"><code>GB 13000.1-1993</code></a>.</li>
-<li>这时微软利用<strong>cp936</strong>中收录GB2312-1980后未使用完的码位收录了GB13000.1-1993的全部字符,
-这样既兼容了GB2312又添加了许多字符. 这个新版本cp936最早实现于<strong>Windows95简体中文版</strong>.
-这之后微软又陆陆续续给cp936加了几个字符. 直到2002年<a href="https://www.iana.org/assignments/charset-reg/GBK" target="_blank" rel="noopener">IANA将cp936的字符集注册为<code>GBK</code></a>. GBK共收录<strong>21886</strong>个汉字和图形符号.</li>
-<li>再后来因为字符还是不全 (比如emoji什么的)以及其他原因发布了<a href="http://www.std.gov.cn/gb/search/gbDetailed?id=71F772D79585D3A7E05397BE0A0AB82A" target="_blank" rel="noopener"><code>GB 18030-2000</code></a>, 在
-Windows的对应代码页为<code>cp54936</code>. 但值得一提的是尽管2000年就有了新标准, 但Windows系统的系统语言为简体中文时的默认代码页仍为<strong>cp936</strong>. 原因可以参考<a href="https://linux.cn/article-1213-1.html" target="_blank" rel="noopener">这里</a>. 文章大意: 微软划水, 国家也没上心.</li>
-<li>最近的一版标准字符集是<a href="http://www.std.gov.cn/gb/search/gbDetailed?id=71F772D800B5D3A7E05397BE0A0AB82A" target="_blank" rel="noopener"><code>GB 18030-2005</code></a>. 但这个好像有点复杂, 我并没有太看懂, 反正和之前的几个标准很不同. 怎么个不一样可以参考<a href="https://zhuanlan.zhihu.com/p/31643128" target="_blank" rel="noopener">这里</a>.</li>
-</ul>
-<h1 id="Unicode与UTF-8是不同层面的东西"><a href="#Unicode与UTF-8是不同层面的东西" class="headerlink" title="Unicode与UTF-8是不同层面的东西"></a>Unicode与UTF-8是不同层面的东西</h1><p>我曾经以为Unicode是一种编码格式, 就像UTF-8是一种编码格式, 但后来我发现这两者根本是不同层面上的东西.</p>
-<h2 id="Unicode与UCS"><a href="#Unicode与UCS" class="headerlink" title="Unicode与UCS"></a>Unicode与UCS</h2><h3 id="两者关系"><a href="#两者关系" class="headerlink" title="两者关系"></a>两者关系</h3><p>与<strong>Unicode</strong> (统一码) 同一层面的概念是<strong>UCS</strong> (Universal Character Set, 通用字符集).
-UCS和Unicode分别由<strong>ISO</strong> (国际标准化组织) 和<strong>一帮软件制造商</strong> (Xerox, 苹果等成立了个统一码联盟) 先后发起. 后来他们才合并工作. 实际上两者是差不多的玩意. 我并不相信统一码联盟在成立时不知道ISO已经在开发UCS了
-(UCS项目启动比Unicode早<strong>4年</strong>), 而在这样的情况下还要开发Unicode, 个人认为是商业原因.
-直到现在这仍然是两个独立的项目, 但项目进度同步且两个组织都宣称要和对方<strong>保持兼容</strong>. 个人觉得很蠢🤷‍</p>
-<h3 id="两者差异"><a href="#两者差异" class="headerlink" title="两者差异"></a>两者差异</h3><p>硬要说的话其实Unicode与UCS有一些细节不同.</p>
-<p>比如ISO/IEC 10646-1使用四种不同风格的变体来显示简体中文, 繁体中文, 日语, 韩语汉字, 但Unicode2.0中只有简体中文的变体. 因此有过日本人无法接受Unicode的说法. (现在应该是没这问题了)</p>
-<p>应该还有小区别吧? 其他区别我不知道, 也懒得找了😁</p>
-<h2 id="现代编码模型"><a href="#现代编码模型" class="headerlink" title="现代编码模型"></a>现代编码模型</h2><p>Unicode是一套有些复杂的编码系统, 并不是单纯一个字符集方案或是一个编码方案, 而是构建出了一个
-<strong>现代编码模型</strong>. (这段话对UCS同理)</p>
-<p>这个模型分五层:</p>
-<ul>
-<li>抽象字符集(Abstract character repertoire)</li>
-<li>编码字符集(Coded Character Set)</li>
-<li>字符编码方式(Character Encoding Form)</li>
-<li>字符编码方案(Character Encoding Scheme)</li>
-<li>传输编码语法(Transfer Encoding Syntax)</li>
-</ul>
-<p>按我的理解: 抽象字符集是一个抽象字符的<strong>集合</strong>, 不关注字形, 更关注字意. 比如钟和鐘的抽象字符是同一个, 而编码字符集是一个<strong>映射</strong>, 规定把一个抽象字符映射到哪个<a href="https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#%E5%9F%BA%E6%9C%AC%E5%A4%9A%E6%96%87%E7%A7%8D%E5%B9%B3%E9%9D%A2" target="_blank" rel="noopener">字符平面</a>, 哪个<strong>码点</strong>. 但这并不是一一映射, 为了兼容或者有的字 (比如CJK字) 可能有多个变体. 字符编码方式又称为”storage format”, 我猜这是因为这一层<strong>将码点编码成码元</strong>(这里的编码方式就是<strong>U</strong>nicode <strong>T</strong>ransformation <strong>F</strong>ormat,
-包括UTF-8, UTF-16, UTF-32等方法), 而码元正是每次从文件中读取到的字符的格式.</p>
-<p>Unicode编码模型详细阐述可以参考<a href="https://zhuanlan.zhihu.com/p/27026033" target="_blank" rel="noopener">这里</a></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>编码</category>
-      </categories>
-  </entry>
-  <entry>
     <title>为什么我用Linux而不是Windows</title>
     <url>/zh-CN/2019/05/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E7%94%A8Linux%E8%80%8C%E4%B8%8D%E6%98%AFWindows/</url>
     <content><![CDATA[<h1 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h1><p>又过了一段时间, 我觉得对于这个问题我已经不在需要去想那么多理由来说服自己了. 在习惯了在Linux开发后我再在Windows试着做点小东西便发现这一切比起在Linux下来得束手束脚得多. 没有强大而美观的终端, 无法只通过编辑配置文件就轻松对软件进行配置, 无法一个命令改变文件权限, 系统语言为中文时的默认编码格式为cp936有时候也会给开发带来麻烦… 更别说windows没有强大的包管理工具…总之<strong>一切Windows防止普通用户误操作的措施让开发者变得十分拘束</strong>.</p>
@@ -2473,6 +2395,84 @@ Windows上那么多针对普通用户设置的开关, 不会还需要自己开�
       <categories>
         <category>操作系统</category>
         <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>有关字符集与编码</title>
+    <url>/zh-CN/2019/05/29/%E6%9C%89%E5%85%B3%E5%AD%97%E7%AC%A6%E9%9B%86%E4%B8%8E%E7%BC%96%E7%A0%81/</url>
+    <content><![CDATA[<p>当我在解决<a href="https://leojhonsong.github.io/zh-CN/Linux%E6%9D%82%E8%AE%B0/#%E8%A7%A3%E5%8E%8B%20-zip%20%E5%8E%8B%E7%BC%A9%E5%8C%85%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%90%8D%E4%B8%BA%E4%B9%B1%E7%A0%81">Linux下解压zip文件的问题</a>时发现编码方面的问题还蛮多的, 在此记录.</p>
+<a id="more"></a>
+
+<h1 id="Windows下编码方式的坑"><a href="#Windows下编码方式的坑" class="headerlink" title="Windows下编码方式的坑"></a>Windows下编码方式的坑</h1><p>🔗 <a href="https://www.zhihu.com/question/20650946/answer/15745831" target="_blank" rel="noopener">知乎-Windows记事本的ANSI, Unicode, UTF-8这三种编码模式有什么区别？</a></p>
+<p>🔗 <a href="https://www.zhihu.com/question/20167122" target="_blank" rel="noopener">「带 BOM 的 UTF-8」和「无 BOM 的 UTF-8」有什么区别？网页代码一般使用哪个</a></p>
+<p>总结一下, 在Windows中:</p>
+<ul>
+<li>所谓的「ANSI」指的是对应当前系统 locale 的遗留（legacy）编码</li>
+<li>所谓的「Unicode」指的是带有 BOM 的小端序 UTF-16</li>
+<li>所谓的「UTF-8」指的是带 BOM 的 UTF-8</li>
+</ul>
+<p>之前一直听说Windows自带的记事本不要用, 会自动在文件开头加一个东西, 导致一些地方显示该文件开头有一个 “?” , 一直不知道是多了个啥, 原来是UTF-8/UTF-16编码的文件会在文件开头多一个
+BOM. <strong>UTF-8与带BOM的UTF-8的区别在于带BOM的UTF-8文件开头有U+FEFF.</strong> 微软使用带BOM的UTF-8
+的目的是将UTF-8与ASCII等编码方式区分开, 但这就导致了在很多时候UTF-8默认是不带BOM时文件读取有误.</p>
+<h1 id="GBK不是一种编码格式"><a href="#GBK不是一种编码格式" class="headerlink" title="GBK不是一种编码格式"></a>GBK不是一种编码格式</h1><p>GBK并不是一种编码格式, 而<strong>是一个字符集</strong>. 我觉得很low的是GBK的全称是 <strong>Guojia Biaozhun
+Kuozhan</strong> 🤦‍…low得不要不要的. 不过也可以理解, 毕竟这三个字母是从”国标扩”的首拼发展来的.</p>
+<h2 id="自整理的中文字符集发展史"><a href="#自整理的中文字符集发展史" class="headerlink" title="自整理的中文字符集发展史"></a>自整理的中文字符集发展史</h2><p>以下是我整理的中文字符集发展史:</p>
+<ul>
+<li>最开始中国国家标准化管理委员会发布了
+<a href="http://www.std.gov.cn/gb/search/gbDetailed?id=71F772D79E19D3A7E05397BE0A0AB82A" target="_blank" rel="noopener"><code>GB/T2312-1980</code></a> (<strong>GB</strong>为<strong>国标</strong>首拼, <strong>T</strong>是<strong>推</strong>, 指推广,
+非强制性的标准), 包括了<strong>6763</strong>个常用汉字, 发布以后许多有汉字的语言也采用了这个字符集. 但这个字符集很不够, 缺少很多生僻字, 繁体字, 对日本, 韩国汉字收录也很不全.</li>
+<li>微软根据GB2312做出了<code>cp936</code> (code page936), 字符集方案为GB2312, 编码方案为
+<strong>EUC-CN</strong>.</li>
+<li>1993年<strong>Unicode1.1</strong>发布后国标委抄过来发布了<a href="http://www.std.gov.cn/gb/search/gbDetailed?id=71F772D7860AD3A7E05397BE0A0AB82A" target="_blank" rel="noopener"><code>GB 13000.1-1993</code></a>.</li>
+<li>这时微软利用<strong>cp936</strong>中收录GB2312-1980后未使用完的码位收录了GB13000.1-1993的全部字符,
+这样既兼容了GB2312又添加了许多字符. 这个新版本cp936最早实现于<strong>Windows95简体中文版</strong>.
+这之后微软又陆陆续续给cp936加了几个字符. 直到2002年<a href="https://www.iana.org/assignments/charset-reg/GBK" target="_blank" rel="noopener">IANA将cp936的字符集注册为<code>GBK</code></a>. GBK共收录<strong>21886</strong>个汉字和图形符号.</li>
+<li>再后来因为字符还是不全 (比如emoji什么的)以及其他原因发布了<a href="http://www.std.gov.cn/gb/search/gbDetailed?id=71F772D79585D3A7E05397BE0A0AB82A" target="_blank" rel="noopener"><code>GB 18030-2000</code></a>, 在
+Windows的对应代码页为<code>cp54936</code>. 但值得一提的是尽管2000年就有了新标准, 但Windows系统的系统语言为简体中文时的默认代码页仍为<strong>cp936</strong>. 原因可以参考<a href="https://linux.cn/article-1213-1.html" target="_blank" rel="noopener">这里</a>. 文章大意: 微软划水, 国家也没上心.</li>
+<li>最近的一版标准字符集是<a href="http://www.std.gov.cn/gb/search/gbDetailed?id=71F772D800B5D3A7E05397BE0A0AB82A" target="_blank" rel="noopener"><code>GB 18030-2005</code></a>. 但这个好像有点复杂, 我并没有太看懂, 反正和之前的几个标准很不同. 怎么个不一样可以参考<a href="https://zhuanlan.zhihu.com/p/31643128" target="_blank" rel="noopener">这里</a>.</li>
+</ul>
+<h1 id="Unicode与UTF-8是不同层面的东西"><a href="#Unicode与UTF-8是不同层面的东西" class="headerlink" title="Unicode与UTF-8是不同层面的东西"></a>Unicode与UTF-8是不同层面的东西</h1><p>我曾经以为Unicode是一种编码格式, 就像UTF-8是一种编码格式, 但后来我发现这两者根本是不同层面上的东西.</p>
+<h2 id="Unicode与UCS"><a href="#Unicode与UCS" class="headerlink" title="Unicode与UCS"></a>Unicode与UCS</h2><h3 id="两者关系"><a href="#两者关系" class="headerlink" title="两者关系"></a>两者关系</h3><p>与<strong>Unicode</strong> (统一码) 同一层面的概念是<strong>UCS</strong> (Universal Character Set, 通用字符集).
+UCS和Unicode分别由<strong>ISO</strong> (国际标准化组织) 和<strong>一帮软件制造商</strong> (Xerox, 苹果等成立了个统一码联盟) 先后发起. 后来他们才合并工作. 实际上两者是差不多的玩意. 我并不相信统一码联盟在成立时不知道ISO已经在开发UCS了
+(UCS项目启动比Unicode早<strong>4年</strong>), 而在这样的情况下还要开发Unicode, 个人认为是商业原因.
+直到现在这仍然是两个独立的项目, 但项目进度同步且两个组织都宣称要和对方<strong>保持兼容</strong>. 个人觉得很蠢🤷‍</p>
+<h3 id="两者差异"><a href="#两者差异" class="headerlink" title="两者差异"></a>两者差异</h3><p>硬要说的话其实Unicode与UCS有一些细节不同.</p>
+<p>比如ISO/IEC 10646-1使用四种不同风格的变体来显示简体中文, 繁体中文, 日语, 韩语汉字, 但Unicode2.0中只有简体中文的变体. 因此有过日本人无法接受Unicode的说法. (现在应该是没这问题了)</p>
+<p>应该还有小区别吧? 其他区别我不知道, 也懒得找了😁</p>
+<h2 id="现代编码模型"><a href="#现代编码模型" class="headerlink" title="现代编码模型"></a>现代编码模型</h2><p>Unicode是一套有些复杂的编码系统, 并不是单纯一个字符集方案或是一个编码方案, 而是构建出了一个
+<strong>现代编码模型</strong>. (这段话对UCS同理)</p>
+<p>这个模型分五层:</p>
+<ul>
+<li>抽象字符集(Abstract character repertoire)</li>
+<li>编码字符集(Coded Character Set)</li>
+<li>字符编码方式(Character Encoding Form)</li>
+<li>字符编码方案(Character Encoding Scheme)</li>
+<li>传输编码语法(Transfer Encoding Syntax)</li>
+</ul>
+<p>按我的理解: 抽象字符集是一个抽象字符的<strong>集合</strong>, 不关注字形, 更关注字意. 比如钟和鐘的抽象字符是同一个, 而编码字符集是一个<strong>映射</strong>, 规定把一个抽象字符映射到哪个<a href="https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#%E5%9F%BA%E6%9C%AC%E5%A4%9A%E6%96%87%E7%A7%8D%E5%B9%B3%E9%9D%A2" target="_blank" rel="noopener">字符平面</a>, 哪个<strong>码点</strong>. 但这并不是一一映射, 为了兼容或者有的字 (比如CJK字) 可能有多个变体. 字符编码方式又称为”storage format”, 我猜这是因为这一层<strong>将码点编码成码元</strong>(这里的编码方式就是<strong>U</strong>nicode <strong>T</strong>ransformation <strong>F</strong>ormat,
+包括UTF-8, UTF-16, UTF-32等方法), 而码元正是每次从文件中读取到的字符的格式.</p>
+<p>Unicode编码模型详细阐述可以参考<a href="https://zhuanlan.zhihu.com/p/27026033" target="_blank" rel="noopener">这里</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>编码</category>
       </categories>
   </entry>
   <entry>
@@ -4822,11 +4822,11 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 </blockquote>
 <p>实际上这样的”突发事件或意外伤害”发生在身边, 甚至亲友身上的几率<strong>并不小</strong>. 实际上我已经有过<strong>两次</strong>我在场时亲人发生突发事件的经历了. 正是第一次遇到这种情况时的无助让我在高中结束时思考假期做什么第一个想到了学急救培训. 但即便我认真地做了笔记, 也不时地关注一些急救信息, 我第二次面临这样的情况时仍然完全没法沉着冷静. 虽然做了些调整体位, 等救护车等力所能及的事情, 但是我内心仍然是茫然无助的. 毕竟只是普通人, 又只学了些急救的皮毛, 非常容易遇到没有头绪的情况 (甚至可能因为经验太少而产生误判). 因此遇到突发事件我的经验是:</p>
 <p><strong>第一要务是给120打电话, 说明情况并寻求帮助</strong></p>
-<p>这是否意味着自己就没有学急救的意义了呢? 学习急救知识对于普通人来说仍然是十分必要的, 因为急救讲究争分夺秒, 在救护车赶来前, 如果我们能做一些应急措施, 那将是非常有意义的. 但是如果我们毫无相关常识, 比如不知道复苏体位到底是怎样的, 不知道心肺复苏的要点, 那么即便有120在旁电话指导我们仍然很难做出有效的应对措施. 身边人的健康是非常重要的事情, 学一学成本不大, 但价值极高 👍</p>
+<p>这是否意味着自己就没有学急救的意义了呢? 学习急救知识对于普通人来说仍然是十分必要的, 因为急救讲究争分夺秒, 在救护车赶来前, 如果我们能做一些应急措施, 那将是非常有意义的. 但是如果我们毫无相关常识 (甚至可能有错误的认知), 比如不知道<a href="#复苏体位">复苏体位</a>到底是怎样的, 不知道<a href="#标准心肺复苏">心肺复苏的要点</a>, 不清楚<a href="#误食强酸强碱">喝了大量强酸</a>该怎么办… 那么即便有120在旁电话指导我们仍然很难做出有效的应对措施. 身边人的健康是非常重要的事情, 学一学成本不大, 但价值极高 👍</p>
 <h3 id="报名渠道"><a href="#报名渠道" class="headerlink" title="报名渠道"></a>报名渠道</h3><p>在各地的红十字会官网上应当就能搜到报名方式.</p>
 <p>🔗 <a href="http://www.scredcross.org.cn/htm/detail_6355.html" target="_blank" rel="noopener">四川红会的课程介绍</a> 🔗 <a href="http://www.chengduredcross.cn/list_wjpx.asp?ClassID=020501" target="_blank" rel="noopener">成都红会初级急救员培训报名渠道</a></p>
 <p>这个培训要收个两百多的报名费, 但也不算贵, 毕竟会发一个培训用创伤训练包 👍 (说起来培训的氛围非常好, 老师特别亲和)</p>
-<h2 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h2><p>💡 这里有一份<a href="./初级急救员笔记/2011年国际急救与复苏指南.pdf">2011年国际急救与复苏指南</a>和<a href="./初级急救员笔记/日常急救手册.pdf">日常急救手册</a>可供下载. 以下几个板块是急救培训老师着重讲的部分, 其实在前面这本急救与复苏指南里还有好一些内容.</p>
+<h2 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h2><p>💡 这里有一份<a href="./初级急救员笔记/2011年国际急救与复苏指南.pdf">2011年国际急救与复苏指南</a>和<a href="./初级急救员笔记/日常急救手册.pdf">日常急救手册</a>可供下载. 以下<a href="#心肺复苏">心肺复苏</a>, <a href="#气道异物梗阻">气道异物梗阻</a>, <a href="#创伤">创伤</a>, <a href="#其他">其他</a>几个板块是急救培训老师着重讲的部分, 其实在前面这本急救与复苏指南里还有好一些内容.</p>
 <p>❗这里会涉及到许多没有实际操作过就无法把握要点的技术, 这只是一份<strong>笔记</strong>.</p>
 <h3 id="心肺复苏"><a href="#心肺复苏" class="headerlink" title="心肺复苏"></a>心肺复苏</h3><h4 id="判断是否进行心肺复苏"><a href="#判断是否进行心肺复苏" class="headerlink" title="判断是否进行心肺复苏"></a>判断是否进行心肺复苏</h4><p>虽然人人都知道有个叫心肺复苏的技术能救命, 但实际上实施心肺复苏有一定的条件, 盲目进行心肺复苏反而容易出问题. 下面便是判断是否进行心肺复苏的流程.</p>
 <p><img src="./%E5%88%9D%E7%BA%A7%E6%80%A5%E6%95%91%E5%91%98%E7%AC%94%E8%AE%B0/%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E8%BF%9B%E8%A1%8C%E5%BF%83%E8%82%BA%E5%A4%8D%E8%8B%8F%E6%B5%81%E7%A8%8B%E5%9B%BE.svg?50" alt="判断是否进行心肺复苏流程图"></p>
@@ -4859,7 +4859,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <li>表明急救员身份</li>
 <li>心理安慰</li>
 <li><strong>视情况</strong>拨打120</li>
-<li>帮助调整伤员体位, 排除气道异物, 打开气道</li>
+<li>帮助调整伤员为<a href="#复苏体位">复苏体位</a>, 排除气道异物, 打开气道</li>
 </ol>
 <h5 id="判断有无呼吸"><a href="#判断有无呼吸" class="headerlink" title="判断有无呼吸"></a>判断有无呼吸</h5><p>此处提供两种方法, 一种是培训班老师教的, 一种是我在网上看到的, 同样有效且我觉得操作难度更低的.</p>
 <h6 id="老师教的方法"><a href="#老师教的方法" class="headerlink" title="老师教的方法"></a>老师教的方法</h6><p>伏低身子, 以伤病员头至脚方向观察胸部起伏. 从<strong>1001数到1008</strong> (数四位数是以实际的发音代替了停顿, 这样数得更精确), 这期间应当观察到<strong>两次起伏</strong>. ❗到底数多快见下方<a href="#参考视频">参考视频</a>, 基本上一秒数一下.</p>
@@ -4868,7 +4868,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <p>之所以我更推荐这个方法是因为实际上微弱的胸部起伏很难观察到, 一般还需要解开伤病员衣服. 而观察是否有水汽是一件非常容易的事情, 而且很灵敏 👍</p>
 <p><strong>如果伤病员有呼吸</strong>:</p>
 <ol>
-<li>调整伤病员为侧卧体位, 清理气道异物, 打开气道</li>
+<li>调整伤病员为<a href="#复苏体位">复苏体位</a>, 清理气道异物, 打开气道</li>
 <li>密切关注其呼吸是否衰竭</li>
 </ol>
 <h4 id="几种心肺复苏方式"><a href="#几种心肺复苏方式" class="headerlink" title="几种心肺复苏方式"></a>几种心肺复苏方式</h4><p>根据急救员水平, 现场环境, 伤病员情况等有几种方式可选:</p>
@@ -4913,6 +4913,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <li>成人用双手按, 儿童 (1-12岁) 用单手按, 婴儿用两指按 (食指+中指或两拇指)</li>
 <li>成人需要按下5-6cm, 婴儿需要按下3-4cm</li>
 <li>按压不可过猛, 手不要离开按压位置</li>
+<li>按压时数两位数, 按压频率约为100次/分钟</li>
 <li>救护员身在伤病员右手侧</li>
 <li>胸外按压/人工呼吸比例为30:2</li>
 <li>对婴儿人工呼吸可以包住口鼻</li>
@@ -4925,8 +4926,26 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 </blockquote>
 <iframe src="//player.bilibili.com/player.html?aid=17883263&amp;bvid=BV1oW411q7hG&amp;cid=29195038&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
-
-<h3 id="气道异物梗阻"><a href="#气道异物梗阻" class="headerlink" title="气道异物梗阻"></a>气道异物梗阻</h3><h3 id="创伤"><a href="#创伤" class="headerlink" title="创伤"></a>创伤</h3><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><script>
+<h3 id="气道异物梗阻"><a href="#气道异物梗阻" class="headerlink" title="气道异物梗阻"></a>气道异物梗阻</h3><h3 id="创伤"><a href="#创伤" class="headerlink" title="创伤"></a>创伤</h3><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="复苏体位"><a href="#复苏体位" class="headerlink" title="复苏体位"></a>复苏体位</h4><p>将伤病员置于复苏体位是为了防止因气道堵塞导致窒息. 有两种原因可能导致气道阻塞: 机械阻塞 (大部分情况是由于伤员失去意识而失去对舌头的控制, 舌头后坠至咽后部), 液体阻塞 (胃里出来的呕吐物之类)</p>
+<p>💡打呼噜也是舌头后坠导致的</p>
+<p>目前比较受认可的复苏体位有两种: 侧卧体位和HAINES体位.</p>
+<p><img src="%E5%88%9D%E7%BA%A7%E6%80%A5%E6%95%91%E5%91%98%E7%AC%94%E8%AE%B0/%E4%BE%A7%E5%8D%A7%E4%BD%93%E4%BD%8D.png?50" alt=""></p>
+<h4 id="误食强酸-强碱"><a href="#误食强酸-强碱" class="headerlink" title="误食强酸/强碱"></a>误食强酸/强碱</h4><p>喝下大量强酸/强碱不宜利用中和反应中和 (会大量放热) 或者催吐 (伤害食道), 应服用大量蛋白质.</p>
+<h4 id="烫伤"><a href="#烫伤" class="headerlink" title="烫伤"></a>烫伤</h4><p>烫伤后应用流动凉水冲洗. 不要弄破烫伤导致的水泡, 普通烫伤的水泡第三天起为吸收期, 7-8天恢复.</p>
+<h4 id="脑卒中"><a href="#脑卒中" class="headerlink" title="脑卒中"></a>脑卒中</h4><p>脑卒中, 即中风, 是由于脑部血管突然破裂或因血管阻塞导致血液不能流入大脑而引起脑组织损伤的一组疾病, 根据是血管破裂还是血管阻塞导致的分为出血性脑卒中和缺血性脑卒中. 其中缺血性脑卒中发病率更高, 出血性脑卒中死亡率更高. 面对脑卒中牢记<strong>FAST原则</strong>:</p>
+<p><img src="%E5%88%9D%E7%BA%A7%E6%80%A5%E6%95%91%E5%91%98%E7%AC%94%E8%AE%B0/FAST%E5%8E%9F%E5%88%99.png?65" alt=""></p>
+<p>❗ 禁食, 水</p>
+<h4 id="淹溺"><a href="#淹溺" class="headerlink" title="淹溺"></a>淹溺</h4><p>抢救上岸后以干毛巾由远心端向近心端摩擦, 促进血液循环.</p>
+<p>❗ 溺水导致的心脏停搏在进行心肺复苏前并<strong>不需要排出伤员呛的水</strong>, 这样做甚至可能导致肺炎. 这些水都在胃里, 很少会进到肺里.</p>
+<h4 id="动物咬伤"><a href="#动物咬伤" class="headerlink" title="动物咬伤"></a>动物咬伤</h4><p>被动物咬伤后应立即用肥皂水/盐水/清水冲洗15min, 然后马上去就医.</p>
+<h4 id="地震"><a href="#地震" class="headerlink" title="地震"></a>地震</h4><ol>
+<li>能在12秒内跑出就尽量跑.</li>
+<li>不管如何要保护好头部.</li>
+<li>中国提倡三角空间而日本不提倡三角空间. 因为中国大多数房子中有预制板, 房子垮塌时要掉也是大块的, 而在日本只会掉小件.</li>
+<li>不要站在围墙下.</li>
+<li>不要站在天花板有东西的墙沿.</li>
+</ol>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
