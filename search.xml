@@ -447,8 +447,7 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
 
 <a id="more"></a>
 
-<!-- TODO -->
-
+<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
 <h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="更改配置后页面未出现变化"><a href="#更改配置后页面未出现变化" class="headerlink" title="更改配置后页面未出现变化"></a>更改配置后页面未出现变化</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
 <h3 id="markdown中文换行导致的空格问题"><a href="#markdown中文换行导致的空格问题" class="headerlink" title="markdown中文换行导致的空格问题"></a>markdown中文换行导致的空格问题</h3><p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
 <figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
@@ -1201,74 +1200,6 @@ Address already in use</strong>, 我的服务器端监听的端口处于 <strong
       </categories>
   </entry>
   <entry>
-    <title>我发布了扩展包!</title>
-    <url>/zh-CN/2019/02/27/%E6%88%91%E5%8F%91%E5%B8%83%E4%BA%86%E6%89%A9%E5%B1%95%E5%8C%85/</url>
-    <content><![CDATA[<p>看了Poy Chang 的<a href="https://poychang.github.io/build-vscode-extension/" target="_blank" rel="noopener">制作VSC扩展包</a>,
-<a href="https://poychang.github.io/publish-extension-to-visual-studio-marketplace/" target="_blank" rel="noopener">发布扩展包至 Extension Marketplace</a>
-两篇文章, 我兴趣大发, 也发布了自己的扩展包!</p>
-<a id="more"></a>
-
-<p>首先说说为什么想糊几个扩展包:</p>
-<ol>
-<li>好有趣, 假装自己也写了好几个很有用的扩展, 装逼利器</li>
-<li>如果VSC启用了过多插件启动得会很慢, 但一个一个禁用插件又很费事. 但有趣的是只要禁用一个扩展包其中包含的扩展都会被禁用, 因此我把我使用的扩展按用途分类做成了扩展包. 这样批量禁用超方便👍</li>
-</ol>
-<p>实际上Poy说得很详细, 制作也很简单, 毕竟我只是想制作个扩展包, 只要把大佬们的插件整合一番就好了.
-一套流程大致有以下几个步骤:</p>
-<ol>
-<li><p>安装 yeoman 和 VSC扩展生成器(我自己瞎翻译的), 安装VSC扩展管理工具(还是瞎翻译的)</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">npm install -g yo generator-code</span><br><span class="line">npm install -g vsce</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>注册成为开发者, 搞到一个 <strong>Personal Access Tokens</strong></p>
-<p>💡 Poy提供的注册接口我无法进入, 推荐点击 <a href="https://visualstudio.com" target="_blank" rel="noopener">https://visualstudio.com</a> 后登陆微软账号, 就能看到很明显的注册开发者账号的按钮了✌️<br>⚠️ 这个 token 一定要保存好阿, 这混蛋玩意只显示这一次, 而你有可能多次用到</p>
-</li>
-<li><p>生成扩展包模板</p>
-</li>
-<li><p>把扩展包的显示名, 扩展包的名字 (显示名和名字是不一样的, 你的扩展包显示名可以和其他人的重名,
-但每个扩展的名字是唯一的), 概述, 随便想的版本号, 作者名, 扩展包的图标的地址,
-在github的仓库地址, 想收录进扩展包的扩展的名字统统塞进 <strong>package.json</strong> .</p>
-</li>
-<li><p>糊一糊 <strong>README</strong> 和 <strong>CHANGELOG.md</strong></p>
-</li>
-<li><p>发布!</p>
-</li>
-</ol>
-<p>这里是我发布的几个扩展包, 欢迎体验!</p>
-<ul>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.coding-assist-extension-pack" target="_blank" rel="noopener">Coding Assist Extension Pack</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.markdown-extension-pack" target="_blank" rel="noopener">Markdown Extension Pack</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.latex-extension-pack" target="_blank" rel="noopener">LaTeX Extension Pack</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.web-extension-pack" target="_blank" rel="noopener">Web Extension Pack</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.python-extension-pack" target="_blank" rel="noopener">Python Extension Pack</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.ccpp-extension-pack" target="_blank" rel="noopener">C/C++ Extension Pack</a></li>
-</ul>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>技巧</category>
-        <category>软件配置</category>
-        <category>VSC</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Linux杂记</title>
     <url>/zh-CN/2019/02/27/Linux%E6%9D%82%E8%AE%B0/</url>
     <content><![CDATA[<p>最近使用Linux频繁了起来, 接触到更多各种各样的命令, 然后我脑容量不够了<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8">😁</span>
@@ -1690,6 +1621,74 @@ Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可�
         <category>操作系统</category>
         <category>杂记</category>
         <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>我发布了扩展包!</title>
+    <url>/zh-CN/2019/02/27/%E6%88%91%E5%8F%91%E5%B8%83%E4%BA%86%E6%89%A9%E5%B1%95%E5%8C%85/</url>
+    <content><![CDATA[<p>看了Poy Chang 的<a href="https://poychang.github.io/build-vscode-extension/" target="_blank" rel="noopener">制作VSC扩展包</a>,
+<a href="https://poychang.github.io/publish-extension-to-visual-studio-marketplace/" target="_blank" rel="noopener">发布扩展包至 Extension Marketplace</a>
+两篇文章, 我兴趣大发, 也发布了自己的扩展包!</p>
+<a id="more"></a>
+
+<p>首先说说为什么想糊几个扩展包:</p>
+<ol>
+<li>好有趣, 假装自己也写了好几个很有用的扩展, 装逼利器</li>
+<li>如果VSC启用了过多插件启动得会很慢, 但一个一个禁用插件又很费事. 但有趣的是只要禁用一个扩展包其中包含的扩展都会被禁用, 因此我把我使用的扩展按用途分类做成了扩展包. 这样批量禁用超方便👍</li>
+</ol>
+<p>实际上Poy说得很详细, 制作也很简单, 毕竟我只是想制作个扩展包, 只要把大佬们的插件整合一番就好了.
+一套流程大致有以下几个步骤:</p>
+<ol>
+<li><p>安装 yeoman 和 VSC扩展生成器(我自己瞎翻译的), 安装VSC扩展管理工具(还是瞎翻译的)</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">npm install -g yo generator-code</span><br><span class="line">npm install -g vsce</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>注册成为开发者, 搞到一个 <strong>Personal Access Tokens</strong></p>
+<p>💡 Poy提供的注册接口我无法进入, 推荐点击 <a href="https://visualstudio.com" target="_blank" rel="noopener">https://visualstudio.com</a> 后登陆微软账号, 就能看到很明显的注册开发者账号的按钮了✌️<br>⚠️ 这个 token 一定要保存好阿, 这混蛋玩意只显示这一次, 而你有可能多次用到</p>
+</li>
+<li><p>生成扩展包模板</p>
+</li>
+<li><p>把扩展包的显示名, 扩展包的名字 (显示名和名字是不一样的, 你的扩展包显示名可以和其他人的重名,
+但每个扩展的名字是唯一的), 概述, 随便想的版本号, 作者名, 扩展包的图标的地址,
+在github的仓库地址, 想收录进扩展包的扩展的名字统统塞进 <strong>package.json</strong> .</p>
+</li>
+<li><p>糊一糊 <strong>README</strong> 和 <strong>CHANGELOG.md</strong></p>
+</li>
+<li><p>发布!</p>
+</li>
+</ol>
+<p>这里是我发布的几个扩展包, 欢迎体验!</p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.coding-assist-extension-pack" target="_blank" rel="noopener">Coding Assist Extension Pack</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.markdown-extension-pack" target="_blank" rel="noopener">Markdown Extension Pack</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.latex-extension-pack" target="_blank" rel="noopener">LaTeX Extension Pack</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.web-extension-pack" target="_blank" rel="noopener">Web Extension Pack</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.python-extension-pack" target="_blank" rel="noopener">Python Extension Pack</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.ccpp-extension-pack" target="_blank" rel="noopener">C/C++ Extension Pack</a></li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>技巧</category>
+        <category>软件配置</category>
+        <category>VSC</category>
       </categories>
   </entry>
   <entry>
@@ -2669,10 +2668,10 @@ Segment). 和其他段一样, 堆栈段也有自己的大小, 不能被越界访
 -Wl,--stack=16777216</code>, 这样栈大小就变为16MB</p>
 <p>💡 栈溢出不一定是递归调用过多导致的, 也可能是局部变量太大. 因此<strong>较大的数组建议储存为全局变量</strong>.</p>
 <p><strong>栈</strong>是由编译器在需要时分配的, 不需要时自动清除的变量存储区. 里面的变量通常是局部变量, 函数参数等. <strong>堆</strong>是由<code>malloc()</code>函数分配的内存块,内存释放由程序员手动控制, 在C语言由<code>free()</code>完成.</p>
-<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>较大的数组时应在main函数之外声明.</p>
-<p><code>memset(a, 0, sizeof(a))</code>能方便地把数组a清零,它在<strong>string.h</strong>中定义.</p>
-<p>用strcpy(a, b), strcmp(a, b), strcat(a, b)来执行“赋值”、“比较”和“连接”操作, 在
-<strong>string.h</strong>中定义</p>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>较大的数组应在main函数之外声明.</p>
+<p><code>memset(a, 0, sizeof(a))</code>能方便地把数组a清零,这个函数在<strong>string.h</strong>里.</p>
+<p>用<code>strcpy(a, b)</code>, <code>strcmp(a, b)</code>, <code>strcat(a, b)</code>来执行“赋值”、“比较”和“连接”操作, 这三个函数也在
+<strong>string.h</strong>中</p>
 <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>C语言中的字符串是以“\0”结尾的字符数组</p>
 <p>不同操作系统的回车换行符是不一致的. Windows是“\r”和“\n”两个字符,Linux是“\n”,而
 MacOS是“\r”. 如果在Windows下读取Windows文件, fgetc和getchar会把“\r””吃掉”, 只剩下“\n”; 但如果要在Linux下读取同样一个文件, 它们会忠实地先读取“\r”, 然后才是“\n”.</p>
@@ -2952,108 +2951,6 @@ reverse flag can be set to request the result in descending order.</p>
       </categories>
   </entry>
   <entry>
-    <title>C++学习笔记</title>
-    <url>/zh-CN/2019/08/11/C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>… 前几天刚说最近没有用C的需求我就开始要写C++了 🤦</p>
-<p>TODO</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>杂记</category>
-        <category>语言</category>
-        <category>C/C++</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>MATLAB杂记</title>
-    <url>/zh-CN/2019/08/05/MATLAB%E6%9D%82%E8%AE%B0/</url>
-    <content><![CDATA[<p>再开学的课程就要用MATLAB了, 而且了解很多机械系唯一要求学的编程语言就是MATLAB, 我决定还是稍微了解下.</p>
-<a id="more"></a>
-
-<p>首先, <a href="https://www.zhihu.com/question/37824202/answer/767114071" target="_blank" rel="noopener">MATLAB到底是不是编程语言?</a></p>
-<p>从<strong>TIOBE</strong>上有MATLAB而且MATLAB排名还不低可以看出MATLAB确实是一门编程语言, 但从上面链接可以看出MATLAB算是<strong>残疾</strong>的编程语言, 很多特性没有, 更多的是<strong>用来验证算法可行性</strong>.但我又想验证算法可行性为啥不用Python什么的, 语法也不麻烦呀? 然后我发现原本用<strong>Octave</strong>教深度学习的吴恩达现在改用<strong>Python</strong>了 😁</p>
-<p>💡 (这条是后来补的) 但其实随着使用我发现在<strong>矩阵计算方面</strong>MATLAB的语法还是比python简单很多.</p>
-<p>因此我觉得MATLAB的优势主要就在:</p>
-<ul>
-<li>语法简单, 没有编程基础的工科生也能快速掌握, 尤其计算方面的语法比Python简单太多</li>
-<li>集成度特别高, 各种工具都能轻松快速配置好</li>
-<li>能和多种语言交互, 编写界面简单</li>
-<li>很多工具都有图形界面, 操作简单, 按按键就可以, 不用写那么多代码.</li>
-</ul>
-<p>总而言之, 虽然缺点多多, MATLAB还是很值得一学的</p>
-<h1 id="MATLAB软件个性化设置"><a href="#MATLAB软件个性化设置" class="headerlink" title="MATLAB软件个性化设置"></a>MATLAB软件个性化设置</h1><h2 id="设置初始工作文件夹"><a href="#设置初始工作文件夹" class="headerlink" title="设置初始工作文件夹"></a>设置初始工作文件夹</h2><p>使用HOME目录作为起始工作文件夹我觉得不是什么好事, 所以最好自己指定一个合适的目录. 我使用的是MATLAB默认的<code>userpath</code>, 即<strong>Documents/MATLAB</strong>文件夹. 一方面这个文件夹看着比较合理, 一方面MATLAB说<a href="https://ww2.mathworks.cn/help/matlab/matlab_env/matlab-startup-folder.html#bujzf43" target="_blank" rel="noopener">使用userpath作为初始工作文件夹有一定好处</a>.</p>
-<p>Linux下设置MATLAB的初始工作文件夹方法和在Windows下改快捷方式的起始位置这种方法不一样, 要达到这个目的有两种方式:</p>
-<ol>
-<li>在终端输入 <code>matlab -useStartupFolderPref</code> 打开MATLAB. -useStartupFolderPref选项指定初始工作文件夹为在<strong>Preference</strong>中<strong>Initial working folder option</strong>的指定文件夹.</li>
-<li>在终端输入 <code>matlab -sd [folder]</code> 打开MATLAB. -sd选项指定初始工作文件夹为[folder]文件夹.</li>
-</ol>
-<h2 id="更改编辑界面颜色主题"><a href="#更改编辑界面颜色主题" class="headerlink" title="更改编辑界面颜色主题"></a>更改编辑界面颜色主题</h2><p>在vim, VSC, VS, CLION, Pycharm等工具用惯了黑暗主题以后拿到啥都想先换个黑暗主题. 但是找了半天也只找到了设置编辑界面颜色主题的方式, 普通操作似乎并不能自定义丑陋的灰色工具栏.</p>
-<p>最终我把界面变成了这样 👇</p>
-<p><img src="MATLAB%E6%9D%82%E8%AE%B0/appearance.png" alt="界面"></p>
-<ul>
-<li>颜色主题是通过<a href="https://github.com/scottclowe/matlab-schemer" target="_blank" rel="noopener">MATLAB Schemer</a>里的脚本更换的, 一键更换好评👍 因为我比较喜欢糖果色的颜色主题然后又不喜欢注释是灰色 (不管在黑色背景还是白色背景里辨析度都很低), 于是选择的主题是<a href="https://github.com/scottclowe/matlab-schemer/tree/master/schemes#dark-steel" target="_blank" rel="noopener">Dark Steel</a>.</li>
-<li>字体用的是<a href="https://github.com/powerline/fonts/tree/master/DejaVuSansMono" target="_blank" rel="noopener">DejaVu Sans Mono for Powerline</a>, 大小是11, 不过不知道为什么MATLAB显示不带效果的字体看着很粗糙, <strong>边缘锯齿状过于明显</strong>, 效果设置为了 <strong>bold</strong>, 这回好多了!</li>
-<li>布局改成了和我常用的vim, VSC差不多的布局: 资源管理器在左上, 细节信息在左下, 编辑窗口在右</li>
-</ul>
-<h1 id="MATLAB语法和工具"><a href="#MATLAB语法和工具" class="headerlink" title="MATLAB语法和工具"></a>MATLAB语法和工具</h1><h2 id="在终端运行"><a href="#在终端运行" class="headerlink" title="在终端运行"></a>在终端运行</h2><p>曾经我因为嫌MATLAB界面太丑又不能个性化想过在终端像用交互式Python一样用交互式
-MATLAB以及运行脚本. 我发现这是可行的:</p>
-<p>在终端启动交互式MATLAB:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">matlab -nojvm</span><br></pre></td></tr></tbody></table></figure>
-
-<p><code>-nojvm</code>选项本身是<strong>不启动Java虚拟机</strong>的意思, 但因为Matlab的GUI都是用Java写的
-(听网上说的), 所以也有<code>-nosplash</code> (<strong>不显示启动画面</strong>), <code>-nodesktop</code>
-(<strong>不启动图形界面</strong>) 的功能. 另外因为没有启动jvm这样启动MATLAB十分迅速.</p>
-<p>💡 要注意用<code>-nojvm</code>选项时会创建图形界面的命令会报错.</p>
-<p>在终端运行MATLAB脚本:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">matlab -batch [MATLAB_command]</span><br></pre></td></tr></tbody></table></figure>
-
-<p><code>-batch</code>选项和<code>-r</code>选项的区别在于前者不会启动图形界面而后者会. 另外如果脚本中没有与图形界面有关的语句同样可以加上<code>-nojvm</code>选项.</p>
-<p><strong>但是啊!</strong></p>
-<p>我后来发现这样就<strong>本末倒置</strong>了! MATLAB的亮点我觉得一是所有变量都是全局变量, 能迅速可视化变量, 工具集成度非常高, 适合迅速验证各种算法, 二是社区非常完善, 提供了很多工具能轻松仿真很多模型.</p>
-<p>因此只在终端的MATLAB是没有灵魂的MATLAB. <strong>如果终端里的MATLAB就能解决你的需求的话为什么不用Python?</strong> 🤤</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>杂记</category>
-        <category>语言</category>
-        <category>MATLAB</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Vim使用杂记</title>
     <url>/zh-CN/2019/07/10/vim%E4%BD%BF%E7%94%A8%E6%9D%82%E8%AE%B0/</url>
     <content><![CDATA[<p>使用vim开发也有半年多啦, 不过配置vim也是个漫长的过程. 记录一下常用快捷键和用法和配置过程.</p>
@@ -3246,6 +3143,110 @@ shift 字母</kbd>和<kbd>Ctrl 字母</kbd>的输出没有区别.</p>
       </categories>
   </entry>
   <entry>
+    <title>C++学习笔记</title>
+    <url>/zh-CN/2019/08/11/C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>… 前几天刚说最近没有用C的需求我就开始要写C++了 🤦</p>
+<p>TODO</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>杂记</category>
+        <category>语言</category>
+        <category>C/C++</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>MATLAB杂记</title>
+    <url>/zh-CN/2019/08/05/MATLAB%E6%9D%82%E8%AE%B0/</url>
+    <content><![CDATA[<p>再开学的课程就要用MATLAB了, 而且了解很多机械系唯一要求学的编程语言就是MATLAB, 我决定还是稍微了解下.</p>
+<a id="more"></a>
+
+<p>首先, <a href="https://www.zhihu.com/question/37824202/answer/767114071" target="_blank" rel="noopener">MATLAB到底是不是编程语言?</a></p>
+<p>从<strong>TIOBE</strong>上有MATLAB而且MATLAB排名还不低可以看出MATLAB确实是一门编程语言, 但从上面链接可以看出MATLAB算是<strong>残疾</strong>的编程语言, 很多特性没有, 更多的是<strong>用来验证算法可行性</strong>.但我又想验证算法可行性为啥不用Python什么的, 语法也不麻烦呀? 然后我发现原本用<strong>Octave</strong>教深度学习的吴恩达现在改用<strong>Python</strong>了 😁</p>
+<p>💡 (这条是后来补的) 但其实随着使用我发现在<strong>矩阵计算方面</strong>MATLAB的语法还是比python简单很多.</p>
+<p>因此我觉得MATLAB的优势主要就在:</p>
+<ul>
+<li>语法简单, 没有编程基础的工科生也能快速掌握, 尤其计算方面的语法比Python简单太多</li>
+<li>集成度特别高, 各种工具都能轻松快速配置好</li>
+<li>能和多种语言交互, 编写界面简单</li>
+<li>很多工具都有图形界面, 操作简单, 按按键就可以, 不用写那么多代码.</li>
+</ul>
+<p>总而言之, 虽然缺点多多, MATLAB还是很值得一学的</p>
+<h1 id="MATLAB软件个性化设置"><a href="#MATLAB软件个性化设置" class="headerlink" title="MATLAB软件个性化设置"></a>MATLAB软件个性化设置</h1><h2 id="设置初始工作文件夹"><a href="#设置初始工作文件夹" class="headerlink" title="设置初始工作文件夹"></a>设置初始工作文件夹</h2><p>使用HOME目录作为起始工作文件夹我觉得不是什么好事, 所以最好自己指定一个合适的目录. 我使用的是MATLAB默认的<code>userpath</code>, 即<strong>Documents/MATLAB</strong>文件夹. 一方面这个文件夹看着比较合理, 一方面MATLAB说<a href="https://ww2.mathworks.cn/help/matlab/matlab_env/matlab-startup-folder.html#bujzf43" target="_blank" rel="noopener">使用userpath作为初始工作文件夹有一定好处</a>.</p>
+<p>Linux下设置MATLAB的初始工作文件夹方法和在Windows下改快捷方式的起始位置这种方法不一样, 要达到这个目的有两种方式:</p>
+<ol>
+<li>在终端输入 <code>matlab -useStartupFolderPref</code> 打开MATLAB. -useStartupFolderPref选项指定初始工作文件夹为在<strong>Preference</strong>中<strong>Initial working folder option</strong>的指定文件夹.</li>
+<li>在终端输入 <code>matlab -sd [folder]</code> 打开MATLAB. -sd选项指定初始工作文件夹为[folder]文件夹.</li>
+</ol>
+<h2 id="更改编辑界面颜色主题"><a href="#更改编辑界面颜色主题" class="headerlink" title="更改编辑界面颜色主题"></a>更改编辑界面颜色主题</h2><p>在vim, VSC, VS, CLION, Pycharm等工具用惯了黑暗主题以后拿到啥都想先换个黑暗主题. 但是找了半天也只找到了设置编辑界面颜色主题的方式, 普通操作似乎并不能自定义丑陋的灰色工具栏.</p>
+<p>最终我把界面变成了这样 👇</p>
+<p><img src="MATLAB%E6%9D%82%E8%AE%B0/appearance.png" alt="界面"></p>
+<ul>
+<li>颜色主题是通过<a href="https://github.com/scottclowe/matlab-schemer" target="_blank" rel="noopener">MATLAB Schemer</a>里的脚本更换的, 一键更换好评👍 因为我比较喜欢糖果色的颜色主题然后又不喜欢注释是灰色 (不管在黑色背景还是白色背景里辨析度都很低), 于是选择的主题是<a href="https://github.com/scottclowe/matlab-schemer/tree/master/schemes#dark-steel" target="_blank" rel="noopener">Dark Steel</a>.</li>
+<li>字体用的是<a href="https://github.com/powerline/fonts/tree/master/DejaVuSansMono" target="_blank" rel="noopener">DejaVu Sans Mono for Powerline</a>, 大小是11, 不过不知道为什么MATLAB显示不带效果的字体看着很粗糙, <strong>边缘锯齿状过于明显</strong>, 效果设置为了 <strong>bold</strong>, 这回好多了!</li>
+<li>布局改成了和我常用的vim, VSC差不多的布局: 资源管理器在左上, 细节信息在左下, 编辑窗口在右</li>
+</ul>
+<h1 id="MATLAB语法和工具"><a href="#MATLAB语法和工具" class="headerlink" title="MATLAB语法和工具"></a>MATLAB语法和工具</h1><h2 id="在终端运行"><a href="#在终端运行" class="headerlink" title="在终端运行"></a>在终端运行</h2><p>曾经我因为嫌MATLAB界面太丑又不能个性化想过在终端像用交互式Python一样用交互式
+MATLAB以及运行脚本. 我发现这是可行的:</p>
+<p>在终端启动交互式MATLAB:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">matlab -nojvm</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>-nojvm</code>选项本身是<strong>不启动Java虚拟机</strong>的意思, 但因为Matlab的GUI都是用Java写的
+(听网上说的), 所以也有<code>-nosplash</code> (<strong>不显示启动画面</strong>), <code>-nodesktop</code>
+(<strong>不启动图形界面</strong>) 的功能. 另外因为没有启动jvm这样启动MATLAB十分迅速.</p>
+<p>💡 要注意用<code>-nojvm</code>选项时会创建图形界面的命令会报错.</p>
+<p>在终端运行MATLAB脚本:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">matlab -batch [MATLAB_command]</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>-batch</code>选项和<code>-r</code>选项的区别在于前者不会启动图形界面而后者会. 另外如果脚本中没有与图形界面有关的语句同样可以加上<code>-nojvm</code>选项.</p>
+<p><strong>但是啊!</strong></p>
+<p>我后来发现这样就<strong>本末倒置</strong>了! MATLAB的亮点我觉得一是所有变量都是全局变量, 能迅速可视化变量, 工具集成度非常高, 适合迅速验证各种算法, 二是社区非常完善, 提供了很多工具能轻松仿真很多模型.</p>
+<p>因此只在终端的MATLAB是没有灵魂的MATLAB. <strong>如果终端里的MATLAB就能解决你的需求的话为什么不用Python?</strong> 🤤</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>软件配置</category>
+        <category>杂记</category>
+        <category>语言</category>
+        <category>MATLAB</category>
+      </categories>
+  </entry>
+  <entry>
     <title>初学Socket通信</title>
     <url>/zh-CN/2019/08/07/%E5%88%9D%E5%AD%A6socket%E9%80%9A%E4%BF%A1/</url>
     <content><![CDATA[<p>TODO</p>
@@ -3268,6 +3269,63 @@ shift 字母</kbd>和<kbd>Ctrl 字母</kbd>的输出没有区别.</p>
             document.body.appendChild(img);
           });
       </script>]]></content>
+  </entry>
+  <entry>
+    <title>记大二暑假北航实习</title>
+    <url>/zh-CN/2019/08/05/%E8%AE%B0%E5%A4%A7%E4%BA%8C%E6%9A%91%E5%81%87%E5%8C%97%E8%88%AA%E5%AE%9E%E4%B9%A0/</url>
+    <content><![CDATA[<p>这个暑假我来到了北航<a href="http://softrobotics.buaa.edu.cn/peoples/peoples_ch/index.htm" target="_blank" rel="noopener">仿生软体机器人实验室</a>学习, 收获颇多.
+结实了一群有趣的人, 得到了一些答案, 看到了更明确的方向, 坚定了我研究软体机器人的信念💪</p>
+<a id="more"></a>
+
+<p>如今我愈发觉得玄幻小说里一种很玄的情节其实很现实: <strong>历练总是能有些机缘!</strong></p>
+<p>有些事情在事前真的无法预测, 比如在我这次前往北京学习一个半月之前, 我是完全想不到我能有什么收获的, 而最终的收获多到一两句说不清. <strong>如果在家仔细思考, 总会觉得一个半月那样短, 去了又能怎样?</strong> 再引用一句玄幻小说里的话:</p>
+<blockquote>
+<p>我辈修士, 当与天争命!</p>
+</blockquote>
+<p>事实证明, 只要自己主动抓住各种机会一个半月并不那样短暂.</p>
+<p>这一个半月我干了许多事: 我浇筑了一套软体臂, 软体爪, 我试着帮实验室的学长解决实验面临的困难, 我每天站着巨久调试了半个月机器人, 我随实验室的队伍到大连参加了一个难度很高的比赛, 我在大连每天白嫖各种海鲜, 我和在中科院中关村学生公寓的室友相处不错还一块深夜吃了烧烤, 我给好几人上了家教课, 我经常和在北京的亲属玩,我, 我试图减肥并失败
+🤦‍</p>
+<h2 id="关于学习收获"><a href="#关于学习收获" class="headerlink" title="关于学习收获"></a>关于学习收获</h2><h3 id="在实验室的体会"><a href="#在实验室的体会" class="headerlink" title="在实验室的体会"></a>在实验室的体会</h3><p>实际上在前往文老师的实验室前我并没有真正接触到软体机器人: 只能自己看看资料算什么? 但我也很无奈啊, 想做的实验材料就动辄几千, 而花销小的实验一般是真-实验室阶段,
+我一时半会研究不出什么名堂. 更何况我在电子科大并没有找到相关团队. 而到文老师实验室这段时间我不仅是更正了一些对软体机器人的理解, 更是对科研有了一些概念.</p>
+<p>很幸运的是实验室所有人人都很好, 我很快就融入其中, 也有幸和几位学长探讨了他们的工作. 谢博士的废寝忘食令我记忆犹新. 好几次谢博因为想解决问题而晚去吃饭. 谢博也很虚心, 因为并不是电气专业出身, 实验遇到电气方面问题还拉我一起研究. 辉哥则和我聊了很多过来人的经验, 他建议说在国外科研更加自由, 能支持更基础的研究方向, 杂事更少, 老师和学生的关系更像合作伙伴, 而最后如果能留在国外就不用按国内五年一个职位的累死累活竞争等等. 结对调试机器人的同样来自四川的陈学长则和我分享了许多学习经验, 在我看来他的学习经历实在是一次逆袭. 而见到文老师前我同样没想到是这样一位爱夸人的总是在笑的老师. 这一个半月我更多的时间是和刘学长在一起, 他也教了我很多, 比如如何浇筑
+(我一个学电气的是完全没做过这种事的), 而来实验室前的许多疑问我也从他那得到了解答
+.</p>
+<p>亲身站在实验室里我更直观的体会到了软体机器人是怎样的一个领域. 虽然刘学长觉得软体机器人现在发展趋势缓下来了, 但我觉得这个领域仍在萌芽阶段. 从我了解到的成果和在实验室近距离看学长们的工作来看, 除了软体抓手现在已经商业化了其他成果仍离走出实验室差很远, 有些甚至只是证明了一些结构的潜力, 说白了目前基本是空架子. 就比如实验室花了好几万买的液态金属打印机, 不光墨水贵, 还经常不出墨, 出墨也不够理想, 和谢博一起做实验的袁学长说某些方面甚至可能比不上以前手工浇筑的效果. 不过最近清华大学刚研发出了类似喷墨打印机原理的液态金属打印方式, 看论文效果很不错, 期待能尽早推出产品.
+目前的成果之所以离投入应用还远一方面是因为目前的软体机器人因为使用的驱动方式, 能提供的驱动力普遍很小, 基本没有应用场景, 另一方面是因为目前软体机器人的控制基本是黑暗一片, 就算是一段较早出现的软体臂也没有一个称得上很好的闭环控制方法. 而针对非结构性环境的软体机器人如果连闭环都做不到还有何用? 虽然目前也有好几项人来控制, 机器人负责在人类很难触及的环境 (比如人体内, 十分狭窄的缝隙, 20m深的海底) 执行的成果, 但我认为自主始终是趋势.</p>
+<p>另外一点在实验室学到的, 觉得很有意思的是如何记<strong>组会记录</strong>. 首先记肯定是要记的,
+不然如果讨论的不是自己在参与的项目时岂不是在浪费时间? 我认为组会本就是集思广益大家相互交流经验的地方 (这点在我们组里也很明显, 每个人讲完自己的项目进度后老师会问大家的看法和建议), 因此如果在组会中只注意讲好自己的项目就本末倒置了. 记组会记录一方面帮助自己整理思路, 看看能给正在讲的同学什么帮助, 另一方面讲大家的经验记录下来,这样以后自己遇到类似问题就能有突破口, 另外老师有时候也会给一些写论文方面的指导,也值得记录. 我觉得记组会记录最好用OneNote这种手写的电子档, 自由度高, 适合写写画画整理思路, 电子档也更利于保存.</p>
+<h3 id="对C-的体会"><a href="#对C-的体会" class="headerlink" title="对C++的体会"></a>对C++的体会</h3><p>再有就是我学习C++的速度还是令我觉得值得表扬的😆 实际上在这个暑假之前我是不会C++
+的,顶多是大一上的时候学了最基础的C. 我是这个暑假开始时从学长那里继承了本紫色的**
+算法竞赛入门经典<strong>巩固了下C语言, 了解了一些C++. 而到了实验室先是照着网上的模板写了个C++的TCP server, 然后和中科院的学长一起负责ROV的控制代码 (纯C++). 说实话一方面是大一上扎实的C基础帮了大忙 (我明明每一科都能很好地应用可我就是考不好真的好气), 另一方面则是我浏览器程序员的特长: 上网查资料发挥了巨大作用😁 这真的是现学现卖.好在学长把核心代码都写好了, 我就写了写语法很简单的控制流程什么的. 期间也因为不熟悉C++遇到了很多奇葩问题, 比如就因为在</strong>多线程C++程序**中用错了计时函数导致了计时不准, 程序崩溃等各种迷之错误… 反正一波C++速成后我对C++的印象极差, 标准库很落后, 坑很多, 语法很啰嗦 (和我最爱的Python比), 环境配置也比Python开发麻烦等等…</p>
+<p>以后我自己写程序用到C/C++顶多是要求算力部分用C/C++来加速, 或者用到的工具只有
+C/C++接口时.其他部分全部用Python糊!</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>最后想发表一番感慨: 虽然这只是我的大二暑假, 但实际上我在高三暑假就决定了以后研究机器人, 为此学习了许多, 做着各种各样的准备. 比如我学习了Python, 也针对机器人中很常用到的机器学习和CV分别做了一个小项目 (<a href="https://github.com/LeoJhonSong/SVM-Learning-Sample" target="_blank" rel="noopener">我的机器学习小项目</a>, <a href="https://github.com/LeoJhonSong/Fingertip-Drawboard" target="_blank" rel="noopener">我的CV小项目</a>)来学习了解, 比如我查阅了许多软体机器人的文献, 也曾自己试着<a href="https://leojhonsong.github.io/zh-CN/2018/12/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/">用仿真软件仿真软体机器人</a>,
+以及即便曾经的我<a href="https://leojhonsong.github.io/zh-CN/2019/05/17/为什么我用Linux而不是Windows/">曾找各种理由来说服自己用Linux</a> (当然后来就离不开Linux了)… 总之我曾努力学习过的东西都确实地派上了用场, 我感到自己的努力没有白费💪 我会再接再厉!</p>
+<h2 id="关于家教"><a href="#关于家教" class="headerlink" title="关于家教"></a>关于家教</h2><p>另外我在北京这段时间在一个叫<strong>易教网</strong>的平台接了几份家教的工作. 经过了这一段时间的体验我觉得当家教是一件既有趣又促进自己学习还赚钱的事.</p>
+<h2 id="关于北京"><a href="#关于北京" class="headerlink" title="关于北京"></a>关于北京</h2><p>第一次在北京待一个半月, 见识到了首都的另一面. 以前我是个京黑, 这次在北京的体验改变了我的印象, 让我变成了真*京黑😁 是的印象一点也没有变好! 或者说见到了好的一面,
+但也加深了负面印象.</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
   </entry>
   <entry>
     <title>Linux终端呈现彩色输出</title>
@@ -3438,64 +3496,6 @@ shift 字母</kbd>和<kbd>Ctrl 字母</kbd>的输出没有区别.</p>
         <category>技巧</category>
         <category>操作系统</category>
         <category>Linux</category>
-        <category>调试</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>记大二暑假北航实习</title>
-    <url>/zh-CN/2019/08/05/%E8%AE%B0%E5%A4%A7%E4%BA%8C%E6%9A%91%E5%81%87%E5%8C%97%E8%88%AA%E5%AE%9E%E4%B9%A0/</url>
-    <content><![CDATA[<p>这个暑假我来到了北航<a href="http://softrobotics.buaa.edu.cn/peoples/peoples_ch/index.htm" target="_blank" rel="noopener">仿生软体机器人实验室</a>学习, 收获颇多.
-结实了一群有趣的人, 得到了一些答案, 看到了更明确的方向, 坚定了我研究软体机器人的信念💪</p>
-<a id="more"></a>
-
-<p>如今我愈发觉得玄幻小说里一种很玄的情节其实很现实: <strong>历练总是能有些机缘!</strong></p>
-<p>有些事情在事前真的无法预测, 比如在我这次前往北京学习一个半月之前, 我是完全想不到我能有什么收获的, 而最终的收获多到一两句说不清. <strong>如果在家仔细思考, 总会觉得一个半月那样短, 去了又能怎样?</strong> 再引用一句玄幻小说里的话:</p>
-<blockquote>
-<p>我辈修士, 当与天争命!</p>
-</blockquote>
-<p>事实证明, 只要自己主动抓住各种机会一个半月并不那样短暂.</p>
-<p>这一个半月我干了许多事: 我浇筑了一套软体臂, 软体爪, 我试着帮实验室的学长解决实验面临的困难, 我每天站着巨久调试了半个月机器人, 我随实验室的队伍到大连参加了一个难度很高的比赛, 我在大连每天白嫖各种海鲜, 我和在中科院中关村学生公寓的室友相处不错还一块深夜吃了烧烤, 我给好几人上了家教课, 我经常和在北京的亲属玩,我, 我试图减肥并失败
-🤦‍</p>
-<h2 id="关于学习收获"><a href="#关于学习收获" class="headerlink" title="关于学习收获"></a>关于学习收获</h2><h3 id="在实验室的体会"><a href="#在实验室的体会" class="headerlink" title="在实验室的体会"></a>在实验室的体会</h3><p>实际上在前往文老师的实验室前我并没有真正接触到软体机器人: 只能自己看看资料算什么? 但我也很无奈啊, 想做的实验材料就动辄几千, 而花销小的实验一般是真-实验室阶段,
-我一时半会研究不出什么名堂. 更何况我在电子科大并没有找到相关团队. 而到文老师实验室这段时间我不仅是更正了一些对软体机器人的理解, 更是对科研有了一些概念.</p>
-<p>很幸运的是实验室所有人人都很好, 我很快就融入其中, 也有幸和几位学长探讨了他们的工作. 谢博士的废寝忘食令我记忆犹新. 好几次谢博因为想解决问题而晚去吃饭. 谢博也很虚心, 因为并不是电气专业出身, 实验遇到电气方面问题还拉我一起研究. 辉哥则和我聊了很多过来人的经验, 他建议说在国外科研更加自由, 能支持更基础的研究方向, 杂事更少, 老师和学生的关系更像合作伙伴, 而最后如果能留在国外就不用按国内五年一个职位的累死累活竞争等等. 结对调试机器人的同样来自四川的陈学长则和我分享了许多学习经验, 在我看来他的学习经历实在是一次逆袭. 而见到文老师前我同样没想到是这样一位爱夸人的总是在笑的老师. 这一个半月我更多的时间是和刘学长在一起, 他也教了我很多, 比如如何浇筑
-(我一个学电气的是完全没做过这种事的), 而来实验室前的许多疑问我也从他那得到了解答
-.</p>
-<p>亲身站在实验室里我更直观的体会到了软体机器人是怎样的一个领域. 虽然刘学长觉得软体机器人现在发展趋势缓下来了, 但我觉得这个领域仍在萌芽阶段. 从我了解到的成果和在实验室近距离看学长们的工作来看, 除了软体抓手现在已经商业化了其他成果仍离走出实验室差很远, 有些甚至只是证明了一些结构的潜力, 说白了目前基本是空架子. 就比如实验室花了好几万买的液态金属打印机, 不光墨水贵, 还经常不出墨, 出墨也不够理想, 和谢博一起做实验的袁学长说某些方面甚至可能比不上以前手工浇筑的效果. 不过最近清华大学刚研发出了类似喷墨打印机原理的液态金属打印方式, 看论文效果很不错, 期待能尽早推出产品.
-目前的成果之所以离投入应用还远一方面是因为目前的软体机器人因为使用的驱动方式, 能提供的驱动力普遍很小, 基本没有应用场景, 另一方面是因为目前软体机器人的控制基本是黑暗一片, 就算是一段较早出现的软体臂也没有一个称得上很好的闭环控制方法. 而针对非结构性环境的软体机器人如果连闭环都做不到还有何用? 虽然目前也有好几项人来控制, 机器人负责在人类很难触及的环境 (比如人体内, 十分狭窄的缝隙, 20m深的海底) 执行的成果, 但我认为自主始终是趋势.</p>
-<p>另外一点在实验室学到的, 觉得很有意思的是如何记<strong>组会记录</strong>. 首先记肯定是要记的,
-不然如果讨论的不是自己在参与的项目时岂不是在浪费时间? 我认为组会本就是集思广益大家相互交流经验的地方 (这点在我们组里也很明显, 每个人讲完自己的项目进度后老师会问大家的看法和建议), 因此如果在组会中只注意讲好自己的项目就本末倒置了. 记组会记录一方面帮助自己整理思路, 看看能给正在讲的同学什么帮助, 另一方面讲大家的经验记录下来,这样以后自己遇到类似问题就能有突破口, 另外老师有时候也会给一些写论文方面的指导,也值得记录. 我觉得记组会记录最好用OneNote这种手写的电子档, 自由度高, 适合写写画画整理思路, 电子档也更利于保存.</p>
-<h3 id="对C-的体会"><a href="#对C-的体会" class="headerlink" title="对C++的体会"></a>对C++的体会</h3><p>再有就是我学习C++的速度还是令我觉得值得表扬的😆 实际上在这个暑假之前我是不会C++
-的,顶多是大一上的时候学了最基础的C. 我是这个暑假开始时从学长那里继承了本紫色的**
-算法竞赛入门经典<strong>巩固了下C语言, 了解了一些C++. 而到了实验室先是照着网上的模板写了个C++的TCP server, 然后和中科院的学长一起负责ROV的控制代码 (纯C++). 说实话一方面是大一上扎实的C基础帮了大忙 (我明明每一科都能很好地应用可我就是考不好真的好气), 另一方面则是我浏览器程序员的特长: 上网查资料发挥了巨大作用😁 这真的是现学现卖.好在学长把核心代码都写好了, 我就写了写语法很简单的控制流程什么的. 期间也因为不熟悉C++遇到了很多奇葩问题, 比如就因为在</strong>多线程C++程序**中用错了计时函数导致了计时不准, 程序崩溃等各种迷之错误… 反正一波C++速成后我对C++的印象极差, 标准库很落后, 坑很多, 语法很啰嗦 (和我最爱的Python比), 环境配置也比Python开发麻烦等等…</p>
-<p>以后我自己写程序用到C/C++顶多是要求算力部分用C/C++来加速, 或者用到的工具只有
-C/C++接口时.其他部分全部用Python糊!</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>最后想发表一番感慨: 虽然这只是我的大二暑假, 但实际上我在高三暑假就决定了以后研究机器人, 为此学习了许多, 做着各种各样的准备. 比如我学习了Python, 也针对机器人中很常用到的机器学习和CV分别做了一个小项目 (<a href="https://github.com/LeoJhonSong/SVM-Learning-Sample" target="_blank" rel="noopener">我的机器学习小项目</a>, <a href="https://github.com/LeoJhonSong/Fingertip-Drawboard" target="_blank" rel="noopener">我的CV小项目</a>)来学习了解, 比如我查阅了许多软体机器人的文献, 也曾自己试着<a href="https://leojhonsong.github.io/zh-CN/2018/12/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/">用仿真软件仿真软体机器人</a>,
-以及即便曾经的我<a href="https://leojhonsong.github.io/zh-CN/2019/05/17/为什么我用Linux而不是Windows/">曾找各种理由来说服自己用Linux</a> (当然后来就离不开Linux了)… 总之我曾努力学习过的东西都确实地派上了用场, 我感到自己的努力没有白费💪 我会再接再厉!</p>
-<h2 id="关于家教"><a href="#关于家教" class="headerlink" title="关于家教"></a>关于家教</h2><p>另外我在北京这段时间在一个叫<strong>易教网</strong>的平台接了几份家教的工作. 经过了这一段时间的体验我觉得当家教是一件既有趣又促进自己学习还赚钱的事.</p>
-<h2 id="关于北京"><a href="#关于北京" class="headerlink" title="关于北京"></a>关于北京</h2><p>第一次在北京待一个半月, 见识到了首都的另一面. 以前我是个京黑, 这次在北京的体验改变了我的印象, 让我变成了真*京黑😁 是的印象一点也没有变好! 或者说见到了好的一面,
-但也加深了负面印象.</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>随笔</category>
       </categories>
   </entry>
   <entry>
@@ -3631,44 +3631,6 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
         <category>杂记</category>
         <category>语言</category>
         <category>Markdown</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>意识到了我的中文有多差</title>
-    <url>/zh-CN/2019/09/13/%E6%84%8F%E8%AF%86%E5%88%B0%E4%BA%86%E6%88%91%E7%9A%84%E4%B8%AD%E6%96%87%E6%9C%89%E5%A4%9A%E5%B7%AE/</url>
-    <content><![CDATA[<p>前阵子别人给我分享了<a href="https://www.byvoid.com/" target="_blank" rel="noopener">这个博客</a>, 看了以后我意识到自己语文学得太不到家了, 实在对不起初高中语文老师!</p>
-<a id="more"></a>
-
-<p>先不提这个博主喜爱音韵学, 单说同样是理工科出身的博主, 我的表达能力和思想深度比他差了太多.</p>
-<p>通常在解释一段程序时我会想好一会来组织语言, <strong>将我使用这段代码的意图尽可能体现出来, 描述尽可能准确, 有条理</strong>. 我对此体会良多: 当我刚开始接触一个领域, 在网上看资料时常常无法确定我理解得对不对, 需要结合多篇文章才能确定. 这是因为<strong>作者们自身接触这些许久, 无意识的省略了一些话</strong>. 但我认为文章既然要写出来就应该能让所有人无障碍的看懂, 不然只给自己看的话何不就放到自己github仓库?</p>
-<p><a href="https://akaedu.github.io/book/index.html" target="_blank" rel="noopener">Linux C编程一站式学习</a>和
-<a href="https://www.pyimagesearch.com" target="_blank" rel="noopener">pyimagesearch</a>的文章就让人觉得文章读起来很流畅很易懂, 不会浪费时间在理解文章上. 比如<a href="https://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/" target="_blank" rel="noopener">这篇文章</a>
-曾带我轻松完成了困扰了我好几天的如何在树莓派上安装OpenCV的问题. 这个问题现在当然不会像前年那样困扰我, 但能有这样一篇好懂的文章指导我迅速完成我当然是十分乐意的.</p>
-<p>因此我总是试图让我的文章能达到同样水准. 但我发现这很难. 说来可笑, 很多时候我甚至不知道怎么样去描述我的操作🤦‍ 而让文章有条理同样不是一件容易的事. 我感觉这和写一篇议论文围绕一个中心套用总分总的文章结构就可以写不一样, 我总是喜欢把一个主题的东西一股脑放到一篇文章里, 但我发现一方面<strong>文章太长会让人失去读下去的兴趣</strong>, 另一方面<strong>什么东西都往一篇文章里放会让文章失其重点</strong>. 我又不是在写书, 不如将一个主题的内容再按照几个重点分成几篇文章. 可<strong>将一篇文章分割为主题更明确的多篇文章</strong>对我来说并不是易事…</p>
-<p>至于说<strong>byvoid</strong>的文章有思想深度, 从<a href="https://www.byvoid.com/zht/blog/why-the-usa-is-so-boring-1" target="_blank" rel="noopener">这篇文章</a>可见一斑. 我也喜欢旅游, 并且因为我小时候见了许多很美的自然景观, 我更倾向于体验一处的文化. 到一处游览后能有像<strong>byvoid</strong>这种深度的心得正是我所想努力做到的. 但一是我的文笔不够好,
-二是我并没有做功课去研究旅游地的文化.</p>
-<p>从<strong>byvoid</strong>的文章能体会到中文的魅力: 用得好了读起来十分流畅, 四字成语言简意赅地表达出了意思, 很多用以佐证的诗句更是回味无穷… 这只是我个人的体会, 我也知道很粗浅. 当然我并不后悔初高中没有投入大量精力背诵各种诗句, 品鉴各大文豪的文章: 体会不到这些的魅力时我背下来又有什么用呢?</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>随笔</category>
       </categories>
   </entry>
   <entry>
@@ -3949,6 +3911,44 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
       </categories>
   </entry>
   <entry>
+    <title>意识到了我的中文有多差</title>
+    <url>/zh-CN/2019/09/13/%E6%84%8F%E8%AF%86%E5%88%B0%E4%BA%86%E6%88%91%E7%9A%84%E4%B8%AD%E6%96%87%E6%9C%89%E5%A4%9A%E5%B7%AE/</url>
+    <content><![CDATA[<p>前阵子别人给我分享了<a href="https://www.byvoid.com/" target="_blank" rel="noopener">这个博客</a>, 看了以后我意识到自己语文学得太不到家了, 实在对不起初高中语文老师!</p>
+<a id="more"></a>
+
+<p>先不提这个博主喜爱音韵学, 单说同样是理工科出身的博主, 我的表达能力和思想深度比他差了太多.</p>
+<p>通常在解释一段程序时我会想好一会来组织语言, <strong>将我使用这段代码的意图尽可能体现出来, 描述尽可能准确, 有条理</strong>. 我对此体会良多: 当我刚开始接触一个领域, 在网上看资料时常常无法确定我理解得对不对, 需要结合多篇文章才能确定. 这是因为<strong>作者们自身接触这些许久, 无意识的省略了一些话</strong>. 但我认为文章既然要写出来就应该能让所有人无障碍的看懂, 不然只给自己看的话何不就放到自己github仓库?</p>
+<p><a href="https://akaedu.github.io/book/index.html" target="_blank" rel="noopener">Linux C编程一站式学习</a>和
+<a href="https://www.pyimagesearch.com" target="_blank" rel="noopener">pyimagesearch</a>的文章就让人觉得文章读起来很流畅很易懂, 不会浪费时间在理解文章上. 比如<a href="https://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/" target="_blank" rel="noopener">这篇文章</a>
+曾带我轻松完成了困扰了我好几天的如何在树莓派上安装OpenCV的问题. 这个问题现在当然不会像前年那样困扰我, 但能有这样一篇好懂的文章指导我迅速完成我当然是十分乐意的.</p>
+<p>因此我总是试图让我的文章能达到同样水准. 但我发现这很难. 说来可笑, 很多时候我甚至不知道怎么样去描述我的操作🤦‍ 而让文章有条理同样不是一件容易的事. 我感觉这和写一篇议论文围绕一个中心套用总分总的文章结构就可以写不一样, 我总是喜欢把一个主题的东西一股脑放到一篇文章里, 但我发现一方面<strong>文章太长会让人失去读下去的兴趣</strong>, 另一方面<strong>什么东西都往一篇文章里放会让文章失其重点</strong>. 我又不是在写书, 不如将一个主题的内容再按照几个重点分成几篇文章. 可<strong>将一篇文章分割为主题更明确的多篇文章</strong>对我来说并不是易事…</p>
+<p>至于说<strong>byvoid</strong>的文章有思想深度, 从<a href="https://www.byvoid.com/zht/blog/why-the-usa-is-so-boring-1" target="_blank" rel="noopener">这篇文章</a>可见一斑. 我也喜欢旅游, 并且因为我小时候见了许多很美的自然景观, 我更倾向于体验一处的文化. 到一处游览后能有像<strong>byvoid</strong>这种深度的心得正是我所想努力做到的. 但一是我的文笔不够好,
+二是我并没有做功课去研究旅游地的文化.</p>
+<p>从<strong>byvoid</strong>的文章能体会到中文的魅力: 用得好了读起来十分流畅, 四字成语言简意赅地表达出了意思, 很多用以佐证的诗句更是回味无穷… 这只是我个人的体会, 我也知道很粗浅. 当然我并不后悔初高中没有投入大量精力背诵各种诗句, 品鉴各大文豪的文章: 体会不到这些的魅力时我背下来又有什么用呢?</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
     <title>我将Shell换为了zsh</title>
     <url>/zh-CN/2019/09/02/%E6%88%91%E5%B0%86shell%E6%8D%A2%E4%B8%BA%E4%BA%86zsh/</url>
     <content><![CDATA[<p>我把shell从<strong>bash</strong>换到<strong>zsh</strong>了. 原本我是根本没动过换shell的念头的, 但因为这段时间用的笔记本被别人装好了zsh, 我就将就着用了, 谁知真香…</p>
@@ -4135,6 +4135,57 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
       </script>]]></content>
       <categories>
         <category>杂记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>文件命名规则总结</title>
+    <url>/zh-CN/2020/02/06/%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p>如果待处理文件的文件名中含有一些特殊字符, 有许多程序会因为考虑不完善 (或者说程序员偷懒) 而出现识别不到文件, 文件处理出错, 结果不符合意图, 甚至程序崩溃的问题. 而为了方便自己偷懒, 我总结了一些命名文件的规则.</p>
+<a id="more"></a>
+
+<p>💡 我并不是说文件名命名必须遵循这些准则, 只是在程序设计/输入不够严谨 (也就是想偷懒的情况下) 这样的命名准则是最不容易导致错误的👍</p>
+<h2 id="文件名中只应该包含数字-字母-汉字-下划线-连字符-句点"><a href="#文件名中只应该包含数字-字母-汉字-下划线-连字符-句点" class="headerlink" title="文件名中只应该包含数字, 字母, 汉字, 下划线, 连字符, 句点"></a>文件名中只应该包含数字, 字母, 汉字, 下划线, 连字符, 句点</h2><p>许多特殊字符会让程序出错, 下面举几个例子:</p>
+<ul>
+<li><code>文件名里 有空格.jpg</code> 这样的文件名很可能让程序以为要处理的文件的名字是<code>文件名里</code>, 因而找不到文件或者处理了错误的文件. 而<code>有空格.jpg</code>会被当成无效参数, 多余字符.</li>
+<li><code>文件名里/有左斜杠.avi</code> 这样的文件名在很多程序里会被认为是一个名为<code>文件名里</code>的文件夹下的<code>有左斜杠.avi</code>文件, 因此可能得到<strong>没有<code>文件名里</code>这个文件夹</strong>的报错</li>
+<li><code>文件名里(有)括号.gif</code> 比如在markdown文档中用<code>![](文件名里(有)括号.gif)</code>来引用这个gif, 在有的markdown渲染器会被渲染为<strong>)括号.gif</strong>. 因为前一个)被认为是markdown引用图片的<code>![]()</code>语法的结束符了.</li>
+<li>在一些较老的程序中汉字也算是一种特殊字符. 比如在python2中如果不特意注意编码格式转换问题的话中文很容易被读取为乱码. 当然现在的程序大多是兼容汉字的. (Python2在已经终止维护了🕯)</li>
+</ul>
+<blockquote>
+<p>空格用下划线代替, 其他字符用连字符代替</p>
+</blockquote>
+<p>如果你原本想要包含这些特殊字符在文件名中来表达一些逻辑关系, 我的做法是用_来代替空格, 用-来代替其他字符.</p>
+<h2 id="当文件名包含有排序意图的数字时应当用阿拉伯数字而不是汉字-并且位数不足的用0在左侧占位"><a href="#当文件名包含有排序意图的数字时应当用阿拉伯数字而不是汉字-并且位数不足的用0在左侧占位" class="headerlink" title="当文件名包含有排序意图的数字时应当用阿拉伯数字而不是汉字, 并且位数不足的用0在左侧占位"></a>当文件名包含有排序意图的数字时应当用阿拉伯数字而不是汉字, 并且位数不足的用0在左侧占位</h2><p>曾经我很困惑下面这两种情况的文件夹排序为什么不是从小到大的, 后来我发现前者是因为文件系统<strong>不把汉字数字作为排序用的数字</strong> (有意思的是我Ubuntu系统和Windows系统里图一情况排序不一样), 后一个是因为文件系统是<strong>逐字比较</strong>而不是把一串数字作为一个数 (windows系统和Ubuntu系统排序图2情况时都能正常排序)</p>
+<blockquote>
+<p>图一 Ubuntu系统下含汉字数字文件名排序</p>
+</blockquote>
+<p><img src="%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/image-20200207181027438.png" alt=""></p>
+<blockquote>
+<p>图二 百度云里含数字文件名排序</p>
+</blockquote>
+<p><img src="%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/Screenshot_20200207_181843.jpg" alt=""></p>
+<p>因此如果想在文件名中包含有排序功能的数字, 或者表达顺序之意时应当<strong>用阿拉伯数字而不是汉字, 并且位数不足的用0在左侧占位</strong>.</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>技巧</category>
       </categories>
   </entry>
   <entry>
@@ -4680,9 +4731,10 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
           });
       </script>]]></content>
       <categories>
+        <category>工具</category>
+        <category>软件配置</category>
         <category>操作系统</category>
         <category>Linux</category>
-        <category>软件</category>
       </categories>
   </entry>
   <entry>
@@ -5041,57 +5093,6 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
       </script>]]></content>
       <categories>
         <category>健康</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>文件命名规则总结</title>
-    <url>/zh-CN/2020/02/06/%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<p>如果待处理文件的文件名中含有一些特殊字符, 有许多程序会因为考虑不完善 (或者说程序员偷懒) 而出现识别不到文件, 文件处理出错, 结果不符合意图, 甚至程序崩溃的问题. 而为了方便自己偷懒, 我总结了一些命名文件的规则.</p>
-<a id="more"></a>
-
-<p>💡 我并不是说文件名命名必须遵循这些准则, 只是在程序设计/输入不够严谨 (也就是想偷懒的情况下) 这样的命名准则是最不容易导致错误的👍</p>
-<h2 id="文件名中只应该包含数字-字母-汉字-下划线-连字符-句点"><a href="#文件名中只应该包含数字-字母-汉字-下划线-连字符-句点" class="headerlink" title="文件名中只应该包含数字, 字母, 汉字, 下划线, 连字符, 句点"></a>文件名中只应该包含数字, 字母, 汉字, 下划线, 连字符, 句点</h2><p>许多特殊字符会让程序出错, 下面举几个例子:</p>
-<ul>
-<li><code>文件名里 有空格.jpg</code> 这样的文件名很可能让程序以为要处理的文件的名字是<code>文件名里</code>, 因而找不到文件或者处理了错误的文件. 而<code>有空格.jpg</code>会被当成无效参数, 多余字符.</li>
-<li><code>文件名里/有左斜杠.avi</code> 这样的文件名在很多程序里会被认为是一个名为<code>文件名里</code>的文件夹下的<code>有左斜杠.avi</code>文件, 因此可能得到<strong>没有<code>文件名里</code>这个文件夹</strong>的报错</li>
-<li><code>文件名里(有)括号.gif</code> 比如在markdown文档中用<code>![](文件名里(有)括号.gif)</code>来引用这个gif, 在有的markdown渲染器会被渲染为<strong>)括号.gif</strong>. 因为前一个)被认为是markdown引用图片的<code>![]()</code>语法的结束符了.</li>
-<li>在一些较老的程序中汉字也算是一种特殊字符. 比如在python2中如果不特意注意编码格式转换问题的话中文很容易被读取为乱码. 当然现在的程序大多是兼容汉字的. (Python2在已经终止维护了🕯)</li>
-</ul>
-<blockquote>
-<p>空格用下划线代替, 其他字符用连字符代替</p>
-</blockquote>
-<p>如果你原本想要包含这些特殊字符在文件名中来表达一些逻辑关系, 我的做法是用_来代替空格, 用-来代替其他字符.</p>
-<h2 id="当文件名包含有排序意图的数字时应当用阿拉伯数字而不是汉字-并且位数不足的用0在左侧占位"><a href="#当文件名包含有排序意图的数字时应当用阿拉伯数字而不是汉字-并且位数不足的用0在左侧占位" class="headerlink" title="当文件名包含有排序意图的数字时应当用阿拉伯数字而不是汉字, 并且位数不足的用0在左侧占位"></a>当文件名包含有排序意图的数字时应当用阿拉伯数字而不是汉字, 并且位数不足的用0在左侧占位</h2><p>曾经我很困惑下面这两种情况的文件夹排序为什么不是从小到大的, 后来我发现前者是因为文件系统<strong>不把汉字数字作为排序用的数字</strong> (有意思的是我Ubuntu系统和Windows系统里图一情况排序不一样), 后一个是因为文件系统是<strong>逐字比较</strong>而不是把一串数字作为一个数 (windows系统和Ubuntu系统排序图2情况时都能正常排序)</p>
-<blockquote>
-<p>图一 Ubuntu系统下含汉字数字文件名排序</p>
-</blockquote>
-<p><img src="%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/image-20200207181027438.png" alt=""></p>
-<blockquote>
-<p>图二 百度云里含数字文件名排序</p>
-</blockquote>
-<p><img src="%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/Screenshot_20200207_181843.jpg" alt=""></p>
-<p>因此如果想在文件名中包含有排序功能的数字, 或者表达顺序之意时应当<strong>用阿拉伯数字而不是汉字, 并且位数不足的用0在左侧占位</strong>.</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>技巧</category>
       </categories>
   </entry>
 </search>

@@ -227,7 +227,7 @@
       
     
 
-    <a href="/zh-CN/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">39</span></a>
+    <a href="/zh-CN/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">37</span></a>
 
   </li>
       
@@ -486,10 +486,10 @@ Segment). 和其他段一样, 堆栈段也有自己的大小, 不能被越界访
 -Wl,--stack=16777216</code>, 这样栈大小就变为16MB</p>
 <p>💡 栈溢出不一定是递归调用过多导致的, 也可能是局部变量太大. 因此<strong>较大的数组建议储存为全局变量</strong>.</p>
 <p><strong>栈</strong>是由编译器在需要时分配的, 不需要时自动清除的变量存储区. 里面的变量通常是局部变量, 函数参数等. <strong>堆</strong>是由<code>malloc()</code>函数分配的内存块,内存释放由程序员手动控制, 在C语言由<code>free()</code>完成.</p>
-<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>较大的数组时应在main函数之外声明.</p>
-<p><code>memset(a, 0, sizeof(a))</code>能方便地把数组a清零,它在<strong>string.h</strong>中定义.</p>
-<p>用strcpy(a, b), strcmp(a, b), strcat(a, b)来执行“赋值”、“比较”和“连接”操作, 在
-<strong>string.h</strong>中定义</p>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>较大的数组应在main函数之外声明.</p>
+<p><code>memset(a, 0, sizeof(a))</code>能方便地把数组a清零,这个函数在<strong>string.h</strong>里.</p>
+<p>用<code>strcpy(a, b)</code>, <code>strcmp(a, b)</code>, <code>strcat(a, b)</code>来执行“赋值”、“比较”和“连接”操作, 这三个函数也在
+<strong>string.h</strong>中</p>
 <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>C语言中的字符串是以“\0”结尾的字符数组</p>
 <p>不同操作系统的回车换行符是不一致的. Windows是“\r”和“\n”两个字符,Linux是“\n”,而
 MacOS是“\r”. 如果在Windows下读取Windows文件, fgetc和getchar会把“\r””吃掉”, 只剩下“\n”; 但如果要在Linux下读取同样一个文件, 它们会忠实地先读取“\r”, 然后才是“\n”.</p>
@@ -819,7 +819,7 @@ C++程序使用的库链接. <code>gcc</code>把后缀为 <strong>.c</strong> �
             <a href="/zh-CN/categories/">
           
         
-        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
