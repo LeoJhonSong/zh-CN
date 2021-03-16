@@ -438,38 +438,6 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
       </categories>
   </entry>
   <entry>
-    <title>几个提高效率的小技巧</title>
-    <url>/zh-CN/2019/01/18/%E5%87%A0%E4%B8%AA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<p>记录和分享一些我觉得提高了自己效率的技巧。</p>
-<a id="more"></a>
-
-<h1 id="虚拟桌面分割任务"><a href="#虚拟桌面分割任务" class="headerlink" title="虚拟桌面分割任务"></a>虚拟桌面分割任务</h1><p>Windows有一个我觉得蛮有意思的功能, <strong>虚拟桌面</strong>. 按 <code>Windows+Tab</code> 或者点击任务栏上有个长得有点奇怪的图标可以打开<strong>任务视图</strong>, 然后可以新建桌面, 管理桌面. 通过把应用界面分别放到不同桌面可以让任务栏不会堆积很多页面. 有时候同时写多个项目的时候会用浏览器搜好几个主题 (是的我就是浏览器选手) 如果都放到一起太乱太多了, 因此放到不同桌面是个非常不错的选择. 我经常将娱乐的玩意, 什么网易云, 百度云之类放一个桌面, 然后一个项目放一个桌面, 心情愉悦让效率大大提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<h1 id="更改输入法符号"><a href="#更改输入法符号" class="headerlink" title="更改输入法符号"></a>更改输入法符号</h1><p>有时, 比如写中文文档时, 我们需要频繁切换中英文输入法, 而代码中打符号的时候我总是忘记切换成英文输入法, 打出万恶的中文字符, 比如；什么的. 而我发现快捷键 <code>Ctrl+.</code>可以只切换符号的中英文! 也就是说你可以在中文输入法下打出英文标点 (比如我的句号是英文句号). 这样就解决了中英文标点易混淆的烦恼<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<!-- TODO -->
-<!-- chrom --><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>技巧</category>
-      </categories>
-  </entry>
-  <entry>
     <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
     <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<div align="right">Language:
@@ -511,6 +479,38 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
         <category>工具</category>
         <category>Web</category>
         <category>软件配置</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>几个提高效率的小技巧</title>
+    <url>/zh-CN/2019/01/18/%E5%87%A0%E4%B8%AA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>记录和分享一些我觉得提高了自己效率的技巧。</p>
+<a id="more"></a>
+
+<h1 id="虚拟桌面分割任务"><a href="#虚拟桌面分割任务" class="headerlink" title="虚拟桌面分割任务"></a>虚拟桌面分割任务</h1><p>Windows有一个我觉得蛮有意思的功能, <strong>虚拟桌面</strong>. 按 <code>Windows+Tab</code> 或者点击任务栏上有个长得有点奇怪的图标可以打开<strong>任务视图</strong>, 然后可以新建桌面, 管理桌面. 通过把应用界面分别放到不同桌面可以让任务栏不会堆积很多页面. 有时候同时写多个项目的时候会用浏览器搜好几个主题 (是的我就是浏览器选手) 如果都放到一起太乱太多了, 因此放到不同桌面是个非常不错的选择. 我经常将娱乐的玩意, 什么网易云, 百度云之类放一个桌面, 然后一个项目放一个桌面, 心情愉悦让效率大大提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<h1 id="更改输入法符号"><a href="#更改输入法符号" class="headerlink" title="更改输入法符号"></a>更改输入法符号</h1><p>有时, 比如写中文文档时, 我们需要频繁切换中英文输入法, 而代码中打符号的时候我总是忘记切换成英文输入法, 打出万恶的中文字符, 比如；什么的. 而我发现快捷键 <code>Ctrl+.</code>可以只切换符号的中英文! 也就是说你可以在中文输入法下打出英文标点 (比如我的句号是英文句号). 这样就解决了中英文标点易混淆的烦恼<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<!-- TODO -->
+<!-- chrom --><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>技巧</category>
       </categories>
   </entry>
   <entry>
@@ -3247,6 +3247,63 @@ MATLAB以及运行脚本. 我发现这是可行的:</p>
       </categories>
   </entry>
   <entry>
+    <title>记大二暑假北航实习</title>
+    <url>/zh-CN/2019/08/05/%E8%AE%B0%E5%A4%A7%E4%BA%8C%E6%9A%91%E5%81%87%E5%8C%97%E8%88%AA%E5%AE%9E%E4%B9%A0/</url>
+    <content><![CDATA[<p>这个暑假我来到了北航<a href="http://softrobotics.buaa.edu.cn/peoples/peoples_ch/index.htm" target="_blank" rel="noopener">仿生软体机器人实验室</a>学习, 收获颇多.
+结实了一群有趣的人, 得到了一些答案, 看到了更明确的方向, 坚定了我研究软体机器人的信念💪</p>
+<a id="more"></a>
+
+<p>如今我愈发觉得玄幻小说里一种很玄的情节其实很现实: <strong>历练总是能有些机缘!</strong></p>
+<p>有些事情在事前真的无法预测, 比如在我这次前往北京学习一个半月之前, 我是完全想不到我能有什么收获的, 而最终的收获多到一两句说不清. <strong>如果在家仔细思考, 总会觉得一个半月那样短, 去了又能怎样?</strong> 再引用一句玄幻小说里的话:</p>
+<blockquote>
+<p>我辈修士, 当与天争命!</p>
+</blockquote>
+<p>事实证明, 只要自己主动抓住各种机会一个半月并不那样短暂.</p>
+<p>这一个半月我干了许多事: 我浇筑了一套软体臂, 软体爪, 我试着帮实验室的学长解决实验面临的困难, 我每天站着巨久调试了半个月机器人, 我随实验室的队伍到大连参加了一个难度很高的比赛, 我在大连每天白嫖各种海鲜, 我和在中科院中关村学生公寓的室友相处不错还一块深夜吃了烧烤, 我给好几人上了家教课, 我经常和在北京的亲属玩,我, 我试图减肥并失败
+🤦‍</p>
+<h2 id="关于学习收获"><a href="#关于学习收获" class="headerlink" title="关于学习收获"></a>关于学习收获</h2><h3 id="在实验室的体会"><a href="#在实验室的体会" class="headerlink" title="在实验室的体会"></a>在实验室的体会</h3><p>实际上在前往文老师的实验室前我并没有真正接触到软体机器人: 只能自己看看资料算什么? 但我也很无奈啊, 想做的实验材料就动辄几千, 而花销小的实验一般是真-实验室阶段,
+我一时半会研究不出什么名堂. 更何况我在电子科大并没有找到相关团队. 而到文老师实验室这段时间我不仅是更正了一些对软体机器人的理解, 更是对科研有了一些概念.</p>
+<p>很幸运的是实验室所有人人都很好, 我很快就融入其中, 也有幸和几位学长探讨了他们的工作. 谢博士的废寝忘食令我记忆犹新. 好几次谢博因为想解决问题而晚去吃饭. 谢博也很虚心, 因为并不是电气专业出身, 实验遇到电气方面问题还拉我一起研究. 辉哥则和我聊了很多过来人的经验, 他建议说在国外科研更加自由, 能支持更基础的研究方向, 杂事更少, 老师和学生的关系更像合作伙伴, 而最后如果能留在国外就不用按国内五年一个职位的累死累活竞争等等. 结对调试机器人的同样来自四川的陈学长则和我分享了许多学习经验, 在我看来他的学习经历实在是一次逆袭. 而见到文老师前我同样没想到是这样一位爱夸人的总是在笑的老师. 这一个半月我更多的时间是和刘学长在一起, 他也教了我很多, 比如如何浇筑
+(我一个学电气的是完全没做过这种事的), 而来实验室前的许多疑问我也从他那得到了解答
+.</p>
+<p>亲身站在实验室里我更直观的体会到了软体机器人是怎样的一个领域. 虽然刘学长觉得软体机器人现在发展趋势缓下来了, 但我觉得这个领域仍在萌芽阶段. 从我了解到的成果和在实验室近距离看学长们的工作来看, 除了软体抓手现在已经商业化了其他成果仍离走出实验室差很远, 有些甚至只是证明了一些结构的潜力, 说白了目前基本是空架子. 就比如实验室花了好几万买的液态金属打印机, 不光墨水贵, 还经常不出墨, 出墨也不够理想, 和谢博一起做实验的袁学长说某些方面甚至可能比不上以前手工浇筑的效果. 不过最近清华大学刚研发出了类似喷墨打印机原理的液态金属打印方式, 看论文效果很不错, 期待能尽早推出产品.
+目前的成果之所以离投入应用还远一方面是因为目前的软体机器人因为使用的驱动方式, 能提供的驱动力普遍很小, 基本没有应用场景, 另一方面是因为目前软体机器人的控制基本是黑暗一片, 就算是一段较早出现的软体臂也没有一个称得上很好的闭环控制方法. 而针对非结构性环境的软体机器人如果连闭环都做不到还有何用? 虽然目前也有好几项人来控制, 机器人负责在人类很难触及的环境 (比如人体内, 十分狭窄的缝隙, 20m深的海底) 执行的成果, 但我认为自主始终是趋势.</p>
+<p>另外一点在实验室学到的, 觉得很有意思的是如何记<strong>组会记录</strong>. 首先记肯定是要记的,
+不然如果讨论的不是自己在参与的项目时岂不是在浪费时间? 我认为组会本就是集思广益大家相互交流经验的地方 (这点在我们组里也很明显, 每个人讲完自己的项目进度后老师会问大家的看法和建议), 因此如果在组会中只注意讲好自己的项目就本末倒置了. 记组会记录一方面帮助自己整理思路, 看看能给正在讲的同学什么帮助, 另一方面讲大家的经验记录下来,这样以后自己遇到类似问题就能有突破口, 另外老师有时候也会给一些写论文方面的指导,也值得记录. 我觉得记组会记录最好用OneNote这种手写的电子档, 自由度高, 适合写写画画整理思路, 电子档也更利于保存.</p>
+<h3 id="对C-的体会"><a href="#对C-的体会" class="headerlink" title="对C++的体会"></a>对C++的体会</h3><p>再有就是我学习C++的速度还是令我觉得值得表扬的😆 实际上在这个暑假之前我是不会C++
+的,顶多是大一上的时候学了最基础的C. 我是这个暑假开始时从学长那里继承了本紫色的**
+算法竞赛入门经典<strong>巩固了下C语言, 了解了一些C++. 而到了实验室先是照着网上的模板写了个C++的TCP server, 然后和中科院的学长一起负责ROV的控制代码 (纯C++). 说实话一方面是大一上扎实的C基础帮了大忙 (我明明每一科都能很好地应用可我就是考不好真的好气), 另一方面则是我浏览器程序员的特长: 上网查资料发挥了巨大作用😁 这真的是现学现卖.好在学长把核心代码都写好了, 我就写了写语法很简单的控制流程什么的. 期间也因为不熟悉C++遇到了很多奇葩问题, 比如就因为在</strong>多线程C++程序**中用错了计时函数导致了计时不准, 程序崩溃等各种迷之错误… 反正一波C++速成后我对C++的印象极差, 标准库很落后, 坑很多, 语法很啰嗦 (和我最爱的Python比), 环境配置也比Python开发麻烦等等…</p>
+<p>以后我自己写程序用到C/C++顶多是要求算力部分用C/C++来加速, 或者用到的工具只有
+C/C++接口时.其他部分全部用Python糊!</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>最后想发表一番感慨: 虽然这只是我的大二暑假, 但实际上我在高三暑假就决定了以后研究机器人, 为此学习了许多, 做着各种各样的准备. 比如我学习了Python, 也针对机器人中很常用到的机器学习和CV分别做了一个小项目 (<a href="https://github.com/LeoJhonSong/SVM-Learning-Sample" target="_blank" rel="noopener">我的机器学习小项目</a>, <a href="https://github.com/LeoJhonSong/Fingertip-Drawboard" target="_blank" rel="noopener">我的CV小项目</a>)来学习了解, 比如我查阅了许多软体机器人的文献, 也曾自己试着<a href="https://leojhonsong.github.io/zh-CN/2018/12/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/">用仿真软件仿真软体机器人</a>,
+以及即便曾经的我<a href="https://leojhonsong.github.io/zh-CN/2019/05/17/为什么我用Linux而不是Windows/">曾找各种理由来说服自己用Linux</a> (当然后来就离不开Linux了)… 总之我曾努力学习过的东西都确实地派上了用场, 我感到自己的努力没有白费💪 我会再接再厉!</p>
+<h2 id="关于家教"><a href="#关于家教" class="headerlink" title="关于家教"></a>关于家教</h2><p>另外我在北京这段时间在一个叫<strong>易教网</strong>的平台接了几份家教的工作. 经过了这一段时间的体验我觉得当家教是一件既有趣又促进自己学习还赚钱的事.</p>
+<h2 id="关于北京"><a href="#关于北京" class="headerlink" title="关于北京"></a>关于北京</h2><p>第一次在北京待一个半月, 见识到了首都的另一面. 以前我是个京黑, 这次在北京的体验改变了我的印象, 让我变成了真*京黑😁 是的印象一点也没有变好! 或者说见到了好的一面,
+但也加深了负面印象.</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
     <title>初学Socket通信</title>
     <url>/zh-CN/2019/08/07/%E5%88%9D%E5%AD%A6socket%E9%80%9A%E4%BF%A1/</url>
     <content><![CDATA[<p>TODO</p>
@@ -3577,101 +3634,6 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
       </categories>
   </entry>
   <entry>
-    <title>记大二暑假北航实习</title>
-    <url>/zh-CN/2019/08/05/%E8%AE%B0%E5%A4%A7%E4%BA%8C%E6%9A%91%E5%81%87%E5%8C%97%E8%88%AA%E5%AE%9E%E4%B9%A0/</url>
-    <content><![CDATA[<p>这个暑假我来到了北航<a href="http://softrobotics.buaa.edu.cn/peoples/peoples_ch/index.htm" target="_blank" rel="noopener">仿生软体机器人实验室</a>学习, 收获颇多.
-结实了一群有趣的人, 得到了一些答案, 看到了更明确的方向, 坚定了我研究软体机器人的信念💪</p>
-<a id="more"></a>
-
-<p>如今我愈发觉得玄幻小说里一种很玄的情节其实很现实: <strong>历练总是能有些机缘!</strong></p>
-<p>有些事情在事前真的无法预测, 比如在我这次前往北京学习一个半月之前, 我是完全想不到我能有什么收获的, 而最终的收获多到一两句说不清. <strong>如果在家仔细思考, 总会觉得一个半月那样短, 去了又能怎样?</strong> 再引用一句玄幻小说里的话:</p>
-<blockquote>
-<p>我辈修士, 当与天争命!</p>
-</blockquote>
-<p>事实证明, 只要自己主动抓住各种机会一个半月并不那样短暂.</p>
-<p>这一个半月我干了许多事: 我浇筑了一套软体臂, 软体爪, 我试着帮实验室的学长解决实验面临的困难, 我每天站着巨久调试了半个月机器人, 我随实验室的队伍到大连参加了一个难度很高的比赛, 我在大连每天白嫖各种海鲜, 我和在中科院中关村学生公寓的室友相处不错还一块深夜吃了烧烤, 我给好几人上了家教课, 我经常和在北京的亲属玩,我, 我试图减肥并失败
-🤦‍</p>
-<h2 id="关于学习收获"><a href="#关于学习收获" class="headerlink" title="关于学习收获"></a>关于学习收获</h2><h3 id="在实验室的体会"><a href="#在实验室的体会" class="headerlink" title="在实验室的体会"></a>在实验室的体会</h3><p>实际上在前往文老师的实验室前我并没有真正接触到软体机器人: 只能自己看看资料算什么? 但我也很无奈啊, 想做的实验材料就动辄几千, 而花销小的实验一般是真-实验室阶段,
-我一时半会研究不出什么名堂. 更何况我在电子科大并没有找到相关团队. 而到文老师实验室这段时间我不仅是更正了一些对软体机器人的理解, 更是对科研有了一些概念.</p>
-<p>很幸运的是实验室所有人人都很好, 我很快就融入其中, 也有幸和几位学长探讨了他们的工作. 谢博士的废寝忘食令我记忆犹新. 好几次谢博因为想解决问题而晚去吃饭. 谢博也很虚心, 因为并不是电气专业出身, 实验遇到电气方面问题还拉我一起研究. 辉哥则和我聊了很多过来人的经验, 他建议说在国外科研更加自由, 能支持更基础的研究方向, 杂事更少, 老师和学生的关系更像合作伙伴, 而最后如果能留在国外就不用按国内五年一个职位的累死累活竞争等等. 结对调试机器人的同样来自四川的陈学长则和我分享了许多学习经验, 在我看来他的学习经历实在是一次逆袭. 而见到文老师前我同样没想到是这样一位爱夸人的总是在笑的老师. 这一个半月我更多的时间是和刘学长在一起, 他也教了我很多, 比如如何浇筑
-(我一个学电气的是完全没做过这种事的), 而来实验室前的许多疑问我也从他那得到了解答
-.</p>
-<p>亲身站在实验室里我更直观的体会到了软体机器人是怎样的一个领域. 虽然刘学长觉得软体机器人现在发展趋势缓下来了, 但我觉得这个领域仍在萌芽阶段. 从我了解到的成果和在实验室近距离看学长们的工作来看, 除了软体抓手现在已经商业化了其他成果仍离走出实验室差很远, 有些甚至只是证明了一些结构的潜力, 说白了目前基本是空架子. 就比如实验室花了好几万买的液态金属打印机, 不光墨水贵, 还经常不出墨, 出墨也不够理想, 和谢博一起做实验的袁学长说某些方面甚至可能比不上以前手工浇筑的效果. 不过最近清华大学刚研发出了类似喷墨打印机原理的液态金属打印方式, 看论文效果很不错, 期待能尽早推出产品.
-目前的成果之所以离投入应用还远一方面是因为目前的软体机器人因为使用的驱动方式, 能提供的驱动力普遍很小, 基本没有应用场景, 另一方面是因为目前软体机器人的控制基本是黑暗一片, 就算是一段较早出现的软体臂也没有一个称得上很好的闭环控制方法. 而针对非结构性环境的软体机器人如果连闭环都做不到还有何用? 虽然目前也有好几项人来控制, 机器人负责在人类很难触及的环境 (比如人体内, 十分狭窄的缝隙, 20m深的海底) 执行的成果, 但我认为自主始终是趋势.</p>
-<p>另外一点在实验室学到的, 觉得很有意思的是如何记<strong>组会记录</strong>. 首先记肯定是要记的,
-不然如果讨论的不是自己在参与的项目时岂不是在浪费时间? 我认为组会本就是集思广益大家相互交流经验的地方 (这点在我们组里也很明显, 每个人讲完自己的项目进度后老师会问大家的看法和建议), 因此如果在组会中只注意讲好自己的项目就本末倒置了. 记组会记录一方面帮助自己整理思路, 看看能给正在讲的同学什么帮助, 另一方面讲大家的经验记录下来,这样以后自己遇到类似问题就能有突破口, 另外老师有时候也会给一些写论文方面的指导,也值得记录. 我觉得记组会记录最好用OneNote这种手写的电子档, 自由度高, 适合写写画画整理思路, 电子档也更利于保存.</p>
-<h3 id="对C-的体会"><a href="#对C-的体会" class="headerlink" title="对C++的体会"></a>对C++的体会</h3><p>再有就是我学习C++的速度还是令我觉得值得表扬的😆 实际上在这个暑假之前我是不会C++
-的,顶多是大一上的时候学了最基础的C. 我是这个暑假开始时从学长那里继承了本紫色的**
-算法竞赛入门经典<strong>巩固了下C语言, 了解了一些C++. 而到了实验室先是照着网上的模板写了个C++的TCP server, 然后和中科院的学长一起负责ROV的控制代码 (纯C++). 说实话一方面是大一上扎实的C基础帮了大忙 (我明明每一科都能很好地应用可我就是考不好真的好气), 另一方面则是我浏览器程序员的特长: 上网查资料发挥了巨大作用😁 这真的是现学现卖.好在学长把核心代码都写好了, 我就写了写语法很简单的控制流程什么的. 期间也因为不熟悉C++遇到了很多奇葩问题, 比如就因为在</strong>多线程C++程序**中用错了计时函数导致了计时不准, 程序崩溃等各种迷之错误… 反正一波C++速成后我对C++的印象极差, 标准库很落后, 坑很多, 语法很啰嗦 (和我最爱的Python比), 环境配置也比Python开发麻烦等等…</p>
-<p>以后我自己写程序用到C/C++顶多是要求算力部分用C/C++来加速, 或者用到的工具只有
-C/C++接口时.其他部分全部用Python糊!</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>最后想发表一番感慨: 虽然这只是我的大二暑假, 但实际上我在高三暑假就决定了以后研究机器人, 为此学习了许多, 做着各种各样的准备. 比如我学习了Python, 也针对机器人中很常用到的机器学习和CV分别做了一个小项目 (<a href="https://github.com/LeoJhonSong/SVM-Learning-Sample" target="_blank" rel="noopener">我的机器学习小项目</a>, <a href="https://github.com/LeoJhonSong/Fingertip-Drawboard" target="_blank" rel="noopener">我的CV小项目</a>)来学习了解, 比如我查阅了许多软体机器人的文献, 也曾自己试着<a href="https://leojhonsong.github.io/zh-CN/2018/12/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/">用仿真软件仿真软体机器人</a>,
-以及即便曾经的我<a href="https://leojhonsong.github.io/zh-CN/2019/05/17/为什么我用Linux而不是Windows/">曾找各种理由来说服自己用Linux</a> (当然后来就离不开Linux了)… 总之我曾努力学习过的东西都确实地派上了用场, 我感到自己的努力没有白费💪 我会再接再厉!</p>
-<h2 id="关于家教"><a href="#关于家教" class="headerlink" title="关于家教"></a>关于家教</h2><p>另外我在北京这段时间在一个叫<strong>易教网</strong>的平台接了几份家教的工作. 经过了这一段时间的体验我觉得当家教是一件既有趣又促进自己学习还赚钱的事.</p>
-<h2 id="关于北京"><a href="#关于北京" class="headerlink" title="关于北京"></a>关于北京</h2><p>第一次在北京待一个半月, 见识到了首都的另一面. 以前我是个京黑, 这次在北京的体验改变了我的印象, 让我变成了真*京黑😁 是的印象一点也没有变好! 或者说见到了好的一面,
-但也加深了负面印象.</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>意识到了我的中文有多差</title>
-    <url>/zh-CN/2019/09/13/%E6%84%8F%E8%AF%86%E5%88%B0%E4%BA%86%E6%88%91%E7%9A%84%E4%B8%AD%E6%96%87%E6%9C%89%E5%A4%9A%E5%B7%AE/</url>
-    <content><![CDATA[<p>前阵子别人给我分享了<a href="https://www.byvoid.com/" target="_blank" rel="noopener">这个博客</a>, 看了以后我意识到自己语文学得太不到家了, 实在对不起初高中语文老师!</p>
-<a id="more"></a>
-
-<p>先不提这个博主喜爱音韵学, 单说同样是理工科出身的博主, 我的表达能力和思想深度比他差了太多.</p>
-<p>通常在解释一段程序时我会想好一会来组织语言, <strong>将我使用这段代码的意图尽可能体现出来, 描述尽可能准确, 有条理</strong>. 我对此体会良多: 当我刚开始接触一个领域, 在网上看资料时常常无法确定我理解得对不对, 需要结合多篇文章才能确定. 这是因为<strong>作者们自身接触这些许久, 无意识的省略了一些话</strong>. 但我认为文章既然要写出来就应该能让所有人无障碍的看懂, 不然只给自己看的话何不就放到自己github仓库?</p>
-<p><a href="https://akaedu.github.io/book/index.html" target="_blank" rel="noopener">Linux C编程一站式学习</a>和
-<a href="https://www.pyimagesearch.com" target="_blank" rel="noopener">pyimagesearch</a>的文章就让人觉得文章读起来很流畅很易懂, 不会浪费时间在理解文章上. 比如<a href="https://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/" target="_blank" rel="noopener">这篇文章</a>
-曾带我轻松完成了困扰了我好几天的如何在树莓派上安装OpenCV的问题. 这个问题现在当然不会像前年那样困扰我, 但能有这样一篇好懂的文章指导我迅速完成我当然是十分乐意的.</p>
-<p>因此我总是试图让我的文章能达到同样水准. 但我发现这很难. 说来可笑, 很多时候我甚至不知道怎么样去描述我的操作🤦‍ 而让文章有条理同样不是一件容易的事. 我感觉这和写一篇议论文围绕一个中心套用总分总的文章结构就可以写不一样, 我总是喜欢把一个主题的东西一股脑放到一篇文章里, 但我发现一方面<strong>文章太长会让人失去读下去的兴趣</strong>, 另一方面<strong>什么东西都往一篇文章里放会让文章失其重点</strong>. 我又不是在写书, 不如将一个主题的内容再按照几个重点分成几篇文章. 可<strong>将一篇文章分割为主题更明确的多篇文章</strong>对我来说并不是易事…</p>
-<p>至于说<strong>byvoid</strong>的文章有思想深度, 从<a href="https://www.byvoid.com/zht/blog/why-the-usa-is-so-boring-1" target="_blank" rel="noopener">这篇文章</a>可见一斑. 我也喜欢旅游, 并且因为我小时候见了许多很美的自然景观, 我更倾向于体验一处的文化. 到一处游览后能有像<strong>byvoid</strong>这种深度的心得正是我所想努力做到的. 但一是我的文笔不够好,
-二是我并没有做功课去研究旅游地的文化.</p>
-<p>从<strong>byvoid</strong>的文章能体会到中文的魅力: 用得好了读起来十分流畅, 四字成语言简意赅地表达出了意思, 很多用以佐证的诗句更是回味无穷… 这只是我个人的体会, 我也知道很粗浅. 当然我并不后悔初高中没有投入大量精力背诵各种诗句, 品鉴各大文豪的文章: 体会不到这些的魅力时我背下来又有什么用呢?</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Python基础语法</title>
     <url>/zh-CN/2019/09/12/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
     <content><![CDATA[<p>前阵子带学弟学妹们入门Python时自己整理的一些觉得初学者需要知道的Python知识. 我本身既不是计算机专业的也说不出自己对Python还是挺了解的这样的话, 说实话心里还是有一点忐忑. 如有错误欢迎指出🙇</p>
@@ -3946,6 +3908,44 @@ C/C++接口时.其他部分全部用Python糊!</p>
         <category>杂记</category>
         <category>语言</category>
         <category>Python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>意识到了我的中文有多差</title>
+    <url>/zh-CN/2019/09/13/%E6%84%8F%E8%AF%86%E5%88%B0%E4%BA%86%E6%88%91%E7%9A%84%E4%B8%AD%E6%96%87%E6%9C%89%E5%A4%9A%E5%B7%AE/</url>
+    <content><![CDATA[<p>前阵子别人给我分享了<a href="https://www.byvoid.com/" target="_blank" rel="noopener">这个博客</a>, 看了以后我意识到自己语文学得太不到家了, 实在对不起初高中语文老师!</p>
+<a id="more"></a>
+
+<p>先不提这个博主喜爱音韵学, 单说同样是理工科出身的博主, 我的表达能力和思想深度比他差了太多.</p>
+<p>通常在解释一段程序时我会想好一会来组织语言, <strong>将我使用这段代码的意图尽可能体现出来, 描述尽可能准确, 有条理</strong>. 我对此体会良多: 当我刚开始接触一个领域, 在网上看资料时常常无法确定我理解得对不对, 需要结合多篇文章才能确定. 这是因为<strong>作者们自身接触这些许久, 无意识的省略了一些话</strong>. 但我认为文章既然要写出来就应该能让所有人无障碍的看懂, 不然只给自己看的话何不就放到自己github仓库?</p>
+<p><a href="https://akaedu.github.io/book/index.html" target="_blank" rel="noopener">Linux C编程一站式学习</a>和
+<a href="https://www.pyimagesearch.com" target="_blank" rel="noopener">pyimagesearch</a>的文章就让人觉得文章读起来很流畅很易懂, 不会浪费时间在理解文章上. 比如<a href="https://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/" target="_blank" rel="noopener">这篇文章</a>
+曾带我轻松完成了困扰了我好几天的如何在树莓派上安装OpenCV的问题. 这个问题现在当然不会像前年那样困扰我, 但能有这样一篇好懂的文章指导我迅速完成我当然是十分乐意的.</p>
+<p>因此我总是试图让我的文章能达到同样水准. 但我发现这很难. 说来可笑, 很多时候我甚至不知道怎么样去描述我的操作🤦‍ 而让文章有条理同样不是一件容易的事. 我感觉这和写一篇议论文围绕一个中心套用总分总的文章结构就可以写不一样, 我总是喜欢把一个主题的东西一股脑放到一篇文章里, 但我发现一方面<strong>文章太长会让人失去读下去的兴趣</strong>, 另一方面<strong>什么东西都往一篇文章里放会让文章失其重点</strong>. 我又不是在写书, 不如将一个主题的内容再按照几个重点分成几篇文章. 可<strong>将一篇文章分割为主题更明确的多篇文章</strong>对我来说并不是易事…</p>
+<p>至于说<strong>byvoid</strong>的文章有思想深度, 从<a href="https://www.byvoid.com/zht/blog/why-the-usa-is-so-boring-1" target="_blank" rel="noopener">这篇文章</a>可见一斑. 我也喜欢旅游, 并且因为我小时候见了许多很美的自然景观, 我更倾向于体验一处的文化. 到一处游览后能有像<strong>byvoid</strong>这种深度的心得正是我所想努力做到的. 但一是我的文笔不够好,
+二是我并没有做功课去研究旅游地的文化.</p>
+<p>从<strong>byvoid</strong>的文章能体会到中文的魅力: 用得好了读起来十分流畅, 四字成语言简意赅地表达出了意思, 很多用以佐证的诗句更是回味无穷… 这只是我个人的体会, 我也知道很粗浅. 当然我并不后悔初高中没有投入大量精力背诵各种诗句, 品鉴各大文豪的文章: 体会不到这些的魅力时我背下来又有什么用呢?</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>随笔</category>
       </categories>
   </entry>
   <entry>
@@ -4648,39 +4648,6 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
       </categories>
   </entry>
   <entry>
-    <title>笔记本电脑性能提升/选购指南</title>
-    <url>/zh-CN/2020/05/08/%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%94%B5%E8%84%91%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87-%E9%80%89%E8%B4%AD%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<p>自去年三月多开始有意识了解电脑配件至今已有一年多, 对这些乱七八糟的了解多了许多, 整理一下我对<strong>笔记本</strong>性能提升的经验以及选购指南. 因为我很了解在不了解这些时听到这些陌生概念的望而畏怯以及半信半疑, 我尽量解释得小白些.</p>
-<p>❗️ 因为我自己没有台式机所以这里只谈笔记本相关.</p>
-<a id="more"></a>
-
-<h2 id="性能提升"><a href="#性能提升" class="headerlink" title="性能提升"></a>性能提升</h2><p>不同于台式机里什么配件都可以换,  比如很多笔记本的CPU, 显卡是焊死在主板上的. 即便你的笔记本支持更换这两样, 这也不是容易事. 因为笔记本的散热是精打细算设计好的, 更换了更好的CPU或者显卡通常以为着更大的发热量, 很容易导致过热然后出奇奇怪怪的问题.</p>
-<p>因此为了提升笔记本性能常见的操作是<strong>更换硬盘和内存</strong>.</p>
-<h3 id="更换硬盘"><a href="#更换硬盘" class="headerlink" title="更换硬盘"></a>更换硬盘</h3><h3 id="更换内存"><a href="#更换内存" class="headerlink" title="更换内存"></a>更换内存</h3><h2 id="选购指南"><a href="#选购指南" class="headerlink" title="选购指南"></a>选购指南</h2><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>硬件</category>
-        <category>杂记</category>
-      </categories>
-  </entry>
-  <entry>
     <title>我从Ubuntu换到了Manjaro</title>
     <url>/zh-CN/2020/07/26/%E6%88%91%E4%BB%8EUbuntu%E6%8D%A2%E5%88%B0%E4%BA%86Manjaro/</url>
     <content><![CDATA[<p>前几天闲来无事下了一个听说了很久的Manjaro (KDE版), 在Live CD体验了一会果断装了实体机. 体验比Ubuntu好太多了!</p>
@@ -4735,6 +4702,39 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
         <category>软件配置</category>
         <category>操作系统</category>
         <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>笔记本电脑性能提升/选购指南</title>
+    <url>/zh-CN/2020/05/08/%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%94%B5%E8%84%91%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87-%E9%80%89%E8%B4%AD%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p>自去年三月多开始有意识了解电脑配件至今已有一年多, 对这些乱七八糟的了解多了许多, 整理一下我对<strong>笔记本</strong>性能提升的经验以及选购指南. 因为我很了解在不了解这些时听到这些陌生概念的望而畏怯以及半信半疑, 我尽量解释得小白些.</p>
+<p>❗️ 因为我自己没有台式机所以这里只谈笔记本相关.</p>
+<a id="more"></a>
+
+<h2 id="性能提升"><a href="#性能提升" class="headerlink" title="性能提升"></a>性能提升</h2><p>不同于台式机里什么配件都可以换,  比如很多笔记本的CPU, 显卡是焊死在主板上的. 即便你的笔记本支持更换这两样, 这也不是容易事. 因为笔记本的散热是精打细算设计好的, 更换了更好的CPU或者显卡通常以为着更大的发热量, 很容易导致过热然后出奇奇怪怪的问题.</p>
+<p>因此为了提升笔记本性能常见的操作是<strong>更换硬盘和内存</strong>.</p>
+<h3 id="更换硬盘"><a href="#更换硬盘" class="headerlink" title="更换硬盘"></a>更换硬盘</h3><h3 id="更换内存"><a href="#更换内存" class="headerlink" title="更换内存"></a>更换内存</h3><h2 id="选购指南"><a href="#选购指南" class="headerlink" title="选购指南"></a>选购指南</h2><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>硬件</category>
+        <category>杂记</category>
       </categories>
   </entry>
   <entry>
