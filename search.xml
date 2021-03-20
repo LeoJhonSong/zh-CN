@@ -3247,6 +3247,30 @@ MATLAB以及运行脚本. 我发现这是可行的:</p>
       </categories>
   </entry>
   <entry>
+    <title>初学Socket通信</title>
+    <url>/zh-CN/2019/08/07/%E5%88%9D%E5%AD%A6socket%E9%80%9A%E4%BF%A1/</url>
+    <content><![CDATA[<p>TODO</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+  </entry>
+  <entry>
     <title>记大二暑假北航实习</title>
     <url>/zh-CN/2019/08/05/%E8%AE%B0%E5%A4%A7%E4%BA%8C%E6%9A%91%E5%81%87%E5%8C%97%E8%88%AA%E5%AE%9E%E4%B9%A0/</url>
     <content><![CDATA[<p>这个暑假我来到了北航<a href="http://softrobotics.buaa.edu.cn/peoples/peoples_ch/index.htm" target="_blank" rel="noopener">仿生软体机器人实验室</a>学习, 收获颇多.
@@ -3302,30 +3326,6 @@ C/C++接口时.其他部分全部用Python糊!</p>
       <categories>
         <category>随笔</category>
       </categories>
-  </entry>
-  <entry>
-    <title>初学Socket通信</title>
-    <url>/zh-CN/2019/08/07/%E5%88%9D%E5%AD%A6socket%E9%80%9A%E4%BF%A1/</url>
-    <content><![CDATA[<p>TODO</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
   </entry>
   <entry>
     <title>Linux终端呈现彩色输出</title>
@@ -4114,6 +4114,8 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 <h3 id="翁恺-C语言程序设计"><a href="#翁恺-C语言程序设计" class="headerlink" title="翁恺-C语言程序设计"></a>翁恺-C语言程序设计</h3><p>C语言入门课.</p>
 <p>🔗<a href="https://www.bilibili.com/video/BV1sJ411E7St" target="_blank" rel="noopener">b站链接</a> 🔗<a href="https://www.icourse163.org/course/ZJU-9001" target="_blank" rel="noopener">中国大学MOOC链接</a></p>
 <h3 id="清华-数据结构与算法"><a href="#清华-数据结构与算法" class="headerlink" title="清华-数据结构与算法"></a>清华-数据结构与算法</h3><p>🔗<a href="https://www.bilibili.com/video/BV1jt4y117KR" target="_blank" rel="noopener">b站链接</a></p>
+<h3 id="MIT-计算机教育中缺失的一课"><a href="#MIT-计算机教育中缺失的一课" class="headerlink" title="MIT-计算机教育中缺失的一课"></a>MIT-计算机教育中缺失的一课</h3><p>这门课主要对一些非常常用但是大多数人不怎么了解的强大开发工具, 或者说常见操作进行了讲解. 比如说怎么洗数据, 怎么用shell脚本偷懒, 版本控制该怎么做, etc. 每一个部分视频时长基本只有1h, 但是已经覆盖了这些工具最有价值的部分, 可以说是性价比很高了 👍</p>
+<p>🔗<a href="https://missing.csail.mit.edu/" target="_blank" rel="noopener">英文版</a> 🔗<a href="https://missing-semester-cn.github.io/" target="_blank" rel="noopener">中文版</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -4648,6 +4650,39 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
       </categories>
   </entry>
   <entry>
+    <title>笔记本电脑性能提升/选购指南</title>
+    <url>/zh-CN/2020/05/08/%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%94%B5%E8%84%91%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87-%E9%80%89%E8%B4%AD%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p>自去年三月多开始有意识了解电脑配件至今已有一年多, 对这些乱七八糟的了解多了许多, 整理一下我对<strong>笔记本</strong>性能提升的经验以及选购指南. 因为我很了解在不了解这些时听到这些陌生概念的望而畏怯以及半信半疑, 我尽量解释得小白些.</p>
+<p>❗️ 因为我自己没有台式机所以这里只谈笔记本相关.</p>
+<a id="more"></a>
+
+<h2 id="性能提升"><a href="#性能提升" class="headerlink" title="性能提升"></a>性能提升</h2><p>不同于台式机里什么配件都可以换,  比如很多笔记本的CPU, 显卡是焊死在主板上的. 即便你的笔记本支持更换这两样, 这也不是容易事. 因为笔记本的散热是精打细算设计好的, 更换了更好的CPU或者显卡通常以为着更大的发热量, 很容易导致过热然后出奇奇怪怪的问题.</p>
+<p>因此为了提升笔记本性能常见的操作是<strong>更换硬盘和内存</strong>.</p>
+<h3 id="更换硬盘"><a href="#更换硬盘" class="headerlink" title="更换硬盘"></a>更换硬盘</h3><h3 id="更换内存"><a href="#更换内存" class="headerlink" title="更换内存"></a>更换内存</h3><h2 id="选购指南"><a href="#选购指南" class="headerlink" title="选购指南"></a>选购指南</h2><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>硬件</category>
+        <category>杂记</category>
+      </categories>
+  </entry>
+  <entry>
     <title>我从Ubuntu换到了Manjaro</title>
     <url>/zh-CN/2020/07/26/%E6%88%91%E4%BB%8EUbuntu%E6%8D%A2%E5%88%B0%E4%BA%86Manjaro/</url>
     <content><![CDATA[<p>前几天闲来无事下了一个听说了很久的Manjaro (KDE版), 在Live CD体验了一会果断装了实体机. 体验比Ubuntu好太多了!</p>
@@ -4702,39 +4737,6 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
         <category>软件配置</category>
         <category>操作系统</category>
         <category>Linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>笔记本电脑性能提升/选购指南</title>
-    <url>/zh-CN/2020/05/08/%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%94%B5%E8%84%91%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87-%E9%80%89%E8%B4%AD%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<p>自去年三月多开始有意识了解电脑配件至今已有一年多, 对这些乱七八糟的了解多了许多, 整理一下我对<strong>笔记本</strong>性能提升的经验以及选购指南. 因为我很了解在不了解这些时听到这些陌生概念的望而畏怯以及半信半疑, 我尽量解释得小白些.</p>
-<p>❗️ 因为我自己没有台式机所以这里只谈笔记本相关.</p>
-<a id="more"></a>
-
-<h2 id="性能提升"><a href="#性能提升" class="headerlink" title="性能提升"></a>性能提升</h2><p>不同于台式机里什么配件都可以换,  比如很多笔记本的CPU, 显卡是焊死在主板上的. 即便你的笔记本支持更换这两样, 这也不是容易事. 因为笔记本的散热是精打细算设计好的, 更换了更好的CPU或者显卡通常以为着更大的发热量, 很容易导致过热然后出奇奇怪怪的问题.</p>
-<p>因此为了提升笔记本性能常见的操作是<strong>更换硬盘和内存</strong>.</p>
-<h3 id="更换硬盘"><a href="#更换硬盘" class="headerlink" title="更换硬盘"></a>更换硬盘</h3><h3 id="更换内存"><a href="#更换内存" class="headerlink" title="更换内存"></a>更换内存</h3><h2 id="选购指南"><a href="#选购指南" class="headerlink" title="选购指南"></a>选购指南</h2><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>硬件</category>
-        <category>杂记</category>
       </categories>
   </entry>
   <entry>
