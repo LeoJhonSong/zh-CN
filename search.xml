@@ -438,6 +438,38 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
       </categories>
   </entry>
   <entry>
+    <title>几个提高效率的小技巧</title>
+    <url>/zh-CN/2019/01/18/%E5%87%A0%E4%B8%AA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>记录和分享一些我觉得提高了自己效率的技巧。</p>
+<a id="more"></a>
+
+<h1 id="虚拟桌面分割任务"><a href="#虚拟桌面分割任务" class="headerlink" title="虚拟桌面分割任务"></a>虚拟桌面分割任务</h1><p>Windows有一个我觉得蛮有意思的功能, <strong>虚拟桌面</strong>. 按 <code>Windows+Tab</code> 或者点击任务栏上有个长得有点奇怪的图标可以打开<strong>任务视图</strong>, 然后可以新建桌面, 管理桌面. 通过把应用界面分别放到不同桌面可以让任务栏不会堆积很多页面. 有时候同时写多个项目的时候会用浏览器搜好几个主题 (是的我就是浏览器选手) 如果都放到一起太乱太多了, 因此放到不同桌面是个非常不错的选择. 我经常将娱乐的玩意, 什么网易云, 百度云之类放一个桌面, 然后一个项目放一个桌面, 心情愉悦让效率大大提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<h1 id="更改输入法符号"><a href="#更改输入法符号" class="headerlink" title="更改输入法符号"></a>更改输入法符号</h1><p>有时, 比如写中文文档时, 我们需要频繁切换中英文输入法, 而代码中打符号的时候我总是忘记切换成英文输入法, 打出万恶的中文字符, 比如；什么的. 而我发现快捷键 <code>Ctrl+.</code>可以只切换符号的中英文! 也就是说你可以在中文输入法下打出英文标点 (比如我的句号是英文句号). 这样就解决了中英文标点易混淆的烦恼<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<!-- TODO -->
+<!-- chrom --><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>技巧</category>
+      </categories>
+  </entry>
+  <entry>
     <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
     <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<div align="right">Language:
@@ -479,38 +511,6 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
         <category>工具</category>
         <category>Web</category>
         <category>软件配置</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>几个提高效率的小技巧</title>
-    <url>/zh-CN/2019/01/18/%E5%87%A0%E4%B8%AA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<p>记录和分享一些我觉得提高了自己效率的技巧。</p>
-<a id="more"></a>
-
-<h1 id="虚拟桌面分割任务"><a href="#虚拟桌面分割任务" class="headerlink" title="虚拟桌面分割任务"></a>虚拟桌面分割任务</h1><p>Windows有一个我觉得蛮有意思的功能, <strong>虚拟桌面</strong>. 按 <code>Windows+Tab</code> 或者点击任务栏上有个长得有点奇怪的图标可以打开<strong>任务视图</strong>, 然后可以新建桌面, 管理桌面. 通过把应用界面分别放到不同桌面可以让任务栏不会堆积很多页面. 有时候同时写多个项目的时候会用浏览器搜好几个主题 (是的我就是浏览器选手) 如果都放到一起太乱太多了, 因此放到不同桌面是个非常不错的选择. 我经常将娱乐的玩意, 什么网易云, 百度云之类放一个桌面, 然后一个项目放一个桌面, 心情愉悦让效率大大提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<h1 id="更改输入法符号"><a href="#更改输入法符号" class="headerlink" title="更改输入法符号"></a>更改输入法符号</h1><p>有时, 比如写中文文档时, 我们需要频繁切换中英文输入法, 而代码中打符号的时候我总是忘记切换成英文输入法, 打出万恶的中文字符, 比如；什么的. 而我发现快捷键 <code>Ctrl+.</code>可以只切换符号的中英文! 也就是说你可以在中文输入法下打出英文标点 (比如我的句号是英文句号). 这样就解决了中英文标点易混淆的烦恼<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<!-- TODO -->
-<!-- chrom --><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>技巧</category>
       </categories>
   </entry>
   <entry>
@@ -2481,6 +2481,57 @@ UCS和Unicode分别由<strong>ISO</strong> (国际标准化组织) 和<strong>�
       </categories>
   </entry>
   <entry>
+    <title>有关人工智能的一点思考</title>
+    <url>/zh-CN/2019/06/21/%E6%9C%89%E5%85%B3%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%9D%E8%80%83/</url>
+    <content><![CDATA[<p>以下仅为个人见解</p>
+<a id="more"></a>
+
+<p>突然思考了一下<strong>什么是人工智能?</strong></p>
+<blockquote>
+<p>从学科角度讲, 人工智能是一门研究 <strong>模拟, 延伸, 扩展人类智能</strong> 的学科</p>
+</blockquote>
+<blockquote>
+<p>人工智能是在机器上实现的人类智能</p>
+</blockquote>
+<p>这两条是我比较认可的对人工智能的描述. 可以看出<code>人工智能</code>是相对于<code>人类智能</code>的一个概念, 理解起来既简单又困难. 要说简单, 人工智能可以很直观的理解为<strong>人为制造的智能</strong>, 要说难, 人们至今仍在探索<strong>什么是人类智能</strong>. 这是一个极其抽象的哲学概念.
+实际上试图制造人工智能正是人们探索人类智能的途径之一: 能知道如何制造出一个智能了, 我们也就基本摸清什么是人类智能了.</p>
+<p>目前人工智能的实现有三种研究方法:</p>
+<ul>
+<li><strong>功能模拟</strong>: 符号主义, 认为人工智能源自数理逻辑, 以及人类智能的基本单元是符号, 认知的过程是符号表示下符号运算的过程.</li>
+<li><strong>结构模拟</strong>: 连接主义, 认为人工智能源自仿生学, 特别是人脑模型的研究, 主要模拟神经元生理机制.</li>
+<li><strong>行为模拟</strong>: 控制论主义, 认为人工智能源自控制论, 原理是控制论及激励-响应控制系统.</li>
+</ul>
+<p>回顾了一番后我终于理清了之前一直不太懂的 <strong>人工智能, 机器学习, 深度学习的关系</strong>:</p>
+<p><code>人工智能</code>是人们提出的一个理想化的概念, 在得出人类智能的定义前谁也没法说出到底什么是人工智能, 到底某机器是否具备人工智能. <code>机器学习</code>是人们以制造人工智能为目标造出的各种具有部分智能的东西, 而<code>深度学习</code>是其中从仿生角度出发的研究.</p>
+<p>💡很有意思的是智能另有一个含义: <strong>能对环境作出反馈</strong>. 比如智能材料, 狭义的智能机器人等.</p>
+<p>这番思考总结后我认为图灵测试并不能<strong>绝对</strong>判定一个东西是否具有人类智能.</p>
+<p>一方面<strong>中文房间</strong>实验是很有力的反驳. 也许有人认为这个实验所假设的完美的指导书是不存在的, 是理想化的, 但实际上图灵测试也是这样的东西, 能够完美检测被测试者是否具有智能的测试是不存在的. 我们只需要足够大的”指导书”就能够应付图灵测试. 参考<code>无穷大</code>
+的数学定义, 我们可以有这样的结论: <strong>假设我们以M来衡量一个图灵测试的测试范围, 对任意给定M测试范围的图灵测试, 我们总能写出这样的”指导书”X: X让机器在当前图灵测试内表现得像一个人</strong>.</p>
+<p>另一方面是因为我认为人们目前对人类智能的认知是不够的. 打个比方: 牛顿得出三条牛顿定律, 被人们奉为铁律, 后来相对论推翻了它, 牛顿定律变为了只在低速情况下适用. 但相对论又是绝对正确的吗? 目前它还没被推翻. 而我们对智能的判别甚至还停留在以经验来判断的阶段. (这里又存在一个哲学问题了: 存在绝对的真理吗? 这里我们暂且不讨论.) 也许我们可以说图灵测试在当前对人类智能的认知水平下可以作为是否具有智能的标准, 但它是那样的简陋, 早晚是要被取代的.</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
     <title>当我安利软体机器人时我在谈什么</title>
     <url>/zh-CN/2019/06/10/%E5%BD%93%E6%88%91%E5%AE%89%E5%88%A9%E8%BD%AF%E4%BD%93%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%97%B6%E6%88%91%E5%9C%A8%E8%B0%88%E4%BB%80%E4%B9%88/</url>
     <content><![CDATA[<p>从小我就喜欢仿生机器人. 我敬畏着各种精妙的仿生设计和它们的设计者, 渴望着有朝一日我也能参与这样的工作. 当我看到波士顿动力的Atlas的仿生腿部结构时, 我就在想: 我们能不能造出人造人呢? 那时的我并没有想很多, 并不会去想这样浩大的工程的性价比, 并没有意识到背后的伦理问题, 只是出于一种探索, 好奇. 我也曾听到一句很有趣的话:</p>
@@ -2543,34 +2594,14 @@ UCS和Unicode分别由<strong>ISO</strong> (国际标准化组织) 和<strong>�
       </categories>
   </entry>
   <entry>
-    <title>有关人工智能的一点思考</title>
-    <url>/zh-CN/2019/06/21/%E6%9C%89%E5%85%B3%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%9D%E8%80%83/</url>
-    <content><![CDATA[<p>以下仅为个人见解</p>
+    <title>机器人案例学习</title>
+    <url>/zh-CN/2019/06/10/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p>正如我在 <a href="https://leojhonsong.github.io/zh-CN/about/">about</a> 中提到的, <strong>我立志为软体机器人领域贡献一份力</strong>, 那就先从积累开始吧. 在此记录我觉得很精妙的机器人,
+或可以用于机器人的”东西”, 参考学习💪</p>
 <a id="more"></a>
 
-<p>突然思考了一下<strong>什么是人工智能?</strong></p>
-<blockquote>
-<p>从学科角度讲, 人工智能是一门研究 <strong>模拟, 延伸, 扩展人类智能</strong> 的学科</p>
-</blockquote>
-<blockquote>
-<p>人工智能是在机器上实现的人类智能</p>
-</blockquote>
-<p>这两条是我比较认可的对人工智能的描述. 可以看出<code>人工智能</code>是相对于<code>人类智能</code>的一个概念, 理解起来既简单又困难. 要说简单, 人工智能可以很直观的理解为<strong>人为制造的智能</strong>, 要说难, 人们至今仍在探索<strong>什么是人类智能</strong>. 这是一个极其抽象的哲学概念.
-实际上试图制造人工智能正是人们探索人类智能的途径之一: 能知道如何制造出一个智能了, 我们也就基本摸清什么是人类智能了.</p>
-<p>目前人工智能的实现有三种研究方法:</p>
-<ul>
-<li><strong>功能模拟</strong>: 符号主义, 认为人工智能源自数理逻辑, 以及人类智能的基本单元是符号, 认知的过程是符号表示下符号运算的过程.</li>
-<li><strong>结构模拟</strong>: 连接主义, 认为人工智能源自仿生学, 特别是人脑模型的研究, 主要模拟神经元生理机制.</li>
-<li><strong>行为模拟</strong>: 控制论主义, 认为人工智能源自控制论, 原理是控制论及激励-响应控制系统.</li>
-</ul>
-<p>回顾了一番后我终于理清了之前一直不太懂的 <strong>人工智能, 机器学习, 深度学习的关系</strong>:</p>
-<p><code>人工智能</code>是人们提出的一个理想化的概念, 在得出人类智能的定义前谁也没法说出到底什么是人工智能, 到底某机器是否具备人工智能. <code>机器学习</code>是人们以制造人工智能为目标造出的各种具有部分智能的东西, 而<code>深度学习</code>是其中从仿生角度出发的研究.</p>
-<p>💡很有意思的是智能另有一个含义: <strong>能对环境作出反馈</strong>. 比如智能材料, 狭义的智能机器人等.</p>
-<p>这番思考总结后我认为图灵测试并不能<strong>绝对</strong>判定一个东西是否具有人类智能.</p>
-<p>一方面<strong>中文房间</strong>实验是很有力的反驳. 也许有人认为这个实验所假设的完美的指导书是不存在的, 是理想化的, 但实际上图灵测试也是这样的东西, 能够完美检测被测试者是否具有智能的测试是不存在的. 我们只需要足够大的”指导书”就能够应付图灵测试. 参考<code>无穷大</code>
-的数学定义, 我们可以有这样的结论: <strong>假设我们以M来衡量一个图灵测试的测试范围, 对任意给定M测试范围的图灵测试, 我们总能写出这样的”指导书”X: X让机器在当前图灵测试内表现得像一个人</strong>.</p>
-<p>另一方面是因为我认为人们目前对人类智能的认知是不够的. 打个比方: 牛顿得出三条牛顿定律, 被人们奉为铁律, 后来相对论推翻了它, 牛顿定律变为了只在低速情况下适用. 但相对论又是绝对正确的吗? 目前它还没被推翻. 而我们对智能的判别甚至还停留在以经验来判断的阶段. (这里又存在一个哲学问题了: 存在绝对的真理吗? 这里我们暂且不讨论.) 也许我们可以说图灵测试在当前对人类智能的认知水平下可以作为是否具有智能的标准, 但它是那样的简陋, 早晚是要被取代的.</p>
-<script>
+<p>TODO</p>
+<h1 id="Cassie家族"><a href="#Cassie家族" class="headerlink" title="Cassie家族"></a>Cassie家族</h1><h1 id="BDC家族"><a href="#BDC家族" class="headerlink" title="BDC家族"></a>BDC家族</h1><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -2590,7 +2621,7 @@ UCS和Unicode分别由<strong>ISO</strong> (国际标准化组织) 和<strong>�
           });
       </script>]]></content>
       <categories>
-        <category>随笔</category>
+        <category>Robotics</category>
       </categories>
   </entry>
   <entry>
@@ -2836,37 +2867,6 @@ C++程序使用的库链接. <code>gcc</code>把后缀为 <strong>.c</strong> �
       <categories>
         <category>语言</category>
         <category>C/C++</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>机器人案例学习</title>
-    <url>/zh-CN/2019/06/10/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<p>正如我在 <a href="https://leojhonsong.github.io/zh-CN/about/">about</a> 中提到的, <strong>我立志为软体机器人领域贡献一份力</strong>, 那就先从积累开始吧. 在此记录我觉得很精妙的机器人,
-或可以用于机器人的”东西”, 参考学习💪</p>
-<a id="more"></a>
-
-<p>TODO</p>
-<h1 id="Cassie家族"><a href="#Cassie家族" class="headerlink" title="Cassie家族"></a>Cassie家族</h1><h1 id="BDC家族"><a href="#BDC家族" class="headerlink" title="BDC家族"></a>BDC家族</h1><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>Robotics</category>
       </categories>
   </entry>
   <entry>
@@ -4685,28 +4685,43 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
   <entry>
     <title>Linux下各用途我最认可的工具推荐</title>
     <url>/zh-CN/2020/07/26/Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/</url>
-    <content><![CDATA[<p>用Linux的时间已经比用Windows的时间还长了, 随着使用逐渐找到了各用途我最认可的工具. 在此整理一份我的Linux下各用途好用工具推荐.</p>
+    <content><![CDATA[<p>用Linux的时间已经比用Windows的时间还长了, 随着使用逐渐找到了各用途我最认可的工具, 或从软件源安装, 或在线使用. 在此整理一份我的Linux下各用途好用工具推荐.</p>
 <a id="more"></a>
 
 <!-- TODO -->
 
+<blockquote>
+<p>首先, 不得不吹一下Manjaro是一个多么贴心的系统. Manjaro自带了一个叫<strong>Manjaro Hello</strong>的入门程序, 点进这个程序的<code>Applications</code>入口能看到Manjaro为各常见用途已经提供了一些推荐, 勾选就可以安装. (其中Office套件下的MS Office Online是Manjaro专门为微软Office Online写的本地客户端) 可以说没有更贴心的系统了!</p>
+<p><img src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/Manjaro_Hello.png?70" alt=""></p>
+</blockquote>
 <h2 id="日常软件"><a href="#日常软件" class="headerlink" title="日常软件"></a>日常软件</h2><ul>
 <li>输入法: fcitx5, fcitx5-chinese-addons</li>
-<li>peek</li>
-<li>kazam</li>
 <li>tim</li>
 <li>微信</li>
-<li>百度云 (官方)</li>
 <li>flameshot (与deepin screenshot, snipaste)</li>
-<li>vlc (player)</li>
 <li>stacer</li>
 <li>dolphin</li>
+<li>htop</li>
 </ul>
-<h2 id="图片-视频处理"><a href="#图片-视频处理" class="headerlink" title="图片/视频处理"></a>图片/视频处理</h2><ul>
-<li>handbrake</li>
-<li>kdenlive</li>
-<li>graphviz</li>
-<li>optipng</li>
+<h2 id="下载-云盘"><a href="#下载-云盘" class="headerlink" title="下载/云盘"></a>下载/云盘</h2><ul>
+<li><p>百度云 (官方)</p>
+<h2 id="图片-视频处理"><a href="#图片-视频处理" class="headerlink" title="图片/视频处理"></a>图片/视频处理</h2></li>
+<li><p>peek</p>
+</li>
+<li><p>kazam</p>
+</li>
+<li><p>simplescreenrecorder</p>
+</li>
+<li><p>handbrake</p>
+</li>
+<li><p>vlc (player)</p>
+</li>
+<li><p>kdenlive</p>
+</li>
+<li><p>graphviz</p>
+</li>
+<li><p>optipng</p>
+</li>
 </ul>
 <h2 id="驱动-硬件"><a href="#驱动-硬件" class="headerlink" title="驱动/硬件"></a>驱动/硬件</h2><ul>
 <li>optimus manager qt</li>
@@ -4729,7 +4744,8 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><ul>
 <li>typora</li>
 <li>okular (与gnome的evience)</li>
-<li>Chromium</li>
+<li>Chrome</li>
+<li>PDFMod</li>
 </ul>
 <h3 id="latex"><a href="#latex" class="headerlink" title="latex"></a>latex</h3><ul>
 <li>overleaf</li>
@@ -4748,7 +4764,12 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 </li>
 </ul>
 <h2 id="工程"><a href="#工程" class="headerlink" title="工程"></a>工程</h2><ul>
-<li>串口调试助手 cutecom</li>
+<li><p>串口调试助手 cutecom</p>
+</li>
+<li><p>Ventoy</p>
+</li>
+<li><p>Gparted</p>
+</li>
 </ul>
 <h3 id="终端"><a href="#终端" class="headerlink" title="终端"></a>终端</h3><ul>
 <li>zsh</li>
