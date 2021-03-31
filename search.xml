@@ -4701,6 +4701,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <img src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/inputMethod.gif?80" alt=""></p>
 <h4 id="fcitx4框架-搜狗输入法"><a href="#fcitx4框架-搜狗输入法" class="headerlink" title="fcitx4框架+搜狗输入法"></a>fcitx4框架+搜狗输入法</h4><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S fcitx-im fcitx-configtool</span><br><span class="line">yay -S fcitx-sogoupinyin</span><br></pre></td></tr></tbody></table></figure>
 
+<hr>
 <p>安装完输入法框架和中文输入法后还需要在配置文件中设置几个环境变量. 有很多配置文件会在用户登录过程中被加载, 我是在<code>~/.pam_environment</code>中写了这样几行:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">GTK_IM_MODULE DEFAULT=fcitx</span><br><span class="line">QT_IM_MODULE DEFAULT=fcitx</span><br><span class="line">XMODIFIERS DEFAULT=@im=fcitx</span><br></pre></td></tr></tbody></table></figure>
 
@@ -4742,10 +4743,18 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <h3 id="显示按键"><a href="#显示按键" class="headerlink" title="显示按键"></a>显示按键</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S screenkey</span><br></pre></td></tr></tbody></table></figure>
 
 <p>这个可以在屏幕上显示按下了的键盘按键, 鼠标按键. 在演示, 示教时很好用 👍</p>
-<h2 id="驱动"><a href="#驱动" class="headerlink" title="驱动"></a>驱动</h2><h3 id="显卡驱动"><a href="#显卡驱动" class="headerlink" title="显卡驱动"></a>显卡驱动</h3><p>这里又不得不点名表扬一下Manjaro, 在装机时勾选了安装<strong>Proprietary Driver</strong> (非自由驱动)的话会自动装好N卡驱动! 比如我的笔记本有一个UHD Graphics (集显) 和一个RTX2070 (独显), 安装好系统后已经自动安装了采用最新的intel集显与Nvidia独显共存的<a href="https://wiki.archlinux.org/index.php/PRIME_(简体中文)" target="_blank" rel="noopener">Prime方案</a>的混合驱动<strong>video-hybrid-intel-nvidia-prime</strong> 🎉</p>
-<p>再加上<a href="https://github.com/Askannz/optimus-manager" target="_blank" rel="noopener">optimus-manager</a></p>
+<h2 id="驱动"><a href="#驱动" class="headerlink" title="驱动"></a>驱动</h2><h3 id="显卡驱动"><a href="#显卡驱动" class="headerlink" title="显卡驱动"></a>显卡驱动</h3><p>这里又不得不点名表扬一下Manjaro, 在装机时勾选了安装<strong>Proprietary Driver</strong> (非自由驱动)的话会自动装好N卡驱动! 比如我的笔记本有一个UHD Graphics (集显) 和一个RTX2070 (独显), 安装好系统后已经自动安装了采用最新的intel集显与Nvidia独显共存的<a href="https://wiki.archlinux.org/index.php/PRIME" target="_blank" rel="noopener">Prime方案</a>的混合驱动<strong>video-hybrid-intel-nvidia-prime</strong> 🎉</p>
+<p>我也没有细看Prime方案和Bumblebee方案的具体差异, 看起来大概意思就是BUmblebee是软件实现, 有一定性能损失, 而Prime方案是更为推荐的新一代方案.</p>
+<p>Prime技术让我们能够同时使用两个显卡: 以intel核显渲染画面, 以独显运行高负荷任务. 但是目前无论Prime方案还是Bumblebee方案都有个缺陷: 同时使用两个显卡时N卡无法输出画面, 即从直连N卡的HDMI接口无法输出画面, 但仅使用N卡的话可以从N卡输出画面. 仅使用N卡从性能方面没什么问题, 但是耗电, 发热会很夸张, 这对日常使用来说很不划算. 因此我们还是需要一个方法让我们能在需要N卡输出画面时能切换到仅N卡模式.</p>
+<blockquote>
+<p>至于外接屏幕, 我的解决办法是买一个有雷电接口 (雷电接口是直连CPU的, 其视频输出由intel核显承担) 的电脑, 这样一来在混合模式也能从雷电接口输出视频信号 😅</p>
+</blockquote>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S optimus-manager-qt</span><br></pre></td></tr></tbody></table></figure>
+
+<p>💡 optimus-manager的文档说Manjaro KDE用户<a href="https://github.com/Askannz/optimus-manager#important--manjaro-kde-users" target="_blank" rel="noopener">需要编辑一个文件</a>, 但我没动似乎使用起来也没什么问题</p>
+<p><a href="https://github.com/Askannz/optimus-manager" target="_blank" rel="noopener">optimus-manager</a>允许我们在<strong>仅intel显卡模式</strong>, <strong>仅N卡模式</strong>, <strong>混合模式</strong>三种模式间切换. 而optimus-manager-qt则为我们提供了一个GUI界面来进行设置, 一个系统托盘小图标来进行快速切换 (和装饰)</p>
+<p>除了显卡模式切换这个主要功能, optimus-manager也能用来进行独显的电源管理, 根据自己的情况选择适合的方案. 因为我的笔记本满足 “N卡为Turing架构及以上, intel CPU为CoffeeLake架构及以上” 的条件, 因此用N卡自带的动态电源管理, Runtime D3 Power Management, 省心又省电 👍 不用时我的N卡功耗可以低到<strong>4W</strong>, 整个电脑的功耗最低到过9W (虽然还是被长续航轻薄本吊打)</p>
 <ul>
-<li>optimus manager qt</li>
 <li>xrandr</li>
 <li>balenaEtcher</li>
 <li>powertop</li>
@@ -4791,11 +4800,18 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <p>💡没有用到透明图层的png图片可以转为jpg, 能大幅压缩体积</p>
 <h3 id="视频播放器"><a href="#视频播放器" class="headerlink" title="视频播放器"></a>视频播放器</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S vlc</span><br></pre></td></tr></tbody></table></figure>
 
-<p>vlc是一个很神奇的播放器, 不光支持很多种视频文件格式, 还可以播放网络视频流, 比如RTSP视频流, IPTV网络电视, 还可以播放摄像头视频流… 加上它可以截取视频一帧画面, 也可以录制视频流, 因此可以当Linux上的相机软件用了 🐮🍺</p>
-<p>另外vlc允许很高倍速播放, 截取画面时可以显示视频时间, 是看网课视频一大利器</p>
+<p><strong>vlc是一个很神奇的播放器</strong>.</p>
+<p>它不光支持非常多种视频文件格式, 还可以播放网络视频流, 比如RTSP视频流, IPTV网络电视, 还可以播放摄像头视频流… 加上它有截取视频一帧画面, 录制视频流, 高倍速播放, 在截取的画面上显示当前视频时间等功能, 他可以:</p>
+<ul>
+<li>当Linux上的相机软件</li>
+<li>用来调试usb摄像头/IP摄像头</li>
+<li>当网络电视 (顺便放一个非常全的<a href="https://github.com/iptv-org/iptv" target="_blank" rel="noopener">IPTV频道合集</a>)</li>
+<li>看网课视频利器</li>
+</ul>
+<p>🐮🍺</p>
 <h3 id="视频编辑器"><a href="#视频编辑器" class="headerlink" title="视频编辑器"></a>视频编辑器</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S kdenlive</span><br></pre></td></tr></tbody></table></figure>
 
-<p><strong>Kdenlive</strong>是一个界面很像Adobe Premiere的软件, 操作起来还是很简单的, (也有Windows版, 而且安装包只有80MB)虽然特效没有Pr那么多, 但是也完全够用了.</p>
+<p><strong>Kdenlive</strong>是一个界面很像Adobe Premiere的软件, 现在是KDE旗下项目. Kdenlive的语言看起来是继承的系统语言, 支持中文 (汉化得还是比较全面的). Kdenlive操作起来还是很简单的, 零基础随便看一看教程也就会用个大概了. Kdenlive的特效我感觉和Pr差不多多, 我觉得定位和Pr应该是一样也是视频剪辑软件 (Linux平台也有对标Ae的软件, Natron).Kdenlive也有Windows版, 而且安装包只有80MB, 很值得尝试的 👍</p>
 <h3 id="制图"><a href="#制图" class="headerlink" title="制图"></a>制图</h3><h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4><p>因为我处理图片的需求不大, 因此我有稍微复杂一点的PS需求时都是使用的这个<a href="https://www.uupoop.com/#/old" target="_blank" rel="noopener">在线PS</a>, 支持PhotoShop的<strong>PSD</strong>, sketch的<strong>sketch</strong>格式, GIMP的<strong>XCF</strong>格式等, 覆盖了常见格式, 十分方便 😆</p>
 <h4 id="UML图"><a href="#UML图" class="headerlink" title="UML图"></a>UML图</h4><ul>
 <li><a href="https://www.diagrams.net/" target="_blank" rel="noopener"><strong>diagrams.net</strong></a>: 这个是全平台的, 有在线版, 也有各系统的安装包. 它有非常丰富的元素, 能画出很好看很复杂的图, 但是无法自动整理布局</li>
