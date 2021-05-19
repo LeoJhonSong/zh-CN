@@ -438,38 +438,6 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
       </categories>
   </entry>
   <entry>
-    <title>几个提高效率的小技巧</title>
-    <url>/zh-CN/2019/01/18/%E5%87%A0%E4%B8%AA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<p>记录和分享一些我觉得提高了自己效率的技巧。</p>
-<a id="more"></a>
-
-<h1 id="虚拟桌面分割任务"><a href="#虚拟桌面分割任务" class="headerlink" title="虚拟桌面分割任务"></a>虚拟桌面分割任务</h1><p>Windows有一个我觉得蛮有意思的功能, <strong>虚拟桌面</strong>. 按 <code>Windows+Tab</code> 或者点击任务栏上有个长得有点奇怪的图标可以打开<strong>任务视图</strong>, 然后可以新建桌面, 管理桌面. 通过把应用界面分别放到不同桌面可以让任务栏不会堆积很多页面. 有时候同时写多个项目的时候会用浏览器搜好几个主题 (是的我就是浏览器选手) 如果都放到一起太乱太多了, 因此放到不同桌面是个非常不错的选择. 我经常将娱乐的玩意, 什么网易云, 百度云之类放一个桌面, 然后一个项目放一个桌面, 心情愉悦让效率大大提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<h1 id="更改输入法符号"><a href="#更改输入法符号" class="headerlink" title="更改输入法符号"></a>更改输入法符号</h1><p>有时, 比如写中文文档时, 我们需要频繁切换中英文输入法, 而代码中打符号的时候我总是忘记切换成英文输入法, 打出万恶的中文字符, 比如；什么的. 而我发现快捷键 <code>Ctrl+.</code>可以只切换符号的中英文! 也就是说你可以在中文输入法下打出英文标点 (比如我的句号是英文句号). 这样就解决了中英文标点易混淆的烦恼<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<!-- TODO -->
-<!-- chrom --><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>技巧</category>
-      </categories>
-  </entry>
-  <entry>
     <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
     <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<div align="right">Language:
@@ -511,6 +479,38 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
         <category>工具</category>
         <category>Web</category>
         <category>软件配置</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>几个提高效率的小技巧</title>
+    <url>/zh-CN/2019/01/18/%E5%87%A0%E4%B8%AA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>记录和分享一些我觉得提高了自己效率的技巧。</p>
+<a id="more"></a>
+
+<h1 id="虚拟桌面分割任务"><a href="#虚拟桌面分割任务" class="headerlink" title="虚拟桌面分割任务"></a>虚拟桌面分割任务</h1><p>Windows有一个我觉得蛮有意思的功能, <strong>虚拟桌面</strong>. 按 <code>Windows+Tab</code> 或者点击任务栏上有个长得有点奇怪的图标可以打开<strong>任务视图</strong>, 然后可以新建桌面, 管理桌面. 通过把应用界面分别放到不同桌面可以让任务栏不会堆积很多页面. 有时候同时写多个项目的时候会用浏览器搜好几个主题 (是的我就是浏览器选手) 如果都放到一起太乱太多了, 因此放到不同桌面是个非常不错的选择. 我经常将娱乐的玩意, 什么网易云, 百度云之类放一个桌面, 然后一个项目放一个桌面, 心情愉悦让效率大大提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<h1 id="更改输入法符号"><a href="#更改输入法符号" class="headerlink" title="更改输入法符号"></a>更改输入法符号</h1><p>有时, 比如写中文文档时, 我们需要频繁切换中英文输入法, 而代码中打符号的时候我总是忘记切换成英文输入法, 打出万恶的中文字符, 比如；什么的. 而我发现快捷键 <code>Ctrl+.</code>可以只切换符号的中英文! 也就是说你可以在中文输入法下打出英文标点 (比如我的句号是英文句号). 这样就解决了中英文标点易混淆的烦恼<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<!-- TODO -->
+<!-- chrom --><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>技巧</category>
       </categories>
   </entry>
   <entry>
@@ -1692,59 +1692,6 @@ Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可�
       </categories>
   </entry>
   <entry>
-    <title>对伺服电机PID的理解</title>
-    <url>/zh-CN/2019/03/27/%E5%AF%B9%E4%BC%BA%E6%9C%8D%E7%94%B5%E6%9C%BAPID%E7%9A%84%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[<p>行吧, 继上次手搓简单卡尔曼算法后我又接触到了更多控制方面的东西. 想我一个电子工程的弟弟在这里研究术语都不知道几个的控制… 命苦啊! 最近在调机械腿, 应该说还在调那条腿, 对伺服电机里的PID算法有了些许感悟.</p>
-<a id="more"></a>
-
-<p>这条腿的传感噪声问题因为换了传感器已经解决了, 最近的问题是<strong>不能快速, 稳定, 准确的到达指定位置</strong>. 目前通过<strong>限制电机的加速度</strong>改善了情况.</p>
-<h1 id="PID也没有那么简单"><a href="#PID也没有那么简单" class="headerlink" title="PID也没有那么简单"></a>PID也没有那么简单</h1><p>在改动前机械腿在低速状态 (很低速那种) 下表现得还是蛮好的, 但速度一旦快起来就明显有<strong>过冲</strong>, 是一抖一抖运动的, 到达位置时间反而比低速还长… 虽然我以前买了一个很简陋的四轴穿越机调过一点点PID, 感觉这算法也不难理解 (至少比卡尔曼好理解😁), 但这次发现要达到一定的精度PID也不是那么简单的东西: 经常是 “这参数加了20了怎么毛的变化都没有啊 黑人问号”, 但实际用起来又确实地感受到了差别. 并且当情况复杂的时候一个普通PID是不能满足的, 可能会用串级PID, 分段PID, 模糊PID, 专家系统PID, 容错PID, 前馈, 非线性控制之类的来改善😵</p>
-<p>🔗 参考: <a href="https://www.zhihu.com/question/22603676/answer/28847509" target="_blank" rel="noopener">关于永磁同步电机交流伺服控制系统的算法问题？ - 小心假设的回答 - 知乎</a></p>
-<h1 id="PI-·-PD-·-PID"><a href="#PI-·-PD-·-PID" class="headerlink" title="PI · PD · PID"></a>PI · PD · PID</h1><p>另外我知道了在工业中说是说PID控制器, 但<strong>实际大多是PI控制器</strong>, 因为D虽然可以增大系统阻尼, 使系统具有一定预见性, 增强了对微小变化的响应, 但也因此造成系统容易震荡, 不稳定. 而根据网上说的<strong>I比D更容易引起不稳定, 因为I引入了另一个极点.</strong> 具体啥时候用PI, PD, PID我还没有头绪.</p>
-<p>🔗 参考:</p>
-<ul>
-<li><a href="https://www.zhihu.com/question/26944678/answer/44687208" target="_blank" rel="noopener">哪些控制类的算法惊艳了你？ - 三郎的回答 - 知乎</a></li>
-<li><a href="http://www.sohu.com/a/155185294_464086" target="_blank" rel="noopener">PID控制算法精华和参数整定三大招</a></li>
-</ul>
-<h1 id="三环控制"><a href="#三环控制" class="headerlink" title="三环控制"></a>三环控制</h1><p>再有就是我大致理解了伺服电机三环PID是一种多么精妙而自然的设计.</p>
-<p>在调PID的时候我和师兄一度绝望, 我就说: “要不我们只保留转距环, 上层的我们重新写一遍.”当时我们使用的是<strong>位置模式</strong>控制电机. 我看电机驱动器的说明书都看得晕呼呼的, 还没怎么理解三环控制.
-但我要保留转距环的想法是很正常的:</p>
-<p>电机最基本的控制方式就是控制流过电机的电流, 也就是控制电机输出的转距. 在这一环里不是单纯的PID, 驱动器还设置了一些阈值, 防止过流烧坏电机什么的. 这一环是驱动器自整定的, 但效果也不错, 因此我认为不必自己重写这一环.</p>
-<p>然后我说:”上层我们用一个PID, 达到: 当当前位置比目标位置小就加正向转距, 当当前位置比目标位置大时加逆向转距的效果.”</p>
-<p>学长立即指出这样机械腿到达位置时的<strong>速度是不定的</strong>.我:”那就加一环速度PID, 生成一个百分数乘以转距来达到控制达到目标位置时的速度的效果”</p>
-<p>说完我一愣, 我特么这不是说了一遍<strong>电流环, 速度环, 位置环</strong>的所谓<strong>三环控制</strong>🐴</p>
-<p>🔗 参考:</p>
-<ul>
-<li><a href="http://www.voidcn.com/article/p-hxjakzgh-pw.html" target="_blank" rel="noopener">伺服电机三环控制的原理（位置环，运动环，电流环）</a></li>
-<li><a href="https://blog.csdn.net/Andy20081251/article/details/79457911" target="_blank" rel="noopener">浅谈伺服电机三种控制方式</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/21311021" target="_blank" rel="noopener">伺服电机的控制方式简述</a></li>
-</ul>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>随笔</category>
-        <category>自动控制</category>
-      </categories>
-  </entry>
-  <entry>
     <title>关于Linux下开发单片机的猜测</title>
     <url>/zh-CN/2019/03/28/%E5%85%B3%E4%BA%8ELinux%E4%B8%8B%E5%BC%80%E5%8F%91%E5%8D%95%E7%89%87%E6%9C%BA%E7%9A%84%E7%8C%9C%E6%B5%8B/</url>
     <content><![CDATA[<p>现在也算个Linux爱好者啦, 但在Linux下怎么配置单片机开发环境我一直一头雾水, 直到最近我找到了相关文章!</p>
@@ -1812,6 +1759,59 @@ Linux开发xmc4500需要什么工具以及编译方式,
         <category>操作系统</category>
         <category>Linux</category>
         <category>嵌入式</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>对伺服电机PID的理解</title>
+    <url>/zh-CN/2019/03/27/%E5%AF%B9%E4%BC%BA%E6%9C%8D%E7%94%B5%E6%9C%BAPID%E7%9A%84%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<p>行吧, 继上次手搓简单卡尔曼算法后我又接触到了更多控制方面的东西. 想我一个电子工程的弟弟在这里研究术语都不知道几个的控制… 命苦啊! 最近在调机械腿, 应该说还在调那条腿, 对伺服电机里的PID算法有了些许感悟.</p>
+<a id="more"></a>
+
+<p>这条腿的传感噪声问题因为换了传感器已经解决了, 最近的问题是<strong>不能快速, 稳定, 准确的到达指定位置</strong>. 目前通过<strong>限制电机的加速度</strong>改善了情况.</p>
+<h1 id="PID也没有那么简单"><a href="#PID也没有那么简单" class="headerlink" title="PID也没有那么简单"></a>PID也没有那么简单</h1><p>在改动前机械腿在低速状态 (很低速那种) 下表现得还是蛮好的, 但速度一旦快起来就明显有<strong>过冲</strong>, 是一抖一抖运动的, 到达位置时间反而比低速还长… 虽然我以前买了一个很简陋的四轴穿越机调过一点点PID, 感觉这算法也不难理解 (至少比卡尔曼好理解😁), 但这次发现要达到一定的精度PID也不是那么简单的东西: 经常是 “这参数加了20了怎么毛的变化都没有啊 黑人问号”, 但实际用起来又确实地感受到了差别. 并且当情况复杂的时候一个普通PID是不能满足的, 可能会用串级PID, 分段PID, 模糊PID, 专家系统PID, 容错PID, 前馈, 非线性控制之类的来改善😵</p>
+<p>🔗 参考: <a href="https://www.zhihu.com/question/22603676/answer/28847509" target="_blank" rel="noopener">关于永磁同步电机交流伺服控制系统的算法问题？ - 小心假设的回答 - 知乎</a></p>
+<h1 id="PI-·-PD-·-PID"><a href="#PI-·-PD-·-PID" class="headerlink" title="PI · PD · PID"></a>PI · PD · PID</h1><p>另外我知道了在工业中说是说PID控制器, 但<strong>实际大多是PI控制器</strong>, 因为D虽然可以增大系统阻尼, 使系统具有一定预见性, 增强了对微小变化的响应, 但也因此造成系统容易震荡, 不稳定. 而根据网上说的<strong>I比D更容易引起不稳定, 因为I引入了另一个极点.</strong> 具体啥时候用PI, PD, PID我还没有头绪.</p>
+<p>🔗 参考:</p>
+<ul>
+<li><a href="https://www.zhihu.com/question/26944678/answer/44687208" target="_blank" rel="noopener">哪些控制类的算法惊艳了你？ - 三郎的回答 - 知乎</a></li>
+<li><a href="http://www.sohu.com/a/155185294_464086" target="_blank" rel="noopener">PID控制算法精华和参数整定三大招</a></li>
+</ul>
+<h1 id="三环控制"><a href="#三环控制" class="headerlink" title="三环控制"></a>三环控制</h1><p>再有就是我大致理解了伺服电机三环PID是一种多么精妙而自然的设计.</p>
+<p>在调PID的时候我和师兄一度绝望, 我就说: “要不我们只保留转距环, 上层的我们重新写一遍.”当时我们使用的是<strong>位置模式</strong>控制电机. 我看电机驱动器的说明书都看得晕呼呼的, 还没怎么理解三环控制.
+但我要保留转距环的想法是很正常的:</p>
+<p>电机最基本的控制方式就是控制流过电机的电流, 也就是控制电机输出的转距. 在这一环里不是单纯的PID, 驱动器还设置了一些阈值, 防止过流烧坏电机什么的. 这一环是驱动器自整定的, 但效果也不错, 因此我认为不必自己重写这一环.</p>
+<p>然后我说:”上层我们用一个PID, 达到: 当当前位置比目标位置小就加正向转距, 当当前位置比目标位置大时加逆向转距的效果.”</p>
+<p>学长立即指出这样机械腿到达位置时的<strong>速度是不定的</strong>.我:”那就加一环速度PID, 生成一个百分数乘以转距来达到控制达到目标位置时的速度的效果”</p>
+<p>说完我一愣, 我特么这不是说了一遍<strong>电流环, 速度环, 位置环</strong>的所谓<strong>三环控制</strong>🐴</p>
+<p>🔗 参考:</p>
+<ul>
+<li><a href="http://www.voidcn.com/article/p-hxjakzgh-pw.html" target="_blank" rel="noopener">伺服电机三环控制的原理（位置环，运动环，电流环）</a></li>
+<li><a href="https://blog.csdn.net/Andy20081251/article/details/79457911" target="_blank" rel="noopener">浅谈伺服电机三种控制方式</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/21311021" target="_blank" rel="noopener">伺服电机的控制方式简述</a></li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>随笔</category>
+        <category>自动控制</category>
       </categories>
   </entry>
   <entry>
@@ -2625,87 +2625,6 @@ UCS和Unicode分别由<strong>ISO</strong> (国际标准化组织) 和<strong>�
       </categories>
   </entry>
   <entry>
-    <title>Python中的小技巧</title>
-    <url>/zh-CN/2019/07/03/Python%E4%B8%AD%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<p>俺也记不住语法, 在这里记录一下常见语句.</p>
-<a id="more"></a>
-
-<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="查看自带的帮助文档"><a href="#查看自带的帮助文档" class="headerlink" title="查看自带的帮助文档"></a>查看自带的帮助文档</h2><p>用<code>help()</code>函数, 以<code>q</code>退出.</p>
-<p>❗️ 使用help(module_name)时首先需要import该模块</p>
-<h2 id="查看当前python解释器路径"><a href="#查看当前python解释器路径" class="headerlink" title="查看当前python解释器路径"></a>查看当前python解释器路径</h2><p>有时候写程序会发现莫名其妙的bug比如找不到某库, 路径不对等, 可能是因为用错了解释器. 用下面语句可以查看当前解释器的路径:</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.executable</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="在python解释器里清屏"><a href="#在python解释器里清屏" class="headerlink" title="在python解释器里清屏"></a>在python解释器里清屏</h2><p>搜了一下python里似乎没有很简短的清屏命令, 要用命令只能用类似以下这种:</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">a = os.system(<span class="string">'clear'</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-<p>💡 这是在Linux下清屏的命令, 在Windows要用<code>os.system('cls')</code></p>
-<p>💡 将这条命令赋值给一个变量是为了窗口顶部不出现一个0. 你可以单独输入
-<code>os.system('clear')</code>试试</p>
-<p>但如果你是在<strong>Bash</strong>中打开的python可以用 <code>Ctrl + L</code>, 这是Bash的清屏快捷键.</p>
-<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><h2 id="生成等差数列"><a href="#生成等差数列" class="headerlink" title="生成等差数列"></a>生成等差数列</h2><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">list(range(begin, end, step))</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="生成任意指定列表"><a href="#生成任意指定列表" class="headerlink" title="生成任意指定列表"></a>生成任意指定列表</h2><h3 id="利用列表推导式"><a href="#利用列表推导式" class="headerlink" title="利用列表推导式"></a>利用列表推导式</h3><p><strong>推导式comprehensions</strong>（又称解析式）, 是Python的一种独有特性. <strong>推导式是可以从一个数据序列构建另一个新的数据序列的结构体</strong>. 换句话说能从一组数据中求出满足条件的新数据, 比如a, b两个等长列表中都为偶数的项的乘积. 共有三种推导式, 在Python2和3
-中都有支持
-:</p>
-<ul>
-<li>列表(list)推导式</li>
-<li>字典(dict)推导式</li>
-<li>集合(set)推导式</li>
-</ul>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">list = [output_expression <span class="keyword">for</span> out_exp <span class="keyword">in</span> input_list <span class="keyword">if</span> expression]</span><br></pre></td></tr></tbody></table></figure>
-
-<p>e.g.</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">#1</span></span><br><span class="line">a = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">30</span>) <span class="keyword">if</span> i % <span class="number">3</span> <span class="keyword">is</span> <span class="number">0</span>]</span><br><span class="line"><span class="comment">#2</span></span><br><span class="line">names = [<span class="string">'Bob'</span>,<span class="string">'Tom'</span>,<span class="string">'alice'</span>,<span class="string">'Jerry'</span>,<span class="string">'Wendy'</span>,<span class="string">'Smith'</span>]</span><br><span class="line">LONG_NAMES = [name.upper() <span class="keyword">for</span> name <span class="keyword">in</span> names <span class="keyword">if</span> len(name)&gt;<span class="number">3</span>]</span><br><span class="line"><span class="comment">#3</span></span><br><span class="line">a = [x*y <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">5</span>) <span class="keyword">if</span> x &gt; <span class="number">2</span> <span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">4</span>) <span class="keyword">if</span> y &lt; <span class="number">3</span>]</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="利用lambda函数"><a href="#利用lambda函数" class="headerlink" title="利用lambda函数"></a>利用lambda函数</h3><p>lambda函数在python, C++, Java等语言中都有, 我理解的作用主要有三:</p>
-<ul>
-<li>少写几个字</li>
-<li>能将一个”函数”以参数的形式传入另一个函数, ❗️注意此处普通函数能被传递并不是什么稀罕事, 更重要的是类似<a href="https://www.zhihu.com/question/20125256/answer/29733906" target="_blank" rel="noopener">这里</a>提到的”伪函数”</li>
-<li>避免污染命名空间, 需要一个函数但不知道命什么名时用lambda函数</li>
-</ul>
-<p>lambda函数主要用在filter(), map(), reduce()中</p>
-<p>💡 在python3中<code>reduce()</code>从内建函数中移除了, 被移到了functools模块中</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>foo = [<span class="number">2</span>, <span class="number">18</span>, <span class="number">9</span>, <span class="number">22</span>, <span class="number">17</span>, <span class="number">24</span>, <span class="number">8</span>, <span class="number">12</span>, <span class="number">27</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> filter(<span class="keyword">lambda</span> x: x % <span class="number">3</span> == <span class="number">0</span>, foo)</span><br><span class="line">[<span class="number">18</span>, <span class="number">9</span>, <span class="number">24</span>, <span class="number">12</span>, <span class="number">27</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> map(<span class="keyword">lambda</span> x: x * <span class="number">2</span> + <span class="number">10</span>, foo)</span><br><span class="line">[<span class="number">14</span>, <span class="number">46</span>, <span class="number">28</span>, <span class="number">54</span>, <span class="number">44</span>, <span class="number">58</span>, <span class="number">26</span>, <span class="number">34</span>, <span class="number">64</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> reduce(<span class="keyword">lambda</span> x, y: x + y, foo)</span><br><span class="line"><span class="number">139</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h1 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h1><h2 id="由列表生成字典"><a href="#由列表生成字典" class="headerlink" title="由列表生成字典"></a>由列表生成字典</h2><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</span><br><span class="line">c = dict(zip(a, b))</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="对字典按值排序"><a href="#对字典按值排序" class="headerlink" title="对字典按值排序"></a>对字典按值排序</h2><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">d = {<span class="string">'a'</span>:<span class="number">1</span>, <span class="string">'b'</span>:<span class="number">2</span>, <span class="string">'c'</span>: <span class="number">5</span>, <span class="string">'d'</span>:<span class="number">4</span>, <span class="string">'e'</span>:<span class="number">3</span>}</span><br><span class="line"></span><br><span class="line">sorted(d.items(), key=<span class="keyword">lambda</span> i: i[<span class="number">1</span>])</span><br></pre></td></tr></tbody></table></figure>
-
-<blockquote>
-<p>sorted(iterable, /, *, key=None, reverse=False)</p>
-<p>Return a new list containing all items from the iterable in ascending order.</p>
-<p>A custom key function can be supplied to customize the sort order, and the
-reverse flag can be set to request the result in descending order.</p>
-</blockquote>
-<p>即<code>iterable</code>处放一个可迭代的对象, <code>key</code>处放自定义函数来选取比较的参数, <code>reverse</code>
-处设定是否反向</p>
-<p><code>d.items()</code>返回可遍历的(键, 值) 元组数组, <code>key=lambda i: i[1]</code>即此处参与比较的参数是d的值</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>技巧</category>
-        <category>语言</category>
-        <category>Python</category>
-      </categories>
-  </entry>
-  <entry>
     <title>C语言学习笔记</title>
     <url>/zh-CN/2019/07/12/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>这篇是学习笔记, 因为我决定最近专门重新学习一下C语言.</p>
@@ -2951,6 +2870,87 @@ C++程序使用的库链接. <code>gcc</code>把后缀为 <strong>.c</strong> �
       </categories>
   </entry>
   <entry>
+    <title>Python中的小技巧</title>
+    <url>/zh-CN/2019/07/03/Python%E4%B8%AD%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>俺也记不住语法, 在这里记录一下常见语句.</p>
+<a id="more"></a>
+
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="查看自带的帮助文档"><a href="#查看自带的帮助文档" class="headerlink" title="查看自带的帮助文档"></a>查看自带的帮助文档</h2><p>用<code>help()</code>函数, 以<code>q</code>退出.</p>
+<p>❗️ 使用help(module_name)时首先需要import该模块</p>
+<h2 id="查看当前python解释器路径"><a href="#查看当前python解释器路径" class="headerlink" title="查看当前python解释器路径"></a>查看当前python解释器路径</h2><p>有时候写程序会发现莫名其妙的bug比如找不到某库, 路径不对等, 可能是因为用错了解释器. 用下面语句可以查看当前解释器的路径:</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.executable</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="在python解释器里清屏"><a href="#在python解释器里清屏" class="headerlink" title="在python解释器里清屏"></a>在python解释器里清屏</h2><p>搜了一下python里似乎没有很简短的清屏命令, 要用命令只能用类似以下这种:</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">a = os.system(<span class="string">'clear'</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>💡 这是在Linux下清屏的命令, 在Windows要用<code>os.system('cls')</code></p>
+<p>💡 将这条命令赋值给一个变量是为了窗口顶部不出现一个0. 你可以单独输入
+<code>os.system('clear')</code>试试</p>
+<p>但如果你是在<strong>Bash</strong>中打开的python可以用 <code>Ctrl + L</code>, 这是Bash的清屏快捷键.</p>
+<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><h2 id="生成等差数列"><a href="#生成等差数列" class="headerlink" title="生成等差数列"></a>生成等差数列</h2><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">list(range(begin, end, step))</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="生成任意指定列表"><a href="#生成任意指定列表" class="headerlink" title="生成任意指定列表"></a>生成任意指定列表</h2><h3 id="利用列表推导式"><a href="#利用列表推导式" class="headerlink" title="利用列表推导式"></a>利用列表推导式</h3><p><strong>推导式comprehensions</strong>（又称解析式）, 是Python的一种独有特性. <strong>推导式是可以从一个数据序列构建另一个新的数据序列的结构体</strong>. 换句话说能从一组数据中求出满足条件的新数据, 比如a, b两个等长列表中都为偶数的项的乘积. 共有三种推导式, 在Python2和3
+中都有支持
+:</p>
+<ul>
+<li>列表(list)推导式</li>
+<li>字典(dict)推导式</li>
+<li>集合(set)推导式</li>
+</ul>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">list = [output_expression <span class="keyword">for</span> out_exp <span class="keyword">in</span> input_list <span class="keyword">if</span> expression]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>e.g.</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">#1</span></span><br><span class="line">a = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">30</span>) <span class="keyword">if</span> i % <span class="number">3</span> <span class="keyword">is</span> <span class="number">0</span>]</span><br><span class="line"><span class="comment">#2</span></span><br><span class="line">names = [<span class="string">'Bob'</span>,<span class="string">'Tom'</span>,<span class="string">'alice'</span>,<span class="string">'Jerry'</span>,<span class="string">'Wendy'</span>,<span class="string">'Smith'</span>]</span><br><span class="line">LONG_NAMES = [name.upper() <span class="keyword">for</span> name <span class="keyword">in</span> names <span class="keyword">if</span> len(name)&gt;<span class="number">3</span>]</span><br><span class="line"><span class="comment">#3</span></span><br><span class="line">a = [x*y <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">5</span>) <span class="keyword">if</span> x &gt; <span class="number">2</span> <span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">4</span>) <span class="keyword">if</span> y &lt; <span class="number">3</span>]</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="利用lambda函数"><a href="#利用lambda函数" class="headerlink" title="利用lambda函数"></a>利用lambda函数</h3><p>lambda函数在python, C++, Java等语言中都有, 我理解的作用主要有三:</p>
+<ul>
+<li>少写几个字</li>
+<li>能将一个”函数”以参数的形式传入另一个函数, ❗️注意此处普通函数能被传递并不是什么稀罕事, 更重要的是类似<a href="https://www.zhihu.com/question/20125256/answer/29733906" target="_blank" rel="noopener">这里</a>提到的”伪函数”</li>
+<li>避免污染命名空间, 需要一个函数但不知道命什么名时用lambda函数</li>
+</ul>
+<p>lambda函数主要用在filter(), map(), reduce()中</p>
+<p>💡 在python3中<code>reduce()</code>从内建函数中移除了, 被移到了functools模块中</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>foo = [<span class="number">2</span>, <span class="number">18</span>, <span class="number">9</span>, <span class="number">22</span>, <span class="number">17</span>, <span class="number">24</span>, <span class="number">8</span>, <span class="number">12</span>, <span class="number">27</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> filter(<span class="keyword">lambda</span> x: x % <span class="number">3</span> == <span class="number">0</span>, foo)</span><br><span class="line">[<span class="number">18</span>, <span class="number">9</span>, <span class="number">24</span>, <span class="number">12</span>, <span class="number">27</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> map(<span class="keyword">lambda</span> x: x * <span class="number">2</span> + <span class="number">10</span>, foo)</span><br><span class="line">[<span class="number">14</span>, <span class="number">46</span>, <span class="number">28</span>, <span class="number">54</span>, <span class="number">44</span>, <span class="number">58</span>, <span class="number">26</span>, <span class="number">34</span>, <span class="number">64</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> reduce(<span class="keyword">lambda</span> x, y: x + y, foo)</span><br><span class="line"><span class="number">139</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h1><h2 id="由列表生成字典"><a href="#由列表生成字典" class="headerlink" title="由列表生成字典"></a>由列表生成字典</h2><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</span><br><span class="line">c = dict(zip(a, b))</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="对字典按值排序"><a href="#对字典按值排序" class="headerlink" title="对字典按值排序"></a>对字典按值排序</h2><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">d = {<span class="string">'a'</span>:<span class="number">1</span>, <span class="string">'b'</span>:<span class="number">2</span>, <span class="string">'c'</span>: <span class="number">5</span>, <span class="string">'d'</span>:<span class="number">4</span>, <span class="string">'e'</span>:<span class="number">3</span>}</span><br><span class="line"></span><br><span class="line">sorted(d.items(), key=<span class="keyword">lambda</span> i: i[<span class="number">1</span>])</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>sorted(iterable, /, *, key=None, reverse=False)</p>
+<p>Return a new list containing all items from the iterable in ascending order.</p>
+<p>A custom key function can be supplied to customize the sort order, and the
+reverse flag can be set to request the result in descending order.</p>
+</blockquote>
+<p>即<code>iterable</code>处放一个可迭代的对象, <code>key</code>处放自定义函数来选取比较的参数, <code>reverse</code>
+处设定是否反向</p>
+<p><code>d.items()</code>返回可遍历的(键, 值) 元组数组, <code>key=lambda i: i[1]</code>即此处参与比较的参数是d的值</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>技巧</category>
+        <category>语言</category>
+        <category>Python</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Vim使用杂记</title>
     <url>/zh-CN/2019/07/10/vim%E4%BD%BF%E7%94%A8%E6%9D%82%E8%AE%B0/</url>
     <content><![CDATA[<p>使用vim开发也有半年多啦, 不过配置vim也是个漫长的过程. 记录一下常用快捷键和用法和配置过程.</p>
@@ -3173,30 +3173,6 @@ shift 字母</kbd>和<kbd>Ctrl 字母</kbd>的输出没有区别.</p>
       </categories>
   </entry>
   <entry>
-    <title>初学Socket通信</title>
-    <url>/zh-CN/2019/08/07/%E5%88%9D%E5%AD%A6socket%E9%80%9A%E4%BF%A1/</url>
-    <content><![CDATA[<p>TODO</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-  </entry>
-  <entry>
     <title>MATLAB杂记</title>
     <url>/zh-CN/2019/08/05/MATLAB%E6%9D%82%E8%AE%B0/</url>
     <content><![CDATA[<p>再开学的课程就要用MATLAB了, 而且了解很多机械系唯一要求学的编程语言就是MATLAB, 我决定还是稍微了解下.</p>
@@ -3269,6 +3245,30 @@ MATLAB以及运行脚本. 我发现这是可行的:</p>
         <category>语言</category>
         <category>MATLAB</category>
       </categories>
+  </entry>
+  <entry>
+    <title>初学Socket通信</title>
+    <url>/zh-CN/2019/08/07/%E5%88%9D%E5%AD%A6socket%E9%80%9A%E4%BF%A1/</url>
+    <content><![CDATA[<p>TODO</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
   </entry>
   <entry>
     <title>记大二暑假北航实习</title>
@@ -4495,39 +4495,6 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
       </categories>
   </entry>
   <entry>
-    <title>笔记本电脑性能提升/选购指南</title>
-    <url>/zh-CN/2020/05/08/%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%94%B5%E8%84%91%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87-%E9%80%89%E8%B4%AD%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<p>自去年三月多开始有意识了解电脑配件至今已有一年多, 对这些乱七八糟的了解多了许多, 整理一下我对<strong>笔记本</strong>性能提升的经验以及选购指南. 因为我很了解在不了解这些时听到这些陌生概念的望而畏怯以及半信半疑, 我尽量解释得小白些.</p>
-<p>❗️ 因为我自己没有台式机所以这里只谈笔记本相关.</p>
-<a id="more"></a>
-
-<h2 id="性能提升"><a href="#性能提升" class="headerlink" title="性能提升"></a>性能提升</h2><p>不同于台式机里什么配件都可以换,  比如很多笔记本的CPU, 显卡是焊死在主板上的. 即便你的笔记本支持更换这两样, 这也不是容易事. 因为笔记本的散热是精打细算设计好的, 更换了更好的CPU或者显卡通常以为着更大的发热量, 很容易导致过热然后出奇奇怪怪的问题.</p>
-<p>因此为了提升笔记本性能常见的操作是<strong>更换硬盘和内存</strong>.</p>
-<h3 id="更换硬盘"><a href="#更换硬盘" class="headerlink" title="更换硬盘"></a>更换硬盘</h3><h3 id="更换内存"><a href="#更换内存" class="headerlink" title="更换内存"></a>更换内存</h3><h2 id="选购指南"><a href="#选购指南" class="headerlink" title="选购指南"></a>选购指南</h2><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>硬件</category>
-        <category>杂记</category>
-      </categories>
-  </entry>
-  <entry>
     <title>单硬盘三系统安装记录</title>
     <url>/zh-CN/2020/04/04/%E5%8D%95%E7%A1%AC%E7%9B%98%E4%B8%89%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<p>分享一下我在同一个SSD里同时安装Ubuntu, Windows, macOS三个系统并以GRUB作为开机引导的经验. 说实话过程并不复杂.</p>
@@ -4680,6 +4647,96 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
         <category>Windows</category>
         <category>启动</category>
         <category>GRUB</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>笔记本电脑性能提升/选购指南</title>
+    <url>/zh-CN/2020/05/08/%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%94%B5%E8%84%91%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87-%E9%80%89%E8%B4%AD%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p>自去年三月多开始有意识了解电脑配件至今已有一年多, 对这些乱七八糟的了解多了许多, 整理一下我对<strong>笔记本</strong>性能提升的经验以及选购指南. 因为我很了解在不了解这些时听到这些陌生概念的望而畏怯以及半信半疑, 我尽量解释得小白些.</p>
+<p>❗️ 因为我自己没有台式机所以这里只谈笔记本相关.</p>
+<a id="more"></a>
+
+<h2 id="性能提升"><a href="#性能提升" class="headerlink" title="性能提升"></a>性能提升</h2><p>不同于台式机里什么配件都可以换,  比如很多笔记本的CPU, 显卡是焊死在主板上的. 即便你的笔记本支持更换这两样, 这也不是容易事. 因为笔记本的散热是精打细算设计好的, 更换了更好的CPU或者显卡通常以为着更大的发热量, 很容易导致过热然后出奇奇怪怪的问题.</p>
+<p>因此为了提升笔记本性能常见的操作是<strong>更换硬盘和内存</strong>.</p>
+<h3 id="更换硬盘"><a href="#更换硬盘" class="headerlink" title="更换硬盘"></a>更换硬盘</h3><h3 id="更换内存"><a href="#更换内存" class="headerlink" title="更换内存"></a>更换内存</h3><h2 id="选购指南"><a href="#选购指南" class="headerlink" title="选购指南"></a>选购指南</h2><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>硬件</category>
+        <category>杂记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>我从Ubuntu换到了Manjaro</title>
+    <url>/zh-CN/2020/07/26/%E6%88%91%E4%BB%8EUbuntu%E6%8D%A2%E5%88%B0%E4%BA%86Manjaro/</url>
+    <content><![CDATA[<p>前几天闲来无事下了一个听说了很久的Manjaro (KDE版), 在Live CD体验了一会果断装了实体机. 体验比Ubuntu好太多了!</p>
+<a id="more"></a>
+
+<h2 id="Manjaro-KDE比起Ubuntu的优势"><a href="#Manjaro-KDE比起Ubuntu的优势" class="headerlink" title="Manjaro-KDE比起Ubuntu的优势"></a>Manjaro-KDE比起Ubuntu的优势</h2><p>在实体机上使用快要有一个月了, 体验下来相比于Ubuntu, 从不是专业软件开发者, 而是机器人开发者的角度, Manjaro KDE最吸引我的三个关键词是: KDE, 不太激进的Arch系, MHWD. 当然两者还有些其他区别, 但我目前感触最深的就是这三个关键词.</p>
+<h3 id="KDE的好处"><a href="#KDE的好处" class="headerlink" title="KDE的好处"></a>KDE的好处</h3><p>Manjaro有好几个版本, Architect, Gnome, KDE Plasma, XFCE四个官方版本, i3等九个社区版本, 这几个版本都是给x64/x86平台用的, 主要区别是窗口管理器不同. 确切的说:</p>
+<ul>
+<li>Architect没有图形界面</li>
+<li>Gnome, KDE Plasma, XFCE是桌面环境, 有各自的窗口管理器 (比如Plasma的窗口管理器是KWin), 但他们提供的不只有窗口管理器, 这几个大社区各自开发了一套配套基础应用, 总的来说都很有用</li>
+<li>9个社区版相当与Manjaro Architect+一个预装的窗口管理器, 据我观察没有提供什么配套的东西</li>
+</ul>
+<p>而另外还有针对arm平台几款常见单板机的Manjaro, 每款都提供KDE Plasma和XFCE两个版本. Linux平台桌面环境有很多, 其中我认为最有价值的就是XFCE和KDE. XFCE以<strong>轻量级, 稳定的同时足够友好</strong>著称, 是在电脑性能不太好时的首选桌面. 而KDE Plasma以<strong>现代, 高度可定制, 友好</strong>著称. 至于Gnome… 自从体验过KDE后, 除了很多软件或多或少依赖Gnome这一点, 我找不出它比起XFCE或者KDE有什么优势…</p>
+<p>值得一提的是, KDE的初衷只是开发一个桌面环境, <strong>K</strong>ool <strong>D</strong>esktop <strong>E</strong>nvironment, 但随着社区的发展, <strong>KDE现在代表的是一个软件社区</strong>, 而桌面环境被分离出来, 只作为其中的一个产品, KDE Plasma. 另外还有KDE Applications, KDE Framework. 这样以来许多KDE软件在Windows, OS X也能运行.</p>
+<h4 id="能轻松高度个性化且稳定的Plasma桌面环境"><a href="#能轻松高度个性化且稳定的Plasma桌面环境" class="headerlink" title="能轻松高度个性化且稳定的Plasma桌面环境"></a>能轻松高度个性化且稳定的Plasma桌面环境</h4><p>在体验KDE前我用了许久Gnome, 还折腾了许多个性化, 把Grub界面, Plymouth界面, 登录界面, 窗口主题, gnome shell主题, 图标主题都以较为硬核, 需要输入一些网上看来的命令的方式换掉了. 但体验了KDE后觉得自己实在是愚蠢: 有那功夫折腾Gnome的个性化, 直接换到KDE在系统设置点几下鼠标进行个性化多好? 上面提到的几个除了GRUB界面系统设置没有提供设定入口, <strong>统统在系统设置就可以下载, 更换主题</strong>! KDE还提供了更多可以个性化的东西, 比如一堆桌面特效, 应用窗口切换动画, 一堆任务栏的挂件等等. 实在是现代, 友好, 高度可定制!</p>
+<p>💡 值得一提的是在Manjaro KDE的系统设置的<code>Time and Date</code>一栏即可勾选<strong>Hardware clock in local time zone</strong>, 也就是说勾选上这个Manjaro就会将硬件时间作为当前时区时间!</p>
+<p>当然, 功能如此丰富的Plasma桌面环境运行起来消耗的资源比XFCE多, 但仍比Gnome消耗的资源少, 是较新的电脑的首选桌面环境😆</p>
+<h4 id="齐全而贴心的系统自带软件"><a href="#齐全而贴心的系统自带软件" class="headerlink" title="齐全而贴心的系统自带软件"></a>齐全而贴心的系统自带软件</h4><p>KDE自带的软件的贴心程度震撼到我:</p>
+<ul>
+<li>虽然Ubuntu也有类似<strong>FileLight</strong>的磁盘空间分析工具, 但是我总觉得有些bug, 体验不是很好, 而FileLight没有这些毛病, 甚至在扫描时是有动画的, 很贴心.</li>
+<li>KDE自带的图片查看器, pdf阅读器比Gnome自带的功能更加丰富, 但也不会杂乱.</li>
+<li>KDE的硬件信息查看软件, 类似任务管理器的软件比Gnome的更加直观, 信息更加丰富.</li>
+<li>Manjaro KDE这个软件商店 (叫Add/Remove Software, 我也不知道算不算是KDE的) 吊打Ubuntu应用商店. 我基本没有成功从UBuntu应用商店下下来过东西, 但Manjaro KDE这个软件商店体验很好, 可以图形化设置是否开启AUR, Snap, Flatpak的支持, 设置如何处理包的缓存文件等.</li>
+</ul>
+<h3 id="KDE的缺点"><a href="#KDE的缺点" class="headerlink" title="KDE的缺点"></a>KDE的缺点</h3><p>KDE也不是没有缺点. KDE, Gnome均遵循GPL协议, Gnome采用的图形库GTK遵循GPL协议, 但<strong>KDE采用的图形库Qt不遵循GPL协议</strong>. 这导致Gnome获得的商业支持远多于KDE, 所以现在很多主流发行版的默认桌面环境是Gnome, 进一步导致很多软件或多或少依赖Gnome, 很多教程也是针对Gnome的.</p>
+<p>比如deepin全系软件都对Gnome有一定依赖, 在Manjaro KDE直接安装AUR里打包好的tim是无法启动的, 需要<a href="https://github.com/wszqkzqk/deepin-wine-ubuntu/issues/90#issuecomment-653921540" target="_blank" rel="noopener">再安装一个依赖, 编辑一段代码</a>.</p>
+<p>这些其实不算大问题, 都能在网上较为容易地找到解决方案, 但确实不是新手难度.</p>
+<h3 id="坐靠AUR的好处"><a href="#坐靠AUR的好处" class="headerlink" title="坐靠AUR的好处"></a>坐靠AUR的好处</h3><p>要注意Manjaro虽然是Arch系, 但又与Arch Linux不完全相通.</p>
+<p>cuda, cudnn被升到11.0, 8.0, 与libtorch不兼容. 但是降级很容易</p>
+<p>TODO</p>
+<h3 id="Manjaro-Hardware-Detection-MHWD"><a href="#Manjaro-Hardware-Detection-MHWD" class="headerlink" title="Manjaro Hardware Detection (MHWD)"></a>Manjaro Hardware Detection (MHWD)</h3><h2 id="Manjaro是否对Linux新手友好"><a href="#Manjaro是否对Linux新手友好" class="headerlink" title="Manjaro是否对Linux新手友好"></a>Manjaro是否对Linux新手友好</h2><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>软件配置</category>
+        <category>操作系统</category>
+        <category>Linux</category>
       </categories>
   </entry>
   <entry>
@@ -4926,63 +4983,6 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
       </script>]]></content>
       <categories>
         <category>工具</category>
-        <category>操作系统</category>
-        <category>Linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>我从Ubuntu换到了Manjaro</title>
-    <url>/zh-CN/2020/07/26/%E6%88%91%E4%BB%8EUbuntu%E6%8D%A2%E5%88%B0%E4%BA%86Manjaro/</url>
-    <content><![CDATA[<p>前几天闲来无事下了一个听说了很久的Manjaro (KDE版), 在Live CD体验了一会果断装了实体机. 体验比Ubuntu好太多了!</p>
-<a id="more"></a>
-
-<h2 id="Manjaro-KDE比起Ubuntu的优势"><a href="#Manjaro-KDE比起Ubuntu的优势" class="headerlink" title="Manjaro-KDE比起Ubuntu的优势"></a>Manjaro-KDE比起Ubuntu的优势</h2><p>在实体机上使用快要有一个月了, 体验下来相比于Ubuntu, 从不是专业软件开发者, 而是机器人开发者的角度, Manjaro KDE最吸引我的三个关键词是: KDE, 不太激进的Arch系, MHWD. 当然两者还有些其他区别, 但我目前感触最深的就是这三个关键词.</p>
-<h3 id="KDE的好处"><a href="#KDE的好处" class="headerlink" title="KDE的好处"></a>KDE的好处</h3><p>Manjaro有好几个版本, Architect, Gnome, KDE Plasma, XFCE四个官方版本, i3等九个社区版本, 这几个版本都是给x64/x86平台用的, 主要区别是窗口管理器不同. 确切的说:</p>
-<ul>
-<li>Architect没有图形界面</li>
-<li>Gnome, KDE Plasma, XFCE是桌面环境, 有各自的窗口管理器 (比如Plasma的窗口管理器是KWin), 但他们提供的不只有窗口管理器, 这几个大社区各自开发了一套配套基础应用, 总的来说都很有用</li>
-<li>9个社区版相当与Manjaro Architect+一个预装的窗口管理器, 据我观察没有提供什么配套的东西</li>
-</ul>
-<p>而另外还有针对arm平台几款常见单板机的Manjaro, 每款都提供KDE Plasma和XFCE两个版本. Linux平台桌面环境有很多, 其中我认为最有价值的就是XFCE和KDE. XFCE以<strong>轻量级, 稳定的同时足够友好</strong>著称, 是在电脑性能不太好时的首选桌面. 而KDE Plasma以<strong>现代, 高度可定制, 友好</strong>著称. 至于Gnome… 自从体验过KDE后, 除了很多软件或多或少依赖Gnome这一点, 我找不出它比起XFCE或者KDE有什么优势…</p>
-<p>值得一提的是, KDE的初衷只是开发一个桌面环境, <strong>K</strong>ool <strong>D</strong>esktop <strong>E</strong>nvironment, 但随着社区的发展, <strong>KDE现在代表的是一个软件社区</strong>, 而桌面环境被分离出来, 只作为其中的一个产品, KDE Plasma. 另外还有KDE Applications, KDE Framework. 这样以来许多KDE软件在Windows, OS X也能运行.</p>
-<h4 id="能轻松高度个性化且稳定的Plasma桌面环境"><a href="#能轻松高度个性化且稳定的Plasma桌面环境" class="headerlink" title="能轻松高度个性化且稳定的Plasma桌面环境"></a>能轻松高度个性化且稳定的Plasma桌面环境</h4><p>在体验KDE前我用了许久Gnome, 还折腾了许多个性化, 把Grub界面, Plymouth界面, 登录界面, 窗口主题, gnome shell主题, 图标主题都以较为硬核, 需要输入一些网上看来的命令的方式换掉了. 但体验了KDE后觉得自己实在是愚蠢: 有那功夫折腾Gnome的个性化, 直接换到KDE在系统设置点几下鼠标进行个性化多好? 上面提到的几个除了GRUB界面系统设置没有提供设定入口, <strong>统统在系统设置就可以下载, 更换主题</strong>! KDE还提供了更多可以个性化的东西, 比如一堆桌面特效, 应用窗口切换动画, 一堆任务栏的挂件等等. 实在是现代, 友好, 高度可定制!</p>
-<p>💡 值得一提的是在Manjaro KDE的系统设置的<code>Time and Date</code>一栏即可勾选<strong>Hardware clock in local time zone</strong>, 也就是说勾选上这个Manjaro就会将硬件时间作为当前时区时间!</p>
-<p>当然, 功能如此丰富的Plasma桌面环境运行起来消耗的资源比XFCE多, 但仍比Gnome消耗的资源少, 是较新的电脑的首选桌面环境😆</p>
-<h4 id="齐全而贴心的系统自带软件"><a href="#齐全而贴心的系统自带软件" class="headerlink" title="齐全而贴心的系统自带软件"></a>齐全而贴心的系统自带软件</h4><p>KDE自带的软件的贴心程度震撼到我:</p>
-<ul>
-<li>虽然Ubuntu也有类似<strong>FileLight</strong>的磁盘空间分析工具, 但是我总觉得有些bug, 体验不是很好, 而FileLight没有这些毛病, 甚至在扫描时是有动画的, 很贴心.</li>
-<li>KDE自带的图片查看器, pdf阅读器比Gnome自带的功能更加丰富, 但也不会杂乱.</li>
-<li>KDE的硬件信息查看软件, 类似任务管理器的软件比Gnome的更加直观, 信息更加丰富.</li>
-<li>Manjaro KDE这个软件商店 (叫Add/Remove Software, 我也不知道算不算是KDE的) 吊打Ubuntu应用商店. 我基本没有成功从UBuntu应用商店下下来过东西, 但Manjaro KDE这个软件商店体验很好, 可以图形化设置是否开启AUR, Snap, Flatpak的支持, 设置如何处理包的缓存文件等.</li>
-</ul>
-<h3 id="KDE的缺点"><a href="#KDE的缺点" class="headerlink" title="KDE的缺点"></a>KDE的缺点</h3><p>KDE也不是没有缺点. KDE, Gnome均遵循GPL协议, Gnome采用的图形库GTK遵循GPL协议, 但<strong>KDE采用的图形库Qt不遵循GPL协议</strong>. 这导致Gnome获得的商业支持远多于KDE, 所以现在很多主流发行版的默认桌面环境是Gnome, 进一步导致很多软件或多或少依赖Gnome, 很多教程也是针对Gnome的.</p>
-<p>比如deepin全系软件都对Gnome有一定依赖, 在Manjaro KDE直接安装AUR里打包好的tim是无法启动的, 需要<a href="https://github.com/wszqkzqk/deepin-wine-ubuntu/issues/90#issuecomment-653921540" target="_blank" rel="noopener">再安装一个依赖, 编辑一段代码</a>.</p>
-<p>这些其实不算大问题, 都能在网上较为容易地找到解决方案, 但确实不是新手难度.</p>
-<h3 id="坐靠AUR的好处"><a href="#坐靠AUR的好处" class="headerlink" title="坐靠AUR的好处"></a>坐靠AUR的好处</h3><p>要注意Manjaro虽然是Arch系, 但又与Arch Linux不完全相通.</p>
-<p>cuda, cudnn被升到11.0, 8.0, 与libtorch不兼容. 但是降级很容易</p>
-<p>TODO</p>
-<h3 id="Manjaro-Hardware-Detection-MHWD"><a href="#Manjaro-Hardware-Detection-MHWD" class="headerlink" title="Manjaro Hardware Detection (MHWD)"></a>Manjaro Hardware Detection (MHWD)</h3><h2 id="Manjaro是否对Linux新手友好"><a href="#Manjaro是否对Linux新手友好" class="headerlink" title="Manjaro是否对Linux新手友好"></a>Manjaro是否对Linux新手友好</h2><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>软件配置</category>
         <category>操作系统</category>
         <category>Linux</category>
       </categories>
