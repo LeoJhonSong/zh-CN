@@ -35,188 +35,6 @@
       </script>]]></content>
   </entry>
   <entry>
-    <title>配置VSCode中调试C/C++环境</title>
-    <url>/zh-CN/2018/12/30/%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/</url>
-    <content><![CDATA[<div align="right">Language:
-<a href="/2018/12/30/Configure-C-C-environment-in-VSCode"><kbd>English</kbd></a>
-<a href="/zh-CN/2018/12/30/配置VSCode中调试C-C-环境"><kbd>中文</kbd></a>
-</div>
-
-<p>这里是为我在VSCode插件市场发布的
-<a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.ccpp-extension-pack" target="_blank" rel="noopener">C/C++扩展包</a>
-写的Windows下VSCode中C/C++配置教程<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8">🎉</span></p>
-<a id="more"></a>
-
-<p>实际上在<a href="https://code.visualstudio.com/docs/languages/cpp" target="_blank" rel="noopener">VSCode的说明文档中C++部分</a>
-对如何配置环境有十分详细的说明, 本文仅是对其的部分整理和解读<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span> 因此如果你的能力足够看官方文档当然是更好的选择<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8">👍</span></p>
-<p>P.S.其实只要右键翻译成中文我觉得不难懂…</p>
-<ol>
-<li><a href="#准备工作">准备工作</a><ol>
-<li><a href="#编译器">编译器</a><ol>
-<li><a href="#安装">安装</a></li>
-<li><a href="#添加至path">添加至Path</a></li>
-<li><a href="#测试">测试</a></li>
-</ol>
-</li>
-<li><a href="#vscode插件">VSCode插件</a></li>
-</ol>
-</li>
-<li><a href="#配置文件">配置文件</a><ol>
-<li><a href="#配置intellisense">配置IntelliSense</a></li>
-<li><a href="#配置编译配置文件">配置编译配置文件</a><ol>
-<li><a href="#合起来">合起来!</a></li>
-</ol>
-</li>
-<li><a href="#配置调试配置文件">配置调试配置文件</a><ol>
-<li><a href="#调试对象">调试对象</a></li>
-<li><a href="#debugger路径及选项">Debugger路径及选项</a></li>
-<li><a href="#启动前编译">启动前编译</a></li>
-<li><a href="#合起来-1">合起来!</a></li>
-</ol>
-</li>
-</ol>
-</li>
-<li><a href="#enjoy">Enjoy</a></li>
-</ol>
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>VSCode本身只是一个编辑器, 也就是一个记事本, 是不包含编译器的. 即便我们安装了cpptools
-这个扩展, 他也并没有为我们安装编译器 (如果你想看看cpptools这个扩展里都有什么可以前往自己电脑的 <strong>%HOMEPATH%\.vscode\extensions</strong>, 找到<strong>ms-vscode.cpptools</strong> 去看看)</p>
-<h2 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h2><p>因此第一步我们需要安装编译器. 编译器不止一家, 在VSCode官方文档中推荐的是:</p>
-<ul>
-<li><p>Windows平台: <a href="https://sourceforge.net/projects/mingw-w64/" target="_blank" rel="noopener">MinGW-w64</a></p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 要注意另有一个叫MinGW的东西, 虽然功能差不多, 但那个已经很久没更新了,
-安装没MinGW-w64容易, 还不是官宣, 因此不推荐. 后面所说的MinGW实际指的是MinGW-w64, 我只是懒得打那么多字了</p>
-</li>
-<li><p>macOS: <a href="http://releases.llvm.org/download.html" target="_blank" rel="noopener">clang</a></p>
-</li>
-<li><p>Linux: <a href="https://gcc.gnu.org/" target="_blank" rel="noopener">gcc</a></p>
-</li>
-</ul>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8">❗</span>因为我没钱买Mac, 暂时也没需求在Linux配置VSCode, 本文仅针对<strong>Windows</strong>
-平台, 当然也可以作为其他平台的参考. 甚至<a href="https://pimylifeup.com/raspberry-pi-visual-studio-code/" target="_blank" rel="noopener">有人在树莓派安装VSCode</a>.</p>
-<p>P.S. 实际上编译器的选择并不是个令人头疼的事, 我们随时可以轻易的更换VSCode使用的编译器</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>将MinGW-w64下载下来之后点击安装, 以下几点要注意, 其余选项默认即可:</p>
-<ul>
-<li><p>安装向导第一页有一项是选择<code>Architecture</code> (即电脑的架构, 此处i386代指32位电脑,
-x86_64代指64位电脑), 此处选择<strong>x86_64</strong>. (当然如果你的电脑竟然是32位的话不用变)</p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> 如何查看自己电脑是32位还是64位?</p>
-<p>Windows10的话, 前往 <strong>设置</strong> &gt; <strong>系统</strong> &gt; <strong>关于</strong> &gt; <strong>设备规格</strong> &gt; <strong>系统类型</strong></p>
-<p>其他Windows的话上网搜索一下好啦 <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f609.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f609.png?v8">😉</span></p>
-</li>
-<li><p>安装在哪里都可以, 但一定要是你找得到的地方, 因为安装完成后还要手动将MinGW加入<strong>Path</strong>.</p>
-</li>
-</ul>
-<h3 id="添加至Path"><a href="#添加至Path" class="headerlink" title="添加至Path"></a>添加至Path</h3><p>安装完毕后我们需要将MinGW添加至<strong>Path</strong>, 这样我们通过命令行就可以调用它啦 (VSCode编译/调试
-C/C++程序实际上就是在内置命令行中调用MinGW)</p>
-<p>要将什么路径添加到<strong>Path</strong>呢? 因为添加到Path的路径是要调用的程序的exe文件所在的文件夹比如我将MinGW安装到了 <strong>D:\Softwares\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0</strong>
-这个文件夹下, 那么我将
-<strong>D:\Softwares\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin</strong>加入环境变量.
-你会看到我们将要调用的<code>gcc</code>和<code>gdb</code>两个程序正在其中.</p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8">🔗</span> 关于如何添加系统变量, <a href="https://jingyan.baidu.com/article/ca41422f17107a1eaf99ed64.html" target="_blank" rel="noopener">这篇百度知道</a>应该就够了</p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>这之后! 我们测试一下, 在命令行输入<code>gcc</code></p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> 你看到的应当是:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">C:\Users\LeoJh&gt;gcc</span><br><span class="line">gcc: fatal error: no input files</span><br><span class="line">compilation terminated.</span><br></pre></td></tr></tbody></table></figure>
-
-<p>这是说gcc被成功唤起,我们已经成功完成编译器的配置了, 但你没告诉它要编译的文件路径, 所以他就报错了.</p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8">❌</span>而如果你看到的是:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">C:\Users\LeoJh&gt;gcc</span><br><span class="line">'gcc' 不是内部或外部命令，也不是可运行的程序</span><br><span class="line">或批处理文件。</span><br></pre></td></tr></tbody></table></figure>
-
-<p>这是说无法从命令行调用gcc. 一种情况是没有把正确的路径加入<strong>Path</strong>, 另一种情况是该换电脑了
-<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8">😁</span></p>
-<h2 id="VSCode插件"><a href="#VSCode插件" class="headerlink" title="VSCode插件"></a>VSCode插件</h2><p>搞定了编译器我们就离完成不远了! 实际上你现在已经可以开始开发C/C++了, 只不过是硬核一些.
-不信你可以搓一段hello world放进一个.c文件, 比如<strong>test.c</strong>, 在该文件所在文件夹空白处按住<code>shift</code>同时按右键, 在此打开powershell, 输入<code>gcc test.c</code>, 然后你就会发现文件夹里多了一个<strong>a.exe</strong>. 这便是编译好的可执行文件了!</p>
-<p>但这样无论是编辑还是编译还是调试体验都太差了, 于是我们安装一些好用的扩展提高效率.</p>
-<p>因为我并不常在VSCode中编写C/C++, 因此<a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.ccpp-extension-pack" target="_blank" rel="noopener">我的扩展包</a>
-中并没有几个插件. 但我认为这几个很不错的<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<p>当然你看不上我的扩展包也没事<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8">😢</span>只需要安装了<a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools" target="_blank" rel="noopener">官方C/C++支持扩展</a>
-就能体验到很强大的支持了.</p>
-<h1 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h1><p>在有些教程中, 要在VSCode中开发C/C++需要配置<code>c_cpp_properties.json</code>, <code>tasks.json</code>,
-<code>launch.json</code>三样, 但现在不是这样了! 🎉 现在<code>c_cpp_properties.json</code>已经完全被
-<code>settings.json</code>取代了, 也就是说在设置中就可以进行原来在<code>c_cpp_properties.json</code>中进行的配置! 这样的好处是我们可以针对不同的工作区进行不同的设置等. 另外, 稍后你也会看到随着VSC的更新<code>tasks.json</code>和<code>launch.json</code>的生成也变得十分简单!</p>
-<p>🔗 关于设置取代了<code>c_cpp_properties.json</code>的说明参见<a href="https://github.com/Microsoft/vscode-cpptools/blob/master/Documentation/LanguageServer/Customizing%20Default%20Settings.md" target="_blank" rel="noopener">这里</a>,
-另外给出对原本可以在<code>c_cpp_properties.json</code>中配置的内容的描述的<a href="https://github.com/Microsoft/vscode-cpptools/blob/master/Documentation/LanguageServer/c_cpp_properties.json.md" target="_blank" rel="noopener">链接</a></p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 以下配置文件内容都以我的配置文件为例</p>
-<h2 id="配置IntelliSense"><a href="#配置IntelliSense" class="headerlink" title="配置IntelliSense"></a>配置IntelliSense</h2><p>正如前面所说, 我们不需要VSCode就可以编译/调试C/C++, 因此能够提供智能补全功能的
-IntelliSence是<strong>cpptools</strong>这个插件很重要的一部分, 通过在<code>settings.json</code> (原本是
-<code>c_cpp_properties.json</code>)中进行设置来设定IntelliSense的模式. 主要设置以下几个:</p>
-<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"C_Cpp.autocomplete": "Default",</span><br><span class="line">"C_Cpp.clang_format_style": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Allman, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4 }",</span><br><span class="line">"C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Allman, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4 }",</span><br><span class="line">"C_Cpp.default.compilerPath": "D:\\Softwares\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe",</span><br><span class="line">"C_Cpp.default.cStandard": "c99",</span><br><span class="line">"C_Cpp.default.cppStandard": "c++11",</span><br><span class="line">"C_Cpp.default.intelliSenseMode": "gcc-x64",</span><br><span class="line">"C_Cpp.intelliSenseEngine": "Default",</span><br><span class="line">"C_Cpp.errorSquiggles": "Enabled",</span><br></pre></td></tr></tbody></table></figure>
-
-<p>💡 其中<strong>C_Cpp.clang_format_style</strong>, <strong>C_Cpp.clang_format_fallbackStyle</strong>是VSC格式化C/C++代码的风格.
-上面的配置是近似于<strong>Visual Studio</strong>格式化C/C++代码的风格.
-我偏爱VS风格, 而如果你喜欢Google风格, 可以用下面这个值:</p>
-<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"C_Cpp.clang_format_style": "{BasedOnStyleStyle: Google, IndentWidth: 4}",</span><br><span class="line">"C_Cpp.clang_format_fallbackStyle": "{BasedOnStyleStyle: Google, IndentWidth: 4}",</span><br></pre></td></tr></tbody></table></figure>
-
-<p>随着VSC的更新, VSC提供了一些<code>tasks.json</code>和<code>launch.json</code>的模板, 这让生成这两个文件变得十分容易!
-下面这个gif👇 是一个生成<code>tasks.json</code>和<code>launch.json</code>的示例.</p>
-<p><img src="%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/example.gif" alt=""></p>
-<p>💡 这个gif是在Linux系统 (Ubuntu) 下录制的.</p>
-<p>下面则是对这两个文件内容的一些解释.</p>
-<h2 id="配置编译配置文件"><a href="#配置编译配置文件" class="headerlink" title="配置编译配置文件"></a>配置编译配置文件</h2><p>然后配置编译用的<code>tasks.json</code>.</p>
-<p>✔️ 这个文件和之后配置的<code>launch.json</code>都是针对特定程序的,
-如何生成这两个文件请参见VSCode官方文档. 但你可以将满意的<code>tasks.json</code>和<code>launch.json</code>放在一个包含许多工程的目录中, 那么这些工程都将使用这两个配置文件. 如果你想给这之中某个工程配置不同的配置你可以在这个工程的根目录另外生成<code>tasks.json</code>和<code>launch.json</code>, 会覆盖上一层的配置.</p>
-<p>当你跟随VSCode官方文档创建了一个 <code>tasks.json</code> 之后, 将下面这个任务添加到tasks的列表,
-至于自带的label为 <strong>echo</strong> 的任务你可以删掉或者不管他.</p>
-<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">   <span class="attr">"label"</span>: <span class="string">"Compile"</span>,</span><br><span class="line">   <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">   <span class="attr">"command"</span>: <span class="string">"gcc"</span>,</span><br><span class="line">   <span class="attr">"args"</span>: [</span><br><span class="line">         <span class="string">"${file}"</span>,</span><br><span class="line">         <span class="string">"-o"</span>,</span><br><span class="line">         <span class="string">"${fileDirname}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">         <span class="string">"-g"</span>,</span><br><span class="line">         <span class="string">"-Wall"</span>,</span><br><span class="line">         <span class="string">"-std=c++17"</span></span><br><span class="line">   ],</span><br><span class="line">   <span class="attr">"group"</span>: {</span><br><span class="line">         <span class="attr">"kind"</span>: <span class="string">"build"</span>,</span><br><span class="line">         <span class="attr">"isDefault"</span>: <span class="literal">true</span></span><br><span class="line">   }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<p><code>label</code>的意思是给这个任务取名为<strong>Compile</strong>, <a href="#启动前编译">稍后</a>会用到.</p>
-<p>从中我们可以看出实际上当我们调用这个叫<strong>Compile</strong>的task的时候会在shell中输入:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">gcc ${file} -o ${fileDirname}/${fileBasenameNoExtension}.exe -g -Wall -std=c++17</span><br></pre></td></tr></tbody></table></figure>
-
-<p>其中<strong>${file}</strong>等是<a href="https://code.visualstudio.com/docs/editor/variables-reference" target="_blank" rel="noopener">VSCode中定义的变量</a></p>
-<p><code>-o</code>选项使我们可以<a href="http://www.runoob.com/note/28613" target="_blank" rel="noopener">指定生成文件的名字</a></p>
-<p>其他几个选项可以上网查查.</p>
-<p><code>group</code>这里的配置是我们能通过快捷键 <code>Ctrl+shift+B</code>来执行该任务.
-参见<a href="https://code.visualstudio.com/docs/editor/tasks#_typescript-hello-world" target="_blank" rel="noopener">这里</a></p>
-<h3 id="合起来"><a href="#合起来" class="headerlink" title="合起来!"></a>合起来!</h3><p>因此我的 <code>tashs.json</code> 长这样:</p>
-<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="comment">// See https://go.microsoft.com/fwlink/?LinkId=733558</span></span><br><span class="line">    <span class="comment">// for the documentation about the tasks.json format</span></span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"2.0.0"</span>,</span><br><span class="line">    <span class="attr">"tasks"</span>: [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"label"</span>: <span class="string">"Compile"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">            <span class="attr">"command"</span>: <span class="string">"gcc"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [</span><br><span class="line">                <span class="string">"${file}"</span>,</span><br><span class="line">                <span class="string">"-o"</span>,</span><br><span class="line">                <span class="string">"${fileDirname}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">                <span class="string">"-g"</span>,</span><br><span class="line">                <span class="string">"-Wall"</span>,</span><br><span class="line">                <span class="string">"-std=c++17"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"group"</span>: {</span><br><span class="line">                <span class="attr">"kind"</span>: <span class="string">"build"</span>,</span><br><span class="line">                <span class="attr">"isDefault"</span>: <span class="literal">true</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="配置调试配置文件"><a href="#配置调试配置文件" class="headerlink" title="配置调试配置文件"></a>配置调试配置文件</h2><p>最后配置的这个是<code>launch.json</code>. 实际上这很简单, 因为VSCode已经提供了很多种模板, 需要改动的非常少.</p>
-<p>通常我们选择 <strong>(gdb) Launch</strong> 这种模板. Launch指的是要调试的程序是在开始调试时才开始运行,
-Attach指的是开始调试时程序已经在运行了 (比如在服务器上的程序)</p>
-<p>需要改动/添加的非常少:</p>
-<h3 id="调试对象"><a href="#调试对象" class="headerlink" title="调试对象"></a>调试对象</h3><figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"program": "${workspaceFolder}/a.exe"</span><br></pre></td></tr></tbody></table></figure>
-
-<p><code>program</code>指的是要调试的程序. 如果不特别指出的话大多数编译器默认将编译出来的可执行文件命名为 <strong>a.exe</strong>. 而如果你的<code>tasks.json</code>也像我一样加了
-“-o ${fileDirname}/${fileBasenameNoExtension}.exe” 这个选项的话, 将会生成和源文件同名的可执行文件, 因此要用:</p>
-<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"program": "${workspaceFolder}/${fileBasenameNoExtension}.exe"</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="Debugger路径及选项"><a href="#Debugger路径及选项" class="headerlink" title="Debugger路径及选项"></a>Debugger路径及选项</h3><p>如果你在命令行输入 <code>gdb</code> 你会发现首先映入眼帘的是一串废话, 因此我们可以加上<code>-q</code>这个选项来让它少说废话.</p>
-<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"miDebuggerPath": "gdb.exe",</span><br><span class="line">"miDebuggerArgs": "-q"</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="启动前编译"><a href="#启动前编译" class="headerlink" title="启动前编译"></a>启动前编译</h3><p>如果你担心自己忘记每次调试前先编译一遍已更改的代码 (不然你会哭出声响), 可以添加一个
-<strong>preLaunchTask</strong>, 这个task指定为刚配置的那个<strong>Compile</strong>任务.
-这样每次调试前程序都会被先编译一遍<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8">👍</span></p>
-<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"preLaunchTask": "Compile"</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="合起来-1"><a href="#合起来-1" class="headerlink" title="合起来!"></a>合起来!</h3><p>因此我的<code>launch.json</code>长这样:</p>
-<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="comment">// Use IntelliSense to learn about possible attributes.</span></span><br><span class="line">    <span class="comment">// Hover to view descriptions of existing attributes.</span></span><br><span class="line">    <span class="comment">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span></span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"0.2.0"</span>,</span><br><span class="line">    <span class="attr">"configurations"</span>: [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"(gdb) Launch"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>,</span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"${workspaceFolder}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [],</span><br><span class="line">            <span class="attr">"stopAtEntry"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"cwd"</span>: <span class="string">"${workspaceFolder}"</span>,</span><br><span class="line">            <span class="attr">"environment"</span>: [],</span><br><span class="line">            <span class="attr">"externalConsole"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"MIMode"</span>: <span class="string">"gdb"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerPath"</span>: <span class="string">"gdb.exe"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerArgs"</span>: <span class="string">"-q"</span>,</span><br><span class="line">            <span class="attr">"setupCommands"</span>: [</span><br><span class="line">                {</span><br><span class="line">                    <span class="attr">"description"</span>: <span class="string">"Enable pretty-printing for gdb"</span>,</span><br><span class="line">                    <span class="attr">"text"</span>: <span class="string">"-enable-pretty-printing"</span>,</span><br><span class="line">                    <span class="attr">"ignoreFailures"</span>: <span class="literal">true</span></span><br><span class="line">                }</span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"preLaunchTask"</span>: <span class="string">"Compile"</span></span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-
-<h1 id="Enjoy"><a href="#Enjoy" class="headerlink" title="Enjoy"></a>Enjoy</h1><p>这下我们可以轻松愉快的开发C/C++了! 祝各位水平日益提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8">🎉</span></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>VSC</category>
-        <category>软件配置</category>
-      </categories>
-  </entry>
-  <entry>
     <title>记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历</title>
     <url>/zh-CN/2018/12/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/</url>
     <content><![CDATA[<p><strong>前言</strong> ：博主是个不怎么懂软件的菜鸟，前几天为了学习Soft Robotics企图装一个带SoftRobots插件的SOFA，但我搜了半天也没有较新的安装教程（连下载方式都变了好吗）。虽然有官网的安装教程但我在安装过程中还是出了很多意外。感慨于在身边诸多大佬们的帮助下我这个对软件一窍不通的人才安装成功，我以一个不怎么接触编程的人的角度写下这篇博客帮助也想学习Soft Robotics的各位。(博主为了写这篇教程忍痛把安好的SOFA删了又下了一遍）</p>
@@ -438,6 +256,188 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
       </categories>
   </entry>
   <entry>
+    <title>配置VSCode中调试C/C++环境</title>
+    <url>/zh-CN/2018/12/30/%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<div align="right">Language:
+<a href="/2018/12/30/Configure-C-C-environment-in-VSCode"><kbd>English</kbd></a>
+<a href="/zh-CN/2018/12/30/配置VSCode中调试C-C-环境"><kbd>中文</kbd></a>
+</div>
+
+<p>这里是为我在VSCode插件市场发布的
+<a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.ccpp-extension-pack" target="_blank" rel="noopener">C/C++扩展包</a>
+写的Windows下VSCode中C/C++配置教程<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8">🎉</span></p>
+<a id="more"></a>
+
+<p>实际上在<a href="https://code.visualstudio.com/docs/languages/cpp" target="_blank" rel="noopener">VSCode的说明文档中C++部分</a>
+对如何配置环境有十分详细的说明, 本文仅是对其的部分整理和解读<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span> 因此如果你的能力足够看官方文档当然是更好的选择<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8">👍</span></p>
+<p>P.S.其实只要右键翻译成中文我觉得不难懂…</p>
+<ol>
+<li><a href="#准备工作">准备工作</a><ol>
+<li><a href="#编译器">编译器</a><ol>
+<li><a href="#安装">安装</a></li>
+<li><a href="#添加至path">添加至Path</a></li>
+<li><a href="#测试">测试</a></li>
+</ol>
+</li>
+<li><a href="#vscode插件">VSCode插件</a></li>
+</ol>
+</li>
+<li><a href="#配置文件">配置文件</a><ol>
+<li><a href="#配置intellisense">配置IntelliSense</a></li>
+<li><a href="#配置编译配置文件">配置编译配置文件</a><ol>
+<li><a href="#合起来">合起来!</a></li>
+</ol>
+</li>
+<li><a href="#配置调试配置文件">配置调试配置文件</a><ol>
+<li><a href="#调试对象">调试对象</a></li>
+<li><a href="#debugger路径及选项">Debugger路径及选项</a></li>
+<li><a href="#启动前编译">启动前编译</a></li>
+<li><a href="#合起来-1">合起来!</a></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a href="#enjoy">Enjoy</a></li>
+</ol>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>VSCode本身只是一个编辑器, 也就是一个记事本, 是不包含编译器的. 即便我们安装了cpptools
+这个扩展, 他也并没有为我们安装编译器 (如果你想看看cpptools这个扩展里都有什么可以前往自己电脑的 <strong>%HOMEPATH%\.vscode\extensions</strong>, 找到<strong>ms-vscode.cpptools</strong> 去看看)</p>
+<h2 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h2><p>因此第一步我们需要安装编译器. 编译器不止一家, 在VSCode官方文档中推荐的是:</p>
+<ul>
+<li><p>Windows平台: <a href="https://sourceforge.net/projects/mingw-w64/" target="_blank" rel="noopener">MinGW-w64</a></p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 要注意另有一个叫MinGW的东西, 虽然功能差不多, 但那个已经很久没更新了,
+安装没MinGW-w64容易, 还不是官宣, 因此不推荐. 后面所说的MinGW实际指的是MinGW-w64, 我只是懒得打那么多字了</p>
+</li>
+<li><p>macOS: <a href="http://releases.llvm.org/download.html" target="_blank" rel="noopener">clang</a></p>
+</li>
+<li><p>Linux: <a href="https://gcc.gnu.org/" target="_blank" rel="noopener">gcc</a></p>
+</li>
+</ul>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8">❗</span>因为我没钱买Mac, 暂时也没需求在Linux配置VSCode, 本文仅针对<strong>Windows</strong>
+平台, 当然也可以作为其他平台的参考. 甚至<a href="https://pimylifeup.com/raspberry-pi-visual-studio-code/" target="_blank" rel="noopener">有人在树莓派安装VSCode</a>.</p>
+<p>P.S. 实际上编译器的选择并不是个令人头疼的事, 我们随时可以轻易的更换VSCode使用的编译器</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>将MinGW-w64下载下来之后点击安装, 以下几点要注意, 其余选项默认即可:</p>
+<ul>
+<li><p>安装向导第一页有一项是选择<code>Architecture</code> (即电脑的架构, 此处i386代指32位电脑,
+x86_64代指64位电脑), 此处选择<strong>x86_64</strong>. (当然如果你的电脑竟然是32位的话不用变)</p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> 如何查看自己电脑是32位还是64位?</p>
+<p>Windows10的话, 前往 <strong>设置</strong> &gt; <strong>系统</strong> &gt; <strong>关于</strong> &gt; <strong>设备规格</strong> &gt; <strong>系统类型</strong></p>
+<p>其他Windows的话上网搜索一下好啦 <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f609.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f609.png?v8">😉</span></p>
+</li>
+<li><p>安装在哪里都可以, 但一定要是你找得到的地方, 因为安装完成后还要手动将MinGW加入<strong>Path</strong>.</p>
+</li>
+</ul>
+<h3 id="添加至Path"><a href="#添加至Path" class="headerlink" title="添加至Path"></a>添加至Path</h3><p>安装完毕后我们需要将MinGW添加至<strong>Path</strong>, 这样我们通过命令行就可以调用它啦 (VSCode编译/调试
+C/C++程序实际上就是在内置命令行中调用MinGW)</p>
+<p>要将什么路径添加到<strong>Path</strong>呢? 因为添加到Path的路径是要调用的程序的exe文件所在的文件夹比如我将MinGW安装到了 <strong>D:\Softwares\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0</strong>
+这个文件夹下, 那么我将
+<strong>D:\Softwares\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin</strong>加入环境变量.
+你会看到我们将要调用的<code>gcc</code>和<code>gdb</code>两个程序正在其中.</p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8">🔗</span> 关于如何添加系统变量, <a href="https://jingyan.baidu.com/article/ca41422f17107a1eaf99ed64.html" target="_blank" rel="noopener">这篇百度知道</a>应该就够了</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>这之后! 我们测试一下, 在命令行输入<code>gcc</code></p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> 你看到的应当是:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">C:\Users\LeoJh&gt;gcc</span><br><span class="line">gcc: fatal error: no input files</span><br><span class="line">compilation terminated.</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这是说gcc被成功唤起,我们已经成功完成编译器的配置了, 但你没告诉它要编译的文件路径, 所以他就报错了.</p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8">❌</span>而如果你看到的是:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">C:\Users\LeoJh&gt;gcc</span><br><span class="line">'gcc' 不是内部或外部命令，也不是可运行的程序</span><br><span class="line">或批处理文件。</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这是说无法从命令行调用gcc. 一种情况是没有把正确的路径加入<strong>Path</strong>, 另一种情况是该换电脑了
+<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8">😁</span></p>
+<h2 id="VSCode插件"><a href="#VSCode插件" class="headerlink" title="VSCode插件"></a>VSCode插件</h2><p>搞定了编译器我们就离完成不远了! 实际上你现在已经可以开始开发C/C++了, 只不过是硬核一些.
+不信你可以搓一段hello world放进一个.c文件, 比如<strong>test.c</strong>, 在该文件所在文件夹空白处按住<code>shift</code>同时按右键, 在此打开powershell, 输入<code>gcc test.c</code>, 然后你就会发现文件夹里多了一个<strong>a.exe</strong>. 这便是编译好的可执行文件了!</p>
+<p>但这样无论是编辑还是编译还是调试体验都太差了, 于是我们安装一些好用的扩展提高效率.</p>
+<p>因为我并不常在VSCode中编写C/C++, 因此<a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.ccpp-extension-pack" target="_blank" rel="noopener">我的扩展包</a>
+中并没有几个插件. 但我认为这几个很不错的<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<p>当然你看不上我的扩展包也没事<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8">😢</span>只需要安装了<a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools" target="_blank" rel="noopener">官方C/C++支持扩展</a>
+就能体验到很强大的支持了.</p>
+<h1 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h1><p>在有些教程中, 要在VSCode中开发C/C++需要配置<code>c_cpp_properties.json</code>, <code>tasks.json</code>,
+<code>launch.json</code>三样, 但现在不是这样了! 🎉 现在<code>c_cpp_properties.json</code>已经完全被
+<code>settings.json</code>取代了, 也就是说在设置中就可以进行原来在<code>c_cpp_properties.json</code>中进行的配置! 这样的好处是我们可以针对不同的工作区进行不同的设置等. 另外, 稍后你也会看到随着VSC的更新<code>tasks.json</code>和<code>launch.json</code>的生成也变得十分简单!</p>
+<p>🔗 关于设置取代了<code>c_cpp_properties.json</code>的说明参见<a href="https://github.com/Microsoft/vscode-cpptools/blob/master/Documentation/LanguageServer/Customizing%20Default%20Settings.md" target="_blank" rel="noopener">这里</a>,
+另外给出对原本可以在<code>c_cpp_properties.json</code>中配置的内容的描述的<a href="https://github.com/Microsoft/vscode-cpptools/blob/master/Documentation/LanguageServer/c_cpp_properties.json.md" target="_blank" rel="noopener">链接</a></p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 以下配置文件内容都以我的配置文件为例</p>
+<h2 id="配置IntelliSense"><a href="#配置IntelliSense" class="headerlink" title="配置IntelliSense"></a>配置IntelliSense</h2><p>正如前面所说, 我们不需要VSCode就可以编译/调试C/C++, 因此能够提供智能补全功能的
+IntelliSence是<strong>cpptools</strong>这个插件很重要的一部分, 通过在<code>settings.json</code> (原本是
+<code>c_cpp_properties.json</code>)中进行设置来设定IntelliSense的模式. 主要设置以下几个:</p>
+<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"C_Cpp.autocomplete": "Default",</span><br><span class="line">"C_Cpp.clang_format_style": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Allman, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4 }",</span><br><span class="line">"C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Allman, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4 }",</span><br><span class="line">"C_Cpp.default.compilerPath": "D:\\Softwares\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe",</span><br><span class="line">"C_Cpp.default.cStandard": "c99",</span><br><span class="line">"C_Cpp.default.cppStandard": "c++11",</span><br><span class="line">"C_Cpp.default.intelliSenseMode": "gcc-x64",</span><br><span class="line">"C_Cpp.intelliSenseEngine": "Default",</span><br><span class="line">"C_Cpp.errorSquiggles": "Enabled",</span><br></pre></td></tr></tbody></table></figure>
+
+<p>💡 其中<strong>C_Cpp.clang_format_style</strong>, <strong>C_Cpp.clang_format_fallbackStyle</strong>是VSC格式化C/C++代码的风格.
+上面的配置是近似于<strong>Visual Studio</strong>格式化C/C++代码的风格.
+我偏爱VS风格, 而如果你喜欢Google风格, 可以用下面这个值:</p>
+<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"C_Cpp.clang_format_style": "{BasedOnStyleStyle: Google, IndentWidth: 4}",</span><br><span class="line">"C_Cpp.clang_format_fallbackStyle": "{BasedOnStyleStyle: Google, IndentWidth: 4}",</span><br></pre></td></tr></tbody></table></figure>
+
+<p>随着VSC的更新, VSC提供了一些<code>tasks.json</code>和<code>launch.json</code>的模板, 这让生成这两个文件变得十分容易!
+下面这个gif👇 是一个生成<code>tasks.json</code>和<code>launch.json</code>的示例.</p>
+<p><img src="%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/example.gif" alt=""></p>
+<p>💡 这个gif是在Linux系统 (Ubuntu) 下录制的.</p>
+<p>下面则是对这两个文件内容的一些解释.</p>
+<h2 id="配置编译配置文件"><a href="#配置编译配置文件" class="headerlink" title="配置编译配置文件"></a>配置编译配置文件</h2><p>然后配置编译用的<code>tasks.json</code>.</p>
+<p>✔️ 这个文件和之后配置的<code>launch.json</code>都是针对特定程序的,
+如何生成这两个文件请参见VSCode官方文档. 但你可以将满意的<code>tasks.json</code>和<code>launch.json</code>放在一个包含许多工程的目录中, 那么这些工程都将使用这两个配置文件. 如果你想给这之中某个工程配置不同的配置你可以在这个工程的根目录另外生成<code>tasks.json</code>和<code>launch.json</code>, 会覆盖上一层的配置.</p>
+<p>当你跟随VSCode官方文档创建了一个 <code>tasks.json</code> 之后, 将下面这个任务添加到tasks的列表,
+至于自带的label为 <strong>echo</strong> 的任务你可以删掉或者不管他.</p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">   <span class="attr">"label"</span>: <span class="string">"Compile"</span>,</span><br><span class="line">   <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">   <span class="attr">"command"</span>: <span class="string">"gcc"</span>,</span><br><span class="line">   <span class="attr">"args"</span>: [</span><br><span class="line">         <span class="string">"${file}"</span>,</span><br><span class="line">         <span class="string">"-o"</span>,</span><br><span class="line">         <span class="string">"${fileDirname}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">         <span class="string">"-g"</span>,</span><br><span class="line">         <span class="string">"-Wall"</span>,</span><br><span class="line">         <span class="string">"-std=c++17"</span></span><br><span class="line">   ],</span><br><span class="line">   <span class="attr">"group"</span>: {</span><br><span class="line">         <span class="attr">"kind"</span>: <span class="string">"build"</span>,</span><br><span class="line">         <span class="attr">"isDefault"</span>: <span class="literal">true</span></span><br><span class="line">   }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>label</code>的意思是给这个任务取名为<strong>Compile</strong>, <a href="#启动前编译">稍后</a>会用到.</p>
+<p>从中我们可以看出实际上当我们调用这个叫<strong>Compile</strong>的task的时候会在shell中输入:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">gcc ${file} -o ${fileDirname}/${fileBasenameNoExtension}.exe -g -Wall -std=c++17</span><br></pre></td></tr></tbody></table></figure>
+
+<p>其中<strong>${file}</strong>等是<a href="https://code.visualstudio.com/docs/editor/variables-reference" target="_blank" rel="noopener">VSCode中定义的变量</a></p>
+<p><code>-o</code>选项使我们可以<a href="http://www.runoob.com/note/28613" target="_blank" rel="noopener">指定生成文件的名字</a></p>
+<p>其他几个选项可以上网查查.</p>
+<p><code>group</code>这里的配置是我们能通过快捷键 <code>Ctrl+shift+B</code>来执行该任务.
+参见<a href="https://code.visualstudio.com/docs/editor/tasks#_typescript-hello-world" target="_blank" rel="noopener">这里</a></p>
+<h3 id="合起来"><a href="#合起来" class="headerlink" title="合起来!"></a>合起来!</h3><p>因此我的 <code>tashs.json</code> 长这样:</p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="comment">// See https://go.microsoft.com/fwlink/?LinkId=733558</span></span><br><span class="line">    <span class="comment">// for the documentation about the tasks.json format</span></span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"2.0.0"</span>,</span><br><span class="line">    <span class="attr">"tasks"</span>: [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"label"</span>: <span class="string">"Compile"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">            <span class="attr">"command"</span>: <span class="string">"gcc"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [</span><br><span class="line">                <span class="string">"${file}"</span>,</span><br><span class="line">                <span class="string">"-o"</span>,</span><br><span class="line">                <span class="string">"${fileDirname}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">                <span class="string">"-g"</span>,</span><br><span class="line">                <span class="string">"-Wall"</span>,</span><br><span class="line">                <span class="string">"-std=c++17"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"group"</span>: {</span><br><span class="line">                <span class="attr">"kind"</span>: <span class="string">"build"</span>,</span><br><span class="line">                <span class="attr">"isDefault"</span>: <span class="literal">true</span></span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="配置调试配置文件"><a href="#配置调试配置文件" class="headerlink" title="配置调试配置文件"></a>配置调试配置文件</h2><p>最后配置的这个是<code>launch.json</code>. 实际上这很简单, 因为VSCode已经提供了很多种模板, 需要改动的非常少.</p>
+<p>通常我们选择 <strong>(gdb) Launch</strong> 这种模板. Launch指的是要调试的程序是在开始调试时才开始运行,
+Attach指的是开始调试时程序已经在运行了 (比如在服务器上的程序)</p>
+<p>需要改动/添加的非常少:</p>
+<h3 id="调试对象"><a href="#调试对象" class="headerlink" title="调试对象"></a>调试对象</h3><figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"program": "${workspaceFolder}/a.exe"</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>program</code>指的是要调试的程序. 如果不特别指出的话大多数编译器默认将编译出来的可执行文件命名为 <strong>a.exe</strong>. 而如果你的<code>tasks.json</code>也像我一样加了
+“-o ${fileDirname}/${fileBasenameNoExtension}.exe” 这个选项的话, 将会生成和源文件同名的可执行文件, 因此要用:</p>
+<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"program": "${workspaceFolder}/${fileBasenameNoExtension}.exe"</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Debugger路径及选项"><a href="#Debugger路径及选项" class="headerlink" title="Debugger路径及选项"></a>Debugger路径及选项</h3><p>如果你在命令行输入 <code>gdb</code> 你会发现首先映入眼帘的是一串废话, 因此我们可以加上<code>-q</code>这个选项来让它少说废话.</p>
+<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"miDebuggerPath": "gdb.exe",</span><br><span class="line">"miDebuggerArgs": "-q"</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="启动前编译"><a href="#启动前编译" class="headerlink" title="启动前编译"></a>启动前编译</h3><p>如果你担心自己忘记每次调试前先编译一遍已更改的代码 (不然你会哭出声响), 可以添加一个
+<strong>preLaunchTask</strong>, 这个task指定为刚配置的那个<strong>Compile</strong>任务.
+这样每次调试前程序都会被先编译一遍<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png?v8">👍</span></p>
+<figure class="highlight"><table><tbody><tr><td class="code"><pre><span class="line">"preLaunchTask": "Compile"</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="合起来-1"><a href="#合起来-1" class="headerlink" title="合起来!"></a>合起来!</h3><p>因此我的<code>launch.json</code>长这样:</p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line">{</span><br><span class="line">    <span class="comment">// Use IntelliSense to learn about possible attributes.</span></span><br><span class="line">    <span class="comment">// Hover to view descriptions of existing attributes.</span></span><br><span class="line">    <span class="comment">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span></span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"0.2.0"</span>,</span><br><span class="line">    <span class="attr">"configurations"</span>: [</span><br><span class="line">        {</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"(gdb) Launch"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>,</span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"${workspaceFolder}/${fileBasenameNoExtension}.exe"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [],</span><br><span class="line">            <span class="attr">"stopAtEntry"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"cwd"</span>: <span class="string">"${workspaceFolder}"</span>,</span><br><span class="line">            <span class="attr">"environment"</span>: [],</span><br><span class="line">            <span class="attr">"externalConsole"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"MIMode"</span>: <span class="string">"gdb"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerPath"</span>: <span class="string">"gdb.exe"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerArgs"</span>: <span class="string">"-q"</span>,</span><br><span class="line">            <span class="attr">"setupCommands"</span>: [</span><br><span class="line">                {</span><br><span class="line">                    <span class="attr">"description"</span>: <span class="string">"Enable pretty-printing for gdb"</span>,</span><br><span class="line">                    <span class="attr">"text"</span>: <span class="string">"-enable-pretty-printing"</span>,</span><br><span class="line">                    <span class="attr">"ignoreFailures"</span>: <span class="literal">true</span></span><br><span class="line">                }</span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"preLaunchTask"</span>: <span class="string">"Compile"</span></span><br><span class="line">        }</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="Enjoy"><a href="#Enjoy" class="headerlink" title="Enjoy"></a>Enjoy</h1><p>这下我们可以轻松愉快的开发C/C++了! 祝各位水平日益提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png?v8">🎉</span></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>软件配置</category>
+        <category>VSC</category>
+      </categories>
+  </entry>
+  <entry>
     <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
     <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<div align="right">Language:
@@ -571,8 +571,8 @@ VSCode之后发现这个选项没被勾上.</p>
       <categories>
         <category>工具</category>
         <category>技巧</category>
-        <category>VSC</category>
         <category>软件配置</category>
+        <category>VSC</category>
       </categories>
   </entry>
   <entry>
@@ -1200,144 +1200,6 @@ Address already in use</strong>, 我的服务器端监听的端口处于 <strong
       </categories>
   </entry>
   <entry>
-    <title>我发布了扩展包!</title>
-    <url>/zh-CN/2019/02/27/%E6%88%91%E5%8F%91%E5%B8%83%E4%BA%86%E6%89%A9%E5%B1%95%E5%8C%85/</url>
-    <content><![CDATA[<p>看了Poy Chang 的<a href="https://poychang.github.io/build-vscode-extension/" target="_blank" rel="noopener">制作VSC扩展包</a>,
-<a href="https://poychang.github.io/publish-extension-to-visual-studio-marketplace/" target="_blank" rel="noopener">发布扩展包至 Extension Marketplace</a>
-两篇文章, 我兴趣大发, 也发布了自己的扩展包!</p>
-<a id="more"></a>
-
-<p>首先说说为什么想糊几个扩展包:</p>
-<ol>
-<li>好有趣, 假装自己也写了好几个很有用的扩展, 装逼利器</li>
-<li>如果VSC启用了过多插件启动得会很慢, 但一个一个禁用插件又很费事. 但有趣的是只要禁用一个扩展包其中包含的扩展都会被禁用, 因此我把我使用的扩展按用途分类做成了扩展包. 这样批量禁用超方便👍</li>
-</ol>
-<p>实际上Poy说得很详细, 制作也很简单, 毕竟我只是想制作个扩展包, 只要把大佬们的插件整合一番就好了.
-一套流程大致有以下几个步骤:</p>
-<ol>
-<li><p>安装 yeoman 和 VSC扩展生成器(我自己瞎翻译的), 安装VSC扩展管理工具(还是瞎翻译的)</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">npm install -g yo generator-code</span><br><span class="line">npm install -g vsce</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>注册成为开发者, 搞到一个 <strong>Personal Access Tokens</strong></p>
-<p>💡 Poy提供的注册接口我无法进入, 推荐点击 <a href="https://visualstudio.com" target="_blank" rel="noopener">https://visualstudio.com</a> 后登陆微软账号, 就能看到很明显的注册开发者账号的按钮了✌️<br>⚠️ 这个 token 一定要保存好阿, 这混蛋玩意只显示这一次, 而你有可能多次用到</p>
-</li>
-<li><p>生成扩展包模板</p>
-</li>
-<li><p>把扩展包的显示名, 扩展包的名字 (显示名和名字是不一样的, 你的扩展包显示名可以和其他人的重名,
-但每个扩展的名字是唯一的), 概述, 随便想的版本号, 作者名, 扩展包的图标的地址,
-在github的仓库地址, 想收录进扩展包的扩展的名字统统塞进 <strong>package.json</strong> .</p>
-</li>
-<li><p>糊一糊 <strong>README</strong> 和 <strong>CHANGELOG.md</strong></p>
-</li>
-<li><p>发布!</p>
-</li>
-</ol>
-<p>这里是我发布的几个扩展包, 欢迎体验!</p>
-<ul>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.coding-assist-extension-pack" target="_blank" rel="noopener">Coding Assist Extension Pack</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.markdown-extension-pack" target="_blank" rel="noopener">Markdown Extension Pack</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.latex-extension-pack" target="_blank" rel="noopener">LaTeX Extension Pack</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.web-extension-pack" target="_blank" rel="noopener">Web Extension Pack</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.python-extension-pack" target="_blank" rel="noopener">Python Extension Pack</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.ccpp-extension-pack" target="_blank" rel="noopener">C/C++ Extension Pack</a></li>
-</ul>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>技巧</category>
-        <category>VSC</category>
-        <category>软件配置</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>关于Linux下开发单片机的猜测</title>
-    <url>/zh-CN/2019/03/28/%E5%85%B3%E4%BA%8ELinux%E4%B8%8B%E5%BC%80%E5%8F%91%E5%8D%95%E7%89%87%E6%9C%BA%E7%9A%84%E7%8C%9C%E6%B5%8B/</url>
-    <content><![CDATA[<p>现在也算个Linux爱好者啦, 但在Linux下怎么配置单片机开发环境我一直一头雾水, 直到最近我找到了相关文章!</p>
-<a id="more"></a>
-
-<p>💡 目前已经有
-<a href="http://docs.platformio.org/en/stable/what-is-platformio.html" target="_blank" rel="noopener">PlatformIO</a>可以让我们进行大部分单片机, 嵌入式系统的开发, 但也有部分开发板他们还没有收录, 除了向项目提issue, 我们也可以尝试不用PlatformIO配置一套Linux下单片机开发环境.</p>
-<p>网上虽然也有那么些讲在Linux开发单片机的文章, 但我看到的基本是开发C51, 顶多是有开发STM32的.
-我是觉得没人会费事在 Linux 下开发C51, 反正我想开发的比如
-<a href="https://www.infineon.com/cms/en/product/microcontroller/16-bit-c166-microcontroller/xc2200-family-body/xc22xxm-series/sak-xc2267m-104f80lr-ab/" target="_blank" rel="noopener">英飞凌 (infineon) 的 XC2267M</a>,
-<a href="https://www.nxp.com/products/processors-and-microcontrollers/arm-based-processors-and-mcus/kinetis-cortex-m-mcus/k-seriesperformancem4/k6x-ethernet/kinetis-k60-100-mhz-mixed-signal-integration-microcontrollers-based-on-arm-cortex-m4-core:K60_100" target="_blank" rel="noopener">飞思卡尔 (Freescale) 的 k60</a>
-之类是没看到相关文章🤷‍</p>
-<p>🌟🌟🌟 最近我看到了两篇配置英飞凌XMC系列单片机开发环境的文章!
-<a href="https://github.com/notandy/xmc4500-relax-linux" target="_blank" rel="noopener">xmc4500-relax-linux</a>讲述了在
-Linux开发xmc4500需要什么工具以及编译方式,
-<a href="https://github.com/furtnerthomas/Linux-XMC-Development" target="_blank" rel="noopener">Linux-XMC-Development</a>
-则<strong>十分详细</strong>地讲述了如何配置基于<strong>eclipse</strong>的XMC系列单片机开发环境.</p>
-<p>🔗 参考:</p>
-<ul>
-<li><a href="https://blog.csdn.net/thinkerleo1997/article/details/53145972" target="_blank" rel="noopener">在Linux下搭建51单片机的开发烧写环境</a></li>
-<li><a href="https://www.amobbs.com/thread-5568167-1-1.html" target="_blank" rel="noopener">ubuntu下安装stm32开发环境 秒杀keil和IAR</a></li>
-<li><a href="https://www.cnblogs.com/amanlikethis/p/3803736.html#lab35" target="_blank" rel="noopener">Linux下STM32开发环境的搭建</a></li>
-</ul>
-<p>参考以上几篇文章我明白了单片机开发都是以下流程, 那我猜只要找到对应工具就OK了:</p>
-<ol>
-<li>交叉编译生成 bin 或者 hex 文件</li>
-<li>烧录到单片机</li>
-<li>调试</li>
-</ol>
-<p>也就是说我们找到对应的交叉编译器, 烧录工具, 调试工具就可以了.</p>
-<p>而什么是对应工具, 要在哪里找到对应工具这个问题又让我苦恼了一阵子, 但后来我发现特么就在每个单片机的页面上! (也可能是在该单片机的系列介绍页面)</p>
-<p>比如 Infineon XC2267M 的交叉编译工具, 调试工具, 烧录工具都在
-<a href="https://www.infineon.com/cms/en/product/microcontroller/16-bit-c166-microcontroller/xc2200-family-body/xc22xxm-series/#!tools" target="_blank" rel="noopener">这里</a>
-列了出来! 当然有些工具是收费的, 但<a href="http://www.infineonic.org/module/forum/thread-554295-1-1.html" target="_blank" rel="noopener">这都不是事</a>😁. 不过似乎这个免费版<a href="http://www.infineonic.org/module/forum/thread-487158-1-1.html" target="_blank" rel="noopener">有点点局限</a></p>
-<p>另一款我提到的k60芯片也在介绍页面给出了相关工具的链接.</p>
-<p>不过看起来很多工具都是基于Eclipse的. (但我觉得Eclipse的图标不好看所以就用过一次)</p>
-<p>🔗 更多相关链接</p>
-<ul>
-<li><a href="https://blog.csdn.net/passerbyyuan/article/details/51404226" target="_blank" rel="noopener">单片机的下载方式分类</a></li>
-<li><a href="https://blog.csdn.net/qlexcel/article/details/84374768" target="_blank" rel="noopener">程序编译生成的Hex、Bin、axf和elf格式</a></li>
-<li><a href="http://www.21ic.com/jichuzhishi/mcu/write/2014-03-20/216132.html" target="_blank" rel="noopener">单片机ISP、IAP和ICP几种烧录方式的区别</a></li>
-</ul>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>软件配置</category>
-        <category>操作系统</category>
-        <category>Linux</category>
-        <category>嵌入式</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Linux杂记</title>
     <url>/zh-CN/2019/02/27/Linux%E6%9D%82%E8%AE%B0/</url>
     <content><![CDATA[<p>最近使用Linux频繁了起来, 接触到更多各种各样的命令, 然后我脑容量不够了<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8">😁</span>
@@ -1762,6 +1624,197 @@ Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可�
       </categories>
   </entry>
   <entry>
+    <title>我发布了扩展包!</title>
+    <url>/zh-CN/2019/02/27/%E6%88%91%E5%8F%91%E5%B8%83%E4%BA%86%E6%89%A9%E5%B1%95%E5%8C%85/</url>
+    <content><![CDATA[<p>看了Poy Chang 的<a href="https://poychang.github.io/build-vscode-extension/" target="_blank" rel="noopener">制作VSC扩展包</a>,
+<a href="https://poychang.github.io/publish-extension-to-visual-studio-marketplace/" target="_blank" rel="noopener">发布扩展包至 Extension Marketplace</a>
+两篇文章, 我兴趣大发, 也发布了自己的扩展包!</p>
+<a id="more"></a>
+
+<p>首先说说为什么想糊几个扩展包:</p>
+<ol>
+<li>好有趣, 假装自己也写了好几个很有用的扩展, 装逼利器</li>
+<li>如果VSC启用了过多插件启动得会很慢, 但一个一个禁用插件又很费事. 但有趣的是只要禁用一个扩展包其中包含的扩展都会被禁用, 因此我把我使用的扩展按用途分类做成了扩展包. 这样批量禁用超方便👍</li>
+</ol>
+<p>实际上Poy说得很详细, 制作也很简单, 毕竟我只是想制作个扩展包, 只要把大佬们的插件整合一番就好了.
+一套流程大致有以下几个步骤:</p>
+<ol>
+<li><p>安装 yeoman 和 VSC扩展生成器(我自己瞎翻译的), 安装VSC扩展管理工具(还是瞎翻译的)</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">npm install -g yo generator-code</span><br><span class="line">npm install -g vsce</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>注册成为开发者, 搞到一个 <strong>Personal Access Tokens</strong></p>
+<p>💡 Poy提供的注册接口我无法进入, 推荐点击 <a href="https://visualstudio.com" target="_blank" rel="noopener">https://visualstudio.com</a> 后登陆微软账号, 就能看到很明显的注册开发者账号的按钮了✌️<br>⚠️ 这个 token 一定要保存好阿, 这混蛋玩意只显示这一次, 而你有可能多次用到</p>
+</li>
+<li><p>生成扩展包模板</p>
+</li>
+<li><p>把扩展包的显示名, 扩展包的名字 (显示名和名字是不一样的, 你的扩展包显示名可以和其他人的重名,
+但每个扩展的名字是唯一的), 概述, 随便想的版本号, 作者名, 扩展包的图标的地址,
+在github的仓库地址, 想收录进扩展包的扩展的名字统统塞进 <strong>package.json</strong> .</p>
+</li>
+<li><p>糊一糊 <strong>README</strong> 和 <strong>CHANGELOG.md</strong></p>
+</li>
+<li><p>发布!</p>
+</li>
+</ol>
+<p>这里是我发布的几个扩展包, 欢迎体验!</p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.coding-assist-extension-pack" target="_blank" rel="noopener">Coding Assist Extension Pack</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.markdown-extension-pack" target="_blank" rel="noopener">Markdown Extension Pack</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.latex-extension-pack" target="_blank" rel="noopener">LaTeX Extension Pack</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.web-extension-pack" target="_blank" rel="noopener">Web Extension Pack</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.python-extension-pack" target="_blank" rel="noopener">Python Extension Pack</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.ccpp-extension-pack" target="_blank" rel="noopener">C/C++ Extension Pack</a></li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>技巧</category>
+        <category>软件配置</category>
+        <category>VSC</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>关于Linux下开发单片机的猜测</title>
+    <url>/zh-CN/2019/03/28/%E5%85%B3%E4%BA%8ELinux%E4%B8%8B%E5%BC%80%E5%8F%91%E5%8D%95%E7%89%87%E6%9C%BA%E7%9A%84%E7%8C%9C%E6%B5%8B/</url>
+    <content><![CDATA[<p>现在也算个Linux爱好者啦, 但在Linux下怎么配置单片机开发环境我一直一头雾水, 直到最近我找到了相关文章!</p>
+<a id="more"></a>
+
+<p>💡 目前已经有
+<a href="http://docs.platformio.org/en/stable/what-is-platformio.html" target="_blank" rel="noopener">PlatformIO</a>可以让我们进行大部分单片机, 嵌入式系统的开发, 但也有部分开发板他们还没有收录, 除了向项目提issue, 我们也可以尝试不用PlatformIO配置一套Linux下单片机开发环境.</p>
+<p>网上虽然也有那么些讲在Linux开发单片机的文章, 但我看到的基本是开发C51, 顶多是有开发STM32的.
+我是觉得没人会费事在 Linux 下开发C51, 反正我想开发的比如
+<a href="https://www.infineon.com/cms/en/product/microcontroller/16-bit-c166-microcontroller/xc2200-family-body/xc22xxm-series/sak-xc2267m-104f80lr-ab/" target="_blank" rel="noopener">英飞凌 (infineon) 的 XC2267M</a>,
+<a href="https://www.nxp.com/products/processors-and-microcontrollers/arm-based-processors-and-mcus/kinetis-cortex-m-mcus/k-seriesperformancem4/k6x-ethernet/kinetis-k60-100-mhz-mixed-signal-integration-microcontrollers-based-on-arm-cortex-m4-core:K60_100" target="_blank" rel="noopener">飞思卡尔 (Freescale) 的 k60</a>
+之类是没看到相关文章🤷‍</p>
+<p>🌟🌟🌟 最近我看到了两篇配置英飞凌XMC系列单片机开发环境的文章!
+<a href="https://github.com/notandy/xmc4500-relax-linux" target="_blank" rel="noopener">xmc4500-relax-linux</a>讲述了在
+Linux开发xmc4500需要什么工具以及编译方式,
+<a href="https://github.com/furtnerthomas/Linux-XMC-Development" target="_blank" rel="noopener">Linux-XMC-Development</a>
+则<strong>十分详细</strong>地讲述了如何配置基于<strong>eclipse</strong>的XMC系列单片机开发环境.</p>
+<p>🔗 参考:</p>
+<ul>
+<li><a href="https://blog.csdn.net/thinkerleo1997/article/details/53145972" target="_blank" rel="noopener">在Linux下搭建51单片机的开发烧写环境</a></li>
+<li><a href="https://www.amobbs.com/thread-5568167-1-1.html" target="_blank" rel="noopener">ubuntu下安装stm32开发环境 秒杀keil和IAR</a></li>
+<li><a href="https://www.cnblogs.com/amanlikethis/p/3803736.html#lab35" target="_blank" rel="noopener">Linux下STM32开发环境的搭建</a></li>
+</ul>
+<p>参考以上几篇文章我明白了单片机开发都是以下流程, 那我猜只要找到对应工具就OK了:</p>
+<ol>
+<li>交叉编译生成 bin 或者 hex 文件</li>
+<li>烧录到单片机</li>
+<li>调试</li>
+</ol>
+<p>也就是说我们找到对应的交叉编译器, 烧录工具, 调试工具就可以了.</p>
+<p>而什么是对应工具, 要在哪里找到对应工具这个问题又让我苦恼了一阵子, 但后来我发现特么就在每个单片机的页面上! (也可能是在该单片机的系列介绍页面)</p>
+<p>比如 Infineon XC2267M 的交叉编译工具, 调试工具, 烧录工具都在
+<a href="https://www.infineon.com/cms/en/product/microcontroller/16-bit-c166-microcontroller/xc2200-family-body/xc22xxm-series/#!tools" target="_blank" rel="noopener">这里</a>
+列了出来! 当然有些工具是收费的, 但<a href="http://www.infineonic.org/module/forum/thread-554295-1-1.html" target="_blank" rel="noopener">这都不是事</a>😁. 不过似乎这个免费版<a href="http://www.infineonic.org/module/forum/thread-487158-1-1.html" target="_blank" rel="noopener">有点点局限</a></p>
+<p>另一款我提到的k60芯片也在介绍页面给出了相关工具的链接.</p>
+<p>不过看起来很多工具都是基于Eclipse的. (但我觉得Eclipse的图标不好看所以就用过一次)</p>
+<p>🔗 更多相关链接</p>
+<ul>
+<li><a href="https://blog.csdn.net/passerbyyuan/article/details/51404226" target="_blank" rel="noopener">单片机的下载方式分类</a></li>
+<li><a href="https://blog.csdn.net/qlexcel/article/details/84374768" target="_blank" rel="noopener">程序编译生成的Hex、Bin、axf和elf格式</a></li>
+<li><a href="http://www.21ic.com/jichuzhishi/mcu/write/2014-03-20/216132.html" target="_blank" rel="noopener">单片机ISP、IAP和ICP几种烧录方式的区别</a></li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>软件配置</category>
+        <category>操作系统</category>
+        <category>Linux</category>
+        <category>嵌入式</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>对伺服电机PID的理解</title>
+    <url>/zh-CN/2019/03/27/%E5%AF%B9%E4%BC%BA%E6%9C%8D%E7%94%B5%E6%9C%BAPID%E7%9A%84%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<p>行吧, 继上次手搓简单卡尔曼算法后我又接触到了更多控制方面的东西. 想我一个电子工程的弟弟在这里研究术语都不知道几个的控制… 命苦啊! 最近在调机械腿, 应该说还在调那条腿, 对伺服电机里的PID算法有了些许感悟.</p>
+<a id="more"></a>
+
+<p>这条腿的传感噪声问题因为换了传感器已经解决了, 最近的问题是<strong>不能快速, 稳定, 准确的到达指定位置</strong>. 目前通过<strong>限制电机的加速度</strong>改善了情况.</p>
+<h1 id="PID也没有那么简单"><a href="#PID也没有那么简单" class="headerlink" title="PID也没有那么简单"></a>PID也没有那么简单</h1><p>在改动前机械腿在低速状态 (很低速那种) 下表现得还是蛮好的, 但速度一旦快起来就明显有<strong>过冲</strong>, 是一抖一抖运动的, 到达位置时间反而比低速还长… 虽然我以前买了一个很简陋的四轴穿越机调过一点点PID, 感觉这算法也不难理解 (至少比卡尔曼好理解😁), 但这次发现要达到一定的精度PID也不是那么简单的东西: 经常是 “这参数加了20了怎么毛的变化都没有啊 黑人问号”, 但实际用起来又确实地感受到了差别. 并且当情况复杂的时候一个普通PID是不能满足的, 可能会用串级PID, 分段PID, 模糊PID, 专家系统PID, 容错PID, 前馈, 非线性控制之类的来改善😵</p>
+<p>🔗 参考: <a href="https://www.zhihu.com/question/22603676/answer/28847509" target="_blank" rel="noopener">关于永磁同步电机交流伺服控制系统的算法问题？ - 小心假设的回答 - 知乎</a></p>
+<h1 id="PI-·-PD-·-PID"><a href="#PI-·-PD-·-PID" class="headerlink" title="PI · PD · PID"></a>PI · PD · PID</h1><p>另外我知道了在工业中说是说PID控制器, 但<strong>实际大多是PI控制器</strong>, 因为D虽然可以增大系统阻尼, 使系统具有一定预见性, 增强了对微小变化的响应, 但也因此造成系统容易震荡, 不稳定. 而根据网上说的<strong>I比D更容易引起不稳定, 因为I引入了另一个极点.</strong> 具体啥时候用PI, PD, PID我还没有头绪.</p>
+<p>🔗 参考:</p>
+<ul>
+<li><a href="https://www.zhihu.com/question/26944678/answer/44687208" target="_blank" rel="noopener">哪些控制类的算法惊艳了你？ - 三郎的回答 - 知乎</a></li>
+<li><a href="http://www.sohu.com/a/155185294_464086" target="_blank" rel="noopener">PID控制算法精华和参数整定三大招</a></li>
+</ul>
+<h1 id="三环控制"><a href="#三环控制" class="headerlink" title="三环控制"></a>三环控制</h1><p>再有就是我大致理解了伺服电机三环PID是一种多么精妙而自然的设计.</p>
+<p>在调PID的时候我和师兄一度绝望, 我就说: “要不我们只保留转距环, 上层的我们重新写一遍.”当时我们使用的是<strong>位置模式</strong>控制电机. 我看电机驱动器的说明书都看得晕呼呼的, 还没怎么理解三环控制.
+但我要保留转距环的想法是很正常的:</p>
+<p>电机最基本的控制方式就是控制流过电机的电流, 也就是控制电机输出的转距. 在这一环里不是单纯的PID, 驱动器还设置了一些阈值, 防止过流烧坏电机什么的. 这一环是驱动器自整定的, 但效果也不错, 因此我认为不必自己重写这一环.</p>
+<p>然后我说:”上层我们用一个PID, 达到: 当当前位置比目标位置小就加正向转距, 当当前位置比目标位置大时加逆向转距的效果.”</p>
+<p>学长立即指出这样机械腿到达位置时的<strong>速度是不定的</strong>.我:”那就加一环速度PID, 生成一个百分数乘以转距来达到控制达到目标位置时的速度的效果”</p>
+<p>说完我一愣, 我特么这不是说了一遍<strong>电流环, 速度环, 位置环</strong>的所谓<strong>三环控制</strong>🐴</p>
+<p>🔗 参考:</p>
+<ul>
+<li><a href="http://www.voidcn.com/article/p-hxjakzgh-pw.html" target="_blank" rel="noopener">伺服电机三环控制的原理（位置环，运动环，电流环）</a></li>
+<li><a href="https://blog.csdn.net/Andy20081251/article/details/79457911" target="_blank" rel="noopener">浅谈伺服电机三种控制方式</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/21311021" target="_blank" rel="noopener">伺服电机的控制方式简述</a></li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>随笔</category>
+        <category>自动控制</category>
+      </categories>
+  </entry>
+  <entry>
     <title>常见术语缩写</title>
     <url>/zh-CN/2019/03/02/%E5%B8%B8%E8%A7%81%E6%9C%AF%E8%AF%AD%E7%BC%A9%E5%86%99/</url>
     <content><![CDATA[<p>作为一个非英语母语的程序员, 经常看到各种奇奇怪怪的缩写让人摸不到头脑, 而如果能知道这些拼凑起来的字母是什么的缩写的话, 不仅便于记忆, 也便于理解. 另外能知道点冷知识还是很有意思
@@ -2069,59 +2122,6 @@ abbreviation</strong>)</p>
       </script>]]></content>
       <categories>
         <category>杂记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>对伺服电机PID的理解</title>
-    <url>/zh-CN/2019/03/27/%E5%AF%B9%E4%BC%BA%E6%9C%8D%E7%94%B5%E6%9C%BAPID%E7%9A%84%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[<p>行吧, 继上次手搓简单卡尔曼算法后我又接触到了更多控制方面的东西. 想我一个电子工程的弟弟在这里研究术语都不知道几个的控制… 命苦啊! 最近在调机械腿, 应该说还在调那条腿, 对伺服电机里的PID算法有了些许感悟.</p>
-<a id="more"></a>
-
-<p>这条腿的传感噪声问题因为换了传感器已经解决了, 最近的问题是<strong>不能快速, 稳定, 准确的到达指定位置</strong>. 目前通过<strong>限制电机的加速度</strong>改善了情况.</p>
-<h1 id="PID也没有那么简单"><a href="#PID也没有那么简单" class="headerlink" title="PID也没有那么简单"></a>PID也没有那么简单</h1><p>在改动前机械腿在低速状态 (很低速那种) 下表现得还是蛮好的, 但速度一旦快起来就明显有<strong>过冲</strong>, 是一抖一抖运动的, 到达位置时间反而比低速还长… 虽然我以前买了一个很简陋的四轴穿越机调过一点点PID, 感觉这算法也不难理解 (至少比卡尔曼好理解😁), 但这次发现要达到一定的精度PID也不是那么简单的东西: 经常是 “这参数加了20了怎么毛的变化都没有啊 黑人问号”, 但实际用起来又确实地感受到了差别. 并且当情况复杂的时候一个普通PID是不能满足的, 可能会用串级PID, 分段PID, 模糊PID, 专家系统PID, 容错PID, 前馈, 非线性控制之类的来改善😵</p>
-<p>🔗 参考: <a href="https://www.zhihu.com/question/22603676/answer/28847509" target="_blank" rel="noopener">关于永磁同步电机交流伺服控制系统的算法问题？ - 小心假设的回答 - 知乎</a></p>
-<h1 id="PI-·-PD-·-PID"><a href="#PI-·-PD-·-PID" class="headerlink" title="PI · PD · PID"></a>PI · PD · PID</h1><p>另外我知道了在工业中说是说PID控制器, 但<strong>实际大多是PI控制器</strong>, 因为D虽然可以增大系统阻尼, 使系统具有一定预见性, 增强了对微小变化的响应, 但也因此造成系统容易震荡, 不稳定. 而根据网上说的<strong>I比D更容易引起不稳定, 因为I引入了另一个极点.</strong> 具体啥时候用PI, PD, PID我还没有头绪.</p>
-<p>🔗 参考:</p>
-<ul>
-<li><a href="https://www.zhihu.com/question/26944678/answer/44687208" target="_blank" rel="noopener">哪些控制类的算法惊艳了你？ - 三郎的回答 - 知乎</a></li>
-<li><a href="http://www.sohu.com/a/155185294_464086" target="_blank" rel="noopener">PID控制算法精华和参数整定三大招</a></li>
-</ul>
-<h1 id="三环控制"><a href="#三环控制" class="headerlink" title="三环控制"></a>三环控制</h1><p>再有就是我大致理解了伺服电机三环PID是一种多么精妙而自然的设计.</p>
-<p>在调PID的时候我和师兄一度绝望, 我就说: “要不我们只保留转距环, 上层的我们重新写一遍.”当时我们使用的是<strong>位置模式</strong>控制电机. 我看电机驱动器的说明书都看得晕呼呼的, 还没怎么理解三环控制.
-但我要保留转距环的想法是很正常的:</p>
-<p>电机最基本的控制方式就是控制流过电机的电流, 也就是控制电机输出的转距. 在这一环里不是单纯的PID, 驱动器还设置了一些阈值, 防止过流烧坏电机什么的. 这一环是驱动器自整定的, 但效果也不错, 因此我认为不必自己重写这一环.</p>
-<p>然后我说:”上层我们用一个PID, 达到: 当当前位置比目标位置小就加正向转距, 当当前位置比目标位置大时加逆向转距的效果.”</p>
-<p>学长立即指出这样机械腿到达位置时的<strong>速度是不定的</strong>.我:”那就加一环速度PID, 生成一个百分数乘以转距来达到控制达到目标位置时的速度的效果”</p>
-<p>说完我一愣, 我特么这不是说了一遍<strong>电流环, 速度环, 位置环</strong>的所谓<strong>三环控制</strong>🐴</p>
-<p>🔗 参考:</p>
-<ul>
-<li><a href="http://www.voidcn.com/article/p-hxjakzgh-pw.html" target="_blank" rel="noopener">伺服电机三环控制的原理（位置环，运动环，电流环）</a></li>
-<li><a href="https://blog.csdn.net/Andy20081251/article/details/79457911" target="_blank" rel="noopener">浅谈伺服电机三种控制方式</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/21311021" target="_blank" rel="noopener">伺服电机的控制方式简述</a></li>
-</ul>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>随笔</category>
-        <category>自动控制</category>
       </categories>
   </entry>
   <entry>
@@ -2481,6 +2481,68 @@ UCS和Unicode分别由<strong>ISO</strong> (国际标准化组织) 和<strong>�
       </categories>
   </entry>
   <entry>
+    <title>当我安利软体机器人时我在谈什么</title>
+    <url>/zh-CN/2019/06/10/%E5%BD%93%E6%88%91%E5%AE%89%E5%88%A9%E8%BD%AF%E4%BD%93%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%97%B6%E6%88%91%E5%9C%A8%E8%B0%88%E4%BB%80%E4%B9%88/</url>
+    <content><![CDATA[<p>从小我就喜欢仿生机器人. 我敬畏着各种精妙的仿生设计和它们的设计者, 渴望着有朝一日我也能参与这样的工作. 当我看到波士顿动力的Atlas的仿生腿部结构时, 我就在想: 我们能不能造出人造人呢? 那时的我并没有想很多, 并不会去想这样浩大的工程的性价比, 并没有意识到背后的伦理问题, 只是出于一种探索, 好奇. 我也曾听到一句很有趣的话:</p>
+<blockquote>
+<p>“在一项技术成熟前不要谈论他的价值”</p>
+</blockquote>
+<p>法拉第在回答一位贵族夫人对发电机的用处的质疑时就反问到: “婴儿能做什么呢?”. 最近很火的<a href="https://www.bilibili.com/video/av54737593?from=search&amp;seid=16639379942704237214" target="_blank" rel="noopener">何同学对5G的看法</a>
+也发人深省. 在他提醒后我才想起注意到有许多技术 (比如有款机器人的无线控制对传输速度要求很高, 4G无法满足)依赖于5G. 5G必将给我们的生活带来现在的我们无法想象的改变.</p>
+<p>而<strong>软体机器人</strong>也必然是这样值得我们期待的技术.</p>
+<a id="more"></a>
+
+<p>我接触到的第一个软体机器人是<a href="https://journals.sagepub.com/doi/full/10.1177/1553350617745953" target="_blank" rel="noopener">一个集成在da Vinci内窥镜操作臂上的手术系统</a>. 它的灵活, 精准震撼了我.</p>
+<p>📺 <a href="https://youtu.be/AI7M-JTC6_w" target="_blank" rel="noopener">这个视频</a><strong>感性地</strong>介绍了一些软体机器人能解决的需求, 实际应用, 研究方向.</p>
+<blockquote>
+<p>刚体机器人基本由电机控制, 需要精准控制, 对这些刚性机器人的运用倾向于<strong>专业化与
+精确化</strong>, 它们很难表现出<strong>高度可变形能力与对复杂环境的适应性</strong>. 随着机器人运用
+领域继续扩大, 医疗保健、复杂地形勘探等特殊领域对机器人提出了更加严苛的要求.</p>
+</blockquote>
+<p>🔗 <a href="https://zhuanlan.zhihu.com/p/30700859" target="_blank" rel="noopener">这篇文章</a>源自文力老师的报告, 讲到了软体机器人的定义, 发展历程, 发展趋势分析, 也有文老师举例从产生灵感到实现一个软体机器人的简述.</p>
+<blockquote>
+<p>所以从2011年到2017年, 这七年的时间内, 软体机器人从单一的材料过渡到了多材料, 再
+到了智能材料, 最后有可能到生物材料, 这是一个发展的趋势. 所以从这个趋势结合起来
+讲，未来的发展方向一定是它<strong>结合驱动、传感、变刚度、多功能的复合材料, 以及添加
+软体机器人的控制方法</strong>. 目前控制方法这一块是比较欠缺的, 这是一个学术或者是创新
+方面的一个主要的发展趋势.</p>
+</blockquote>
+<p>此处有个值得一提的概念: <strong>智能</strong>. 我目前的理解是: <strong>能与环境交互, 作出反馈</strong> (此处的智能和人工智能的智能不是一个含义)</p>
+<p>目前主要的应用方向有:</p>
+<ol>
+<li>抓持作业</li>
+<li>医疗康复 (比如康复训练或助力)</li>
+<li>复杂环境勘探</li>
+<li>微创外科手术</li>
+</ol>
+<p>当然我相信随着探究会逐渐发现更多的, 令人震惊的应用前景.</p>
+<p>而软体机器人崛起的同时刚体机器人并不会退出舞台. 在工业等机器人负责输出大力矩的环境它们是无可替代的. 软体机器人目前还无法输出很大的力矩, 当然我认为他们不必具备这种能力, 软体机器人和刚体机器人应当是<strong>互补的</strong>而非哪个一定更优于哪个.</p>
+<p>这太酷了!</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>Robotics</category>
+        <category>Soft Robotics</category>
+      </categories>
+  </entry>
+  <entry>
     <title>有关人工智能的一点思考</title>
     <url>/zh-CN/2019/06/21/%E6%9C%89%E5%85%B3%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%9D%E8%80%83/</url>
     <content><![CDATA[<p>以下仅为个人见解</p>
@@ -2560,149 +2622,6 @@ UCS和Unicode分别由<strong>ISO</strong> (国际标准化组织) 和<strong>�
       </script>]]></content>
       <categories>
         <category>Robotics</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>当我安利软体机器人时我在谈什么</title>
-    <url>/zh-CN/2019/06/10/%E5%BD%93%E6%88%91%E5%AE%89%E5%88%A9%E8%BD%AF%E4%BD%93%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%97%B6%E6%88%91%E5%9C%A8%E8%B0%88%E4%BB%80%E4%B9%88/</url>
-    <content><![CDATA[<p>从小我就喜欢仿生机器人. 我敬畏着各种精妙的仿生设计和它们的设计者, 渴望着有朝一日我也能参与这样的工作. 当我看到波士顿动力的Atlas的仿生腿部结构时, 我就在想: 我们能不能造出人造人呢? 那时的我并没有想很多, 并不会去想这样浩大的工程的性价比, 并没有意识到背后的伦理问题, 只是出于一种探索, 好奇. 我也曾听到一句很有趣的话:</p>
-<blockquote>
-<p>“在一项技术成熟前不要谈论他的价值”</p>
-</blockquote>
-<p>法拉第在回答一位贵族夫人对发电机的用处的质疑时就反问到: “婴儿能做什么呢?”. 最近很火的<a href="https://www.bilibili.com/video/av54737593?from=search&amp;seid=16639379942704237214" target="_blank" rel="noopener">何同学对5G的看法</a>
-也发人深省. 在他提醒后我才想起注意到有许多技术 (比如有款机器人的无线控制对传输速度要求很高, 4G无法满足)依赖于5G. 5G必将给我们的生活带来现在的我们无法想象的改变.</p>
-<p>而<strong>软体机器人</strong>也必然是这样值得我们期待的技术.</p>
-<a id="more"></a>
-
-<p>我接触到的第一个软体机器人是<a href="https://journals.sagepub.com/doi/full/10.1177/1553350617745953" target="_blank" rel="noopener">一个集成在da Vinci内窥镜操作臂上的手术系统</a>. 它的灵活, 精准震撼了我.</p>
-<p>📺 <a href="https://youtu.be/AI7M-JTC6_w" target="_blank" rel="noopener">这个视频</a><strong>感性地</strong>介绍了一些软体机器人能解决的需求, 实际应用, 研究方向.</p>
-<blockquote>
-<p>刚体机器人基本由电机控制, 需要精准控制, 对这些刚性机器人的运用倾向于<strong>专业化与
-精确化</strong>, 它们很难表现出<strong>高度可变形能力与对复杂环境的适应性</strong>. 随着机器人运用
-领域继续扩大, 医疗保健、复杂地形勘探等特殊领域对机器人提出了更加严苛的要求.</p>
-</blockquote>
-<p>🔗 <a href="https://zhuanlan.zhihu.com/p/30700859" target="_blank" rel="noopener">这篇文章</a>源自文力老师的报告, 讲到了软体机器人的定义, 发展历程, 发展趋势分析, 也有文老师举例从产生灵感到实现一个软体机器人的简述.</p>
-<blockquote>
-<p>所以从2011年到2017年, 这七年的时间内, 软体机器人从单一的材料过渡到了多材料, 再
-到了智能材料, 最后有可能到生物材料, 这是一个发展的趋势. 所以从这个趋势结合起来
-讲，未来的发展方向一定是它<strong>结合驱动、传感、变刚度、多功能的复合材料, 以及添加
-软体机器人的控制方法</strong>. 目前控制方法这一块是比较欠缺的, 这是一个学术或者是创新
-方面的一个主要的发展趋势.</p>
-</blockquote>
-<p>此处有个值得一提的概念: <strong>智能</strong>. 我目前的理解是: <strong>能与环境交互, 作出反馈</strong> (此处的智能和人工智能的智能不是一个含义)</p>
-<p>目前主要的应用方向有:</p>
-<ol>
-<li>抓持作业</li>
-<li>医疗康复 (比如康复训练或助力)</li>
-<li>复杂环境勘探</li>
-<li>微创外科手术</li>
-</ol>
-<p>当然我相信随着探究会逐渐发现更多的, 令人震惊的应用前景.</p>
-<p>而软体机器人崛起的同时刚体机器人并不会退出舞台. 在工业等机器人负责输出大力矩的环境它们是无可替代的. 软体机器人目前还无法输出很大的力矩, 当然我认为他们不必具备这种能力, 软体机器人和刚体机器人应当是<strong>互补的</strong>而非哪个一定更优于哪个.</p>
-<p>这太酷了!</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>Robotics</category>
-        <category>Soft Robotics</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Python中的小技巧</title>
-    <url>/zh-CN/2019/07/03/Python%E4%B8%AD%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<p>俺也记不住语法, 在这里记录一下常见语句.</p>
-<a id="more"></a>
-
-<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="查看自带的帮助文档"><a href="#查看自带的帮助文档" class="headerlink" title="查看自带的帮助文档"></a>查看自带的帮助文档</h2><p>用<code>help()</code>函数, 以<code>q</code>退出.</p>
-<p>❗️ 使用help(module_name)时首先需要import该模块</p>
-<h2 id="查看当前python解释器路径"><a href="#查看当前python解释器路径" class="headerlink" title="查看当前python解释器路径"></a>查看当前python解释器路径</h2><p>有时候写程序会发现莫名其妙的bug比如找不到某库, 路径不对等, 可能是因为用错了解释器. 用下面语句可以查看当前解释器的路径:</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.executable</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="在python解释器里清屏"><a href="#在python解释器里清屏" class="headerlink" title="在python解释器里清屏"></a>在python解释器里清屏</h2><p>搜了一下python里似乎没有很简短的清屏命令, 要用命令只能用类似以下这种:</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">a = os.system(<span class="string">'clear'</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-<p>💡 这是在Linux下清屏的命令, 在Windows要用<code>os.system('cls')</code></p>
-<p>💡 将这条命令赋值给一个变量是为了窗口顶部不出现一个0. 你可以单独输入
-<code>os.system('clear')</code>试试</p>
-<p>但如果你是在<strong>Bash</strong>中打开的python可以用 <code>Ctrl + L</code>, 这是Bash的清屏快捷键.</p>
-<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><h2 id="生成等差数列"><a href="#生成等差数列" class="headerlink" title="生成等差数列"></a>生成等差数列</h2><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">list(range(begin, end, step))</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="生成任意指定列表"><a href="#生成任意指定列表" class="headerlink" title="生成任意指定列表"></a>生成任意指定列表</h2><h3 id="利用列表推导式"><a href="#利用列表推导式" class="headerlink" title="利用列表推导式"></a>利用列表推导式</h3><p><strong>推导式comprehensions</strong>（又称解析式）, 是Python的一种独有特性. <strong>推导式是可以从一个数据序列构建另一个新的数据序列的结构体</strong>. 换句话说能从一组数据中求出满足条件的新数据, 比如a, b两个等长列表中都为偶数的项的乘积. 共有三种推导式, 在Python2和3
-中都有支持
-:</p>
-<ul>
-<li>列表(list)推导式</li>
-<li>字典(dict)推导式</li>
-<li>集合(set)推导式</li>
-</ul>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">list = [output_expression <span class="keyword">for</span> out_exp <span class="keyword">in</span> input_list <span class="keyword">if</span> expression]</span><br></pre></td></tr></tbody></table></figure>
-
-<p>e.g.</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">#1</span></span><br><span class="line">a = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">30</span>) <span class="keyword">if</span> i % <span class="number">3</span> <span class="keyword">is</span> <span class="number">0</span>]</span><br><span class="line"><span class="comment">#2</span></span><br><span class="line">names = [<span class="string">'Bob'</span>,<span class="string">'Tom'</span>,<span class="string">'alice'</span>,<span class="string">'Jerry'</span>,<span class="string">'Wendy'</span>,<span class="string">'Smith'</span>]</span><br><span class="line">LONG_NAMES = [name.upper() <span class="keyword">for</span> name <span class="keyword">in</span> names <span class="keyword">if</span> len(name)&gt;<span class="number">3</span>]</span><br><span class="line"><span class="comment">#3</span></span><br><span class="line">a = [x*y <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">5</span>) <span class="keyword">if</span> x &gt; <span class="number">2</span> <span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">4</span>) <span class="keyword">if</span> y &lt; <span class="number">3</span>]</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="利用lambda函数"><a href="#利用lambda函数" class="headerlink" title="利用lambda函数"></a>利用lambda函数</h3><p>lambda函数在python, C++, Java等语言中都有, 我理解的作用主要有三:</p>
-<ul>
-<li>少写几个字</li>
-<li>能将一个”函数”以参数的形式传入另一个函数, ❗️注意此处普通函数能被传递并不是什么稀罕事, 更重要的是类似<a href="https://www.zhihu.com/question/20125256/answer/29733906" target="_blank" rel="noopener">这里</a>提到的”伪函数”</li>
-<li>避免污染命名空间, 需要一个函数但不知道命什么名时用lambda函数</li>
-</ul>
-<p>lambda函数主要用在filter(), map(), reduce()中</p>
-<p>💡 在python3中<code>reduce()</code>从内建函数中移除了, 被移到了functools模块中</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>foo = [<span class="number">2</span>, <span class="number">18</span>, <span class="number">9</span>, <span class="number">22</span>, <span class="number">17</span>, <span class="number">24</span>, <span class="number">8</span>, <span class="number">12</span>, <span class="number">27</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> filter(<span class="keyword">lambda</span> x: x % <span class="number">3</span> == <span class="number">0</span>, foo)</span><br><span class="line">[<span class="number">18</span>, <span class="number">9</span>, <span class="number">24</span>, <span class="number">12</span>, <span class="number">27</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> map(<span class="keyword">lambda</span> x: x * <span class="number">2</span> + <span class="number">10</span>, foo)</span><br><span class="line">[<span class="number">14</span>, <span class="number">46</span>, <span class="number">28</span>, <span class="number">54</span>, <span class="number">44</span>, <span class="number">58</span>, <span class="number">26</span>, <span class="number">34</span>, <span class="number">64</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> reduce(<span class="keyword">lambda</span> x, y: x + y, foo)</span><br><span class="line"><span class="number">139</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h1 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h1><h2 id="由列表生成字典"><a href="#由列表生成字典" class="headerlink" title="由列表生成字典"></a>由列表生成字典</h2><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</span><br><span class="line">c = dict(zip(a, b))</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="对字典按值排序"><a href="#对字典按值排序" class="headerlink" title="对字典按值排序"></a>对字典按值排序</h2><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">d = {<span class="string">'a'</span>:<span class="number">1</span>, <span class="string">'b'</span>:<span class="number">2</span>, <span class="string">'c'</span>: <span class="number">5</span>, <span class="string">'d'</span>:<span class="number">4</span>, <span class="string">'e'</span>:<span class="number">3</span>}</span><br><span class="line"></span><br><span class="line">sorted(d.items(), key=<span class="keyword">lambda</span> i: i[<span class="number">1</span>])</span><br></pre></td></tr></tbody></table></figure>
-
-<blockquote>
-<p>sorted(iterable, /, *, key=None, reverse=False)</p>
-<p>Return a new list containing all items from the iterable in ascending order.</p>
-<p>A custom key function can be supplied to customize the sort order, and the
-reverse flag can be set to request the result in descending order.</p>
-</blockquote>
-<p>即<code>iterable</code>处放一个可迭代的对象, <code>key</code>处放自定义函数来选取比较的参数, <code>reverse</code>
-处设定是否反向</p>
-<p><code>d.items()</code>返回可遍历的(键, 值) 元组数组, <code>key=lambda i: i[1]</code>即此处参与比较的参数是d的值</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>技巧</category>
-        <category>语言</category>
-        <category>Python</category>
       </categories>
   </entry>
   <entry>
@@ -2951,10 +2870,61 @@ C++程序使用的库链接. <code>gcc</code>把后缀为 <strong>.c</strong> �
       </categories>
   </entry>
   <entry>
-    <title>C++学习笔记</title>
-    <url>/zh-CN/2019/08/11/C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>… 前几天刚说最近没有用C的需求我就开始要写C++了 🤦</p>
-<p>TODO</p>
+    <title>Python中的小技巧</title>
+    <url>/zh-CN/2019/07/03/Python%E4%B8%AD%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>俺也记不住语法, 在这里记录一下常见语句.</p>
+<a id="more"></a>
+
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="查看自带的帮助文档"><a href="#查看自带的帮助文档" class="headerlink" title="查看自带的帮助文档"></a>查看自带的帮助文档</h2><p>用<code>help()</code>函数, 以<code>q</code>退出.</p>
+<p>❗️ 使用help(module_name)时首先需要import该模块</p>
+<h2 id="查看当前python解释器路径"><a href="#查看当前python解释器路径" class="headerlink" title="查看当前python解释器路径"></a>查看当前python解释器路径</h2><p>有时候写程序会发现莫名其妙的bug比如找不到某库, 路径不对等, 可能是因为用错了解释器. 用下面语句可以查看当前解释器的路径:</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.executable</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="在python解释器里清屏"><a href="#在python解释器里清屏" class="headerlink" title="在python解释器里清屏"></a>在python解释器里清屏</h2><p>搜了一下python里似乎没有很简短的清屏命令, 要用命令只能用类似以下这种:</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">a = os.system(<span class="string">'clear'</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>💡 这是在Linux下清屏的命令, 在Windows要用<code>os.system('cls')</code></p>
+<p>💡 将这条命令赋值给一个变量是为了窗口顶部不出现一个0. 你可以单独输入
+<code>os.system('clear')</code>试试</p>
+<p>但如果你是在<strong>Bash</strong>中打开的python可以用 <code>Ctrl + L</code>, 这是Bash的清屏快捷键.</p>
+<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><h2 id="生成等差数列"><a href="#生成等差数列" class="headerlink" title="生成等差数列"></a>生成等差数列</h2><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">list(range(begin, end, step))</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="生成任意指定列表"><a href="#生成任意指定列表" class="headerlink" title="生成任意指定列表"></a>生成任意指定列表</h2><h3 id="利用列表推导式"><a href="#利用列表推导式" class="headerlink" title="利用列表推导式"></a>利用列表推导式</h3><p><strong>推导式comprehensions</strong>（又称解析式）, 是Python的一种独有特性. <strong>推导式是可以从一个数据序列构建另一个新的数据序列的结构体</strong>. 换句话说能从一组数据中求出满足条件的新数据, 比如a, b两个等长列表中都为偶数的项的乘积. 共有三种推导式, 在Python2和3
+中都有支持
+:</p>
+<ul>
+<li>列表(list)推导式</li>
+<li>字典(dict)推导式</li>
+<li>集合(set)推导式</li>
+</ul>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">list = [output_expression <span class="keyword">for</span> out_exp <span class="keyword">in</span> input_list <span class="keyword">if</span> expression]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>e.g.</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">#1</span></span><br><span class="line">a = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">30</span>) <span class="keyword">if</span> i % <span class="number">3</span> <span class="keyword">is</span> <span class="number">0</span>]</span><br><span class="line"><span class="comment">#2</span></span><br><span class="line">names = [<span class="string">'Bob'</span>,<span class="string">'Tom'</span>,<span class="string">'alice'</span>,<span class="string">'Jerry'</span>,<span class="string">'Wendy'</span>,<span class="string">'Smith'</span>]</span><br><span class="line">LONG_NAMES = [name.upper() <span class="keyword">for</span> name <span class="keyword">in</span> names <span class="keyword">if</span> len(name)&gt;<span class="number">3</span>]</span><br><span class="line"><span class="comment">#3</span></span><br><span class="line">a = [x*y <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">5</span>) <span class="keyword">if</span> x &gt; <span class="number">2</span> <span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">4</span>) <span class="keyword">if</span> y &lt; <span class="number">3</span>]</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="利用lambda函数"><a href="#利用lambda函数" class="headerlink" title="利用lambda函数"></a>利用lambda函数</h3><p>lambda函数在python, C++, Java等语言中都有, 我理解的作用主要有三:</p>
+<ul>
+<li>少写几个字</li>
+<li>能将一个”函数”以参数的形式传入另一个函数, ❗️注意此处普通函数能被传递并不是什么稀罕事, 更重要的是类似<a href="https://www.zhihu.com/question/20125256/answer/29733906" target="_blank" rel="noopener">这里</a>提到的”伪函数”</li>
+<li>避免污染命名空间, 需要一个函数但不知道命什么名时用lambda函数</li>
+</ul>
+<p>lambda函数主要用在filter(), map(), reduce()中</p>
+<p>💡 在python3中<code>reduce()</code>从内建函数中移除了, 被移到了functools模块中</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>foo = [<span class="number">2</span>, <span class="number">18</span>, <span class="number">9</span>, <span class="number">22</span>, <span class="number">17</span>, <span class="number">24</span>, <span class="number">8</span>, <span class="number">12</span>, <span class="number">27</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> filter(<span class="keyword">lambda</span> x: x % <span class="number">3</span> == <span class="number">0</span>, foo)</span><br><span class="line">[<span class="number">18</span>, <span class="number">9</span>, <span class="number">24</span>, <span class="number">12</span>, <span class="number">27</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> map(<span class="keyword">lambda</span> x: x * <span class="number">2</span> + <span class="number">10</span>, foo)</span><br><span class="line">[<span class="number">14</span>, <span class="number">46</span>, <span class="number">28</span>, <span class="number">54</span>, <span class="number">44</span>, <span class="number">58</span>, <span class="number">26</span>, <span class="number">34</span>, <span class="number">64</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> reduce(<span class="keyword">lambda</span> x, y: x + y, foo)</span><br><span class="line"><span class="number">139</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h1><h2 id="由列表生成字典"><a href="#由列表生成字典" class="headerlink" title="由列表生成字典"></a>由列表生成字典</h2><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</span><br><span class="line">c = dict(zip(a, b))</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="对字典按值排序"><a href="#对字典按值排序" class="headerlink" title="对字典按值排序"></a>对字典按值排序</h2><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">d = {<span class="string">'a'</span>:<span class="number">1</span>, <span class="string">'b'</span>:<span class="number">2</span>, <span class="string">'c'</span>: <span class="number">5</span>, <span class="string">'d'</span>:<span class="number">4</span>, <span class="string">'e'</span>:<span class="number">3</span>}</span><br><span class="line"></span><br><span class="line">sorted(d.items(), key=<span class="keyword">lambda</span> i: i[<span class="number">1</span>])</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>sorted(iterable, /, *, key=None, reverse=False)</p>
+<p>Return a new list containing all items from the iterable in ascending order.</p>
+<p>A custom key function can be supplied to customize the sort order, and the
+reverse flag can be set to request the result in descending order.</p>
+</blockquote>
+<p>即<code>iterable</code>处放一个可迭代的对象, <code>key</code>处放自定义函数来选取比较的参数, <code>reverse</code>
+处设定是否反向</p>
+<p><code>d.items()</code>返回可遍历的(键, 值) 元组数组, <code>key=lambda i: i[1]</code>即此处参与比较的参数是d的值</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -2975,9 +2945,9 @@ C++程序使用的库链接. <code>gcc</code>把后缀为 <strong>.c</strong> �
           });
       </script>]]></content>
       <categories>
-        <category>杂记</category>
+        <category>技巧</category>
         <category>语言</category>
-        <category>C/C++</category>
+        <category>Python</category>
       </categories>
   </entry>
   <entry>
@@ -3173,9 +3143,10 @@ shift 字母</kbd>和<kbd>Ctrl 字母</kbd>的输出没有区别.</p>
       </categories>
   </entry>
   <entry>
-    <title>初学Socket通信</title>
-    <url>/zh-CN/2019/08/07/%E5%88%9D%E5%AD%A6socket%E9%80%9A%E4%BF%A1/</url>
-    <content><![CDATA[<p>TODO</p>
+    <title>C++学习笔记</title>
+    <url>/zh-CN/2019/08/11/C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>… 前几天刚说最近没有用C的需求我就开始要写C++了 🤦</p>
+<p>TODO</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -3195,6 +3166,11 @@ shift 字母</kbd>和<kbd>Ctrl 字母</kbd>的输出没有区别.</p>
             document.body.appendChild(img);
           });
       </script>]]></content>
+      <categories>
+        <category>杂记</category>
+        <category>语言</category>
+        <category>C/C++</category>
+      </categories>
   </entry>
   <entry>
     <title>MATLAB杂记</title>
@@ -3268,6 +3244,87 @@ MATLAB以及运行脚本. 我发现这是可行的:</p>
         <category>杂记</category>
         <category>语言</category>
         <category>MATLAB</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>初学Socket通信</title>
+    <url>/zh-CN/2019/08/07/%E5%88%9D%E5%AD%A6socket%E9%80%9A%E4%BF%A1/</url>
+    <content><![CDATA[<p>TODO</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+  </entry>
+  <entry>
+    <title>记大二暑假北航实习</title>
+    <url>/zh-CN/2019/08/05/%E8%AE%B0%E5%A4%A7%E4%BA%8C%E6%9A%91%E5%81%87%E5%8C%97%E8%88%AA%E5%AE%9E%E4%B9%A0/</url>
+    <content><![CDATA[<p>这个暑假我来到了北航<a href="http://softrobotics.buaa.edu.cn/peoples/peoples_ch/index.htm" target="_blank" rel="noopener">仿生软体机器人实验室</a>学习, 收获颇多.
+结实了一群有趣的人, 得到了一些答案, 看到了更明确的方向, 坚定了我研究软体机器人的信念💪</p>
+<a id="more"></a>
+
+<p>如今我愈发觉得玄幻小说里一种很玄的情节其实很现实: <strong>历练总是能有些机缘!</strong></p>
+<p>有些事情在事前真的无法预测, 比如在我这次前往北京学习一个半月之前, 我是完全想不到我能有什么收获的, 而最终的收获多到一两句说不清. <strong>如果在家仔细思考, 总会觉得一个半月那样短, 去了又能怎样?</strong> 再引用一句玄幻小说里的话:</p>
+<blockquote>
+<p>我辈修士, 当与天争命!</p>
+</blockquote>
+<p>事实证明, 只要自己主动抓住各种机会一个半月并不那样短暂.</p>
+<p>这一个半月我干了许多事: 我浇筑了一套软体臂, 软体爪, 我试着帮实验室的学长解决实验面临的困难, 我每天站着巨久调试了半个月机器人, 我随实验室的队伍到大连参加了一个难度很高的比赛, 我在大连每天白嫖各种海鲜, 我和在中科院中关村学生公寓的室友相处不错还一块深夜吃了烧烤, 我给好几人上了家教课, 我经常和在北京的亲属玩,我, 我试图减肥并失败
+🤦‍</p>
+<h2 id="关于学习收获"><a href="#关于学习收获" class="headerlink" title="关于学习收获"></a>关于学习收获</h2><h3 id="在实验室的体会"><a href="#在实验室的体会" class="headerlink" title="在实验室的体会"></a>在实验室的体会</h3><p>实际上在前往文老师的实验室前我并没有真正接触到软体机器人: 只能自己看看资料算什么? 但我也很无奈啊, 想做的实验材料就动辄几千, 而花销小的实验一般是真-实验室阶段,
+我一时半会研究不出什么名堂. 更何况我在电子科大并没有找到相关团队. 而到文老师实验室这段时间我不仅是更正了一些对软体机器人的理解, 更是对科研有了一些概念.</p>
+<p>很幸运的是实验室所有人人都很好, 我很快就融入其中, 也有幸和几位学长探讨了他们的工作. 谢博士的废寝忘食令我记忆犹新. 好几次谢博因为想解决问题而晚去吃饭. 谢博也很虚心, 因为并不是电气专业出身, 实验遇到电气方面问题还拉我一起研究. 辉哥则和我聊了很多过来人的经验, 他建议说在国外科研更加自由, 能支持更基础的研究方向, 杂事更少, 老师和学生的关系更像合作伙伴, 而最后如果能留在国外就不用按国内五年一个职位的累死累活竞争等等. 结对调试机器人的同样来自四川的陈学长则和我分享了许多学习经验, 在我看来他的学习经历实在是一次逆袭. 而见到文老师前我同样没想到是这样一位爱夸人的总是在笑的老师. 这一个半月我更多的时间是和刘学长在一起, 他也教了我很多, 比如如何浇筑
+(我一个学电气的是完全没做过这种事的), 而来实验室前的许多疑问我也从他那得到了解答
+.</p>
+<p>亲身站在实验室里我更直观的体会到了软体机器人是怎样的一个领域. 虽然刘学长觉得软体机器人现在发展趋势缓下来了, 但我觉得这个领域仍在萌芽阶段. 从我了解到的成果和在实验室近距离看学长们的工作来看, 除了软体抓手现在已经商业化了其他成果仍离走出实验室差很远, 有些甚至只是证明了一些结构的潜力, 说白了目前基本是空架子. 就比如实验室花了好几万买的液态金属打印机, 不光墨水贵, 还经常不出墨, 出墨也不够理想, 和谢博一起做实验的袁学长说某些方面甚至可能比不上以前手工浇筑的效果. 不过最近清华大学刚研发出了类似喷墨打印机原理的液态金属打印方式, 看论文效果很不错, 期待能尽早推出产品.
+目前的成果之所以离投入应用还远一方面是因为目前的软体机器人因为使用的驱动方式, 能提供的驱动力普遍很小, 基本没有应用场景, 另一方面是因为目前软体机器人的控制基本是黑暗一片, 就算是一段较早出现的软体臂也没有一个称得上很好的闭环控制方法. 而针对非结构性环境的软体机器人如果连闭环都做不到还有何用? 虽然目前也有好几项人来控制, 机器人负责在人类很难触及的环境 (比如人体内, 十分狭窄的缝隙, 20m深的海底) 执行的成果, 但我认为自主始终是趋势.</p>
+<p>另外一点在实验室学到的, 觉得很有意思的是如何记<strong>组会记录</strong>. 首先记肯定是要记的,
+不然如果讨论的不是自己在参与的项目时岂不是在浪费时间? 我认为组会本就是集思广益大家相互交流经验的地方 (这点在我们组里也很明显, 每个人讲完自己的项目进度后老师会问大家的看法和建议), 因此如果在组会中只注意讲好自己的项目就本末倒置了. 记组会记录一方面帮助自己整理思路, 看看能给正在讲的同学什么帮助, 另一方面讲大家的经验记录下来,这样以后自己遇到类似问题就能有突破口, 另外老师有时候也会给一些写论文方面的指导,也值得记录. 我觉得记组会记录最好用OneNote这种手写的电子档, 自由度高, 适合写写画画整理思路, 电子档也更利于保存.</p>
+<h3 id="对C-的体会"><a href="#对C-的体会" class="headerlink" title="对C++的体会"></a>对C++的体会</h3><p>再有就是我学习C++的速度还是令我觉得值得表扬的😆 实际上在这个暑假之前我是不会C++
+的,顶多是大一上的时候学了最基础的C. 我是这个暑假开始时从学长那里继承了本紫色的**
+算法竞赛入门经典<strong>巩固了下C语言, 了解了一些C++. 而到了实验室先是照着网上的模板写了个C++的TCP server, 然后和中科院的学长一起负责ROV的控制代码 (纯C++). 说实话一方面是大一上扎实的C基础帮了大忙 (我明明每一科都能很好地应用可我就是考不好真的好气), 另一方面则是我浏览器程序员的特长: 上网查资料发挥了巨大作用😁 这真的是现学现卖.好在学长把核心代码都写好了, 我就写了写语法很简单的控制流程什么的. 期间也因为不熟悉C++遇到了很多奇葩问题, 比如就因为在</strong>多线程C++程序**中用错了计时函数导致了计时不准, 程序崩溃等各种迷之错误… 反正一波C++速成后我对C++的印象极差, 标准库很落后, 坑很多, 语法很啰嗦 (和我最爱的Python比), 环境配置也比Python开发麻烦等等…</p>
+<p>以后我自己写程序用到C/C++顶多是要求算力部分用C/C++来加速, 或者用到的工具只有
+C/C++接口时.其他部分全部用Python糊!</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>最后想发表一番感慨: 虽然这只是我的大二暑假, 但实际上我在高三暑假就决定了以后研究机器人, 为此学习了许多, 做着各种各样的准备. 比如我学习了Python, 也针对机器人中很常用到的机器学习和CV分别做了一个小项目 (<a href="https://github.com/LeoJhonSong/SVM-Learning-Sample" target="_blank" rel="noopener">我的机器学习小项目</a>, <a href="https://github.com/LeoJhonSong/Fingertip-Drawboard" target="_blank" rel="noopener">我的CV小项目</a>)来学习了解, 比如我查阅了许多软体机器人的文献, 也曾自己试着<a href="https://leojhonsong.github.io/zh-CN/2018/12/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/">用仿真软件仿真软体机器人</a>,
+以及即便曾经的我<a href="https://leojhonsong.github.io/zh-CN/2019/05/17/为什么我用Linux而不是Windows/">曾找各种理由来说服自己用Linux</a> (当然后来就离不开Linux了)… 总之我曾努力学习过的东西都确实地派上了用场, 我感到自己的努力没有白费💪 我会再接再厉!</p>
+<h2 id="关于家教"><a href="#关于家教" class="headerlink" title="关于家教"></a>关于家教</h2><p>另外我在北京这段时间在一个叫<strong>易教网</strong>的平台接了几份家教的工作. 经过了这一段时间的体验我觉得当家教是一件既有趣又促进自己学习还赚钱的事.</p>
+<h2 id="关于北京"><a href="#关于北京" class="headerlink" title="关于北京"></a>关于北京</h2><p>第一次在北京待一个半月, 见识到了首都的另一面. 以前我是个京黑, 这次在北京的体验改变了我的印象, 让我变成了真*京黑😁 是的印象一点也没有变好! 或者说见到了好的一面,
+但也加深了负面印象.</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>随笔</category>
       </categories>
   </entry>
   <entry>
@@ -3442,63 +3499,6 @@ MATLAB以及运行脚本. 我发现这是可行的:</p>
       </categories>
   </entry>
   <entry>
-    <title>记大二暑假北航实习</title>
-    <url>/zh-CN/2019/08/05/%E8%AE%B0%E5%A4%A7%E4%BA%8C%E6%9A%91%E5%81%87%E5%8C%97%E8%88%AA%E5%AE%9E%E4%B9%A0/</url>
-    <content><![CDATA[<p>这个暑假我来到了北航<a href="http://softrobotics.buaa.edu.cn/peoples/peoples_ch/index.htm" target="_blank" rel="noopener">仿生软体机器人实验室</a>学习, 收获颇多.
-结实了一群有趣的人, 得到了一些答案, 看到了更明确的方向, 坚定了我研究软体机器人的信念💪</p>
-<a id="more"></a>
-
-<p>如今我愈发觉得玄幻小说里一种很玄的情节其实很现实: <strong>历练总是能有些机缘!</strong></p>
-<p>有些事情在事前真的无法预测, 比如在我这次前往北京学习一个半月之前, 我是完全想不到我能有什么收获的, 而最终的收获多到一两句说不清. <strong>如果在家仔细思考, 总会觉得一个半月那样短, 去了又能怎样?</strong> 再引用一句玄幻小说里的话:</p>
-<blockquote>
-<p>我辈修士, 当与天争命!</p>
-</blockquote>
-<p>事实证明, 只要自己主动抓住各种机会一个半月并不那样短暂.</p>
-<p>这一个半月我干了许多事: 我浇筑了一套软体臂, 软体爪, 我试着帮实验室的学长解决实验面临的困难, 我每天站着巨久调试了半个月机器人, 我随实验室的队伍到大连参加了一个难度很高的比赛, 我在大连每天白嫖各种海鲜, 我和在中科院中关村学生公寓的室友相处不错还一块深夜吃了烧烤, 我给好几人上了家教课, 我经常和在北京的亲属玩,我, 我试图减肥并失败
-🤦‍</p>
-<h2 id="关于学习收获"><a href="#关于学习收获" class="headerlink" title="关于学习收获"></a>关于学习收获</h2><h3 id="在实验室的体会"><a href="#在实验室的体会" class="headerlink" title="在实验室的体会"></a>在实验室的体会</h3><p>实际上在前往文老师的实验室前我并没有真正接触到软体机器人: 只能自己看看资料算什么? 但我也很无奈啊, 想做的实验材料就动辄几千, 而花销小的实验一般是真-实验室阶段,
-我一时半会研究不出什么名堂. 更何况我在电子科大并没有找到相关团队. 而到文老师实验室这段时间我不仅是更正了一些对软体机器人的理解, 更是对科研有了一些概念.</p>
-<p>很幸运的是实验室所有人人都很好, 我很快就融入其中, 也有幸和几位学长探讨了他们的工作. 谢博士的废寝忘食令我记忆犹新. 好几次谢博因为想解决问题而晚去吃饭. 谢博也很虚心, 因为并不是电气专业出身, 实验遇到电气方面问题还拉我一起研究. 辉哥则和我聊了很多过来人的经验, 他建议说在国外科研更加自由, 能支持更基础的研究方向, 杂事更少, 老师和学生的关系更像合作伙伴, 而最后如果能留在国外就不用按国内五年一个职位的累死累活竞争等等. 结对调试机器人的同样来自四川的陈学长则和我分享了许多学习经验, 在我看来他的学习经历实在是一次逆袭. 而见到文老师前我同样没想到是这样一位爱夸人的总是在笑的老师. 这一个半月我更多的时间是和刘学长在一起, 他也教了我很多, 比如如何浇筑
-(我一个学电气的是完全没做过这种事的), 而来实验室前的许多疑问我也从他那得到了解答
-.</p>
-<p>亲身站在实验室里我更直观的体会到了软体机器人是怎样的一个领域. 虽然刘学长觉得软体机器人现在发展趋势缓下来了, 但我觉得这个领域仍在萌芽阶段. 从我了解到的成果和在实验室近距离看学长们的工作来看, 除了软体抓手现在已经商业化了其他成果仍离走出实验室差很远, 有些甚至只是证明了一些结构的潜力, 说白了目前基本是空架子. 就比如实验室花了好几万买的液态金属打印机, 不光墨水贵, 还经常不出墨, 出墨也不够理想, 和谢博一起做实验的袁学长说某些方面甚至可能比不上以前手工浇筑的效果. 不过最近清华大学刚研发出了类似喷墨打印机原理的液态金属打印方式, 看论文效果很不错, 期待能尽早推出产品.
-目前的成果之所以离投入应用还远一方面是因为目前的软体机器人因为使用的驱动方式, 能提供的驱动力普遍很小, 基本没有应用场景, 另一方面是因为目前软体机器人的控制基本是黑暗一片, 就算是一段较早出现的软体臂也没有一个称得上很好的闭环控制方法. 而针对非结构性环境的软体机器人如果连闭环都做不到还有何用? 虽然目前也有好几项人来控制, 机器人负责在人类很难触及的环境 (比如人体内, 十分狭窄的缝隙, 20m深的海底) 执行的成果, 但我认为自主始终是趋势.</p>
-<p>另外一点在实验室学到的, 觉得很有意思的是如何记<strong>组会记录</strong>. 首先记肯定是要记的,
-不然如果讨论的不是自己在参与的项目时岂不是在浪费时间? 我认为组会本就是集思广益大家相互交流经验的地方 (这点在我们组里也很明显, 每个人讲完自己的项目进度后老师会问大家的看法和建议), 因此如果在组会中只注意讲好自己的项目就本末倒置了. 记组会记录一方面帮助自己整理思路, 看看能给正在讲的同学什么帮助, 另一方面讲大家的经验记录下来,这样以后自己遇到类似问题就能有突破口, 另外老师有时候也会给一些写论文方面的指导,也值得记录. 我觉得记组会记录最好用OneNote这种手写的电子档, 自由度高, 适合写写画画整理思路, 电子档也更利于保存.</p>
-<h3 id="对C-的体会"><a href="#对C-的体会" class="headerlink" title="对C++的体会"></a>对C++的体会</h3><p>再有就是我学习C++的速度还是令我觉得值得表扬的😆 实际上在这个暑假之前我是不会C++
-的,顶多是大一上的时候学了最基础的C. 我是这个暑假开始时从学长那里继承了本紫色的**
-算法竞赛入门经典<strong>巩固了下C语言, 了解了一些C++. 而到了实验室先是照着网上的模板写了个C++的TCP server, 然后和中科院的学长一起负责ROV的控制代码 (纯C++). 说实话一方面是大一上扎实的C基础帮了大忙 (我明明每一科都能很好地应用可我就是考不好真的好气), 另一方面则是我浏览器程序员的特长: 上网查资料发挥了巨大作用😁 这真的是现学现卖.好在学长把核心代码都写好了, 我就写了写语法很简单的控制流程什么的. 期间也因为不熟悉C++遇到了很多奇葩问题, 比如就因为在</strong>多线程C++程序**中用错了计时函数导致了计时不准, 程序崩溃等各种迷之错误… 反正一波C++速成后我对C++的印象极差, 标准库很落后, 坑很多, 语法很啰嗦 (和我最爱的Python比), 环境配置也比Python开发麻烦等等…</p>
-<p>以后我自己写程序用到C/C++顶多是要求算力部分用C/C++来加速, 或者用到的工具只有
-C/C++接口时.其他部分全部用Python糊!</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>最后想发表一番感慨: 虽然这只是我的大二暑假, 但实际上我在高三暑假就决定了以后研究机器人, 为此学习了许多, 做着各种各样的准备. 比如我学习了Python, 也针对机器人中很常用到的机器学习和CV分别做了一个小项目 (<a href="https://github.com/LeoJhonSong/SVM-Learning-Sample" target="_blank" rel="noopener">我的机器学习小项目</a>, <a href="https://github.com/LeoJhonSong/Fingertip-Drawboard" target="_blank" rel="noopener">我的CV小项目</a>)来学习了解, 比如我查阅了许多软体机器人的文献, 也曾自己试着<a href="https://leojhonsong.github.io/zh-CN/2018/12/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/">用仿真软件仿真软体机器人</a>,
-以及即便曾经的我<a href="https://leojhonsong.github.io/zh-CN/2019/05/17/为什么我用Linux而不是Windows/">曾找各种理由来说服自己用Linux</a> (当然后来就离不开Linux了)… 总之我曾努力学习过的东西都确实地派上了用场, 我感到自己的努力没有白费💪 我会再接再厉!</p>
-<h2 id="关于家教"><a href="#关于家教" class="headerlink" title="关于家教"></a>关于家教</h2><p>另外我在北京这段时间在一个叫<strong>易教网</strong>的平台接了几份家教的工作. 经过了这一段时间的体验我觉得当家教是一件既有趣又促进自己学习还赚钱的事.</p>
-<h2 id="关于北京"><a href="#关于北京" class="headerlink" title="关于北京"></a>关于北京</h2><p>第一次在北京待一个半月, 见识到了首都的另一面. 以前我是个京黑, 这次在北京的体验改变了我的印象, 让我变成了真*京黑😁 是的印象一点也没有变好! 或者说见到了好的一面,
-但也加深了负面印象.</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Markdown安利&amp;Typora简要使用教程</title>
     <url>/zh-CN/2019/09/23/Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<p>在此我来安利一下<strong>Markdown</strong>和<strong>Typora</strong>.</p>
@@ -3631,44 +3631,6 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
         <category>杂记</category>
         <category>语言</category>
         <category>Markdown</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>意识到了我的中文有多差</title>
-    <url>/zh-CN/2019/09/13/%E6%84%8F%E8%AF%86%E5%88%B0%E4%BA%86%E6%88%91%E7%9A%84%E4%B8%AD%E6%96%87%E6%9C%89%E5%A4%9A%E5%B7%AE/</url>
-    <content><![CDATA[<p>前阵子别人给我分享了<a href="https://www.byvoid.com/" target="_blank" rel="noopener">这个博客</a>, 看了以后我意识到自己语文学得太不到家了, 实在对不起初高中语文老师!</p>
-<a id="more"></a>
-
-<p>先不提这个博主喜爱音韵学, 单说同样是理工科出身的博主, 我的表达能力和思想深度比他差了太多.</p>
-<p>通常在解释一段程序时我会想好一会来组织语言, <strong>将我使用这段代码的意图尽可能体现出来, 描述尽可能准确, 有条理</strong>. 我对此体会良多: 当我刚开始接触一个领域, 在网上看资料时常常无法确定我理解得对不对, 需要结合多篇文章才能确定. 这是因为<strong>作者们自身接触这些许久, 无意识的省略了一些话</strong>. 但我认为文章既然要写出来就应该能让所有人无障碍的看懂, 不然只给自己看的话何不就放到自己github仓库?</p>
-<p><a href="https://akaedu.github.io/book/index.html" target="_blank" rel="noopener">Linux C编程一站式学习</a>和
-<a href="https://www.pyimagesearch.com" target="_blank" rel="noopener">pyimagesearch</a>的文章就让人觉得文章读起来很流畅很易懂, 不会浪费时间在理解文章上. 比如<a href="https://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/" target="_blank" rel="noopener">这篇文章</a>
-曾带我轻松完成了困扰了我好几天的如何在树莓派上安装OpenCV的问题. 这个问题现在当然不会像前年那样困扰我, 但能有这样一篇好懂的文章指导我迅速完成我当然是十分乐意的.</p>
-<p>因此我总是试图让我的文章能达到同样水准. 但我发现这很难. 说来可笑, 很多时候我甚至不知道怎么样去描述我的操作🤦‍ 而让文章有条理同样不是一件容易的事. 我感觉这和写一篇议论文围绕一个中心套用总分总的文章结构就可以写不一样, 我总是喜欢把一个主题的东西一股脑放到一篇文章里, 但我发现一方面<strong>文章太长会让人失去读下去的兴趣</strong>, 另一方面<strong>什么东西都往一篇文章里放会让文章失其重点</strong>. 我又不是在写书, 不如将一个主题的内容再按照几个重点分成几篇文章. 可<strong>将一篇文章分割为主题更明确的多篇文章</strong>对我来说并不是易事…</p>
-<p>至于说<strong>byvoid</strong>的文章有思想深度, 从<a href="https://www.byvoid.com/zht/blog/why-the-usa-is-so-boring-1" target="_blank" rel="noopener">这篇文章</a>可见一斑. 我也喜欢旅游, 并且因为我小时候见了许多很美的自然景观, 我更倾向于体验一处的文化. 到一处游览后能有像<strong>byvoid</strong>这种深度的心得正是我所想努力做到的. 但一是我的文笔不够好,
-二是我并没有做功课去研究旅游地的文化.</p>
-<p>从<strong>byvoid</strong>的文章能体会到中文的魅力: 用得好了读起来十分流畅, 四字成语言简意赅地表达出了意思, 很多用以佐证的诗句更是回味无穷… 这只是我个人的体会, 我也知道很粗浅. 当然我并不后悔初高中没有投入大量精力背诵各种诗句, 品鉴各大文豪的文章: 体会不到这些的魅力时我背下来又有什么用呢?</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>随笔</category>
       </categories>
   </entry>
   <entry>
@@ -3949,15 +3911,20 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
       </categories>
   </entry>
   <entry>
-    <title>更好的Shebang使用方式</title>
-    <url>/zh-CN/2019/09/13/%E6%9B%B4%E5%A5%BD%E7%9A%84shebang%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<p>在Linux系统的脚本第一行我们通常用
-<a href="https://zh.wikipedia.org/wiki/Shebang" target="_blank" rel="noopener">shebang</a>语句来指明解释器路径, 一方面有的脚本没有文件后缀名, 需要通过shebang语句指明系统才知道要用什么解释器运行. 另一方面有时候为了兼容性我们会指明使用标准位置的系统安装版本解释器.</p>
-<p>但我发现有时候我们并不能确定使用者把我们需要类型的解释器装到了地方, 如果我们只想指出<strong>使用的解释器类型</strong>而不是具体路径, 可以使用<code>/usr/bin/env</code>命令. 比如如果我们想用Python3解释器执行一个脚本, 可以在第一行加:</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python3</span></span><br></pre></td></tr></tbody></table></figure>
+    <title>意识到了我的中文有多差</title>
+    <url>/zh-CN/2019/09/13/%E6%84%8F%E8%AF%86%E5%88%B0%E4%BA%86%E6%88%91%E7%9A%84%E4%B8%AD%E6%96%87%E6%9C%89%E5%A4%9A%E5%B7%AE/</url>
+    <content><![CDATA[<p>前阵子别人给我分享了<a href="https://www.byvoid.com/" target="_blank" rel="noopener">这个博客</a>, 看了以后我意识到自己语文学得太不到家了, 实在对不起初高中语文老师!</p>
+<a id="more"></a>
 
-<p><code>env</code>会调用用户<strong>$PATH</strong>中首先出现的解释器版本.</p>
-<p>当然对于更复杂的情况更建议专门写一段程序来决定用哪个解释器.</p>
+<p>先不提这个博主喜爱音韵学, 单说同样是理工科出身的博主, 我的表达能力和思想深度比他差了太多.</p>
+<p>通常在解释一段程序时我会想好一会来组织语言, <strong>将我使用这段代码的意图尽可能体现出来, 描述尽可能准确, 有条理</strong>. 我对此体会良多: 当我刚开始接触一个领域, 在网上看资料时常常无法确定我理解得对不对, 需要结合多篇文章才能确定. 这是因为<strong>作者们自身接触这些许久, 无意识的省略了一些话</strong>. 但我认为文章既然要写出来就应该能让所有人无障碍的看懂, 不然只给自己看的话何不就放到自己github仓库?</p>
+<p><a href="https://akaedu.github.io/book/index.html" target="_blank" rel="noopener">Linux C编程一站式学习</a>和
+<a href="https://www.pyimagesearch.com" target="_blank" rel="noopener">pyimagesearch</a>的文章就让人觉得文章读起来很流畅很易懂, 不会浪费时间在理解文章上. 比如<a href="https://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/" target="_blank" rel="noopener">这篇文章</a>
+曾带我轻松完成了困扰了我好几天的如何在树莓派上安装OpenCV的问题. 这个问题现在当然不会像前年那样困扰我, 但能有这样一篇好懂的文章指导我迅速完成我当然是十分乐意的.</p>
+<p>因此我总是试图让我的文章能达到同样水准. 但我发现这很难. 说来可笑, 很多时候我甚至不知道怎么样去描述我的操作🤦‍ 而让文章有条理同样不是一件容易的事. 我感觉这和写一篇议论文围绕一个中心套用总分总的文章结构就可以写不一样, 我总是喜欢把一个主题的东西一股脑放到一篇文章里, 但我发现一方面<strong>文章太长会让人失去读下去的兴趣</strong>, 另一方面<strong>什么东西都往一篇文章里放会让文章失其重点</strong>. 我又不是在写书, 不如将一个主题的内容再按照几个重点分成几篇文章. 可<strong>将一篇文章分割为主题更明确的多篇文章</strong>对我来说并不是易事…</p>
+<p>至于说<strong>byvoid</strong>的文章有思想深度, 从<a href="https://www.byvoid.com/zht/blog/why-the-usa-is-so-boring-1" target="_blank" rel="noopener">这篇文章</a>可见一斑. 我也喜欢旅游, 并且因为我小时候见了许多很美的自然景观, 我更倾向于体验一处的文化. 到一处游览后能有像<strong>byvoid</strong>这种深度的心得正是我所想努力做到的. 但一是我的文笔不够好,
+二是我并没有做功课去研究旅游地的文化.</p>
+<p>从<strong>byvoid</strong>的文章能体会到中文的魅力: 用得好了读起来十分流畅, 四字成语言简意赅地表达出了意思, 很多用以佐证的诗句更是回味无穷… 这只是我个人的体会, 我也知道很粗浅. 当然我并不后悔初高中没有投入大量精力背诵各种诗句, 品鉴各大文豪的文章: 体会不到这些的魅力时我背下来又有什么用呢?</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -3978,9 +3945,7 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
           });
       </script>]]></content>
       <categories>
-        <category>技巧</category>
-        <category>操作系统</category>
-        <category>Linux</category>
+        <category>随笔</category>
       </categories>
   </entry>
   <entry>
@@ -4033,6 +3998,41 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
       <categories>
         <category>工具</category>
         <category>软件配置</category>
+        <category>操作系统</category>
+        <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>更好的Shebang使用方式</title>
+    <url>/zh-CN/2019/09/13/%E6%9B%B4%E5%A5%BD%E7%9A%84shebang%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<p>在Linux系统的脚本第一行我们通常用
+<a href="https://zh.wikipedia.org/wiki/Shebang" target="_blank" rel="noopener">shebang</a>语句来指明解释器路径, 一方面有的脚本没有文件后缀名, 需要通过shebang语句指明系统才知道要用什么解释器运行. 另一方面有时候为了兼容性我们会指明使用标准位置的系统安装版本解释器.</p>
+<p>但我发现有时候我们并不能确定使用者把我们需要类型的解释器装到了地方, 如果我们只想指出<strong>使用的解释器类型</strong>而不是具体路径, 可以使用<code>/usr/bin/env</code>命令. 比如如果我们想用Python3解释器执行一个脚本, 可以在第一行加:</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python3</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>env</code>会调用用户<strong>$PATH</strong>中首先出现的解释器版本.</p>
+<p>当然对于更复杂的情况更建议专门写一段程序来决定用哪个解释器.</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>技巧</category>
         <category>操作系统</category>
         <category>Linux</category>
       </categories>
@@ -4188,46 +4188,6 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
       </script>]]></content>
       <categories>
         <category>技巧</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2020年4月12日 Vim经验分享</title>
-    <url>/zh-CN/2020/04/20/2020%E5%B9%B44%E6%9C%8812%E6%97%A5vim%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/</url>
-    <content><![CDATA[<p><span></span></p>
-<a id="more"></a>
-
-<p>最近在<a href="https://uestc-msc.github.io/" target="_blank" rel="noopener">电子科大微软学生俱乐部</a>做了一次vim经验分享, 下面是当时的录像. 这个录像是用zoom的会议录制功能得到的. 顺带一提zoom是有Linux平台的目前为止体验最好的视频会议软件, zoom录制的会议视频似乎本身就会进行压缩, 不像用其他软件得到的会议录制我还要自己压缩一下. zoom要是再有网页端就更好了😆</p>
-<iframe src="//player.bilibili.com/player.html?aid=710237273&amp;bvid=BV18Q4y1K744&amp;cid=177852832&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<p>然后因为当时准备得有些仓促导致有几个地方演示得不充分有的地方说串了, 所以我补全了幻灯片. 👇下面这个就是我的幻灯片, 使用<a href="https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/" target="_blank" rel="noopener">Markdown Preview Enhanced</a>制作的markdown幻灯片. 屏幕gif录制工具为<a href="https://github.com/phw/peek" target="_blank" rel="noopener">peek</a>, 键盘按键可视化工具为<a href="https://gitlab.com/screenkey/screenkey" target="_blank" rel="noopener">screenkey</a></p>
-<div style="width:100%; padding-bottom:56.25%; position:relative;">
-  <iframe src="https://leojhonsong.github.io/vim-share/vim.html" style="width:94%; height:94%; position:absolute; transform: translate(3%,3%); box-shadow: 0 0 6px 7px black;"></iframe>
-</div>
-
-<p>🔗 你也可以点击<a href="https://leojhonsong.github.io/vim-share/vim.html">这个链接</a>全屏观看. 这个幻灯片的源代码在<a href="https://github.com/LeoJhonSong/vim-share/blob/master/vim.md" target="_blank" rel="noopener">这里</a></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>杂记</category>
-        <category>vim</category>
       </categories>
   </entry>
   <entry>
@@ -4495,15 +4455,21 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
       </categories>
   </entry>
   <entry>
-    <title>笔记本电脑性能提升/选购指南</title>
-    <url>/zh-CN/2020/05/08/%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%94%B5%E8%84%91%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87-%E9%80%89%E8%B4%AD%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<p>自去年三月多开始有意识了解电脑配件至今已有一年多, 对这些乱七八糟的了解多了许多, 整理一下我对<strong>笔记本</strong>性能提升的经验以及选购指南. 因为我很了解在不了解这些时听到这些陌生概念的望而畏怯以及半信半疑, 我尽量解释得小白些.</p>
-<p>❗️ 因为我自己没有台式机所以这里只谈笔记本相关.</p>
+    <title>2020年4月12日 Vim经验分享</title>
+    <url>/zh-CN/2020/04/20/2020%E5%B9%B44%E6%9C%8812%E6%97%A5vim%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/</url>
+    <content><![CDATA[<p><span></span></p>
 <a id="more"></a>
 
-<h2 id="性能提升"><a href="#性能提升" class="headerlink" title="性能提升"></a>性能提升</h2><p>不同于台式机里什么配件都可以换,  比如很多笔记本的CPU, 显卡是焊死在主板上的. 即便你的笔记本支持更换这两样, 这也不是容易事. 因为笔记本的散热是精打细算设计好的, 更换了更好的CPU或者显卡通常以为着更大的发热量, 很容易导致过热然后出奇奇怪怪的问题.</p>
-<p>因此为了提升笔记本性能常见的操作是<strong>更换硬盘和内存</strong>.</p>
-<h3 id="更换硬盘"><a href="#更换硬盘" class="headerlink" title="更换硬盘"></a>更换硬盘</h3><h3 id="更换内存"><a href="#更换内存" class="headerlink" title="更换内存"></a>更换内存</h3><h2 id="选购指南"><a href="#选购指南" class="headerlink" title="选购指南"></a>选购指南</h2><script>
+<p>最近在<a href="https://uestc-msc.github.io/" target="_blank" rel="noopener">电子科大微软学生俱乐部</a>做了一次vim经验分享, 下面是当时的录像. 这个录像是用zoom的会议录制功能得到的. 顺带一提zoom是有Linux平台的目前为止体验最好的视频会议软件, zoom录制的会议视频似乎本身就会进行压缩, 不像用其他软件得到的会议录制我还要自己压缩一下. zoom要是再有网页端就更好了😆</p>
+<iframe src="//player.bilibili.com/player.html?aid=710237273&amp;bvid=BV18Q4y1K744&amp;cid=177852832&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+<p>然后因为当时准备得有些仓促导致有几个地方演示得不充分有的地方说串了, 所以我补全了幻灯片. 👇下面这个就是我的幻灯片, 使用<a href="https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/" target="_blank" rel="noopener">Markdown Preview Enhanced</a>制作的markdown幻灯片. 屏幕gif录制工具为<a href="https://github.com/phw/peek" target="_blank" rel="noopener">peek</a>, 键盘按键可视化工具为<a href="https://gitlab.com/screenkey/screenkey" target="_blank" rel="noopener">screenkey</a></p>
+<div style="width:100%; padding-bottom:56.25%; position:relative;">
+  <iframe src="https://leojhonsong.github.io/vim-share/vim.html" style="width:94%; height:94%; position:absolute; transform: translate(3%,3%); box-shadow: 0 0 6px 7px black;"></iframe>
+</div>
+
+<p>🔗 你也可以点击<a href="https://leojhonsong.github.io/vim-share/vim.html">这个链接</a>全屏观看. 这个幻灯片的源代码在<a href="https://github.com/LeoJhonSong/vim-share/blob/master/vim.md" target="_blank" rel="noopener">这里</a></p>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -4523,8 +4489,9 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
           });
       </script>]]></content>
       <categories>
-        <category>硬件</category>
+        <category>工具</category>
         <category>杂记</category>
+        <category>vim</category>
       </categories>
   </entry>
   <entry>
@@ -4673,37 +4640,16 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
       </categories>
   </entry>
   <entry>
-    <title>我从Ubuntu换到了Manjaro</title>
-    <url>/zh-CN/2020/07/26/%E6%88%91%E4%BB%8EUbuntu%E6%8D%A2%E5%88%B0%E4%BA%86Manjaro/</url>
-    <content><![CDATA[<p>前几天闲来无事下了一个听说了很久的Manjaro (KDE版), 在Live CD体验了一会果断装了实体机. 体验比Ubuntu好太多了!</p>
+    <title>笔记本电脑性能提升/选购指南</title>
+    <url>/zh-CN/2020/05/08/%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%94%B5%E8%84%91%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87-%E9%80%89%E8%B4%AD%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p>自去年三月多开始有意识了解电脑配件至今已有一年多, 对这些乱七八糟的了解多了许多, 整理一下我对<strong>笔记本</strong>性能提升的经验以及选购指南. 因为我很了解在不了解这些时听到这些陌生概念的望而畏怯以及半信半疑, 我尽量解释得小白些.</p>
+<p>❗️ 因为我自己没有台式机所以这里只谈笔记本相关.</p>
 <a id="more"></a>
 
-<h2 id="Manjaro-KDE比起Ubuntu的优势"><a href="#Manjaro-KDE比起Ubuntu的优势" class="headerlink" title="Manjaro-KDE比起Ubuntu的优势"></a>Manjaro-KDE比起Ubuntu的优势</h2><p>在实体机上使用快要有一个月了, 体验下来相比于Ubuntu, 从不是专业软件开发者, 而是机器人开发者的角度, Manjaro KDE最吸引我的三个关键词是: KDE, 不太激进的Arch系, MHWD. 当然两者还有些其他区别, 但我目前感触最深的就是这三个关键词.</p>
-<h3 id="KDE的好处"><a href="#KDE的好处" class="headerlink" title="KDE的好处"></a>KDE的好处</h3><p>Manjaro有好几个版本, Architect, Gnome, KDE Plasma, XFCE四个官方版本, i3等九个社区版本, 这几个版本都是给x64/x86平台用的, 主要区别是窗口管理器不同. 确切的说:</p>
-<ul>
-<li>Architect没有图形界面</li>
-<li>Gnome, KDE Plasma, XFCE是桌面环境, 有各自的窗口管理器 (比如Plasma的窗口管理器是KWin), 但他们提供的不只有窗口管理器, 这几个大社区各自开发了一套配套基础应用, 总的来说都很有用</li>
-<li>9个社区版相当与Manjaro Architect+一个预装的窗口管理器, 据我观察没有提供什么配套的东西</li>
-</ul>
-<p>而另外还有针对arm平台几款常见单板机的Manjaro, 每款都提供KDE Plasma和XFCE两个版本. Linux平台桌面环境有很多, 其中我认为最有价值的就是XFCE和KDE. XFCE以<strong>轻量级, 稳定的同时足够友好</strong>著称, 是在电脑性能不太好时的首选桌面. 而KDE Plasma以<strong>现代, 高度可定制, 友好</strong>著称. 至于Gnome… 自从体验过KDE后, 除了很多软件或多或少依赖Gnome这一点, 我找不出它比起XFCE或者KDE有什么优势…</p>
-<p>值得一提的是, KDE的初衷只是开发一个桌面环境, <strong>K</strong>ool <strong>D</strong>esktop <strong>E</strong>nvironment, 但随着社区的发展, <strong>KDE现在代表的是一个软件社区</strong>, 而桌面环境被分离出来, 只作为其中的一个产品, KDE Plasma. 另外还有KDE Applications, KDE Framework. 这样以来许多KDE软件在Windows, OS X也能运行.</p>
-<h4 id="能轻松高度个性化且稳定的Plasma桌面环境"><a href="#能轻松高度个性化且稳定的Plasma桌面环境" class="headerlink" title="能轻松高度个性化且稳定的Plasma桌面环境"></a>能轻松高度个性化且稳定的Plasma桌面环境</h4><p>在体验KDE前我用了许久Gnome, 还折腾了许多个性化, 把Grub界面, Plymouth界面, 登录界面, 窗口主题, gnome shell主题, 图标主题都以较为硬核, 需要输入一些网上看来的命令的方式换掉了. 但体验了KDE后觉得自己实在是愚蠢: 有那功夫折腾Gnome的个性化, 直接换到KDE在系统设置点几下鼠标进行个性化多好? 上面提到的几个除了GRUB界面系统设置没有提供设定入口, <strong>统统在系统设置就可以下载, 更换主题</strong>! KDE还提供了更多可以个性化的东西, 比如一堆桌面特效, 应用窗口切换动画, 一堆任务栏的挂件等等. 实在是现代, 友好, 高度可定制!</p>
-<p>💡 值得一提的是在Manjaro KDE的系统设置的<code>Time and Date</code>一栏即可勾选<strong>Hardware clock in local time zone</strong>, 也就是说勾选上这个Manjaro就会将硬件时间作为当前时区时间!</p>
-<p>当然, 功能如此丰富的Plasma桌面环境运行起来消耗的资源比XFCE多, 但仍比Gnome消耗的资源少, 是较新的电脑的首选桌面环境😆</p>
-<h4 id="齐全而贴心的系统自带软件"><a href="#齐全而贴心的系统自带软件" class="headerlink" title="齐全而贴心的系统自带软件"></a>齐全而贴心的系统自带软件</h4><p>KDE自带的软件的贴心程度震撼到我:</p>
-<ul>
-<li>虽然Ubuntu也有类似<strong>FileLight</strong>的磁盘空间分析工具, 但是我总觉得有些bug, 体验不是很好, 而FileLight没有这些毛病, 甚至在扫描时是有动画的, 很贴心.</li>
-<li>KDE自带的图片查看器, pdf阅读器比Gnome自带的功能更加丰富, 但也不会杂乱.</li>
-<li>KDE的硬件信息查看软件, 类似任务管理器的软件比Gnome的更加直观, 信息更加丰富.</li>
-<li>Manjaro KDE这个软件商店 (叫Add/Remove Software, 我也不知道算不算是KDE的) 吊打Ubuntu应用商店. 我基本没有成功从UBuntu应用商店下下来过东西, 但Manjaro KDE这个软件商店体验很好, 可以图形化设置是否开启AUR, Snap, Flatpak的支持, 设置如何处理包的缓存文件等.</li>
-</ul>
-<h3 id="KDE的缺点"><a href="#KDE的缺点" class="headerlink" title="KDE的缺点"></a>KDE的缺点</h3><p>KDE也不是没有缺点. KDE, Gnome均遵循GPL协议, Gnome采用的图形库GTK遵循GPL协议, 但<strong>KDE采用的图形库Qt不遵循GPL协议</strong>. 这导致Gnome获得的商业支持远多于KDE, 所以现在很多主流发行版的默认桌面环境是Gnome, 进一步导致很多软件或多或少依赖Gnome, 很多教程也是针对Gnome的.</p>
-<p>比如deepin全系软件都对Gnome有一定依赖, 在Manjaro KDE直接安装AUR里打包好的tim是无法启动的, 需要<a href="https://github.com/wszqkzqk/deepin-wine-ubuntu/issues/90#issuecomment-653921540" target="_blank" rel="noopener">再安装一个依赖, 编辑一段代码</a>.</p>
-<p>这些其实不算大问题, 都能在网上较为容易地找到解决方案, 但确实不是新手难度.</p>
-<h3 id="坐靠AUR的好处"><a href="#坐靠AUR的好处" class="headerlink" title="坐靠AUR的好处"></a>坐靠AUR的好处</h3><p>要注意Manjaro虽然是Arch系, 但又与Arch Linux不完全相通.</p>
-<p>cuda, cudnn被升到11.0, 8.0, 与libtorch不兼容. 但是降级很容易</p>
-<p>TODO</p>
-<h3 id="Manjaro-Hardware-Detection-MHWD"><a href="#Manjaro-Hardware-Detection-MHWD" class="headerlink" title="Manjaro Hardware Detection (MHWD)"></a>Manjaro Hardware Detection (MHWD)</h3><h2 id="Manjaro是否对Linux新手友好"><a href="#Manjaro是否对Linux新手友好" class="headerlink" title="Manjaro是否对Linux新手友好"></a>Manjaro是否对Linux新手友好</h2><script>
+<!-- TODO -->
+<h2 id="性能提升"><a href="#性能提升" class="headerlink" title="性能提升"></a>性能提升</h2><p>不同于台式机里什么配件都可以换,  比如很多笔记本的CPU, 显卡是焊死在主板上的. 即便你的笔记本支持更换这两样, 这也不是容易事. 因为笔记本的散热是精打细算设计好的, 更换了更好的CPU或者显卡通常以为着更大的发热量, 很容易导致过热然后出奇奇怪怪的问题.</p>
+<p>因此为了提升笔记本性能常见的操作是<strong>更换硬盘和内存</strong>.</p>
+<h3 id="更换硬盘"><a href="#更换硬盘" class="headerlink" title="更换硬盘"></a>更换硬盘</h3><h3 id="更换内存"><a href="#更换内存" class="headerlink" title="更换内存"></a>更换内存</h3><h2 id="选购指南"><a href="#选购指南" class="headerlink" title="选购指南"></a>选购指南</h2><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -4723,150 +4669,8 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
           });
       </script>]]></content>
       <categories>
-        <category>工具</category>
-        <category>软件配置</category>
-        <category>操作系统</category>
-        <category>Linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>HPV与宫颈癌小知识</title>
-    <url>/zh-CN/2021/01/11/HPV%E4%B8%8E%E5%AE%AB%E9%A2%88%E7%99%8C%E5%B0%8F%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<p>帮人查HPV疫苗的信息整理了一份资料出来, 就分享一下好了. ❗ 注意以下信息为截止2020年12月的信息.</p>
-<a id="more"></a>
-
-<h2 id="HPV"><a href="#HPV" class="headerlink" title="HPV"></a>HPV</h2><p>HPV (human papilloma virus), 即<strong>人类乳头状瘤病毒</strong>. 和乳头没有关系, 是大部分类型得了会长出乳头状的瘤 (即疣, 皮肤上的粗糙, 坚硬颗粒), 有近200种类型. <strong>不论是一般身体部位或生殖器的皮肤, 只要有鳞状上皮, 就可以被人类乳突病毒感染的, 但每种HPV通常只能感染特定区域皮肤.</strong></p>
-<h3 id="较常见HPV与疣的种类"><a href="#较常见HPV与疣的种类" class="headerlink" title="较常见HPV与疣的种类"></a>较常见HPV与疣的种类</h3><p>❗ 大多数时候感染后没有任何临床症状, 也就是说连下面这些疣都不会有. 而出现了疣的话大致可以分以下几种情况.</p>
-<table>
-<thead>
-<tr>
-<th>疣类型</th>
-<th>说明</th>
-<th>HPV类型</th>
-<th>危害程度</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>普通疣 (瘊子)</td>
-<td>有着粗糙的表面, 通常发生在手及脚部, 但亦有可能在身体其他区域发生</td>
-<td>2, 4 (最常见), 1, 3, 26, 29, 57</td>
-<td>良性</td>
-</tr>
-<tr>
-<td>扁平疣</td>
-<td>扁平而光滑的疣, 呈现肉色, 可能一长就是许多个；最常发生在头、脸、颈部、手、手肘及膝盖</td>
-<td>3, 10, 28</td>
-<td>良性</td>
-</tr>
-<tr>
-<td>丝状疣</td>
-<td>呈螺丝或者指头状, 在颈部, 脸部, 尤其是嘴唇以及眼皮周围上发生, 常见于中老年, 孕妇等 (因为抵抗力下降). <strong>注意与皮赘区别</strong></td>
-<td>1, 2, 4, 7, 26, 27, 28, 29</td>
-<td>良性</td>
-</tr>
-<tr>
-<td>跖疣</td>
-<td>发生在足底部. <strong>注意与鸡眼, 老茧区别</strong></td>
-<td>1 (最常见), 2, 3, 4, 27, 28, 58</td>
-<td>良性</td>
-</tr>
-<tr>
-<td>肛门生殖器疣 (尖锐湿疣)</td>
-<td>长在肛门/生殖器附近. <strong>注意与珍珠疹, 假性湿疣区别</strong></td>
-<td><strong>6, 11</strong> (90%), 13, 40, 42, 43, 44, 54, 61, 72, 81, 89</td>
-<td>低危</td>
-</tr>
-<tr>
-<td>(癌和子宫颈细胞化生不良)</td>
-<td>与癌症有关, 特别是子宫颈癌, 并且还可能会导致一些外阴, 阴道, 阴茎, 肛门和口咽的癌. 男性也可能感染</td>
-<td><strong>16, 18</strong> (70%宫颈癌, 90%肛门癌, 很大比例阴道癌), <strong>31, 33, 45, 52, 58</strong>(20%宫颈癌), 35, 39, 59</td>
-<td>高危</td>
-</tr>
-</tbody></table>
-<p>💡 高危/低危根据致癌性划分. 无论是高危类型的HPV还是低危类型的HPV, <strong>目前都没有明确有效的抗病毒治疗手段</strong>, 只能治疗HPV导致的病变</p>
-<p>💡 <strong>由此可见只有四十余种HPV通过性行为传播且有危害性, 大部分HPV性质和脚气类似, 并非性传播</strong> (但是能通过疫苗预防的几种HPV确实只有与性相关的几种)</p>
-<p>💡 从整体上看, 我国的感染型别与国际以及亚洲地区其他国家略有差异, 在细胞学正常人群中, 全球范围内最常见的HPV型别依次是 HPV 16/52/31/53, 而在我国排名前四的型别依次是HPV 16/18/58/52. <strong>除了广泛流行的 HPV 16/18 型, HPV 58/52 型在中国宫颈癌中占比为 14.7%, 明显高于全球占比  7.4%</strong>.</p>
-<p>80%感染的HPV会在6-24个月内会被身体的免疫系统自动清除, 医学上称为<strong>一过性感染</strong>.</p>
-<h3 id="感染HPV的常见途径"><a href="#感染HPV的常见途径" class="headerlink" title="感染HPV的常见途径"></a>感染HPV的常见途径</h3><ol start="2">
-<li>间接接触传播 (共用拖鞋, 共用毛巾, 共用剃须刀, 公用马桶, 私人衣物等)</li>
-<li>性传播</li>
-<li>母婴传播</li>
-<li>医源性感染</li>
-</ol>
-<h2 id="宫颈癌"><a href="#宫颈癌" class="headerlink" title="宫颈癌"></a>宫颈癌</h2><p>到目前为止, 宫颈癌是人类唯一一个找到病因且可预防的癌症种类. 中国女性 HPV 感染率按年龄呈[双峰] 分布：第一个高峰在[17-24 岁], 第二个高峰在[40-44 岁].</p>
-<p>宫颈癌与hpv关联: 只有少数高危型的 HPV 持续感染才会有一定几率引发宫颈癌, 通常情况下持续感染经过 10-20 年的自然演化发展, 才可能会发展成为宫颈癌.</p>
-<h3 id="中国《子宫颈癌综合防控指南》提出的三级预防策略"><a href="#中国《子宫颈癌综合防控指南》提出的三级预防策略" class="headerlink" title="中国《子宫颈癌综合防控指南》提出的三级预防策略"></a>中国《子宫颈癌综合防控指南》提出的三级预防策略</h3><ol>
-<li><strong>一级预防 (治未病)</strong>: 开展健康教育和接种 HPV 预防性疫苗</li>
-<li><strong>二级预防 (治初病)</strong>: 对所有适龄妇女定期开展宫颈癌筛查</li>
-<li><strong>三级预防 (治已病)</strong>: 根据宫颈癌的临床分期, 开展适宜的手术、放疗、化疗及姑息疗法</li>
-</ol>
-<p>🌟 筛查比hpv疫苗重要得多</p>
-<p><img src="HPV%E4%B8%8E%E5%AE%AB%E9%A2%88%E7%99%8C%E5%B0%8F%E7%9F%A5%E8%AF%86/screening.jpg" alt="图片"></p>
-<h2 id="HPV疫苗"><a href="#HPV疫苗" class="headerlink" title="HPV疫苗"></a>HPV疫苗</h2><h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p>以L1蛋白外壳模拟HPV病毒, 本身不是病毒, 不会造成感染</p>
-<h3 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h3><ul>
-<li><p>预防大部分有致癌风险的HPV</p>
-</li>
-<li><p><strong>感染过HPV也仍有接种价值</strong>: HPV感染或由此引发的宫颈病变治愈后, 进行HPV疫苗接种可以减少疾病的复发率. 理论上认为, 人体自然感染HPV后, 抵抗病毒的体系是细胞免疫, 主要在宫颈局部起作用, 产生的抗体水平很低, 不足以对抗病毒的再次进攻. 而疫苗是肌肉注射, 会引发人体产生强烈有效的免疫反应, 产生的抗体的滴度是自然感染的40倍以上, 这样就可以防止病毒的感染.</p>
-</li>
-</ul>
-<h3 id="接种条件及方式"><a href="#接种条件及方式" class="headerlink" title="接种条件及方式"></a>接种条件及方式</h3><ul>
-<li>对疫苗活性成分 (L1蛋白) 或任何辅料成分有超敏反应者禁用</li>
-<li>目前大陆没有开放男性接种HPV疫苗 (国外可以)</li>
-<li>肌肉注射 (首选上臂三角肌), 每次0.5ml</li>
-</ul>
-<h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><p><img src="HPV%E4%B8%8E%E5%AE%AB%E9%A2%88%E7%99%8C%E5%B0%8F%E7%9F%A5%E8%AF%86/types.png" alt="image-20210109163343942"></p>
-<p>共二, 四, 九价三种HPV疫苗, “价”指疫苗能预防的HPV亚种数. 目前全世界只有葛兰素史克 (英国), 默沙东 (美国), 万泰沧海 (中国) 三家能生产HPV疫苗, 其中四价, 九价疫苗目前只有默沙东能生产.</p>
-<h3 id="性价比"><a href="#性价比" class="headerlink" title="性价比"></a>性价比</h3><p><strong>万泰沧海二价 &gt; GSK二价 &gt; 默沙东九价 &gt; 默沙东四价</strong></p>
-<ul>
-<li><p>万泰沧海疫苗价格低的原因在于研发原理带来的低成本. 默沙东疫苗基于酒酿酵母表达体系, GSK 疫苗基于<strong>昆虫细胞</strong>表达系统, 万泰沧海疫苗基于<strong>大肠杆菌</strong>表达体系.</p>
-</li>
-<li><p>万泰对16/18型保护效力高于进口疫苗, 且不良反应小</p>
-</li>
-<li><p>四价只比二价多了对尖锐湿疣的预防, 但是尖锐湿疣看网上信息意思基本是良性的, 因此不如九价性价比高</p>
-</li>
-<li><p>国内目前都是自费接种, 因此其实大部分人还是选择等九价. 不过可能出现打完一针后缺货的情况.</p>
-</li>
-<li><p>打过了二价或四价, 也可以再接种九价, 不过要等完成接种的一年后才可以, 而且有点亏</p>
-</li>
-</ul>
-<h3 id="周期"><a href="#周期" class="headerlink" title="周期"></a>周期</h3><p>打疫苗要按周期, 一共打三次. 可以比建议时间晚几天, 但最好不要提前打. 这是为了产生最多的抗体. 提前打浪费. <strong>一年内完成三针产生的抗体量都是够的</strong>.</p>
-<h3 id="保护能力持续时间"><a href="#保护能力持续时间" class="headerlink" title="保护能力持续时间"></a>保护能力持续时间</h3><p>尚不清楚, 目前可以确保是10年以上. (因为这个疫苗一共出现才十多年)</p>
-<h3 id="年龄限制"><a href="#年龄限制" class="headerlink" title="年龄限制"></a>年龄限制</h3><p>九价建议注射年龄是16~26岁, 指第一针需要在26岁半前接种, 27岁前完成三针. 之所以国内对默沙东九价疫苗限制年龄段比国外窄是因为国内的默沙东九价疫苗临床数据目前只做了16-26岁女性的  (同时也有疫苗资源紧张的原因).也因为同样原因大陆没有开放男性接种HPV疫苗.</p>
-<h3 id="供应量"><a href="#供应量" class="headerlink" title="供应量"></a>供应量</h3><p>九价供应短缺原因:</p>
-<ul>
-<li>国内缺口大: 国家统计局最新数据显示, 九价HPV疫苗的适龄人群 (16-26岁) 约<strong>1.2亿</strong>. 而按照智飞生物2019年九价HPV疫苗批签发量332.4万计算, 能够接种到该疫苗的人数还<strong>不足总数的1%</strong>. (按照10%的核心人群渗透率算)</li>
-<li>九价国内审批只用了八天, 默沙东产量预估不足, 并且增加产能决心不强烈</li>
-<li>目前国外很多市场已经淘汰二价, 四价疫苗, 以售卖九价疫苗为主.</li>
-</ul>
-<p>现状:</p>
-<ul>
-<li><p>目前只有默沙东一家生产九价疫苗. 2023年默沙东新生产线将投产.</p>
-</li>
-<li><p>截至2020年7月国内HPV疫苗研发概况👇 (可以看到甚至十一, 十四价HPV疫苗也已经开始研发了), 但是我看网上消息的意思, 直到2026年估计不会有国产九价疫苗上市 🤦‍♂ ️</p>
-</li>
-</ul>
-<p><img src="HPV%E4%B8%8E%E5%AE%AB%E9%A2%88%E7%99%8C%E5%B0%8F%E7%9F%A5%E8%AF%86/outline.jpeg" alt="img"></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>健康</category>
+        <category>硬件</category>
+        <category>杂记</category>
       </categories>
   </entry>
   <entry>
@@ -5124,6 +4928,205 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
       </categories>
   </entry>
   <entry>
+    <title>我从Ubuntu换到了Manjaro</title>
+    <url>/zh-CN/2020/07/26/%E6%88%91%E4%BB%8EUbuntu%E6%8D%A2%E5%88%B0%E4%BA%86Manjaro/</url>
+    <content><![CDATA[<p>前几天闲来无事下了一个听说了很久的Manjaro (KDE版), 在Live CD体验了一会果断装了实体机. 体验比Ubuntu好太多了!</p>
+<a id="more"></a>
+
+<!-- TODO -->
+
+<h2 id="Manjaro-KDE比起Ubuntu的优势"><a href="#Manjaro-KDE比起Ubuntu的优势" class="headerlink" title="Manjaro-KDE比起Ubuntu的优势"></a>Manjaro-KDE比起Ubuntu的优势</h2><p>在实体机上使用快要有一个月了, 体验下来相比于Ubuntu, 从不是专业软件开发者, 而是机器人开发者的角度, Manjaro KDE最吸引我的三个关键词是: KDE, 不太激进的Arch系, MHWD. 当然两者还有些其他区别, 但我目前感触最深的就是这三个关键词.</p>
+<h3 id="KDE的好处"><a href="#KDE的好处" class="headerlink" title="KDE的好处"></a>KDE的好处</h3><p>Manjaro有好几个版本, Architect, Gnome, KDE Plasma, XFCE四个官方版本, i3等九个社区版本, 这几个版本都是给x64/x86平台用的, 主要区别是窗口管理器不同. 确切的说:</p>
+<ul>
+<li>Architect没有图形界面</li>
+<li>Gnome, KDE Plasma, XFCE是桌面环境, 有各自的窗口管理器 (比如Plasma的窗口管理器是KWin), 但他们提供的不只有窗口管理器, 这几个大社区各自开发了一套配套基础应用, 总的来说都很有用</li>
+<li>9个社区版相当与Manjaro Architect+一个预装的窗口管理器, 据我观察没有提供什么配套的东西</li>
+</ul>
+<p>而另外还有针对arm平台几款常见单板机的Manjaro, 每款都提供KDE Plasma和XFCE两个版本. Linux平台桌面环境有很多, 其中我认为最有价值的就是XFCE和KDE. XFCE以<strong>轻量级, 稳定的同时足够友好</strong>著称, 是在电脑性能不太好时的首选桌面. 而KDE Plasma以<strong>现代, 高度可定制, 友好</strong>著称. 至于Gnome… 自从体验过KDE后, 除了很多软件或多或少依赖Gnome这一点, 我找不出它比起XFCE或者KDE有什么优势…</p>
+<p>值得一提的是, KDE的初衷只是开发一个桌面环境, <strong>K</strong>ool <strong>D</strong>esktop <strong>E</strong>nvironment, 但随着社区的发展, <strong>KDE现在代表的是一个软件社区</strong>, 而桌面环境被分离出来, 只作为其中的一个产品, KDE Plasma. 另外还有KDE Applications, KDE Framework. 这样以来许多KDE软件在Windows, OS X也能运行.</p>
+<h4 id="能轻松高度个性化且稳定的Plasma桌面环境"><a href="#能轻松高度个性化且稳定的Plasma桌面环境" class="headerlink" title="能轻松高度个性化且稳定的Plasma桌面环境"></a>能轻松高度个性化且稳定的Plasma桌面环境</h4><p>在体验KDE前我用了许久Gnome, 还折腾了许多个性化, 把Grub界面, Plymouth界面, 登录界面, 窗口主题, gnome shell主题, 图标主题都以较为硬核, 需要输入一些网上看来的命令的方式换掉了. 但体验了KDE后觉得自己实在是愚蠢: 有那功夫折腾Gnome的个性化, 直接换到KDE在系统设置点几下鼠标进行个性化多好? 上面提到的几个除了GRUB界面系统设置没有提供设定入口, <strong>统统在系统设置就可以下载, 更换主题</strong>! KDE还提供了更多可以个性化的东西, 比如一堆桌面特效, 应用窗口切换动画, 一堆任务栏的挂件等等. 实在是现代, 友好, 高度可定制!</p>
+<p>💡 值得一提的是在Manjaro KDE的系统设置的<code>Time and Date</code>一栏即可勾选<strong>Hardware clock in local time zone</strong>, 也就是说勾选上这个Manjaro就会将硬件时间作为当前时区时间!</p>
+<p>当然, 功能如此丰富的Plasma桌面环境运行起来消耗的资源比XFCE多, 但仍比Gnome消耗的资源少, 是较新的电脑的首选桌面环境😆</p>
+<h4 id="齐全而贴心的系统自带软件"><a href="#齐全而贴心的系统自带软件" class="headerlink" title="齐全而贴心的系统自带软件"></a>齐全而贴心的系统自带软件</h4><p>KDE自带的软件的贴心程度震撼到我:</p>
+<ul>
+<li>虽然Ubuntu也有类似<strong>FileLight</strong>的磁盘空间分析工具, 但是我总觉得有些bug, 体验不是很好, 而FileLight没有这些毛病, 甚至在扫描时是有动画的, 很贴心.</li>
+<li>KDE自带的图片查看器, pdf阅读器比Gnome自带的功能更加丰富, 但也不会杂乱.</li>
+<li>KDE的硬件信息查看软件, 类似任务管理器的软件比Gnome的更加直观, 信息更加丰富.</li>
+<li>Manjaro KDE这个软件商店 (叫Add/Remove Software, 我也不知道算不算是KDE的) 吊打Ubuntu应用商店. 我基本没有成功从UBuntu应用商店下下来过东西, 但Manjaro KDE这个软件商店体验很好, 可以图形化设置是否开启AUR, Snap, Flatpak的支持, 设置如何处理包的缓存文件等.</li>
+</ul>
+<h3 id="KDE的缺点"><a href="#KDE的缺点" class="headerlink" title="KDE的缺点"></a>KDE的缺点</h3><p>KDE也不是没有缺点. KDE, Gnome均遵循GPL协议, Gnome采用的图形库GTK遵循GPL协议, 但<strong>KDE采用的图形库Qt不遵循GPL协议</strong>. 这导致Gnome获得的商业支持远多于KDE, 所以现在很多主流发行版的默认桌面环境是Gnome, 进一步导致很多软件或多或少依赖Gnome, 很多教程也是针对Gnome的.</p>
+<p>比如deepin全系软件都对Gnome有一定依赖, 在Manjaro KDE直接安装AUR里打包好的tim是无法启动的, 需要<a href="https://github.com/wszqkzqk/deepin-wine-ubuntu/issues/90#issuecomment-653921540" target="_blank" rel="noopener">再安装一个依赖, 编辑一段代码</a>.</p>
+<p>这些其实不算大问题, 都能在网上较为容易地找到解决方案, 但确实不是新手难度.</p>
+<h3 id="坐靠AUR的好处"><a href="#坐靠AUR的好处" class="headerlink" title="坐靠AUR的好处"></a>坐靠AUR的好处</h3><p>要注意Manjaro虽然是Arch系, 但又与Arch Linux不完全相通.</p>
+<p>cuda, cudnn被升到11.0, 8.0, 与libtorch不兼容. 但是降级很容易</p>
+<p>TODO</p>
+<h3 id="Manjaro-Hardware-Detection-MHWD"><a href="#Manjaro-Hardware-Detection-MHWD" class="headerlink" title="Manjaro Hardware Detection (MHWD)"></a>Manjaro Hardware Detection (MHWD)</h3><h2 id="Manjaro是否对Linux新手友好"><a href="#Manjaro是否对Linux新手友好" class="headerlink" title="Manjaro是否对Linux新手友好"></a>Manjaro是否对Linux新手友好</h2><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>软件配置</category>
+        <category>操作系统</category>
+        <category>Linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>HPV与宫颈癌小知识</title>
+    <url>/zh-CN/2021/01/11/HPV%E4%B8%8E%E5%AE%AB%E9%A2%88%E7%99%8C%E5%B0%8F%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<p>帮人查HPV疫苗的信息整理了一份资料出来, 就分享一下好了. ❗ 注意以下信息为截止2020年12月的信息.</p>
+<a id="more"></a>
+
+<h2 id="HPV"><a href="#HPV" class="headerlink" title="HPV"></a>HPV</h2><p>HPV (human papilloma virus), 即<strong>人类乳头状瘤病毒</strong>. 和乳头没有关系, 是大部分类型得了会长出乳头状的瘤 (即疣, 皮肤上的粗糙, 坚硬颗粒), 有近200种类型. <strong>不论是一般身体部位或生殖器的皮肤, 只要有鳞状上皮, 就可以被人类乳突病毒感染的, 但每种HPV通常只能感染特定区域皮肤.</strong></p>
+<h3 id="较常见HPV与疣的种类"><a href="#较常见HPV与疣的种类" class="headerlink" title="较常见HPV与疣的种类"></a>较常见HPV与疣的种类</h3><p>❗ 大多数时候感染后没有任何临床症状, 也就是说连下面这些疣都不会有. 而出现了疣的话大致可以分以下几种情况.</p>
+<table>
+<thead>
+<tr>
+<th>疣类型</th>
+<th>说明</th>
+<th>HPV类型</th>
+<th>危害程度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>普通疣 (瘊子)</td>
+<td>有着粗糙的表面, 通常发生在手及脚部, 但亦有可能在身体其他区域发生</td>
+<td>2, 4 (最常见), 1, 3, 26, 29, 57</td>
+<td>良性</td>
+</tr>
+<tr>
+<td>扁平疣</td>
+<td>扁平而光滑的疣, 呈现肉色, 可能一长就是许多个；最常发生在头、脸、颈部、手、手肘及膝盖</td>
+<td>3, 10, 28</td>
+<td>良性</td>
+</tr>
+<tr>
+<td>丝状疣</td>
+<td>呈螺丝或者指头状, 在颈部, 脸部, 尤其是嘴唇以及眼皮周围上发生, 常见于中老年, 孕妇等 (因为抵抗力下降). <strong>注意与皮赘区别</strong></td>
+<td>1, 2, 4, 7, 26, 27, 28, 29</td>
+<td>良性</td>
+</tr>
+<tr>
+<td>跖疣</td>
+<td>发生在足底部. <strong>注意与鸡眼, 老茧区别</strong></td>
+<td>1 (最常见), 2, 3, 4, 27, 28, 58</td>
+<td>良性</td>
+</tr>
+<tr>
+<td>肛门生殖器疣 (尖锐湿疣)</td>
+<td>长在肛门/生殖器附近. <strong>注意与珍珠疹, 假性湿疣区别</strong></td>
+<td><strong>6, 11</strong> (90%), 13, 40, 42, 43, 44, 54, 61, 72, 81, 89</td>
+<td>低危</td>
+</tr>
+<tr>
+<td>(癌和子宫颈细胞化生不良)</td>
+<td>与癌症有关, 特别是子宫颈癌, 并且还可能会导致一些外阴, 阴道, 阴茎, 肛门和口咽的癌. 男性也可能感染</td>
+<td><strong>16, 18</strong> (70%宫颈癌, 90%肛门癌, 很大比例阴道癌), <strong>31, 33, 45, 52, 58</strong>(20%宫颈癌), 35, 39, 59</td>
+<td>高危</td>
+</tr>
+</tbody></table>
+<p>💡 高危/低危根据致癌性划分. 无论是高危类型的HPV还是低危类型的HPV, <strong>目前都没有明确有效的抗病毒治疗手段</strong>, 只能治疗HPV导致的病变</p>
+<p>💡 <strong>由此可见只有四十余种HPV通过性行为传播且有危害性, 大部分HPV性质和脚气类似, 并非性传播</strong> (但是能通过疫苗预防的几种HPV确实只有与性相关的几种)</p>
+<p>💡 从整体上看, 我国的感染型别与国际以及亚洲地区其他国家略有差异, 在细胞学正常人群中, 全球范围内最常见的HPV型别依次是 HPV 16/52/31/53, 而在我国排名前四的型别依次是HPV 16/18/58/52. <strong>除了广泛流行的 HPV 16/18 型, HPV 58/52 型在中国宫颈癌中占比为 14.7%, 明显高于全球占比  7.4%</strong>.</p>
+<p>80%感染的HPV会在6-24个月内会被身体的免疫系统自动清除, 医学上称为<strong>一过性感染</strong>.</p>
+<h3 id="感染HPV的常见途径"><a href="#感染HPV的常见途径" class="headerlink" title="感染HPV的常见途径"></a>感染HPV的常见途径</h3><ol start="2">
+<li>间接接触传播 (共用拖鞋, 共用毛巾, 共用剃须刀, 公用马桶, 私人衣物等)</li>
+<li>性传播</li>
+<li>母婴传播</li>
+<li>医源性感染</li>
+</ol>
+<h2 id="宫颈癌"><a href="#宫颈癌" class="headerlink" title="宫颈癌"></a>宫颈癌</h2><p>到目前为止, 宫颈癌是人类唯一一个找到病因且可预防的癌症种类. 中国女性 HPV 感染率按年龄呈[双峰] 分布：第一个高峰在[17-24 岁], 第二个高峰在[40-44 岁].</p>
+<p>宫颈癌与hpv关联: 只有少数高危型的 HPV 持续感染才会有一定几率引发宫颈癌, 通常情况下持续感染经过 10-20 年的自然演化发展, 才可能会发展成为宫颈癌.</p>
+<h3 id="中国《子宫颈癌综合防控指南》提出的三级预防策略"><a href="#中国《子宫颈癌综合防控指南》提出的三级预防策略" class="headerlink" title="中国《子宫颈癌综合防控指南》提出的三级预防策略"></a>中国《子宫颈癌综合防控指南》提出的三级预防策略</h3><ol>
+<li><strong>一级预防 (治未病)</strong>: 开展健康教育和接种 HPV 预防性疫苗</li>
+<li><strong>二级预防 (治初病)</strong>: 对所有适龄妇女定期开展宫颈癌筛查</li>
+<li><strong>三级预防 (治已病)</strong>: 根据宫颈癌的临床分期, 开展适宜的手术、放疗、化疗及姑息疗法</li>
+</ol>
+<p>🌟 筛查比hpv疫苗重要得多</p>
+<p><img src="HPV%E4%B8%8E%E5%AE%AB%E9%A2%88%E7%99%8C%E5%B0%8F%E7%9F%A5%E8%AF%86/screening.jpg" alt="图片"></p>
+<h2 id="HPV疫苗"><a href="#HPV疫苗" class="headerlink" title="HPV疫苗"></a>HPV疫苗</h2><h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p>以L1蛋白外壳模拟HPV病毒, 本身不是病毒, 不会造成感染</p>
+<h3 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h3><ul>
+<li><p>预防大部分有致癌风险的HPV</p>
+</li>
+<li><p><strong>感染过HPV也仍有接种价值</strong>: HPV感染或由此引发的宫颈病变治愈后, 进行HPV疫苗接种可以减少疾病的复发率. 理论上认为, 人体自然感染HPV后, 抵抗病毒的体系是细胞免疫, 主要在宫颈局部起作用, 产生的抗体水平很低, 不足以对抗病毒的再次进攻. 而疫苗是肌肉注射, 会引发人体产生强烈有效的免疫反应, 产生的抗体的滴度是自然感染的40倍以上, 这样就可以防止病毒的感染.</p>
+</li>
+</ul>
+<h3 id="接种条件及方式"><a href="#接种条件及方式" class="headerlink" title="接种条件及方式"></a>接种条件及方式</h3><ul>
+<li>对疫苗活性成分 (L1蛋白) 或任何辅料成分有超敏反应者禁用</li>
+<li>目前大陆没有开放男性接种HPV疫苗 (国外可以)</li>
+<li>肌肉注射 (首选上臂三角肌), 每次0.5ml</li>
+</ul>
+<h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><p><img src="HPV%E4%B8%8E%E5%AE%AB%E9%A2%88%E7%99%8C%E5%B0%8F%E7%9F%A5%E8%AF%86/types.png" alt="image-20210109163343942"></p>
+<p>共二, 四, 九价三种HPV疫苗, “价”指疫苗能预防的HPV亚种数. 目前全世界只有葛兰素史克 (英国), 默沙东 (美国), 万泰沧海 (中国) 三家能生产HPV疫苗, 其中四价, 九价疫苗目前只有默沙东能生产.</p>
+<h3 id="性价比"><a href="#性价比" class="headerlink" title="性价比"></a>性价比</h3><p><strong>万泰沧海二价 &gt; GSK二价 &gt; 默沙东九价 &gt; 默沙东四价</strong></p>
+<ul>
+<li><p>万泰沧海疫苗价格低的原因在于研发原理带来的低成本. 默沙东疫苗基于酒酿酵母表达体系, GSK 疫苗基于<strong>昆虫细胞</strong>表达系统, 万泰沧海疫苗基于<strong>大肠杆菌</strong>表达体系.</p>
+</li>
+<li><p>万泰对16/18型保护效力高于进口疫苗, 且不良反应小</p>
+</li>
+<li><p>四价只比二价多了对尖锐湿疣的预防, 但是尖锐湿疣看网上信息意思基本是良性的, 因此不如九价性价比高</p>
+</li>
+<li><p>国内目前都是自费接种, 因此其实大部分人还是选择等九价. 不过可能出现打完一针后缺货的情况.</p>
+</li>
+<li><p>打过了二价或四价, 也可以再接种九价, 不过要等完成接种的一年后才可以, 而且有点亏</p>
+</li>
+</ul>
+<h3 id="周期"><a href="#周期" class="headerlink" title="周期"></a>周期</h3><p>打疫苗要按周期, 一共打三次. 可以比建议时间晚几天, 但最好不要提前打. 这是为了产生最多的抗体. 提前打浪费. <strong>一年内完成三针产生的抗体量都是够的</strong>.</p>
+<h3 id="保护能力持续时间"><a href="#保护能力持续时间" class="headerlink" title="保护能力持续时间"></a>保护能力持续时间</h3><p>尚不清楚, 目前可以确保是10年以上. (因为这个疫苗一共出现才十多年)</p>
+<h3 id="年龄限制"><a href="#年龄限制" class="headerlink" title="年龄限制"></a>年龄限制</h3><p>九价建议注射年龄是16~26岁, 指第一针需要在26岁半前接种, 27岁前完成三针. 之所以国内对默沙东九价疫苗限制年龄段比国外窄是因为国内的默沙东九价疫苗临床数据目前只做了16-26岁女性的  (同时也有疫苗资源紧张的原因).也因为同样原因大陆没有开放男性接种HPV疫苗.</p>
+<h3 id="供应量"><a href="#供应量" class="headerlink" title="供应量"></a>供应量</h3><p>九价供应短缺原因:</p>
+<ul>
+<li>国内缺口大: 国家统计局最新数据显示, 九价HPV疫苗的适龄人群 (16-26岁) 约<strong>1.2亿</strong>. 而按照智飞生物2019年九价HPV疫苗批签发量332.4万计算, 能够接种到该疫苗的人数还<strong>不足总数的1%</strong>. (按照10%的核心人群渗透率算)</li>
+<li>九价国内审批只用了八天, 默沙东产量预估不足, 并且增加产能决心不强烈</li>
+<li>目前国外很多市场已经淘汰二价, 四价疫苗, 以售卖九价疫苗为主.</li>
+</ul>
+<p>现状:</p>
+<ul>
+<li><p>目前只有默沙东一家生产九价疫苗. 2023年默沙东新生产线将投产.</p>
+</li>
+<li><p>截至2020年7月国内HPV疫苗研发概况👇 (可以看到甚至十一, 十四价HPV疫苗也已经开始研发了), 但是我看网上消息的意思, 直到2026年估计不会有国产九价疫苗上市 🤦‍♂ ️</p>
+</li>
+</ul>
+<p><img src="HPV%E4%B8%8E%E5%AE%AB%E9%A2%88%E7%99%8C%E5%B0%8F%E7%9F%A5%E8%AF%86/outline.jpeg" alt="img"></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>健康</category>
+      </categories>
+  </entry>
+  <entry>
     <title>初级急救员笔记</title>
     <url>/zh-CN/2021/01/21/%E5%88%9D%E7%BA%A7%E6%80%A5%E6%95%91%E5%91%98%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>最近假期了, 把十八岁暑假去参加的初级急救员培训笔记拿出来写在这里好了. 望指正.</p>
@@ -5340,65 +5343,5 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
       <categories>
         <category>健康</category>
       </categories>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/zh-CN/2021/05/24/LaTeX%E6%9D%82%E8%AE%B0/</url>
-    <content><![CDATA[<p><a href="https://www.overleaf.com/learn/latex/bibliography_management_with_biblatex" target="_blank" rel="noopener">biblatex使用/@online</a></p>
-<p><a href="https://www.overleaf.com/learn/latex/Page_size_and_margins" target="_blank" rel="noopener">页边距/布局设置</a></p>
-<p><a href="https://www.overleaf.com/learn/latex/Font_sizes,_families,_and_styles#Reference_guide" target="_blank" rel="noopener">字体/字号</a></p>
-<p><a href="https://es.overleaf.com/learn/latex/XeLaTeX" target="_blank" rel="noopener">指定字体</a></p>
-<p><a href="https://www.overleaf.com/learn/how-to/Understanding_underfull_and_overfull_box_warnings#How_can_I_find_the_source_of_the_warning.3F" target="_blank" rel="noopener">underfull/overfull</a></p>
-<p><a href="https://tex.stackexchange.com/a/53062" target="_blank" rel="noopener">表格中插入图片</a></p>
-<p><a href="https://tex.stackexchange.com/questions/101645/how-to-turn-latex-figure-by-90-degrees-along-with-the-caption" target="_blank" rel="noopener">旋转图片</a></p>
-<p><a href="https://tex.stackexchange.com/questions/2099/how-to-include-svg-diagrams-in-latex" target="_blank" rel="noopener">插入svg</a></p>
-<p><a href="https://www.overleaf.com/learn/latex/tables" target="_blank" rel="noopener">overleaf-表格</a></p>
-<p><a href="https://www.overleaf.com/learn/latex/Biblatex_citation_styles" target="_blank" rel="noopener">biblatex引用</a></p>
-<p><a href="https://tex.stackexchange.com/questions/348640/how-to-effectively-use-list-of-symbols-for-a-thesis" target="_blank" rel="noopener">list of notations</a></p>
-<p><a href="https://tex.stackexchange.com/questions/149506/biblatex-urldate-set-to-today" target="_blank" rel="noopener">biblatex中@online的urldata字段自动更新</a></p>
-<p><a href="https://tex.stackexchange.com/questions/27607/biblatex-authoryear-comp-and-hyperlinks" target="_blank" rel="noopener">biblatex中authoryear风格整个引用为链接</a></p>
-<p><a href="https://www.overleaf.com/learn/latex/lists" target="_blank" rel="noopener">列表</a></p>
-<p><a href="https://tex.stackexchange.com/questions/470123/how-to-make-a-citation-with-more-than-2-authors-as-at-el-in-text-but-the-ful" target="_blank" rel="noopener">biblatx作者at el.</a></p>
-<p><a href="https://www.overleaf.com/learn/latex/Inserting_Images#Generating_high-res_and_low-res_images" target="_blank" rel="noopener">插入图片</a></p>
-<p><a href="https://libguides.nps.edu/citation/ieee-bibtex" target="_blank" rel="noopener">各种东西的bibtex</a></p>
-<p><a href="https://tex.stackexchange.com/questions/27607/biblatex-authoryear-comp-and-hyperlinks" target="_blank" rel="noopener">citetitle超链接</a></p>
-<p><a href="https://tex.stackexchange.com/questions/24496/use-caption-and-long-description-for-figure/422496" target="_blank" rel="noopener">图片短: 长描述</a></p>
-<p><a href="https://tex.stackexchange.com/questions/186981/is-there-a-subsubsubsection-command" target="_blank" rel="noopener">分级标题</a></p>
-<p><a href="https://www.overleaf.com/learn/latex/Aligning%20equations%20with%20amsmath" target="_blank" rel="noopener">公式排版</a></p>
-<p><a href="https://www.overleaf.com/learn/latex/Mathematics" target="_blank" rel="noopener">数学相关内容合集</a></p>
-<p><a href="https://tex.stackexchange.com/questions/10684/vertical-space-in-lists" target="_blank" rel="noopener">列表行间距</a></p>
-<p><a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="noopener">符号手绘查询</a></p>
-<p><a href="https://tex.stackexchange.com/a/458474" target="_blank" rel="noopener">inkscape的latex支持</a></p>
-<p><a href="https://tex.stackexchange.com/questions/266434/extend-the-hyperref-link-to-figure-and-a-b-c" target="_blank" rel="noopener">自定义样式\ref</a></p>
-<p><a href="https://tex.stackexchange.com/questions/50747/options-for-appearance-of-links-in-hyperref" target="_blank" rel="noopener">链接颜色</a></p>
-<p>svgnames</p>
-<p><img src="LaTeX%E6%9D%82%E8%AE%B0/image-20210420201512181.png" alt="image-20210420201512181"></p>
-<p><a href="https://tex.stackexchange.com/questions/152829/how-can-i-highlight-yaml-code-in-a-pretty-way-with-listings" target="_blank" rel="noopener">自定义代码语言</a></p>
-<p><a href="https://www.overleaf.com/learn/latex/Code_listing" target="_blank" rel="noopener">overleaf-插入代码</a></p>
-<p><a href="https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted" target="_blank" rel="noopener">mint提供代码高亮</a></p>
-<p><a href="https://tex.stackexchange.com/questions/12428/code-spanning-over-two-pages-with-minted-inside-listing-with-caption" target="_blank" rel="noopener">长代码caption</a></p>
-<p><a href="https://tex.stackexchange.com/questions/374932/a-white-number-inside-a-black-circle" target="_blank" rel="noopener">画圆圈1</a></p>
-<p><a href="https://tex.stackexchange.com/questions/320185/adjust-vertical-spacing-between-caption-and-listing-in-koma-scrartcl" target="_blank" rel="noopener">minted调整caption与code距离</a></p>
-<p><a href="https://www.overleaf.com/learn/latex/typesetting_quotations#csquotes" target="_blank" rel="noopener">引文</a></p>
-<p><a href="https://www.overleaf.com/learn/latex/chinese#CJKutf8_with_pdfLaTeX" target="_blank" rel="noopener">中文支持</a></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
   </entry>
 </search>
