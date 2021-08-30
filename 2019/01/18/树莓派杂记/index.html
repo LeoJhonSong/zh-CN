@@ -70,7 +70,7 @@
 <meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/01/18/树莓派杂记/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/175605x4nx4ryrywnn7hyw.jpg?50">
 <meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/01/18/树莓派杂记/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/GPIO-Pi4-1587126749653.png?50">
 <meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/01/18/树莓派杂记/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/image-20200417205537326.png?80">
-<meta property="og:updated_time" content="2020-05-08T09:55:28.000Z">
+<meta property="og:updated_time" content="2021-08-30T11:02:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树莓派杂记">
 <meta name="twitter:description" content="因为我是一个记性很差并且接触东西很杂的人, 很多很基础的命令根本记不住,但每次都去查一遍很浪费时间, 于是整理一下. 这是树莓派相关的.">
@@ -395,7 +395,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-08 17:55:28" itemprop="dateModified" datetime="2020-05-08T17:55:28+08:00">2020-05-08</time>
+                <time title="修改时间：2021-08-30 19:02:00" itemprop="dateModified" datetime="2021-08-30T19:02:00+08:00">2021-08-30</time>
               </span>
             
           
@@ -437,7 +437,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>2.7k</span>
+              <span>3.6k</span>
             </span>
           
 
@@ -464,39 +464,55 @@
 <p>11.1. Overview</p>
 <p>The  BCM2711  device  has  six  UARTs.  One  mini  UART  (UART1)  and  five  PL011  UARTs  (UART0,  UART2,UART3,  UART4  &amp;  UART5).  This  section  describes  the  PL011  UARTs</p>
 </blockquote>
-<p>🔗 参见<a href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2711/rpi_DATA_2711_1p0.pdf" target="_blank" rel="noopener">树莓派4片上系统datasheet</a></p>
-<h2 id="GPIO"><a href="#GPIO" class="headerlink" title="GPIO"></a>GPIO</h2><p>🔗 <a href="https://www.raspberrypi.org/documentation/usage/gpio/" target="_blank" rel="noopener">树莓派官方GPIO部分文档</a></p>
+<p>🔗 开启UART2~5后从哪些GPIO端口连接参见<a href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2711/rpi_DATA_2711_1p0.pdf" target="_blank" rel="noopener">树莓派4片上系统datasheet</a>的<strong>11.3. Primary UART Inputs and Outputs</strong>.</p>
+<h2 id="GPIO"><a href="#GPIO" class="headerlink" title="GPIO"></a>GPIO</h2><p>🔗 <a href="https://www.raspberrypi.org/documentation/computers/os.html#gpio-and-the-40-pin-header" target="_blank" rel="noopener">树莓派官方GPIO部分文档</a></p>
 <blockquote>
 <p>放两张好看的树莓派引脚对照表 (实际上两张都不完善)</p>
 </blockquote>
 <p><img src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/175605x4nx4ryrywnn7hyw.jpg?50" alt="img"></p>
 <p><img src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/GPIO-Pi4-1587126749653.png?50" alt="Raspberry Pi 4 Model B GPIO Pinout Diagram | element14 | Raspberry Pi"></p>
-<p>🔗 这个<a href="http://pinout.xyz/" target="_blank" rel="noopener">交互式引脚排布图</a>很棒.</p>
-<p>运行<code>gpio readall</code>可以打印一张包含引脚真实输入/输出值的引脚表. 对于树莓派4需要手动操作一下更新<strong>wiringPi</strong>至版本<code>2.52</code>, 否则无法识别. 操作参考<a href="http://wiringpi.com/wiringpi-updated-to-2-52-for-the-raspberry-pi-4b/" target="_blank" rel="noopener">wiringPi updated to 2.52 for the Raspberry Pi 4B</a></p>
+<p>🔗 这个<a href="http://pinout.xyz/" target="_blank" rel="noopener">交互式引脚排布图</a>对每种接口的介绍很详细.</p>
+<p><del>运行<code>gpio readall</code>可以打印一张包含引脚真实输入/输出值的引脚表. 对于树莓派4需要手动操作一下更新<strong>wiringPi</strong>至版本<code>2.52</code>, 否则无法识别. 操作参考<a href="http://wiringpi.com/wiringpi-updated-to-2-52-for-the-raspberry-pi-4b/" target="_blank" rel="noopener">wiringPi updated to 2.52 for the Raspberry Pi 4B</a></del></p>
 <p><img src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/image-20200417205537326.png?80" alt="image-20200417205537326"></p>
 <p>但<code>gpio readall</code>无法打印出每个引脚所有可用功能, 而运行<code>raspi-gpio funcs</code>可用打印所有gpio的上拉/下拉, 所有可用功能.</p>
 <p>树莓派官方文档列出了几个很好用的gpio库, 其中这个<a href="https://gpiozero.readthedocs.io/" target="_blank" rel="noopener">GPIO Zero</a>将GPIO分类封装成了一些很简洁的类, 看起来很值得一试.</p>
-<h3 id="串口"><a href="#串口" class="headerlink" title="串口"></a>串口</h3><p>如前面提到的, 树莓派4内置6个UART. 关于如何同时使用多个UART可用看看<a href="https://www.raspberrypi.org/forums/viewtopic.php?f=107&amp;t=244827&amp;sid=478967f5e58d920a422de08085f343d8" target="_blank" rel="noopener">这个讨论</a>. 截止目前树莓派还没有就此更新官方文档.</p>
-<p>至于PL011 UART与mini UART的区别根据树莓派官方文档总结下来就是:</p>
+<blockquote>
+<p>wiringPi的开发者被嘴臭网友喷自闭了, 停止维护项目了, 现在GPIO Zero是最好的代替, 安装后执行<code>pinout</code>也可以输出一个很直观的引脚功能表.</p>
+</blockquote>
+<h3 id="串口"><a href="#串口" class="headerlink" title="串口"></a>串口</h3><p><del>如前面提到的, 树莓派4内置6个UART. 关于如何同时使用多个UART可用看看<a href="https://www.raspberrypi.org/forums/viewtopic.php?f=107&amp;t=244827&amp;sid=478967f5e58d920a422de08085f343d8" target="_blank" rel="noopener">这个讨论</a>. 截止目前树莓派还没有就此更新官方文档.</del></p>
+<blockquote>
+<p>泪目, 官方更新文档详细介绍各代树莓派主副串口如何分配, mini-UART是什么, 以及如何配置了: <a href="https://www.raspberrypi.org/documentation/computers/configuration.html#configuring-uarts" target="_blank" rel="noopener">文档</a></p>
+</blockquote>
+<p>官方文档给出了这样几个概念:</p>
 <ul>
-<li>mini UART的FIFO更小而没有流控制功能, 因此在高波特率下更容易丢帧</li>
-<li>mini UART的时钟参考源是系统时钟, 因此很可能一直在变化, 因此波特率是不稳定的</li>
-<li>mini UART没有断线检测</li>
-<li>mini UART没有没有帧错误检测</li>
-<li>mini UART没有奇偶校验位</li>
-<li>mini UART没有接收超时中断</li>
-<li>mini UART没有DCD，DSR，DTR或RI信号</li>
+<li>主串口: 从<code>GPIO14</code>, <code>GPIO15</code> (引脚8, 引脚10) 连接到的串口. 主串口默认绑定了Linux串口控制台, 可以<a href="https://www.raspberrypi.org/documentation/computers/configuration.html#disabling-the-linux-serial-console" target="_blank" rel="noopener">在<code>raspi-config</code>中关闭</a>, 变成正常串口.</li>
+<li>副串口 (蓝牙串口): 副串口无法直接从40pin端口连接到, 在大部分树莓派中都是连接到了蓝牙模块, 基本上是只能给蓝牙用的串口.</li>
+<li>PL011串口: 遵循ARM提出的PL011电气规格的串口, 包括UART0, UART2, UART3, UART4, UART5 (后四个只有树莓派4有)</li>
+<li>mini串口: 丐版串口, 包括UART1, 我感觉是专门拿来连蓝牙的.</li>
 </ul>
-<p>emmm看起来就是个废物呢. 不过问题不大, 树莓派开发人员给它的定位只是一个控制台 (应该就是用来ssh的意思吧)</p>
-<p>关于如何在树莓派3B+等设备上禁用蓝牙并启动PL011 UART的操作可以看<a href="https://www.raspberrypi.org/documentation/configuration/uart.md" target="_blank" rel="noopener">官方教程</a></p>
-<h2 id="固件警告图标"><a href="#固件警告图标" class="headerlink" title="固件警告图标"></a>固件警告图标</h2><p>有时候屏幕右上角会有表示异常状态图标出现 (如果你有显示屏的话), 图标及对应含义如下:</p>
+<p>比如说在树莓派3中UART0默认分配为了蓝牙串口, mini串口被分配为了该从<code>GPIO14</code>, <code>GPIO15</code>连接的主串口, 但<strong>mini串口不管作为主串口还是副串口都默认没有开启</strong>, 因此手动开启mini串口后才可以从<code>GPIO14</code>, <code>GPIO15</code>连接到mini串口的UART1.</p>
+<p>💡看过上面的BCM2711的datasheet会发现无法从树莓派的40pin端口上连接到mini串口的UART1, <code>GPIO32</code>, <code>GPIO33</code>或者<code>GPIO40</code>, <code>GPIO41</code>都没有被实现到这个40pin端口上. 因此我估计要想连到UART1只能将mini串口作为主串口, 从<code>GPIO14</code>, <code>GPIO15</code>连.</p>
+<p>PL011串口与mini串口的区别根据树莓派官方文档总结下来就是:</p>
+<ul>
+<li>mini串口的FIFO更小而没有流控制功能, 因此在高波特率下更容易丢帧</li>
+<li>mini串口的时钟参考源是系统时钟, 因此很可能一直在变化, 因此波特率是不稳定的 (因此使用时要求固定系统时钟频率)</li>
+<li>mini串口没有断线检测</li>
+<li>mini串口没有没有帧错误检测</li>
+<li>mini串口没有奇偶校验位</li>
+<li>mini串口没有接收超时中断</li>
+<li>mini串口没有DCD，DSR，DTR或RI信号</li>
+</ul>
+<p>emmm看起来就是个废物呢. 我感觉就拿来作为蓝牙串口就好.</p>
+<p>关于如何在树莓派3B+等设备上启动UART0与外部通信, <a href="https://www.raspberrypi.org/documentation/computers/configuration.html#uarts-and-device-tree" target="_blank" rel="noopener">官方教程</a>是通过添加设备树overlay的方式来实现的. <code>disable-bt</code>overlay会禁用蓝牙并使UART0成为主串口, <code>miniuart-bt</code>会切换蓝牙到使用mini串口并使UART0成为主串口, 但这样会限制蓝牙的最大波特率 (我觉得影响不大).</p>
+<h2 id="故障提示"><a href="#故障提示" class="headerlink" title="故障提示"></a>故障提示</h2><h3 id="固件警告图标"><a href="#固件警告图标" class="headerlink" title="固件警告图标"></a>固件警告图标</h3><p>有时候屏幕右上角会有表示异常状态图标出现 (如果你有显示屏的话), 图标及对应含义如下:</p>
 <ul>
 <li>⚡ 闪电 : 电源电压不足</li>
 <li>🌡 温度计: 温度过高</li>
 </ul>
-<p>🔗 <a href="https://www.raspberrypi.org/documentation/configuration/warning-icons.md" target="_blank" rel="noopener">对应官方文档</a></p>
+<p>🔗 <a href="https://www.raspberrypi.org/documentation/computers/configuration.html#firmware-warning-icons" target="_blank" rel="noopener">对应官方文档</a></p>
 <p>(以前还有种表示电源电流不足的彩虹图标, 看文档现在似乎没有这个了)</p>
-<h2 id="VNC使用"><a href="#VNC使用" class="headerlink" title="VNC使用"></a>VNC使用</h2><p><a href="https://www.raspberrypi.org/documentation/remote-access/vnc/README.md" target="_blank" rel="noopener">VNC使用的官方文档</a>已经把大多数东西都说清了. 值得一提的是如果树莓派没有连接显示器, (这特么不是废话吗, 如果有屏幕谁还需要VNC😅) 直接用RealVNC访问树莓派ip很可能看到的不是树莓派界面, 而是看到<a href="https://www.raspberrypi.org/forums/viewtopic.php?t=216737" target="_blank" rel="noopener">Cannot currently show the dekstop</a>这样的字样. 树莓派官方对这种情况给出的办法是使用虚拟桌面, 每次需要手动启动. 而上面这个链接里提到其实只需在<code>raspi-config</code>中手动指定一个分辨率就能正常使用了, 亲测有效.</p>
+<h3 id="LED警告闪烁代码"><a href="#LED警告闪烁代码" class="headerlink" title="LED警告闪烁代码"></a>LED警告闪烁代码</h3><p>如果树莓派因为一些神秘原因无法启动或者需要断电, 电源插口旁边的LED会以特定次数闪烁, 闪烁代码及对应状态查看<a href="https://www.raspberrypi.org/documentation/computers/configuration.html#led-warning-flash-codes" target="_blank" rel="noopener">对应官方文档</a></p>
+<h2 id="VNC使用"><a href="#VNC使用" class="headerlink" title="VNC使用"></a>VNC使用</h2><p><a href="https://www.raspberrypi.org/documentation/computers/remote-access.html#vnc" target="_blank" rel="noopener">VNC使用的官方文档</a>已经把大多数东西都说清了. 值得一提的是如果树莓派没有连接显示器, (这特么不是废话吗, 如果有屏幕谁还需要VNC😅) 直接用RealVNC访问树莓派ip很可能看到的不是树莓派界面, 而是看到<a href="https://www.raspberrypi.org/forums/viewtopic.php?t=216737" target="_blank" rel="noopener">Cannot currently show the dekstop</a>这样的字样. 树莓派官方对这种情况给出的办法是使用虚拟桌面, 每次需要手动启动. 而上面这个链接里提到其实只需在<code>raspi-config</code>中手动指定一个分辨率就能正常使用了, 亲测有效.</p>
 <p>💡 我觉得VNC也就是偷懒用的, 虽然ssh无法看到画面但大多数需要看到画面的需求都可以用别的方式满足. 比如使用<a href="https://www.raspberrypi.org/documentation/remote-access/ssh/sshfs.md" target="_blank" rel="noopener">sshfs</a>来将树莓派文件当做本地文件编辑, 比如通过创建RTSP (实时视频流)或者使用<a href="https://elinux.org/RPi-Cam-Web-Interface#Remote_access_to_website_with_User.2FPass_and_changing_port" target="_blank" rel="noopener">RPi-Cam-Web-Interface</a>这样成熟的工具实现远程查看摄像头输出/自定义视频流.</p>
 <p>当然如果你想玩树莓派自带的那些推荐软件那当我没说 😁</p>
 <h3 id="开启VNC的server与viewer的剪贴板共享"><a href="#开启VNC的server与viewer的剪贴板共享" class="headerlink" title="开启VNC的server与viewer的剪贴板共享"></a>开启VNC的server与viewer的剪贴板共享</h3><p>在linux中执行</p>
@@ -690,7 +706,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于树莓派4"><span class="nav-number">1.</span> <span class="nav-text">关于树莓派4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GPIO"><span class="nav-number">2.</span> <span class="nav-text">GPIO</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#串口"><span class="nav-number">2.1.</span> <span class="nav-text">串口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#固件警告图标"><span class="nav-number">3.</span> <span class="nav-text">固件警告图标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VNC使用"><span class="nav-number">4.</span> <span class="nav-text">VNC使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开启VNC的server与viewer的剪贴板共享"><span class="nav-number">4.1.</span> <span class="nav-text">开启VNC的server与viewer的剪贴板共享</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#屏幕调节"><span class="nav-number">5.</span> <span class="nav-text">屏幕调节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止息屏"><span class="nav-number">5.1.</span> <span class="nav-text">禁止息屏</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过Raspbian默认桌面显示管理器lightdm"><span class="nav-number">5.1.1.</span> <span class="nav-text">通过Raspbian默认桌面显示管理器lightdm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用Screen-sh"><span class="nav-number">5.1.2.</span> <span class="nav-text">使用Screen.sh</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#屏幕亮度调节"><span class="nav-number">5.2.</span> <span class="nav-text">屏幕亮度调节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭背光"><span class="nav-number">5.3.</span> <span class="nav-text">关闭背光</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看CPU温度"><span class="nav-number">6.</span> <span class="nav-text">查看CPU温度</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于树莓派4"><span class="nav-number">1.</span> <span class="nav-text">关于树莓派4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GPIO"><span class="nav-number">2.</span> <span class="nav-text">GPIO</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#串口"><span class="nav-number">2.1.</span> <span class="nav-text">串口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#故障提示"><span class="nav-number">3.</span> <span class="nav-text">故障提示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#固件警告图标"><span class="nav-number">3.1.</span> <span class="nav-text">固件警告图标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LED警告闪烁代码"><span class="nav-number">3.2.</span> <span class="nav-text">LED警告闪烁代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VNC使用"><span class="nav-number">4.</span> <span class="nav-text">VNC使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开启VNC的server与viewer的剪贴板共享"><span class="nav-number">4.1.</span> <span class="nav-text">开启VNC的server与viewer的剪贴板共享</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#屏幕调节"><span class="nav-number">5.</span> <span class="nav-text">屏幕调节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止息屏"><span class="nav-number">5.1.</span> <span class="nav-text">禁止息屏</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过Raspbian默认桌面显示管理器lightdm"><span class="nav-number">5.1.1.</span> <span class="nav-text">通过Raspbian默认桌面显示管理器lightdm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用Screen-sh"><span class="nav-number">5.1.2.</span> <span class="nav-text">使用Screen.sh</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#屏幕亮度调节"><span class="nav-number">5.2.</span> <span class="nav-text">屏幕亮度调节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭背光"><span class="nav-number">5.3.</span> <span class="nav-text">关闭背光</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看CPU温度"><span class="nav-number">6.</span> <span class="nav-text">查看CPU温度</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -825,7 +841,7 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">128k</span>
+    <span title="站点总字数">129k</span>
 </div>
 
         
