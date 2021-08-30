@@ -67,7 +67,7 @@
 <meta property="og:description" content="分享一下我在同一个SSD里同时安装Ubuntu, Windows, macOS三个系统并以GRUB作为开机引导的经验. 说实话过程并不复杂.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/04/04/单硬盘三系统安装记录/%E5%8D%95%E7%A1%AC%E7%9B%98%E4%B8%89%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95/grub.jpg">
-<meta property="og:updated_time" content="2020-05-24T08:17:00.000Z">
+<meta property="og:updated_time" content="2020-05-25T02:24:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单硬盘三系统安装记录">
 <meta name="twitter:description" content="分享一下我在同一个SSD里同时安装Ubuntu, Windows, macOS三个系统并以GRUB作为开机引导的经验. 说实话过程并不复杂.">
@@ -392,7 +392,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-24 16:17:00" itemprop="dateModified" datetime="2020-05-24T16:17:00+08:00">2020-05-24</time>
+                <time title="修改时间：2020-05-25 10:24:00" itemprop="dateModified" datetime="2020-05-25T10:24:00+08:00">2020-05-25</time>
               </span>
             
           
@@ -582,7 +582,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRUB_INIT_TUNE="1750 523 1 392 1 523 1 659 1 784 1 1047 1 784 1 415 1 523 1 622 1 831 1 622 1 831 1 1046 1 1244 1 1661 1 1244 1 466 1 587 1 698 1 932 1 1175 1 1397 1 1865 1 1397 1"</span><br></pre></td></tr></tbody></table></figure>
 
 <p>但是这个音效声音大小无法调节, 只能是最大声, 真的很大声那种😏 所以虽然很好玩, 我后来还是取消了这个设置.</p>
-<h3 id="GRUB图形界面分辨率"><a href="#GRUB图形界面分辨率" class="headerlink" title="GRUB图形界面分辨率"></a>GRUB图形界面分辨率</h3><p>如果你像我这样是4k屏幕, 那么当<code>/etc/default/grub</code>中分辨率参数为<strong>GRUB_GFXMODE=auto</strong>, 那么GRUB会是4k分辨率, 字会比较小, 然后画面刷新率很低, 导致有点卡. 可以换为<code>GRUB_GFXMODE=1920x1080</code></p>
+<h3 id="GRUB图形界面分辨率"><a href="#GRUB图形界面分辨率" class="headerlink" title="GRUB图形界面分辨率"></a>GRUB图形界面分辨率</h3><p>如果你像我这样是4k屏幕, 那么当<code>/etc/default/grub</code>中分辨率参数为<strong>GRUB_GFXMODE=auto</strong>, 那么GRUB会是4k分辨率, 字会比较小, 然后画面刷新率很低, 导致有点卡, 于是我换成了<code>GRUB_GFXMODE=1920x1440x32</code> (32表示32位色深). 要注意这个分辨率必须是在GRUB图形化界面中按<kbd>c</kbd>进入命令行模式, 输入<code>videoinfo</code>后所列出的分辨率, 不然对分辨率的指定无效.</p>
 <h3 id="最后微调"><a href="#最后微调" class="headerlink" title="最后微调"></a>最后微调</h3><p>调整完上面三个后运行<code>update-grub</code>来更新<code>/boot/grub/grub.cfg</code>. 最后可以到<code>/boot/grub/grub.cfg</code>进行最后微调 (如果需要的话).</p>
 <h3 id="开机美化"><a href="#开机美化" class="headerlink" title="开机美化"></a>开机美化</h3><blockquote>
 <p>因为最开始写这篇文章时我还没体验过Manjaro, 因此这部分就保留好了, 但我要说Manjaro真的比Ubuntu容易个性化太多了!!! (<a href="/zh-CN/2020/07/26/我从Ubuntu换到了Manjaro/">安利文</a>)</p>

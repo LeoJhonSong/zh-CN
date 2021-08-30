@@ -1778,6 +1778,59 @@ Linux开发xmc4500需要什么工具以及编译方式,
       </categories>
   </entry>
   <entry>
+    <title>对伺服电机PID的理解</title>
+    <url>/zh-CN/2019/03/27/%E5%AF%B9%E4%BC%BA%E6%9C%8D%E7%94%B5%E6%9C%BAPID%E7%9A%84%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<p>行吧, 继上次手搓简单卡尔曼算法后我又接触到了更多控制方面的东西. 想我一个电子工程的弟弟在这里研究术语都不知道几个的控制… 命苦啊! 最近在调机械腿, 应该说还在调那条腿, 对伺服电机里的PID算法有了些许感悟.</p>
+<a id="more"></a>
+
+<p>这条腿的传感噪声问题因为换了传感器已经解决了, 最近的问题是<strong>不能快速, 稳定, 准确的到达指定位置</strong>. 目前通过<strong>限制电机的加速度</strong>改善了情况.</p>
+<h1 id="PID也没有那么简单"><a href="#PID也没有那么简单" class="headerlink" title="PID也没有那么简单"></a>PID也没有那么简单</h1><p>在改动前机械腿在低速状态 (很低速那种) 下表现得还是蛮好的, 但速度一旦快起来就明显有<strong>过冲</strong>, 是一抖一抖运动的, 到达位置时间反而比低速还长… 虽然我以前买了一个很简陋的四轴穿越机调过一点点PID, 感觉这算法也不难理解 (至少比卡尔曼好理解😁), 但这次发现要达到一定的精度PID也不是那么简单的东西: 经常是 “这参数加了20了怎么毛的变化都没有啊 黑人问号”, 但实际用起来又确实地感受到了差别. 并且当情况复杂的时候一个普通PID是不能满足的, 可能会用串级PID, 分段PID, 模糊PID, 专家系统PID, 容错PID, 前馈, 非线性控制之类的来改善😵</p>
+<p>🔗 参考: <a href="https://www.zhihu.com/question/22603676/answer/28847509" target="_blank" rel="noopener">关于永磁同步电机交流伺服控制系统的算法问题？ - 小心假设的回答 - 知乎</a></p>
+<h1 id="PI-·-PD-·-PID"><a href="#PI-·-PD-·-PID" class="headerlink" title="PI · PD · PID"></a>PI · PD · PID</h1><p>另外我知道了在工业中说是说PID控制器, 但<strong>实际大多是PI控制器</strong>, 因为D虽然可以增大系统阻尼, 使系统具有一定预见性, 增强了对微小变化的响应, 但也因此造成系统容易震荡, 不稳定. 而根据网上说的<strong>I比D更容易引起不稳定, 因为I引入了另一个极点.</strong> 具体啥时候用PI, PD, PID我还没有头绪.</p>
+<p>🔗 参考:</p>
+<ul>
+<li><a href="https://www.zhihu.com/question/26944678/answer/44687208" target="_blank" rel="noopener">哪些控制类的算法惊艳了你？ - 三郎的回答 - 知乎</a></li>
+<li><a href="http://www.sohu.com/a/155185294_464086" target="_blank" rel="noopener">PID控制算法精华和参数整定三大招</a></li>
+</ul>
+<h1 id="三环控制"><a href="#三环控制" class="headerlink" title="三环控制"></a>三环控制</h1><p>再有就是我大致理解了伺服电机三环PID是一种多么精妙而自然的设计.</p>
+<p>在调PID的时候我和师兄一度绝望, 我就说: “要不我们只保留转距环, 上层的我们重新写一遍.”当时我们使用的是<strong>位置模式</strong>控制电机. 我看电机驱动器的说明书都看得晕呼呼的, 还没怎么理解三环控制.
+但我要保留转距环的想法是很正常的:</p>
+<p>电机最基本的控制方式就是控制流过电机的电流, 也就是控制电机输出的转距. 在这一环里不是单纯的PID, 驱动器还设置了一些阈值, 防止过流烧坏电机什么的. 这一环是驱动器自整定的, 但效果也不错, 因此我认为不必自己重写这一环.</p>
+<p>然后我说:”上层我们用一个PID, 达到: 当当前位置比目标位置小就加正向转距, 当当前位置比目标位置大时加逆向转距的效果.”</p>
+<p>学长立即指出这样机械腿到达位置时的<strong>速度是不定的</strong>.我:”那就加一环速度PID, 生成一个百分数乘以转距来达到控制达到目标位置时的速度的效果”</p>
+<p>说完我一愣, 我特么这不是说了一遍<strong>电流环, 速度环, 位置环</strong>的所谓<strong>三环控制</strong>🐴</p>
+<p>🔗 参考:</p>
+<ul>
+<li><a href="http://www.voidcn.com/article/p-hxjakzgh-pw.html" target="_blank" rel="noopener">伺服电机三环控制的原理（位置环，运动环，电流环）</a></li>
+<li><a href="https://blog.csdn.net/Andy20081251/article/details/79457911" target="_blank" rel="noopener">浅谈伺服电机三种控制方式</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/21311021" target="_blank" rel="noopener">伺服电机的控制方式简述</a></li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>随笔</category>
+        <category>自动控制</category>
+      </categories>
+  </entry>
+  <entry>
     <title>常见术语缩写</title>
     <url>/zh-CN/2019/03/02/%E5%B8%B8%E8%A7%81%E6%9C%AF%E8%AF%AD%E7%BC%A9%E5%86%99/</url>
     <content><![CDATA[<p>作为一个非英语母语的程序员, 经常看到各种奇奇怪怪的缩写让人摸不到头脑, 而如果能知道这些拼凑起来的字母是什么的缩写的话, 不仅便于记忆, 也便于理解. 另外能知道点冷知识还是很有意思
@@ -2085,59 +2138,6 @@ abbreviation</strong>)</p>
       </script>]]></content>
       <categories>
         <category>杂记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>对伺服电机PID的理解</title>
-    <url>/zh-CN/2019/03/27/%E5%AF%B9%E4%BC%BA%E6%9C%8D%E7%94%B5%E6%9C%BAPID%E7%9A%84%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[<p>行吧, 继上次手搓简单卡尔曼算法后我又接触到了更多控制方面的东西. 想我一个电子工程的弟弟在这里研究术语都不知道几个的控制… 命苦啊! 最近在调机械腿, 应该说还在调那条腿, 对伺服电机里的PID算法有了些许感悟.</p>
-<a id="more"></a>
-
-<p>这条腿的传感噪声问题因为换了传感器已经解决了, 最近的问题是<strong>不能快速, 稳定, 准确的到达指定位置</strong>. 目前通过<strong>限制电机的加速度</strong>改善了情况.</p>
-<h1 id="PID也没有那么简单"><a href="#PID也没有那么简单" class="headerlink" title="PID也没有那么简单"></a>PID也没有那么简单</h1><p>在改动前机械腿在低速状态 (很低速那种) 下表现得还是蛮好的, 但速度一旦快起来就明显有<strong>过冲</strong>, 是一抖一抖运动的, 到达位置时间反而比低速还长… 虽然我以前买了一个很简陋的四轴穿越机调过一点点PID, 感觉这算法也不难理解 (至少比卡尔曼好理解😁), 但这次发现要达到一定的精度PID也不是那么简单的东西: 经常是 “这参数加了20了怎么毛的变化都没有啊 黑人问号”, 但实际用起来又确实地感受到了差别. 并且当情况复杂的时候一个普通PID是不能满足的, 可能会用串级PID, 分段PID, 模糊PID, 专家系统PID, 容错PID, 前馈, 非线性控制之类的来改善😵</p>
-<p>🔗 参考: <a href="https://www.zhihu.com/question/22603676/answer/28847509" target="_blank" rel="noopener">关于永磁同步电机交流伺服控制系统的算法问题？ - 小心假设的回答 - 知乎</a></p>
-<h1 id="PI-·-PD-·-PID"><a href="#PI-·-PD-·-PID" class="headerlink" title="PI · PD · PID"></a>PI · PD · PID</h1><p>另外我知道了在工业中说是说PID控制器, 但<strong>实际大多是PI控制器</strong>, 因为D虽然可以增大系统阻尼, 使系统具有一定预见性, 增强了对微小变化的响应, 但也因此造成系统容易震荡, 不稳定. 而根据网上说的<strong>I比D更容易引起不稳定, 因为I引入了另一个极点.</strong> 具体啥时候用PI, PD, PID我还没有头绪.</p>
-<p>🔗 参考:</p>
-<ul>
-<li><a href="https://www.zhihu.com/question/26944678/answer/44687208" target="_blank" rel="noopener">哪些控制类的算法惊艳了你？ - 三郎的回答 - 知乎</a></li>
-<li><a href="http://www.sohu.com/a/155185294_464086" target="_blank" rel="noopener">PID控制算法精华和参数整定三大招</a></li>
-</ul>
-<h1 id="三环控制"><a href="#三环控制" class="headerlink" title="三环控制"></a>三环控制</h1><p>再有就是我大致理解了伺服电机三环PID是一种多么精妙而自然的设计.</p>
-<p>在调PID的时候我和师兄一度绝望, 我就说: “要不我们只保留转距环, 上层的我们重新写一遍.”当时我们使用的是<strong>位置模式</strong>控制电机. 我看电机驱动器的说明书都看得晕呼呼的, 还没怎么理解三环控制.
-但我要保留转距环的想法是很正常的:</p>
-<p>电机最基本的控制方式就是控制流过电机的电流, 也就是控制电机输出的转距. 在这一环里不是单纯的PID, 驱动器还设置了一些阈值, 防止过流烧坏电机什么的. 这一环是驱动器自整定的, 但效果也不错, 因此我认为不必自己重写这一环.</p>
-<p>然后我说:”上层我们用一个PID, 达到: 当当前位置比目标位置小就加正向转距, 当当前位置比目标位置大时加逆向转距的效果.”</p>
-<p>学长立即指出这样机械腿到达位置时的<strong>速度是不定的</strong>.我:”那就加一环速度PID, 生成一个百分数乘以转距来达到控制达到目标位置时的速度的效果”</p>
-<p>说完我一愣, 我特么这不是说了一遍<strong>电流环, 速度环, 位置环</strong>的所谓<strong>三环控制</strong>🐴</p>
-<p>🔗 参考:</p>
-<ul>
-<li><a href="http://www.voidcn.com/article/p-hxjakzgh-pw.html" target="_blank" rel="noopener">伺服电机三环控制的原理（位置环，运动环，电流环）</a></li>
-<li><a href="https://blog.csdn.net/Andy20081251/article/details/79457911" target="_blank" rel="noopener">浅谈伺服电机三种控制方式</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/21311021" target="_blank" rel="noopener">伺服电机的控制方式简述</a></li>
-</ul>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>随笔</category>
-        <category>自动控制</category>
       </categories>
   </entry>
   <entry>
@@ -2886,6 +2886,87 @@ C++程序使用的库链接. <code>gcc</code>把后缀为 <strong>.c</strong> �
       </categories>
   </entry>
   <entry>
+    <title>Python中的小技巧</title>
+    <url>/zh-CN/2019/07/03/Python%E4%B8%AD%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>俺也记不住语法, 在这里记录一下常见语句.</p>
+<a id="more"></a>
+
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="查看自带的帮助文档"><a href="#查看自带的帮助文档" class="headerlink" title="查看自带的帮助文档"></a>查看自带的帮助文档</h2><p>用<code>help()</code>函数, 以<code>q</code>退出.</p>
+<p>❗️ 使用help(module_name)时首先需要import该模块</p>
+<h2 id="查看当前python解释器路径"><a href="#查看当前python解释器路径" class="headerlink" title="查看当前python解释器路径"></a>查看当前python解释器路径</h2><p>有时候写程序会发现莫名其妙的bug比如找不到某库, 路径不对等, 可能是因为用错了解释器. 用下面语句可以查看当前解释器的路径:</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.executable</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="在python解释器里清屏"><a href="#在python解释器里清屏" class="headerlink" title="在python解释器里清屏"></a>在python解释器里清屏</h2><p>搜了一下python里似乎没有很简短的清屏命令, 要用命令只能用类似以下这种:</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">a = os.system(<span class="string">'clear'</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>💡 这是在Linux下清屏的命令, 在Windows要用<code>os.system('cls')</code></p>
+<p>💡 将这条命令赋值给一个变量是为了窗口顶部不出现一个0. 你可以单独输入
+<code>os.system('clear')</code>试试</p>
+<p>但如果你是在<strong>Bash</strong>中打开的python可以用 <code>Ctrl + L</code>, 这是Bash的清屏快捷键.</p>
+<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><h2 id="生成等差数列"><a href="#生成等差数列" class="headerlink" title="生成等差数列"></a>生成等差数列</h2><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">list(range(begin, end, step))</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="生成任意指定列表"><a href="#生成任意指定列表" class="headerlink" title="生成任意指定列表"></a>生成任意指定列表</h2><h3 id="利用列表推导式"><a href="#利用列表推导式" class="headerlink" title="利用列表推导式"></a>利用列表推导式</h3><p><strong>推导式comprehensions</strong>（又称解析式）, 是Python的一种独有特性. <strong>推导式是可以从一个数据序列构建另一个新的数据序列的结构体</strong>. 换句话说能从一组数据中求出满足条件的新数据, 比如a, b两个等长列表中都为偶数的项的乘积. 共有三种推导式, 在Python2和3
+中都有支持
+:</p>
+<ul>
+<li>列表(list)推导式</li>
+<li>字典(dict)推导式</li>
+<li>集合(set)推导式</li>
+</ul>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">list = [output_expression <span class="keyword">for</span> out_exp <span class="keyword">in</span> input_list <span class="keyword">if</span> expression]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>e.g.</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">#1</span></span><br><span class="line">a = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">30</span>) <span class="keyword">if</span> i % <span class="number">3</span> <span class="keyword">is</span> <span class="number">0</span>]</span><br><span class="line"><span class="comment">#2</span></span><br><span class="line">names = [<span class="string">'Bob'</span>,<span class="string">'Tom'</span>,<span class="string">'alice'</span>,<span class="string">'Jerry'</span>,<span class="string">'Wendy'</span>,<span class="string">'Smith'</span>]</span><br><span class="line">LONG_NAMES = [name.upper() <span class="keyword">for</span> name <span class="keyword">in</span> names <span class="keyword">if</span> len(name)&gt;<span class="number">3</span>]</span><br><span class="line"><span class="comment">#3</span></span><br><span class="line">a = [x*y <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">5</span>) <span class="keyword">if</span> x &gt; <span class="number">2</span> <span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">4</span>) <span class="keyword">if</span> y &lt; <span class="number">3</span>]</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="利用lambda函数"><a href="#利用lambda函数" class="headerlink" title="利用lambda函数"></a>利用lambda函数</h3><p>lambda函数在python, C++, Java等语言中都有, 我理解的作用主要有三:</p>
+<ul>
+<li>少写几个字</li>
+<li>能将一个”函数”以参数的形式传入另一个函数, ❗️注意此处普通函数能被传递并不是什么稀罕事, 更重要的是类似<a href="https://www.zhihu.com/question/20125256/answer/29733906" target="_blank" rel="noopener">这里</a>提到的”伪函数”</li>
+<li>避免污染命名空间, 需要一个函数但不知道命什么名时用lambda函数</li>
+</ul>
+<p>lambda函数主要用在filter(), map(), reduce()中</p>
+<p>💡 在python3中<code>reduce()</code>从内建函数中移除了, 被移到了functools模块中</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>foo = [<span class="number">2</span>, <span class="number">18</span>, <span class="number">9</span>, <span class="number">22</span>, <span class="number">17</span>, <span class="number">24</span>, <span class="number">8</span>, <span class="number">12</span>, <span class="number">27</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> filter(<span class="keyword">lambda</span> x: x % <span class="number">3</span> == <span class="number">0</span>, foo)</span><br><span class="line">[<span class="number">18</span>, <span class="number">9</span>, <span class="number">24</span>, <span class="number">12</span>, <span class="number">27</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> map(<span class="keyword">lambda</span> x: x * <span class="number">2</span> + <span class="number">10</span>, foo)</span><br><span class="line">[<span class="number">14</span>, <span class="number">46</span>, <span class="number">28</span>, <span class="number">54</span>, <span class="number">44</span>, <span class="number">58</span>, <span class="number">26</span>, <span class="number">34</span>, <span class="number">64</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> reduce(<span class="keyword">lambda</span> x, y: x + y, foo)</span><br><span class="line"><span class="number">139</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h1><h2 id="由列表生成字典"><a href="#由列表生成字典" class="headerlink" title="由列表生成字典"></a>由列表生成字典</h2><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</span><br><span class="line">c = dict(zip(a, b))</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="对字典按值排序"><a href="#对字典按值排序" class="headerlink" title="对字典按值排序"></a>对字典按值排序</h2><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">d = {<span class="string">'a'</span>:<span class="number">1</span>, <span class="string">'b'</span>:<span class="number">2</span>, <span class="string">'c'</span>: <span class="number">5</span>, <span class="string">'d'</span>:<span class="number">4</span>, <span class="string">'e'</span>:<span class="number">3</span>}</span><br><span class="line"></span><br><span class="line">sorted(d.items(), key=<span class="keyword">lambda</span> i: i[<span class="number">1</span>])</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>sorted(iterable, /, *, key=None, reverse=False)</p>
+<p>Return a new list containing all items from the iterable in ascending order.</p>
+<p>A custom key function can be supplied to customize the sort order, and the
+reverse flag can be set to request the result in descending order.</p>
+</blockquote>
+<p>即<code>iterable</code>处放一个可迭代的对象, <code>key</code>处放自定义函数来选取比较的参数, <code>reverse</code>
+处设定是否反向</p>
+<p><code>d.items()</code>返回可遍历的(键, 值) 元组数组, <code>key=lambda i: i[1]</code>即此处参与比较的参数是d的值</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>技巧</category>
+        <category>语言</category>
+        <category>Python</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Vim使用杂记</title>
     <url>/zh-CN/2019/07/10/vim%E4%BD%BF%E7%94%A8%E6%9D%82%E8%AE%B0/</url>
     <content><![CDATA[<p>使用vim开发也有半年多啦, 不过配置vim也是个漫长的过程. 记录一下常用快捷键和用法和配置过程.</p>
@@ -3075,87 +3156,6 @@ shift 字母</kbd>和<kbd>Ctrl 字母</kbd>的输出没有区别.</p>
       <categories>
         <category>工具</category>
         <category>vim</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Python中的小技巧</title>
-    <url>/zh-CN/2019/07/03/Python%E4%B8%AD%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<p>俺也记不住语法, 在这里记录一下常见语句.</p>
-<a id="more"></a>
-
-<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="查看自带的帮助文档"><a href="#查看自带的帮助文档" class="headerlink" title="查看自带的帮助文档"></a>查看自带的帮助文档</h2><p>用<code>help()</code>函数, 以<code>q</code>退出.</p>
-<p>❗️ 使用help(module_name)时首先需要import该模块</p>
-<h2 id="查看当前python解释器路径"><a href="#查看当前python解释器路径" class="headerlink" title="查看当前python解释器路径"></a>查看当前python解释器路径</h2><p>有时候写程序会发现莫名其妙的bug比如找不到某库, 路径不对等, 可能是因为用错了解释器. 用下面语句可以查看当前解释器的路径:</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.executable</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="在python解释器里清屏"><a href="#在python解释器里清屏" class="headerlink" title="在python解释器里清屏"></a>在python解释器里清屏</h2><p>搜了一下python里似乎没有很简短的清屏命令, 要用命令只能用类似以下这种:</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">a = os.system(<span class="string">'clear'</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-<p>💡 这是在Linux下清屏的命令, 在Windows要用<code>os.system('cls')</code></p>
-<p>💡 将这条命令赋值给一个变量是为了窗口顶部不出现一个0. 你可以单独输入
-<code>os.system('clear')</code>试试</p>
-<p>但如果你是在<strong>Bash</strong>中打开的python可以用 <code>Ctrl + L</code>, 这是Bash的清屏快捷键.</p>
-<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><h2 id="生成等差数列"><a href="#生成等差数列" class="headerlink" title="生成等差数列"></a>生成等差数列</h2><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">list(range(begin, end, step))</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="生成任意指定列表"><a href="#生成任意指定列表" class="headerlink" title="生成任意指定列表"></a>生成任意指定列表</h2><h3 id="利用列表推导式"><a href="#利用列表推导式" class="headerlink" title="利用列表推导式"></a>利用列表推导式</h3><p><strong>推导式comprehensions</strong>（又称解析式）, 是Python的一种独有特性. <strong>推导式是可以从一个数据序列构建另一个新的数据序列的结构体</strong>. 换句话说能从一组数据中求出满足条件的新数据, 比如a, b两个等长列表中都为偶数的项的乘积. 共有三种推导式, 在Python2和3
-中都有支持
-:</p>
-<ul>
-<li>列表(list)推导式</li>
-<li>字典(dict)推导式</li>
-<li>集合(set)推导式</li>
-</ul>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">list = [output_expression <span class="keyword">for</span> out_exp <span class="keyword">in</span> input_list <span class="keyword">if</span> expression]</span><br></pre></td></tr></tbody></table></figure>
-
-<p>e.g.</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">#1</span></span><br><span class="line">a = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">30</span>) <span class="keyword">if</span> i % <span class="number">3</span> <span class="keyword">is</span> <span class="number">0</span>]</span><br><span class="line"><span class="comment">#2</span></span><br><span class="line">names = [<span class="string">'Bob'</span>,<span class="string">'Tom'</span>,<span class="string">'alice'</span>,<span class="string">'Jerry'</span>,<span class="string">'Wendy'</span>,<span class="string">'Smith'</span>]</span><br><span class="line">LONG_NAMES = [name.upper() <span class="keyword">for</span> name <span class="keyword">in</span> names <span class="keyword">if</span> len(name)&gt;<span class="number">3</span>]</span><br><span class="line"><span class="comment">#3</span></span><br><span class="line">a = [x*y <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">5</span>) <span class="keyword">if</span> x &gt; <span class="number">2</span> <span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">4</span>) <span class="keyword">if</span> y &lt; <span class="number">3</span>]</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="利用lambda函数"><a href="#利用lambda函数" class="headerlink" title="利用lambda函数"></a>利用lambda函数</h3><p>lambda函数在python, C++, Java等语言中都有, 我理解的作用主要有三:</p>
-<ul>
-<li>少写几个字</li>
-<li>能将一个”函数”以参数的形式传入另一个函数, ❗️注意此处普通函数能被传递并不是什么稀罕事, 更重要的是类似<a href="https://www.zhihu.com/question/20125256/answer/29733906" target="_blank" rel="noopener">这里</a>提到的”伪函数”</li>
-<li>避免污染命名空间, 需要一个函数但不知道命什么名时用lambda函数</li>
-</ul>
-<p>lambda函数主要用在filter(), map(), reduce()中</p>
-<p>💡 在python3中<code>reduce()</code>从内建函数中移除了, 被移到了functools模块中</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>foo = [<span class="number">2</span>, <span class="number">18</span>, <span class="number">9</span>, <span class="number">22</span>, <span class="number">17</span>, <span class="number">24</span>, <span class="number">8</span>, <span class="number">12</span>, <span class="number">27</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> filter(<span class="keyword">lambda</span> x: x % <span class="number">3</span> == <span class="number">0</span>, foo)</span><br><span class="line">[<span class="number">18</span>, <span class="number">9</span>, <span class="number">24</span>, <span class="number">12</span>, <span class="number">27</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> map(<span class="keyword">lambda</span> x: x * <span class="number">2</span> + <span class="number">10</span>, foo)</span><br><span class="line">[<span class="number">14</span>, <span class="number">46</span>, <span class="number">28</span>, <span class="number">54</span>, <span class="number">44</span>, <span class="number">58</span>, <span class="number">26</span>, <span class="number">34</span>, <span class="number">64</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> reduce(<span class="keyword">lambda</span> x, y: x + y, foo)</span><br><span class="line"><span class="number">139</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h1 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h1><h2 id="由列表生成字典"><a href="#由列表生成字典" class="headerlink" title="由列表生成字典"></a>由列表生成字典</h2><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]</span><br><span class="line">c = dict(zip(a, b))</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="对字典按值排序"><a href="#对字典按值排序" class="headerlink" title="对字典按值排序"></a>对字典按值排序</h2><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">d = {<span class="string">'a'</span>:<span class="number">1</span>, <span class="string">'b'</span>:<span class="number">2</span>, <span class="string">'c'</span>: <span class="number">5</span>, <span class="string">'d'</span>:<span class="number">4</span>, <span class="string">'e'</span>:<span class="number">3</span>}</span><br><span class="line"></span><br><span class="line">sorted(d.items(), key=<span class="keyword">lambda</span> i: i[<span class="number">1</span>])</span><br></pre></td></tr></tbody></table></figure>
-
-<blockquote>
-<p>sorted(iterable, /, *, key=None, reverse=False)</p>
-<p>Return a new list containing all items from the iterable in ascending order.</p>
-<p>A custom key function can be supplied to customize the sort order, and the
-reverse flag can be set to request the result in descending order.</p>
-</blockquote>
-<p>即<code>iterable</code>处放一个可迭代的对象, <code>key</code>处放自定义函数来选取比较的参数, <code>reverse</code>
-处设定是否反向</p>
-<p><code>d.items()</code>返回可遍历的(键, 值) 元组数组, <code>key=lambda i: i[1]</code>即此处参与比较的参数是d的值</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>技巧</category>
-        <category>语言</category>
-        <category>Python</category>
       </categories>
   </entry>
   <entry>
@@ -4606,7 +4606,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">GRUB_INIT_TUNE="1750 523 1 392 1 523 1 659 1 784 1 1047 1 784 1 415 1 523 1 622 1 831 1 622 1 831 1 1046 1 1244 1 1661 1 1244 1 466 1 587 1 698 1 932 1 1175 1 1397 1 1865 1 1397 1"</span><br></pre></td></tr></tbody></table></figure>
 
 <p>但是这个音效声音大小无法调节, 只能是最大声, 真的很大声那种😏 所以虽然很好玩, 我后来还是取消了这个设置.</p>
-<h3 id="GRUB图形界面分辨率"><a href="#GRUB图形界面分辨率" class="headerlink" title="GRUB图形界面分辨率"></a>GRUB图形界面分辨率</h3><p>如果你像我这样是4k屏幕, 那么当<code>/etc/default/grub</code>中分辨率参数为<strong>GRUB_GFXMODE=auto</strong>, 那么GRUB会是4k分辨率, 字会比较小, 然后画面刷新率很低, 导致有点卡. 可以换为<code>GRUB_GFXMODE=1920x1080</code></p>
+<h3 id="GRUB图形界面分辨率"><a href="#GRUB图形界面分辨率" class="headerlink" title="GRUB图形界面分辨率"></a>GRUB图形界面分辨率</h3><p>如果你像我这样是4k屏幕, 那么当<code>/etc/default/grub</code>中分辨率参数为<strong>GRUB_GFXMODE=auto</strong>, 那么GRUB会是4k分辨率, 字会比较小, 然后画面刷新率很低, 导致有点卡, 于是我换成了<code>GRUB_GFXMODE=1920x1440x32</code> (32表示32位色深). 要注意这个分辨率必须是在GRUB图形化界面中按<kbd>c</kbd>进入命令行模式, 输入<code>videoinfo</code>后所列出的分辨率, 不然对分辨率的指定无效.</p>
 <h3 id="最后微调"><a href="#最后微调" class="headerlink" title="最后微调"></a>最后微调</h3><p>调整完上面三个后运行<code>update-grub</code>来更新<code>/boot/grub/grub.cfg</code>. 最后可以到<code>/boot/grub/grub.cfg</code>进行最后微调 (如果需要的话).</p>
 <h3 id="开机美化"><a href="#开机美化" class="headerlink" title="开机美化"></a>开机美化</h3><blockquote>
 <p>因为最开始写这篇文章时我还没体验过Manjaro, 因此这部分就保留好了, 但我要说Manjaro真的比Ubuntu容易个性化太多了!!! (<a href="/zh-CN/2020/07/26/我从Ubuntu换到了Manjaro/">安利文</a>)</p>
