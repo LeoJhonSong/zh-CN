@@ -438,144 +438,6 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
       </categories>
   </entry>
   <entry>
-    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
-    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<div align="right">Language:
-<a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a>
-<a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a>
-</div>
-
-<a id="more"></a>
-
-<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="更改配置后页面未出现变化"><a href="#更改配置后页面未出现变化" class="headerlink" title="更改配置后页面未出现变化"></a>更改配置后页面未出现变化</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
-<h3 id="markdown中文换行导致的空格问题"><a href="#markdown中文换行导致的空格问题" class="headerlink" title="markdown中文换行导致的空格问题"></a>markdown中文换行导致的空格问题</h3><p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
-<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="Google站点地图报错"><a href="#Google站点地图报错" class="headerlink" title="Google站点地图报错"></a>Google站点地图报错</h3><p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
-<h3 id="如何建立多级分类"><a href="#如何建立多级分类" class="headerlink" title="如何建立多级分类"></a>如何建立多级分类</h3><p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
-<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><h3 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h3><p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a>
-<a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>Web</category>
-        <category>软件配置</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>几个提高效率的小技巧</title>
-    <url>/zh-CN/2019/01/18/%E5%87%A0%E4%B8%AA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<p>记录和分享一些我觉得提高了自己效率的技巧。</p>
-<a id="more"></a>
-
-<h1 id="虚拟桌面分割任务"><a href="#虚拟桌面分割任务" class="headerlink" title="虚拟桌面分割任务"></a>虚拟桌面分割任务</h1><p>Windows有一个我觉得蛮有意思的功能, <strong>虚拟桌面</strong>. 按 <code>Windows+Tab</code> 或者点击任务栏上有个长得有点奇怪的图标可以打开<strong>任务视图</strong>, 然后可以新建桌面, 管理桌面. 通过把应用界面分别放到不同桌面可以让任务栏不会堆积很多页面. 有时候同时写多个项目的时候会用浏览器搜好几个主题 (是的我就是浏览器选手) 如果都放到一起太乱太多了, 因此放到不同桌面是个非常不错的选择. 我经常将娱乐的玩意, 什么网易云, 百度云之类放一个桌面, 然后一个项目放一个桌面, 心情愉悦让效率大大提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<h1 id="更改输入法符号"><a href="#更改输入法符号" class="headerlink" title="更改输入法符号"></a>更改输入法符号</h1><p>有时, 比如写中文文档时, 我们需要频繁切换中英文输入法, 而代码中打符号的时候我总是忘记切换成英文输入法, 打出万恶的中文字符, 比如；什么的. 而我发现快捷键 <code>Ctrl+.</code>可以只切换符号的中英文! 也就是说你可以在中文输入法下打出英文标点 (比如我的句号是英文句号). 这样就解决了中英文标点易混淆的烦恼<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<!-- TODO -->
-<!-- chrom --><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>技巧</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>当VSCode成为一种生活方式</title>
-    <url>/zh-CN/2019/01/07/%E5%BD%93VSCode%E6%88%90%E4%B8%BA%E4%B8%80%E7%A7%8D%E7%94%9F%E6%B4%BB%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<div align="right">Language:
-<a href="/2018/12/25/When-VSCode-Becomes-A-Lifestyle"><kbd>English</kbd></a>
-<a href="/zh-CN/2019/01/07/当VSCode成为一种生活方式"><kbd>中文</kbd></a>
-</div>
-
-<!-- TODO -->
-
-<p>VSCode是一款很强大的编辑器, 因为我现在的电脑性能不太好, 开规模很大的那些2IDE特别慢, 我很喜欢用VSCode. 而且用VSCode在某些方面确实能获得很不错的体验<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span> 本文算是VSCode
-安利和我个人的使用技巧.</p>
-<a id="more"></a>
-
-<h1 id="Why-VSCode"><a href="#Why-VSCode" class="headerlink" title="Why VSCode"></a>Why VSCode</h1><h2 id="写Markdown"><a href="#写Markdown" class="headerlink" title="写Markdown"></a>写Markdown</h2><h2 id="写前端"><a href="#写前端" class="headerlink" title="写前端"></a>写前端</h2><h2 id="写小段代码"><a href="#写小段代码" class="headerlink" title="写小段代码"></a>写小段代码</h2><h3 id="写Python"><a href="#写Python" class="headerlink" title="写Python"></a>写Python</h3><h3 id="写C-C"><a href="#写C-C" class="headerlink" title="写C/C++"></a>写C/C++</h3><h2 id="写LaTeX"><a href="#写LaTeX" class="headerlink" title="写LaTeX"></a>写LaTeX</h2><h1 id="插件安利"><a href="#插件安利" class="headerlink" title="插件安利"></a>插件安利</h1><p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 要注意的是最好不要在一个项目中使用过多插件, 这会让VSCode最开始的加载非常慢,
-这是得不偿失的. 我们仍要记得VSCode只是一个编辑器. 而我们通常面临的尴尬情况是:有很多日常会用到的插件, 但并不是在每个项目中都需要用到全部的插件, 很多本工作区用不到的插件放在那里只会浪费资源. 而通过将一些插件设为<strong>禁用(工作区)</strong>可以仅在这个项目中禁用这个插件! 这样能大大缩短VSCode启动时间<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<h1 id="VSCode-个性化设置"><a href="#VSCode-个性化设置" class="headerlink" title="VSCode 个性化设置"></a>VSCode 个性化设置</h1><h2 id="改编辑器选项卡关闭按钮位置至左边"><a href="#改编辑器选项卡关闭按钮位置至左边" class="headerlink" title="改编辑器选项卡关闭按钮位置至左边"></a>改编辑器选项卡关闭按钮位置至左边</h2><p>在这之前有一件让我很恼火的事: 我经常由于文件标题过长而选项卡关闭按钮在右侧而不能轻松地关闭一个选项卡, 因为关闭按钮没能显示出来! 而我将关闭按钮改至左侧后, <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8">😆</span>爽到!</p>
-<p>:heavy_check_mark: 更改方法: 在设置中搜索 <code>workbench.editor.tabCloseButton</code>, 设置为<strong>left</strong></p>
-<h2 id="在一定数量的等宽字符后显示垂直标尺"><a href="#在一定数量的等宽字符后显示垂直标尺" class="headerlink" title="在一定数量的等宽字符后显示垂直标尺"></a>在一定数量的等宽字符后显示垂直标尺</h2><p>VSCode有许多很好用的功能!<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8">😆</span> 这是其中之一. 你可以设置任意多个标尺来作为字数的参考线!</p>
-<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>editor.rulers</code>, 选择后在数组中填入要画线处的字数.</p>
-<h2 id="代码格式化"><a href="#代码格式化" class="headerlink" title="代码格式化"></a>代码格式化</h2><p>统一用 <code>Alt+shift+F</code> 作为代码格式化快捷键</p>
-<h2 id="查看键盘快捷方式"><a href="#查看键盘快捷方式" class="headerlink" title="查看键盘快捷方式"></a>查看键盘快捷方式</h2><p>如果你新安装了一个插件, 其中几个快捷键不知道为什么不好用或者效果不对, 你应当到
-<strong>键盘快捷方式</strong>查看一下这个快捷键在该情况下是不是对应了不止一个命令.</p>
-<h2 id="关闭Enter键接受建议"><a href="#关闭Enter键接受建议" class="headerlink" title="关闭Enter键接受建议"></a>关闭Enter键接受建议</h2><p>很多时候原本想换行的, 但是按Enter却接受了VSCode的沙雕建议, 令人郁闷, 通过关掉Enter接受建议能让心情好很多<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8">😏</span> 虽然习惯Enter接受建议突然改成只能用Tab接受建议会有点不适应,
-但再适应一下就会觉得非常舒服了<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44f.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44f.png?v8">👏</span></p>
-<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>editor.acceptSuggestionOnEnter</code>, 改为
-<strong>off</strong></p>
-<h2 id="设置git-commit成功即上传"><a href="#设置git-commit成功即上传" class="headerlink" title="设置git commit成功即上传"></a>设置git commit成功即上传</h2><p>在使用个人repository时我认为commit和push是没必要分开进行的, 因为只有自己用, 在本地存着和在云端存着没什么区别. 甚至有可能发生代码忘记上传云端就把电脑格式化了因而损失大段代码的惨案<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8">😭</span> 因此git有一项选项特别适合我: commit成功即push</p>
-<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>git.postCommitCommand</code>, 设置为<strong>push</strong></p>
-<h2 id="打开用户设置的同时打开默认设置"><a href="#打开用户设置的同时打开默认设置" class="headerlink" title="打开用户设置的同时打开默认设置"></a>打开用户设置的同时打开默认设置</h2><p>虽然打开<strong>settings.json</strong>时同时打开默认设置的json文件应当是默认设置, 但我有一次安装
-VSCode之后发现这个选项没被勾上.</p>
-<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>workbench.settings.openDefaultSettings</code>,
-设置为<strong>true</strong>.</p>
-<h2 id="允许编辑器中水平滚动"><a href="#允许编辑器中水平滚动" class="headerlink" title="允许编辑器中水平滚动"></a>允许编辑器中水平滚动</h2><p>触摸板和一些鼠标 (比如我的Microsooft Arch) 是支持水平滚动界面的, 但VSCode默认禁止水平滚动, 只能滑动底下的滑条来左右滑, 但这个选项可以打开.</p>
-<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>workbench.tree.horizontalScrolling</code>,
-设置为<strong>true</strong></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>技巧</category>
-        <category>软件配置</category>
-        <category>VSC</category>
-      </categories>
-  </entry>
-  <entry>
     <title>搓一个Python/C++的简易卡尔曼滤波器</title>
     <url>/zh-CN/2019/01/07/%E6%90%93%E4%B8%80%E4%B8%AAPython-C-%E7%9A%84%E7%AE%80%E6%98%93%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%E5%99%A8/</url>
     <content><![CDATA[<div align="right">Language:
@@ -1702,9 +1564,9 @@ Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可�
       </script>]]></content>
       <categories>
         <category>工具</category>
-        <category>技巧</category>
         <category>软件配置</category>
         <category>VSC</category>
+        <category>技巧</category>
       </categories>
   </entry>
   <entry>
@@ -1826,8 +1688,8 @@ Linux开发xmc4500需要什么工具以及编译方式,
       </script>]]></content>
       <categories>
         <category>算法</category>
-        <category>随笔</category>
         <category>自动控制</category>
+        <category>随笔</category>
       </categories>
   </entry>
   <entry>
@@ -3509,8 +3371,8 @@ C/C++接口时.其他部分全部用Python糊!</p>
           });
       </script>]]></content>
       <categories>
-        <category>技巧</category>
         <category>操作系统</category>
+        <category>技巧</category>
         <category>Linux</category>
       </categories>
   </entry>
@@ -4048,8 +3910,8 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
           });
       </script>]]></content>
       <categories>
-        <category>技巧</category>
         <category>操作系统</category>
+        <category>技巧</category>
         <category>Linux</category>
       </categories>
   </entry>
@@ -5358,6 +5220,296 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
       </script>]]></content>
       <categories>
         <category>健康</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>LaTeX杂记</title>
+    <url>/zh-CN/2021/05/24/LaTeX%E6%9D%82%E8%AE%B0/</url>
+    <content><![CDATA[<p>最近在用LaTeX写毕业论文 (学院支持甚至提供了LaTeX模板真是太幸运了), 在此记录下我写论文用到的一些语法方便以后抄.</p>
+<a id="more"></a>
+
+<p>为了专注一个主题, 我只想在这里记录一些我可能用到的语法 (要是你只是想写一份精美本科毕设论文的话也不用管太多). 想更系统更详细了解LaTeX的话, 我推荐下列三个详细程度递减的教程:</p>
+<ul>
+<li><a href="http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf" target="_blank" rel="noopener">一份不太简短的LaTeX2ε介绍 (lshot中文版)</a>: 这是一份比较详细的入门教程的中文翻译版, 看完会解开许多初学时可能会有的疑惑, 比如它甚至列出了一些写LaTeX时可能用到或生成的文件类型都是什么用途. 网上各种中文LeTaX资料的名词翻译很不统一, 可以以这份教程的翻译为准. 这份lshort中文版其实不是单纯的翻译, 还增添了涉及中文使用的内容, 这无疑是十分有用的 (对于以后可能要写中文论文的我)</li>
+<li><a href="https://github.com/wklchris/Note-by-LaTeX" target="_blank" rel="noopener">简单粗暴LaTeX</a>: 这份入门教材比上面这个短许多, 因为它更注重实用性内容, 讲解相对更少. 但对于在有模板的情况下写本科毕业论文的需求仍然是妥妥够用的. 而且因为这本书给出了源代码, 你甚至可以看看作者到底是怎么用LaTeX的 (如果你有那个闲心的话)</li>
+<li><a href="https://www.overleaf.com/learn" target="_blank" rel="noopener">Overleaf的LaTeX文档</a>: Overleaf的文档更是讲解很少, 基本每个内容直接是使用示例.</li>
+<li>要是你还想看更多内容, 可以先看看<a href="https://www.latexstudio.net/archives/51802.html" target="_blank" rel="noopener">LaTeX工作室推荐的资料</a>.</li>
+</ul>
+<p>我是在Linux系统下用安装了<a href="https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop" target="_blank" rel="noopener">LaTeX Workshop</a>插件的VSCode写的LaTeX, 这个插件通过调用你安装的LeTaX发行版来提供丰富的LeTaX支持. 我使用的发行版正是LaTeX Workshop最推荐的<a href="https://www.tug.org/texlive/" target="_blank" rel="noopener">Tex Live</a>. 这东西离线安装包有点大, 而且很有可能需要单独下一些包, 有点麻烦. 幸好我Manjaro系统一句<code>yay -S texlive-most texlive-lang biber</code>就把我下面需要用到的所有工具都安装好了. <strong>如果你目前没有安装Tex Live, 不妨先试试在<a href="https://www.overleaf.com/" target="_blank" rel="noopener">Overleaf</a>在线编辑LaTeX试试, 操作很简便, 下述操作中大部分都能实现, 非常省事.</strong></p>
+<p>💡 关于如何安装Tex Live可以看看<a href="https://oi-wiki.org/tools/latex/#_4" target="_blank" rel="noopener">这个说明</a>.</p>
+<!-- TODO: 是哪个没法实现最好指出 基本就bib2gls? -->
+
+<h2 id="项目文件结构"><a href="#项目文件结构" class="headerlink" title="项目文件结构"></a>项目文件结构</h2><p>首先是关于这东西从哪开始写. 不了解的话会觉得LaTeX的文件又多语法又乱七八糟 (我现在也这么觉得), 那么要写个LaTeX的”Hello World”该怎么做? 这个其实很简单:</p>
+<ol>
+<li><p>创建一个tex文件, 比如<strong>first.tex</strong>:</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">\documentclass{article}</span><br><span class="line"></span><br><span class="line">\begin{document}</span><br><span class="line">Hello World</span><br><span class="line">\end{document}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>如果你已经正确安装了Tex Live那么环境里应当已经有<code>xelatex</code>这个可以生成tex文件对应pdf的工具了. 在<strong>first.tex</strong>所在文件夹执行<code>xelatex first.tex</code>. 然后你会发现文件夹里多了三个文件: <strong>first.pdf</strong>, <strong>first.aux</strong>, <strong>fisrt.log</strong>. 后两个文件基本是无关紧要的东西, 我在我的VSCode里设置了每次构建后删除这些文件. 而这个<strong>first.pdf</strong>正是我们需要的pdf文件 🎉</p>
+</li>
+</ol>
+<p>要用LaTeX写一个简单文档需要的语法都很简单没有争议, 需要的工具也只有<code>xelatex</code>. 想快速了解LaTeX最基本的语法可以看看<a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes" target="_blank" rel="noopener">Overleaf的30min入门教程</a>. 不过其实用不了30分钟, 因为只讲了最基础的内容因此大致看一遍了解一下就好😂. 看了一些教程后我觉得Overleaf的文档是非常清晰易懂非常全面的了, 最重要的是<strong>基本用的都是最新最简洁的语法</strong> (正如现在有些python问题还有人在给出python2的绕来绕去的方案, 随便看网上说法会觉得LaTeX怎么这么麻烦功能这么少 🤦‍♂️). 因此后文的教程参考我也基本是给出的是Overleaf的文档.</p>
+<p>大致看了一遍上面链接后就知道怎么用LaTeX写一份用Markdown或者word写也很方便的文档啦. 但要用来写一份高逼格论文的话还需要深入一些, 不然LaTeX的优势也体现不出来了. 首先来看一些绕不开且容易的语法, 然后是各种插入富文本的语法, 最后是关于让引用不管是插入还是看起来体验都更好的内容 (因为需要更改构建工具链这个部分在overleaf无法实现).</p>
+<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── 📁Appendices        各个附录的tex文件文件夹</span><br><span class="line">├── 📁Figures           图片文件夹</span><br><span class="line">├── 📁Front             前置页的tex文件文件夹</span><br><span class="line">├── 📁Sections          各个章节的tex文件文件夹</span><br><span class="line">├── 📑main.tex          根文件</span><br><span class="line">└── 📑References.bib    所有引用的bibtex放这里</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在Overleaf的快速教程中能看到只用一个tex文件就可以写LaTeX了, 但一般见到的论文模板都是多个文件的 (比如我更新的<a href="https://github.com/LeoJhonSong/UESTC-Glasgow-Final-Year-Report-Template/blob/master/README.md" target="_blank" rel="noopener">学院毕设模板</a>), 类似上面这样的结构. 将不同内容分别放在不同文件, 不然太长了不能方便组织以及查找出错地方. 通常在根目录的<strong>main.tex</strong>被作为根文件 (root file), <strong>只有根文件中有<code>\begin{document}</code></strong>. 通常习惯将各种全局设置, 包的引用, 标题, 作者, 自己定义的新命令, 宏定义等导言 (<a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes#The_preamble_of_a_document" target="_blank" rel="noopener">preamble</a>), 都放在<strong>main.tex</strong>中. 而<code>\begin{document}</code>后的正文内容基本是以<code>\include{}</code>插入在<strong>Front</strong>, <strong>Sections</strong>, <strong>Appendices</strong>中的tex文件, 以及插入目录, 插入图表索引, 插入引用的语句等. 也就是说<strong>main.tex</strong>中没有具体内容, 基本是环境配置, 参数设置, 大纲这样子. main.tex的大致结构如下:</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">\documentclass{article}</span><br><span class="line">% 导言部分 (preamble)</span><br><span class="line">% 一些包的导入, 一些全局设置等</span><br><span class="line">\begin{document}</span><br><span class="line">% 正文部分 (指大纲)</span><br><span class="line">\end{document}</span><br><span class="line">% 这后面即便有内容也会被忽略</span><br></pre></td></tr></tbody></table></figure>
+
+<p>💡 也有的模板是单独将导言放在一个文件, 根文件中则只有正文. 到底怎么分割文件其实都可以, 最重要的是要<strong>能让自己分清哪部分是导言</strong>. 具体正文中引用哪些包, 配置什么全局参数会出问题我没有一一试过, 但文档推荐放在导言部分的语句就尽量听文档的, 免得出问题 👍</p>
+<h2 id="版式"><a href="#版式" class="headerlink" title="版式"></a>版式</h2><p>在<code>main.tex</code>最开头:</p>
+<p>💡 方括号中为可选参数, 我只是列出我觉得比较有用的参数, 按需添加.</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">\documentclass[</span><br><span class="line">    12pt,  % 设置字号为12pt. 默认字号为10pt, 但好像一般都要求12pt</span><br><span class="line">    twoside,  % 设置双开页. article和report默认为单页</span><br><span class="line">    twocolumn,  % 设置为全文双栏排版. 默认为单栏. 使用multicols环境更好用, 可以设置多栏</span><br><span class="line">    showframe,  % 用线框可视化显示当前布局各边距大小</span><br><span class="line">    draft  % 指定为草稿模式, 会进行简化使生成更快, 在断行不良/溢出出加黑色方块给出提示. 默认为final (终稿模式)</span><br><span class="line">]{article}  % 设置文档类型为article (常规文档), 可能的文档类型还有report (较长的报告, 如博士论文, 技术报告等), book等</span><br><span class="line"></span><br><span class="line">\usepackage[</span><br><span class="line">    a4paper,  % 纸张大小在\documentclass的参数中也可以设置, 但在这统一管理尺寸问题比较省事. 默认大小为美式信纸 (letterpaper)</span><br><span class="line">    inner=2.5cm,</span><br><span class="line">    outer=2cm,</span><br><span class="line">    top=2cm,  % 上边距</span><br><span class="line">    bottom=2cm  % 下边距</span><br><span class="line">]{geometry}  % 使用geometry这个包设置更具体的页面大小和页边距</span><br><span class="line"></span><br><span class="line">% 将行间距设置为1.5倍 (显得多一些)</span><br><span class="line">\usepackage{setspace}</span><br><span class="line">\onehalfspacing{}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="布局-页边距设置"><a href="#布局-页边距设置" class="headerlink" title="布局/页边距设置"></a>布局/页边距设置</h3><p><a href="https://www.overleaf.com/learn/latex/Page_size_and_margins" target="_blank" rel="noopener">Overleaf相关文档</a></p>
+<p>因为我的本科毕业论文是要打印的 (但最后也没打印555), 我就设置了<strong>双开页</strong>, 作用在于页面会有左右之分了. 比如我们学院要求内侧页边距2.5cm, 外侧页边距2cm, 那么左边这页的左页边距为2cm, 右页边距为2.5cm, 而右边这页的左页边距为2.5cm, 右页边距为2cm. 之所以内侧页边距多一些是给装订留一些出血 (就是会被装订得看不到的余地). 使用<code>showframe</code>这个选项的话生成的pdf会以线框的形式可视化显示到底布局是怎样的, 就能很明心啊看出左右两页不一样了. 另外页眉页脚位置, 页码位置也会是左右对称的, 如果你设置了显示这些的话.</p>
+<h3 id="字体及中文支持"><a href="#字体及中文支持" class="headerlink" title="字体及中文支持"></a>字体及中文支持</h3><p>全文的字体大小在<code>\documentclass[]{}</code>的参数中指定, 基本就用12pt. 在此处指定字体大小后文中想改变字体大小实际是通过<code>\large</code>, <code>\small</code>这样的命令给出的, 并不使用具体字号. 关于字体大小更多的设定我暂时没有研究过.</p>
+<p>实际上想用latex文件生成pdf有好几个编译器可以用, 最常被提到且速度最快的是<code>pdflatex</code>, 但pdflatex对UTF-8支持不够好, 对现代字体支持也不够好, 而且可能因为我的文档页数不够多, 我真没体验出速度有什么差别. <code>xelatex</code>对特殊字符及现代字体支持很好, 对中文兼容也很好, 因此目前我更偏向使用xelatex. 这个编译器生成的pdf文件会比pdflatex无参数生成的小不少, 因为它默认会进行无损压缩.</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">\usepackage{fontspec}</span><br><span class="line">\setromanfont{Times New Roman}  % 指定普通字体</span><br><span class="line">\setsansfont{Arial}  % 指定无衬线字体</span><br><span class="line">\setmonofont{Courier New}  % 指定等宽字体</span><br><span class="line">\usepackage{xeCJK}  % 中文支持</span><br></pre></td></tr></tbody></table></figure>
+
+<p>当使用<code>xelatex</code>作为编译器时可以使用<code>fontspec</code>包来指定字体. 更详细的指定方式参见<a href="https://es.overleaf.com/learn/latex/XeLaTeX" target="_blank" rel="noopener">Overleaf的文档</a>. 不过虽然我们学院的论文格式要求也对字体提出了要求, 但所要求的<strong>Times New Roman</strong>, <strong>Arial</strong>这几个字体其实都是Windows系统专有的. 我的Manjaro系统虽然也有替代字体, 但是我感觉默认字体看着也挺好而且老师其实没管所以就没折腾. 实际写作我并没有主动使用过切换字体的命令, 暂时感觉用不到.</p>
+<p>当设置好全文字体大小及字体后, 在文中想设置文字的样式, 比如加粗/斜体/下划线/小型大写字母, 或者大点/小点的, 用到的命令<a href="https://www.overleaf.com/learn/latex/Font_sizes%2C_families%2C_and_styles#Reference_guide" target="_blank" rel="noopener">这里</a>有一个列表可查. 注意变更样式的部分用大括号括起来, 不然后面所有字符的样式都会维持这样.</p>
+<h3 id="两个常见问题"><a href="#两个常见问题" class="headerlink" title="两个常见问题"></a>两个常见问题</h3><h4 id="如何创建能在目录中显示的四级标题"><a href="#如何创建能在目录中显示的四级标题" class="headerlink" title="如何创建能在目录中显示的四级标题"></a>如何创建能在目录中显示的四级标题</h4><p>LaTeX原生提供了7级标题:</p>
+<ul>
+<li><strong>-1</strong> <code>\part{}</code> (只有report和book类型文档中可用)</li>
+<li><strong>0</strong> <code>\chapter{}</code> (只有report和book类型文档中可用)</li>
+<li><strong>1</strong> <code>\section{}</code></li>
+<li><strong>2</strong> <code>\subsection{}</code></li>
+<li><strong>3</strong> <code>\subsubsection{}</code></li>
+<li><strong>4</strong> <code>\paragraph{}</code></li>
+<li><strong>5</strong> <code>\subparagraph{}</code></li>
+</ul>
+<p>但是<code>\paragraph{}</code>和<code>\subparagraph{}</code>并不会被显示在目录中, 在文中也看着不太像是标题而只是加粗的正文. 下图中<strong>test 1</strong>为<code>\paragraph{}</code>, <strong>test 2</strong>为<code>\subparagraph{}</code>, <strong>test 3</strong>为<code>\subsubsection{}</code>.</p>
+<p><img src="LaTeX%E6%9D%82%E8%AE%B0/sections.jpg?80" alt=""></p>
+<p>因此真要说的话在article这种文档类型中LaTeX原生提供的标题只有三级. 要是写短篇论文的话确实也不需要更小的标题了, 但是记个笔记之类还是有可能需要更多级的标题. <a href="https://tex.stackexchange.com/questions/60209/how-to-add-an-extra-level-of-sections-with-headings-below-subsubsection" target="_blank" rel="noopener">这个stackoverflow问题</a>有给出一些解决方案.</p>
+<h4 id="underfull和overfull警告是什么"><a href="#underfull和overfull警告是什么" class="headerlink" title="underfull和overfull警告是什么"></a>underfull和overfull警告是什么</h4><p>这两种警告是在编译后非常常见的警告, 意味着编译器在这一行找不到合适的换行的地方, 导致这一行在文字框限制内排版出来要不是太空了 (underfull) 要不就是太挤了 (overfull). 也就是说这基本是英文这样的字母语言才会遇到的问题. Overleaf<a href="https://www.overleaf.com/learn/how-to/Understanding_underfull_and_overfull_box_warnings" target="_blank" rel="noopener">这篇文章</a>很详细讲了原因, 但几乎没给处理办法. 💡 要注意其中提到的<code>microtype</code>包xelatex<a href="https://tex.stackexchange.com/questions/118713/is-microtype-fully-supported-now-by-xelatex-if-not-how-can-i-keep-myself-up-to" target="_blank" rel="noopener">目前几乎不支持</a>, 但我感觉我就用默认排版工具生成的pdf排版也还挺好的? 以下是一些关于断行的小技巧.</p>
+<h5 id="断词与不要断词"><a href="#断词与不要断词" class="headerlink" title="断词与不要断词"></a>断词与不要断词</h5><p>实际上遇到行末长单词干扰LaTeX排版的时候LaTeX会自动按音节将这个长单词断词, 在行末留个<code>-</code>. 不过有时会想要指定一些单词的断词位置, 有两种方式:</p>
+<ol>
+<li><p>在正文中通过加入<code>\-</code>允许在此处断词. 可以指定多处允许断词的地方, 然后LaTeX会选择其中一个位置来断词:</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">what a phen\-omen\-on.</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>在导言部分用<code>\hyphenation{}</code>指定一组词的断词位置. 同样, 需要断词时LaTeX会从指定的几个位置之一断词. 💡注意这些词是大小写不敏感的:</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">\hyphenation{hy-phe-n-a-tion t-est}  % 指定hyphenation和test的断词位置</span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<p>而有时甚至会不想这个词断掉, 还是有两种方式:</p>
+<ol>
+<li><p>在正文中用<code>\mbox{}</code>强制一串字符不被断开:</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">KFC phone number is \mbox{400 823 823}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>其实<code>\hyphenation{}</code>也可以用来指定一组禁止被断词的单词. 只要不给出断词位置, 就会被认为不能断词:</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">\hyphenation{hyphenation python}  % 指定hyphenation和python不能被断开</span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ol>
+<h5 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h5><p>看教程前我其实是没注意到的, LaTeX排版出的空格竟然有这么些细小区别…</p>
+<ul>
+<li>在LaTeX中多个空格会被当成一个空格 (多个回车也只会产生到下一段的效果). 想用word那样的空格魔法或者回车魔法的话用<code>\hspace{len}</code>和<code>\vspace{len}</code> 😏.</li>
+<li><strong>带子</strong> (tie) <code>~</code>. 在两个单词间加<code>~</code>而不是空格能产生一个不会被断行的空格. 一般用在人名之类的地方.</li>
+<li>句末标点 (<strong>小写字母</strong>后的./?/!) 后的空格会比普通空格长一些. 之所以强调是小写字母后的, 是因为以大写字母结尾会被LaTeX认为最后这个词是人名因而不加长空格. 此时 (如果你真在意这个的话) 用<code>\@</code>手动指明. 你会发现下面这个图里<code>OK.</code>后的空格长度确实有区别, 但区别非常小:
+<img src="LaTeX%E6%9D%82%E8%AE%B0/space.jpg?80" alt="">
+另一种情况则是非句末标点被识别为句末标点了, 比如”Prof. Smith”. 此时可以用<code>~</code>或者<code>\</code> (👈 注意\后面有个空格)来缩短间距. 不过<code>~</code>不允许空格处断行而<code>\</code>允许.</li>
+<li>还有时会看到<code>\Tex{} Live</code>或<code>\Tex\ Live</code>这样明明不支持参数的命令 (如<code>\Tex</code>) 后却有{}或者<code>\</code>, 这是为了让不支持参数的命令后的空格能被正常排版.</li>
+</ul>
+<h5 id="手动断行"><a href="#手动断行" class="headerlink" title="手动断行"></a>手动断行</h5><p>用<code>\\</code>可以在段落内手动换行. 但不同于在word中到处用回车, <a href="https://www.overleaf.com/learn/how-to/Understanding_underfull_and_overfull_box_warnings?#Notes_on_using_.5C.5C" target="_blank" rel="noopener">无脑<code>\\</code>似乎是不被推荐的</a>. 在上文中推荐的<em>一份不太简短的LaTeX2ε介绍</em>中<strong>2.4.2 手动断行和断页</strong>这节有提到几种断行命令的具体区别 (但我感觉没必要管就没看).</p>
+<h2 id="加速生成"><a href="#加速生成" class="headerlink" title="加速生成"></a>加速生成</h2><p>draft</p>
+<p>xelatex压缩等级0/9</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">\special{dvipdfmx:config z 0}</span><br><span class="line">\begin{document}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><h3 id="数学公式-样式-符号"><a href="#数学公式-样式-符号" class="headerlink" title="数学公式, 样式, 符号"></a>数学公式, 样式, 符号</h3><p><a href="https://www.overleaf.com/learn/latex/Aligning%20equations%20with%20amsmath" target="_blank" rel="noopener">公式排版</a></p>
+<p><a href="https://www.overleaf.com/learn/latex/Mathematics" target="_blank" rel="noopener">数学相关内容合集</a></p>
+<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p><a href="https://www.overleaf.com/learn/latex/Inserting_Images#Generating_high-res_and_low-res_images" target="_blank" rel="noopener">插入图片</a></p>
+<p><a href="https://tex.stackexchange.com/questions/24496/use-caption-and-long-description-for-figure/422496" target="_blank" rel="noopener">图片短: 长描述</a></p>
+<p><a href="https://tex.stackexchange.com/a/53062" target="_blank" rel="noopener">表格中插入图片</a></p>
+<p><a href="https://tex.stackexchange.com/questions/101645/how-to-turn-latex-figure-by-90-degrees-along-with-the-caption" target="_blank" rel="noopener">旋转图片</a></p>
+<p><a href="https://tex.stackexchange.com/questions/2099/how-to-include-svg-diagrams-in-latex" target="_blank" rel="noopener">插入svg</a>
+TLDR: 直接插入svg很麻烦, 转pdf</p>
+<p><a href="https://tex.stackexchange.com/a/458474" target="_blank" rel="noopener">inkscape的latex支持</a>  不要用pdf_latex, 直接用pdf</p>
+<p>svgnames</p>
+<p><img src="LaTeX%E6%9D%82%E8%AE%B0/image-20210420201512181.png" alt="image-20210420201512181"></p>
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><p><a href="https://www.overleaf.com/learn/latex/tables" target="_blank" rel="noopener">overleaf-表格</a></p>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p><a href="https://www.overleaf.com/learn/latex/lists" target="_blank" rel="noopener">列表</a></p>
+<p><a href="https://tex.stackexchange.com/questions/10684/vertical-space-in-lists" target="_blank" rel="noopener">列表行间距</a></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><a href="https://tex.stackexchange.com/questions/152829/how-can-i-highlight-yaml-code-in-a-pretty-way-with-listings" target="_blank" rel="noopener">自定义代码语言</a></p>
+<p><a href="https://www.overleaf.com/learn/latex/Code_listing" target="_blank" rel="noopener">overleaf-插入代码</a></p>
+<p><a href="https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted" target="_blank" rel="noopener">mint提供代码高亮</a></p>
+<p><a href="https://tex.stackexchange.com/questions/12428/code-spanning-over-two-pages-with-minted-inside-listing-with-caption" target="_blank" rel="noopener">长代码caption</a></p>
+<p><a href="https://tex.stackexchange.com/questions/320185/adjust-vertical-spacing-between-caption-and-listing-in-koma-scrartcl" target="_blank" rel="noopener">minted调整caption与code距离</a></p>
+<h3 id="引文"><a href="#引文" class="headerlink" title="引文"></a>引文</h3><p><a href="https://www.overleaf.com/learn/latex/typesetting_quotations#csquotes" target="_blank" rel="noopener">引文</a></p>
+<h3 id="特殊符号"><a href="#特殊符号" class="headerlink" title="特殊符号"></a>特殊符号</h3><p><a href="https://tex.stackexchange.com/questions/374932/a-white-number-inside-a-black-circle" target="_blank" rel="noopener">画圆圈1</a></p>
+<p><a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="noopener">手绘查询符号</a></p>
+<h2 id="中文支持"><a href="#中文支持" class="headerlink" title="中文支持"></a>中文支持</h2><p><a href="https://www.overleaf.com/learn/latex/Chinese#xeCJK_with_XeLaTeX" target="_blank" rel="noopener">中文支持</a></p>
+<h2 id="构建流程"><a href="#构建流程" class="headerlink" title="构建流程"></a>构建流程</h2><p><a href="https://www.overleaf.com/learn/latex/Choosing_a_LaTeX_Compiler" target="_blank" rel="noopener">选择overleaf编译器</a></p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://libguides.nps.edu/citation/ieee-bibtex" target="_blank" rel="noopener">各种东西的bibtex</a></p>
+<p><a href="https://www.overleaf.com/learn/latex/Biblatex_citation_styles" target="_blank" rel="noopener">biblatex引用</a></p>
+<p><a href="https://tex.stackexchange.com/questions/470123/how-to-make-a-citation-with-more-than-2-authors-as-at-el-in-text-but-the-ful" target="_blank" rel="noopener">biblatx作者at el.</a></p>
+<p><a href="https://www.overleaf.com/learn/latex/bibliography_management_with_biblatex" target="_blank" rel="noopener">biblatex使用/@online</a></p>
+<p><a href="https://tex.stackexchange.com/questions/149506/biblatex-urldate-set-to-today" target="_blank" rel="noopener">biblatex中@online的urldata字段自动更新</a></p>
+<p><a href="https://tex.stackexchange.com/questions/27607/biblatex-authoryear-comp-and-hyperlinks" target="_blank" rel="noopener">biblatex中authoryear风格整个引用为链接</a></p>
+<p><a href="https://tex.stackexchange.com/questions/27607/biblatex-authoryear-comp-and-hyperlinks" target="_blank" rel="noopener">citetitle超链接</a></p>
+<p><a href="https://tex.stackexchange.com/questions/266434/extend-the-hyperref-link-to-figure-and-a-b-c" target="_blank" rel="noopener">自定义样式\ref</a></p>
+<p><a href="https://tex.stackexchange.com/questions/50747/options-for-appearance-of-links-in-hyperref" target="_blank" rel="noopener">链接颜色</a></p>
+<p><a href="https://tex.stackexchange.com/questions/348640/how-to-effectively-use-list-of-symbols-for-a-thesis" target="_blank" rel="noopener">list of notations</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>杂记</category>
+        <category>语言</category>
+        <category>LaTeX</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>几个提高效率的小技巧</title>
+    <url>/zh-CN/2019/01/18/%E5%87%A0%E4%B8%AA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>记录和分享一些我觉得提高了自己效率的技巧。</p>
+<a id="more"></a>
+
+<h1 id="虚拟桌面分割任务"><a href="#虚拟桌面分割任务" class="headerlink" title="虚拟桌面分割任务"></a>虚拟桌面分割任务</h1><p>Windows有一个我觉得蛮有意思的功能, <strong>虚拟桌面</strong>. 按 <code>Windows+Tab</code> 或者点击任务栏上有个长得有点奇怪的图标可以打开<strong>任务视图</strong>, 然后可以新建桌面, 管理桌面. 通过把应用界面分别放到不同桌面可以让任务栏不会堆积很多页面. 有时候同时写多个项目的时候会用浏览器搜好几个主题 (是的我就是浏览器选手) 如果都放到一起太乱太多了, 因此放到不同桌面是个非常不错的选择. 我经常将娱乐的玩意, 什么网易云, 百度云之类放一个桌面, 然后一个项目放一个桌面, 心情愉悦让效率大大提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<h1 id="更改输入法符号"><a href="#更改输入法符号" class="headerlink" title="更改输入法符号"></a>更改输入法符号</h1><p>有时, 比如写中文文档时, 我们需要频繁切换中英文输入法, 而代码中打符号的时候我总是忘记切换成英文输入法, 打出万恶的中文字符, 比如；什么的. 而我发现快捷键 <code>Ctrl+.</code>可以只切换符号的中英文! 也就是说你可以在中文输入法下打出英文标点 (比如我的句号是英文句号). 这样就解决了中英文标点易混淆的烦恼<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<!-- TODO -->
+<!-- chrom --><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>技巧</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
+    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<div align="right">Language:
+<a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a>
+<a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a>
+</div>
+
+<a id="more"></a>
+
+<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="更改配置后页面未出现变化"><a href="#更改配置后页面未出现变化" class="headerlink" title="更改配置后页面未出现变化"></a>更改配置后页面未出现变化</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
+<h3 id="markdown中文换行导致的空格问题"><a href="#markdown中文换行导致的空格问题" class="headerlink" title="markdown中文换行导致的空格问题"></a>markdown中文换行导致的空格问题</h3><p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Google站点地图报错"><a href="#Google站点地图报错" class="headerlink" title="Google站点地图报错"></a>Google站点地图报错</h3><p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
+<h3 id="如何建立多级分类"><a href="#如何建立多级分类" class="headerlink" title="如何建立多级分类"></a>如何建立多级分类</h3><p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
+<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><h3 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h3><p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a>
+<a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>软件配置</category>
+        <category>Web</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>当VSCode成为一种生活方式</title>
+    <url>/zh-CN/2019/01/07/%E5%BD%93VSCode%E6%88%90%E4%B8%BA%E4%B8%80%E7%A7%8D%E7%94%9F%E6%B4%BB%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<div align="right">Language:
+<a href="/2018/12/25/When-VSCode-Becomes-A-Lifestyle"><kbd>English</kbd></a>
+<a href="/zh-CN/2019/01/07/当VSCode成为一种生活方式"><kbd>中文</kbd></a>
+</div>
+
+<!-- TODO -->
+
+<p>VSCode是一款很强大的编辑器, 因为我现在的电脑性能不太好, 开规模很大的那些2IDE特别慢, 我很喜欢用VSCode. 而且用VSCode在某些方面确实能获得很不错的体验<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span> 本文算是VSCode
+安利和我个人的使用技巧.</p>
+<a id="more"></a>
+
+<h1 id="Why-VSCode"><a href="#Why-VSCode" class="headerlink" title="Why VSCode"></a>Why VSCode</h1><h2 id="写Markdown"><a href="#写Markdown" class="headerlink" title="写Markdown"></a>写Markdown</h2><h2 id="写前端"><a href="#写前端" class="headerlink" title="写前端"></a>写前端</h2><h2 id="写小段代码"><a href="#写小段代码" class="headerlink" title="写小段代码"></a>写小段代码</h2><h3 id="写Python"><a href="#写Python" class="headerlink" title="写Python"></a>写Python</h3><h3 id="写C-C"><a href="#写C-C" class="headerlink" title="写C/C++"></a>写C/C++</h3><h2 id="写LaTeX"><a href="#写LaTeX" class="headerlink" title="写LaTeX"></a>写LaTeX</h2><h1 id="插件安利"><a href="#插件安利" class="headerlink" title="插件安利"></a>插件安利</h1><p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 要注意的是最好不要在一个项目中使用过多插件, 这会让VSCode最开始的加载非常慢,
+这是得不偿失的. 我们仍要记得VSCode只是一个编辑器. 而我们通常面临的尴尬情况是:有很多日常会用到的插件, 但并不是在每个项目中都需要用到全部的插件, 很多本工作区用不到的插件放在那里只会浪费资源. 而通过将一些插件设为<strong>禁用(工作区)</strong>可以仅在这个项目中禁用这个插件! 这样能大大缩短VSCode启动时间<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<h1 id="VSCode-个性化设置"><a href="#VSCode-个性化设置" class="headerlink" title="VSCode 个性化设置"></a>VSCode 个性化设置</h1><h2 id="改编辑器选项卡关闭按钮位置至左边"><a href="#改编辑器选项卡关闭按钮位置至左边" class="headerlink" title="改编辑器选项卡关闭按钮位置至左边"></a>改编辑器选项卡关闭按钮位置至左边</h2><p>在这之前有一件让我很恼火的事: 我经常由于文件标题过长而选项卡关闭按钮在右侧而不能轻松地关闭一个选项卡, 因为关闭按钮没能显示出来! 而我将关闭按钮改至左侧后, <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8">😆</span>爽到!</p>
+<p>:heavy_check_mark: 更改方法: 在设置中搜索 <code>workbench.editor.tabCloseButton</code>, 设置为<strong>left</strong></p>
+<h2 id="在一定数量的等宽字符后显示垂直标尺"><a href="#在一定数量的等宽字符后显示垂直标尺" class="headerlink" title="在一定数量的等宽字符后显示垂直标尺"></a>在一定数量的等宽字符后显示垂直标尺</h2><p>VSCode有许多很好用的功能!<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8">😆</span> 这是其中之一. 你可以设置任意多个标尺来作为字数的参考线!</p>
+<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>editor.rulers</code>, 选择后在数组中填入要画线处的字数.</p>
+<h2 id="代码格式化"><a href="#代码格式化" class="headerlink" title="代码格式化"></a>代码格式化</h2><p>统一用 <code>Alt+shift+F</code> 作为代码格式化快捷键</p>
+<h2 id="查看键盘快捷方式"><a href="#查看键盘快捷方式" class="headerlink" title="查看键盘快捷方式"></a>查看键盘快捷方式</h2><p>如果你新安装了一个插件, 其中几个快捷键不知道为什么不好用或者效果不对, 你应当到
+<strong>键盘快捷方式</strong>查看一下这个快捷键在该情况下是不是对应了不止一个命令.</p>
+<h2 id="关闭Enter键接受建议"><a href="#关闭Enter键接受建议" class="headerlink" title="关闭Enter键接受建议"></a>关闭Enter键接受建议</h2><p>很多时候原本想换行的, 但是按Enter却接受了VSCode的沙雕建议, 令人郁闷, 通过关掉Enter接受建议能让心情好很多<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8">😏</span> 虽然习惯Enter接受建议突然改成只能用Tab接受建议会有点不适应,
+但再适应一下就会觉得非常舒服了<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44f.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44f.png?v8">👏</span></p>
+<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>editor.acceptSuggestionOnEnter</code>, 改为
+<strong>off</strong></p>
+<h2 id="设置git-commit成功即上传"><a href="#设置git-commit成功即上传" class="headerlink" title="设置git commit成功即上传"></a>设置git commit成功即上传</h2><p>在使用个人repository时我认为commit和push是没必要分开进行的, 因为只有自己用, 在本地存着和在云端存着没什么区别. 甚至有可能发生代码忘记上传云端就把电脑格式化了因而损失大段代码的惨案<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8">😭</span> 因此git有一项选项特别适合我: commit成功即push</p>
+<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>git.postCommitCommand</code>, 设置为<strong>push</strong></p>
+<h2 id="打开用户设置的同时打开默认设置"><a href="#打开用户设置的同时打开默认设置" class="headerlink" title="打开用户设置的同时打开默认设置"></a>打开用户设置的同时打开默认设置</h2><p>虽然打开<strong>settings.json</strong>时同时打开默认设置的json文件应当是默认设置, 但我有一次安装
+VSCode之后发现这个选项没被勾上.</p>
+<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>workbench.settings.openDefaultSettings</code>,
+设置为<strong>true</strong>.</p>
+<h2 id="允许编辑器中水平滚动"><a href="#允许编辑器中水平滚动" class="headerlink" title="允许编辑器中水平滚动"></a>允许编辑器中水平滚动</h2><p>触摸板和一些鼠标 (比如我的Microsooft Arch) 是支持水平滚动界面的, 但VSCode默认禁止水平滚动, 只能滑动底下的滑条来左右滑, 但这个选项可以打开.</p>
+<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>workbench.tree.horizontalScrolling</code>,
+设置为<strong>true</strong></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>软件配置</category>
+        <category>VSC</category>
+        <category>技巧</category>
       </categories>
   </entry>
 </search>
