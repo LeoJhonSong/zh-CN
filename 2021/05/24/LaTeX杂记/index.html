@@ -443,7 +443,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>6.5k</span>
+              <span>6.6k</span>
             </span>
           
 
@@ -542,7 +542,8 @@
 <li>还有时会看到<code>\Tex{} Live</code>或<code>\Tex\ Live</code>这样明明不支持参数的命令 (如<code>\Tex</code>) 后却有{}或者<code>\</code>, 这是为了让不支持参数的命令后的空格能被正常排版.</li>
 </ul>
 <h5 id="手动断行"><a href="#手动断行" class="headerlink" title="手动断行"></a>手动断行</h5><p>用<code>\\</code>可以在段落内手动换行. 但不同于在word中到处用回车, <a href="https://www.overleaf.com/learn/how-to/Understanding_underfull_and_overfull_box_warnings?#Notes_on_using_.5C.5C" target="_blank" rel="noopener">无脑<code>\\</code>似乎是不被推荐的</a>. 在上文中推荐的<em>一份不太简短的LaTeX2ε介绍</em>中<strong>2.4.2 手动断行和断页</strong>这节有提到几种断行命令的具体区别 (但我感觉没必要管就没看).</p>
-<h2 id="加速生成"><a href="#加速生成" class="headerlink" title="加速生成"></a>加速生成</h2><p>draft</p>
+<h2 id="加速生成"><a href="#加速生成" class="headerlink" title="加速生成"></a>加速生成</h2><p>随着工程大起来生成pdf会变慢, 有一些技巧可以加速生成不完整的pdf, 在写作过程中快速检查. 因为LaTeX每次生成并不能利用.</p>
+<p>draft</p>
 <p>xelatex压缩等级0/9</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\special{dvipdfmx:config z 0}</span><br><span class="line">\begin{document}</span><br></pre></td></tr></tbody></table></figure>
 
