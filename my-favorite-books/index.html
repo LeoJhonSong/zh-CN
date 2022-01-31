@@ -67,7 +67,7 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="我喜欢看书, 各种书都喜欢. 其中我最喜欢看的是小说, 我认为看小说是在体验一段不一样的人生, 我很善于让自己进入沉浸式体验. 当然我也很喜欢其他种类的书, 他们让我见识到了更多彩的思想和世界. 我想将我很喜欢的书分享出来, 希望能有更多人喜欢这些书😄  因为也不会有太多书因此我就按自己的理解来分类了 (图书馆的分类方式太冷冰冰了)  人文乡土中国作者: 费孝通 ☁️分享自我的OneDrive的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2022-01-31T05:51:44.407Z">
+<meta property="og:updated_time" content="2022-01-31T06:36:13.236Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="My Favorite Books">
 <meta name="twitter:description" content="我喜欢看书, 各种书都喜欢. 其中我最喜欢看的是小说, 我认为看小说是在体验一段不一样的人生, 我很善于让自己进入沉浸式体验. 当然我也很喜欢其他种类的书, 他们让我见识到了更多彩的思想和世界. 我想将我很喜欢的书分享出来, 希望能有更多人喜欢这些书😄  因为也不会有太多书因此我就按自己的理解来分类了 (图书馆的分类方式太冷冰冰了)  人文乡土中国作者: 费孝通 ☁️分享自我的OneDrive的">
@@ -630,29 +630,82 @@
 </div>
 
         
-<div class="busuanzi-count">
-  <script pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-user"></i>
-    </span>
-    <span class="site-uv" title="总访客量">
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-    </span>
-  
-    <span class="post-meta-divider">|</span>
-  
-    <span class="post-meta-item-icon">
-      <i class="fa fa-eye"></i>
-    </span>
-    <span class="site-pv" title="总访问量">
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-    </span>
-  
-</div>
 
 
 
 
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: 'AIzaSyBiB26pEvyZUzfU9HC79FL7xahRHcULmt0',
+      projectId: 'leojhon-song'
+    });
+
+    function getCount(doc, increaseCount) {
+      // IncreaseCount will be false when not in article page
+
+      return doc.get().then(d => {
+        var count = 0;
+        if (!d.exists) { // Has no data, initialize count
+          if (increaseCount) {
+            doc.set({
+              count: 1
+            });
+            count = 1;
+          }
+        } else { // Has data
+          count = d.data().count;
+          if (increaseCount) {
+            // If first view this article
+            doc.set({ // Increase count
+              count: count + 1
+            });
+            count++;
+          }
+        }
+
+        return count;
+      });
+    }
+
+    function appendCountTo(el) {
+      return count => {
+        el.innerText = count;
+      }
+    }
+  </script>
+  <script pjax>
+    (function() {
+      var db = firebase.firestore();
+      var articles = db.collection('articles');
+
+      if (CONFIG.page.isPost) { // Is article page
+        var title = document.querySelector('.post-title').innerText.trim();
+        var doc = articles.doc(title);
+        var increaseCount = true;
+        if (localStorage.getItem(title)) {
+          increaseCount = false;
+        } else {
+          // Mark as visited
+          localStorage.setItem(title, true);
+        }
+        getCount(doc, increaseCount).then(appendCountTo(document.querySelector('.firestore-visitors-count')));
+      } else if (CONFIG.page.isHome) { // Is index page
+        var promises = [...document.querySelectorAll('.post-title')].map(element => {
+          var title = element.innerText.trim();
+          var doc = articles.doc(title);
+          return getCount(doc);
+        });
+        Promise.all(promises).then(counts => {
+          var metas = document.querySelectorAll('.firestore-visitors-count');
+          counts.forEach((val, idx) => {
+            appendCountTo(metas[idx])(val);
+          });
+        });
+      }
+    })();
+  </script>
 
 
 
