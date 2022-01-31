@@ -438,6 +438,68 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
       </categories>
   </entry>
   <entry>
+    <title>当VSCode成为一种生活方式</title>
+    <url>/zh-CN/2019/01/07/%E5%BD%93VSCode%E6%88%90%E4%B8%BA%E4%B8%80%E7%A7%8D%E7%94%9F%E6%B4%BB%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<div align="right">Language:
+<a href="/2018/12/25/When-VSCode-Becomes-A-Lifestyle"><kbd>English</kbd></a>
+<a href="/zh-CN/2019/01/07/当VSCode成为一种生活方式"><kbd>中文</kbd></a>
+</div>
+
+<!-- TODO -->
+
+<p>VSCode是一款很强大的编辑器, 因为我现在的电脑性能不太好, 开规模很大的那些2IDE特别慢, 我很喜欢用VSCode. 而且用VSCode在某些方面确实能获得很不错的体验<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span> 本文算是VSCode
+安利和我个人的使用技巧.</p>
+<a id="more"></a>
+
+<h1 id="Why-VSCode"><a href="#Why-VSCode" class="headerlink" title="Why VSCode"></a>Why VSCode</h1><h2 id="写Markdown"><a href="#写Markdown" class="headerlink" title="写Markdown"></a>写Markdown</h2><h2 id="写前端"><a href="#写前端" class="headerlink" title="写前端"></a>写前端</h2><h2 id="写小段代码"><a href="#写小段代码" class="headerlink" title="写小段代码"></a>写小段代码</h2><h3 id="写Python"><a href="#写Python" class="headerlink" title="写Python"></a>写Python</h3><h3 id="写C-C"><a href="#写C-C" class="headerlink" title="写C/C++"></a>写C/C++</h3><h2 id="写LaTeX"><a href="#写LaTeX" class="headerlink" title="写LaTeX"></a>写LaTeX</h2><h1 id="插件安利"><a href="#插件安利" class="headerlink" title="插件安利"></a>插件安利</h1><p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 要注意的是最好不要在一个项目中使用过多插件, 这会让VSCode最开始的加载非常慢,
+这是得不偿失的. 我们仍要记得VSCode只是一个编辑器. 而我们通常面临的尴尬情况是:有很多日常会用到的插件, 但并不是在每个项目中都需要用到全部的插件, 很多本工作区用不到的插件放在那里只会浪费资源. 而通过将一些插件设为<strong>禁用(工作区)</strong>可以仅在这个项目中禁用这个插件! 这样能大大缩短VSCode启动时间<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<h1 id="VSCode-个性化设置"><a href="#VSCode-个性化设置" class="headerlink" title="VSCode 个性化设置"></a>VSCode 个性化设置</h1><h2 id="改编辑器选项卡关闭按钮位置至左边"><a href="#改编辑器选项卡关闭按钮位置至左边" class="headerlink" title="改编辑器选项卡关闭按钮位置至左边"></a>改编辑器选项卡关闭按钮位置至左边</h2><p>在这之前有一件让我很恼火的事: 我经常由于文件标题过长而选项卡关闭按钮在右侧而不能轻松地关闭一个选项卡, 因为关闭按钮没能显示出来! 而我将关闭按钮改至左侧后, <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8">😆</span>爽到!</p>
+<p>:heavy_check_mark: 更改方法: 在设置中搜索 <code>workbench.editor.tabCloseButton</code>, 设置为<strong>left</strong></p>
+<h2 id="在一定数量的等宽字符后显示垂直标尺"><a href="#在一定数量的等宽字符后显示垂直标尺" class="headerlink" title="在一定数量的等宽字符后显示垂直标尺"></a>在一定数量的等宽字符后显示垂直标尺</h2><p>VSCode有许多很好用的功能!<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8">😆</span> 这是其中之一. 你可以设置任意多个标尺来作为字数的参考线!</p>
+<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>editor.rulers</code>, 选择后在数组中填入要画线处的字数.</p>
+<h2 id="代码格式化"><a href="#代码格式化" class="headerlink" title="代码格式化"></a>代码格式化</h2><p>统一用 <code>Alt+shift+F</code> 作为代码格式化快捷键</p>
+<h2 id="查看键盘快捷方式"><a href="#查看键盘快捷方式" class="headerlink" title="查看键盘快捷方式"></a>查看键盘快捷方式</h2><p>如果你新安装了一个插件, 其中几个快捷键不知道为什么不好用或者效果不对, 你应当到
+<strong>键盘快捷方式</strong>查看一下这个快捷键在该情况下是不是对应了不止一个命令.</p>
+<h2 id="关闭Enter键接受建议"><a href="#关闭Enter键接受建议" class="headerlink" title="关闭Enter键接受建议"></a>关闭Enter键接受建议</h2><p>很多时候原本想换行的, 但是按Enter却接受了VSCode的沙雕建议, 令人郁闷, 通过关掉Enter接受建议能让心情好很多<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8">😏</span> 虽然习惯Enter接受建议突然改成只能用Tab接受建议会有点不适应,
+但再适应一下就会觉得非常舒服了<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44f.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44f.png?v8">👏</span></p>
+<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>editor.acceptSuggestionOnEnter</code>, 改为
+<strong>off</strong></p>
+<h2 id="设置git-commit成功即上传"><a href="#设置git-commit成功即上传" class="headerlink" title="设置git commit成功即上传"></a>设置git commit成功即上传</h2><p>在使用个人repository时我认为commit和push是没必要分开进行的, 因为只有自己用, 在本地存着和在云端存着没什么区别. 甚至有可能发生代码忘记上传云端就把电脑格式化了因而损失大段代码的惨案<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8">😭</span> 因此git有一项选项特别适合我: commit成功即push</p>
+<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>git.postCommitCommand</code>, 设置为<strong>push</strong></p>
+<h2 id="打开用户设置的同时打开默认设置"><a href="#打开用户设置的同时打开默认设置" class="headerlink" title="打开用户设置的同时打开默认设置"></a>打开用户设置的同时打开默认设置</h2><p>虽然打开<strong>settings.json</strong>时同时打开默认设置的json文件应当是默认设置, 但我有一次安装
+VSCode之后发现这个选项没被勾上.</p>
+<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>workbench.settings.openDefaultSettings</code>,
+设置为<strong>true</strong>.</p>
+<h2 id="允许编辑器中水平滚动"><a href="#允许编辑器中水平滚动" class="headerlink" title="允许编辑器中水平滚动"></a>允许编辑器中水平滚动</h2><p>触摸板和一些鼠标 (比如我的Microsooft Arch) 是支持水平滚动界面的, 但VSCode默认禁止水平滚动, 只能滑动底下的滑条来左右滑, 但这个选项可以打开.</p>
+<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>workbench.tree.horizontalScrolling</code>,
+设置为<strong>true</strong></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>技巧</category>
+        <category>软件配置</category>
+        <category>VSC</category>
+      </categories>
+  </entry>
+  <entry>
     <title>搓一个Python/C++的简易卡尔曼滤波器</title>
     <url>/zh-CN/2019/01/07/%E6%90%93%E4%B8%80%E4%B8%AAPython-C-%E7%9A%84%E7%AE%80%E6%98%93%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%E5%99%A8/</url>
     <content><![CDATA[<div align="right">Language:
@@ -1564,9 +1626,9 @@ Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可�
       </script>]]></content>
       <categories>
         <category>工具</category>
+        <category>技巧</category>
         <category>软件配置</category>
         <category>VSC</category>
-        <category>技巧</category>
       </categories>
   </entry>
   <entry>
@@ -3371,8 +3433,8 @@ C/C++接口时.其他部分全部用Python糊!</p>
           });
       </script>]]></content>
       <categories>
-        <category>操作系统</category>
         <category>技巧</category>
+        <category>操作系统</category>
         <category>Linux</category>
       </categories>
   </entry>
@@ -3509,6 +3571,44 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
         <category>杂记</category>
         <category>语言</category>
         <category>Markdown</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>意识到了我的中文有多差</title>
+    <url>/zh-CN/2019/09/13/%E6%84%8F%E8%AF%86%E5%88%B0%E4%BA%86%E6%88%91%E7%9A%84%E4%B8%AD%E6%96%87%E6%9C%89%E5%A4%9A%E5%B7%AE/</url>
+    <content><![CDATA[<p>前阵子别人给我分享了<a href="https://www.byvoid.com/" target="_blank" rel="noopener">这个博客</a>, 看了以后我意识到自己语文学得太不到家了, 实在对不起初高中语文老师!</p>
+<a id="more"></a>
+
+<p>先不提这个博主喜爱音韵学, 单说同样是理工科出身的博主, 我的表达能力和思想深度比他差了太多.</p>
+<p>通常在解释一段程序时我会想好一会来组织语言, <strong>将我使用这段代码的意图尽可能体现出来, 描述尽可能准确, 有条理</strong>. 我对此体会良多: 当我刚开始接触一个领域, 在网上看资料时常常无法确定我理解得对不对, 需要结合多篇文章才能确定. 这是因为<strong>作者们自身接触这些许久, 无意识的省略了一些话</strong>. 但我认为文章既然要写出来就应该能让所有人无障碍的看懂, 不然只给自己看的话何不就放到自己github仓库?</p>
+<p><a href="https://akaedu.github.io/book/index.html" target="_blank" rel="noopener">Linux C编程一站式学习</a>和
+<a href="https://www.pyimagesearch.com" target="_blank" rel="noopener">pyimagesearch</a>的文章就让人觉得文章读起来很流畅很易懂, 不会浪费时间在理解文章上. 比如<a href="https://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/" target="_blank" rel="noopener">这篇文章</a>
+曾带我轻松完成了困扰了我好几天的如何在树莓派上安装OpenCV的问题. 这个问题现在当然不会像前年那样困扰我, 但能有这样一篇好懂的文章指导我迅速完成我当然是十分乐意的.</p>
+<p>因此我总是试图让我的文章能达到同样水准. 但我发现这很难. 说来可笑, 很多时候我甚至不知道怎么样去描述我的操作🤦‍ 而让文章有条理同样不是一件容易的事. 我感觉这和写一篇议论文围绕一个中心套用总分总的文章结构就可以写不一样, 我总是喜欢把一个主题的东西一股脑放到一篇文章里, 但我发现一方面<strong>文章太长会让人失去读下去的兴趣</strong>, 另一方面<strong>什么东西都往一篇文章里放会让文章失其重点</strong>. 我又不是在写书, 不如将一个主题的内容再按照几个重点分成几篇文章. 可<strong>将一篇文章分割为主题更明确的多篇文章</strong>对我来说并不是易事…</p>
+<p>至于说<strong>byvoid</strong>的文章有思想深度, 从<a href="https://www.byvoid.com/zht/blog/why-the-usa-is-so-boring-1" target="_blank" rel="noopener">这篇文章</a>可见一斑. 我也喜欢旅游, 并且因为我小时候见了许多很美的自然景观, 我更倾向于体验一处的文化. 到一处游览后能有像<strong>byvoid</strong>这种深度的心得正是我所想努力做到的. 但一是我的文笔不够好,
+二是我并没有做功课去研究旅游地的文化.</p>
+<p>从<strong>byvoid</strong>的文章能体会到中文的魅力: 用得好了读起来十分流畅, 四字成语言简意赅地表达出了意思, 很多用以佐证的诗句更是回味无穷… 这只是我个人的体会, 我也知道很粗浅. 当然我并不后悔初高中没有投入大量精力背诵各种诗句, 品鉴各大文豪的文章: 体会不到这些的魅力时我背下来又有什么用呢?</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>随笔</category>
       </categories>
   </entry>
   <entry>
@@ -3789,44 +3889,6 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
       </categories>
   </entry>
   <entry>
-    <title>意识到了我的中文有多差</title>
-    <url>/zh-CN/2019/09/13/%E6%84%8F%E8%AF%86%E5%88%B0%E4%BA%86%E6%88%91%E7%9A%84%E4%B8%AD%E6%96%87%E6%9C%89%E5%A4%9A%E5%B7%AE/</url>
-    <content><![CDATA[<p>前阵子别人给我分享了<a href="https://www.byvoid.com/" target="_blank" rel="noopener">这个博客</a>, 看了以后我意识到自己语文学得太不到家了, 实在对不起初高中语文老师!</p>
-<a id="more"></a>
-
-<p>先不提这个博主喜爱音韵学, 单说同样是理工科出身的博主, 我的表达能力和思想深度比他差了太多.</p>
-<p>通常在解释一段程序时我会想好一会来组织语言, <strong>将我使用这段代码的意图尽可能体现出来, 描述尽可能准确, 有条理</strong>. 我对此体会良多: 当我刚开始接触一个领域, 在网上看资料时常常无法确定我理解得对不对, 需要结合多篇文章才能确定. 这是因为<strong>作者们自身接触这些许久, 无意识的省略了一些话</strong>. 但我认为文章既然要写出来就应该能让所有人无障碍的看懂, 不然只给自己看的话何不就放到自己github仓库?</p>
-<p><a href="https://akaedu.github.io/book/index.html" target="_blank" rel="noopener">Linux C编程一站式学习</a>和
-<a href="https://www.pyimagesearch.com" target="_blank" rel="noopener">pyimagesearch</a>的文章就让人觉得文章读起来很流畅很易懂, 不会浪费时间在理解文章上. 比如<a href="https://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/" target="_blank" rel="noopener">这篇文章</a>
-曾带我轻松完成了困扰了我好几天的如何在树莓派上安装OpenCV的问题. 这个问题现在当然不会像前年那样困扰我, 但能有这样一篇好懂的文章指导我迅速完成我当然是十分乐意的.</p>
-<p>因此我总是试图让我的文章能达到同样水准. 但我发现这很难. 说来可笑, 很多时候我甚至不知道怎么样去描述我的操作🤦‍ 而让文章有条理同样不是一件容易的事. 我感觉这和写一篇议论文围绕一个中心套用总分总的文章结构就可以写不一样, 我总是喜欢把一个主题的东西一股脑放到一篇文章里, 但我发现一方面<strong>文章太长会让人失去读下去的兴趣</strong>, 另一方面<strong>什么东西都往一篇文章里放会让文章失其重点</strong>. 我又不是在写书, 不如将一个主题的内容再按照几个重点分成几篇文章. 可<strong>将一篇文章分割为主题更明确的多篇文章</strong>对我来说并不是易事…</p>
-<p>至于说<strong>byvoid</strong>的文章有思想深度, 从<a href="https://www.byvoid.com/zht/blog/why-the-usa-is-so-boring-1" target="_blank" rel="noopener">这篇文章</a>可见一斑. 我也喜欢旅游, 并且因为我小时候见了许多很美的自然景观, 我更倾向于体验一处的文化. 到一处游览后能有像<strong>byvoid</strong>这种深度的心得正是我所想努力做到的. 但一是我的文笔不够好,
-二是我并没有做功课去研究旅游地的文化.</p>
-<p>从<strong>byvoid</strong>的文章能体会到中文的魅力: 用得好了读起来十分流畅, 四字成语言简意赅地表达出了意思, 很多用以佐证的诗句更是回味无穷… 这只是我个人的体会, 我也知道很粗浅. 当然我并不后悔初高中没有投入大量精力背诵各种诗句, 品鉴各大文豪的文章: 体会不到这些的魅力时我背下来又有什么用呢?</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-  </entry>
-  <entry>
     <title>我将Shell换为了zsh</title>
     <url>/zh-CN/2019/09/02/%E6%88%91%E5%B0%86shell%E6%8D%A2%E4%B8%BA%E4%BA%86zsh/</url>
     <content><![CDATA[<p>我把shell从<strong>bash</strong>换到<strong>zsh</strong>了. 原本我是根本没动过换shell的念头的, 但因为这段时间用的笔记本被别人装好了zsh, 我就将就着用了, 谁知真香…</p>
@@ -3910,8 +3972,8 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
           });
       </script>]]></content>
       <categories>
-        <category>操作系统</category>
         <category>技巧</category>
+        <category>操作系统</category>
         <category>Linux</category>
       </categories>
   </entry>
@@ -5234,9 +5296,13 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <a id="more"></a>
 
 <p>为了专注一个主题, 我只想在这里记录一些我可能用到的语法 (要是你只是想写一份精美本科毕设论文的话也不用管太多). 想更系统更详细了解LaTeX的话, 我推荐下列三个详细程度递减的教程:</p>
-<div class="note info">
-            <ul><li><a href="http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf" target="_blank" rel="noopener">一份不太简短的LaTeX2ε介绍 (lshot中文版)</a>: 这是一份比较详细的入门教程的中文翻译版, 看完会解开许多初学时可能会有的疑惑, 比如它甚至列出了一些写LaTeX时可能用到或生成的文件类型都是什么用途. 网上各种中文LeTaX资料的名词翻译很不统一, 可以以这份教程的翻译为准. 这份lshort中文版其实不是单纯的翻译, 还增添了涉及中文使用的内容, 这无疑是十分有用的 (对于以后可能要写中文论文的我)</li><li><a href="https://github.com/wklchris/Note-by-LaTeX" target="_blank" rel="noopener">简单粗暴LaTeX</a>: 这份入门教材比上面这个短许多, 因为它更注重实用性内容, 讲解相对更少. 但对于在有模板的情况下写本科毕业论文的需求仍然是妥妥够用的. 而且因为这本书给出了源代码, 你甚至可以看看作者到底是怎么用LaTeX的 (如果你有那个闲心的话)</li><li><a href="https://www.overleaf.com/learn" target="_blank" rel="noopener">Overleaf的LaTeX文档</a>: Overleaf的文档更是讲解很少, 基本每个内容直接是使用示例.</li><li>要是你还想看更多内容, 可以先看看<a href="https://www.latexstudio.net/archives/51802.html" target="_blank" rel="noopener">LaTeX工作室推荐的资料</a>.</li></ul>
-          </div>
+<ul>
+<li><a href="http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf" target="_blank" rel="noopener">一份不太简短的LaTeX2ε介绍 (lshot中文版)</a>: 这是一份比较详细的入门教程的中文翻译版, 看完会解开许多初学时可能会有的疑惑, 比如它甚至列出了一些写LaTeX时可能用到或生成的文件类型都是什么用途. 网上各种中文LeTaX资料的名词翻译很不统一, 可以以这份教程的翻译为准. 这份lshort中文版其实不是单纯的翻译, 还增添了涉及中文使用的内容, 这无疑是十分有用的 (对于以后可能要写中文论文的我)</li>
+<li><a href="https://github.com/wklchris/Note-by-LaTeX" target="_blank" rel="noopener">简单粗暴LaTeX</a>: 这份入门教材比上面这个短许多, 因为它更注重实用性内容, 讲解相对更少. 但对于在有模板的情况下写本科毕业论文的需求仍然是妥妥够用的. 而且因为这本书给出了源代码, 你甚至可以看看作者到底是怎么用LaTeX的 (如果你有那个闲心的话)</li>
+<li><a href="https://www.overleaf.com/learn" target="_blank" rel="noopener">Overleaf的LaTeX文档</a>: Overleaf的文档更是讲解很少, 基本每个内容直接是使用示例.</li>
+<li>要是你还想看更多内容, 可以先看看<a href="https://www.latexstudio.net/archives/51802.html" target="_blank" rel="noopener">LaTeX工作室推荐的资料</a>.</li>
+</ul>
+<div class="pdf" target="lshort.pdf" height=""></div>
 
 <p>另外推荐一个<a href="http://latexref.xyz/" target="_blank" rel="noopener">LaTeX命令参考手册</a>, 可以在这搜索想查的命令.</p>
 <p>我是在Linux系统下用安装了<a href="https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop" target="_blank" rel="noopener">LaTeX Workshop</a>插件的VSCode写的LaTeX, 这个插件通过调用你安装的LeTaX发行版来提供丰富的LeTaX支持. 我使用的发行版正是LaTeX Workshop最推荐的<a href="https://www.tug.org/texlive/" target="_blank" rel="noopener">Tex Live</a>. 这东西离线安装包有点大, 而且很有可能需要单独下一些包, 有点麻烦. 幸好我Manjaro系统一句<code>yay -S texlive-most texlive-lang biber</code>就把我下面需要用到的所有工具都安装好了. <strong>如果你目前没有安装Tex Live, 不妨先试试在<a href="https://www.overleaf.com/" target="_blank" rel="noopener">Overleaf</a>在线编辑LaTeX试试, 操作很简便, 下述操作中大部分都能实现, 非常省事.</strong></p>
@@ -5417,68 +5483,6 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
           });
       </script>]]></content>
       <categories>
-        <category>技巧</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>当VSCode成为一种生活方式</title>
-    <url>/zh-CN/2019/01/07/%E5%BD%93VSCode%E6%88%90%E4%B8%BA%E4%B8%80%E7%A7%8D%E7%94%9F%E6%B4%BB%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<div align="right">Language:
-<a href="/2018/12/25/When-VSCode-Becomes-A-Lifestyle"><kbd>English</kbd></a>
-<a href="/zh-CN/2019/01/07/当VSCode成为一种生活方式"><kbd>中文</kbd></a>
-</div>
-
-<!-- TODO -->
-
-<p>VSCode是一款很强大的编辑器, 因为我现在的电脑性能不太好, 开规模很大的那些2IDE特别慢, 我很喜欢用VSCode. 而且用VSCode在某些方面确实能获得很不错的体验<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span> 本文算是VSCode
-安利和我个人的使用技巧.</p>
-<a id="more"></a>
-
-<h1 id="Why-VSCode"><a href="#Why-VSCode" class="headerlink" title="Why VSCode"></a>Why VSCode</h1><h2 id="写Markdown"><a href="#写Markdown" class="headerlink" title="写Markdown"></a>写Markdown</h2><h2 id="写前端"><a href="#写前端" class="headerlink" title="写前端"></a>写前端</h2><h2 id="写小段代码"><a href="#写小段代码" class="headerlink" title="写小段代码"></a>写小段代码</h2><h3 id="写Python"><a href="#写Python" class="headerlink" title="写Python"></a>写Python</h3><h3 id="写C-C"><a href="#写C-C" class="headerlink" title="写C/C++"></a>写C/C++</h3><h2 id="写LaTeX"><a href="#写LaTeX" class="headerlink" title="写LaTeX"></a>写LaTeX</h2><h1 id="插件安利"><a href="#插件安利" class="headerlink" title="插件安利"></a>插件安利</h1><p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 要注意的是最好不要在一个项目中使用过多插件, 这会让VSCode最开始的加载非常慢,
-这是得不偿失的. 我们仍要记得VSCode只是一个编辑器. 而我们通常面临的尴尬情况是:有很多日常会用到的插件, 但并不是在每个项目中都需要用到全部的插件, 很多本工作区用不到的插件放在那里只会浪费资源. 而通过将一些插件设为<strong>禁用(工作区)</strong>可以仅在这个项目中禁用这个插件! 这样能大大缩短VSCode启动时间<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<h1 id="VSCode-个性化设置"><a href="#VSCode-个性化设置" class="headerlink" title="VSCode 个性化设置"></a>VSCode 个性化设置</h1><h2 id="改编辑器选项卡关闭按钮位置至左边"><a href="#改编辑器选项卡关闭按钮位置至左边" class="headerlink" title="改编辑器选项卡关闭按钮位置至左边"></a>改编辑器选项卡关闭按钮位置至左边</h2><p>在这之前有一件让我很恼火的事: 我经常由于文件标题过长而选项卡关闭按钮在右侧而不能轻松地关闭一个选项卡, 因为关闭按钮没能显示出来! 而我将关闭按钮改至左侧后, <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8">😆</span>爽到!</p>
-<p>:heavy_check_mark: 更改方法: 在设置中搜索 <code>workbench.editor.tabCloseButton</code>, 设置为<strong>left</strong></p>
-<h2 id="在一定数量的等宽字符后显示垂直标尺"><a href="#在一定数量的等宽字符后显示垂直标尺" class="headerlink" title="在一定数量的等宽字符后显示垂直标尺"></a>在一定数量的等宽字符后显示垂直标尺</h2><p>VSCode有许多很好用的功能!<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8">😆</span> 这是其中之一. 你可以设置任意多个标尺来作为字数的参考线!</p>
-<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>editor.rulers</code>, 选择后在数组中填入要画线处的字数.</p>
-<h2 id="代码格式化"><a href="#代码格式化" class="headerlink" title="代码格式化"></a>代码格式化</h2><p>统一用 <code>Alt+shift+F</code> 作为代码格式化快捷键</p>
-<h2 id="查看键盘快捷方式"><a href="#查看键盘快捷方式" class="headerlink" title="查看键盘快捷方式"></a>查看键盘快捷方式</h2><p>如果你新安装了一个插件, 其中几个快捷键不知道为什么不好用或者效果不对, 你应当到
-<strong>键盘快捷方式</strong>查看一下这个快捷键在该情况下是不是对应了不止一个命令.</p>
-<h2 id="关闭Enter键接受建议"><a href="#关闭Enter键接受建议" class="headerlink" title="关闭Enter键接受建议"></a>关闭Enter键接受建议</h2><p>很多时候原本想换行的, 但是按Enter却接受了VSCode的沙雕建议, 令人郁闷, 通过关掉Enter接受建议能让心情好很多<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8">😏</span> 虽然习惯Enter接受建议突然改成只能用Tab接受建议会有点不适应,
-但再适应一下就会觉得非常舒服了<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44f.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44f.png?v8">👏</span></p>
-<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>editor.acceptSuggestionOnEnter</code>, 改为
-<strong>off</strong></p>
-<h2 id="设置git-commit成功即上传"><a href="#设置git-commit成功即上传" class="headerlink" title="设置git commit成功即上传"></a>设置git commit成功即上传</h2><p>在使用个人repository时我认为commit和push是没必要分开进行的, 因为只有自己用, 在本地存着和在云端存着没什么区别. 甚至有可能发生代码忘记上传云端就把电脑格式化了因而损失大段代码的惨案<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8">😭</span> 因此git有一项选项特别适合我: commit成功即push</p>
-<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>git.postCommitCommand</code>, 设置为<strong>push</strong></p>
-<h2 id="打开用户设置的同时打开默认设置"><a href="#打开用户设置的同时打开默认设置" class="headerlink" title="打开用户设置的同时打开默认设置"></a>打开用户设置的同时打开默认设置</h2><p>虽然打开<strong>settings.json</strong>时同时打开默认设置的json文件应当是默认设置, 但我有一次安装
-VSCode之后发现这个选项没被勾上.</p>
-<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>workbench.settings.openDefaultSettings</code>,
-设置为<strong>true</strong>.</p>
-<h2 id="允许编辑器中水平滚动"><a href="#允许编辑器中水平滚动" class="headerlink" title="允许编辑器中水平滚动"></a>允许编辑器中水平滚动</h2><p>触摸板和一些鼠标 (比如我的Microsooft Arch) 是支持水平滚动界面的, 但VSCode默认禁止水平滚动, 只能滑动底下的滑条来左右滑, 但这个选项可以打开.</p>
-<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>workbench.tree.horizontalScrolling</code>,
-设置为<strong>true</strong></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>软件配置</category>
-        <category>VSC</category>
         <category>技巧</category>
       </categories>
   </entry>
