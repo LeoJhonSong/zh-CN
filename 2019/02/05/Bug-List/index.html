@@ -23,6 +23,7 @@
 
 
 <link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -36,9 +37,9 @@
     copycode: {"enable":true,"show_result":false,"style":"mac"},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
-    lazyload: true,
+    lazyload: false,
     pangu: false,
     algolia: {
       appID: '',
@@ -66,10 +67,14 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="我想记录一下我遇到过的各种bug, 不论大小. 原本我从一开始学编程的时候就在这么做了, 但我也忘了我什么时候竟然怠慢了这件事! 我会想到记录这些是上大学前的暑假看到 这篇让人深受启发的教诲而想要养成的习惯之一. 我认为这绝对不是浪费时间. 正如初高中学习时的错题本 (虽然我那时的错题本一共也没能记几笔) 只要我偶尔能想起来记几笔, 我想总是能为以后节省一些时间的.">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/02/05/Bug-List/Bug-List/%E5%9B%BE%E5%83%8F%E7%BB%86%E5%8C%96%E4%BB%A3%E7%A0%81%E7%9A%84%E6%8A%A5%E9%94%99.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/02/05/Bug-List/Bug-List/Unicode_Decoding_and_Encoding.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/02/05/Bug-List/Bug-List/C++%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%93%E6%9D%9F%E7%AC%A6.jpg">
 <meta property="og:updated_time" content="2019-09-13T09:12:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bug List">
 <meta name="twitter:description" content="我想记录一下我遇到过的各种bug, 不论大小. 原本我从一开始学编程的时候就在这么做了, 但我也忘了我什么时候竟然怠慢了这件事! 我会想到记录这些是上大学前的暑假看到 这篇让人深受启发的教诲而想要养成的习惯之一. 我认为这绝对不是浪费时间. 正如初高中学习时的错题本 (虽然我那时的错题本一共也没能记几笔) 只要我偶尔能想起来记几笔, 我想总是能为以后节省一些时间的.">
+<meta name="twitter:image" content="https://leojhonsong.github.io/zh-CN/2019/02/05/Bug-List/Bug-List/%E5%9B%BE%E5%83%8F%E7%BB%86%E5%8C%96%E4%BB%A3%E7%A0%81%E7%9A%84%E6%8A%A5%E9%94%99.png">
   <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2019/02/05/Bug-List/">
 
 
@@ -100,6 +105,7 @@
 
 <link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
   <script src = "https://at.alicdn.com/t/font_980470_nj2qfdk05jb.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -113,9 +119,9 @@
     copycode: {"enable":true,"show_result":false,"style":"mac"},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
-    lazyload: true,
+    lazyload: false,
     pangu: false,
     algolia: {
       appID: '',
@@ -479,7 +485,7 @@ python3的程序, 可以将<code>pip install</code> 换为 <code>pip3 install</c
 <h1 id="谨防数据溢出"><a href="#谨防数据溢出" class="headerlink" title="谨防数据溢出"></a>谨防数据溢出</h1><p>这个例子是我在尝试细化图像的时候遇到的</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Xihua</span><span class="params">(image, array, num=<span class="number">1</span>)</span>:</span></span><br><span class="line">    iXihua = np.zeros(image.shape, np.uint8)</span><br><span class="line">    iXihua = image.copy()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num):</span><br><span class="line">        VThin(iXihua, array)</span><br><span class="line">    <span class="keyword">return</span> iXihua</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">VThin</span><span class="params">(image, array)</span>:</span></span><br><span class="line">    h = height</span><br><span class="line">    w = width</span><br><span class="line">    NEXT = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(h):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(w):</span><br><span class="line">            <span class="keyword">if</span> NEXT == <span class="number">0</span>:</span><br><span class="line">                NEXT = <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                M = (image[i, j<span class="number">-1</span>] + image[i, j] + image[i, j+<span class="number">1</span>]) <span class="keyword">if</span> <span class="number">0</span>&lt;j&lt;w<span class="number">-1</span> <span class="keyword">else</span> <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> image[i, j] == <span class="number">0</span> <span class="keyword">and</span> M != <span class="number">0</span>:</span><br><span class="line">                    a = [<span class="number">0</span>] * <span class="number">9</span></span><br><span class="line">                    <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">                        <span class="keyword">for</span> l <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">                            <span class="keyword">if</span> <span class="number">-1</span>&lt;(i<span class="number">-1</span>+k)&lt;h <span class="keyword">and</span> <span class="number">-1</span> &lt;(j<span class="number">-1</span>+l)&lt;w <span class="keyword">and</span> image[i<span class="number">-1</span>+k, j<span class="number">-1</span>+l]==<span class="number">255</span>:</span><br><span class="line">                                a[k*<span class="number">3</span>+l] = <span class="number">1</span></span><br><span class="line">                    sum = a[<span class="number">0</span>]*<span class="number">1</span>+a[<span class="number">1</span>]*<span class="number">2</span>+a[<span class="number">2</span>]*<span class="number">4</span>+a[<span class="number">3</span>]*<span class="number">8</span>+a[<span class="number">5</span>]*<span class="number">16</span>+a[<span class="number">6</span>]*<span class="number">32</span>+a[<span class="number">7</span>]*<span class="number">64</span>+a[<span class="number">8</span>]*<span class="number">128</span></span><br><span class="line">                    image[i, j] = array[sum] * <span class="number">255</span></span><br><span class="line">                    <span class="keyword">if</span> array[sum] == <span class="number">1</span>:</span><br><span class="line">                        NEXT = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> image</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h2><p><img alt="报错信息" data-src="Bug-List/%E5%9B%BE%E5%83%8F%E7%BB%86%E5%8C%96%E4%BB%A3%E7%A0%81%E7%9A%84%E6%8A%A5%E9%94%99.png"></p>
+<h2 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h2><p><img src="Bug-List/%E5%9B%BE%E5%83%8F%E7%BB%86%E5%8C%96%E4%BB%A3%E7%A0%81%E7%9A%84%E6%8A%A5%E9%94%99.png" alt="报错信息"></p>
 <h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>M默认与image[i, j]同数据类型，而image[i, j]设定的是ubyte类型，范围-255~256，M极有可能数据溢出。</p>
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>将18行改为下面代码, 将M数据类型强制转为int</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">M = (int(image[i, j<span class="number">-1</span>]) + int(image[i, j]) + int(image[i, j+<span class="number">1</span>])) <span class="keyword">if</span> <span class="number">0</span>&lt;j&lt;w<span class="number">-1</span> <span class="keyword">else</span> <span class="number">1</span></span><br></pre></td></tr></tbody></table></figure>
@@ -531,7 +537,7 @@ python3的程序, 可以将<code>pip install</code> 换为 <code>pip3 install</c
 <p>🔗 <a href="https://www.nltk.org/book/ch03.html" target="_blank" rel="noopener">Processing Raw Text</a></p>
 <p>而在网上搜图的时候我搜到了这段讲python中处理文本的各种方法的话.</p>
 <p>其中提到了如下图这样的方式防止出现乱码.</p>
-<p><img alt="Unicode Decoding and Encoding" data-src="Bug-List/Unicode_Decoding_and_Encoding.png"></p>
+<p><img src="Bug-List/Unicode_Decoding_and_Encoding.png" alt="Unicode Decoding and Encoding"></p>
 <p>正如 “Python 2 字符串编码踩坑小结” 中提到的, 在python3中<code>str</code>类型数据都以Unicode码点格式储存. 实际上我们<a href="https://zh.wikipedia.org/wiki/Unicode#%E8%BE%93%E5%85%A5%E6%96%B9%E6%B3%95" target="_blank" rel="noopener">可以直接输入Unicode码点</a>.</p>
 <h1 id="Verilog中要写完整控制语句"><a href="#Verilog中要写完整控制语句" class="headerlink" title="Verilog中要写完整控制语句"></a>Verilog中要写完整控制语句</h1><p>Verilog中如果不写完整if-else结构和case结构会产生latch, 会将毛刺传给下一级电路的那种latch.</p>
 <p>参见我的另一篇博客 <a href="https://leojhonsong.github.io/zh-CN/Verilog%E6%9D%82%E8%AE%B0/#%E5%85%B3%E4%BA%8E%20default">Verilog 杂记-有关default</a></p>
@@ -547,7 +553,7 @@ python3的程序, 可以将<code>pip install</code> 换为 <code>pip3 install</c
 <p>我拿这个问题问我的C++大佬同学, 他说应该是因为\0让C++认为字符串到头了, 于是只有前三个字符.</p>
 <p>我说: ? 我这字符串里哪有\0? 你别骗我读书少.</p>
 <p>然后他发了一张图来:</p>
-<p><img alt="C++字符串结束符" data-src="Bug-List/C++%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%93%E6%9D%9F%E7%AC%A6.jpg"></p>
+<p><img src="Bug-List/C++%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%93%E6%9D%9F%E7%AC%A6.jpg" alt="C++字符串结束符"></p>
 <p>…我是真的吃了读书少的亏, 竟然特么\0和\x00是一个意思🤦‍</p>
 <p>然后在string类型变量里写入\0的方法似乎只有用<code>assign()</code>和指定字符串长度的构造函数
 . 其实用<code>=</code>赋值在变量声明和定义同时出现时是只有字符串值这个参数的构造函数, 否则就是只有字符串值这个参数的<code>assign()</code>函数.</p>
@@ -882,7 +888,8 @@ Address already in use</strong>, 我的服务器端监听的端口处于 <strong
   <script src="/zh-CN/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/zh-CN/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
 <script src="/zh-CN/js/utils.js?v=7.4.0"></script><script src="/zh-CN/js/motion.js?v=7.4.0"></script>
 <script src="/zh-CN/js/schemes/pisces.js?v=7.4.0"></script>
 <script src="/zh-CN/js/next-boot.js?v=7.4.0"></script>

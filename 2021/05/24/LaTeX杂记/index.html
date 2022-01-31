@@ -23,6 +23,7 @@
 
 
 <link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -36,9 +37,9 @@
     copycode: {"enable":true,"show_result":false,"style":"mac"},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
-    lazyload: true,
+    lazyload: false,
     pangu: false,
     algolia: {
       appID: '',
@@ -66,10 +67,15 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="最近在用LaTeX写毕业论文 (学院支持甚至提供了LaTeX模板真是太幸运了), 在此记录下我写论文用到的一些语法方便以后抄.">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2021/05/24/LaTeX杂记/LaTeX%E6%9D%82%E8%AE%B0/sections.jpg?80">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2021/05/24/LaTeX杂记/LaTeX%E6%9D%82%E8%AE%B0/space.jpg?80">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2021/05/24/LaTeX杂记/LaTeX%E6%9D%82%E8%AE%B0/figure.jpg?60">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2021/05/24/LaTeX杂记/LaTeX%E6%9D%82%E8%AE%B0/image-20210420201512181.png">
 <meta property="og:updated_time" content="2022-01-30T16:00:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LaTeX杂记">
 <meta name="twitter:description" content="最近在用LaTeX写毕业论文 (学院支持甚至提供了LaTeX模板真是太幸运了), 在此记录下我写论文用到的一些语法方便以后抄.">
+<meta name="twitter:image" content="https://leojhonsong.github.io/zh-CN/2021/05/24/LaTeX杂记/LaTeX%E6%9D%82%E8%AE%B0/sections.jpg?80">
   <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2021/05/24/LaTeX杂记/">
 
 
@@ -100,6 +106,7 @@
 
 <link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
   <script src = "https://at.alicdn.com/t/font_980470_nj2qfdk05jb.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -113,9 +120,9 @@
     copycode: {"enable":true,"show_result":false,"style":"mac"},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
-    lazyload: true,
+    lazyload: false,
     pangu: false,
     algolia: {
       appID: '',
@@ -470,12 +477,10 @@
 <a id="more"></a>
 
 <p>为了专注一个主题, 我只想在这里记录一些我可能用到的语法 (要是你只是想写一份精美本科毕设论文的话也不用管太多). 想更系统更详细了解LaTeX的话, 我推荐下列三个详细程度递减的教程:</p>
-<ul>
-<li><a href="http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf" target="_blank" rel="noopener">一份不太简短的LaTeX2ε介绍 (lshot中文版)</a>: 这是一份比较详细的入门教程的中文翻译版, 看完会解开许多初学时可能会有的疑惑, 比如它甚至列出了一些写LaTeX时可能用到或生成的文件类型都是什么用途. 网上各种中文LeTaX资料的名词翻译很不统一, 可以以这份教程的翻译为准. 这份lshort中文版其实不是单纯的翻译, 还增添了涉及中文使用的内容, 这无疑是十分有用的 (对于以后可能要写中文论文的我)</li>
-<li><a href="https://github.com/wklchris/Note-by-LaTeX" target="_blank" rel="noopener">简单粗暴LaTeX</a>: 这份入门教材比上面这个短许多, 因为它更注重实用性内容, 讲解相对更少. 但对于在有模板的情况下写本科毕业论文的需求仍然是妥妥够用的. 而且因为这本书给出了源代码, 你甚至可以看看作者到底是怎么用LaTeX的 (如果你有那个闲心的话)</li>
-<li><a href="https://www.overleaf.com/learn" target="_blank" rel="noopener">Overleaf的LaTeX文档</a>: Overleaf的文档更是讲解很少, 基本每个内容直接是使用示例.</li>
-<li>要是你还想看更多内容, 可以先看看<a href="https://www.latexstudio.net/archives/51802.html" target="_blank" rel="noopener">LaTeX工作室推荐的资料</a>.</li>
-</ul>
+<div class="note info">
+            <ul><li><a href="http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf" target="_blank" rel="noopener">一份不太简短的LaTeX2ε介绍 (lshot中文版)</a>: 这是一份比较详细的入门教程的中文翻译版, 看完会解开许多初学时可能会有的疑惑, 比如它甚至列出了一些写LaTeX时可能用到或生成的文件类型都是什么用途. 网上各种中文LeTaX资料的名词翻译很不统一, 可以以这份教程的翻译为准. 这份lshort中文版其实不是单纯的翻译, 还增添了涉及中文使用的内容, 这无疑是十分有用的 (对于以后可能要写中文论文的我)</li><li><a href="https://github.com/wklchris/Note-by-LaTeX" target="_blank" rel="noopener">简单粗暴LaTeX</a>: 这份入门教材比上面这个短许多, 因为它更注重实用性内容, 讲解相对更少. 但对于在有模板的情况下写本科毕业论文的需求仍然是妥妥够用的. 而且因为这本书给出了源代码, 你甚至可以看看作者到底是怎么用LaTeX的 (如果你有那个闲心的话)</li><li><a href="https://www.overleaf.com/learn" target="_blank" rel="noopener">Overleaf的LaTeX文档</a>: Overleaf的文档更是讲解很少, 基本每个内容直接是使用示例.</li><li>要是你还想看更多内容, 可以先看看<a href="https://www.latexstudio.net/archives/51802.html" target="_blank" rel="noopener">LaTeX工作室推荐的资料</a>.</li></ul>
+          </div>
+
 <p>另外推荐一个<a href="http://latexref.xyz/" target="_blank" rel="noopener">LaTeX命令参考手册</a>, 可以在这搜索想查的命令.</p>
 <p>我是在Linux系统下用安装了<a href="https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop" target="_blank" rel="noopener">LaTeX Workshop</a>插件的VSCode写的LaTeX, 这个插件通过调用你安装的LeTaX发行版来提供丰富的LeTaX支持. 我使用的发行版正是LaTeX Workshop最推荐的<a href="https://www.tug.org/texlive/" target="_blank" rel="noopener">Tex Live</a>. 这东西离线安装包有点大, 而且很有可能需要单独下一些包, 有点麻烦. 幸好我Manjaro系统一句<code>yay -S texlive-most texlive-lang biber</code>就把我下面需要用到的所有工具都安装好了. <strong>如果你目前没有安装Tex Live, 不妨先试试在<a href="https://www.overleaf.com/" target="_blank" rel="noopener">Overleaf</a>在线编辑LaTeX试试, 操作很简便, 下述操作中大部分都能实现, 非常省事.</strong></p>
 <p>💡 关于如何安装Tex Live可以看看<a href="https://oi-wiki.org/tools/latex/#_4" target="_blank" rel="noopener">这个说明</a>.</p>
@@ -520,7 +525,7 @@
 <li><strong>5</strong> <code>\subparagraph{}</code></li>
 </ul>
 <p>但是<code>\paragraph{}</code>和<code>\subparagraph{}</code>并不会被显示在目录中, 在文中也看着不太像是标题而只是加粗的正文. 下图中<strong>test 1</strong>为<code>\paragraph{}</code>, <strong>test 2</strong>为<code>\subparagraph{}</code>, <strong>test 3</strong>为<code>\subsubsection{}</code>.</p>
-<p><img alt="" data-src="LaTeX%E6%9D%82%E8%AE%B0/sections.jpg?80"></p>
+<p><img src="LaTeX%E6%9D%82%E8%AE%B0/sections.jpg?80" alt=""></p>
 <p>因此真要说的话在article这种文档类型中LaTeX原生提供的标题只有三级. 要是写短篇论文的话确实也不需要更小的标题了, 但是记个笔记之类还是有可能需要更多级的标题. <a href="https://tex.stackexchange.com/questions/60209/how-to-add-an-extra-level-of-sections-with-headings-below-subsubsection" target="_blank" rel="noopener">这个stackoverflow问题</a>有给出一些解决方案.</p>
 <h4 id="underfull和overfull警告是什么"><a href="#underfull和overfull警告是什么" class="headerlink" title="underfull和overfull警告是什么"></a>underfull和overfull警告是什么</h4><p>这两种警告是在编译后非常常见的警告, 意味着编译器在这一行找不到合适的换行的地方, 导致这一行在文字框限制内排版出来要不是太空了 (underfull) 要不就是太挤了 (overfull). 也就是说这基本是英文这样的字母语言才会遇到的问题. Overleaf<a href="https://www.overleaf.com/learn/how-to/Understanding_underfull_and_overfull_box_warnings" target="_blank" rel="noopener">这篇文章</a>很详细讲了原因, 但几乎没给处理办法. 💡 要注意其中提到的<code>microtype</code>包xelatex<a href="https://tex.stackexchange.com/questions/118713/is-microtype-fully-supported-now-by-xelatex-if-not-how-can-i-keep-myself-up-to" target="_blank" rel="noopener">目前几乎不支持</a>, 但我感觉我就用默认排版工具生成的pdf排版也还挺好的? 以下是一些关于断行的小技巧.</p>
 <h5 id="断词与不要断词"><a href="#断词与不要断词" class="headerlink" title="断词与不要断词"></a>断词与不要断词</h5><p>实际上遇到行末长单词干扰LaTeX排版的时候LaTeX会自动按音节将这个长单词断词, 在行末留个<code>-</code>. 不过有时会想要指定一些单词的断词位置, 有两种方式:</p>
@@ -548,7 +553,7 @@
 <li>在LaTeX中多个空格会被当成一个空格 (多个回车也只会产生到下一段的效果). 想用word那样的空格魔法或者回车魔法的话用<code>\hspace{len}</code>和<code>\vspace{len}</code> 😏.</li>
 <li><strong>带子</strong> (tie) <code>~</code>. 在两个单词间加<code>~</code>而不是空格能产生一个不会被断行的空格. 一般用在人名之类的地方.</li>
 <li>句末标点 (<strong>小写字母</strong>后的./?/!) 后的空格会比普通空格长一些. 之所以强调是小写字母后的, 是因为以大写字母结尾会被LaTeX认为最后这个词是人名因而不加长空格. 此时 (如果你真在意这个的话) 用<code>\@</code>手动指明. 你会发现下面这个图里<code>OK.</code>后的空格长度确实有区别, 但区别非常小:
-<img alt="" data-src="LaTeX%E6%9D%82%E8%AE%B0/space.jpg?80">
+<img src="LaTeX%E6%9D%82%E8%AE%B0/space.jpg?80" alt="">
 另一种情况则是非句末标点被识别为句末标点了, 比如”Prof. Smith”. 此时可以用<code>~</code>或者<code>\</code> (👈 注意\后面有个空格)来缩短间距. 不过<code>~</code>不允许空格处断行而<code>\</code>允许.</li>
 <li>还有时会看到<code>\Tex{} Live</code>或<code>\Tex\ Live</code>这样明明不支持参数的命令 (如<code>\Tex</code>) 后却有{}或者<code>\</code>, 这是为了让不支持参数的命令后的空格能被正常排版.</li>
 </ul>
@@ -564,7 +569,7 @@
 <h3 id="浮动体"><a href="#浮动体" class="headerlink" title="浮动体"></a>浮动体</h3><p>figure和table是LaTeX原生的两种浮动体环境, 用于灵活排版图片和表格. 但其实这两种环境中什么都能放, 没有限定只能放图片或表格. 这两种环境都可以给[<em>placement</em>]参数 (默认是<code>btp</code>), 通过指定<code>htb</code>限制只能放在这三种位置 (也就是不允许单独成页). 可用参数参见<a href="https://www.overleaf.com/learn/latex/Inserting_Images#Positioning" target="_blank" rel="noopener">这附近有的一个表格</a>. 值得一提的是LaTeX总是以h-t-b-p的优先级来决定浮动体位置, 和填的参数的顺序无关. 💡 除单独成页外, 默认每页不超过3个浮动体, 其中顶部不超过2个, 底部不超过1个以及浮动体空间占页面的百分比 (默认顶部不超过70%, 底部不超过30%)</p>
 <p>关于双栏环境下浮动体的排版以及其他细节见<em>一份不太简短的LaTeX2ε介绍</em>的<strong>3.9 浮动体</strong>.</p>
 <h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4><p>先上一个论文利用的懒人模板样例 (效果如图):</p>
-<p><img alt="" data-src="LaTeX%E6%9D%82%E8%AE%B0/figure.jpg?60"></p>
+<p><img src="LaTeX%E6%9D%82%E8%AE%B0/figure.jpg?60" alt=""></p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">% 导言部分</span><br><span class="line">\usepackage{graphicx}  % 图片插入支持宏包</span><br><span class="line">\graphicspath{{./}}  % 将之后插入图片的检索路径设为根文件所在目录, 不然插入图片时的图片地址是相对于当前tex文件的, 会比较麻烦</span><br><span class="line">% \graphicspath{{./Figures}}  % 其实更常见的是直接将检索路径设为你的图片文件夹, 但我为了能触发我VSC的路径补全所以只设成了根文件所在目录</span><br><span class="line">\usepackage[</span><br><span class="line">   colorlinks=true,</span><br><span class="line">]{hyperref}  % 给交叉引用的引用编号添加超链接支持</span><br><span class="line"></span><br><span class="line">% 正文部分</span><br><span class="line">\begin{figure}[htb]</span><br><span class="line">      \centering  % 让图片居中. 默认是左对齐</span><br><span class="line">      \includegraphics[width=0.8\textwidth]{Figures/mesh.jpg}  % 限制图片宽度为0.8倍版面宽度</span><br><span class="line">      \caption[Test]{Test: blablabla}\label{f:mesh}</span><br><span class="line">\end{figure}</span><br><span class="line"></span><br><span class="line">As you can see in \autoref{f:mesh}, the function grows near 0.</span><br></pre></td></tr></tbody></table></figure>
 
 <p>用<code>\caption</code>命令可以给图片等浮动体加标题, 在<code>{}</code>中的是长标题, 就是显示在图下那个. 而在<code>[]</code>中的短标题是会显示在图目录中的标题 (用<code>\listoffigures</code>来生成图目录). 我习惯在长标题里开头用短标题, 能实现很多论文里<strong>概要: 详细描述</strong>的图标题形式.</p>
@@ -599,7 +604,7 @@
 <p><a href="https://tex.stackexchange.com/questions/27607/biblatex-authoryear-comp-and-hyperlinks" target="_blank" rel="noopener">citetitle超链接</a></p>
 <p><a href="https://tex.stackexchange.com/questions/266434/extend-the-hyperref-link-to-figure-and-a-b-c" target="_blank" rel="noopener">自定义样式\ref</a></p>
 <p><a href="https://tex.stackexchange.com/questions/50747/options-for-appearance-of-links-in-hyperref" target="_blank" rel="noopener">链接颜色</a></p>
-<p><img alt="image-20210420201512181" data-src="LaTeX%E6%9D%82%E8%AE%B0/image-20210420201512181.png"></p>
+<p><img src="LaTeX%E6%9D%82%E8%AE%B0/image-20210420201512181.png" alt="image-20210420201512181"></p>
 <p><a href="https://tex.stackexchange.com/questions/348640/how-to-effectively-use-list-of-symbols-for-a-thesis" target="_blank" rel="noopener">list of notations</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -906,7 +911,8 @@
   <script src="/zh-CN/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/zh-CN/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
 <script src="/zh-CN/js/utils.js?v=7.4.0"></script><script src="/zh-CN/js/motion.js?v=7.4.0"></script>
 <script src="/zh-CN/js/schemes/pisces.js?v=7.4.0"></script>
 <script src="/zh-CN/js/next-boot.js?v=7.4.0"></script>

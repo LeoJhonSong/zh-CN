@@ -23,6 +23,7 @@
 
 
 <link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -36,9 +37,9 @@
     copycode: {"enable":true,"show_result":false,"style":"mac"},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
-    lazyload: true,
+    lazyload: false,
     pangu: false,
     algolia: {
       appID: '',
@@ -66,10 +67,13 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="行吧, 电脑城是真的坑. 这辈子不会进电脑城了. 不会真香的.">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/03/30/我打算换电脑了/%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/HardDiskProblems.png?50">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/03/30/我打算换电脑了/%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/self-test.png">
 <meta property="og:updated_time" content="2020-03-23T09:21:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我打算换电脑了">
 <meta name="twitter:description" content="行吧, 电脑城是真的坑. 这辈子不会进电脑城了. 不会真香的.">
+<meta name="twitter:image" content="https://leojhonsong.github.io/zh-CN/2019/03/30/我打算换电脑了/%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/HardDiskProblems.png?50">
   <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2019/03/30/我打算换电脑了/">
 
 
@@ -100,6 +104,7 @@
 
 <link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
   <script src = "https://at.alicdn.com/t/font_980470_nj2qfdk05jb.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -113,9 +118,9 @@
     copycode: {"enable":true,"show_result":false,"style":"mac"},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
-    lazyload: true,
+    lazyload: false,
     pangu: false,
     algolia: {
       appID: '',
@@ -459,11 +464,11 @@
 <p>什么? <strong>360杀毒是毒瘤?</strong> 什么? <strong>电脑城就是个坑?</strong></p>
 <p>我开始是不太信的, 后来我格式化了电脑告别360. 再后来我在小米之家看着和我电脑同价位但配置好许多的电脑沉默了一会.</p>
 <p><strong>但是!!</strong> 这次出的幺蛾子让我忍不了. 前几天电脑刚开机就弹出👇</p>
-<p><img alt="hard disk problems detected" data-src="%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/HardDiskProblems.png?50"></p>
+<p><img src="%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/HardDiskProblems.png?50" alt="hard disk problems detected"></p>
 <p>什么? <b style="color:red;">我硬盘快挂了?</b>
 当时把我吓坏了, 还以为我硬盘要爆炸了, 点开了 <strong>Disks</strong> 工具的
 <strong>SMART Data &amp; Self-Tests</strong>.</p>
-<p><img alt="self-test" data-src="%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/self-test.png"></p>
+<p><img src="%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/self-test.png" alt="self-test"></p>
 <p>我???</p>
 <p>上网搜索了一下<a href="https://help.ubuntu.com/stable/ubuntu-help/disk-check.html.en" target="_blank" rel="noopener">年老的硬盘就容易出这种事</a>. 加上那个self-test也说我硬盘 <strong>Old-Age</strong> 了, 最多也就该有<strong>50</strong>个的坏道我现在有<strong>16376</strong>个, 那大概硬盘是真的快挂了吧. 行吧.</p>
 <p>秋头麻袋. 我这电脑才买了一年啊💢 我和几个群友交流了一下自认使用习惯还是不算差, 虽然没有及时发现坏道并隔离 (我才知道这玩意还能传染) 是我的锅, 但铁定我买来这电脑就有点问题. 忍不了💢</p>
@@ -795,7 +800,8 @@
   <script src="/zh-CN/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/zh-CN/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
 <script src="/zh-CN/js/utils.js?v=7.4.0"></script><script src="/zh-CN/js/motion.js?v=7.4.0"></script>
 <script src="/zh-CN/js/schemes/pisces.js?v=7.4.0"></script>
 <script src="/zh-CN/js/next-boot.js?v=7.4.0"></script>

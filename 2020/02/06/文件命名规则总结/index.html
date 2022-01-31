@@ -23,6 +23,7 @@
 
 
 <link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -36,9 +37,9 @@
     copycode: {"enable":true,"show_result":false,"style":"mac"},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
-    lazyload: true,
+    lazyload: false,
     pangu: false,
     algolia: {
       appID: '',
@@ -66,10 +67,13 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="如果待处理文件的文件名中含有一些特殊字符, 有许多程序会因为考虑不完善 (或者说程序员偷懒) 而出现识别不到文件, 文件处理出错, 结果不符合意图, 甚至程序崩溃的问题. 而为了方便自己偷懒, 我总结了一些命名文件的规则.">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/02/06/文件命名规则总结/%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/image-20200207181027438.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/02/06/文件命名规则总结/%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/Screenshot_20200207_181843.jpg">
 <meta property="og:updated_time" content="2020-02-06T07:34:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文件命名规则总结">
 <meta name="twitter:description" content="如果待处理文件的文件名中含有一些特殊字符, 有许多程序会因为考虑不完善 (或者说程序员偷懒) 而出现识别不到文件, 文件处理出错, 结果不符合意图, 甚至程序崩溃的问题. 而为了方便自己偷懒, 我总结了一些命名文件的规则.">
+<meta name="twitter:image" content="https://leojhonsong.github.io/zh-CN/2020/02/06/文件命名规则总结/%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/image-20200207181027438.png">
   <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2020/02/06/文件命名规则总结/">
 
 
@@ -100,6 +104,7 @@
 
 <link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
   <script src = "https://at.alicdn.com/t/font_980470_nj2qfdk05jb.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -113,9 +118,9 @@
     copycode: {"enable":true,"show_result":false,"style":"mac"},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
-    lazyload: true,
+    lazyload: false,
     pangu: false,
     algolia: {
       appID: '',
@@ -459,11 +464,11 @@
 <blockquote>
 <p>图一 Ubuntu系统下含汉字数字文件名排序</p>
 </blockquote>
-<p><img alt="" data-src="%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/image-20200207181027438.png"></p>
+<p><img src="%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/image-20200207181027438.png" alt=""></p>
 <blockquote>
 <p>图二 百度云里含数字文件名排序</p>
 </blockquote>
-<p><img alt="" data-src="%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/Screenshot_20200207_181843.jpg"></p>
+<p><img src="%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/Screenshot_20200207_181843.jpg" alt=""></p>
 <p>因此如果想在文件名中包含有排序功能的数字, 或者表达顺序之意时应当<strong>用阿拉伯数字而不是汉字, 并且位数不足的用0在左侧占位</strong>.</p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -774,7 +779,8 @@
   <script src="/zh-CN/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/zh-CN/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
 <script src="/zh-CN/js/utils.js?v=7.4.0"></script><script src="/zh-CN/js/motion.js?v=7.4.0"></script>
 <script src="/zh-CN/js/schemes/pisces.js?v=7.4.0"></script>
 <script src="/zh-CN/js/next-boot.js?v=7.4.0"></script>

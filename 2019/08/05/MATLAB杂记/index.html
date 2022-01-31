@@ -23,6 +23,7 @@
 
 
 <link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -36,9 +37,9 @@
     copycode: {"enable":true,"show_result":false,"style":"mac"},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
-    lazyload: true,
+    lazyload: false,
     pangu: false,
     algolia: {
       appID: '',
@@ -66,10 +67,12 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="再开学的课程就要用MATLAB了, 而且了解很多机械系唯一要求学的编程语言就是MATLAB, 我决定还是稍微了解下.">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/08/05/MATLAB杂记/MATLAB%E6%9D%82%E8%AE%B0/appearance.png">
 <meta property="og:updated_time" content="2020-03-16T16:14:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MATLAB杂记">
 <meta name="twitter:description" content="再开学的课程就要用MATLAB了, 而且了解很多机械系唯一要求学的编程语言就是MATLAB, 我决定还是稍微了解下.">
+<meta name="twitter:image" content="https://leojhonsong.github.io/zh-CN/2019/08/05/MATLAB杂记/MATLAB%E6%9D%82%E8%AE%B0/appearance.png">
   <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2019/08/05/MATLAB杂记/">
 
 
@@ -100,6 +103,7 @@
 
 <link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
   <script src = "https://at.alicdn.com/t/font_980470_nj2qfdk05jb.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -113,9 +117,9 @@
     copycode: {"enable":true,"show_result":false,"style":"mac"},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
-    lazyload: true,
+    lazyload: false,
     pangu: false,
     algolia: {
       appID: '',
@@ -502,7 +506,7 @@
 </ol>
 <h2 id="更改编辑界面颜色主题"><a href="#更改编辑界面颜色主题" class="headerlink" title="更改编辑界面颜色主题"></a>更改编辑界面颜色主题</h2><p>在vim, VSC, VS, CLION, Pycharm等工具用惯了黑暗主题以后拿到啥都想先换个黑暗主题. 但是找了半天也只找到了设置编辑界面颜色主题的方式, 普通操作似乎并不能自定义丑陋的灰色工具栏.</p>
 <p>最终我把界面变成了这样 👇</p>
-<p><img alt="界面" data-src="MATLAB%E6%9D%82%E8%AE%B0/appearance.png"></p>
+<p><img src="MATLAB%E6%9D%82%E8%AE%B0/appearance.png" alt="界面"></p>
 <ul>
 <li>颜色主题是通过<a href="https://github.com/scottclowe/matlab-schemer" target="_blank" rel="noopener">MATLAB Schemer</a>里的脚本更换的, 一键更换好评👍 因为我比较喜欢糖果色的颜色主题然后又不喜欢注释是灰色 (不管在黑色背景还是白色背景里辨析度都很低), 于是选择的主题是<a href="https://github.com/scottclowe/matlab-schemer/tree/master/schemes#dark-steel" target="_blank" rel="noopener">Dark Steel</a>.</li>
 <li>字体用的是<a href="https://github.com/powerline/fonts/tree/master/DejaVuSansMono" target="_blank" rel="noopener">DejaVu Sans Mono for Powerline</a>, 大小是11, 不过不知道为什么MATLAB显示不带效果的字体看着很粗糙, <strong>边缘锯齿状过于明显</strong>, 效果设置为了 <strong>bold</strong>, 这回好多了!</li>
@@ -833,7 +837,8 @@ MATLAB以及运行脚本. 我发现这是可行的:</p>
   <script src="/zh-CN/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/zh-CN/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
 <script src="/zh-CN/js/utils.js?v=7.4.0"></script><script src="/zh-CN/js/motion.js?v=7.4.0"></script>
 <script src="/zh-CN/js/schemes/pisces.js?v=7.4.0"></script>
 <script src="/zh-CN/js/next-boot.js?v=7.4.0"></script>

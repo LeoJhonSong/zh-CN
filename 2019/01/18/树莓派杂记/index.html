@@ -23,6 +23,7 @@
 
 
 <link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -36,9 +37,9 @@
     copycode: {"enable":true,"show_result":false,"style":"mac"},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
-    lazyload: true,
+    lazyload: false,
     pangu: false,
     algolia: {
       appID: '',
@@ -66,10 +67,15 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="因为我是一个记性很差并且接触东西很杂的人, 很多很基础的命令根本记不住,但每次都去查一遍很浪费时间, 于是整理一下. 这是树莓派相关的.">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/01/18/树莓派杂记/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/15826242887468.jpg?50">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/01/18/树莓派杂记/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/175605x4nx4ryrywnn7hyw.jpg?50">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/01/18/树莓派杂记/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/GPIO-Pi4-1587126749653.png?50">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/01/18/树莓派杂记/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/image-20200417205537326.png?80">
 <meta property="og:updated_time" content="2021-08-30T11:02:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树莓派杂记">
 <meta name="twitter:description" content="因为我是一个记性很差并且接触东西很杂的人, 很多很基础的命令根本记不住,但每次都去查一遍很浪费时间, 于是整理一下. 这是树莓派相关的.">
+<meta name="twitter:image" content="https://leojhonsong.github.io/zh-CN/2019/01/18/树莓派杂记/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/15826242887468.jpg?50">
   <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2019/01/18/树莓派杂记/">
 
 
@@ -100,6 +106,7 @@
 
 <link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
   <script src = "https://at.alicdn.com/t/font_980470_nj2qfdk05jb.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -113,9 +120,9 @@
     copycode: {"enable":true,"show_result":false,"style":"mac"},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
-    lazyload: true,
+    lazyload: false,
     pangu: false,
     algolia: {
       appID: '',
@@ -463,7 +470,7 @@
 <a id="more"></a>
 
 <p>首先不得不说<a href="https://www.raspberrypi.org/documentation" target="_blank" rel="noopener">树莓派官方文档</a>实在是文档范本! 即便是初学者也能得到<strong>友好全面</strong>的帮助! 文档里包含了使用树莓派的绝大多数完整, 深入的教程, 而且方法都十分清爽 😆</p>
-<p><img alt="img" data-src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/15826242887468.jpg?50"></p>
+<p><img src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/15826242887468.jpg?50" alt="img"></p>
 <blockquote>
 <p>放一张树莓派4B布局图</p>
 </blockquote>
@@ -478,11 +485,11 @@
 <blockquote>
 <p>放两张好看的树莓派引脚对照表 (实际上两张都不完善)</p>
 </blockquote>
-<p><img alt="img" data-src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/175605x4nx4ryrywnn7hyw.jpg?50"></p>
-<p><img alt="Raspberry Pi 4 Model B GPIO Pinout Diagram | element14 | Raspberry Pi" data-src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/GPIO-Pi4-1587126749653.png?50"></p>
+<p><img src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/175605x4nx4ryrywnn7hyw.jpg?50" alt="img"></p>
+<p><img src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/GPIO-Pi4-1587126749653.png?50" alt="Raspberry Pi 4 Model B GPIO Pinout Diagram | element14 | Raspberry Pi"></p>
 <p>🔗 这个<a href="http://pinout.xyz/" target="_blank" rel="noopener">交互式引脚排布图</a>对每种接口的介绍很详细.</p>
 <p><del>运行<code>gpio readall</code>可以打印一张包含引脚真实输入/输出值的引脚表. 对于树莓派4需要手动操作一下更新<strong>wiringPi</strong>至版本<code>2.52</code>, 否则无法识别. 操作参考<a href="http://wiringpi.com/wiringpi-updated-to-2-52-for-the-raspberry-pi-4b/" target="_blank" rel="noopener">wiringPi updated to 2.52 for the Raspberry Pi 4B</a></del></p>
-<p><img alt="image-20200417205537326" data-src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/image-20200417205537326.png?80"></p>
+<p><img src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/image-20200417205537326.png?80" alt="image-20200417205537326"></p>
 <p>但<code>gpio readall</code>无法打印出每个引脚所有可用功能, 而运行<code>raspi-gpio funcs</code>可用打印所有gpio的上拉/下拉, 所有可用功能.</p>
 <p>树莓派官方文档列出了几个很好用的gpio库, 其中这个<a href="https://gpiozero.readthedocs.io/" target="_blank" rel="noopener">GPIO Zero</a>将GPIO分类封装成了一些很简洁的类, 看起来很值得一试.</p>
 <blockquote>
@@ -899,7 +906,8 @@
   <script src="/zh-CN/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/zh-CN/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
 <script src="/zh-CN/js/utils.js?v=7.4.0"></script><script src="/zh-CN/js/motion.js?v=7.4.0"></script>
 <script src="/zh-CN/js/schemes/pisces.js?v=7.4.0"></script>
 <script src="/zh-CN/js/next-boot.js?v=7.4.0"></script>

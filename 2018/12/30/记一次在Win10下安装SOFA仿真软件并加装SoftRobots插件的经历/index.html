@@ -23,6 +23,7 @@
 
 
 <link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -36,9 +37,9 @@
     copycode: {"enable":true,"show_result":false,"style":"mac"},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
-    lazyload: true,
+    lazyload: false,
     pangu: false,
     algolia: {
       appID: '',
@@ -66,10 +67,29 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="前言 ：博主是个不怎么懂软件的菜鸟，前几天为了学习Soft Robotics企图装一个带SoftRobots插件的SOFA，但我搜了半天也没有较新的安装教程（连下载方式都变了好吗）。虽然有官网的安装教程但我在安装过程中还是出了很多意外。感慨于在身边诸多大佬们的帮助下我这个对软件一窍不通的人才安装成功，我以一个不怎么接触编程的人的角度写下这篇博客帮助也想学习Soft Robotics的各位。(博主为">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/qt.jpg">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/warning.jpg">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/cmake.jpg">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/compiler.jpg">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/error.jpg">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/checkerror.jpg">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/Boosterror.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/addEntry.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/lackCMake.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/messycode.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/QtEntry.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/noError.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/checkPython.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/softRobotEntrry.jpg">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/reaction.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/howtocompile.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/mess.png">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/demo.jpg">
 <meta property="og:updated_time" content="2019-10-05T23:05:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历">
 <meta name="twitter:description" content="前言 ：博主是个不怎么懂软件的菜鸟，前几天为了学习Soft Robotics企图装一个带SoftRobots插件的SOFA，但我搜了半天也没有较新的安装教程（连下载方式都变了好吗）。虽然有官网的安装教程但我在安装过程中还是出了很多意外。感慨于在身边诸多大佬们的帮助下我这个对软件一窍不通的人才安装成功，我以一个不怎么接触编程的人的角度写下这篇博客帮助也想学习Soft Robotics的各位。(博主为">
+<meta name="twitter:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/qt.jpg">
   <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2018/12/30/记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/">
 
 
@@ -100,6 +120,7 @@
 
 <link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
   <script src = "https://at.alicdn.com/t/font_980470_nj2qfdk05jb.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -113,9 +134,9 @@
     copycode: {"enable":true,"show_result":false,"style":"mac"},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
-    lazyload: true,
+    lazyload: false,
     pangu: false,
     algolia: {
       appID: '',
@@ -481,7 +502,7 @@
 <p>官网提供的下载链接是<a href="http://download.qt.io/official_releases/online_installers/" target="_blank" rel="noopener">这个</a>,选择<em>qt-unified-windows-x86-online.exe<em>，是在线安装包。你也可以安装<a href="https://download.qt.io/official_releases/qt/5.11/5.11.1/?tdsourcetag=s_pctim_aiomsg" target="_blank" rel="noopener">离线安装包</a>,选择</em>qt-opensource-windows-x86-5.11.1.exe</em>.
 安装可以参考<a href="https://www.cnblogs.com/chenmingjun/p/8392713.html" target="_blank" rel="noopener">这个</a></p>
 <p>但实际上，只是为了安装SOFA的话，
-<img alt="Qt组件" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/qt.jpg">
+<img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/qt.jpg" alt="Qt组件">
 只需要如上图这个<strong>MSVC 2017 64-bit</strong>组件(博主当初不知道，把Qt5.11.1和Tools下所有东西都装了，下死我了)</p>
 <h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><blockquote>
 <p>接下来下载SOFA源代码，SoftRobots插件源代码，vcpkg等都要用到这个高级百*云</p>
@@ -522,29 +543,29 @@
 <blockquote>
 <p>博主推荐先修改一下设定，打开<code>Options</code>下的<strong>Warning Messages…</strong>,像下面这样勾选抑制警告的两项，关掉可能很多条，干扰视线而不影响Cmake的Warning提示，有利于稍后更容易地找出报错原因。</p>
 </blockquote>
-<p><img alt="Warning设置" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/warning.jpg"></p>
+<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/warning.jpg" alt="Warning设置"></p>
 <p>首先在<em>where is the source code</em>一栏填上你的<strong>sofa/src</strong>的地址，在<em>where to build the binaries</em>一栏填上你的<strong>sofa/build</strong>的地址，然后点击<code>Configure</code>。
-<img alt="CMake地址" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/cmake.jpg"></p>
+<img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/cmake.jpg" alt="CMake地址"></p>
 <p>然后为项目选择你将要使用的编译器，向下面这样选择。
-<img alt="选择编译器" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/compiler.jpg"></p>
+<img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/compiler.jpg" alt="选择编译器"></p>
 <p>P.S.虽然官网教程有提及可以使用<strong>Ninja</strong>来代替此处的选择，但我没研究出怎么使用，此处仍然选择VS的<strong>MSVC</strong>编译器。</p>
 <blockquote>
 <p>第一次Configure用时较长，，尤其是可能在<strong>Cloning into ‘SofaHighOrder’…</strong>一行停留许久。你可以稍微歇息一下</p>
 </blockquote>
-<p><img alt="报错" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/error.jpg"></p>
+<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/error.jpg" alt="报错"></p>
 <p>然后是频繁出现地报错。</p>
 <p>但不用担心，Configure这个操作本来就是要多次进行来逐渐更正错误，甚至可以在此期间调整要安装的插件。经过我的观察Generate多次也没有问题，只会在原本的基础上改动，不会出现重复的文件。因此放心大胆地来，每次你觉得修正了几个问题了就可以运行一次Configure。经过博主摸索发现了两种找报错原因的方式</p>
 <ul>
 <li>直接看<code>Configure</code>和<code>Generate</code>两个按键下面的信息框里的报错信息</li>
-<li><img alt="看报错信息方式1" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/checkerror.jpg"></li>
+<li><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/checkerror.jpg" alt="看报错信息方式1"></li>
 <li>打开在<strong>sofa/src/build/CMakeFiles/</strong>下的<em>CMakeError.log</em>（错误日志）。这个日志会记录你在Cmake过程中所有的报错 (包括每一次Configure的报错)。我的经验是错误原因通常在”<strong>生成失败。</strong>“这句话附近。如果有多个错误，一个一个耐心解决。</li>
 </ul>
 <h2 id="SOFA本体Configure过程中遇到的一些报错及解决"><a href="#SOFA本体Configure过程中遇到的一些报错及解决" class="headerlink" title="SOFA本体Configure过程中遇到的一些报错及解决"></a>SOFA本体Configure过程中遇到的一些报错及解决</h2><p>以下是博主在Cmake过程中遇到的一些报错及博主的解决方式。</p>
 <h3 id="fatal-error-C1083-无法打开包括文件-“pthread-h”-No-such-file-or-directory"><a href="#fatal-error-C1083-无法打开包括文件-“pthread-h”-No-such-file-or-directory" class="headerlink" title="fatal error C1083: 无法打开包括文件: “pthread.h”: No such file or directory"></a>fatal error C1083: 无法打开包括文件: “pthread.h”: No such file or directory</h3><p>好的，如果你出了这个报错说明你刚刚没有安装<a href="#pthread">推荐你安的pthread库</a>，让你懒哈哈哈哈哈</p>
 <p>不过即便安装pthread库后在<em>CMakeError.log</em>中仍然会有pthread相关报错。但不会影响SOFA的安装，可以忽略。</p>
-<h3 id="Unable-to-find-the-Boost-header-files"><a href="#Unable-to-find-the-Boost-header-files" class="headerlink" title="Unable to find the Boost header files"></a><span id="Boost">Unable to find the Boost header files</span></h3><p><img alt="Boost报错" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/Boosterror.png"></p>
+<h3 id="Unable-to-find-the-Boost-header-files"><a href="#Unable-to-find-the-Boost-header-files" class="headerlink" title="Unable to find the Boost header files"></a><span id="Boost">Unable to find the Boost header files</span></h3><p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/Boosterror.png" alt="Boost报错"></p>
 <p>如果你得到了类似这样的报错信息那你大概是像博主一样利用Vcpkg安装的Boost，Cmake没能找到你的Boost。(我错了，下次还犯)但用Vcpkg安装Boost真的很容易。Cmake给出了提示：</p>
-<h4 id="方法1："><a href="#方法1：" class="headerlink" title="方法1："></a>方法1：</h4><p><img alt="添加Entry" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/addEntry.png"></p>
+<h4 id="方法1："><a href="#方法1：" class="headerlink" title="方法1："></a>方法1：</h4><p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/addEntry.png" alt="添加Entry"></p>
 <p>点击<code>Add Entry</code>按键添加一个下面这样的Entry。</p>
 <table>
 <thead>
@@ -582,10 +603,10 @@
 <td><strong>你安装Vcpkg的文件夹/vcpkg/installed/x64-windows/include</strong>(比如博主的是<em>D:\vcpkg\installed\x64-windows\include</em>)</td>
 </tr>
 </tbody></table>
-<h3 id="sofa-src-applications-plugins-SofaHighOrder-ExternalProjectConfig-cmake-in-does-not-exist"><a href="#sofa-src-applications-plugins-SofaHighOrder-ExternalProjectConfig-cmake-in-does-not-exist" class="headerlink" title="sofa/src/applications/plugins/SofaHighOrder/ExternalProjectConfig.cmake.in does not exist."></a>sofa/src/applications/plugins/SofaHighOrder/ExternalProjectConfig.cmake.in does not exist.</h3><p><img alt="缺少CMake.in文件" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/lackCMake.png"></p>
+<h3 id="sofa-src-applications-plugins-SofaHighOrder-ExternalProjectConfig-cmake-in-does-not-exist"><a href="#sofa-src-applications-plugins-SofaHighOrder-ExternalProjectConfig-cmake-in-does-not-exist" class="headerlink" title="sofa/src/applications/plugins/SofaHighOrder/ExternalProjectConfig.cmake.in does not exist."></a>sofa/src/applications/plugins/SofaHighOrder/ExternalProjectConfig.cmake.in does not exist.</h3><p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/lackCMake.png" alt="缺少CMake.in文件"></p>
 <p>有可能当添加SofaHighOrder的子目录EXTERNAL的时候会发生这样的报错，有时候又不会发生。我怀疑<em>ExternalProjectConfig.cmake.in</em>这个文件特别容易丢包。但解决很容易，博主在前面下载SOFA源码的Github仓库里找到了这个<a href="https://github.com/sofa-framework/sofa/tree/master/applications/plugins/SofaHighOrder" target="_blank" rel="noopener">ExternalProjectConfig.cmake.in</a>你说神不神奇。把这个文件下载下来放到<b>sofa/src/applications/plugins/SofaHighOrder/</b>文件夹下即可。(其实博主不知道怎么下这个文件，就在sofa/src/applications/plugins/SofaHighOrder/文件夹下新建了一个ExternalProjectConfig.cmake.in并把Github上该文件里的内容复制粘贴了进去)</p>
 <p>在运行到SofaHighOrder这部分的时候你可能会碰到像下面这样的乱码，但不要紧，再Configure几次就没有了。</p>
-<p><img alt="乱码" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/messycode.png"></p>
+<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/messycode.png" alt="乱码"></p>
 <h3 id="找不到Python"><a href="#找不到Python" class="headerlink" title="找不到Python"></a>找不到Python</h3><p>博主为此专门下了一个Python2.7。</p>
 <p><code>你需要在搜索框中搜索Python以确保你确实添加上了SofaPython插件</code>。即便你单独下好了Python2.7你也可能需要手动勾选SofaPython选项（勾选前Enter列表中<strong>SofaPython_DIR</strong>显示找不到SofaPython，但你手动添加这个插件的话其实他找得到）</p>
 <h3 id="找不到Qt"><a href="#找不到Qt" class="headerlink" title="找不到Qt"></a>找不到Qt</h3><p>类似找不到Boost的解决办法，点击<code>Add Entry</code>,添加一个下面这样的Entry</p>
@@ -610,23 +631,23 @@
 </tr>
 </tbody></table>
 <p>再次运行Configure后刚添加的这个叫CMAKE_PREFIX_PATH的Entry会消失，取而代之的是一帮Qt的Entry</p>
-<p><img alt="那堆Qt的Entry" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/QtEntry.png"></p>
+<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/QtEntry.png" alt="那堆Qt的Entry"></p>
 <p><strong>以上便是博主安装SOFA本体过程中遇到过的报错，如果你遇到了别的无法解决的报错也欢迎讨论</strong></p>
-<p><img alt="无误反馈信息" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/noError.png">
+<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/noError.png" alt="无误反馈信息">
 这是博主在加装SoftRobots插件前得到的无误的反馈信息。并且你会发现本来一片红色的Entry列表此时全都是白/灰这种看起来就很OK的颜色。(如果还有红色的请再Configure一次。这之后如果还有，忽略)</p>
 <p>在此之前，在搜索框里输入python并确保你的<strong>PLUGIN_SOFAPYTHON</strong>打了勾，<strong>SofaPython_DIR</strong>不是not found</p>
-<p><img alt="确认SofaPython" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/checkPython.png"></p>
+<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/checkPython.png" alt="确认SofaPython"></p>
 <p>这样SOFA软件本体的安装就没有问题了，接下来添加SoftRobots插件(现在你在搜索框查找SoftRobots是什么也查不到的)。</p>
 <h2 id="添加SoftRobots插件"><a href="#添加SoftRobots插件" class="headerlink" title="添加SoftRobots插件"></a>添加SoftRobots插件</h2><blockquote>
 <p>博主一开始没看到正规添加SoftRobots插件的方法，手足无措下自行修改了SOFA的CMakeList.txt文件安上的…(狗屎英语教程)</p>
 </blockquote>
 <p>正规方法是在搜索框搜索<strong>SOFA_EXTERNAL_DIRECTORIES</strong>，找到这个Entry并将Value填为<strong>你安装SOFA的文件夹/sofa/src/applications/plugins/SoftRobots</strong>(比如博主的是<em>D:/sofa/src/applications/plugins/SoftRobots</em>)，</p>
-<p><img alt="SoftRobots相关Entry" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/softRobotEntrry.jpg"></p>
+<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/softRobotEntrry.jpg" alt="SoftRobots相关Entry"></p>
 <p>再次Configure，你就得到了与SoftRobots相关的几个Entry。不勾选这几个可选组件orz博主研究了很久也没能成功安装他们。根据名字和需要的库博主猜测<strong>SOFTROBOTS_GAMETRAKCONTROLLER</strong>是一个实现可以通过usb设备或蓝牙和外设交互的组件，<strong>SOFTROBOTS_COMMUNICATIONCONTROLLER</strong>似乎是实现利用网络通信和外设交互的组件，而<strong>SOFTROBOTS_ROBOTINOCONTROLLER</strong>猜测需要配合<strong>Robotino</strong>使用。<strong>Robotino</strong>是一款商业化的移动机器人系统，明显买不起。博主暂时不需要这个插件。</p>
 <p>再次Configure。</p>
 <p>完美。</p>
 <p>这是博主最终的无误版<strong>Configure</strong>的反馈信息。</p>
-<p><img alt="最终版反馈信息" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/reaction.png"></p>
+<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/reaction.png" alt="最终版反馈信息"></p>
 <p>现在安装已经接近尾声了(步骤方面，时间方面还得要一会)，你可以选择性的再安装几个部件。(报错了的话就放弃吧哈哈哈哈哈)给出官网上<a href="https://www.sofa-framework.org/community/doc/getting-started/build/build-options/" target="_blank" rel="noopener">相关网页</a>以供参考。</p>
 <p>当你对Configure的结果感到满意后，<code>Generate</code>，点击！</p>
 <p><code>注意，编译完成之前暂时先不要关闭CMake界面，否则可能编译失败</code></p>
@@ -634,14 +655,14 @@
 <p>你可以睡前来做这个</p>
 </blockquote>
 <p>进入<strong>sofa/build/</strong>,用VS打开<em>Sofa.sln</em>,经过一段令人尴尬的等待，</p>
-<p><img alt="编译操作顺序" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/howtocompile.png"></p>
+<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/howtocompile.png" alt="编译操作顺序"></p>
 <p>进入界面后先将解决方案配置调为<strong>Release</strong>，然后确保解决方案平台确实是你电脑的平台(博主的电脑是x64平台)，等待左下角显示<strong>就绪</strong>后，点击<strong>本地Windows调试器</strong>开始编译。</p>
 <p>然后你就可以去睡觉了。(即便你想用电脑做点别的应该也很难，不知道是我人品太差还是SOFA的编译真的很考验电脑，我的电脑呈现出了这样的尴尬局面 )</p>
-<p><img alt="编译车祸现场" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/mess.png"></p>
+<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/mess.png" alt="编译车祸现场"></p>
 <p>第二天(博主的电脑编译了两个多小时)，你会看到一个无法打开ALL_BUILD的报错，这是正常现象，无须在意。</p>
 <p><code>如果你没有看到其他报错，恭喜你编译成功了!</code></p>
 <h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>现在就可以来测试一下软件是否真的安装成功了。进入<strong>sofa/build/bin/release/</strong>，运行<em>rensofa.exe</em>,会进入这个蛇绕柱子的Demo。</p>
-<p><img alt="Demo" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/demo.jpg"></p>
+<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/demo.jpg" alt="Demo"></p>
 <p>你可以通过打开在SoftRobots下的几个Example来进一步测试。可以参考官网给出的<a href="https://project.inria.fr/softrobot/install-get-started-2/tutorial/" target="_blank" rel="noopener">样例教程</a>。或者你也可以探索SOFA官网上的<a href="https://www.sofa-framework.org/community/doc/getting-started/tutorials/" target="_blank" rel="noopener">入门教程</a>。</p>
 <br>
 
@@ -962,7 +983,8 @@
   <script src="/zh-CN/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/zh-CN/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
 <script src="/zh-CN/js/utils.js?v=7.4.0"></script><script src="/zh-CN/js/motion.js?v=7.4.0"></script>
 <script src="/zh-CN/js/schemes/pisces.js?v=7.4.0"></script>
 <script src="/zh-CN/js/next-boot.js?v=7.4.0"></script>
