@@ -23,6 +23,7 @@
 
 
 <link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -35,10 +36,10 @@
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
     copycode: {"enable":true,"show_result":false,"style":"mac"},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    bookmark: {"enable":true,"color":"#222","save":"auto"},
+    fancybox: true,
     mediumzoom: false,
-    lazyload: false,
+    lazyload: true,
     pangu: false,
     algolia: {
       appID: '',
@@ -66,13 +67,10 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="先有git, 许久后才有了GitHub等代码托管平台. git是一个软件而GitHub是一个网站. 他们的关系是你可以通过git将你的代码托管给GitHub (就是把你的代码存到GitHub的服务器上). 不过随着发展, 这些代码托管平台现在提供极为丰富的服务, 我认为其中生态做得最好的还得是github. 从github自带的github pages, github action到应用市场的各种">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/02/27/Git杂记/Git%E6%9D%82%E8%AE%B0/image-20200227141011525.png">
-<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/02/27/Git杂记/Git%E6%9D%82%E8%AE%B0/image-202002271546.png">
 <meta property="og:updated_time" content="2020-06-30T17:51:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git杂记">
 <meta name="twitter:description" content="先有git, 许久后才有了GitHub等代码托管平台. git是一个软件而GitHub是一个网站. 他们的关系是你可以通过git将你的代码托管给GitHub (就是把你的代码存到GitHub的服务器上). 不过随着发展, 这些代码托管平台现在提供极为丰富的服务, 我认为其中生态做得最好的还得是github. 从github自带的github pages, github action到应用市场的各种">
-<meta name="twitter:image" content="https://leojhonsong.github.io/zh-CN/2019/02/27/Git杂记/Git%E6%9D%82%E8%AE%B0/image-20200227141011525.png">
   <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2019/02/27/Git杂记/">
 
 
@@ -103,6 +101,7 @@
 
 <link rel="stylesheet" href="/zh-CN/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
   <script src = "https://at.alicdn.com/t/font_980470_nj2qfdk05jb.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -115,10 +114,10 @@
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
     copycode: {"enable":true,"show_result":false,"style":"mac"},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    bookmark: {"enable":true,"color":"#222","save":"auto"},
+    fancybox: true,
     mediumzoom: false,
-    lazyload: false,
+    lazyload: true,
     pangu: false,
     algolia: {
       appID: '',
@@ -336,6 +335,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <a class="book-mark-link book-mark-link-fixed" href="#"></a>
 
   <a href="https://github.com/LeoJhonSong" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
 
@@ -478,7 +478,7 @@
 <h4 id="GitHub-Desktop"><a href="#GitHub-Desktop" class="headerlink" title="GitHub Desktop"></a>GitHub Desktop</h4><p>🔗 <a href="https://desktop.github.com/" target="_blank" rel="noopener">下载地址</a></p>
 <p>GitHub官方客户端. 这是一个对新手很友好的客户端, 我自己也在用. 它的缺点是<strong>只能管理托管在GitHub的git仓库</strong>. 它很有用的一点是<strong>能在一个面板上看到你每个仓库的更新情况</strong>. (我经常忘记哪个仓库有没有上传)</p>
 <p>❗️ 要打开软件等它检测一会才会显示出来状态.</p>
-<p><img src="Git%E6%9D%82%E8%AE%B0/image-20200227141011525.png" alt="image-20200227141011525"></p>
+<p><img alt="image-20200227141011525" data-src="Git%E6%9D%82%E8%AE%B0/image-20200227141011525.png"></p>
 <blockquote>
 <p>仓库名字后有蓝色点表示有本地更改未提交, 有向上箭头表示有本地提交未上传, 有向下箭头表示有远程端有比本地更新的提交需要拉取.</p>
 </blockquote>
@@ -486,7 +486,7 @@
 <h4 id="Tower"><a href="#Tower" class="headerlink" title="Tower"></a>Tower</h4><p>🔗 <a href="https://www.git-tower.com/" target="_blank" rel="noopener">下载地址</a></p>
 <p>这个软件看起来比GitHub Desktop功能强大些, 并且不像后者只能管理托管在GitHub的git仓库. 这个软件只能免费试用, 但申请了这个<a href="https://education.github.com/pack" target="_blank" rel="noopener">GitHub学生大礼包</a>的话可以免费用一年.</p>
 <h4 id="开发工具集成的git管理"><a href="#开发工具集成的git管理" class="headerlink" title="开发工具集成的git管理"></a>开发工具集成的git管理</h4><p>🌟 实际上这是我最常使用的方式</p>
-<p><img src="Git%E6%9D%82%E8%AE%B0/image-202002271546.png" alt="img"></p>
+<p><img alt="img" data-src="Git%E6%9D%82%E8%AE%B0/image-202002271546.png"></p>
 <p>这是装了<strong>GitLens</strong>插件的<strong>Visual Studio Code</strong>的源代码控制面板和编辑窗口截图. 可以看到左下角显示了当前分支及同步状态, 编辑窗口里有颜色条标示文件更改情况, 右上角有可以对文件进行的一些git操作, etc…</p>
 <h3 id="登陆git"><a href="#登陆git" class="headerlink" title="登陆git"></a>登陆git</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name "Your Name"</span><br><span class="line">git config --global user.email "email@example.com"</span><br></pre></td></tr></tbody></table></figure>
 
@@ -661,6 +661,12 @@
       <footer class="post-footer">
 
         
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  
+  </div>
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
@@ -695,13 +701,6 @@
 
           </div>
           
-    
-    
-  <div class="comments" id="comments">
-    <div id="lv-container" data-id="city" data-uid="MTAyMC80NjkzNi8yMzQzNw=="></div>
-  </div>
-  
-  
 
         </div>
           
@@ -873,7 +872,7 @@
 
         
 <div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <span class="post-meta-item-icon">
       <i class="fa fa-user"></i>
     </span>
@@ -914,9 +913,63 @@
   <script src="/zh-CN/lib/anime.min.js?v=3.1.0"></script>
   <script src="/zh-CN/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/zh-CN/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script src="/zh-CN/lib/pjax/pjax.min.js?v=0.2.8"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
 <script src="/zh-CN/js/utils.js?v=7.4.0"></script><script src="/zh-CN/js/motion.js?v=7.4.0"></script>
 <script src="/zh-CN/js/schemes/pisces.js?v=7.4.0"></script>
-<script src="/zh-CN/js/next-boot.js?v=7.4.0"></script>
+<script src="/zh-CN/js/next-boot.js?v=7.4.0"></script><script src="/zh-CN/js/bookmark.js?v=7.4.0"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var id = element.id || '';
+    var src = element.src || '';
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (id !=='') {
+      script.id = element.id;
+    }
+    if (src !== '') {
+      script.src = src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
 
 
 
@@ -926,6 +979,26 @@
 
 
 
+  <script pjax>
+  if (CONFIG.page.isPost) {
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 33731,
+      el: 'wpac-rating',
+      color: 'fc6423'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  }
+  </script>
 
 
 
@@ -943,6 +1016,7 @@
 
 
 
+    <div id="pjax">
 
   
 
@@ -950,19 +1024,6 @@
 
   
 
-<script>
-  window.livereOptions = {
-    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
-  };
-  (function(d, s) {
-    var j, e = d.getElementsByTagName(s)[0];
-    if (typeof LivereTower === 'function') { return; }
-    j = d.createElement(s);
-    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-    j.async = true;
-    e.parentNode.insertBefore(j, e);
-  })(document, 'script');
-</script>
-<script src="/zh-CN/js/hexo_resize_image.js?v=7.4.0"></script>
+    </div><script src="/zh-CN/js/hexo_resize_image.js?v=7.4.0"></script>
 </body>
 </html>
