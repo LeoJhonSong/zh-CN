@@ -68,8 +68,9 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2021/05/24/LaTeX杂记/LaTeX%E6%9D%82%E8%AE%B0/sections.jpg?80">
 <meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2021/05/24/LaTeX杂记/LaTeX%E6%9D%82%E8%AE%B0/space.jpg?80">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2021/05/24/LaTeX杂记/LaTeX%E6%9D%82%E8%AE%B0/figure.jpg?80">
 <meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2021/05/24/LaTeX杂记/LaTeX%E6%9D%82%E8%AE%B0/image-20210420201512181.png">
-<meta property="og:updated_time" content="2022-01-03T16:00:00.000Z">
+<meta property="og:updated_time" content="2022-01-30T16:00:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LaTeX杂记">
 <meta name="twitter:description" content="最近在用LaTeX写毕业论文 (学院支持甚至提供了LaTeX模板真是太幸运了), 在此记录下我写论文用到的一些语法方便以后抄.">
@@ -394,7 +395,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-04 00:00:00" itemprop="dateModified" datetime="2022-01-04T00:00:00+08:00">2022-01-04</time>
+                <time title="修改时间：2022-01-31 00:00:00" itemprop="dateModified" datetime="2022-01-31T00:00:00+08:00">2022-01-31</time>
               </span>
             
           
@@ -443,7 +444,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>6.6k</span>
+              <span>8.8k</span>
             </span>
           
 
@@ -466,6 +467,7 @@
 <li><a href="https://www.overleaf.com/learn" target="_blank" rel="noopener">Overleaf的LaTeX文档</a>: Overleaf的文档更是讲解很少, 基本每个内容直接是使用示例.</li>
 <li>要是你还想看更多内容, 可以先看看<a href="https://www.latexstudio.net/archives/51802.html" target="_blank" rel="noopener">LaTeX工作室推荐的资料</a>.</li>
 </ul>
+<p>另外推荐一个<a href="http://latexref.xyz/" target="_blank" rel="noopener">LaTeX命令参考手册</a>, 可以在这搜索想查的命令.</p>
 <p>我是在Linux系统下用安装了<a href="https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop" target="_blank" rel="noopener">LaTeX Workshop</a>插件的VSCode写的LaTeX, 这个插件通过调用你安装的LeTaX发行版来提供丰富的LeTaX支持. 我使用的发行版正是LaTeX Workshop最推荐的<a href="https://www.tug.org/texlive/" target="_blank" rel="noopener">Tex Live</a>. 这东西离线安装包有点大, 而且很有可能需要单独下一些包, 有点麻烦. 幸好我Manjaro系统一句<code>yay -S texlive-most texlive-lang biber</code>就把我下面需要用到的所有工具都安装好了. <strong>如果你目前没有安装Tex Live, 不妨先试试在<a href="https://www.overleaf.com/" target="_blank" rel="noopener">Overleaf</a>在线编辑LaTeX试试, 操作很简便, 下述操作中大部分都能实现, 非常省事.</strong></p>
 <p>💡 关于如何安装Tex Live可以看看<a href="https://oi-wiki.org/tools/latex/#_4" target="_blank" rel="noopener">这个说明</a>.</p>
 <!-- TODO: 是哪个没法实现最好指出 基本就bib2gls? -->
@@ -478,7 +480,7 @@
 <li><p>如果你已经正确安装了Tex Live那么环境里应当已经有<code>xelatex</code>这个可以生成tex文件对应pdf的工具了. 在<strong>first.tex</strong>所在文件夹执行<code>xelatex first.tex</code>. 然后你会发现文件夹里多了三个文件: <strong>first.pdf</strong>, <strong>first.aux</strong>, <strong>fisrt.log</strong>. 后两个文件基本是无关紧要的东西, 我在我的VSCode里设置了每次构建后删除这些文件. 而这个<strong>first.pdf</strong>正是我们需要的pdf文件 🎉</p>
 </li>
 </ol>
-<p>要用LaTeX写一个简单文档需要的语法都很简单没有争议, 需要的工具也只有<code>xelatex</code>. 想快速了解LaTeX最基本的语法可以看看<a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes" target="_blank" rel="noopener">Overleaf的30min入门教程</a>. 不过其实用不了30分钟, 因为只讲了最基础的内容因此大致看一遍了解一下就好😂. 看了一些教程后我觉得Overleaf的文档是非常清晰易懂非常全面的了, 最重要的是<strong>基本用的都是最新最简洁的语法</strong> (正如现在有些python问题还有人在给出python2的绕来绕去的方案, 随便看网上说法会觉得LaTeX怎么这么麻烦功能这么少 🤦‍♂️). 因此后文的教程参考我也基本是给出的是Overleaf的文档.</p>
+<p>要用LaTeX写一个简单文档需要的语法都很简单没有争议, 需要的工具也只有<code>xelatex</code>. 想快速了解LaTeX最基本的语法可以看看<a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes" target="_blank" rel="noopener">Overleaf的30min入门教程</a>. 不过其实用不了30分钟, 因为只讲了最基础的内容因此大致看一遍了解一下就好😂. 看了一些教程后我觉得Overleaf的文档是非常简短 (因此很不详细) 但足够全面的了, 最重要的是<strong>基本用的都是最新最简洁的语法</strong> (正如现在有些python问题还有人在给出python2的绕来绕去的方案, 随便看网上说法会觉得LaTeX怎么这么麻烦功能这么少 🤦‍♂️). 因此后文的文档参考我也基本是给出的是Overleaf的文档.</p>
 <p>大致看了一遍上面链接后就知道怎么用LaTeX写一份用Markdown或者word写也很方便的文档啦. 但要用来写一份高逼格论文的话还需要深入一些, 不然LaTeX的优势也体现不出来了. 首先来看一些绕不开且容易的语法, 然后是各种插入富文本的语法, 最后是关于让引用不管是插入还是看起来体验都更好的内容 (因为需要更改构建工具链这个部分在overleaf无法实现).</p>
 <h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── 📁Appendices        各个附录的tex文件文件夹</span><br><span class="line">├── 📁Figures           图片文件夹</span><br><span class="line">├── 📁Front             前置页的tex文件文件夹</span><br><span class="line">├── 📁Sections          各个章节的tex文件文件夹</span><br><span class="line">├── 📑main.tex          根文件</span><br><span class="line">└── 📑References.bib    所有引用的bibtex放这里</span><br></pre></td></tr></tbody></table></figure>
 
@@ -542,23 +544,32 @@
 <li>还有时会看到<code>\Tex{} Live</code>或<code>\Tex\ Live</code>这样明明不支持参数的命令 (如<code>\Tex</code>) 后却有{}或者<code>\</code>, 这是为了让不支持参数的命令后的空格能被正常排版.</li>
 </ul>
 <h5 id="手动断行"><a href="#手动断行" class="headerlink" title="手动断行"></a>手动断行</h5><p>用<code>\\</code>可以在段落内手动换行. 但不同于在word中到处用回车, <a href="https://www.overleaf.com/learn/how-to/Understanding_underfull_and_overfull_box_warnings?#Notes_on_using_.5C.5C" target="_blank" rel="noopener">无脑<code>\\</code>似乎是不被推荐的</a>. 在上文中推荐的<em>一份不太简短的LaTeX2ε介绍</em>中<strong>2.4.2 手动断行和断页</strong>这节有提到几种断行命令的具体区别 (但我感觉没必要管就没看).</p>
-<h2 id="加速生成"><a href="#加速生成" class="headerlink" title="加速生成"></a>加速生成</h2><p>随着工程大起来生成pdf会变慢, 有一些技巧可以加速生成不完整的pdf, 在写作过程中快速检查. 因为LaTeX每次生成并不能利用.</p>
-<p>draft</p>
-<p>xelatex压缩等级0/9</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\special{dvipdfmx:config z 0}</span><br><span class="line">\begin{document}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="加速生成"><a href="#加速生成" class="headerlink" title="加速生成"></a>加速生成</h2><h3 id="草稿模式"><a href="#草稿模式" class="headerlink" title="草稿模式"></a>草稿模式</h3><p>随着工程大起来生成pdf会变慢, 有一些技巧可以加速生成不完整的pdf, 在写作过程中快速检查. 因为LaTeX每次生成并不能利用.</p>
+<p>一种方式是开启草稿模式. 方式是在上面提到的<code>\documentclass[]{}</code>的参数里加个<code>draft</code>. 以草稿模式生成的pdf里图片不会实际插入, 是用一个同样大小的方框来表示. 超链接, 书签等功能也会被关闭. 另外比较好的一点是在underfull/overfull的行会被在行末添加一个黑色方块标记出来.</p>
+<h3 id="xelatex的pdf压缩等级"><a href="#xelatex的pdf压缩等级" class="headerlink" title="xelatex的pdf压缩等级"></a>xelatex的pdf压缩等级</h3><p>xelatex在生成pdf时默认会进行压缩, 这会让生成的pdf相对很小, 同时也会耗时更长. 写作过程中其实并没有必要压缩pdf, 那可以设置压缩等级为0加速pdf生成, 等生成最终版pdf时再把压缩等级拉满设为9.</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">% 放在导言部分</span><br><span class="line">\special{dvipdfmx:config z 0}  % 👈这个0换成9就是最大压缩等级了.</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><h3 id="数学公式-样式-符号"><a href="#数学公式-样式-符号" class="headerlink" title="数学公式, 样式, 符号"></a>数学公式, 样式, 符号</h3><p><a href="https://www.overleaf.com/learn/latex/Aligning%20equations%20with%20amsmath" target="_blank" rel="noopener">公式排版</a></p>
-<p><a href="https://www.overleaf.com/learn/latex/Mathematics" target="_blank" rel="noopener">数学相关内容合集</a></p>
-<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p><a href="https://www.overleaf.com/learn/latex/Inserting_Images#Generating_high-res_and_low-res_images" target="_blank" rel="noopener">插入图片</a></p>
-<p><a href="https://tex.stackexchange.com/questions/24496/use-caption-and-long-description-for-figure/422496" target="_blank" rel="noopener">图片短: 长描述</a></p>
-<p><a href="https://tex.stackexchange.com/a/53062" target="_blank" rel="noopener">表格中插入图片</a></p>
-<p><a href="https://tex.stackexchange.com/questions/101645/how-to-turn-latex-figure-by-90-degrees-along-with-the-caption" target="_blank" rel="noopener">旋转图片</a></p>
-<p><a href="https://tex.stackexchange.com/questions/2099/how-to-include-svg-diagrams-in-latex" target="_blank" rel="noopener">插入svg</a>
-TLDR: 直接插入svg很麻烦, 转pdf</p>
-<p><a href="https://tex.stackexchange.com/a/458474" target="_blank" rel="noopener">inkscape的latex支持</a>  不要用pdf_latex, 直接用pdf</p>
-<p>svgnames</p>
-<p><img src="LaTeX%E6%9D%82%E8%AE%B0/image-20210420201512181.png" alt="image-20210420201512181"></p>
-<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><p><a href="https://www.overleaf.com/learn/latex/tables" target="_blank" rel="noopener">overleaf-表格</a></p>
+<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><h3 id="数学公式-样式"><a href="#数学公式-样式" class="headerlink" title="数学公式, 样式"></a>数学公式, 样式</h3><p>这个CSDN上的<a href="https://blog.csdn.net/ethmery/article/details/50670297" target="_blank" rel="noopener">LaTeX基本数学公式语法</a>列出了希腊字母, 上下标, 矢量, 特殊符号, 矩阵等数学公式常用命令, 还挺全的.</p>
+<p>作为一个菜鸟我还没用LaTeX写过很复杂的公式, 因此还没有用过<code>amsmath</code>这个增强<a href="https://www.overleaf.com/learn/latex/Aligning%20equations%20with%20amsmath" target="_blank" rel="noopener">公式排版</a>的包, 但据overleaf这篇文章原生支持对排版支持不够好, 因此我先码住.</p>
+<p>然后这还有一篇Overleaf的<a href="https://www.overleaf.com/learn/latex/Mathematics" target="_blank" rel="noopener">数学相关内容合集</a> 🐮</p>
+<h3 id="浮动体"><a href="#浮动体" class="headerlink" title="浮动体"></a>浮动体</h3><p>figure和table是LaTeX原生的两种浮动体环境, 用于灵活排版图片和表格. 但其实这两种环境中什么都能放, 没有限定只能放图片或表格. 这两种环境都可以给[<em>placement</em>]参数 (默认是<code>btp</code>), 通过指定<code>htb</code>限制只能放在这三种位置 (也就是不允许单独成页). 可用参数参见<a href="https://www.overleaf.com/learn/latex/Inserting_Images#Positioning" target="_blank" rel="noopener">这附近有的一个表格</a>. 值得一提的是LaTeX总是以h-t-b-p的优先级来决定浮动体位置, 和填的参数的顺序无关. 💡 除单独成页外, 默认每页不超过3个浮动体, 其中顶部不超过2个, 底部不超过1个以及浮动体空间占页面的百分比 (默认顶部不超过70%, 底部不超过30%)</p>
+<p>关于双栏环境下浮动体的排版以及其他细节见<em>一份不太简短的LaTeX2ε介绍</em>的<strong>3.9 浮动体</strong>.</p>
+<h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4><p>先上一个论文利用的懒人模板样例 (效果如图):</p>
+<p><img src="LaTeX%E6%9D%82%E8%AE%B0/figure.jpg?80" alt=""></p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">% 导言部分</span><br><span class="line">\usepackage{graphicx}  % 图片插入支持宏包</span><br><span class="line">\graphicspath{{./}}  % 将之后插入图片的检索路径设为根文件所在目录, 不然插入图片时的图片地址是相对于当前tex文件的, 会比较麻烦</span><br><span class="line">% \graphicspath{{./Figures}}  % 其实更常见的是直接将检索路径设为你的图片文件夹, 但我为了能触发我VSC的路径补全所以只设成了根文件所在目录</span><br><span class="line">\usepackage[</span><br><span class="line">   colorlinks=true,</span><br><span class="line">]{hyperref}  % 给交叉引用的引用编号添加超链接支持</span><br><span class="line"></span><br><span class="line">% 正文部分</span><br><span class="line">\begin{figure}[htb]</span><br><span class="line">      \centering  % 让图片居中. 默认是左对齐</span><br><span class="line">      \includegraphics[width=0.8\textwidth]{Figures/mesh.jpg}  % 限制图片宽度为0.8倍版面宽度</span><br><span class="line">      \caption[Test]{Test: blablabla}\label{f:mesh}</span><br><span class="line">\end{figure}</span><br><span class="line"></span><br><span class="line">As you can see in \autoref{f:mesh}, the function grows near 0.</span><br></pre></td></tr></tbody></table></figure>
+
+<p>用<code>\caption</code>命令可以给图片等浮动体加标题, 在<code>{}</code>中的是长标题, 就是显示在图下那个. 而在<code>[]</code>中的短标题是会显示在图目录中的标题 (用<code>\listoffigures</code>来生成图目录). 我习惯在长标题里开头用短标题, 能实现很多论文里<strong>概要: 详细描述</strong>的图标题形式.</p>
+<p><code>\lable</code>是交叉引用, 可以用来在文中提及章节/公式/图表等. 导入<strong>hyperref</strong>包能支持点击引用处跳转, 这样体验才够良好. 用<code>\autoref</code>而不是<code>\ref</code>能让整个引用编号 (比如上面的红色的<strong>Figure 1</strong>)而不是只有<strong>1</strong>是超链接. <code>\ref{}</code>或者<code>\autoref{}</code>的参数可以随便写, 之所以加个<code>f:</code>的前缀是为了将图片, 表格等类交叉引用区别开, 方便管理, 比如说VSC的LaTeX Workshop支持交叉引用的补全提示.</p>
+<p>细节解释可以参考这几个链接:</p>
+<ul>
+<li><a href="https://www.overleaf.com/learn/latex/Inserting_Images#Generating_high-res_and_low-res_images" target="_blank" rel="noopener">Overleaf的插入图片全教程</a></li>
+<li><a href="https://tex.stackexchange.com/questions/24496/use-caption-and-long-description-for-figure/422496" target="_blank" rel="noopener">如何添加图片短标题</a></li>
+<li><a href="https://tex.stackexchange.com/a/53062" target="_blank" rel="noopener">如何在表格中插入图片</a></li>
+<li><a href="https://tex.stackexchange.com/questions/101645/how-to-turn-latex-figure-by-90-degrees-along-with-the-caption" target="_blank" rel="noopener">如何旋转图片</a></li>
+</ul>
+<p>还有一点是如何插入矢量图形. 目前所有LaTeX编译器都没有对svg提供原生支持, 倒是<a href="https://tex.stackexchange.com/questions/2099/how-to-include-svg-diagrams-in-latex" target="_blank" rel="noopener">有办法可以强行插入svg</a>, 但是也很麻烦. 其实解决办法很简单: <strong>不要插入svg</strong> 😁 svg可以很容易地被转为pdf, 而LaTeX对pdf插入支持很好 (其实现在这年代LaTeX中插入矢量图片就是插入pdf). 在Linux下可以用<strong>inkscape</strong>打开svg然后直接另存为pdf. ❗注意不要勾选<em>Omit text in PDF and create LaTeX file</em>. 这狗屎东西会把你svg里的文字无脑转为LaTeX然后你会发现你好不容易排版的文字在LaTeX里绘制出来后大小, 字体都是正文字体, 经常直接没法看. 直接转为pdf的话会生成一个和svg同样尺寸的pdf, 透明部分会被填充为白色, 不过写论文的话这样刚好.</p>
+<p>关于制作论文用矢量图, 因为我目前并不需要绘制复杂的矢量图, 基本是给位图或者程序生成的矢量图加点箭头文字然后排版一下之类. 因此我目前就是PPT做图, 全选当前页上所有东西 (如果你也是一页PPT画一张图的话), 然后另存为svg, 免得想在其他电脑/WPS编辑时发现不太兼容 (更保险一点你可以<a href="https://support.microsoft.com/zh-cn/office/%E5%B5%8C%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%97%E4%BD%93%E7%9A%84%E5%A5%BD%E5%A4%84-cb3982aa-ea76-4323-b008-86670f222dbc" target="_blank" rel="noopener">将字体嵌入PPT</a>, 防止出字体问题). 如果你做的这张图用到了PPT的背景, 存svg是没法把背景一块存下来的. 此样的话选打印, 然后选仅打印当前页, 这样就能获得一个单页的pdf矢量图了!</p>
+<h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><p><a href="https://www.overleaf.com/learn/latex/tables" target="_blank" rel="noopener">overleaf-表格</a></p>
 <h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p><a href="https://www.overleaf.com/learn/latex/lists" target="_blank" rel="noopener">列表</a></p>
 <p><a href="https://tex.stackexchange.com/questions/10684/vertical-space-in-lists" target="_blank" rel="noopener">列表行间距</a></p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><a href="https://tex.stackexchange.com/questions/152829/how-can-i-highlight-yaml-code-in-a-pretty-way-with-listings" target="_blank" rel="noopener">自定义代码语言</a></p>
@@ -566,7 +577,6 @@ TLDR: 直接插入svg很麻烦, 转pdf</p>
 <p><a href="https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted" target="_blank" rel="noopener">mint提供代码高亮</a></p>
 <p><a href="https://tex.stackexchange.com/questions/12428/code-spanning-over-two-pages-with-minted-inside-listing-with-caption" target="_blank" rel="noopener">长代码caption</a></p>
 <p><a href="https://tex.stackexchange.com/questions/320185/adjust-vertical-spacing-between-caption-and-listing-in-koma-scrartcl" target="_blank" rel="noopener">minted调整caption与code距离</a></p>
-<h3 id="引文"><a href="#引文" class="headerlink" title="引文"></a>引文</h3><p><a href="https://www.overleaf.com/learn/latex/typesetting_quotations#csquotes" target="_blank" rel="noopener">引文</a></p>
 <h3 id="特殊符号"><a href="#特殊符号" class="headerlink" title="特殊符号"></a>特殊符号</h3><p><a href="https://tex.stackexchange.com/questions/374932/a-white-number-inside-a-black-circle" target="_blank" rel="noopener">画圆圈1</a></p>
 <p><a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="noopener">手绘查询符号</a></p>
 <h2 id="中文支持"><a href="#中文支持" class="headerlink" title="中文支持"></a>中文支持</h2><p><a href="https://www.overleaf.com/learn/latex/Chinese#xeCJK_with_XeLaTeX" target="_blank" rel="noopener">中文支持</a></p>
@@ -580,6 +590,7 @@ TLDR: 直接插入svg很麻烦, 转pdf</p>
 <p><a href="https://tex.stackexchange.com/questions/27607/biblatex-authoryear-comp-and-hyperlinks" target="_blank" rel="noopener">citetitle超链接</a></p>
 <p><a href="https://tex.stackexchange.com/questions/266434/extend-the-hyperref-link-to-figure-and-a-b-c" target="_blank" rel="noopener">自定义样式\ref</a></p>
 <p><a href="https://tex.stackexchange.com/questions/50747/options-for-appearance-of-links-in-hyperref" target="_blank" rel="noopener">链接颜色</a></p>
+<p><img src="LaTeX%E6%9D%82%E8%AE%B0/image-20210420201512181.png" alt="image-20210420201512181"></p>
 <p><a href="https://tex.stackexchange.com/questions/348640/how-to-effectively-use-list-of-symbols-for-a-thesis" target="_blank" rel="noopener">list of notations</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -702,7 +713,7 @@ TLDR: 直接插入svg很麻烦, 转pdf</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目文件结构"><span class="nav-number">1.</span> <span class="nav-text">项目文件结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目结构"><span class="nav-number">2.</span> <span class="nav-text">项目结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版式"><span class="nav-number">3.</span> <span class="nav-text">版式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#布局-页边距设置"><span class="nav-number">3.1.</span> <span class="nav-text">布局/页边距设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字体及中文支持"><span class="nav-number">3.2.</span> <span class="nav-text">字体及中文支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两个常见问题"><span class="nav-number">3.3.</span> <span class="nav-text">两个常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何创建能在目录中显示的四级标题"><span class="nav-number">3.3.1.</span> <span class="nav-text">如何创建能在目录中显示的四级标题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#underfull和overfull警告是什么"><span class="nav-number">3.3.2.</span> <span class="nav-text">underfull和overfull警告是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#断词与不要断词"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">断词与不要断词</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#空格"><span class="nav-number">3.3.2.2.</span> <span class="nav-text">空格</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#手动断行"><span class="nav-number">3.3.2.3.</span> <span class="nav-text">手动断行</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加速生成"><span class="nav-number">4.</span> <span class="nav-text">加速生成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入"><span class="nav-number">5.</span> <span class="nav-text">插入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数学公式-样式-符号"><span class="nav-number">5.1.</span> <span class="nav-text">数学公式, 样式, 符号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片"><span class="nav-number">5.2.</span> <span class="nav-text">图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表格"><span class="nav-number">5.3.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表"><span class="nav-number">5.4.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">5.5.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引文"><span class="nav-number">5.6.</span> <span class="nav-text">引文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊符号"><span class="nav-number">5.7.</span> <span class="nav-text">特殊符号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中文支持"><span class="nav-number">6.</span> <span class="nav-text">中文支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建流程"><span class="nav-number">7.</span> <span class="nav-text">构建流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">8.</span> <span class="nav-text">引用</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目文件结构"><span class="nav-number">1.</span> <span class="nav-text">项目文件结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目结构"><span class="nav-number">2.</span> <span class="nav-text">项目结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版式"><span class="nav-number">3.</span> <span class="nav-text">版式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#布局-页边距设置"><span class="nav-number">3.1.</span> <span class="nav-text">布局/页边距设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字体及中文支持"><span class="nav-number">3.2.</span> <span class="nav-text">字体及中文支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两个常见问题"><span class="nav-number">3.3.</span> <span class="nav-text">两个常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何创建能在目录中显示的四级标题"><span class="nav-number">3.3.1.</span> <span class="nav-text">如何创建能在目录中显示的四级标题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#underfull和overfull警告是什么"><span class="nav-number">3.3.2.</span> <span class="nav-text">underfull和overfull警告是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#断词与不要断词"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">断词与不要断词</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#空格"><span class="nav-number">3.3.2.2.</span> <span class="nav-text">空格</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#手动断行"><span class="nav-number">3.3.2.3.</span> <span class="nav-text">手动断行</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加速生成"><span class="nav-number">4.</span> <span class="nav-text">加速生成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#草稿模式"><span class="nav-number">4.1.</span> <span class="nav-text">草稿模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xelatex的pdf压缩等级"><span class="nav-number">4.2.</span> <span class="nav-text">xelatex的pdf压缩等级</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入"><span class="nav-number">5.</span> <span class="nav-text">插入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数学公式-样式"><span class="nav-number">5.1.</span> <span class="nav-text">数学公式, 样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浮动体"><span class="nav-number">5.2.</span> <span class="nav-text">浮动体</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#图片"><span class="nav-number">5.2.1.</span> <span class="nav-text">图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表格"><span class="nav-number">5.2.2.</span> <span class="nav-text">表格</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表"><span class="nav-number">5.3.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">5.4.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊符号"><span class="nav-number">5.5.</span> <span class="nav-text">特殊符号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中文支持"><span class="nav-number">6.</span> <span class="nav-text">中文支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建流程"><span class="nav-number">7.</span> <span class="nav-text">构建流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">8.</span> <span class="nav-text">引用</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -837,7 +848,7 @@ TLDR: 直接插入svg很麻烦, 转pdf</p>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">137k</span>
+    <span title="站点总字数">139k</span>
 </div>
 
         
