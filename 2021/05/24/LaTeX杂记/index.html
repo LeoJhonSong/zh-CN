@@ -71,6 +71,8 @@
 <meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2021/05/24/LaTeX杂记/LaTeX%E6%9D%82%E8%AE%B0/space.jpg?80">
 <meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2021/05/24/LaTeX杂记/LaTeX%E6%9D%82%E8%AE%B0/figure.jpg?60">
 <meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2021/05/24/LaTeX杂记/LaTeX%E6%9D%82%E8%AE%B0/table.jpg?60">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2021/05/24/LaTeX杂记/LaTeX%E6%9D%82%E8%AE%B0/symbol.jpg?70">
+<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2021/05/24/LaTeX杂记/LaTeX%E6%9D%82%E8%AE%B0/snippet.jpg?60">
 <meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2021/05/24/LaTeX杂记/LaTeX%E6%9D%82%E8%AE%B0/image-20210420201512181.png">
 <meta property="og:updated_time" content="2022-01-30T16:00:00.000Z">
 <meta name="twitter:card" content="summary">
@@ -461,7 +463,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>10k</span>
+              <span>11k</span>
             </span>
           
 
@@ -596,8 +598,12 @@
 <p>💡 另外这里有个通过给<code>itemize</code>和<code>enumerate</code>环境的选项的方式<a href="https://tex.stackexchange.com/questions/10684/vertical-space-in-lists" target="_blank" rel="noopener">调整列表行间距的方法</a>.</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><code>lstlisting</code>环境 (需要导入<em>listings*宏包</em>) 是传统的插入代码用环境, 只是插入个代码的话倒是语法也很简单, 但是要想让插入的代码有语法高亮的话就必须<a href="https://www.overleaf.com/learn/latex/Code_listing#Code_styles_and_colours" target="_blank" rel="noopener">这样</a>自己在导言区放一个语法高亮配色方案, 很不简洁. 强推一下<code>minted</code>环境 (需要导入<em>minted</em>宏包), 这是一个自带多种语法高亮配色方案且支持绝大多数语言语法高亮的很现代的代码插入环境! 使用方式见<a href="https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted#Introduction" target="_blank" rel="noopener">overleaf-用minted语法高亮</a>. 如果你追求比较高, 觉得minted自带的语法高亮不够细致,  比如minted对yaml的语法高亮不会像VSC那样将布尔值, 数字, 字符串等类型值用颜色标示出来, 那可以看看stackoverflow上这个<a href="https://tex.stackexchange.com/questions/152829/how-can-i-highlight-yaml-code-in-a-pretty-way-with-listings" target="_blank" rel="noopener">自定义语法高亮问题</a>.</p>
 <p>补充: <a href="https://tex.stackexchange.com/questions/12428/code-spanning-over-two-pages-with-minted-inside-listing-with-caption" target="_blank" rel="noopener">跨页代码无法caption问题</a>.</p>
-<h3 id="特殊符号"><a href="#特殊符号" class="headerlink" title="特殊符号"></a>特殊符号</h3><p><a href="https://tex.stackexchange.com/questions/374932/a-white-number-inside-a-black-circle" target="_blank" rel="noopener">画圆圈1</a></p>
-<p><a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="noopener">手绘查询符号</a></p>
+<h3 id="特殊符号"><a href="#特殊符号" class="headerlink" title="特殊符号"></a>特殊符号</h3><p><img src="LaTeX%E6%9D%82%E8%AE%B0/symbol.jpg?70" alt=""></p>
+<p>LaTeX里更特殊的符号其实是靠<code>tkiz</code>包绘制出来的, 比如上面这段话里的圆圈1, 是通过在导言区定义了一个新的命令<code>\ballnumber{}</code>然后在文中调用的方式来实现的:</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">% 导言区</span><br><span class="line">\usepackage{tikz}  % 绘图宏包</span><br><span class="line">\newcommand{\ballnumber}[1]{</span><br><span class="line">    \tikz[baseline=(myanchor.base)]</span><br><span class="line">    \node[circle,fill=.,inner sep=1pt](myanchor){\color{-.}\bfseries\footnotesize #1};</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这样的东西要用只能是现场上网搜了. 在这个<a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="noopener">手绘查询符号网站</a>可以通过手绘的方式查到绝大多数符号 (但上面说的这个圆圈1查不到). 这里再吹一下VSC的LaTeX Workshop插件, 提供了一个快速插入常见符号LaTeX命令的面板, 还能快速插入常用tkiz绘制 🐮</p>
+<p><img src="LaTeX%E6%9D%82%E8%AE%B0/snippet.jpg?60" alt=""></p>
 <h2 id="中文支持"><a href="#中文支持" class="headerlink" title="中文支持"></a>中文支持</h2><p><a href="https://www.overleaf.com/learn/latex/Chinese#xeCJK_with_XeLaTeX" target="_blank" rel="noopener">中文支持</a></p>
 <h2 id="构建流程"><a href="#构建流程" class="headerlink" title="构建流程"></a>构建流程</h2><p><a href="https://www.overleaf.com/learn/latex/Choosing_a_LaTeX_Compiler" target="_blank" rel="noopener">选择overleaf编译器</a></p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://libguides.nps.edu/citation/ieee-bibtex" target="_blank" rel="noopener">各种东西的bibtex</a></p>
