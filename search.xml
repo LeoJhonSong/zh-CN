@@ -629,6 +629,139 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
       </categories>
   </entry>
   <entry>
+    <title>麦语言速成</title>
+    <url>/zh-CN/2019/01/17/%E9%BA%A6%E8%AF%AD%E8%A8%80%E9%80%9F%E6%88%90/</url>
+    <content><![CDATA[<blockquote>
+<p>因为父亲经常炒期货，我速成一下<a href="https://www.wenhua.com.cn/myy/" target="_blank" rel="noopener">麦语言</a>来减轻一下他的工作量吧。</p>
+</blockquote>
+<a id="more"></a>
+
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 我体验下来觉得期货风险真的特别大, 能看盘时还是盯着点比较好.</p>
+<p>随着我逐渐了解才发现量化交易并没有我想象中那么简单…单说
+<a href="https://www.zhihu.com/question/25404359" target="_blank" rel="noopener">这些业内人士使用的语言</a>就五花八门…<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8">🤦♂</span>
+<a href="https://zhuanlan.zhihu.com/p/33839493" target="_blank" rel="noopener">这位仁兄</a>则让我大概了解了局面.
+站在一个接触编程有一段时间的人的角度，我是觉得用C#编写模型比用麦语言看着NB多了，但我明显没那水平和精力,更何况我觉得知乎这个提问里的回答都说的很有道理,<a href="https://www.zhihu.com/question/36803590" target="_blank" rel="noopener">能赚钱的工具就是好工具</a>
+。还是老老实实研究一下传说中用<strong>易语言</strong>编写的麦语言<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8">🤦♂</span></p>
+<blockquote>
+<p>看资料过程中<a href="http://www.tradeblazer.net/" target="_blank" rel="noopener">交易开拓者</a>(简称<strong>TB</strong>)和
+<a href="https://www.multicharts.cn/" target="_blank" rel="noopener">MultiCharts</a>(简称<strong>MC</strong>)也经常被提及。</p>
+</blockquote>
+<h2 id="主要参考资料"><a href="#主要参考资料" class="headerlink" title="主要参考资料"></a>主要参考资料</h2><p>我觉得最蛋疼的是这玩意好像没法debug啊!!<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f627.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f627.png?v8">😧</span></p>
+<ul>
+<li><a href="麦语言速成/教程.zip">网上找到的一套PPT教程</a>，并附上对应视频教程的<a href="https://pan.baidu.com/s/1foE6ORfqdGHyTQ-ZW9NPVg" target="_blank" rel="noopener">百度云链接</a></li>
+<li><a href="http://www.wenhua.com.cn/guide/wh8/index.htm" target="_blank" rel="noopener">智赢wh8使用说明书</a></li>
+<li><a href="http://www.wenhua.com.cn/guide/views41a3.htm" target="_blank" rel="noopener">wh8趋势跟踪模型语法参考</a></li>
+<li><a href="http://www.wenhua.com.cn/guide/wh8_zjyfhs2.htm" target="_blank" rel="noopener">wh8算法交易模型语法参考</a></li>
+</ul>
+<p>这套PPT有文华财经的水印，大概是官方教程吧。而且我觉得讲得很浅显也比较详细了,好评<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<h2 id="麦语言语法简记"><a href="#麦语言语法简记" class="headerlink" title="麦语言语法简记"></a>麦语言语法简记</h2><h3 id="算法交易模型与趋势跟踪模型"><a href="#算法交易模型与趋势跟踪模型" class="headerlink" title="算法交易模型与趋势跟踪模型"></a>算法交易模型与趋势跟踪模型</h3><p>打开wh8后我发现可以用来交易的分两种模型 (即代码), 分
+<a href="http://www.wenhua.com.cn/new_guide/Wh8/view4_6.html" target="_blank" rel="noopener">算法交易模型和趋势跟踪模型</a>,
+普通的趋势交易策略使用趋势模型编写，加载到程序化平台运行实现自动交易；与趋势无关的盘口高频交易模型，需要用算法模型编写. 一开始我并没有理解这两种模型的区别,
+(实际这两个模型的名字非常直白的指出了两者的应用领域)
+看到算法交易模型使用的是类C语法就果断开始写这个, 后来我才发现其中区别:</p>
+<ul>
+<li>趋势跟踪模型中可以调用很多常用分析指标, 比如布林通道, 比如指数加权移动平均, 更注重对目标的<strong>趋势</strong>的分析</li>
+<li>算法跟踪模型更多的是能调用未经处理的精确数据, 甚至不提供EMA等很常用的分析指标
+(如果需要只能自己写), 这类模型更注重于对<strong>实时行情</strong> (即<strong>盘口</strong>) 的处理.</li>
+<li>算法交易模型的回测只提供一日的tick数据, 不支持更久的回测.</li>
+</ul>
+<p>看了wh8说明书中<a href="http://www.wenhua.com.cn/new_guide/Wh8/view4_5.html" target="_blank" rel="noopener">相关章节</a>
+个人觉得算法交易模型更多应当与趋势跟踪模型配合使用, 说明书有句话说得好</p>
+<blockquote>
+<p>利用趋势模型可以有效捕捉趋势行情的交易方向，当交易方向确定，下一步便是寻找入场点。一个精准的入场点位是交易成功的起点，使用盘口的高频报价辅助判断无疑是最合适的方案</p>
+</blockquote>
+<p>也即是说由<strong>趋势模型</strong>判断是做多还是做空, 由<strong>算法模型</strong>判断买, 卖精确时间是比较科学的运用方式.</p>
+<p>由于我需要写的模型并不要求高频交易, 主要的是做小时线, 因此只建立趋势模型. (趋势模型语法太低级也只好忍了<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8">😢</span>)</p>
+<h3 id="一开一平信号过滤模型·加减仓模型等"><a href="#一开一平信号过滤模型·加减仓模型等" class="headerlink" title="一开一平信号过滤模型·加减仓模型等"></a>一开一平信号过滤模型·加减仓模型等</h3><p>以上是一种分类方式, 另外按交易行为分类可以分为一开一平信号过滤模型, 加减仓模型等模型.
+<strong>一开一平模型</strong>限定了必须一平跟随一开或者一开跟随一平, 如果是简单模型还是很方便, 但无法特定开仓手数, 只能在开始运行模型时指定整个模型开仓手数, 也无法加仓. 而<strong>加减仓模型</strong>打破了前述弊端, 但需要自己设置开闭仓信号滤波器, 费点脑子.
+<a href="http://www.wenhua.com.cn/popwin/cxhmingci.htm" target="_blank" rel="noopener">模型列表</a></p>
+<h3 id="算法交易模型与C的比较"><a href="#算法交易模型与C的比较" class="headerlink" title="算法交易模型与C的比较"></a>算法交易模型与C的比较</h3><p>因为也体验了一会算法模型的语法, 稍作整理. 使用下来感觉与C语言语法区别主要如下:</p>
+<ul>
+<li>不需要引用头文件</li>
+<li>变量可以用<strong>GLOBAL_VAR</strong>或<strong>VAR</strong>关键字来声明, 变量是动态数据类型, 似乎也可以使用
+<strong>WriteGlobal</strong>, <strong>WriteGlobalF</strong> 等来定义整型, 浮点等变量. (文华给出的所有示例中定义变量竟然全部定义的全局变量也是很迷了)</li>
+<li>函数类型可以是<strong>VOID</strong>或<strong>VAR</strong>, 当然如果需要返回值需要定义为<strong>VAR</strong>型</li>
+<li>函数, 变量可以先引用后声明</li>
+<li>麦语言的函数是可以有返回值的! 但是要把要返回的值括起来. (参考<a href="http://www.wenhua.com.cn/guide/wh8_zjyfhs2.htm" target="_blank" rel="noopener">这里</a>)</li>
+</ul>
+<h3 id="趋势跟踪模型语法简记"><a href="#趋势跟踪模型语法简记" class="headerlink" title="趋势跟踪模型语法简记"></a>趋势跟踪模型语法简记</h3><p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> 常用语句:</p>
+<table>
+<thead>
+<tr>
+<th>语句</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>=</td>
+<td><strong>等于</strong>操作符 :warning:趋势模型中赋值操作符为<code>:=</code>. 应注意等于操作符<strong>只有一个</strong>=</td>
+</tr>
+<tr>
+<td>:</td>
+<td>定义变量并且加载模型时显示图线. 冒号前为变量名.</td>
+</tr>
+<tr>
+<td>:=</td>
+<td>定义变量并且不显示图线</td>
+</tr>
+<tr>
+<td>#IMPORT [PERIOD,N,FORMULA] AS VAR</td>
+<td><a href="#跨周期编写">见下</a></td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>逻辑与</td>
+</tr>
+<tr>
+<td>||</td>
+<td>逻辑或</td>
+</tr>
+<tr>
+<td>IF, THEN</td>
+<td>参见<a href="http://www.wenhua.com.cn/guide/views41a3.htm" target="_blank" rel="noopener">这里</a></td>
+</tr>
+</tbody></table>
+<h3 id="模组"><a href="#模组" class="headerlink" title="模组"></a>模组</h3><p>算法交易模型中可以调用的一大串函数有类似<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f447.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f447.png?v8">👇</span>这样的函数说明.</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">注：</span><br><span class="line">该函数前必须用AA.的形式来调用，其中AA为字符串变量或者模组名。该函数不能单独使用。</span><br></pre></td></tr></tbody></table></figure>
+
+<p>开始我以为模组也是模型的意思, 后来看到示例里的用法似乎模组类似于<strong>类</strong>, 每个模组对应一个实例, 可以调用里面的各种函数来处理这个合约的数据, 而且每个模型也可以是一个模组一个模型可以调用另一个模型的函数, 就很像类. <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8">🤔</span>我是这样理解的</p>
+<h3 id="逻辑判断"><a href="#逻辑判断" class="headerlink" title="逻辑判断"></a>逻辑判断</h3><p>看过wh8给出的示例后我发现官方风格写法里趋势模型基本没有用过IF, ELSE什么的, 普遍是一句话浓缩一串条件搞定. 主要这玩意语法就让人懒得写IF, ELSE…而算法模型中运用IF, ELSE较多.</p>
+<p>很有意思的是趋势模型中可以将一串判断条件赋值给一个变量作为布林变量. 然后通常是以下面这样的形式来调用</p>
+<p><code>[布林变量], [交易指令]</code></p>
+<p>另外趋势模型中逻辑运算操作符只有逻辑与和逻辑或, 如果需要其他运算, 我是使用的<code>NOT()</code>函数</p>
+<h3 id="跨周期编写"><a href="#跨周期编写" class="headerlink" title="跨周期编写"></a>跨周期编写</h3><p>跨周期模型函数: #IMPORT [PERIOD,N,FORMULA]</p>
+<p>举例: <code>#IMPORT[DAY,2,WHBXSF] AS VAR1</code><br>调取自定义2日线周期上WHBXSF指标中的数据. 需要先编写被引用的指标 (只有一串变量的模型似乎称为<strong>指标</strong>)</p>
+<p>具体可以参考<a href="http://www.2818668.com/369.html" target="_blank" rel="noopener">这个</a></p>
+<h2 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h2><ul>
+<li>到现在我也不确定这些模型是循环运行还是怎么在执行, 如果是循环运行一次运行时间是多长</li>
+</ul>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>搜索过程中看到的<a href="https://zhuanlan.zhihu.com/p/52867020" target="_blank" rel="noopener">十六套经典策略</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>量化交易</category>
+        <category>语言</category>
+        <category>麦语言</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Bug List</title>
     <url>/zh-CN/2019/02/05/Bug-List/</url>
     <content><![CDATA[<p>我想记录一下我遇到过的各种bug, 不论大小. 原本我从一开始学编程的时候就在这么做了, 但我也忘了我什么时候竟然怠慢了这件事! 我会想到记录这些是上大学前的暑假看到
@@ -773,139 +906,6 @@ Address already in use</strong>, 我的服务器端监听的端口处于 <strong
       </script>]]></content>
       <categories>
         <category>Bug List</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>麦语言速成</title>
-    <url>/zh-CN/2019/01/17/%E9%BA%A6%E8%AF%AD%E8%A8%80%E9%80%9F%E6%88%90/</url>
-    <content><![CDATA[<blockquote>
-<p>因为父亲经常炒期货，我速成一下<a href="https://www.wenhua.com.cn/myy/" target="_blank" rel="noopener">麦语言</a>来减轻一下他的工作量吧。</p>
-</blockquote>
-<a id="more"></a>
-
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 我体验下来觉得期货风险真的特别大, 能看盘时还是盯着点比较好.</p>
-<p>随着我逐渐了解才发现量化交易并没有我想象中那么简单…单说
-<a href="https://www.zhihu.com/question/25404359" target="_blank" rel="noopener">这些业内人士使用的语言</a>就五花八门…<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8">🤦♂</span>
-<a href="https://zhuanlan.zhihu.com/p/33839493" target="_blank" rel="noopener">这位仁兄</a>则让我大概了解了局面.
-站在一个接触编程有一段时间的人的角度，我是觉得用C#编写模型比用麦语言看着NB多了，但我明显没那水平和精力,更何况我觉得知乎这个提问里的回答都说的很有道理,<a href="https://www.zhihu.com/question/36803590" target="_blank" rel="noopener">能赚钱的工具就是好工具</a>
-。还是老老实实研究一下传说中用<strong>易语言</strong>编写的麦语言<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8">🤦♂</span></p>
-<blockquote>
-<p>看资料过程中<a href="http://www.tradeblazer.net/" target="_blank" rel="noopener">交易开拓者</a>(简称<strong>TB</strong>)和
-<a href="https://www.multicharts.cn/" target="_blank" rel="noopener">MultiCharts</a>(简称<strong>MC</strong>)也经常被提及。</p>
-</blockquote>
-<h2 id="主要参考资料"><a href="#主要参考资料" class="headerlink" title="主要参考资料"></a>主要参考资料</h2><p>我觉得最蛋疼的是这玩意好像没法debug啊!!<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f627.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f627.png?v8">😧</span></p>
-<ul>
-<li><a href="麦语言速成/教程.zip">网上找到的一套PPT教程</a>，并附上对应视频教程的<a href="https://pan.baidu.com/s/1foE6ORfqdGHyTQ-ZW9NPVg" target="_blank" rel="noopener">百度云链接</a></li>
-<li><a href="http://www.wenhua.com.cn/guide/wh8/index.htm" target="_blank" rel="noopener">智赢wh8使用说明书</a></li>
-<li><a href="http://www.wenhua.com.cn/guide/views41a3.htm" target="_blank" rel="noopener">wh8趋势跟踪模型语法参考</a></li>
-<li><a href="http://www.wenhua.com.cn/guide/wh8_zjyfhs2.htm" target="_blank" rel="noopener">wh8算法交易模型语法参考</a></li>
-</ul>
-<p>这套PPT有文华财经的水印，大概是官方教程吧。而且我觉得讲得很浅显也比较详细了,好评<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<h2 id="麦语言语法简记"><a href="#麦语言语法简记" class="headerlink" title="麦语言语法简记"></a>麦语言语法简记</h2><h3 id="算法交易模型与趋势跟踪模型"><a href="#算法交易模型与趋势跟踪模型" class="headerlink" title="算法交易模型与趋势跟踪模型"></a>算法交易模型与趋势跟踪模型</h3><p>打开wh8后我发现可以用来交易的分两种模型 (即代码), 分
-<a href="http://www.wenhua.com.cn/new_guide/Wh8/view4_6.html" target="_blank" rel="noopener">算法交易模型和趋势跟踪模型</a>,
-普通的趋势交易策略使用趋势模型编写，加载到程序化平台运行实现自动交易；与趋势无关的盘口高频交易模型，需要用算法模型编写. 一开始我并没有理解这两种模型的区别,
-(实际这两个模型的名字非常直白的指出了两者的应用领域)
-看到算法交易模型使用的是类C语法就果断开始写这个, 后来我才发现其中区别:</p>
-<ul>
-<li>趋势跟踪模型中可以调用很多常用分析指标, 比如布林通道, 比如指数加权移动平均, 更注重对目标的<strong>趋势</strong>的分析</li>
-<li>算法跟踪模型更多的是能调用未经处理的精确数据, 甚至不提供EMA等很常用的分析指标
-(如果需要只能自己写), 这类模型更注重于对<strong>实时行情</strong> (即<strong>盘口</strong>) 的处理.</li>
-<li>算法交易模型的回测只提供一日的tick数据, 不支持更久的回测.</li>
-</ul>
-<p>看了wh8说明书中<a href="http://www.wenhua.com.cn/new_guide/Wh8/view4_5.html" target="_blank" rel="noopener">相关章节</a>
-个人觉得算法交易模型更多应当与趋势跟踪模型配合使用, 说明书有句话说得好</p>
-<blockquote>
-<p>利用趋势模型可以有效捕捉趋势行情的交易方向，当交易方向确定，下一步便是寻找入场点。一个精准的入场点位是交易成功的起点，使用盘口的高频报价辅助判断无疑是最合适的方案</p>
-</blockquote>
-<p>也即是说由<strong>趋势模型</strong>判断是做多还是做空, 由<strong>算法模型</strong>判断买, 卖精确时间是比较科学的运用方式.</p>
-<p>由于我需要写的模型并不要求高频交易, 主要的是做小时线, 因此只建立趋势模型. (趋势模型语法太低级也只好忍了<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8">😢</span>)</p>
-<h3 id="一开一平信号过滤模型·加减仓模型等"><a href="#一开一平信号过滤模型·加减仓模型等" class="headerlink" title="一开一平信号过滤模型·加减仓模型等"></a>一开一平信号过滤模型·加减仓模型等</h3><p>以上是一种分类方式, 另外按交易行为分类可以分为一开一平信号过滤模型, 加减仓模型等模型.
-<strong>一开一平模型</strong>限定了必须一平跟随一开或者一开跟随一平, 如果是简单模型还是很方便, 但无法特定开仓手数, 只能在开始运行模型时指定整个模型开仓手数, 也无法加仓. 而<strong>加减仓模型</strong>打破了前述弊端, 但需要自己设置开闭仓信号滤波器, 费点脑子.
-<a href="http://www.wenhua.com.cn/popwin/cxhmingci.htm" target="_blank" rel="noopener">模型列表</a></p>
-<h3 id="算法交易模型与C的比较"><a href="#算法交易模型与C的比较" class="headerlink" title="算法交易模型与C的比较"></a>算法交易模型与C的比较</h3><p>因为也体验了一会算法模型的语法, 稍作整理. 使用下来感觉与C语言语法区别主要如下:</p>
-<ul>
-<li>不需要引用头文件</li>
-<li>变量可以用<strong>GLOBAL_VAR</strong>或<strong>VAR</strong>关键字来声明, 变量是动态数据类型, 似乎也可以使用
-<strong>WriteGlobal</strong>, <strong>WriteGlobalF</strong> 等来定义整型, 浮点等变量. (文华给出的所有示例中定义变量竟然全部定义的全局变量也是很迷了)</li>
-<li>函数类型可以是<strong>VOID</strong>或<strong>VAR</strong>, 当然如果需要返回值需要定义为<strong>VAR</strong>型</li>
-<li>函数, 变量可以先引用后声明</li>
-<li>麦语言的函数是可以有返回值的! 但是要把要返回的值括起来. (参考<a href="http://www.wenhua.com.cn/guide/wh8_zjyfhs2.htm" target="_blank" rel="noopener">这里</a>)</li>
-</ul>
-<h3 id="趋势跟踪模型语法简记"><a href="#趋势跟踪模型语法简记" class="headerlink" title="趋势跟踪模型语法简记"></a>趋势跟踪模型语法简记</h3><p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> 常用语句:</p>
-<table>
-<thead>
-<tr>
-<th>语句</th>
-<th>注释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>=</td>
-<td><strong>等于</strong>操作符 :warning:趋势模型中赋值操作符为<code>:=</code>. 应注意等于操作符<strong>只有一个</strong>=</td>
-</tr>
-<tr>
-<td>:</td>
-<td>定义变量并且加载模型时显示图线. 冒号前为变量名.</td>
-</tr>
-<tr>
-<td>:=</td>
-<td>定义变量并且不显示图线</td>
-</tr>
-<tr>
-<td>#IMPORT [PERIOD,N,FORMULA] AS VAR</td>
-<td><a href="#跨周期编写">见下</a></td>
-</tr>
-<tr>
-<td>&amp;&amp;</td>
-<td>逻辑与</td>
-</tr>
-<tr>
-<td>||</td>
-<td>逻辑或</td>
-</tr>
-<tr>
-<td>IF, THEN</td>
-<td>参见<a href="http://www.wenhua.com.cn/guide/views41a3.htm" target="_blank" rel="noopener">这里</a></td>
-</tr>
-</tbody></table>
-<h3 id="模组"><a href="#模组" class="headerlink" title="模组"></a>模组</h3><p>算法交易模型中可以调用的一大串函数有类似<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f447.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f447.png?v8">👇</span>这样的函数说明.</p>
-<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">注：</span><br><span class="line">该函数前必须用AA.的形式来调用，其中AA为字符串变量或者模组名。该函数不能单独使用。</span><br></pre></td></tr></tbody></table></figure>
-
-<p>开始我以为模组也是模型的意思, 后来看到示例里的用法似乎模组类似于<strong>类</strong>, 每个模组对应一个实例, 可以调用里面的各种函数来处理这个合约的数据, 而且每个模型也可以是一个模组一个模型可以调用另一个模型的函数, 就很像类. <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8">🤔</span>我是这样理解的</p>
-<h3 id="逻辑判断"><a href="#逻辑判断" class="headerlink" title="逻辑判断"></a>逻辑判断</h3><p>看过wh8给出的示例后我发现官方风格写法里趋势模型基本没有用过IF, ELSE什么的, 普遍是一句话浓缩一串条件搞定. 主要这玩意语法就让人懒得写IF, ELSE…而算法模型中运用IF, ELSE较多.</p>
-<p>很有意思的是趋势模型中可以将一串判断条件赋值给一个变量作为布林变量. 然后通常是以下面这样的形式来调用</p>
-<p><code>[布林变量], [交易指令]</code></p>
-<p>另外趋势模型中逻辑运算操作符只有逻辑与和逻辑或, 如果需要其他运算, 我是使用的<code>NOT()</code>函数</p>
-<h3 id="跨周期编写"><a href="#跨周期编写" class="headerlink" title="跨周期编写"></a>跨周期编写</h3><p>跨周期模型函数: #IMPORT [PERIOD,N,FORMULA]</p>
-<p>举例: <code>#IMPORT[DAY,2,WHBXSF] AS VAR1</code><br>调取自定义2日线周期上WHBXSF指标中的数据. 需要先编写被引用的指标 (只有一串变量的模型似乎称为<strong>指标</strong>)</p>
-<p>具体可以参考<a href="http://www.2818668.com/369.html" target="_blank" rel="noopener">这个</a></p>
-<h2 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h2><ul>
-<li>到现在我也不确定这些模型是循环运行还是怎么在执行, 如果是循环运行一次运行时间是多长</li>
-</ul>
-<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>搜索过程中看到的<a href="https://zhuanlan.zhihu.com/p/52867020" target="_blank" rel="noopener">十六套经典策略</a></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>量化交易</category>
-        <category>语言</category>
-        <category>麦语言</category>
       </categories>
   </entry>
   <entry>
@@ -1075,74 +1075,6 @@ Address already in use</strong>, 我的服务器端监听的端口处于 <strong
         <category>语言</category>
         <category>版本控制</category>
         <category>Git</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>我发布了扩展包!</title>
-    <url>/zh-CN/2019/02/27/%E6%88%91%E5%8F%91%E5%B8%83%E4%BA%86%E6%89%A9%E5%B1%95%E5%8C%85/</url>
-    <content><![CDATA[<p>看了Poy Chang 的<a href="https://poychang.github.io/build-vscode-extension/" target="_blank" rel="noopener">制作VSC扩展包</a>,
-<a href="https://poychang.github.io/publish-extension-to-visual-studio-marketplace/" target="_blank" rel="noopener">发布扩展包至 Extension Marketplace</a>
-两篇文章, 我兴趣大发, 也发布了自己的扩展包!</p>
-<a id="more"></a>
-
-<p>首先说说为什么想糊几个扩展包:</p>
-<ol>
-<li>好有趣, 假装自己也写了好几个很有用的扩展, 装逼利器</li>
-<li>如果VSC启用了过多插件启动得会很慢, 但一个一个禁用插件又很费事. 但有趣的是只要禁用一个扩展包其中包含的扩展都会被禁用, 因此我把我使用的扩展按用途分类做成了扩展包. 这样批量禁用超方便👍</li>
-</ol>
-<p>实际上Poy说得很详细, 制作也很简单, 毕竟我只是想制作个扩展包, 只要把大佬们的插件整合一番就好了.
-一套流程大致有以下几个步骤:</p>
-<ol>
-<li><p>安装 yeoman 和 VSC扩展生成器(我自己瞎翻译的), 安装VSC扩展管理工具(还是瞎翻译的)</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">npm install -g yo generator-code</span><br><span class="line">npm install -g vsce</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>注册成为开发者, 搞到一个 <strong>Personal Access Tokens</strong></p>
-<p>💡 Poy提供的注册接口我无法进入, 推荐点击 <a href="https://visualstudio.com" target="_blank" rel="noopener">https://visualstudio.com</a> 后登陆微软账号, 就能看到很明显的注册开发者账号的按钮了✌️<br>⚠️ 这个 token 一定要保存好阿, 这混蛋玩意只显示这一次, 而你有可能多次用到</p>
-</li>
-<li><p>生成扩展包模板</p>
-</li>
-<li><p>把扩展包的显示名, 扩展包的名字 (显示名和名字是不一样的, 你的扩展包显示名可以和其他人的重名,
-但每个扩展的名字是唯一的), 概述, 随便想的版本号, 作者名, 扩展包的图标的地址,
-在github的仓库地址, 想收录进扩展包的扩展的名字统统塞进 <strong>package.json</strong> .</p>
-</li>
-<li><p>糊一糊 <strong>README</strong> 和 <strong>CHANGELOG.md</strong></p>
-</li>
-<li><p>发布!</p>
-</li>
-</ol>
-<p>这里是我发布的几个扩展包, 欢迎体验!</p>
-<ul>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.coding-assist-extension-pack" target="_blank" rel="noopener">Coding Assist Extension Pack</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.markdown-extension-pack" target="_blank" rel="noopener">Markdown Extension Pack</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.latex-extension-pack" target="_blank" rel="noopener">LaTeX Extension Pack</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.web-extension-pack" target="_blank" rel="noopener">Web Extension Pack</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.python-extension-pack" target="_blank" rel="noopener">Python Extension Pack</a></li>
-<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.ccpp-extension-pack" target="_blank" rel="noopener">C/C++ Extension Pack</a></li>
-</ul>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>软件配置</category>
-        <category>VSC</category>
-        <category>技巧</category>
       </categories>
   </entry>
   <entry>
@@ -1570,32 +1502,46 @@ Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可�
       </categories>
   </entry>
   <entry>
-    <title>对伺服电机PID的理解</title>
-    <url>/zh-CN/2019/03/27/%E5%AF%B9%E4%BC%BA%E6%9C%8D%E7%94%B5%E6%9C%BAPID%E7%9A%84%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[<p>行吧, 继上次手搓简单卡尔曼算法后我又接触到了更多控制方面的东西. 想我一个电子工程的弟弟在这里研究术语都不知道几个的控制… 命苦啊! 最近在调机械腿, 应该说还在调那条腿, 对伺服电机里的PID算法有了些许感悟.</p>
+    <title>我发布了扩展包!</title>
+    <url>/zh-CN/2019/02/27/%E6%88%91%E5%8F%91%E5%B8%83%E4%BA%86%E6%89%A9%E5%B1%95%E5%8C%85/</url>
+    <content><![CDATA[<p>看了Poy Chang 的<a href="https://poychang.github.io/build-vscode-extension/" target="_blank" rel="noopener">制作VSC扩展包</a>,
+<a href="https://poychang.github.io/publish-extension-to-visual-studio-marketplace/" target="_blank" rel="noopener">发布扩展包至 Extension Marketplace</a>
+两篇文章, 我兴趣大发, 也发布了自己的扩展包!</p>
 <a id="more"></a>
 
-<p>这条腿的传感噪声问题因为换了传感器已经解决了, 最近的问题是<strong>不能快速, 稳定, 准确的到达指定位置</strong>. 目前通过<strong>限制电机的加速度</strong>改善了情况.</p>
-<h1 id="PID也没有那么简单"><a href="#PID也没有那么简单" class="headerlink" title="PID也没有那么简单"></a>PID也没有那么简单</h1><p>在改动前机械腿在低速状态 (很低速那种) 下表现得还是蛮好的, 但速度一旦快起来就明显有<strong>过冲</strong>, 是一抖一抖运动的, 到达位置时间反而比低速还长… 虽然我以前买了一个很简陋的四轴穿越机调过一点点PID, 感觉这算法也不难理解 (至少比卡尔曼好理解😁), 但这次发现要达到一定的精度PID也不是那么简单的东西: 经常是 “这参数加了20了怎么毛的变化都没有啊 黑人问号”, 但实际用起来又确实地感受到了差别. 并且当情况复杂的时候一个普通PID是不能满足的, 可能会用串级PID, 分段PID, 模糊PID, 专家系统PID, 容错PID, 前馈, 非线性控制之类的来改善😵</p>
-<p>🔗 参考: <a href="https://www.zhihu.com/question/22603676/answer/28847509" target="_blank" rel="noopener">关于永磁同步电机交流伺服控制系统的算法问题？ - 小心假设的回答 - 知乎</a></p>
-<h1 id="PI-·-PD-·-PID"><a href="#PI-·-PD-·-PID" class="headerlink" title="PI · PD · PID"></a>PI · PD · PID</h1><p>另外我知道了在工业中说是说PID控制器, 但<strong>实际大多是PI控制器</strong>, 因为D虽然可以增大系统阻尼, 使系统具有一定预见性, 增强了对微小变化的响应, 但也因此造成系统容易震荡, 不稳定. 而根据网上说的<strong>I比D更容易引起不稳定, 因为I引入了另一个极点.</strong> 具体啥时候用PI, PD, PID我还没有头绪.</p>
-<p>🔗 参考:</p>
+<p>首先说说为什么想糊几个扩展包:</p>
+<ol>
+<li>好有趣, 假装自己也写了好几个很有用的扩展, 装逼利器</li>
+<li>如果VSC启用了过多插件启动得会很慢, 但一个一个禁用插件又很费事. 但有趣的是只要禁用一个扩展包其中包含的扩展都会被禁用, 因此我把我使用的扩展按用途分类做成了扩展包. 这样批量禁用超方便👍</li>
+</ol>
+<p>实际上Poy说得很详细, 制作也很简单, 毕竟我只是想制作个扩展包, 只要把大佬们的插件整合一番就好了.
+一套流程大致有以下几个步骤:</p>
+<ol>
+<li><p>安装 yeoman 和 VSC扩展生成器(我自己瞎翻译的), 安装VSC扩展管理工具(还是瞎翻译的)</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">npm install -g yo generator-code</span><br><span class="line">npm install -g vsce</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>注册成为开发者, 搞到一个 <strong>Personal Access Tokens</strong></p>
+<p>💡 Poy提供的注册接口我无法进入, 推荐点击 <a href="https://visualstudio.com" target="_blank" rel="noopener">https://visualstudio.com</a> 后登陆微软账号, 就能看到很明显的注册开发者账号的按钮了✌️<br>⚠️ 这个 token 一定要保存好阿, 这混蛋玩意只显示这一次, 而你有可能多次用到</p>
+</li>
+<li><p>生成扩展包模板</p>
+</li>
+<li><p>把扩展包的显示名, 扩展包的名字 (显示名和名字是不一样的, 你的扩展包显示名可以和其他人的重名,
+但每个扩展的名字是唯一的), 概述, 随便想的版本号, 作者名, 扩展包的图标的地址,
+在github的仓库地址, 想收录进扩展包的扩展的名字统统塞进 <strong>package.json</strong> .</p>
+</li>
+<li><p>糊一糊 <strong>README</strong> 和 <strong>CHANGELOG.md</strong></p>
+</li>
+<li><p>发布!</p>
+</li>
+</ol>
+<p>这里是我发布的几个扩展包, 欢迎体验!</p>
 <ul>
-<li><a href="https://www.zhihu.com/question/26944678/answer/44687208" target="_blank" rel="noopener">哪些控制类的算法惊艳了你？ - 三郎的回答 - 知乎</a></li>
-<li><a href="http://www.sohu.com/a/155185294_464086" target="_blank" rel="noopener">PID控制算法精华和参数整定三大招</a></li>
-</ul>
-<h1 id="三环控制"><a href="#三环控制" class="headerlink" title="三环控制"></a>三环控制</h1><p>再有就是我大致理解了伺服电机三环PID是一种多么精妙而自然的设计.</p>
-<p>在调PID的时候我和师兄一度绝望, 我就说: “要不我们只保留转距环, 上层的我们重新写一遍.”当时我们使用的是<strong>位置模式</strong>控制电机. 我看电机驱动器的说明书都看得晕呼呼的, 还没怎么理解三环控制.
-但我要保留转距环的想法是很正常的:</p>
-<p>电机最基本的控制方式就是控制流过电机的电流, 也就是控制电机输出的转距. 在这一环里不是单纯的PID, 驱动器还设置了一些阈值, 防止过流烧坏电机什么的. 这一环是驱动器自整定的, 但效果也不错, 因此我认为不必自己重写这一环.</p>
-<p>然后我说:”上层我们用一个PID, 达到: 当当前位置比目标位置小就加正向转距, 当当前位置比目标位置大时加逆向转距的效果.”</p>
-<p>学长立即指出这样机械腿到达位置时的<strong>速度是不定的</strong>.我:”那就加一环速度PID, 生成一个百分数乘以转距来达到控制达到目标位置时的速度的效果”</p>
-<p>说完我一愣, 我特么这不是说了一遍<strong>电流环, 速度环, 位置环</strong>的所谓<strong>三环控制</strong>🐴</p>
-<p>🔗 参考:</p>
-<ul>
-<li><a href="http://www.voidcn.com/article/p-hxjakzgh-pw.html" target="_blank" rel="noopener">伺服电机三环控制的原理（位置环，运动环，电流环）</a></li>
-<li><a href="https://blog.csdn.net/Andy20081251/article/details/79457911" target="_blank" rel="noopener">浅谈伺服电机三种控制方式</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/21311021" target="_blank" rel="noopener">伺服电机的控制方式简述</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.coding-assist-extension-pack" target="_blank" rel="noopener">Coding Assist Extension Pack</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.markdown-extension-pack" target="_blank" rel="noopener">Markdown Extension Pack</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.latex-extension-pack" target="_blank" rel="noopener">LaTeX Extension Pack</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.web-extension-pack" target="_blank" rel="noopener">Web Extension Pack</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.python-extension-pack" target="_blank" rel="noopener">Python Extension Pack</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=LeoJhonSong.ccpp-extension-pack" target="_blank" rel="noopener">C/C++ Extension Pack</a></li>
 </ul>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -1617,9 +1563,10 @@ Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可�
           });
       </script>]]></content>
       <categories>
-        <category>算法</category>
-        <category>自动控制</category>
-        <category>随笔</category>
+        <category>工具</category>
+        <category>软件配置</category>
+        <category>VSC</category>
+        <category>技巧</category>
       </categories>
   </entry>
   <entry>
@@ -1690,6 +1637,59 @@ Linux开发xmc4500需要什么工具以及编译方式,
         <category>操作系统</category>
         <category>Linux</category>
         <category>嵌入式</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>对伺服电机PID的理解</title>
+    <url>/zh-CN/2019/03/27/%E5%AF%B9%E4%BC%BA%E6%9C%8D%E7%94%B5%E6%9C%BAPID%E7%9A%84%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<p>行吧, 继上次手搓简单卡尔曼算法后我又接触到了更多控制方面的东西. 想我一个电子工程的弟弟在这里研究术语都不知道几个的控制… 命苦啊! 最近在调机械腿, 应该说还在调那条腿, 对伺服电机里的PID算法有了些许感悟.</p>
+<a id="more"></a>
+
+<p>这条腿的传感噪声问题因为换了传感器已经解决了, 最近的问题是<strong>不能快速, 稳定, 准确的到达指定位置</strong>. 目前通过<strong>限制电机的加速度</strong>改善了情况.</p>
+<h1 id="PID也没有那么简单"><a href="#PID也没有那么简单" class="headerlink" title="PID也没有那么简单"></a>PID也没有那么简单</h1><p>在改动前机械腿在低速状态 (很低速那种) 下表现得还是蛮好的, 但速度一旦快起来就明显有<strong>过冲</strong>, 是一抖一抖运动的, 到达位置时间反而比低速还长… 虽然我以前买了一个很简陋的四轴穿越机调过一点点PID, 感觉这算法也不难理解 (至少比卡尔曼好理解😁), 但这次发现要达到一定的精度PID也不是那么简单的东西: 经常是 “这参数加了20了怎么毛的变化都没有啊 黑人问号”, 但实际用起来又确实地感受到了差别. 并且当情况复杂的时候一个普通PID是不能满足的, 可能会用串级PID, 分段PID, 模糊PID, 专家系统PID, 容错PID, 前馈, 非线性控制之类的来改善😵</p>
+<p>🔗 参考: <a href="https://www.zhihu.com/question/22603676/answer/28847509" target="_blank" rel="noopener">关于永磁同步电机交流伺服控制系统的算法问题？ - 小心假设的回答 - 知乎</a></p>
+<h1 id="PI-·-PD-·-PID"><a href="#PI-·-PD-·-PID" class="headerlink" title="PI · PD · PID"></a>PI · PD · PID</h1><p>另外我知道了在工业中说是说PID控制器, 但<strong>实际大多是PI控制器</strong>, 因为D虽然可以增大系统阻尼, 使系统具有一定预见性, 增强了对微小变化的响应, 但也因此造成系统容易震荡, 不稳定. 而根据网上说的<strong>I比D更容易引起不稳定, 因为I引入了另一个极点.</strong> 具体啥时候用PI, PD, PID我还没有头绪.</p>
+<p>🔗 参考:</p>
+<ul>
+<li><a href="https://www.zhihu.com/question/26944678/answer/44687208" target="_blank" rel="noopener">哪些控制类的算法惊艳了你？ - 三郎的回答 - 知乎</a></li>
+<li><a href="http://www.sohu.com/a/155185294_464086" target="_blank" rel="noopener">PID控制算法精华和参数整定三大招</a></li>
+</ul>
+<h1 id="三环控制"><a href="#三环控制" class="headerlink" title="三环控制"></a>三环控制</h1><p>再有就是我大致理解了伺服电机三环PID是一种多么精妙而自然的设计.</p>
+<p>在调PID的时候我和师兄一度绝望, 我就说: “要不我们只保留转距环, 上层的我们重新写一遍.”当时我们使用的是<strong>位置模式</strong>控制电机. 我看电机驱动器的说明书都看得晕呼呼的, 还没怎么理解三环控制.
+但我要保留转距环的想法是很正常的:</p>
+<p>电机最基本的控制方式就是控制流过电机的电流, 也就是控制电机输出的转距. 在这一环里不是单纯的PID, 驱动器还设置了一些阈值, 防止过流烧坏电机什么的. 这一环是驱动器自整定的, 但效果也不错, 因此我认为不必自己重写这一环.</p>
+<p>然后我说:”上层我们用一个PID, 达到: 当当前位置比目标位置小就加正向转距, 当当前位置比目标位置大时加逆向转距的效果.”</p>
+<p>学长立即指出这样机械腿到达位置时的<strong>速度是不定的</strong>.我:”那就加一环速度PID, 生成一个百分数乘以转距来达到控制达到目标位置时的速度的效果”</p>
+<p>说完我一愣, 我特么这不是说了一遍<strong>电流环, 速度环, 位置环</strong>的所谓<strong>三环控制</strong>🐴</p>
+<p>🔗 参考:</p>
+<ul>
+<li><a href="http://www.voidcn.com/article/p-hxjakzgh-pw.html" target="_blank" rel="noopener">伺服电机三环控制的原理（位置环，运动环，电流环）</a></li>
+<li><a href="https://blog.csdn.net/Andy20081251/article/details/79457911" target="_blank" rel="noopener">浅谈伺服电机三种控制方式</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/21311021" target="_blank" rel="noopener">伺服电机的控制方式简述</a></li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>自动控制</category>
+        <category>随笔</category>
       </categories>
   </entry>
   <entry>
@@ -2000,6 +2000,66 @@ abbreviation</strong>)</p>
       </script>]]></content>
       <categories>
         <category>杂记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>我打算换电脑了</title>
+    <url>/zh-CN/2019/03/30/%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/</url>
+    <content><![CDATA[<p>行吧, 电脑城是真的坑. 这辈子不会进电脑城了. 不会真香的.</p>
+<a id="more"></a>
+
+<h2 id="吐槽一下"><a href="#吐槽一下" class="headerlink" title="吐槽一下"></a>吐槽一下</h2><p>我现在的电脑是刚入大学时买的, 在电脑城😁. 我进大学被一群大佬带飞之前是个纯小白, 每天打开电脑跟随360提示赚取积分那种. 后来在群里窥视大佬们聊天, 学到了第一课:</p>
+<p>什么? <strong>360杀毒是毒瘤?</strong> 什么? <strong>电脑城就是个坑?</strong></p>
+<p>我开始是不太信的, 后来我格式化了电脑告别360. 再后来我在小米之家看着和我电脑同价位但配置好许多的电脑沉默了一会.</p>
+<p><strong>但是!!</strong> 这次出的幺蛾子让我忍不了. 前几天电脑刚开机就弹出👇</p>
+<p><img alt="hard disk problems detected" data-src="%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/HardDiskProblems.png?50"></p>
+<p>什么? <b style="color:red;">我硬盘快挂了?</b>
+当时把我吓坏了, 还以为我硬盘要爆炸了, 点开了 <strong>Disks</strong> 工具的
+<strong>SMART Data &amp; Self-Tests</strong>.</p>
+<p><img alt="self-test" data-src="%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/self-test.png"></p>
+<p>我???</p>
+<p>上网搜索了一下<a href="https://help.ubuntu.com/stable/ubuntu-help/disk-check.html.en" target="_blank" rel="noopener">年老的硬盘就容易出这种事</a>. 加上那个self-test也说我硬盘 <strong>Old-Age</strong> 了, 最多也就该有<strong>50</strong>个的坏道我现在有<strong>16376</strong>个, 那大概硬盘是真的快挂了吧. 行吧.</p>
+<p>秋头麻袋. 我这电脑才买了一年啊💢 我和几个群友交流了一下自认使用习惯还是不算差, 虽然没有及时发现坏道并隔离 (我才知道这玩意还能传染) 是我的锅, 但铁定我买来这电脑就有点问题. 忍不了💢</p>
+<h2 id="信息整理"><a href="#信息整理" class="headerlink" title="信息整理"></a>信息整理</h2><p>顺便整理一下我从群友们那听来的购买笔记本电脑的知识点好了:</p>
+<ul>
+<li><p>只是编程不打游戏的话主要关注<strong>内存大小</strong>和<strong>硬盘读写速度</strong>就好了. (机械硬盘是不能要的, 这我已经得到血泪教训了)</p>
+</li>
+<li><p>笔记本电脑的话不管 <strong>i5</strong>, <strong>i7</strong> 还是 <strong>i9</strong> 区别很小, 因为一般散热性能都不够, 处理器升温之后性能下降, 基本性能差不多. 也就是说为了省钱买 <strong>i5</strong> 就可以了. 当然有钱肯定是 <strong>i9</strong>
+走着.</p>
+</li>
+<li><p><strong>显卡</strong>一般也就游戏, 设计, 科学计算会用到的样子, 因此我这不打游戏的直男程序员就不需要太好的显卡了
+(但我发现显卡过于差的话放PPT都卡)</p>
+</li>
+<li><p>虽然几个群友强烈安利我买有至少有2k画质显示屏的电脑, 或者买来后自己换一个屏幕, 因为2k以上分辨率的屏幕体验极佳. 但他们都说<strong>看惯了2k完全不适应1080P</strong>. 那我当然是只买1080P啊😁 另外个人觉得干活用的电脑没必要弄触屏屏幕, 鼠标都嫌打断思路, 更何况触摸屏.</p>
+</li>
+<li><p>虽然linux也是用户群体极大的系统, 但linux对一些硬件设备支持相当的差, 比如有人蓝牙经常断之类. 网上也有许多地方列出了一些公认linux支持不错的电脑. 我看了一圈感觉<strong>ThinkPad</strong>和 <strong>Dell</strong> 都值得信赖. 我还翻到了个<a href="https://certification.ubuntu.com/certification/desktop/" target="_blank" rel="noopener">Ubuntu 个人电脑认证硬件</a>. 不明觉厉.</p>
+</li>
+<li><p>另外个人觉得比较重要的一点是<strong>键盘背光灯</strong>! 晚上不开灯没有背光的话真的只能埋头打字啊!</p>
+</li>
+<li><p>很多电脑虽然 <strong>处理器, 内存, 显卡, 硬盘, 屏幕</strong> 这几项是一样或者相当的, 但价格相差很多. 这是因为其他方面有关. 比如说 <strong>电池容量</strong> (和续航能力有比较大的关系), <strong>接口数量及类型</strong> (比如有几个雷电3), <strong>电脑外壳材质</strong> (比如X1C是碳纤维外壳), 是否有<strong>指纹识别器</strong> (现在Linux下也有指纹识别器的驱动了, 似乎<em>可以拿来输入sudo的密码</em>), 是否有<strong>红外摄像头</strong> (这个linux下似乎没有相关驱动, 目前唯一用处似乎就是Windows Hello), <strong>可拓展性</strong> (比如ThinkPad T480可以把内存加到32G, 而T480S最多只能加到24G), 键盘手感 (我倒是一直用不惯机械键盘😒), <strong>售后服务</strong>等</p>
+</li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>随笔</category>
       </categories>
   </entry>
   <entry>
@@ -2443,6 +2503,251 @@ UCS和Unicode分别由<strong>ISO</strong> (国际标准化组织) 和<strong>�
       </categories>
   </entry>
   <entry>
+    <title>C语言学习笔记</title>
+    <url>/zh-CN/2019/07/12/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>这篇是学习笔记, 因为我决定最近专门重新学习一下C语言.</p>
+<p>经常有人说自己入门C语言时觉得C语言很简单, 不到一个月就能入门, 但用久了会觉得C语言很难, 觉得自己还没有入门. 而我现在觉得当时速成的C语言已经全部不记得了… 虽然我目前并没有使用C的需求, 但总是看到各种C系代码, 一直头疼也不是办法, 不如温故而知新, 再次”速成”一下.</p>
+<a id="more"></a>
+
+<h1 id="语句与行"><a href="#语句与行" class="headerlink" title="语句与行"></a>语句与行</h1><p>C语言我感觉对格式要求蛮宽松的, 可以一行多个语句 (每个语句必须以<code>;</code>结尾), 也可以跨行写语句(在行末写<code>\</code>折行), 不像python对缩进都有严格要求.</p>
+<p>🌟 代码风格的话我只认<strong>VS风</strong>, 就是Visual Studio格式化出来的样式. 是的我是<strong>大括号换行派</strong>!</p>
+<p>💡 要注意的是预编译指令必须一行不能写多个语句, 但可以折行.</p>
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p>有两种方式</p>
+<h2 id="推荐的方式"><a href="#推荐的方式" class="headerlink" title="推荐的方式"></a>推荐的方式</h2><p>👇这种注释可以跨行写, 也可以在行内写</p>
+<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="comment">/*comment*/</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="comment">/*comment</span></span><br><span class="line"><span class="comment">comment</span></span><br><span class="line"><span class="comment">comment*/</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>💡值得一提的是只要出现 <strong>/*</strong> 就会被识别为注释的开始, 如果想把y除z指向的内存的值赋给x写成下面这样是不行的.</p>
+<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line">x = y<span class="comment">/*z</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>但这个问题也很好解决, 用空格或括号就能解决.</p>
+<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line">x = y / *z</span><br><span class="line">x = y/(*z)</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="不推荐的方式"><a href="#不推荐的方式" class="headerlink" title="不推荐的方式"></a>不推荐的方式</h2><p>这样只能单行注释</p>
+<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line">code  <span class="comment">// comment</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>❗️要注意这种注释方式是借鉴自C++, 在C99中才被标准化, 而目前使用最广泛的是C89标准,
+也就是说不使用是比较保险的.</p>
+<h1 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h1><p>C语言对内存的操作似乎很多, 也很注重内存管理.</p>
+<p>C语言为内存的分配和管理提供了几个函数. 这些函数可以在 &lt;stdlib.h&gt; 头文件中找到.</p>
+<p><strong>void *malloc(size_t size)</strong> 分配一块<code>size</code>大小的内存</p>
+<p><strong>void *calloc(size_t num, size_t size)</strong> 分配一块储存了一个<code>num</code>长, 每个元素
+<code>size</code>字节的内存并将所有位初始化为0</p>
+<p><strong>void *realloc(void *ptr, size_t size)</strong> 重新分配内存, 把内存扩展到 newsize</p>
+<p><strong>void free(void *ptr)</strong> 释放<code>ptr</code>所指向的内存</p>
+<p>💡 malloc是memory allocate, realloc是reallocate, calloc不知道是啥.</p>
+<h1 id="段与栈与堆"><a href="#段与栈与堆" class="headerlink" title="段与栈与堆"></a>段与栈与堆</h1><p><strong>段</strong> (segmentation)是指二进制可执行文件内的区域,所有某种特定类型信息被保存在里面.可以用<code>size</code>命令得到可执行文件中各个段的大小. <strong>正文段</strong> (Text Segment)用于储存指令, <strong>数据段</strong> (Data Segment)用于储存已初始化的全局变量, <strong>BSS段</strong> (BSS
+Segment)用于储存未赋值的全局变量所需的空间.</p>
+<p><strong>调用栈</strong>并不储存在可执行文件中,而是在运行时创建.调用栈所在的段称为堆栈段(Stack
+Segment). 和其他段一样, 堆栈段也有自己的大小, 不能被越界访问, 否则就会出现段错误
+(Segmentation Fault). 这种情况叫<strong>栈溢出</strong>.</p>
+<p>栈空间有多大和操作系统相关. 在Linux中, 栈大小是由系统命令<code>ulimit</code>指定的, 例如
+<code>ulimit -a</code>显示当前栈大小, 而<code>ulimit -s 32768</code>将把栈大小指定为32MB. 但在Windows
+中, 栈大小是储存在可执行文件中的. 使用gcc可以这样指定可执行文件的栈大小: <code>gcc
+-Wl,--stack=16777216</code>, 这样栈大小就变为16MB</p>
+<p>💡 栈溢出不一定是递归调用过多导致的, 也可能是局部变量太大. 因此<strong>较大的数组建议储存为全局变量</strong>.</p>
+<p><strong>栈</strong>是由编译器在需要时分配的, 不需要时自动清除的变量存储区. 里面的变量通常是局部变量, 函数参数等. <strong>堆</strong>是由<code>malloc()</code>函数分配的内存块,内存释放由程序员手动控制, 在C语言由<code>free()</code>完成.</p>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>较大的数组应在main函数之外声明.</p>
+<p><code>memset(a, 0, sizeof(a))</code>能方便地把数组a清零,这个函数在<strong>string.h</strong>里.</p>
+<p>用<code>strcpy(a, b)</code>, <code>strcmp(a, b)</code>, <code>strcat(a, b)</code>来执行“赋值”、“比较”和“连接”操作, 这三个函数也在
+<strong>string.h</strong>中</p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>C语言中的字符串是以“\0”结尾的字符数组</p>
+<p>不同操作系统的回车换行符是不一致的. Windows是“\r”和“\n”两个字符,Linux是“\n”,而
+MacOS是“\r”. 如果在Windows下读取Windows文件, fgetc和getchar会把“\r””吃掉”, 只剩下“\n”; 但如果要在Linux下读取同样一个文件, 它们会忠实地先读取“\r”, 然后才是“\n”.</p>
+<p>很有意思的一个小问题: “5”, ‘5’ 和 5 有什么区别?<br>“5”是一个字符串, ‘5’是一个字符常量, 5是一个数字常量</p>
+<h1 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h1><p>用int* a声明的变量a是指向int型变量的指针. 赋值a = &amp;b的含义是把变量b的地址存放在指针a中, 表达式<em>a代表a指向的变量, 既可以放在赋值符号的左边(左值), 也可以放在右边
+(右值) 注意: <em>a是指“a指向的变量”, 而不仅是“a指向的变量所拥有的值”. 理解这一点相当重要. 例如, *a = *a + 1就是让a指向的变量自增1. 甚至可以把它写成(</em>a)++. 注意不要写成<em>a++, 因为<code>++</code>运算符的优先级高于取内容运算符 `</em>`, 实际上会被解释成</em>(a++).</p>
+<h2 id="指针的运算"><a href="#指针的运算" class="headerlink" title="指针的运算"></a>指针的运算</h2><ul>
+<li>一个指针变量加/减一个整数是将该指针变量的原值(是一个地址)和它指向的变量所占用的内存单元字节数相加或相减.</li>
+<li>两个指针变量间可以做减法, 但前提是这两个指针是指向同一个数组的元素. 两指针变量差是两个指针之间的元素个数</li>
+<li>如果两指针变量指向同一数组的元素, 他们可以进行比较运算. 另外所有指针都可以和
+NULL进行相等/不想等比较.</li>
+</ul>
+<h1 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h1><h2 id="宏定义"><a href="#宏定义" class="headerlink" title="宏定义"></a>宏定义</h2><figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> 宏名 字符串</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>宏名一般为大写, 以下划线连接单词.</p>
+<p>看了网上资料我感觉在C中宏定义主要是以下作用</p>
+<h3 id="增加代码抽象性"><a href="#增加代码抽象性" class="headerlink" title="增加代码抽象性"></a>增加代码抽象性</h3><p>用宏定义替代magic number, 或者嵌入式中一些寄存器的位操作, 一方面增强代码可读性
+(不像魔数让人不明所以, 而寄存器的位操作也很不直观), 一方面增强代码可移植性 (比如从一种单片机移植到另一种单片机, 只需更改宏定义即可)</p>
+<h3 id="防止重复定义"><a href="#防止重复定义" class="headerlink" title="防止重复定义"></a>防止重复定义</h3><figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> XXXX</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> XXXX</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>在头文件里用这样的语句来防止头文件被重复引用. 有一些头文件被重复引用会增加编译器工作, 降低编译效率, 而有一些头文件被重复引用会引起冲突 (比如如果头文件里定义了全局变量, 会发生重复定义错误).</p>
+<h3 id="控制代码编译"><a href="#控制代码编译" class="headerlink" title="控制代码编译"></a>控制代码编译</h3><p>通过Makefile控制编译选项.</p>
+<p>还能像轮子哥<a href="https://www.zhihu.com/question/22608939/answer/21963056" target="_blank" rel="noopener">这样</a>当模板用.</p>
+<p>❗️虽然宏定义的好处不少, 但除了以上情况尽量少用尽量不用宏定义, 因为这会让开发者看到的代码与编译器看到的代码不同, 容易导致想不到的问题.</p>
+<h1 id="调试技巧"><a href="#调试技巧" class="headerlink" title="调试技巧"></a>调试技巧</h1><p>调试时重点关注两方面: <strong>当前行的跳转</strong>, <strong>变量的变化</strong></p>
+<p>循环结构程序设计中最常见的两个问题: <strong>算术运算溢出</strong>, <strong>程序效率低下</strong></p>
+<p>变量在未赋值之前的值是不确定的.</p>
+<h1 id="gcc与gdb命令简记"><a href="#gcc与gdb命令简记" class="headerlink" title="gcc与gdb命令简记"></a>gcc与gdb命令简记</h1><h2 id="gcc"><a href="#gcc" class="headerlink" title="gcc"></a>gcc</h2><p>常用选项:</p>
+<table>
+<thead>
+<tr>
+<th>name_of_option</th>
+<th>我猜的全名</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-o [filename]</td>
+<td>output</td>
+<td>指定输出文件名</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>gdb</td>
+<td>生成调试用的符号表</td>
+</tr>
+<tr>
+<td>-Wall</td>
+<td>warning all</td>
+<td>This enables all the warnings about constructions that some users consider questionable, and that are easy to avoid (or modify to prevent the warning), even in conjunction with macros.</td>
+</tr>
+<tr>
+<td>-lm</td>
+<td>link math.h</td>
+<td>链接math.h. C++编译器会自动链接, 但C的代码使用了math.h却不启动这个选项很可能出错</td>
+</tr>
+<tr>
+<td>-ansi</td>
+<td>ANSI</td>
+<td>检查代码是否符合ANSI标准 (常与-Wpedantic连用)</td>
+</tr>
+<tr>
+<td>-Wpedantic</td>
+<td>warning pedantic</td>
+<td>Issue all the warnings demanded by strict ISO C and ISO C++; reject all programs that use forbidden extensions, and some other programs that do not follow ISO C and ISO C++. For ISO C, follows the version of the ISO C standard specified by any -std option used.</td>
+</tr>
+<tr>
+<td>-O1, -O2, -O3</td>
+<td>optimize</td>
+<td>开启速度优化. 开启后编译出的程序比直接编译出的程序快, -O2比-O1快, -O3比-O2快, 但为了避免优化误解代码含义, 在算法比赛中推荐-O2. 当然如果程序十分规范就没有这种担心.</td>
+</tr>
+<tr>
+<td>-DXX</td>
+<td>define XX</td>
+<td>在编译时定义XX符号 (此处XX是随意什么大写单词的意思), 位于#ifdef XX和#endif中间的语句会被编译</td>
+</tr>
+</tbody></table>
+<h3 id="gcc与g"><a href="#gcc与g" class="headerlink" title="gcc与g++"></a>gcc与g++</h3><p><code>gcc</code>到底能不能编译C++程序?</p>
+<p>在某种程度上<code>gcc</code>和<code>g++</code>都可以编译 <strong>.cpp</strong> 后缀的程序, 但是<code>gcc</code>命令不能自动和
+C++程序使用的库链接. <code>gcc</code>把后缀为 <strong>.c</strong> 的当作是C程序,而<code>g++</code>将其当作C++程序.
+两者都会将后缀为 <strong>.cpp</strong> 的程序视作C++程序, 要注意虽然C++是C的超集,但是两者对语法的要求是有区别的, C++的语法规则更加严谨一些. 编译阶段, <code>g++</code>会调用<code>gcc</code>,因为
+<code>gcc</code>命令不能自动链接C＋＋库, 所以通常用<code>g++</code>来完成链接, 统一起见,干脆编译和链接统统用g++了, 这就给人一种错觉, 好像cpp程序只能用g++似的.</p>
+<h2 id="gdb"><a href="#gdb" class="headerlink" title="gdb"></a>gdb</h2><p>💡执行gdb时加选项<code>-q</code> (quiet)可以去掉进入gdb开头的废话.</p>
+<p>常用命令:</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>全名</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>l</td>
+<td>list</td>
+<td>列出十行代码. 但可以通过<code>set listsize</code>来更改显示多少行, 用<code>show listsize</code>能查看listsize. l后可以接行号, 函数名</td>
+</tr>
+<tr>
+<td>r</td>
+<td>run</td>
+<td>开始运行程序</td>
+</tr>
+<tr>
+<td>b</td>
+<td>break</td>
+<td>设置断点, b后接行号或函数名</td>
+</tr>
+<tr>
+<td>c</td>
+<td>continue</td>
+<td>继续运行. 要注意在断点处停下后用c继续而不是r</td>
+</tr>
+<tr>
+<td>n</td>
+<td>next</td>
+<td>下一行</td>
+</tr>
+<tr>
+<td>s</td>
+<td>step</td>
+<td>与n的区别是n会执行完本行语句, 而有函数调用时s会停在函数内</td>
+</tr>
+<tr>
+<td>u</td>
+<td>until</td>
+<td>执行到指定行号或者指定函数的开头</td>
+</tr>
+<tr>
+<td>i</td>
+<td>info</td>
+<td>显示各种信息. 如i b显示所有断点,i disp显示display,而i lo显示所有局部变量</td>
+</tr>
+<tr>
+<td>disp</td>
+<td>display</td>
+<td>把一个表达式设置为display, 当程序每次停下来时都会显示其值</td>
+</tr>
+<tr>
+<td>cl</td>
+<td>clear</td>
+<td>取消断点, 和b的格式相同. 如果该位置有多个断点, 将同时取消</td>
+</tr>
+<tr>
+<td>cond</td>
+<td>condition</td>
+<td>用来设置条件断点</td>
+</tr>
+<tr>
+<td>ig</td>
+<td>ignore</td>
+<td>设置记次断点, count次以前不停止</td>
+</tr>
+<tr>
+<td>wa</td>
+<td>watch point</td>
+<td>watch a(简写为wa a)可以在变量a修改时停下,并显示出修改前后的变量值</td>
+</tr>
+<tr>
+<td>aw</td>
+<td>all watch point</td>
+<td>读写时都停下</td>
+</tr>
+<tr>
+<td>rw</td>
+<td>read watch point</td>
+<td>被读取时停下</td>
+</tr>
+<tr>
+<td>q</td>
+<td>quit</td>
+<td>退出gdb</td>
+</tr>
+</tbody></table>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>语言</category>
+        <category>C/C++</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Python中的小技巧</title>
     <url>/zh-CN/2019/07/03/Python%E4%B8%AD%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
     <content><![CDATA[<p>俺也记不住语法, 在这里记录一下常见语句.</p>
@@ -2716,42 +3021,10 @@ shift 字母</kbd>和<kbd>Ctrl 字母</kbd>的输出没有区别.</p>
       </categories>
   </entry>
   <entry>
-    <title>我打算换电脑了</title>
-    <url>/zh-CN/2019/03/30/%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/</url>
-    <content><![CDATA[<p>行吧, 电脑城是真的坑. 这辈子不会进电脑城了. 不会真香的.</p>
-<a id="more"></a>
-
-<h2 id="吐槽一下"><a href="#吐槽一下" class="headerlink" title="吐槽一下"></a>吐槽一下</h2><p>我现在的电脑是刚入大学时买的, 在电脑城😁. 我进大学被一群大佬带飞之前是个纯小白, 每天打开电脑跟随360提示赚取积分那种. 后来在群里窥视大佬们聊天, 学到了第一课:</p>
-<p>什么? <strong>360杀毒是毒瘤?</strong> 什么? <strong>电脑城就是个坑?</strong></p>
-<p>我开始是不太信的, 后来我格式化了电脑告别360. 再后来我在小米之家看着和我电脑同价位但配置好许多的电脑沉默了一会.</p>
-<p><strong>但是!!</strong> 这次出的幺蛾子让我忍不了. 前几天电脑刚开机就弹出👇</p>
-<p><img alt="hard disk problems detected" data-src="%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/HardDiskProblems.png?50"></p>
-<p>什么? <b style="color:red;">我硬盘快挂了?</b>
-当时把我吓坏了, 还以为我硬盘要爆炸了, 点开了 <strong>Disks</strong> 工具的
-<strong>SMART Data &amp; Self-Tests</strong>.</p>
-<p><img alt="self-test" data-src="%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/self-test.png"></p>
-<p>我???</p>
-<p>上网搜索了一下<a href="https://help.ubuntu.com/stable/ubuntu-help/disk-check.html.en" target="_blank" rel="noopener">年老的硬盘就容易出这种事</a>. 加上那个self-test也说我硬盘 <strong>Old-Age</strong> 了, 最多也就该有<strong>50</strong>个的坏道我现在有<strong>16376</strong>个, 那大概硬盘是真的快挂了吧. 行吧.</p>
-<p>秋头麻袋. 我这电脑才买了一年啊💢 我和几个群友交流了一下自认使用习惯还是不算差, 虽然没有及时发现坏道并隔离 (我才知道这玩意还能传染) 是我的锅, 但铁定我买来这电脑就有点问题. 忍不了💢</p>
-<h2 id="信息整理"><a href="#信息整理" class="headerlink" title="信息整理"></a>信息整理</h2><p>顺便整理一下我从群友们那听来的购买笔记本电脑的知识点好了:</p>
-<ul>
-<li><p>只是编程不打游戏的话主要关注<strong>内存大小</strong>和<strong>硬盘读写速度</strong>就好了. (机械硬盘是不能要的, 这我已经得到血泪教训了)</p>
-</li>
-<li><p>笔记本电脑的话不管 <strong>i5</strong>, <strong>i7</strong> 还是 <strong>i9</strong> 区别很小, 因为一般散热性能都不够, 处理器升温之后性能下降, 基本性能差不多. 也就是说为了省钱买 <strong>i5</strong> 就可以了. 当然有钱肯定是 <strong>i9</strong>
-走着.</p>
-</li>
-<li><p><strong>显卡</strong>一般也就游戏, 设计, 科学计算会用到的样子, 因此我这不打游戏的直男程序员就不需要太好的显卡了
-(但我发现显卡过于差的话放PPT都卡)</p>
-</li>
-<li><p>虽然几个群友强烈安利我买有至少有2k画质显示屏的电脑, 或者买来后自己换一个屏幕, 因为2k以上分辨率的屏幕体验极佳. 但他们都说<strong>看惯了2k完全不适应1080P</strong>. 那我当然是只买1080P啊😁 另外个人觉得干活用的电脑没必要弄触屏屏幕, 鼠标都嫌打断思路, 更何况触摸屏.</p>
-</li>
-<li><p>虽然linux也是用户群体极大的系统, 但linux对一些硬件设备支持相当的差, 比如有人蓝牙经常断之类. 网上也有许多地方列出了一些公认linux支持不错的电脑. 我看了一圈感觉<strong>ThinkPad</strong>和 <strong>Dell</strong> 都值得信赖. 我还翻到了个<a href="https://certification.ubuntu.com/certification/desktop/" target="_blank" rel="noopener">Ubuntu 个人电脑认证硬件</a>. 不明觉厉.</p>
-</li>
-<li><p>另外个人觉得比较重要的一点是<strong>键盘背光灯</strong>! 晚上不开灯没有背光的话真的只能埋头打字啊!</p>
-</li>
-<li><p>很多电脑虽然 <strong>处理器, 内存, 显卡, 硬盘, 屏幕</strong> 这几项是一样或者相当的, 但价格相差很多. 这是因为其他方面有关. 比如说 <strong>电池容量</strong> (和续航能力有比较大的关系), <strong>接口数量及类型</strong> (比如有几个雷电3), <strong>电脑外壳材质</strong> (比如X1C是碳纤维外壳), 是否有<strong>指纹识别器</strong> (现在Linux下也有指纹识别器的驱动了, 似乎<em>可以拿来输入sudo的密码</em>), 是否有<strong>红外摄像头</strong> (这个linux下似乎没有相关驱动, 目前唯一用处似乎就是Windows Hello), <strong>可拓展性</strong> (比如ThinkPad T480可以把内存加到32G, 而T480S最多只能加到24G), 键盘手感 (我倒是一直用不惯机械键盘😒), <strong>售后服务</strong>等</p>
-</li>
-</ul>
+    <title>C++学习笔记</title>
+    <url>/zh-CN/2019/08/11/C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>… 前几天刚说最近没有用C的需求我就开始要写C++了 🤦</p>
+<p>TODO</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -2772,230 +3045,58 @@ shift 字母</kbd>和<kbd>Ctrl 字母</kbd>的输出没有区别.</p>
           });
       </script>]]></content>
       <categories>
-        <category>随笔</category>
+        <category>杂记</category>
+        <category>语言</category>
+        <category>C/C++</category>
       </categories>
   </entry>
   <entry>
-    <title>C语言学习笔记</title>
-    <url>/zh-CN/2019/07/12/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>这篇是学习笔记, 因为我决定最近专门重新学习一下C语言.</p>
-<p>经常有人说自己入门C语言时觉得C语言很简单, 不到一个月就能入门, 但用久了会觉得C语言很难, 觉得自己还没有入门. 而我现在觉得当时速成的C语言已经全部不记得了… 虽然我目前并没有使用C的需求, 但总是看到各种C系代码, 一直头疼也不是办法, 不如温故而知新, 再次”速成”一下.</p>
+    <title>MATLAB杂记</title>
+    <url>/zh-CN/2019/08/05/MATLAB%E6%9D%82%E8%AE%B0/</url>
+    <content><![CDATA[<p>再开学的课程就要用MATLAB了, 而且了解很多机械系唯一要求学的编程语言就是MATLAB, 我决定还是稍微了解下.</p>
 <a id="more"></a>
 
-<h1 id="语句与行"><a href="#语句与行" class="headerlink" title="语句与行"></a>语句与行</h1><p>C语言我感觉对格式要求蛮宽松的, 可以一行多个语句 (每个语句必须以<code>;</code>结尾), 也可以跨行写语句(在行末写<code>\</code>折行), 不像python对缩进都有严格要求.</p>
-<p>🌟 代码风格的话我只认<strong>VS风</strong>, 就是Visual Studio格式化出来的样式. 是的我是<strong>大括号换行派</strong>!</p>
-<p>💡 要注意的是预编译指令必须一行不能写多个语句, 但可以折行.</p>
-<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p>有两种方式</p>
-<h2 id="推荐的方式"><a href="#推荐的方式" class="headerlink" title="推荐的方式"></a>推荐的方式</h2><p>👇这种注释可以跨行写, 也可以在行内写</p>
-<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="comment">/*comment*/</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="comment">/*comment</span></span><br><span class="line"><span class="comment">comment</span></span><br><span class="line"><span class="comment">comment*/</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>💡值得一提的是只要出现 <strong>/*</strong> 就会被识别为注释的开始, 如果想把y除z指向的内存的值赋给x写成下面这样是不行的.</p>
-<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line">x = y<span class="comment">/*z</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>但这个问题也很好解决, 用空格或括号就能解决.</p>
-<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line">x = y / *z</span><br><span class="line">x = y/(*z)</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="不推荐的方式"><a href="#不推荐的方式" class="headerlink" title="不推荐的方式"></a>不推荐的方式</h2><p>这样只能单行注释</p>
-<figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line">code  <span class="comment">// comment</span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>❗️要注意这种注释方式是借鉴自C++, 在C99中才被标准化, 而目前使用最广泛的是C89标准,
-也就是说不使用是比较保险的.</p>
-<h1 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h1><p>C语言对内存的操作似乎很多, 也很注重内存管理.</p>
-<p>C语言为内存的分配和管理提供了几个函数. 这些函数可以在 &lt;stdlib.h&gt; 头文件中找到.</p>
-<p><strong>void *malloc(size_t size)</strong> 分配一块<code>size</code>大小的内存</p>
-<p><strong>void *calloc(size_t num, size_t size)</strong> 分配一块储存了一个<code>num</code>长, 每个元素
-<code>size</code>字节的内存并将所有位初始化为0</p>
-<p><strong>void *realloc(void *ptr, size_t size)</strong> 重新分配内存, 把内存扩展到 newsize</p>
-<p><strong>void free(void *ptr)</strong> 释放<code>ptr</code>所指向的内存</p>
-<p>💡 malloc是memory allocate, realloc是reallocate, calloc不知道是啥.</p>
-<h1 id="段与栈与堆"><a href="#段与栈与堆" class="headerlink" title="段与栈与堆"></a>段与栈与堆</h1><p><strong>段</strong> (segmentation)是指二进制可执行文件内的区域,所有某种特定类型信息被保存在里面.可以用<code>size</code>命令得到可执行文件中各个段的大小. <strong>正文段</strong> (Text Segment)用于储存指令, <strong>数据段</strong> (Data Segment)用于储存已初始化的全局变量, <strong>BSS段</strong> (BSS
-Segment)用于储存未赋值的全局变量所需的空间.</p>
-<p><strong>调用栈</strong>并不储存在可执行文件中,而是在运行时创建.调用栈所在的段称为堆栈段(Stack
-Segment). 和其他段一样, 堆栈段也有自己的大小, 不能被越界访问, 否则就会出现段错误
-(Segmentation Fault). 这种情况叫<strong>栈溢出</strong>.</p>
-<p>栈空间有多大和操作系统相关. 在Linux中, 栈大小是由系统命令<code>ulimit</code>指定的, 例如
-<code>ulimit -a</code>显示当前栈大小, 而<code>ulimit -s 32768</code>将把栈大小指定为32MB. 但在Windows
-中, 栈大小是储存在可执行文件中的. 使用gcc可以这样指定可执行文件的栈大小: <code>gcc
--Wl,--stack=16777216</code>, 这样栈大小就变为16MB</p>
-<p>💡 栈溢出不一定是递归调用过多导致的, 也可能是局部变量太大. 因此<strong>较大的数组建议储存为全局变量</strong>.</p>
-<p><strong>栈</strong>是由编译器在需要时分配的, 不需要时自动清除的变量存储区. 里面的变量通常是局部变量, 函数参数等. <strong>堆</strong>是由<code>malloc()</code>函数分配的内存块,内存释放由程序员手动控制, 在C语言由<code>free()</code>完成.</p>
-<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>较大的数组应在main函数之外声明.</p>
-<p><code>memset(a, 0, sizeof(a))</code>能方便地把数组a清零,这个函数在<strong>string.h</strong>里.</p>
-<p>用<code>strcpy(a, b)</code>, <code>strcmp(a, b)</code>, <code>strcat(a, b)</code>来执行“赋值”、“比较”和“连接”操作, 这三个函数也在
-<strong>string.h</strong>中</p>
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>C语言中的字符串是以“\0”结尾的字符数组</p>
-<p>不同操作系统的回车换行符是不一致的. Windows是“\r”和“\n”两个字符,Linux是“\n”,而
-MacOS是“\r”. 如果在Windows下读取Windows文件, fgetc和getchar会把“\r””吃掉”, 只剩下“\n”; 但如果要在Linux下读取同样一个文件, 它们会忠实地先读取“\r”, 然后才是“\n”.</p>
-<p>很有意思的一个小问题: “5”, ‘5’ 和 5 有什么区别?<br>“5”是一个字符串, ‘5’是一个字符常量, 5是一个数字常量</p>
-<h1 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h1><p>用int* a声明的变量a是指向int型变量的指针. 赋值a = &amp;b的含义是把变量b的地址存放在指针a中, 表达式<em>a代表a指向的变量, 既可以放在赋值符号的左边(左值), 也可以放在右边
-(右值) 注意: <em>a是指“a指向的变量”, 而不仅是“a指向的变量所拥有的值”. 理解这一点相当重要. 例如, *a = *a + 1就是让a指向的变量自增1. 甚至可以把它写成(</em>a)++. 注意不要写成<em>a++, 因为<code>++</code>运算符的优先级高于取内容运算符 `</em>`, 实际上会被解释成</em>(a++).</p>
-<h2 id="指针的运算"><a href="#指针的运算" class="headerlink" title="指针的运算"></a>指针的运算</h2><ul>
-<li>一个指针变量加/减一个整数是将该指针变量的原值(是一个地址)和它指向的变量所占用的内存单元字节数相加或相减.</li>
-<li>两个指针变量间可以做减法, 但前提是这两个指针是指向同一个数组的元素. 两指针变量差是两个指针之间的元素个数</li>
-<li>如果两指针变量指向同一数组的元素, 他们可以进行比较运算. 另外所有指针都可以和
-NULL进行相等/不想等比较.</li>
+<p>首先, <a href="https://www.zhihu.com/question/37824202/answer/767114071" target="_blank" rel="noopener">MATLAB到底是不是编程语言?</a></p>
+<p>从<strong>TIOBE</strong>上有MATLAB而且MATLAB排名还不低可以看出MATLAB确实是一门编程语言, 但从上面链接可以看出MATLAB算是<strong>残疾</strong>的编程语言, 很多特性没有, 更多的是<strong>用来验证算法可行性</strong>.但我又想验证算法可行性为啥不用Python什么的, 语法也不麻烦呀? 然后我发现原本用<strong>Octave</strong>教深度学习的吴恩达现在改用<strong>Python</strong>了 😁</p>
+<p>💡 (这条是后来补的) 但其实随着使用我发现在<strong>矩阵计算方面</strong>MATLAB的语法还是比python简单很多.</p>
+<p>因此我觉得MATLAB的优势主要就在:</p>
+<ul>
+<li>语法简单, 没有编程基础的工科生也能快速掌握, 尤其计算方面的语法比Python简单太多</li>
+<li>集成度特别高, 各种工具都能轻松快速配置好</li>
+<li>能和多种语言交互, 编写界面简单</li>
+<li>很多工具都有图形界面, 操作简单, 按按键就可以, 不用写那么多代码.</li>
 </ul>
-<h1 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h1><h2 id="宏定义"><a href="#宏定义" class="headerlink" title="宏定义"></a>宏定义</h2><figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> 宏名 字符串</span></span><br></pre></td></tr></tbody></table></figure>
+<p>总而言之, 虽然缺点多多, MATLAB还是很值得一学的</p>
+<h1 id="MATLAB软件个性化设置"><a href="#MATLAB软件个性化设置" class="headerlink" title="MATLAB软件个性化设置"></a>MATLAB软件个性化设置</h1><h2 id="设置初始工作文件夹"><a href="#设置初始工作文件夹" class="headerlink" title="设置初始工作文件夹"></a>设置初始工作文件夹</h2><p>使用HOME目录作为起始工作文件夹我觉得不是什么好事, 所以最好自己指定一个合适的目录. 我使用的是MATLAB默认的<code>userpath</code>, 即<strong>Documents/MATLAB</strong>文件夹. 一方面这个文件夹看着比较合理, 一方面MATLAB说<a href="https://ww2.mathworks.cn/help/matlab/matlab_env/matlab-startup-folder.html#bujzf43" target="_blank" rel="noopener">使用userpath作为初始工作文件夹有一定好处</a>.</p>
+<p>Linux下设置MATLAB的初始工作文件夹方法和在Windows下改快捷方式的起始位置这种方法不一样, 要达到这个目的有两种方式:</p>
+<ol>
+<li>在终端输入 <code>matlab -useStartupFolderPref</code> 打开MATLAB. -useStartupFolderPref选项指定初始工作文件夹为在<strong>Preference</strong>中<strong>Initial working folder option</strong>的指定文件夹.</li>
+<li>在终端输入 <code>matlab -sd [folder]</code> 打开MATLAB. -sd选项指定初始工作文件夹为[folder]文件夹.</li>
+</ol>
+<h2 id="更改编辑界面颜色主题"><a href="#更改编辑界面颜色主题" class="headerlink" title="更改编辑界面颜色主题"></a>更改编辑界面颜色主题</h2><p>在vim, VSC, VS, CLION, Pycharm等工具用惯了黑暗主题以后拿到啥都想先换个黑暗主题. 但是找了半天也只找到了设置编辑界面颜色主题的方式, 普通操作似乎并不能自定义丑陋的灰色工具栏.</p>
+<p>最终我把界面变成了这样 👇</p>
+<p><img alt="界面" data-src="MATLAB%E6%9D%82%E8%AE%B0/appearance.png"></p>
+<ul>
+<li>颜色主题是通过<a href="https://github.com/scottclowe/matlab-schemer" target="_blank" rel="noopener">MATLAB Schemer</a>里的脚本更换的, 一键更换好评👍 因为我比较喜欢糖果色的颜色主题然后又不喜欢注释是灰色 (不管在黑色背景还是白色背景里辨析度都很低), 于是选择的主题是<a href="https://github.com/scottclowe/matlab-schemer/tree/master/schemes#dark-steel" target="_blank" rel="noopener">Dark Steel</a>.</li>
+<li>字体用的是<a href="https://github.com/powerline/fonts/tree/master/DejaVuSansMono" target="_blank" rel="noopener">DejaVu Sans Mono for Powerline</a>, 大小是11, 不过不知道为什么MATLAB显示不带效果的字体看着很粗糙, <strong>边缘锯齿状过于明显</strong>, 效果设置为了 <strong>bold</strong>, 这回好多了!</li>
+<li>布局改成了和我常用的vim, VSC差不多的布局: 资源管理器在左上, 细节信息在左下, 编辑窗口在右</li>
+</ul>
+<h1 id="MATLAB语法和工具"><a href="#MATLAB语法和工具" class="headerlink" title="MATLAB语法和工具"></a>MATLAB语法和工具</h1><h2 id="在终端运行"><a href="#在终端运行" class="headerlink" title="在终端运行"></a>在终端运行</h2><p>曾经我因为嫌MATLAB界面太丑又不能个性化想过在终端像用交互式Python一样用交互式
+MATLAB以及运行脚本. 我发现这是可行的:</p>
+<p>在终端启动交互式MATLAB:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">matlab -nojvm</span><br></pre></td></tr></tbody></table></figure>
 
-<p>宏名一般为大写, 以下划线连接单词.</p>
-<p>看了网上资料我感觉在C中宏定义主要是以下作用</p>
-<h3 id="增加代码抽象性"><a href="#增加代码抽象性" class="headerlink" title="增加代码抽象性"></a>增加代码抽象性</h3><p>用宏定义替代magic number, 或者嵌入式中一些寄存器的位操作, 一方面增强代码可读性
-(不像魔数让人不明所以, 而寄存器的位操作也很不直观), 一方面增强代码可移植性 (比如从一种单片机移植到另一种单片机, 只需更改宏定义即可)</p>
-<h3 id="防止重复定义"><a href="#防止重复定义" class="headerlink" title="防止重复定义"></a>防止重复定义</h3><figure class="highlight c"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> XXXX</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> XXXX</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></tbody></table></figure>
+<p><code>-nojvm</code>选项本身是<strong>不启动Java虚拟机</strong>的意思, 但因为Matlab的GUI都是用Java写的
+(听网上说的), 所以也有<code>-nosplash</code> (<strong>不显示启动画面</strong>), <code>-nodesktop</code>
+(<strong>不启动图形界面</strong>) 的功能. 另外因为没有启动jvm这样启动MATLAB十分迅速.</p>
+<p>💡 要注意用<code>-nojvm</code>选项时会创建图形界面的命令会报错.</p>
+<p>在终端运行MATLAB脚本:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">matlab -batch [MATLAB_command]</span><br></pre></td></tr></tbody></table></figure>
 
-<p>在头文件里用这样的语句来防止头文件被重复引用. 有一些头文件被重复引用会增加编译器工作, 降低编译效率, 而有一些头文件被重复引用会引起冲突 (比如如果头文件里定义了全局变量, 会发生重复定义错误).</p>
-<h3 id="控制代码编译"><a href="#控制代码编译" class="headerlink" title="控制代码编译"></a>控制代码编译</h3><p>通过Makefile控制编译选项.</p>
-<p>还能像轮子哥<a href="https://www.zhihu.com/question/22608939/answer/21963056" target="_blank" rel="noopener">这样</a>当模板用.</p>
-<p>❗️虽然宏定义的好处不少, 但除了以上情况尽量少用尽量不用宏定义, 因为这会让开发者看到的代码与编译器看到的代码不同, 容易导致想不到的问题.</p>
-<h1 id="调试技巧"><a href="#调试技巧" class="headerlink" title="调试技巧"></a>调试技巧</h1><p>调试时重点关注两方面: <strong>当前行的跳转</strong>, <strong>变量的变化</strong></p>
-<p>循环结构程序设计中最常见的两个问题: <strong>算术运算溢出</strong>, <strong>程序效率低下</strong></p>
-<p>变量在未赋值之前的值是不确定的.</p>
-<h1 id="gcc与gdb命令简记"><a href="#gcc与gdb命令简记" class="headerlink" title="gcc与gdb命令简记"></a>gcc与gdb命令简记</h1><h2 id="gcc"><a href="#gcc" class="headerlink" title="gcc"></a>gcc</h2><p>常用选项:</p>
-<table>
-<thead>
-<tr>
-<th>name_of_option</th>
-<th>我猜的全名</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-o [filename]</td>
-<td>output</td>
-<td>指定输出文件名</td>
-</tr>
-<tr>
-<td>-g</td>
-<td>gdb</td>
-<td>生成调试用的符号表</td>
-</tr>
-<tr>
-<td>-Wall</td>
-<td>warning all</td>
-<td>This enables all the warnings about constructions that some users consider questionable, and that are easy to avoid (or modify to prevent the warning), even in conjunction with macros.</td>
-</tr>
-<tr>
-<td>-lm</td>
-<td>link math.h</td>
-<td>链接math.h. C++编译器会自动链接, 但C的代码使用了math.h却不启动这个选项很可能出错</td>
-</tr>
-<tr>
-<td>-ansi</td>
-<td>ANSI</td>
-<td>检查代码是否符合ANSI标准 (常与-Wpedantic连用)</td>
-</tr>
-<tr>
-<td>-Wpedantic</td>
-<td>warning pedantic</td>
-<td>Issue all the warnings demanded by strict ISO C and ISO C++; reject all programs that use forbidden extensions, and some other programs that do not follow ISO C and ISO C++. For ISO C, follows the version of the ISO C standard specified by any -std option used.</td>
-</tr>
-<tr>
-<td>-O1, -O2, -O3</td>
-<td>optimize</td>
-<td>开启速度优化. 开启后编译出的程序比直接编译出的程序快, -O2比-O1快, -O3比-O2快, 但为了避免优化误解代码含义, 在算法比赛中推荐-O2. 当然如果程序十分规范就没有这种担心.</td>
-</tr>
-<tr>
-<td>-DXX</td>
-<td>define XX</td>
-<td>在编译时定义XX符号 (此处XX是随意什么大写单词的意思), 位于#ifdef XX和#endif中间的语句会被编译</td>
-</tr>
-</tbody></table>
-<h3 id="gcc与g"><a href="#gcc与g" class="headerlink" title="gcc与g++"></a>gcc与g++</h3><p><code>gcc</code>到底能不能编译C++程序?</p>
-<p>在某种程度上<code>gcc</code>和<code>g++</code>都可以编译 <strong>.cpp</strong> 后缀的程序, 但是<code>gcc</code>命令不能自动和
-C++程序使用的库链接. <code>gcc</code>把后缀为 <strong>.c</strong> 的当作是C程序,而<code>g++</code>将其当作C++程序.
-两者都会将后缀为 <strong>.cpp</strong> 的程序视作C++程序, 要注意虽然C++是C的超集,但是两者对语法的要求是有区别的, C++的语法规则更加严谨一些. 编译阶段, <code>g++</code>会调用<code>gcc</code>,因为
-<code>gcc</code>命令不能自动链接C＋＋库, 所以通常用<code>g++</code>来完成链接, 统一起见,干脆编译和链接统统用g++了, 这就给人一种错觉, 好像cpp程序只能用g++似的.</p>
-<h2 id="gdb"><a href="#gdb" class="headerlink" title="gdb"></a>gdb</h2><p>💡执行gdb时加选项<code>-q</code> (quiet)可以去掉进入gdb开头的废话.</p>
-<p>常用命令:</p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>全名</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>l</td>
-<td>list</td>
-<td>列出十行代码. 但可以通过<code>set listsize</code>来更改显示多少行, 用<code>show listsize</code>能查看listsize. l后可以接行号, 函数名</td>
-</tr>
-<tr>
-<td>r</td>
-<td>run</td>
-<td>开始运行程序</td>
-</tr>
-<tr>
-<td>b</td>
-<td>break</td>
-<td>设置断点, b后接行号或函数名</td>
-</tr>
-<tr>
-<td>c</td>
-<td>continue</td>
-<td>继续运行. 要注意在断点处停下后用c继续而不是r</td>
-</tr>
-<tr>
-<td>n</td>
-<td>next</td>
-<td>下一行</td>
-</tr>
-<tr>
-<td>s</td>
-<td>step</td>
-<td>与n的区别是n会执行完本行语句, 而有函数调用时s会停在函数内</td>
-</tr>
-<tr>
-<td>u</td>
-<td>until</td>
-<td>执行到指定行号或者指定函数的开头</td>
-</tr>
-<tr>
-<td>i</td>
-<td>info</td>
-<td>显示各种信息. 如i b显示所有断点,i disp显示display,而i lo显示所有局部变量</td>
-</tr>
-<tr>
-<td>disp</td>
-<td>display</td>
-<td>把一个表达式设置为display, 当程序每次停下来时都会显示其值</td>
-</tr>
-<tr>
-<td>cl</td>
-<td>clear</td>
-<td>取消断点, 和b的格式相同. 如果该位置有多个断点, 将同时取消</td>
-</tr>
-<tr>
-<td>cond</td>
-<td>condition</td>
-<td>用来设置条件断点</td>
-</tr>
-<tr>
-<td>ig</td>
-<td>ignore</td>
-<td>设置记次断点, count次以前不停止</td>
-</tr>
-<tr>
-<td>wa</td>
-<td>watch point</td>
-<td>watch a(简写为wa a)可以在变量a修改时停下,并显示出修改前后的变量值</td>
-</tr>
-<tr>
-<td>aw</td>
-<td>all watch point</td>
-<td>读写时都停下</td>
-</tr>
-<tr>
-<td>rw</td>
-<td>read watch point</td>
-<td>被读取时停下</td>
-</tr>
-<tr>
-<td>q</td>
-<td>quit</td>
-<td>退出gdb</td>
-</tr>
-</tbody></table>
+<p><code>-batch</code>选项和<code>-r</code>选项的区别在于前者不会启动图形界面而后者会. 另外如果脚本中没有与图形界面有关的语句同样可以加上<code>-nojvm</code>选项.</p>
+<p><strong>但是啊!</strong></p>
+<p>我后来发现这样就<strong>本末倒置</strong>了! MATLAB的亮点我觉得一是所有变量都是全局变量, 能迅速可视化变量, 工具集成度非常高, 适合迅速验证各种算法, 二是社区非常完善, 提供了很多工具能轻松仿真很多模型.</p>
+<p>因此只在终端的MATLAB是没有灵魂的MATLAB. <strong>如果终端里的MATLAB就能解决你的需求的话为什么不用Python?</strong> 🤤</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -3016,8 +3117,11 @@ C++程序使用的库链接. <code>gcc</code>把后缀为 <strong>.c</strong> �
           });
       </script>]]></content>
       <categories>
+        <category>工具</category>
+        <category>软件配置</category>
+        <category>杂记</category>
         <category>语言</category>
-        <category>C/C++</category>
+        <category>MATLAB</category>
       </categories>
   </entry>
   <entry>
@@ -3267,8 +3371,8 @@ C/C++接口时.其他部分全部用Python糊!</p>
           });
       </script>]]></content>
       <categories>
-        <category>技巧</category>
         <category>操作系统</category>
+        <category>技巧</category>
         <category>Linux</category>
       </categories>
   </entry>
@@ -3806,8 +3910,8 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
           });
       </script>]]></content>
       <categories>
-        <category>技巧</category>
         <category>操作系统</category>
+        <category>技巧</category>
         <category>Linux</category>
       </categories>
   </entry>
@@ -4448,10 +4552,234 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
       </categories>
   </entry>
   <entry>
-    <title>C++学习笔记</title>
-    <url>/zh-CN/2019/08/11/C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>… 前几天刚说最近没有用C的需求我就开始要写C++了 🤦</p>
-<p>TODO</p>
+    <title>Linux下各用途我最认可的工具推荐</title>
+    <url>/zh-CN/2020/07/26/Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<p>用Linux的时间已经比用Windows的时间还长了, 随着使用逐渐找到了各用途我最认可的工具, 或从软件源安装, 或在线使用. 在此整理一份我的Linux下各用途好用工具推荐. (出于私心将从一个Manjaro用户角度介绍)</p>
+<p>💡各位如果有什么推荐的软件也可以跟我说, 我觉得好用会加进去的</p>
+<a id="more"></a>
+
+<blockquote>
+<p>首先, 不得不吹一下Manjaro是一个多么贴心的系统. Manjaro自带了一个叫<strong>Manjaro Hello</strong>的入门程序, 点进这个程序的<code>Applications</code>入口能看到Manjaro社区为各常见用途已经提供了一些推荐, 勾选就可以安装. 可以说没有更贴心的系统了!</p>
+<p><img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/Manjaro_Hello.png?70"></p>
+</blockquote>
+<h2 id="日常使用"><a href="#日常使用" class="headerlink" title="日常使用"></a>日常使用</h2><h3 id="中文输入法"><a href="#中文输入法" class="headerlink" title="中文输入法"></a>中文输入法</h3><p>随着fcitx5日渐成熟, 现在有了两种我推荐的中文输入法方案:</p>
+<h4 id="fcitx5框架-配套中文输入法"><a href="#fcitx5框架-配套中文输入法" class="headerlink" title="fcitx5框架+配套中文输入法"></a>fcitx5框架+配套中文输入法</h4><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S fcitx5-im</span><br><span class="line">yay -S fcitx5-chinese-addons</span><br><span class="line">yay -S fcitx5-material-color</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这个<strong>fcitx5-material-color</strong>是一个模仿win10的中文输入法的皮肤, 在fcitx5的设置中可以更换皮肤, 可以做到下面这样的效果 👇
+<img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/inputMethod.gif?80"></p>
+<h4 id="fcitx4框架-搜狗输入法"><a href="#fcitx4框架-搜狗输入法" class="headerlink" title="fcitx4框架+搜狗输入法"></a>fcitx4框架+搜狗输入法</h4><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S fcitx-im fcitx-configtool</span><br><span class="line">yay -S fcitx-sogoupinyin</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<p>安装完输入法框架和中文输入法后还需要在配置文件中设置几个环境变量. 因为有很多配置文件会在用户登录过程中被加载, 所以这里的设置方式其实不唯一. 我是在<code>~/.pam_environment</code>中写了这样几行:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">GTK_IM_MODULE DEFAULT=fcitx</span><br><span class="line">QT_IM_MODULE DEFAULT=fcitx</span><br><span class="line">XMODIFIERS DEFAULT=@im=fcitx</span><br></pre></td></tr></tbody></table></figure>
+
+<p>我目前使用的是fcitx5的方案. 我一个同学体验后觉得搜狗的词库做得更好, 能提供更精确的联想. 这点我倒是没什么感觉, fcitx5这个方案完全满足我的使用. 但另一方面fcitx5配套的中文输入法的优势非常明显:</p>
+<ul>
+<li>有一个Quick Phrase功能, 支持类似snippets一样根据关键词插入设定好的内容的功能. 默认提供了一些颜文字, emoji, LeTaX片段, 也可以自己加</li>
+<li>整个方案成体系, 使用体验非常好! fcitx4+搜狗输入法这个方案始终是缝合怪, 很容易有点小问题. 比如我之前用的时候每次从英文输入法切换回搜狗输入法, 我对搜狗输入法的一些设置 (比如使用半角标点符号) 都会恢复默认值</li>
+<li>支持导入搜狗细胞词库, 可以导入许多专业词汇的词库</li>
+<li>支持云拼音</li>
+<li>配置起来很简单直观</li>
+</ul>
+<p><strong>总的来说我是推荐试试fcitx5框架+配套中文输入法这个方案的</strong></p>
+<h3 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h3><p>很遗憾我没有找到一个像snipaste那样功能非常齐全的Linux平台截图/贴图软件. 我下了两个软件, 和我manjaro-kde自带的spectacle结合着用:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S spectacle</span><br><span class="line">yay -S flameshot</span><br><span class="line">yay -S deepin-screenshot</span><br></pre></td></tr></tbody></table></figure>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Spectacle</td>
+<td>1.作为KDE官方开发的截图软件, 对多屏幕支持是最好的, 下面两款对多屏幕的支持都完全没法看; 2. 全屏截图, 选定窗口截图, 选定矩形截图, 截图后做一些编辑, 设置存储图片的质量这些功能都是全的</td>
+<td>1. 不能像下面两款软件一样在后台运行; 2. 没有下面两款那样在截图的时候就能编辑, 选是存到剪贴板还是本地的交互界面, 还是不太方便</td>
+</tr>
+<tr>
+<td>Flameshot</td>
+<td>支持像snipaste一样将截图贴在屏幕最上层</td>
+<td>1. 在KDE上无法设置截图质量, 只能是原画质; 2. 无法自动贴靠屏幕上的窗口</td>
+</tr>
+<tr>
+<td>Deepin Screenshot</td>
+<td>1. 能将截图区域自动贴靠屏幕上的窗口; 2. 可以调节截图质量</td>
+<td>因为<a href="https://github.com/linuxdeepin/deepin-screenshot/issues/8" target="_blank" rel="noopener">一些原因</a>KDE版无法将截图存到剪贴板</td>
+</tr>
+</tbody></table>
+<h3 id="录屏"><a href="#录屏" class="headerlink" title="录屏"></a>录屏</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S simplescreenrecorder</span><br><span class="line">yay -S peek</span><br></pre></td></tr></tbody></table></figure>
+
+<p>SimpleScreenRecorder名字里虽然有simple, 但是实际上关于录屏的功能非常全, 有好几屏的设置项, 可以设置帧率, 视频源可以来自屏幕, 摄像头, 也可以设置音频源, 支持录制成<code>mkv</code>, <code>mp4</code>, <code>gif</code>, <code>mp3</code>等多种各种格式, 视频编码参数, etc… 可以说功能非常全面了.</p>
+<p>而如果只是想随手录一个gif, 那使用<strong>peek</strong>还是很好的.</p>
+<h3 id="显示按键"><a href="#显示按键" class="headerlink" title="显示按键"></a>显示按键</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S screenkey</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这个可以在屏幕上显示按下了的键盘按键, 鼠标按键. 在演示, 示教时很好用 👍</p>
+<h2 id="驱动"><a href="#驱动" class="headerlink" title="驱动"></a>驱动</h2><h3 id="显卡驱动"><a href="#显卡驱动" class="headerlink" title="显卡驱动"></a>显卡驱动</h3><p>这里又不得不点名表扬一下Manjaro, 在装机时勾选了安装<strong>Proprietary Driver</strong> (非自由驱动)的话会自动装好N卡驱动! 比如我的笔记本有一个UHD Graphics (集显) 和一个RTX2070 (独显), 安装好系统后已经自动安装了采用最新的intel集显与Nvidia独显共存的<a href="https://wiki.archlinux.org/index.php/PRIME" target="_blank" rel="noopener">Prime方案</a>的混合驱动<strong>video-hybrid-intel-nvidia-prime</strong> 🎉</p>
+<p>我也没有细看Prime方案和Bumblebee方案的具体差异, 看起来大概意思就是Bumblebee是软件实现, 有一定性能损失, 而Prime方案是更为推荐的新一代方案.</p>
+<p>Prime技术让我们能够同时使用两个显卡: 以intel核显渲染画面, 以独显运行高负荷任务. <del>但是目前无论Prime方案还是Bumblebee方案都有个缺陷: 同时使用两个显卡时N卡无法输出画面, 即从直连N卡的HDMI接口无法输出画面, 但仅使用N卡的话可以从N卡输出画面. 仅使用N卡从性能方面没什么问题, 但是耗电, 发热会很夸张, 这对日常使用来说很不划算. 因此我们还是需要一个方法让我们能在需要N卡输出画面时能切换到仅N卡模式.</del></p>
+<blockquote>
+<p><del>至于外接屏幕, 我的解决办法是买一个有雷电接口 (雷电接口是直连CPU的, 其视频输出由intel核显承担) 的电脑, 这样一来在混合模式也能从雷电接口输出视频信号 😅</del></p>
+</blockquote>
+<p>卧槽我前几天试了一下现在在混合显卡模式也能从直连N卡的HDMI接口输出视频信号了! 😲</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S optimus-manager-qt</span><br></pre></td></tr></tbody></table></figure>
+
+<p>💡 optimus-manager的文档说Manjaro KDE用户<a href="https://github.com/Askannz/optimus-manager#important--manjaro-kde-users" target="_blank" rel="noopener">需要编辑一个文件</a>, 但我没动似乎使用起来也没什么问题</p>
+<p><a href="https://github.com/Askannz/optimus-manager" target="_blank" rel="noopener">optimus-manager</a>允许我们在<strong>仅intel显卡模式</strong>, <strong>仅N卡模式</strong>, <strong>混合模式</strong>三种模式间切换. 而optimus-manager-qt则为我们提供了一个GUI界面来进行设置, 一个系统托盘小图标来进行快速切换 (和装饰)</p>
+<p>除了显卡模式切换这个主要功能, optimus-manager也能用来进行独显的电源管理, 根据自己的情况选择适合的方案. 因为我的笔记本满足 “N卡为Turing架构及以上, intel CPU为CoffeeLake架构及以上” 的条件, 因此用N卡自带的动态电源管理, Runtime D3 Power Management, 省心又省电 👍 不用时我的N卡功耗可以低到<strong>4W</strong>, 整个电脑的功耗最低到过9W (虽然还是被长续航轻薄本吊打)</p>
+<h3 id="OLED屏幕亮度调节"><a href="#OLED屏幕亮度调节" class="headerlink" title="OLED屏幕亮度调节"></a>OLED屏幕亮度调节</h3><p><a href="https://github.com/LeoJhonSong/Shell-Scripts/blob/master/oled-brightness" target="_blank" rel="noopener">我自己写的脚本</a> 😏</p>
+<p>目前Linux对OLED屏幕支持很差, 似乎还没有发行版默认支持OLED屏幕亮度调节. 普通LCD屏幕的亮度调节是通过调整屏幕背光板的电压, 即背光板亮度来实现的. 当你在滑动你的Linux系统提供的亮度调节滑条时, <code>/sys/class/backlight/intel_backlight/brightness</code>的值会被改动, 然后系统会根据这个值和<code>/sys/class/backlight/intel_backlight/max_brightness</code>所记录的亮度最大值来调节背光板电压. 然而OLED屏幕根本没有背光板, 每个LED的亮度是可以单独调节的. 因此目前调节OLED屏幕亮度的方案是调整画面的Gamma值. 于是我写了这个基于<code>xrandr</code>的脚本, 这个脚本会监控<code>/sys/class/backlight/intel_backlight/brightness</code>值的变化并据此改变指定屏幕 (默认为主屏幕) 画面的gamma值.</p>
+<p>顺带一提<code>xrandr</code>是一个功能很强大的设置屏幕画面的分辨率, 方向, 位置等参数的强大工具.</p>
+<h3 id="镜像烧录"><a href="#镜像烧录" class="headerlink" title="镜像烧录"></a>镜像烧录</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S ventoy-bin</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用的时候用:</span></span><br><span class="line">sudo ventoyweb</span><br></pre></td></tr></tbody></table></figure>
+
+<p>有了<a href="https://www.ventoy.net/cn/index.html" target="_blank" rel="noopener">Ventoy</a>这个项目, balenaEtcher, rufus这些传统意义上的镜像烧录软件就可以丢弃了! Ventoy支持一个U盘里放多个镜像, 在以这个U盘启动时会进入一个GRUB界面, 在这个页面再选择到底进入哪个镜像 🐮 我在我U盘里放了Windows镜像, Manjaro-KDE, Ubuntu20.04, 还有一个可以用来修复分区的<a href="https://gparted.org/download.php" target="_blank" rel="noopener">GParted</a>镜像, 还换了个GRUB主题, 爽到.</p>
+<h2 id="系统工具"><a href="#系统工具" class="headerlink" title="系统工具"></a>系统工具</h2><h3 id="资源管理器"><a href="#资源管理器" class="headerlink" title="资源管理器"></a>资源管理器</h3><p><strong>Dolphin</strong>绝对是最好用的资源管理器! 多标签页, 显示预览等功能不在话下. Dolphin的右键菜单很贴心, Gnome自带资源管理器所没有的右键新建文件功能 (就离谱) 当然是有的, 也有创建快捷方式, 解压 (不论是rar还是zip还是tar都是同一个按键), 也可以很方便地自己创建脚本添加右键菜单的功能.</p>
+<p>而Dolphin最突出的功能是按<kbd>F4</kbd>可以直接打开一个<strong>Dolphin内嵌终端</strong>. 这个终端的路径会随着在资源管理器里点击自动切换 (除非已经打开类似vim这样的程序), 使用起来超方便, 结合了终端的便捷和GUI的可视化等优势.</p>
+<p><img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/Dolphin.png?70"></p>
+<h3 id="任务管理器"><a href="#任务管理器" class="headerlink" title="任务管理器"></a>任务管理器</h3><p><strong>htop</strong>是升级版的top. 一是交互人性化很多, 支持鼠标交互, 设置页面分了页, 直观很多. 二是能以列表或者树的样式显示丰富得多的值, 比如该进程的线程数等, 还支持以关键词过滤显示的进程等功能.</p>
+<h3 id="磁盘管理器"><a href="#磁盘管理器" class="headerlink" title="磁盘管理器"></a>磁盘管理器</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S filelight</span><br><span class="line">yay -S partitionmanager</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>Filelight</strong>是KDE的图形化磁盘空间使用情况分析工具, 能以很多环同心扇形的形式直观地显示出哪里有大文件. <strong>partitionmanager</strong>是KDE的磁盘管理工具, 就类似Windows的磁盘管理器. 这两个应用Gnome社区也有类似的, 但感觉还是KDE的做得更人性化一些.</p>
+<p>💡 用<code>du -sh /path/to/check/* | sort -hr</code>可以在命令行列出指定文件夹下按大小降序列出各文件夹/文件</p>
+<h3 id="“电脑管家”"><a href="#“电脑管家”" class="headerlink" title="“电脑管家”"></a>“电脑管家”</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S stacer</span><br></pre></td></tr></tbody></table></figure>
+
+<p>虽然很多Linux老哥们认为Linux用户不需要这种东西, 但如果是习惯了在各种电脑管家打卡的Windows用户, 我推荐<strong>Stacer</strong>. 这是一个系统优化与监控软件 (和CCleaner等电脑管家画风很像), 可以看系统资源使用该要, 有任务管理器一栏, 可以清理垃圾, 可以管理开机自启项, 卸载已安装软件等… (是个很Windows画风的东西😅)</p>
+<h3 id="TCP调试助手"><a href="#TCP调试助手" class="headerlink" title="TCP调试助手"></a>TCP调试助手</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S nmap</span><br></pre></td></tr></tbody></table></figure>
+
+<p>netcat被称为网络编程的瑞士军刀, 功能属实很多👍 要注意netcat有好几个版本, 给的参数略有区别. <strong>ncat</strong>是为Nmap项目写的netcat, 包含在nmap包中. 在其man中自称是诸多netcat版本中的巅峰之作 (水平有限俺也不知道是不是). <strong>nmap</strong>同样是一个用法很多的网络编程工具, 我主要用来扫端口.</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> ncat监听本地8080端口</span></span><br><span class="line">ncat -l 8080</span><br><span class="line"><span class="meta">#</span><span class="bash"> ncat连接本地8080端口</span></span><br><span class="line">ncat 127.0.0.1 8080</span><br><span class="line"><span class="meta">#</span><span class="bash"> ncat监听本地8080端口, 发送一串16进制数据 (socket一个字节的内容为两位16进制数)过去并以双字节16进制显示输出</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果不满意显示格式的话可以换用hexdump -C然后加参数设置显示格式. hexdump支持的显示格式比xxd要丰富些. 注意不加-C参数的话hexdump默认按双字节小端转换</span></span><br><span class="line">echo '0006303030304e43' | xxd -r -p | ncat -l 8080 | xxd</span><br><span class="line"><span class="meta">#</span><span class="bash"> nmap扫描当前路由器192.168.1.1下所有设备的端口 (找树莓派之类设备IP时很方便)</span></span><br><span class="line">nmap 192.168.1.1/24</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="通讯"><a href="#通讯" class="headerlink" title="通讯"></a>通讯</h2><h3 id="QQ-微信"><a href="#QQ-微信" class="headerlink" title="QQ/微信"></a>QQ/微信</h3><p>这两个软件在国内基本是必备了吧 <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f937-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f937-2642.png?v8">🤷♂</span>. 在Linux上我体验下来最推荐的版本是以deepin-wine为容器, 星火应用商店打包版:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S wqy-microhei  # 需要装一个文泉驿版微软雅黑来让deepin-wine系软件正常显示中文文字 (不然会显示为方框)</span><br><span class="line">yay -S com.qq.tim.spark  # 比起QQ我更喜欢简洁的TIM (夹带私货)</span><br><span class="line">yay -S com.qq.weixin.spark</span><br></pre></td></tr></tbody></table></figure>
+
+<p>如果使用的是高清屏, deepin-wine系软件显示得很小, 可以在<strong>deepin-wine5中</strong>设置屏幕分辨率. 比如设置<strong>com.qq.tim.spark</strong>的分辨率:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">env WINEPREFIX=$HOME/.deepinwine/Spark-TIM deepin-wine5 winecfg</span><br></pre></td></tr></tbody></table></figure>
+
+<p>然后会打开一个设置界面. 调节其中的<code>Graphics &gt; Screen resolution</code>一项. 我是4k屏幕, 感觉设成<strong>192dpi</strong>比较OK</p>
+<h3 id="会议"><a href="#会议" class="headerlink" title="会议"></a>会议</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S zoom-system-qt</span><br><span class="line">yay -S teams</span><br><span class="line">yay -S com.tencent.meeting.deepin</span><br></pre></td></tr></tbody></table></figure>
+
+<p>我在Linux目前体验能用的视频会议软件有三个:</p>
+<ul>
+<li><strong>zoom</strong>: AUR里还有一个就叫<strong>zoom</strong>的版本, 但是看起来没有适配显示的全局缩放 (高分屏笔记本肯定是要设置个缩放的), 会变得很大一个. 随着国内疫情几乎目前大陆帐号已经无法发起zoom会议了, 但是用教育邮箱登录的话是可以发起会议的 👍 </li>
+<li><strong>Microsoft Teams</strong>: teams不是专门的视频会议软件, 是微软Office中的办公聊天软件, 不过它的视频会议版块功能丝毫不比zoom少, 甚至得益于Office套件间的联动使用体验非常流畅, 有很多类似到时间提醒参会成员, 自动生成会议云录制的字幕等很贴心的功能. 其界面非常现代, 功能也很多 (有很多插件). 其实这个也支持在网页参加会议, 体验很好的.</li>
+<li><strong>腾讯会议</strong>: 前两个的问题是会议用的服务器似乎都在国外, 网络质量不是很有保障. 腾讯会议的速度是很有保障的, 可惜是deepin-wine版, 功能不全.</li>
+</ul>
+<p>其中zoom和teams是有官方全平台安装包的. zoom甚至提供很多个Linux发行版的安装包, 因此这两个软件的各种功能和Windows/Mac版没有任何区别, 支持共享屏幕, 远程控制, 会议录制 (本地/云), 摄像头, 音频等功能都没有问题. 而腾讯会议则是deepin-wine版, 一开启摄像头程序就会崩溃 (可以通过放一个播放摄像头画面的vlc小窗口在屏幕上的方式来解决), 观看别人共享屏幕时有时候会出现画面闪烁问题, 总之只是勉强能用的程度. 另外, 用海外手机号注册的腾讯会议用户无法通过链接下载云录制的视频.</p>
+<p>总结下来就是: 如果有翻墙条件, 参会成员都能接受, 那teams是最好选择 ✔</p>
+<h2 id="下载-云盘"><a href="#下载-云盘" class="headerlink" title="下载/云盘"></a>下载/云盘</h2><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S baidunetdisk-bin</span><br><span class="line"><span class="meta">#</span><span class="bash"> yay -S xunlei-bin</span></span><br><span class="line">yay -S aria2</span><br><span class="line"><span class="meta">#</span><span class="bash"> 后台运行启用了RPC, aria2</span></span><br><span class="line">nohup aria2c --enable-rpc --allow-piece-length-change &amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> yay -S motrix-bin</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> sudo motrix --no-sandbox  <span class="comment"># 然后右键系统托盘里的图标退出</span></span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>在国内的话总体来说下载大文件体验最好的可能还是百度云… 现在百度云盘出了官方的Linux版deb系安装包, 有热心网友适配后发布到arch源里了. Linux版的和Windows版用起来并没有区别, 仍然是有限速的 😁</p>
+<p>磁力链和torrent我是用chrome插件<a href="https://chrome.google.com/webstore/detail/aria2-for-chrome/mpkodccbngfoacfalldjimigbofkhgjn" target="_blank" rel="noopener">Aria2 for Chrome</a>下的. 这个插件以aria2为后端, 能够自动拦截chrome中http, 磁力链, FTP等协议下载任务, 也支持torrent. 在插件的设置页面中设置触发自动拦截下载任务的文件大小为0MB的话torrent文件也会通过aria2下载, 而aria2默认开启了下载的是torrent文件时自动开始BT下载任务的选项, 体验会很好. 有点遗憾的是这个插件所使用的前端虽然可以对aria2进行设置, 但是这些设置在aria2重启后会丢失. 如果想要每次启动aria2后都能自动加载这些配置的话还是需要写一个aria2的配置文件<code>~/.config/aria2/aria2.conf</code>:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 默认下载路径, n</span></span><br><span class="line">dir=/home/leo/Downloads</span><br><span class="line"><span class="meta">#</span><span class="bash"> 断点续传</span></span><br><span class="line">continue=true</span><br><span class="line"><span class="meta">#</span><span class="bash"> 最大同时下载任务数</span></span><br><span class="line">max-concurrent-downloads=10</span><br><span class="line"><span class="meta">#</span><span class="bash"> 单服务器最大连接数</span></span><br><span class="line">max-connection-per-server=15</span><br><span class="line"><span class="meta">#</span><span class="bash"> 最小文件分片大小</span></span><br><span class="line">min-split-size=10M</span><br><span class="line"><span class="meta">#</span><span class="bash"> 允许所有来源</span></span><br><span class="line">rpc-allow-origin-all=true</span><br><span class="line"><span class="meta">#</span><span class="bash"> 允许非外部访问</span></span><br><span class="line">rpc-listen-all=true</span><br><span class="line"><span class="meta">#</span><span class="bash"> 最小做种时间. 当设置为0时在BT下载任务完成后不再做种</span></span><br><span class="line">seed-time=0</span><br></pre></td></tr></tbody></table></figure>
+
+<p>然后运行来自<a href="https://github.com/P3TERX/aria2.conf/blob/master/tracker.md" target="_blank" rel="noopener">P3TERX/aria2.conf</a>的脚本<code>bash &lt;(curl -fsSL git.io/tracker.sh) "/home/leo/.config/aria2/aria2.conf"</code>添加一个Tracker列表给aria2配置文件, 提升torrent下载速度.</p>
+<p>如果想用本地客户端下载磁力链和torrent的话强推<strong>motrix</strong>: 集成了每日自动更新的Tracker服务器列表的支持, 支持迅雷链接下载协议, 而且因为是electron做的所以界面非常美观! 不过除了Ubuntu镜像我能以30MB/s的速度下载我暂时还没下到过速度超过100Kb/s的… 这个软件在Arch系下似乎有bug, 安装好后需要用上面那条命令sudo启动然后关闭一次, 然后就能正常使用了.</p>
+<p>💡据我同学说迅雷对一些资源有更快的速度, 我试了下还真是… 比用tracker的qbittorrent还要快很多 (是正经资源)</p>
+<h2 id="图片-视频处理"><a href="#图片-视频处理" class="headerlink" title="图片/视频处理"></a>图片/视频处理</h2><h3 id="视频压缩"><a href="#视频压缩" class="headerlink" title="视频压缩"></a>视频压缩</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S handbrake</span><br></pre></td></tr></tbody></table></figure>
+
+<p>handbrake是一个支持非常丰富的视频格式转换/压缩工具. 视频编辑方面接触不多的人会意识不到一个录屏只需放进压缩软件简单<strong>无损压缩</strong>一下通常可以减小为原本体积的<strong>一半以下</strong>.而handbrake提供了许多直观的预设参数组. 我通常就用的<code>Offical&gt;General&gt;Very Fast 1080p30</code>这个预设. handbrake支持批量处理, 操作起来也很简单.</p>
+<h3 id="图片压缩"><a href="#图片压缩" class="headerlink" title="图片压缩"></a>图片压缩</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S jpegoptim</span><br><span class="line">yay -S optipng</span><br><span class="line">yay -S imagemagick</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>jpegoptim</strong>, <strong>optipng</strong>这两个终端程序可以分别对jpg/jpeg, png进行无损压缩, 调用也很简单, 普通无损压缩的话跟的参数就图片名就可以.</p>
+<p><strong>imagemagick</strong>是一套用于创建, 编辑, 显示图片的强大终端工具, 其中有一个<strong>magick</strong>终端程序可以实现jpg转png, 也可以压缩jpg, png等. 但是参数比上面两个复杂一些, 我反正记不住.</p>
+<p>💡没有用到透明图层的png图片可以转为jpg, 能大幅压缩体积</p>
+<h3 id="视频播放器"><a href="#视频播放器" class="headerlink" title="视频播放器"></a>视频播放器</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S vlc</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>vlc是一个很神奇的播放器</strong>.</p>
+<p>它不光支持非常多种视频文件格式, 还可以播放网络视频流, 比如RTSP视频流, IPTV网络电视, 还可以播放摄像头视频流… 加上它有截取视频一帧画面, 录制视频流, 高倍速播放, 在截取的画面上显示当前视频时间等功能, 他可以:</p>
+<ul>
+<li>当Linux上的相机软件</li>
+<li>用来调试usb摄像头/IP摄像头</li>
+<li>当网络电视 (顺便放一个非常全的<a href="https://github.com/iptv-org/iptv" target="_blank" rel="noopener">IPTV频道合集</a>)</li>
+<li>看网课视频利器</li>
+</ul>
+<p>🐮🍺</p>
+<h3 id="视频编辑器"><a href="#视频编辑器" class="headerlink" title="视频编辑器"></a>视频编辑器</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S kdenlive</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>Kdenlive</strong>是一个界面很像Adobe Premiere的软件, 现在是KDE旗下项目. Kdenlive的语言看起来是继承的系统语言, 支持中文 (汉化得还是比较全面的). Kdenlive操作起来还是很简单的, 零基础随便看一看教程也就会用个大概了. Kdenlive的特效种类我感觉和Pr差不多多, 定位应该是和Pr一样也是视频剪辑软件 (Linux平台也有对标Ae的软件, Natron). Kdenlive也有Windows版, 而且安装包只有80MB, 很值得尝试的 👍</p>
+<h3 id="制图"><a href="#制图" class="headerlink" title="制图"></a>制图</h3><h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4><p>因为我处理图片的需求不大, 因此普通一些的需求我就在WPS的PPT软件里处理的, 有稍微复杂一点的PS需求时都是使用的这个<a href="https://www.uupoop.com/#/old" target="_blank" rel="noopener">在线PS</a>, 支持PhotoShop的<strong>PSD</strong>, sketch的<strong>sketch</strong>格式, GIMP的<strong>XCF</strong>格式等, 覆盖了常见格式, 十分方便 😆</p>
+<h4 id="UML图"><a href="#UML图" class="headerlink" title="UML图"></a>UML图</h4><ul>
+<li>Graphviz: 这是一个根据代码自动生成图形的程序, 有<a href="https://dreampuf.github.io/GraphvizOnline/" target="_blank" rel="noopener">在线版</a>, 也有<a href="https://marketplace.visualstudio.com/items?itemName=joaompinto.vscode-graphviz" target="_blank" rel="noopener">VSCode插件版本</a>什么的. (顺便<a href="/zh-CN/2020/03/12/Graphviz简要语法/">这里</a>是我写的介绍Graphviz语法的博客)</li>
+<li><a href="https://www.diagrams.net/" target="_blank" rel="noopener"><strong>diagrams.net</strong></a>: 这个是全平台的, 有在线版, 也有各系统的安装包. 它有非常丰富的元素, 能画出很好看很复杂的UML图, 但是无法自动整理布局. 不过它<strong>可以打开Visio的.vsdx文件</strong> 👍</li>
+<li><a href="">PlantUML</a>: 这个则是以代码生成UML图的强大工具, 后端其实也是Graphviz (Graphviz本身用起来真的有点阴间), 提供有很多种类的模板, 可以几行代码画出一个非常好看的UML图! <a href="https://www.planttext.com/" target="_blank" rel="noopener">在线编辑器</a>在此</li>
+<li><a href="http://asciiflow.com/" target="_blank" rel="noopener">ASCIIFlow Infinity</a>: 这个在线绘图工具是用来绘制<strong>纯文本</strong>框图. 不过因为它开源了, 因此也可以在本地使用 <code>yay -S asciiflow2-git</code></li>
+</ul>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
+<li><a href="http://patorjk.com/software/taag/" target="_blank" rel="noopener">Text to ASCII Art Generator (TAAG)</a>: 是一个生成文本的ASCII Art的在线工具 (就是oh-my-zsh更新时会显示的那种文本拼出来的大logo)</li>
+</ul>
+<h2 id="办公"><a href="#办公" class="headerlink" title="办公"></a>办公</h2><h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S typora</span><br><span class="line">yay -S okular</span><br><span class="line">yay -S google-chrome</span><br></pre></td></tr></tbody></table></figure>
+
+<p>做文档我首推Markdown, Markdown编辑器我首推<strong>Typora</strong>. (我还写过<a href="/zh-CN/2019/09/23/Markdown安利-Typora简要使用教程/">Markdown安利&amp;Typora简要使用教程</a>)</p>
+<p>普通看pdf的话KDE的<strong>okular</strong>和GNOME的<strong>evince</strong>我觉得界面还比较简洁而不简陋, 现代. 相比起来okular功能更多一些, 对触控笔/手写等操作支持好许多 (虽然我不怎么用). 看文章时我更喜欢在<strong>Chrome</strong>的<a href="https://saladict.crimx.com/" target="_blank" rel="noopener">沙拉查词</a>插件提供的pdf.js的pdf阅读器里看, 查单词, 搜索很方便. 如果要做笔记的话我是在我的Windows系统平板上看的. 顺带一提用下面这行代码可以实现pdf.js暗黑模式效果. 解释见<a href="https://github.com/mozilla/pdf.js/issues/2071#issuecomment-830446509" target="_blank" rel="noopener">这里</a>.</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line">javascript:<span class="keyword">void</span>(<span class="built_in">document</span>.documentElement.style.filter=<span class="string">'invert(64%) contrast(228%) brightness(80%) hue-rotate(180deg)'</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S ps2pdf</span><br></pre></td></tr></tbody></table></figure>
+
+<p>补充一个压缩pdf的小工具, 还是挺实用的. 用<code>ps2pdf -dPDFSETTINGS=/ebook input.pdf output.pdf</code>就可以将pdf压缩为150dpi的质量. <code>-dPDFSETTINGS=/prepress</code>参数的话能得到质量为300dpi的pdf, 完全满足打印的需求了.</p>
+<h3 id="latex"><a href="#latex" class="headerlink" title="latex"></a>latex</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S visual-studio-code-bin</span><br><span class="line">yay -S texlive-most texlive-lang biber</span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入cpan后添加阿里源</span></span><br><span class="line">o conf urllist push https://mirrors.aliyun.com/CPAN/</span><br><span class="line">o conf commit</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在cpan中安装包</span></span><br><span class="line">install YAML::Tiny</span><br><span class="line">install File::HomeDir</span><br><span class="line">install Log::Dispatch</span><br><span class="line">install Log::Log4perl</span><br></pre></td></tr></tbody></table></figure>
+
+<p>TeX Live是很大一套软件, 嫌麻烦的话最好就直接把包含了绝大多数部件的<strong>texlive-most</strong>以及语言包<strong>texlive-lang</strong>下下来. 其中CTeX包含在<strong>texlive-langchinese</strong>这个包中. <strong>biber</strong>则是比biblatex更先进的引用处理工具. TeX Live中的一些工具比如<strong>latexindent.pl</strong>需要perl并且依赖于一些perl包. 输入<code>cpan</code>后首先会要求进行一下交互式配置, 然后用上面的语句添加阿里源, 然后安装缺少的包.</p>
+<p>在Linux上使用LaTeX我只推荐两种方案:</p>
+<ol>
+<li><p>在<a href="https://www.overleaf.com/" target="_blank" rel="noopener">Overleaf</a>中在线编辑</p>
+<p>Overleaf以TeX Live作为后端, 开箱支持选择编译器, 支持基础的vim键映射, 提供看得过去的补全, 提供拼写和语法 (指LaTeX)检查… 点开Overleaf就有了一个还不错的LaTeX环境, 不需要担心缺少依赖, 不需要设置编译工具链, 编辑界面还算好看, 编译速度也很快, 是真的很省心了 👍 除此以外Overleaf支持git同步, 也支持多人协作编辑, 对于不想费心配置环境的人来说是真的很棒了</p>
+</li>
+<li><p>借助<a href="https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop" target="_blank" rel="noopener">LaTeX Workshop</a>插件在VSCode中本地编辑</p>
+<p>曾经看了<a href="https://zhuanlan.zhihu.com/p/60049290?utm_source=qq&amp;utm_medium=social&amp;utm_oi=911363543885045760" target="_blank" rel="noopener">这篇文章</a>我也一度想试试在vim中编辑TeX文件, 以Okular显示的方案, 但体验后发现用vim编辑富文本文档真是傻逼. 我原本是馋这样快捷的补全, 但事实证明装几个补全插件, 都还不需要自己添加snipet补全体验就已经很不错了 (毕竟我不是数学专业, 并不会频繁用到奇怪公式). 另一方面, 我试了好几个pdf软件, 反向搜索都只能具体到行, 不能让光标精确定位到我在pdf中点到的词/图上, 而LaTeX Worshop提供的VSC内置pdf阅读器支持精确的反向搜索. 另外我在VSC中装了<a href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker" target="_blank" rel="noopener">拼写检查</a>和<a href="https://marketplace.visualstudio.com/items?itemName=CodeInChinese.EnglishChineseDictionary" target="_blank" rel="noopener">查单词</a>的插件, (有拼写检查很重要!) 而我很久以前搜的时候并没有搜到好用的vim拼写检查插件. 其他方面vim倒是和VSC差不多.</p>
+</li>
+</ol>
+<h3 id="Office套件"><a href="#Office套件" class="headerlink" title="Office套件"></a>Office套件</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S wps-office-cn  # wps套件国内版</span><br><span class="line">yay -S wps-office-mui-zh-cn  # wps中文语言包</span><br><span class="line">yay -S ttf-wps-fonts  # wps需要的字体和符号</span><br></pre></td></tr></tbody></table></figure>
+
+<p>我体验了Office365 Online, LibreOffice, Google Docs, WPS后发现在Linux用Office套件只能是用WPS, 而且很好用. 其他软件简直是一坨💩</p>
+<p>Office365 Online当然是格式兼容最好的, 但是必须在线使用, 而且打开一个本地文件时会先把这个文件上传到onedrive中然后从云端打开, 文件稍微大点那体验很差. 在线版Office表面看岁月静好, 其实功能阉割非常严重. Google Docs虽然可以安装为chrome插件离线使用, 但是功能更加简陋了! 而LibreOffice就很离谱了, 明明是一个本地使用的Office套件, 但支持的功能并不比前两者多多少, 同时界面还有点古老.</p>
+<p>这三者的功能缺失到底有多严重呢? 我来举几个例子:</p>
+<ol>
+<li>都没有内置插入富文本公式的功能</li>
+<li>都不可以设置插入的矩形的透明度 (有时候我会用一个带透明度的矩形来作为图片蒙版)</li>
+<li>Office365 Online和LibreOffice的PPT软件都不支持插入本地视频, Google Docs我就没试了. Office365 Onlineq其实是可以插入视频, 但是只支持来自于youtube等几个有限选择的联机视频… 而LibreOffice的PPT软件在编辑时可以插入本地视频, 但是保存为<code>.ppt</code>后这个视频不知道为什么没了… (我没试保存为它自己的格式的话能不能行, 因为那也没什么用)</li>
+<li>…如果上面几个功能都不支持我不如写Markdown文档了所以不用试了</li>
+</ol>
+<p>而另一边, <strong>WPS出乎我意料的好!</strong> 以上功能WPS统统支持, 用起来和MS Office真的是区别不大了👍 目前注意到的也就是没有平滑切换效果和不支持3D模型编辑 (但是也能显示成图片) 这两个MS Office的特色功能, 以及选中一些对象右键另存为图片时不能另存为svg或其他矢量图格式, 无伤大雅. 格式不完全兼容这个问题当然还是存在, 但是在接受范围内. 而且, WPS现在还挺好看的🐮</p>
+<p><img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/wps.png"></p>
+<p>至于MS Office套件提供的其他我使用的软件:</p>
+<ul>
+<li><p>Outlook, 微软待办事项, 日历我使用的是网页版 (在Windows我也用的网页版, 因为可以和微软待办事项, 日历联动我觉得体验反而比Outlook本地客户端体验更加良好)</p>
+</li>
+<li><p>teams则是有官方Linux版本, 可以执行<code>yay -S teams</code>安装. 不过网页版也能获得完整的体验, 我感觉没什么差别</p>
+</li>
+<li><p>OneDrive的话虽然有人开发了<a href="https://abraunegg.github.io/" target="_blank" rel="noopener">OneDrive Linux客户端</a>, 但我并没有使用. 虽然我平时使用Linux系统, 但是我把我的Windows盘挂载在了我的Linux系统里, 可以访问并编辑OneDrive文件夹里的文件, 然后我对同步频率的要求没多高, 因此暂时没感觉不方便 (主要是很久以前试过这个客户端, 当时体验很一般). 比较有意思的是目前在企业版Office365 (学校给的) 的应用列表中直接有列出OneDrive Linux版的图标, 但链接到的是一个<a href="https://github.com/skilion/onedrive" target="_blank" rel="noopener">有很多bug功能很不全的版本</a>, 而且我的个人版Office365的应用列表并没有列出这个 😅<img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/onedrive.png"></p>
+<p>在<a href="https://github.com/skilion/onedrive/issues/518" target="_blank" rel="noopener">这个issue</a>中可以看出skilion完全不想为社区开发, 但同时拒绝向abraunegg的版本引流或注明自己的版本的问题… 👎</p>
+</li>
+</ul>
+<h2 id="工程"><a href="#工程" class="headerlink" title="工程"></a>工程</h2><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S minicom  # 终端串口调试助手, 也有GUI版, cutecom</span><br><span class="line"><span class="meta">#</span><span class="bash"> 未完待续...</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="命令行工具"><a href="#命令行工具" class="headerlink" title="命令行工具"></a>命令行工具</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S zsh</span><br><span class="line">chsh -s /usr/bin/zsh  # 切换默认shell为zsh, 要注意你的zsh也许不在/usr/bin/zsh</span><br><span class="line"></span><br><span class="line">yay -S tmux</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用gpakosz的tmux主题</span></span><br><span class="line">cd ~ &amp;&amp; git clone https://github.com/gpakosz/.tmux.git</span><br><span class="line">ln -s -f .tmux/.tmux.conf</span><br><span class="line">cp .tmux/.tmux.conf.local .</span><br><span class="line"></span><br><span class="line">yay -S lsd</span><br><span class="line">git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf</span><br><span class="line">~/.fzf/install</span><br><span class="line">yay -S bat</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在这里我想先辨析一下<code>终端</code>, <code>shell</code>, <code>命令行</code>这三个词:</p>
+<ul>
+<li><p><strong>终端</strong> (terminal), 最开始指的是一种用来与计算机主机交互的输入输出设备, 是硬件, 而我们如今绝大多数情况下说的终端实际上是终端模拟器 (terminal emulator) 的简称, 是一类模拟终端这种提供与计算机交互界面的功能的软件.  有的终端模拟器不仅可以显示字符还可以显示图像. 我用的终端是KDE提供的<strong>Konsole</strong>. 去掉标题栏及边框后能达到👇这样的效果, 我感觉还挺好看😁 <img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/terminal.png"></p>
+</li>
+<li><p><strong>shell</strong>, 指的是一种让用户能够与操作系统内核进行交互的软件 (我们通常说的是命令行界面shell, 但实际上shell这个概念还包含了GUI的shell, 比如KDE). Ubuntu及Manjaro等系统自带的shell程序是bash, MacOS自带的shell则是zsh. 实际上zsh是比bash体验好很多的shell程序, 自身的补全更加智能, 有很丰富的插件选择, 有<a href="https://ohmyz.sh/" target="_blank" rel="noopener">Oh My Zsh</a>这样的便利shell配置管理框架… 反正谁用谁知道 👍 我也不清楚为什么一种Linux系统仍将bash作为系统默认shell, 这点表扬MacOS. 用下面的命令来安装并切换默认shell为zsh.</p>
+</li>
+<li><p><strong>命令行</strong>, 看了前两者的描述能发现指的只是相对于图形化界面操作的一种操作方式, 一般是纯文本界面, 少数命令行程序支持鼠标操作, 比如vim (需要设置), htop (命令行任务管理器), ranger (命令行资源管理器), w3m (命令行浏览器), tmux.</p>
+</li>
+</ul>
+<p>然后我来介绍几个好用的命令行工具:</p>
+<ul>
+<li>tmux是一个终端复用器 (解释起来比较复杂, 建议自行搜索一下), 我主要用来在一个终端里开多个窗口 / 连服务器. tmux的设计使得与服务器交互时在服务器侧开一个tmux后即便丢失与服务器的连接, 服务器端tmux中的任务仍会正常执行下去, 并且下次连上服务器后进入tmux就可以回到这个工作现场. 推荐一下<a href="https://github.com/gpakosz/.tmux" target="_blank" rel="noopener">这个tmux主题</a>, 开箱就能有很不错的体验, 颜值很高, 配置也很容易个性化.</li>
+</ul>
+<ul>
+<li><p>lsd是<code>ls</code>命令的替代品, 最主要的价值是让ls命令的输出变成彩色而且每种文件有对应图标显示的了 😁 要注意需要安装<a href="https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md" target="_blank" rel="noopener">特定类型的字体</a></p>
+</li>
+<li><p>fzf是一个模糊查找器, 不止可以在zsh里用, vim, tmux中也有支持. 我主要喜欢用来在zsh中能模糊输入我设定了的几个命令, 结合<strong>bat</strong>, 这个升级版cat, 能获得很流畅的 (装逼) 体验. 之所以不从aur装fzf是因为从aur装的fzf不知为什么会缺少<code>.fzf.zsh</code>这个文件. 贴上我在<code>.zshrc</code>中对fzf的配置:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> fzf config</span></span><br><span class="line">    export FZF_COMPLETION_TRIGGER=']'</span><br><span class="line">    # Use fd (https://github.com/sharkdp/fd) instead of the default find</span><br><span class="line">    # command for listing path candidates.</span><br><span class="line">    # - The first argument to the function ($1) is the base path to start traversal</span><br><span class="line">    # - See the source code (completion.{bash,zsh}) for the details.</span><br><span class="line">    _fzf_compgen_path() {</span><br><span class="line">      fd --hidden --follow --exclude ".git" . "$1" --exclude ".deepinwine"</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    # Use fd to generate the list for directory completion</span><br><span class="line">    _fzf_compgen_dir() {</span><br><span class="line">      fd --type d --hidden --follow --exclude ".git" . "$1" --exclude ".deepinwine"</span><br><span class="line">    }</span><br><span class="line">    # (EXPERIMENTAL) Advanced customization of fzf options via _fzf_comprun function</span><br><span class="line">    # - The first argument to the function is the name of the command.</span><br><span class="line">    # - You should make sure to pass the rest of the arguments to fzf.</span><br><span class="line">    _fzf_comprun() {</span><br><span class="line">      local command=$1</span><br><span class="line">      shift</span><br><span class="line"></span><br><span class="line">      case "$command" in</span><br><span class="line">        cd)           fzf "$@" --preview 'lt {} | head -200' ;;</span><br><span class="line">        export|unset) fzf "$@" --preview "eval 'echo \$'{}" ;;</span><br><span class="line">        ssh)          fzf "$@" --preview 'dig {}' ;;</span><br><span class="line">        vim)          fzf "$@" --preview 'bat --style=numbers --color=always --line-range :500 {}' ;;</span><br><span class="line">        *)            fzf "$@" ;;</span><br><span class="line">      esac</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">[ -f ~/.fzf.zsh ] &amp;&amp; source ~/.fzf.zsh</span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ul>
+<h3 id="服务器相关"><a href="#服务器相关" class="headerlink" title="服务器相关"></a>服务器相关</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S sshfs</span><br><span class="line">yay -S frp</span><br></pre></td></tr></tbody></table></figure>
+
+<p>sshfs允许以SFTP将SSH服务器的指定路径挂载到本机, 在懒得配服务器的IDE/编辑器时可以用这种方式在本地编辑, 对不需要IDE/编辑器的高阶调试时还是挺方便的. frp则是一种以反向代理的方式让我们能非常方便地ssh到一台内网服务器的方式! 使用非常简单, 在要访问的内网机器和作为跳板的公网服务器上分别放一个程序和配置文件就能用了👍 参见<a href="https://gofrp.org/docs/setup/" target="_blank" rel="noopener">frp文档</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -4472,9 +4800,9 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
           });
       </script>]]></content>
       <categories>
-        <category>杂记</category>
-        <category>语言</category>
-        <category>C/C++</category>
+        <category>工具</category>
+        <category>操作系统</category>
+        <category>Linux</category>
       </categories>
   </entry>
   <entry>
@@ -4943,7 +5271,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <p>实际上想用latex文件生成pdf有好几个编译器可以用, 最常被提到且速度最快的是<code>pdflatex</code>, 但pdflatex对UTF-8支持不够好, 对现代字体支持也不够好, 而且可能因为我的文档页数不够多, 我真没体验出速度有什么差别. <code>xelatex</code>对特殊字符及现代字体支持很好, 对中文兼容也很好, 因此目前我更偏向使用xelatex. 这个编译器生成的pdf文件会比pdflatex无参数生成的小不少, 因为它默认会进行无损压缩.</p>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">\usepackage{fontspec}</span><br><span class="line">\setromanfont{Times New Roman}  % 指定普通字体</span><br><span class="line">\setsansfont{Arial}  % 指定无衬线字体</span><br><span class="line">\setmonofont{Courier New}  % 指定等宽字体</span><br><span class="line">\usepackage{xeCJK}  % 中文支持</span><br></pre></td></tr></tbody></table></figure>
 
-<p>当使用<code>xelatex</code>作为编译器时可以使用<em>fontspec</em>包来指定字体. 更详细的指定方式参见<a href="https://es.overleaf.com/learn/latex/XeLaTeX" target="_blank" rel="noopener">Overleaf的文档</a>. 不过虽然我们学院的论文格式要求也对字体提出了要求, 但所要求的<strong>Times New Roman</strong>, <strong>Arial</strong>这几个字体其实都是Windows系统专有的. 我的Manjaro系统虽然也有替代字体, 但是我感觉默认字体看着也挺好而且老师其实没管所以就没折腾. 实际写作我并没有主动使用过切换字体的命令, 暂时感觉用不到.</p>
+<p>当使用<code>xelatex</code>作为编译器时可以使用<strong><em>fontspec</em></strong>包来指定字体. 更详细的指定方式参见<a href="https://es.overleaf.com/learn/latex/XeLaTeX" target="_blank" rel="noopener">Overleaf的文档</a>. 不过虽然我们学院的论文格式要求也对字体提出了要求, 但所要求的<strong>Times New Roman</strong>, <strong>Arial</strong>这几个字体其实都是Windows系统专有的. 我的Manjaro系统虽然也有替代字体, 但是我感觉默认字体看着也挺好而且老师其实没管所以就没折腾. 实际写作我并没有主动使用过切换字体的命令, 暂时感觉用不到.</p>
 <p>当设置好全文字体大小及字体后, 在文中想设置文字的样式, 比如加粗/斜体/下划线/小型大写字母, 或者大点/小点的, 用到的命令<a href="https://www.overleaf.com/learn/latex/Font_sizes%2C_families%2C_and_styles#Reference_guide" target="_blank" rel="noopener">这里</a>有一个列表可查. 注意变更样式的部分用大括号括起来, 不然后面所有字符的样式都会维持这样.</p>
 <h3 id="两个常见问题"><a href="#两个常见问题" class="headerlink" title="两个常见问题"></a>两个常见问题</h3><h4 id="如何创建能在目录中显示的四级标题"><a href="#如何创建能在目录中显示的四级标题" class="headerlink" title="如何创建能在目录中显示的四级标题"></a>如何创建能在目录中显示的四级标题</h4><p>LaTeX原生提供了7级标题:</p>
 <ul>
@@ -4959,7 +5287,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <img style="width:80%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/sections.jpg">
 
 <p>因此真要说的话在article这种文档类型中LaTeX原生提供的标题只有三级. 要是写短篇论文的话确实也不需要更小的标题了, 但是记个笔记之类还是有可能需要更多级的标题. <a href="https://tex.stackexchange.com/questions/60209/how-to-add-an-extra-level-of-sections-with-headings-below-subsubsection" target="_blank" rel="noopener">这个stackoverflow问题</a>有给出一些解决方案.</p>
-<h4 id="underfull和overfull警告是什么"><a href="#underfull和overfull警告是什么" class="headerlink" title="underfull和overfull警告是什么"></a>underfull和overfull警告是什么</h4><p>这两种警告是在编译后非常常见的警告, 意味着编译器在这一行找不到合适的换行的地方, 导致这一行在文字框限制内排版出来要不是太空了 (underfull) 要不就是太挤了 (overfull). 也就是说这基本是英文这样的字母语言才会遇到的问题. Overleaf<a href="https://www.overleaf.com/learn/how-to/Understanding_underfull_and_overfull_box_warnings" target="_blank" rel="noopener">这篇文章</a>很详细讲了原因, 但几乎没给处理办法. 💡 要注意其中提到的<em>microtype</em>包xelatex<a href="https://tex.stackexchange.com/questions/118713/is-microtype-fully-supported-now-by-xelatex-if-not-how-can-i-keep-myself-up-to" target="_blank" rel="noopener">目前几乎不支持</a>, 但我感觉我就用默认排版工具生成的pdf排版也还挺好的? 以下是一些关于断行的小技巧.</p>
+<h4 id="underfull和overfull警告是什么"><a href="#underfull和overfull警告是什么" class="headerlink" title="underfull和overfull警告是什么"></a>underfull和overfull警告是什么</h4><p>这两种警告是在编译后非常常见的警告, 意味着编译器在这一行找不到合适的换行的地方, 导致这一行在文字框限制内排版出来要不是太空了 (underfull) 要不就是太挤了 (overfull). 也就是说这基本是英文这样的字母语言才会遇到的问题. Overleaf<a href="https://www.overleaf.com/learn/how-to/Understanding_underfull_and_overfull_box_warnings" target="_blank" rel="noopener">这篇文章</a>很详细讲了原因, 但几乎没给处理办法. 💡 要注意其中提到的<strong><em>microtype</em></strong>包xelatex<a href="https://tex.stackexchange.com/questions/118713/is-microtype-fully-supported-now-by-xelatex-if-not-how-can-i-keep-myself-up-to" target="_blank" rel="noopener">目前几乎不支持</a>, 但我感觉我就用默认排版工具生成的pdf排版也还挺好的? 以下是一些关于断行的小技巧.</p>
 <h5 id="断词与不要断词"><a href="#断词与不要断词" class="headerlink" title="断词与不要断词"></a>断词与不要断词</h5><p>实际上遇到行末长单词干扰LaTeX排版的时候LaTeX会自动按音节将这个长单词断词, 在行末留个<code>-</code>. 不过有时会想要指定一些单词的断词位置, 有两种方式:</p>
 <ol>
 <li><p>在正文中通过加入<code>\-</code>允许在此处断词. 可以指定多处允许断词的地方, 然后LaTeX会选择其中一个位置来断词:</p>
@@ -4995,7 +5323,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">% 放在导言部分</span><br><span class="line">\special{dvipdfmx:config z 0}  % 👈这个0换成9就是最大压缩等级了.</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><h3 id="数学公式-样式"><a href="#数学公式-样式" class="headerlink" title="数学公式, 样式"></a>数学公式, 样式</h3><p>这个CSDN上的<a href="https://blog.csdn.net/ethmery/article/details/50670297" target="_blank" rel="noopener">LaTeX基本数学公式语法</a>列出了希腊字母, 上下标, 矢量, 特殊符号, 矩阵等数学公式常用命令, 还挺全的.</p>
-<p>作为一个菜鸟我还没用LaTeX写过很复杂的公式, 因此还没有用过<em>amsmath</em>这个增强<a href="https://www.overleaf.com/learn/latex/Aligning%20equations%20with%20amsmath" target="_blank" rel="noopener">公式排版</a>的包, 但据overleaf这篇文章原生支持对排版支持不够好, 因此我先码住.</p>
+<p>作为一个菜鸟我还没用LaTeX写过很复杂的公式, 因此还没有用过<strong><em>amsmath</em></strong>这个增强<a href="https://www.overleaf.com/learn/latex/Aligning%20equations%20with%20amsmath" target="_blank" rel="noopener">公式排版</a>的包, 但据overleaf这篇文章原生支持对排版支持不够好, 因此我先码住.</p>
 <p>然后这还有一篇Overleaf的<a href="https://www.overleaf.com/learn/latex/Mathematics" target="_blank" rel="noopener">数学相关内容合集</a> 🐮</p>
 <h3 id="浮动体"><a href="#浮动体" class="headerlink" title="浮动体"></a>浮动体</h3><p>figure和table是LaTeX原生的两种浮动体环境, 用于灵活排版图片和表格, 并且为图表标题 (caption) 提供环境 (就是说即便不放在浮动体里也可以将图片表格插入LaTeX). 而且其实这两种环境中什么都能放, 没有限定只能放图片或表格. 这两种环境都可以给[<em>placement</em>]参数 (默认是<code>btp</code>), 通过指定<code>htb</code>限制只能放在这三种位置 (也就是不允许单独成页). 可用参数参见<a href="https://www.overleaf.com/learn/latex/Inserting_Images#Positioning" target="_blank" rel="noopener">这附近有的一个表格</a>. 值得一提的是LaTeX总是以h-t-b-p的优先级来决定浮动体位置, 和填的参数的顺序无关. 💡 除单独成页外, 默认每页不超过3个浮动体, 其中顶部不超过2个, 底部不超过1个以及浮动体空间占页面的百分比 (默认顶部不超过70%, 底部不超过30%)</p>
 <p>关于双栏环境下浮动体的排版以及其他细节见<em>一份不太简短的LaTeX2ε介绍</em>的<strong>3.9 浮动体</strong>.</p>
@@ -5005,7 +5333,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">% 导言部分</span><br><span class="line">\usepackage{graphicx}  % 图片插入支持宏包</span><br><span class="line">\graphicspath{{./}}  % 将之后插入图片的检索路径设为根文件所在目录, 不然插入图片时的图片地址是相对于当前tex文件的, 会比较麻烦</span><br><span class="line">% \graphicspath{{./Figures}}  % 其实更常见的是直接将检索路径设为你的图片文件夹, 但我为了能触发我VSC的路径补全所以只设成了根文件所在目录</span><br><span class="line">\usepackage[</span><br><span class="line">   colorlinks=true,</span><br><span class="line">]{hyperref}  % 给交叉引用的引用编号添加超链接支持</span><br><span class="line"></span><br><span class="line">% 正文部分</span><br><span class="line">\begin{figure}[htb]</span><br><span class="line">      \centering  % 让图片居中. 默认是左对齐</span><br><span class="line">      \includegraphics[width=0.8\textwidth]{Figures/mesh.jpg}  % 限制图片宽度为0.8倍版面宽度</span><br><span class="line">      \caption[Test]{Test: blablabla}\label{f:mesh}</span><br><span class="line">\end{figure}</span><br><span class="line"></span><br><span class="line">As you can see in \autoref{f:mesh}, the function grows near 0.</span><br></pre></td></tr></tbody></table></figure>
 
 <p>用<code>\caption</code>命令可以给图片等浮动体加标题, 在<code>{}</code>中的是长标题, 就是显示在图下那个. 而在<code>[]</code>中的短标题是会显示在图目录中的标题 (用<code>\listoffigures</code>来生成图目录). 我习惯在长标题里开头用短标题, 能实现很多论文里<strong>概要: 详细描述</strong>的图标题形式.</p>
-<p><code>\lable</code>是交叉引用, 可以用来在文中提及章节/公式/图表等. 导入<strong>hyperref</strong>包能支持点击引用处跳转, 这样体验才够良好. 用<code>\autoref</code>而不是<code>\ref</code>能让整个引用编号 (比如上面的红色的<strong>Figure 1</strong>)而不是只有<strong>1</strong>是超链接. <code>\ref{}</code>或者<code>\autoref{}</code>的参数可以随便写, 之所以加个<code>f:</code>的前缀是为了将图片, 表格等类交叉引用区别开, 方便管理, 比如说VSC的LaTeX Workshop支持交叉引用的补全提示.</p>
+<p><code>\lable</code>是交叉引用, 可以用来在文中提及章节/公式/图表等. 导入<strong><em>hyperref</em></strong>包能支持点击引用处跳转, 这样体验才够良好. 用<code>\autoref</code>而不是<code>\ref</code>能让整个引用编号 (比如上面的红色的<strong>Figure 1</strong>)而不是只有<strong>1</strong>是超链接. <code>\ref{}</code>或者<code>\autoref{}</code>的参数可以随便写, 之所以加个<code>f:</code>的前缀是为了将图片, 表格等类交叉引用区别开, 方便管理, 比如说VSC的LaTeX Workshop支持交叉引用的补全提示.</p>
 <p>细节解释可以参考这几个链接:</p>
 <ul>
 <li><a href="https://www.overleaf.com/learn/latex/Inserting_Images#Generating_high-res_and_low-res_images" target="_blank" rel="noopener">Overleaf的插入图片全教程</a></li>
@@ -5020,21 +5348,20 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 
 <img style="width:60%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/table.jpg">
 
-<p>图中前一个表格是上面的模板的效果, 后一个表格是没有增大行间距的表格的效果. 插入表格有几种环境可用, <em>tabularx</em>这个环境是允许指定整个表的宽度和每列的对齐方式后自动计算每列宽度, 我觉得比<em>tabular</em>环境更智能省心. <em>tabularx</em>环境接受两个参数, 前一个是整个表格的宽度, 后一个是每列的对齐方式. <code>X</code>和<code>l</code>都是左对齐, 但<code>X</code>会让这列的列宽更宽, 让内容能占满整个表格. 比如上图前面的表格第一列就是<code>X</code>而后一个表格第一列是<code>l</code>, 就只有刚好适应单元格内容的列宽. 从单元格的侧边框可以看出最后一列确实是居中对齐, 但因为LaTeX是从左到右排版表格的, 因此多了些空余… <code>c</code>和<code>r</code>则是适应单元格宽度的居中对齐和右对齐. 想要智能宽度的居中对齐和右对齐的话用<code>&gt;{\centering\arraybackslash}X</code>和<code>&gt;{\raggedleft\arraybackslash}X</code> (没错这一长串和<code>l</code>一样往里填)</p>
-<p><code>&amp;</code>用来分隔一行中的单元格, <code>\\</code>表示一行的末尾. <em>booktabs</em>这个包里好像只有一些分隔线, <code>\toprule</code>, <code>\midrule</code>这些的. 更多画边框线的方式参加<a href="https://www.overleaf.com/learn/latex/tables" target="_blank" rel="noopener">overleaf-表格</a>.</p>
+<p>图中前一个表格是上面的模板的效果, 后一个表格是没有增大行间距的表格的效果. 插入表格有几种环境可用, <code>tabularx</code>这个环境是允许指定整个表的宽度和每列的对齐方式后自动计算每列宽度, 我觉得比<code>tabular</code>环境更智能省心. <code>tabularx</code>环境接受两个参数, 前一个是整个表格的宽度, 后一个是每列的对齐方式. <code>X</code>和<code>l</code>都是左对齐, 但<code>X</code>会让这列的列宽更宽, 让内容能占满整个表格. 比如上图前面的表格第一列就是<code>X</code>而后一个表格第一列是<code>l</code>, 就只有刚好适应单元格内容的列宽. 从单元格的侧边框可以看出最后一列确实是居中对齐, 但因为LaTeX是从左到右排版表格的, 因此多了些空余… <code>c</code>和<code>r</code>则是适应单元格宽度的居中对齐和右对齐. 想要智能宽度的居中对齐和右对齐的话用<code>&gt;{\centering\arraybackslash}X</code>和<code>&gt;{\raggedleft\arraybackslash}X</code> (没错这一长串和<code>l</code>一样往里填)</p>
+<p><code>&amp;</code>用来分隔一行中的单元格, <code>\\</code>表示一行的末尾. <strong><em>booktabs</em></strong>这个包里好像只有一些分隔线, <code>\toprule</code>, <code>\midrule</code>这些的. 更多画边框线的方式参加<a href="https://www.overleaf.com/learn/latex/tables" target="_blank" rel="noopener">overleaf-表格</a>.</p>
 <h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>有序列表用<code>enumerate</code>环境, 无序列表用<code>itemize</code>环境. 这个没啥难的, 有问题参见<a href="https://www.overleaf.com/learn/latex/lists" target="_blank" rel="noopener">overleaf-列表</a>.</p>
 <p>💡 另外这里有个通过给<code>itemize</code>和<code>enumerate</code>环境的选项的方式<a href="https://tex.stackexchange.com/questions/10684/vertical-space-in-lists" target="_blank" rel="noopener">调整列表行间距的方法</a>.</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><code>lstlisting</code>环境 (需要导入<em>listings*宏包</em>) 是传统的插入代码用环境, 只是插入个代码的话倒是语法也很简单, 但是要想让插入的代码有语法高亮的话就必须<a href="https://www.overleaf.com/learn/latex/Code_listing#Code_styles_and_colours" target="_blank" rel="noopener">这样</a>自己在导言区放一个语法高亮配色方案, 很不简洁. 强推一下<code>minted</code>环境 (需要导入<em>minted</em>宏包), 这是一个自带多种语法高亮配色方案且支持绝大多数语言语法高亮的很现代的代码插入环境! 使用方式见<a href="https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted#Introduction" target="_blank" rel="noopener">overleaf-用minted语法高亮</a>. 如果你追求比较高, 觉得minted自带的语法高亮不够细致,  比如minted对yaml的语法高亮不会像VSC那样将布尔值, 数字, 字符串等类型值用颜色标示出来, 那可以看看stackoverflow上这个<a href="https://tex.stackexchange.com/questions/152829/how-can-i-highlight-yaml-code-in-a-pretty-way-with-listings" target="_blank" rel="noopener">自定义语法高亮问题</a>.</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><code>lstlisting</code>环境 (需要导入<strong><em>listings</em></strong>宏包) 是传统的插入代码用环境, 只是插入个代码的话倒是语法也很简单, 但是要想让插入的代码有语法高亮的话就必须<a href="https://www.overleaf.com/learn/latex/Code_listing#Code_styles_and_colours" target="_blank" rel="noopener">这样</a>自己在导言区放一个语法高亮配色方案, 很不简洁. 强推一下<code>minted</code>环境 (需要导入<strong><em>minted</em></strong>宏包), 这是一个自带多种语法高亮配色方案且支持绝大多数语言语法高亮的很现代的代码插入环境! 使用方式见<a href="https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted#Introduction" target="_blank" rel="noopener">overleaf-用minted语法高亮</a>. 如果你追求比较高, 觉得minted自带的语法高亮不够细致,  比如minted对yaml的语法高亮不会像VSC那样将布尔值, 数字, 字符串等类型值用颜色标示出来, 那可以看看stackoverflow上这个<a href="https://tex.stackexchange.com/questions/152829/how-can-i-highlight-yaml-code-in-a-pretty-way-with-listings" target="_blank" rel="noopener">自定义语法高亮问题</a>.</p>
 <p>补充: <a href="https://tex.stackexchange.com/questions/12428/code-spanning-over-two-pages-with-minted-inside-listing-with-caption" target="_blank" rel="noopener">跨页代码无法caption问题</a>.</p>
 <h3 id="特殊符号"><a href="#特殊符号" class="headerlink" title="特殊符号"></a>特殊符号</h3><img style="width:70%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/symbol.jpg">
 
-<p>LaTeX里更特殊的符号其实是靠<code>tkiz</code>包绘制出来的, 比如上面这段话里的圆圈1, 是通过在导言区定义了一个新的命令<code>\ballnumber{}</code>然后在文中调用的方式来实现的:</p>
+<p>LaTeX里更特殊的符号其实是靠<strong><em>tkiz</em></strong>包绘制出来的, 比如上面这段话里的圆圈1, 是通过在导言区定义了一个新的命令<code>\ballnumber{}</code>然后在文中调用的方式来实现的:</p>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">% 导言区</span><br><span class="line">\usepackage{tikz}  % 绘图宏包</span><br><span class="line">\newcommand{\ballnumber}[1]{</span><br><span class="line">    \tikz[baseline=(myanchor.base)]</span><br><span class="line">    \node[circle,fill=.,inner sep=1pt](myanchor){\color{-.}\bfseries\footnotesize #1};</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>这样的东西要用只能是现场上网搜了. 在这个<a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="noopener">手绘查询符号网站</a>可以通过手绘的方式查到绝大多数符号 (但上面说的这个圆圈1查不到). 这里再吹一下VSC的LaTeX Workshop插件, 提供了一个快速插入常见符号LaTeX命令的面板, 还能快速插入常用tkiz绘制 🐮</p>
-<img style="width:35%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/snippet.jpg">
-
-<h2 id="中文支持"><a href="#中文支持" class="headerlink" title="中文支持"></a>中文支持</h2><p>我目前还没用LaTeX写过中文内容, 不过看起来<em>xeCJK</em>宏包提供的中文支持效果还不错 (前提是用xelatex作为编译器), 不知道大量使用中文时会不会出问题. 这篇<a href="https://www.overleaf.com/learn/latex/Chinese#xeCJK_with_XeLaTeX" target="_blank" rel="noopener">overleaf-中文支持</a>我先码住.</p>
+<p>*<img style="width:35%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/snippet.jpg">*</p>
+<h2 id="中文支持"><a href="#中文支持" class="headerlink" title="中文支持"></a>中文支持</h2><p>我目前还没用LaTeX写过中文内容, 不过看起来<strong><em>xeCJK</em></strong>宏包提供的中文支持效果还不错 (前提是用xelatex作为编译器), 不知道大量使用中文时会不会出问题. 这篇<a href="https://www.overleaf.com/learn/latex/Chinese#xeCJK_with_XeLaTeX" target="_blank" rel="noopener">overleaf-中文支持</a>我先码住.</p>
 <h2 id="构建流程"><a href="#构建流程" class="headerlink" title="构建流程"></a>构建流程</h2><p><a href="https://www.overleaf.com/learn/latex/Choosing_a_LaTeX_Compiler" target="_blank" rel="noopener">选择overleaf编译器</a></p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://libguides.nps.edu/citation/ieee-bibtex" target="_blank" rel="noopener">各种东西的bibtex</a></p>
 <p><a href="https://www.overleaf.com/learn/latex/Biblatex_citation_styles" target="_blank" rel="noopener">biblatex引用</a></p>
@@ -5074,25 +5401,15 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
       </categories>
   </entry>
   <entry>
-    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
-    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<div align="right">Language:
-<a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a>
-<a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a>
-</div>
-
+    <title>几个提高效率的小技巧</title>
+    <url>/zh-CN/2019/01/18/%E5%87%A0%E4%B8%AA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>记录和分享一些我觉得提高了自己效率的技巧。</p>
 <a id="more"></a>
 
-<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="更改配置后页面未出现变化"><a href="#更改配置后页面未出现变化" class="headerlink" title="更改配置后页面未出现变化"></a>更改配置后页面未出现变化</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
-<h3 id="markdown中文换行导致的空格问题"><a href="#markdown中文换行导致的空格问题" class="headerlink" title="markdown中文换行导致的空格问题"></a>markdown中文换行导致的空格问题</h3><p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
-<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="Google站点地图报错"><a href="#Google站点地图报错" class="headerlink" title="Google站点地图报错"></a>Google站点地图报错</h3><p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
-<h3 id="如何建立多级分类"><a href="#如何建立多级分类" class="headerlink" title="如何建立多级分类"></a>如何建立多级分类</h3><p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
-<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><h3 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h3><p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a>
-<a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
-<script>
+<h1 id="虚拟桌面分割任务"><a href="#虚拟桌面分割任务" class="headerlink" title="虚拟桌面分割任务"></a>虚拟桌面分割任务</h1><p>Windows有一个我觉得蛮有意思的功能, <strong>虚拟桌面</strong>. 按 <code>Windows+Tab</code> 或者点击任务栏上有个长得有点奇怪的图标可以打开<strong>任务视图</strong>, 然后可以新建桌面, 管理桌面. 通过把应用界面分别放到不同桌面可以让任务栏不会堆积很多页面. 有时候同时写多个项目的时候会用浏览器搜好几个主题 (是的我就是浏览器选手) 如果都放到一起太乱太多了, 因此放到不同桌面是个非常不错的选择. 我经常将娱乐的玩意, 什么网易云, 百度云之类放一个桌面, 然后一个项目放一个桌面, 心情愉悦让效率大大提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<h1 id="更改输入法符号"><a href="#更改输入法符号" class="headerlink" title="更改输入法符号"></a>更改输入法符号</h1><p>有时, 比如写中文文档时, 我们需要频繁切换中英文输入法, 而代码中打符号的时候我总是忘记切换成英文输入法, 打出万恶的中文字符, 比如；什么的. 而我发现快捷键 <code>Ctrl+.</code>可以只切换符号的中英文! 也就是说你可以在中文输入法下打出英文标点 (比如我的句号是英文句号). 这样就解决了中英文标点易混淆的烦恼<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<!-- TODO -->
+<!-- chrom --><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -5112,9 +5429,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
           });
       </script>]]></content>
       <categories>
-        <category>工具</category>
-        <category>软件配置</category>
-        <category>Web</category>
+        <category>技巧</category>
       </categories>
   </entry>
   <entry>
@@ -5180,84 +5495,24 @@ VSCode之后发现这个选项没被勾上.</p>
       </categories>
   </entry>
   <entry>
-    <title>几个提高效率的小技巧</title>
-    <url>/zh-CN/2019/01/18/%E5%87%A0%E4%B8%AA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<p>记录和分享一些我觉得提高了自己效率的技巧。</p>
+    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
+    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<div align="right">Language:
+<a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a>
+<a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a>
+</div>
+
 <a id="more"></a>
 
-<h1 id="虚拟桌面分割任务"><a href="#虚拟桌面分割任务" class="headerlink" title="虚拟桌面分割任务"></a>虚拟桌面分割任务</h1><p>Windows有一个我觉得蛮有意思的功能, <strong>虚拟桌面</strong>. 按 <code>Windows+Tab</code> 或者点击任务栏上有个长得有点奇怪的图标可以打开<strong>任务视图</strong>, 然后可以新建桌面, 管理桌面. 通过把应用界面分别放到不同桌面可以让任务栏不会堆积很多页面. 有时候同时写多个项目的时候会用浏览器搜好几个主题 (是的我就是浏览器选手) 如果都放到一起太乱太多了, 因此放到不同桌面是个非常不错的选择. 我经常将娱乐的玩意, 什么网易云, 百度云之类放一个桌面, 然后一个项目放一个桌面, 心情愉悦让效率大大提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<h1 id="更改输入法符号"><a href="#更改输入法符号" class="headerlink" title="更改输入法符号"></a>更改输入法符号</h1><p>有时, 比如写中文文档时, 我们需要频繁切换中英文输入法, 而代码中打符号的时候我总是忘记切换成英文输入法, 打出万恶的中文字符, 比如；什么的. 而我发现快捷键 <code>Ctrl+.</code>可以只切换符号的中英文! 也就是说你可以在中文输入法下打出英文标点 (比如我的句号是英文句号). 这样就解决了中英文标点易混淆的烦恼<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<!-- TODO -->
-<!-- chrom --><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>技巧</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>MATLAB杂记</title>
-    <url>/zh-CN/2019/08/05/MATLAB%E6%9D%82%E8%AE%B0/</url>
-    <content><![CDATA[<p>再开学的课程就要用MATLAB了, 而且了解很多机械系唯一要求学的编程语言就是MATLAB, 我决定还是稍微了解下.</p>
-<a id="more"></a>
+<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="更改配置后页面未出现变化"><a href="#更改配置后页面未出现变化" class="headerlink" title="更改配置后页面未出现变化"></a>更改配置后页面未出现变化</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
+<h3 id="markdown中文换行导致的空格问题"><a href="#markdown中文换行导致的空格问题" class="headerlink" title="markdown中文换行导致的空格问题"></a>markdown中文换行导致的空格问题</h3><p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
 
-<p>首先, <a href="https://www.zhihu.com/question/37824202/answer/767114071" target="_blank" rel="noopener">MATLAB到底是不是编程语言?</a></p>
-<p>从<strong>TIOBE</strong>上有MATLAB而且MATLAB排名还不低可以看出MATLAB确实是一门编程语言, 但从上面链接可以看出MATLAB算是<strong>残疾</strong>的编程语言, 很多特性没有, 更多的是<strong>用来验证算法可行性</strong>.但我又想验证算法可行性为啥不用Python什么的, 语法也不麻烦呀? 然后我发现原本用<strong>Octave</strong>教深度学习的吴恩达现在改用<strong>Python</strong>了 😁</p>
-<p>💡 (这条是后来补的) 但其实随着使用我发现在<strong>矩阵计算方面</strong>MATLAB的语法还是比python简单很多.</p>
-<p>因此我觉得MATLAB的优势主要就在:</p>
-<ul>
-<li>语法简单, 没有编程基础的工科生也能快速掌握, 尤其计算方面的语法比Python简单太多</li>
-<li>集成度特别高, 各种工具都能轻松快速配置好</li>
-<li>能和多种语言交互, 编写界面简单</li>
-<li>很多工具都有图形界面, 操作简单, 按按键就可以, 不用写那么多代码.</li>
-</ul>
-<p>总而言之, 虽然缺点多多, MATLAB还是很值得一学的</p>
-<h1 id="MATLAB软件个性化设置"><a href="#MATLAB软件个性化设置" class="headerlink" title="MATLAB软件个性化设置"></a>MATLAB软件个性化设置</h1><h2 id="设置初始工作文件夹"><a href="#设置初始工作文件夹" class="headerlink" title="设置初始工作文件夹"></a>设置初始工作文件夹</h2><p>使用HOME目录作为起始工作文件夹我觉得不是什么好事, 所以最好自己指定一个合适的目录. 我使用的是MATLAB默认的<code>userpath</code>, 即<strong>Documents/MATLAB</strong>文件夹. 一方面这个文件夹看着比较合理, 一方面MATLAB说<a href="https://ww2.mathworks.cn/help/matlab/matlab_env/matlab-startup-folder.html#bujzf43" target="_blank" rel="noopener">使用userpath作为初始工作文件夹有一定好处</a>.</p>
-<p>Linux下设置MATLAB的初始工作文件夹方法和在Windows下改快捷方式的起始位置这种方法不一样, 要达到这个目的有两种方式:</p>
-<ol>
-<li>在终端输入 <code>matlab -useStartupFolderPref</code> 打开MATLAB. -useStartupFolderPref选项指定初始工作文件夹为在<strong>Preference</strong>中<strong>Initial working folder option</strong>的指定文件夹.</li>
-<li>在终端输入 <code>matlab -sd [folder]</code> 打开MATLAB. -sd选项指定初始工作文件夹为[folder]文件夹.</li>
-</ol>
-<h2 id="更改编辑界面颜色主题"><a href="#更改编辑界面颜色主题" class="headerlink" title="更改编辑界面颜色主题"></a>更改编辑界面颜色主题</h2><p>在vim, VSC, VS, CLION, Pycharm等工具用惯了黑暗主题以后拿到啥都想先换个黑暗主题. 但是找了半天也只找到了设置编辑界面颜色主题的方式, 普通操作似乎并不能自定义丑陋的灰色工具栏.</p>
-<p>最终我把界面变成了这样 👇</p>
-<p><img alt="界面" data-src="MATLAB%E6%9D%82%E8%AE%B0/appearance.png"></p>
-<ul>
-<li>颜色主题是通过<a href="https://github.com/scottclowe/matlab-schemer" target="_blank" rel="noopener">MATLAB Schemer</a>里的脚本更换的, 一键更换好评👍 因为我比较喜欢糖果色的颜色主题然后又不喜欢注释是灰色 (不管在黑色背景还是白色背景里辨析度都很低), 于是选择的主题是<a href="https://github.com/scottclowe/matlab-schemer/tree/master/schemes#dark-steel" target="_blank" rel="noopener">Dark Steel</a>.</li>
-<li>字体用的是<a href="https://github.com/powerline/fonts/tree/master/DejaVuSansMono" target="_blank" rel="noopener">DejaVu Sans Mono for Powerline</a>, 大小是11, 不过不知道为什么MATLAB显示不带效果的字体看着很粗糙, <strong>边缘锯齿状过于明显</strong>, 效果设置为了 <strong>bold</strong>, 这回好多了!</li>
-<li>布局改成了和我常用的vim, VSC差不多的布局: 资源管理器在左上, 细节信息在左下, 编辑窗口在右</li>
-</ul>
-<h1 id="MATLAB语法和工具"><a href="#MATLAB语法和工具" class="headerlink" title="MATLAB语法和工具"></a>MATLAB语法和工具</h1><h2 id="在终端运行"><a href="#在终端运行" class="headerlink" title="在终端运行"></a>在终端运行</h2><p>曾经我因为嫌MATLAB界面太丑又不能个性化想过在终端像用交互式Python一样用交互式
-MATLAB以及运行脚本. 我发现这是可行的:</p>
-<p>在终端启动交互式MATLAB:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">matlab -nojvm</span><br></pre></td></tr></tbody></table></figure>
-
-<p><code>-nojvm</code>选项本身是<strong>不启动Java虚拟机</strong>的意思, 但因为Matlab的GUI都是用Java写的
-(听网上说的), 所以也有<code>-nosplash</code> (<strong>不显示启动画面</strong>), <code>-nodesktop</code>
-(<strong>不启动图形界面</strong>) 的功能. 另外因为没有启动jvm这样启动MATLAB十分迅速.</p>
-<p>💡 要注意用<code>-nojvm</code>选项时会创建图形界面的命令会报错.</p>
-<p>在终端运行MATLAB脚本:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">matlab -batch [MATLAB_command]</span><br></pre></td></tr></tbody></table></figure>
-
-<p><code>-batch</code>选项和<code>-r</code>选项的区别在于前者不会启动图形界面而后者会. 另外如果脚本中没有与图形界面有关的语句同样可以加上<code>-nojvm</code>选项.</p>
-<p><strong>但是啊!</strong></p>
-<p>我后来发现这样就<strong>本末倒置</strong>了! MATLAB的亮点我觉得一是所有变量都是全局变量, 能迅速可视化变量, 工具集成度非常高, 适合迅速验证各种算法, 二是社区非常完善, 提供了很多工具能轻松仿真很多模型.</p>
-<p>因此只在终端的MATLAB是没有灵魂的MATLAB. <strong>如果终端里的MATLAB就能解决你的需求的话为什么不用Python?</strong> 🤤</p>
+<h3 id="Google站点地图报错"><a href="#Google站点地图报错" class="headerlink" title="Google站点地图报错"></a>Google站点地图报错</h3><p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
+<h3 id="如何建立多级分类"><a href="#如何建立多级分类" class="headerlink" title="如何建立多级分类"></a>如何建立多级分类</h3><p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
+<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><h3 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h3><p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a>
+<a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -5280,263 +5535,7 @@ MATLAB以及运行脚本. 我发现这是可行的:</p>
       <categories>
         <category>工具</category>
         <category>软件配置</category>
-        <category>杂记</category>
-        <category>语言</category>
-        <category>MATLAB</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Linux下各用途我最认可的工具推荐</title>
-    <url>/zh-CN/2020/07/26/Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/</url>
-    <content><![CDATA[<p>用Linux的时间已经比用Windows的时间还长了, 随着使用逐渐找到了各用途我最认可的工具, 或从软件源安装, 或在线使用. 在此整理一份我的Linux下各用途好用工具推荐. (出于私心将从一个Manjaro用户角度介绍)</p>
-<p>💡各位如果有什么推荐的软件也可以跟我说, 我觉得好用会加进去的</p>
-<a id="more"></a>
-
-<blockquote>
-<p>首先, 不得不吹一下Manjaro是一个多么贴心的系统. Manjaro自带了一个叫<strong>Manjaro Hello</strong>的入门程序, 点进这个程序的<code>Applications</code>入口能看到Manjaro社区为各常见用途已经提供了一些推荐, 勾选就可以安装. 可以说没有更贴心的系统了!</p>
-<p><img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/Manjaro_Hello.png?70"></p>
-</blockquote>
-<h2 id="日常使用"><a href="#日常使用" class="headerlink" title="日常使用"></a>日常使用</h2><h3 id="中文输入法"><a href="#中文输入法" class="headerlink" title="中文输入法"></a>中文输入法</h3><p>随着fcitx5日渐成熟, 现在有了两种我推荐的中文输入法方案:</p>
-<h4 id="fcitx5框架-配套中文输入法"><a href="#fcitx5框架-配套中文输入法" class="headerlink" title="fcitx5框架+配套中文输入法"></a>fcitx5框架+配套中文输入法</h4><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S fcitx5-im</span><br><span class="line">yay -S fcitx5-chinese-addons</span><br><span class="line">yay -S fcitx5-material-color</span><br></pre></td></tr></tbody></table></figure>
-
-<p>这个<strong>fcitx5-material-color</strong>是一个模仿win10的中文输入法的皮肤, 在fcitx5的设置中可以更换皮肤, 可以做到下面这样的效果 👇
-<img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/inputMethod.gif?80"></p>
-<h4 id="fcitx4框架-搜狗输入法"><a href="#fcitx4框架-搜狗输入法" class="headerlink" title="fcitx4框架+搜狗输入法"></a>fcitx4框架+搜狗输入法</h4><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S fcitx-im fcitx-configtool</span><br><span class="line">yay -S fcitx-sogoupinyin</span><br></pre></td></tr></tbody></table></figure>
-
-<hr>
-<p>安装完输入法框架和中文输入法后还需要在配置文件中设置几个环境变量. 因为有很多配置文件会在用户登录过程中被加载, 所以这里的设置方式其实不唯一. 我是在<code>~/.pam_environment</code>中写了这样几行:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">GTK_IM_MODULE DEFAULT=fcitx</span><br><span class="line">QT_IM_MODULE DEFAULT=fcitx</span><br><span class="line">XMODIFIERS DEFAULT=@im=fcitx</span><br></pre></td></tr></tbody></table></figure>
-
-<p>我目前使用的是fcitx5的方案. 我一个同学体验后觉得搜狗的词库做得更好, 能提供更精确的联想. 这点我倒是没什么感觉, fcitx5这个方案完全满足我的使用. 但另一方面fcitx5配套的中文输入法的优势非常明显:</p>
-<ul>
-<li>有一个Quick Phrase功能, 支持类似snippets一样根据关键词插入设定好的内容的功能. 默认提供了一些颜文字, emoji, LeTaX片段, 也可以自己加</li>
-<li>整个方案成体系, 使用体验非常好! fcitx4+搜狗输入法这个方案始终是缝合怪, 很容易有点小问题. 比如我之前用的时候每次从英文输入法切换回搜狗输入法, 我对搜狗输入法的一些设置 (比如使用半角标点符号) 都会恢复默认值</li>
-<li>支持导入搜狗细胞词库, 可以导入许多专业词汇的词库</li>
-<li>支持云拼音</li>
-<li>配置起来很简单直观</li>
-</ul>
-<p><strong>总的来说我是推荐试试fcitx5框架+配套中文输入法这个方案的</strong></p>
-<h3 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h3><p>很遗憾我没有找到一个像snipaste那样功能非常齐全的Linux平台截图/贴图软件. 我下了两个软件, 和我manjaro-kde自带的spectacle结合着用:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S spectacle</span><br><span class="line">yay -S flameshot</span><br><span class="line">yay -S deepin-screenshot</span><br></pre></td></tr></tbody></table></figure>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>优点</th>
-<th>缺点</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Spectacle</td>
-<td>1.作为KDE官方开发的截图软件, 对多屏幕支持是最好的, 下面两款对多屏幕的支持都完全没法看; 2. 全屏截图, 选定窗口截图, 选定矩形截图, 截图后做一些编辑, 设置存储图片的质量这些功能都是全的</td>
-<td>1. 不能像下面两款软件一样在后台运行; 2. 没有下面两款那样在截图的时候就能编辑, 选是存到剪贴板还是本地的交互界面, 还是不太方便</td>
-</tr>
-<tr>
-<td>Flameshot</td>
-<td>支持像snipaste一样将截图贴在屏幕最上层</td>
-<td>1. 在KDE上无法设置截图质量, 只能是原画质; 2. 无法自动贴靠屏幕上的窗口</td>
-</tr>
-<tr>
-<td>Deepin Screenshot</td>
-<td>1. 能将截图区域自动贴靠屏幕上的窗口; 2. 可以调节截图质量</td>
-<td>因为<a href="https://github.com/linuxdeepin/deepin-screenshot/issues/8" target="_blank" rel="noopener">一些原因</a>KDE版无法将截图存到剪贴板</td>
-</tr>
-</tbody></table>
-<h3 id="录屏"><a href="#录屏" class="headerlink" title="录屏"></a>录屏</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S simplescreenrecorder</span><br><span class="line">yay -S peek</span><br></pre></td></tr></tbody></table></figure>
-
-<p>SimpleScreenRecorder名字里虽然有simple, 但是实际上关于录屏的功能非常全, 有好几屏的设置项, 可以设置帧率, 视频源可以来自屏幕, 摄像头, 也可以设置音频源, 支持录制成<code>mkv</code>, <code>mp4</code>, <code>gif</code>, <code>mp3</code>等多种各种格式, 视频编码参数, etc… 可以说功能非常全面了.</p>
-<p>而如果只是想随手录一个gif, 那使用<strong>peek</strong>还是很好的.</p>
-<h3 id="显示按键"><a href="#显示按键" class="headerlink" title="显示按键"></a>显示按键</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S screenkey</span><br></pre></td></tr></tbody></table></figure>
-
-<p>这个可以在屏幕上显示按下了的键盘按键, 鼠标按键. 在演示, 示教时很好用 👍</p>
-<h2 id="驱动"><a href="#驱动" class="headerlink" title="驱动"></a>驱动</h2><h3 id="显卡驱动"><a href="#显卡驱动" class="headerlink" title="显卡驱动"></a>显卡驱动</h3><p>这里又不得不点名表扬一下Manjaro, 在装机时勾选了安装<strong>Proprietary Driver</strong> (非自由驱动)的话会自动装好N卡驱动! 比如我的笔记本有一个UHD Graphics (集显) 和一个RTX2070 (独显), 安装好系统后已经自动安装了采用最新的intel集显与Nvidia独显共存的<a href="https://wiki.archlinux.org/index.php/PRIME" target="_blank" rel="noopener">Prime方案</a>的混合驱动<strong>video-hybrid-intel-nvidia-prime</strong> 🎉</p>
-<p>我也没有细看Prime方案和Bumblebee方案的具体差异, 看起来大概意思就是Bumblebee是软件实现, 有一定性能损失, 而Prime方案是更为推荐的新一代方案.</p>
-<p>Prime技术让我们能够同时使用两个显卡: 以intel核显渲染画面, 以独显运行高负荷任务. <del>但是目前无论Prime方案还是Bumblebee方案都有个缺陷: 同时使用两个显卡时N卡无法输出画面, 即从直连N卡的HDMI接口无法输出画面, 但仅使用N卡的话可以从N卡输出画面. 仅使用N卡从性能方面没什么问题, 但是耗电, 发热会很夸张, 这对日常使用来说很不划算. 因此我们还是需要一个方法让我们能在需要N卡输出画面时能切换到仅N卡模式.</del></p>
-<blockquote>
-<p><del>至于外接屏幕, 我的解决办法是买一个有雷电接口 (雷电接口是直连CPU的, 其视频输出由intel核显承担) 的电脑, 这样一来在混合模式也能从雷电接口输出视频信号 😅</del></p>
-</blockquote>
-<p>卧槽我前几天试了一下现在在混合显卡模式也能从直连N卡的HDMI接口输出视频信号了! 😲</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S optimus-manager-qt</span><br></pre></td></tr></tbody></table></figure>
-
-<p>💡 optimus-manager的文档说Manjaro KDE用户<a href="https://github.com/Askannz/optimus-manager#important--manjaro-kde-users" target="_blank" rel="noopener">需要编辑一个文件</a>, 但我没动似乎使用起来也没什么问题</p>
-<p><a href="https://github.com/Askannz/optimus-manager" target="_blank" rel="noopener">optimus-manager</a>允许我们在<strong>仅intel显卡模式</strong>, <strong>仅N卡模式</strong>, <strong>混合模式</strong>三种模式间切换. 而optimus-manager-qt则为我们提供了一个GUI界面来进行设置, 一个系统托盘小图标来进行快速切换 (和装饰)</p>
-<p>除了显卡模式切换这个主要功能, optimus-manager也能用来进行独显的电源管理, 根据自己的情况选择适合的方案. 因为我的笔记本满足 “N卡为Turing架构及以上, intel CPU为CoffeeLake架构及以上” 的条件, 因此用N卡自带的动态电源管理, Runtime D3 Power Management, 省心又省电 👍 不用时我的N卡功耗可以低到<strong>4W</strong>, 整个电脑的功耗最低到过9W (虽然还是被长续航轻薄本吊打)</p>
-<h3 id="OLED屏幕亮度调节"><a href="#OLED屏幕亮度调节" class="headerlink" title="OLED屏幕亮度调节"></a>OLED屏幕亮度调节</h3><p><a href="https://github.com/LeoJhonSong/Shell-Scripts/blob/master/oled-brightness" target="_blank" rel="noopener">我自己写的脚本</a> 😏</p>
-<p>目前Linux对OLED屏幕支持很差, 似乎还没有发行版默认支持OLED屏幕亮度调节. 普通LCD屏幕的亮度调节是通过调整屏幕背光板的电压, 即背光板亮度来实现的. 当你在滑动你的Linux系统提供的亮度调节滑条时, <code>/sys/class/backlight/intel_backlight/brightness</code>的值会被改动, 然后系统会根据这个值和<code>/sys/class/backlight/intel_backlight/max_brightness</code>所记录的亮度最大值来调节背光板电压. 然而OLED屏幕根本没有背光板, 每个LED的亮度是可以单独调节的. 因此目前调节OLED屏幕亮度的方案是调整画面的Gamma值. 于是我写了这个基于<code>xrandr</code>的脚本, 这个脚本会监控<code>/sys/class/backlight/intel_backlight/brightness</code>值的变化并据此改变指定屏幕 (默认为主屏幕) 画面的gamma值.</p>
-<p>顺带一提<code>xrandr</code>是一个功能很强大的设置屏幕画面的分辨率, 方向, 位置等参数的强大工具.</p>
-<h3 id="镜像烧录"><a href="#镜像烧录" class="headerlink" title="镜像烧录"></a>镜像烧录</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S ventoy-bin</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用的时候用:</span></span><br><span class="line">sudo ventoyweb</span><br></pre></td></tr></tbody></table></figure>
-
-<p>有了<a href="https://www.ventoy.net/cn/index.html" target="_blank" rel="noopener">Ventoy</a>这个项目, balenaEtcher, rufus这些传统意义上的镜像烧录软件就可以丢弃了! Ventoy支持一个U盘里放多个镜像, 在以这个U盘启动时会进入一个GRUB界面, 在这个页面再选择到底进入哪个镜像 🐮 我在我U盘里放了Windows镜像, Manjaro-KDE, Ubuntu20.04, 还有一个可以用来修复分区的<a href="https://gparted.org/download.php" target="_blank" rel="noopener">GParted</a>镜像, 还换了个GRUB主题, 爽到.</p>
-<h2 id="系统工具"><a href="#系统工具" class="headerlink" title="系统工具"></a>系统工具</h2><h3 id="资源管理器"><a href="#资源管理器" class="headerlink" title="资源管理器"></a>资源管理器</h3><p><strong>Dolphin</strong>绝对是最好用的资源管理器! 多标签页, 显示预览等功能不在话下. Dolphin的右键菜单很贴心, Gnome自带资源管理器所没有的右键新建文件功能 (就离谱) 当然是有的, 也有创建快捷方式, 解压 (不论是rar还是zip还是tar都是同一个按键), 也可以很方便地自己创建脚本添加右键菜单的功能.</p>
-<p>而Dolphin最突出的功能是按<kbd>F4</kbd>可以直接打开一个<strong>Dolphin内嵌终端</strong>. 这个终端的路径会随着在资源管理器里点击自动切换 (除非已经打开类似vim这样的程序), 使用起来超方便, 结合了终端的便捷和GUI的可视化等优势.</p>
-<p><img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/Dolphin.png?70"></p>
-<h3 id="任务管理器"><a href="#任务管理器" class="headerlink" title="任务管理器"></a>任务管理器</h3><p><strong>htop</strong>是升级版的top. 一是交互人性化很多, 支持鼠标交互, 设置页面分了页, 直观很多. 二是能以列表或者树的样式显示丰富得多的值, 比如该进程的线程数等, 还支持以关键词过滤显示的进程等功能.</p>
-<h3 id="磁盘管理器"><a href="#磁盘管理器" class="headerlink" title="磁盘管理器"></a>磁盘管理器</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S filelight</span><br><span class="line">yay -S partitionmanager</span><br></pre></td></tr></tbody></table></figure>
-
-<p><strong>Filelight</strong>是KDE的图形化磁盘空间使用情况分析工具, 能以很多环同心扇形的形式直观地显示出哪里有大文件. <strong>partitionmanager</strong>是KDE的磁盘管理工具, 就类似Windows的磁盘管理器. 这两个应用Gnome社区也有类似的, 但感觉还是KDE的做得更人性化一些.</p>
-<p>💡 用<code>du -sh /path/to/check/* | sort -hr</code>可以在命令行列出指定文件夹下按大小降序列出各文件夹/文件</p>
-<h3 id="“电脑管家”"><a href="#“电脑管家”" class="headerlink" title="“电脑管家”"></a>“电脑管家”</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S stacer</span><br></pre></td></tr></tbody></table></figure>
-
-<p>虽然很多Linux老哥们认为Linux用户不需要这种东西, 但如果是习惯了在各种电脑管家打卡的Windows用户, 我推荐<strong>Stacer</strong>. 这是一个系统优化与监控软件 (和CCleaner等电脑管家画风很像), 可以看系统资源使用该要, 有任务管理器一栏, 可以清理垃圾, 可以管理开机自启项, 卸载已安装软件等… (是个很Windows画风的东西😅)</p>
-<h3 id="TCP调试助手"><a href="#TCP调试助手" class="headerlink" title="TCP调试助手"></a>TCP调试助手</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S nmap</span><br></pre></td></tr></tbody></table></figure>
-
-<p>netcat被称为网络编程的瑞士军刀, 功能属实很多👍 要注意netcat有好几个版本, 给的参数略有区别. <strong>ncat</strong>是为Nmap项目写的netcat, 包含在nmap包中. 在其man中自称是诸多netcat版本中的巅峰之作 (水平有限俺也不知道是不是). <strong>nmap</strong>同样是一个用法很多的网络编程工具, 我主要用来扫端口.</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> ncat监听本地8080端口</span></span><br><span class="line">ncat -l 8080</span><br><span class="line"><span class="meta">#</span><span class="bash"> ncat连接本地8080端口</span></span><br><span class="line">ncat 127.0.0.1 8080</span><br><span class="line"><span class="meta">#</span><span class="bash"> ncat监听本地8080端口, 发送一串16进制数据 (socket一个字节的内容为两位16进制数)过去并以双字节16进制显示输出</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果不满意显示格式的话可以换用hexdump -C然后加参数设置显示格式. hexdump支持的显示格式比xxd要丰富些. 注意不加-C参数的话hexdump默认按双字节小端转换</span></span><br><span class="line">echo '0006303030304e43' | xxd -r -p | ncat -l 8080 | xxd</span><br><span class="line"><span class="meta">#</span><span class="bash"> nmap扫描当前路由器192.168.1.1下所有设备的端口 (找树莓派之类设备IP时很方便)</span></span><br><span class="line">nmap 192.168.1.1/24</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="通讯"><a href="#通讯" class="headerlink" title="通讯"></a>通讯</h2><h3 id="QQ-微信"><a href="#QQ-微信" class="headerlink" title="QQ/微信"></a>QQ/微信</h3><p>这两个软件在国内基本是必备了吧 <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f937-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f937-2642.png?v8">🤷♂</span>. 在Linux上我体验下来最推荐的版本是以deepin-wine为容器, 星火应用商店打包版:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S wqy-microhei  # 需要装一个文泉驿版微软雅黑来让deepin-wine系软件正常显示中文文字 (不然会显示为方框)</span><br><span class="line">yay -S com.qq.tim.spark  # 比起QQ我更喜欢简洁的TIM (夹带私货)</span><br><span class="line">yay -S com.qq.weixin.spark</span><br></pre></td></tr></tbody></table></figure>
-
-<p>如果使用的是高清屏, deepin-wine系软件显示得很小, 可以在<strong>deepin-wine5中</strong>设置屏幕分辨率. 比如设置<strong>com.qq.tim.spark</strong>的分辨率:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">env WINEPREFIX=$HOME/.deepinwine/Spark-TIM deepin-wine5 winecfg</span><br></pre></td></tr></tbody></table></figure>
-
-<p>然后会打开一个设置界面. 调节其中的<code>Graphics &gt; Screen resolution</code>一项. 我是4k屏幕, 感觉设成<strong>192dpi</strong>比较OK</p>
-<h3 id="会议"><a href="#会议" class="headerlink" title="会议"></a>会议</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S zoom-system-qt</span><br><span class="line">yay -S teams</span><br><span class="line">yay -S com.tencent.meeting.deepin</span><br></pre></td></tr></tbody></table></figure>
-
-<p>我在Linux目前体验能用的视频会议软件有三个:</p>
-<ul>
-<li><strong>zoom</strong>: AUR里还有一个就叫<strong>zoom</strong>的版本, 但是看起来没有适配显示的全局缩放 (高分屏笔记本肯定是要设置个缩放的), 会变得很大一个. 随着国内疫情几乎目前大陆帐号已经无法发起zoom会议了, 但是用教育邮箱登录的话是可以发起会议的 👍 </li>
-<li><strong>Microsoft Teams</strong>: teams不是专门的视频会议软件, 是微软Office中的办公聊天软件, 不过它的视频会议版块功能丝毫不比zoom少, 甚至得益于Office套件间的联动使用体验非常流畅, 有很多类似到时间提醒参会成员, 自动生成会议云录制的字幕等很贴心的功能. 其界面非常现代, 功能也很多 (有很多插件). 其实这个也支持在网页参加会议, 体验很好的.</li>
-<li><strong>腾讯会议</strong>: 前两个的问题是会议用的服务器似乎都在国外, 网络质量不是很有保障. 腾讯会议的速度是很有保障的, 可惜是deepin-wine版, 功能不全.</li>
-</ul>
-<p>其中zoom和teams是有官方全平台安装包的. zoom甚至提供很多个Linux发行版的安装包, 因此这两个软件的各种功能和Windows/Mac版没有任何区别, 支持共享屏幕, 远程控制, 会议录制 (本地/云), 摄像头, 音频等功能都没有问题. 而腾讯会议则是deepin-wine版, 一开启摄像头程序就会崩溃 (可以通过放一个播放摄像头画面的vlc小窗口在屏幕上的方式来解决), 观看别人共享屏幕时有时候会出现画面闪烁问题, 总之只是勉强能用的程度. 另外, 用海外手机号注册的腾讯会议用户无法通过链接下载云录制的视频.</p>
-<p>总结下来就是: 如果有翻墙条件, 参会成员都能接受, 那teams是最好选择 ✔</p>
-<h2 id="下载-云盘"><a href="#下载-云盘" class="headerlink" title="下载/云盘"></a>下载/云盘</h2><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S baidunetdisk-bin</span><br><span class="line"><span class="meta">#</span><span class="bash"> yay -S xunlei-bin</span></span><br><span class="line">yay -S aria2</span><br><span class="line"><span class="meta">#</span><span class="bash"> 后台运行启用了RPC, aria2</span></span><br><span class="line">nohup aria2c --enable-rpc --allow-piece-length-change &amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"> yay -S motrix-bin</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> sudo motrix --no-sandbox  <span class="comment"># 然后右键系统托盘里的图标退出</span></span></span><br></pre></td></tr></tbody></table></figure>
-
-<p>在国内的话总体来说下载大文件体验最好的可能还是百度云… 现在百度云盘出了官方的Linux版deb系安装包, 有热心网友适配后发布到arch源里了. Linux版的和Windows版用起来并没有区别, 仍然是有限速的 😁</p>
-<p>磁力链和torrent我是用chrome插件<a href="https://chrome.google.com/webstore/detail/aria2-for-chrome/mpkodccbngfoacfalldjimigbofkhgjn" target="_blank" rel="noopener">Aria2 for Chrome</a>下的. 这个插件以aria2为后端, 能够自动拦截chrome中http, 磁力链, FTP等协议下载任务, 也支持torrent. 在插件的设置页面中设置触发自动拦截下载任务的文件大小为0MB的话torrent文件也会通过aria2下载, 而aria2默认开启了下载的是torrent文件时自动开始BT下载任务的选项, 体验会很好. 有点遗憾的是这个插件所使用的前端虽然可以对aria2进行设置, 但是这些设置在aria2重启后会丢失. 如果想要每次启动aria2后都能自动加载这些配置的话还是需要写一个aria2的配置文件<code>~/.config/aria2/aria2.conf</code>:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 默认下载路径, n</span></span><br><span class="line">dir=/home/leo/Downloads</span><br><span class="line"><span class="meta">#</span><span class="bash"> 断点续传</span></span><br><span class="line">continue=true</span><br><span class="line"><span class="meta">#</span><span class="bash"> 最大同时下载任务数</span></span><br><span class="line">max-concurrent-downloads=10</span><br><span class="line"><span class="meta">#</span><span class="bash"> 单服务器最大连接数</span></span><br><span class="line">max-connection-per-server=15</span><br><span class="line"><span class="meta">#</span><span class="bash"> 最小文件分片大小</span></span><br><span class="line">min-split-size=10M</span><br><span class="line"><span class="meta">#</span><span class="bash"> 允许所有来源</span></span><br><span class="line">rpc-allow-origin-all=true</span><br><span class="line"><span class="meta">#</span><span class="bash"> 允许非外部访问</span></span><br><span class="line">rpc-listen-all=true</span><br><span class="line"><span class="meta">#</span><span class="bash"> 最小做种时间. 当设置为0时在BT下载任务完成后不再做种</span></span><br><span class="line">seed-time=0</span><br></pre></td></tr></tbody></table></figure>
-
-<p>然后运行来自<a href="https://github.com/P3TERX/aria2.conf/blob/master/tracker.md" target="_blank" rel="noopener">P3TERX/aria2.conf</a>的脚本<code>bash &lt;(curl -fsSL git.io/tracker.sh) "/home/leo/.config/aria2/aria2.conf"</code>添加一个Tracker列表给aria2配置文件, 提升torrent下载速度.</p>
-<p>如果想用本地客户端下载磁力链和torrent的话强推<strong>motrix</strong>: 集成了每日自动更新的Tracker服务器列表的支持, 支持迅雷链接下载协议, 而且因为是electron做的所以界面非常美观! 不过除了Ubuntu镜像我能以30MB/s的速度下载我暂时还没下到过速度超过100Kb/s的… 这个软件在Arch系下似乎有bug, 安装好后需要用上面那条命令sudo启动然后关闭一次, 然后就能正常使用了.</p>
-<p>💡据我同学说迅雷对一些资源有更快的速度, 我试了下还真是… 比用tracker的qbittorrent还要快很多 (是正经资源)</p>
-<h2 id="图片-视频处理"><a href="#图片-视频处理" class="headerlink" title="图片/视频处理"></a>图片/视频处理</h2><h3 id="视频压缩"><a href="#视频压缩" class="headerlink" title="视频压缩"></a>视频压缩</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S handbrake</span><br></pre></td></tr></tbody></table></figure>
-
-<p>handbrake是一个支持非常丰富的视频格式转换/压缩工具. 视频编辑方面接触不多的人会意识不到一个录屏只需放进压缩软件简单<strong>无损压缩</strong>一下通常可以减小为原本体积的<strong>一半以下</strong>.而handbrake提供了许多直观的预设参数组. 我通常就用的<code>Offical&gt;General&gt;Very Fast 1080p30</code>这个预设. handbrake支持批量处理, 操作起来也很简单.</p>
-<h3 id="图片压缩"><a href="#图片压缩" class="headerlink" title="图片压缩"></a>图片压缩</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S jpegoptim</span><br><span class="line">yay -S optipng</span><br><span class="line">yay -S imagemagick</span><br></pre></td></tr></tbody></table></figure>
-
-<p><strong>jpegoptim</strong>, <strong>optipng</strong>这两个终端程序可以分别对jpg/jpeg, png进行无损压缩, 调用也很简单, 普通无损压缩的话跟的参数就图片名就可以.</p>
-<p><strong>imagemagick</strong>是一套用于创建, 编辑, 显示图片的强大终端工具, 其中有一个<strong>magick</strong>终端程序可以实现jpg转png, 也可以压缩jpg, png等. 但是参数比上面两个复杂一些, 我反正记不住.</p>
-<p>💡没有用到透明图层的png图片可以转为jpg, 能大幅压缩体积</p>
-<h3 id="视频播放器"><a href="#视频播放器" class="headerlink" title="视频播放器"></a>视频播放器</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S vlc</span><br></pre></td></tr></tbody></table></figure>
-
-<p><strong>vlc是一个很神奇的播放器</strong>.</p>
-<p>它不光支持非常多种视频文件格式, 还可以播放网络视频流, 比如RTSP视频流, IPTV网络电视, 还可以播放摄像头视频流… 加上它有截取视频一帧画面, 录制视频流, 高倍速播放, 在截取的画面上显示当前视频时间等功能, 他可以:</p>
-<ul>
-<li>当Linux上的相机软件</li>
-<li>用来调试usb摄像头/IP摄像头</li>
-<li>当网络电视 (顺便放一个非常全的<a href="https://github.com/iptv-org/iptv" target="_blank" rel="noopener">IPTV频道合集</a>)</li>
-<li>看网课视频利器</li>
-</ul>
-<p>🐮🍺</p>
-<h3 id="视频编辑器"><a href="#视频编辑器" class="headerlink" title="视频编辑器"></a>视频编辑器</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S kdenlive</span><br></pre></td></tr></tbody></table></figure>
-
-<p><strong>Kdenlive</strong>是一个界面很像Adobe Premiere的软件, 现在是KDE旗下项目. Kdenlive的语言看起来是继承的系统语言, 支持中文 (汉化得还是比较全面的). Kdenlive操作起来还是很简单的, 零基础随便看一看教程也就会用个大概了. Kdenlive的特效种类我感觉和Pr差不多多, 定位应该是和Pr一样也是视频剪辑软件 (Linux平台也有对标Ae的软件, Natron). Kdenlive也有Windows版, 而且安装包只有80MB, 很值得尝试的 👍</p>
-<h3 id="制图"><a href="#制图" class="headerlink" title="制图"></a>制图</h3><h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4><p>因为我处理图片的需求不大, 因此普通一些的需求我就在WPS的PPT软件里处理的, 有稍微复杂一点的PS需求时都是使用的这个<a href="https://www.uupoop.com/#/old" target="_blank" rel="noopener">在线PS</a>, 支持PhotoShop的<strong>PSD</strong>, sketch的<strong>sketch</strong>格式, GIMP的<strong>XCF</strong>格式等, 覆盖了常见格式, 十分方便 😆</p>
-<h4 id="UML图"><a href="#UML图" class="headerlink" title="UML图"></a>UML图</h4><ul>
-<li>Graphviz: 这是一个根据代码自动生成图形的程序, 有<a href="https://dreampuf.github.io/GraphvizOnline/" target="_blank" rel="noopener">在线版</a>, 也有<a href="https://marketplace.visualstudio.com/items?itemName=joaompinto.vscode-graphviz" target="_blank" rel="noopener">VSCode插件版本</a>什么的. (顺便<a href="/zh-CN/2020/03/12/Graphviz简要语法/">这里</a>是我写的介绍Graphviz语法的博客)</li>
-<li><a href="https://www.diagrams.net/" target="_blank" rel="noopener"><strong>diagrams.net</strong></a>: 这个是全平台的, 有在线版, 也有各系统的安装包. 它有非常丰富的元素, 能画出很好看很复杂的UML图, 但是无法自动整理布局. 不过它<strong>可以打开Visio的.vsdx文件</strong> 👍</li>
-<li><a href="">PlantUML</a>: 这个则是以代码生成UML图的强大工具, 后端其实也是Graphviz (Graphviz本身用起来真的有点阴间), 提供有很多种类的模板, 可以几行代码画出一个非常好看的UML图! <a href="https://www.planttext.com/" target="_blank" rel="noopener">在线编辑器</a>在此</li>
-<li><a href="http://asciiflow.com/" target="_blank" rel="noopener">ASCIIFlow Infinity</a>: 这个在线绘图工具是用来绘制<strong>纯文本</strong>框图. 不过因为它开源了, 因此也可以在本地使用 <code>yay -S asciiflow2-git</code></li>
-</ul>
-<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
-<li><a href="http://patorjk.com/software/taag/" target="_blank" rel="noopener">Text to ASCII Art Generator (TAAG)</a>: 是一个生成文本的ASCII Art的在线工具 (就是oh-my-zsh更新时会显示的那种文本拼出来的大logo)</li>
-</ul>
-<h2 id="办公"><a href="#办公" class="headerlink" title="办公"></a>办公</h2><h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S typora</span><br><span class="line">yay -S okular</span><br><span class="line">yay -S google-chrome</span><br></pre></td></tr></tbody></table></figure>
-
-<p>做文档我首推Markdown, Markdown编辑器我首推<strong>Typora</strong>. (我还写过<a href="/zh-CN/2019/09/23/Markdown安利-Typora简要使用教程/">Markdown安利&amp;Typora简要使用教程</a>)</p>
-<p>普通看pdf的话KDE的<strong>okular</strong>和GNOME的<strong>evince</strong>我觉得界面还比较简洁而不简陋, 现代. 相比起来okular功能更多一些, 对触控笔/手写等操作支持好许多 (虽然我不怎么用). 看文章时我更喜欢在<strong>Chrome</strong>的<a href="https://saladict.crimx.com/" target="_blank" rel="noopener">沙拉查词</a>插件提供的pdf.js的pdf阅读器里看, 查单词, 搜索很方便. 如果要做笔记的话我是在我的Windows系统平板上看的. 顺带一提用下面这行代码可以实现pdf.js暗黑模式效果. 解释见<a href="https://github.com/mozilla/pdf.js/issues/2071#issuecomment-830446509" target="_blank" rel="noopener">这里</a>.</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><span class="line">javascript:<span class="keyword">void</span>(<span class="built_in">document</span>.documentElement.style.filter=<span class="string">'invert(64%) contrast(228%) brightness(80%) hue-rotate(180deg)'</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S ps2pdf</span><br></pre></td></tr></tbody></table></figure>
-
-<p>补充一个压缩pdf的小工具, 还是挺实用的. 用<code>ps2pdf -dPDFSETTINGS=/ebook input.pdf output.pdf</code>就可以将pdf压缩为150dpi的质量. <code>-dPDFSETTINGS=/prepress</code>参数的话能得到质量为300dpi的pdf, 完全满足打印的需求了.</p>
-<h3 id="latex"><a href="#latex" class="headerlink" title="latex"></a>latex</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S visual-studio-code-bin</span><br><span class="line">yay -S texlive-most texlive-lang biber</span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入cpan后添加阿里源</span></span><br><span class="line">o conf urllist push https://mirrors.aliyun.com/CPAN/</span><br><span class="line">o conf commit</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在cpan中安装包</span></span><br><span class="line">install YAML::Tiny</span><br><span class="line">install File::HomeDir</span><br><span class="line">install Log::Dispatch</span><br><span class="line">install Log::Log4perl</span><br></pre></td></tr></tbody></table></figure>
-
-<p>TeX Live是很大一套软件, 嫌麻烦的话最好就直接把包含了绝大多数部件的<strong>texlive-most</strong>以及语言包<strong>texlive-lang</strong>下下来. 其中CTeX包含在<strong>texlive-langchinese</strong>这个包中. <strong>biber</strong>则是比biblatex更先进的引用处理工具. TeX Live中的一些工具比如<strong>latexindent.pl</strong>需要perl并且依赖于一些perl包. 输入<code>cpan</code>后首先会要求进行一下交互式配置, 然后用上面的语句添加阿里源, 然后安装缺少的包.</p>
-<p>在Linux上使用LaTeX我只推荐两种方案:</p>
-<ol>
-<li><p>在<a href="https://www.overleaf.com/" target="_blank" rel="noopener">Overleaf</a>中在线编辑</p>
-<p>Overleaf以TeX Live作为后端, 开箱支持选择编译器, 支持基础的vim键映射, 提供看得过去的补全, 提供拼写和语法 (指LaTeX)检查… 点开Overleaf就有了一个还不错的LaTeX环境, 不需要担心缺少依赖, 不需要设置编译工具链, 编辑界面还算好看, 编译速度也很快, 是真的很省心了 👍 除此以外Overleaf支持git同步, 也支持多人协作编辑, 对于不想费心配置环境的人来说是真的很棒了</p>
-</li>
-<li><p>借助<a href="https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop" target="_blank" rel="noopener">LaTeX Workshop</a>插件在VSCode中本地编辑</p>
-<p>曾经看了<a href="https://zhuanlan.zhihu.com/p/60049290?utm_source=qq&amp;utm_medium=social&amp;utm_oi=911363543885045760" target="_blank" rel="noopener">这篇文章</a>我也一度想试试在vim中编辑TeX文件, 以Okular显示的方案, 但体验后发现用vim编辑富文本文档真是傻逼. 我原本是馋这样快捷的补全, 但事实证明装几个补全插件, 都还不需要自己添加snipet补全体验就已经很不错了 (毕竟我不是数学专业, 并不会频繁用到奇怪公式). 另一方面, 我试了好几个pdf软件, 反向搜索都只能具体到行, 不能让光标精确定位到我在pdf中点到的词/图上, 而LaTeX Worshop提供的VSC内置pdf阅读器支持精确的反向搜索. 另外我在VSC中装了<a href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker" target="_blank" rel="noopener">拼写检查</a>和<a href="https://marketplace.visualstudio.com/items?itemName=CodeInChinese.EnglishChineseDictionary" target="_blank" rel="noopener">查单词</a>的插件, (有拼写检查很重要!) 而我很久以前搜的时候并没有搜到好用的vim拼写检查插件. 其他方面vim倒是和VSC差不多.</p>
-</li>
-</ol>
-<h3 id="Office套件"><a href="#Office套件" class="headerlink" title="Office套件"></a>Office套件</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S wps-office-cn  # wps套件国内版</span><br><span class="line">yay -S wps-office-mui-zh-cn  # wps中文语言包</span><br><span class="line">yay -S ttf-wps-fonts  # wps需要的字体和符号</span><br></pre></td></tr></tbody></table></figure>
-
-<p>我体验了Office365 Online, LibreOffice, Google Docs, WPS后发现在Linux用Office套件只能是用WPS, 而且很好用. 其他软件简直是一坨💩</p>
-<p>Office365 Online当然是格式兼容最好的, 但是必须在线使用, 而且打开一个本地文件时会先把这个文件上传到onedrive中然后从云端打开, 文件稍微大点那体验很差. 在线版Office表面看岁月静好, 其实功能阉割非常严重. Google Docs虽然可以安装为chrome插件离线使用, 但是功能更加简陋了! 而LibreOffice就很离谱了, 明明是一个本地使用的Office套件, 但支持的功能并不比前两者多多少, 同时界面还有点古老.</p>
-<p>这三者的功能缺失到底有多严重呢? 我来举几个例子:</p>
-<ol>
-<li>都没有内置插入富文本公式的功能</li>
-<li>都不可以设置插入的矩形的透明度 (有时候我会用一个带透明度的矩形来作为图片蒙版)</li>
-<li>Office365 Online和LibreOffice的PPT软件都不支持插入本地视频, Google Docs我就没试了. Office365 Onlineq其实是可以插入视频, 但是只支持来自于youtube等几个有限选择的联机视频… 而LibreOffice的PPT软件在编辑时可以插入本地视频, 但是保存为<code>.ppt</code>后这个视频不知道为什么没了… (我没试保存为它自己的格式的话能不能行, 因为那也没什么用)</li>
-<li>…如果上面几个功能都不支持我不如写Markdown文档了所以不用试了</li>
-</ol>
-<p>而另一边, <strong>WPS出乎我意料的好!</strong> 以上功能WPS统统支持, 用起来和MS Office真的是区别不大了👍 目前注意到的也就是没有平滑切换效果和不支持3D模型编辑 (但是也能显示成图片) 这两个MS Office的特色功能, 以及选中一些对象右键另存为图片时不能另存为svg或其他矢量图格式, 无伤大雅. 格式不完全兼容这个问题当然还是存在, 但是在接受范围内. 而且, WPS现在还挺好看的🐮</p>
-<p><img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/wps.png"></p>
-<p>至于MS Office套件提供的其他我使用的软件:</p>
-<ul>
-<li><p>Outlook, 微软待办事项, 日历我使用的是网页版 (在Windows我也用的网页版, 因为可以和微软待办事项, 日历联动我觉得体验反而比Outlook本地客户端体验更加良好)</p>
-</li>
-<li><p>teams则是有官方Linux版本, 可以执行<code>yay -S teams</code>安装. 不过网页版也能获得完整的体验, 我感觉没什么差别</p>
-</li>
-<li><p>OneDrive的话虽然有人开发了<a href="https://abraunegg.github.io/" target="_blank" rel="noopener">OneDrive Linux客户端</a>, 但我并没有使用. 虽然我平时使用Linux系统, 但是我把我的Windows盘挂载在了我的Linux系统里, 可以访问并编辑OneDrive文件夹里的文件, 然后我对同步频率的要求没多高, 因此暂时没感觉不方便 (主要是很久以前试过这个客户端, 当时体验很一般). 比较有意思的是目前在企业版Office365 (学校给的) 的应用列表中直接有列出OneDrive Linux版的图标, 但链接到的是一个<a href="https://github.com/skilion/onedrive" target="_blank" rel="noopener">有很多bug功能很不全的版本</a>, 而且我的个人版Office365的应用列表并没有列出这个 😅<img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/onedrive.png"></p>
-<p>在<a href="https://github.com/skilion/onedrive/issues/518" target="_blank" rel="noopener">这个issue</a>中可以看出skilion完全不想为社区开发, 但同时拒绝向abraunegg的版本引流或注明自己的版本的问题… 👎</p>
-</li>
-</ul>
-<h2 id="工程"><a href="#工程" class="headerlink" title="工程"></a>工程</h2><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S minicom  # 终端串口调试助手, 也有GUI版, cutecom</span><br><span class="line"><span class="meta">#</span><span class="bash"> 未完待续...</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="命令行工具"><a href="#命令行工具" class="headerlink" title="命令行工具"></a>命令行工具</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S zsh</span><br><span class="line">chsh -s /usr/bin/zsh  # 切换默认shell为zsh, 要注意你的zsh也许不在/usr/bin/zsh</span><br><span class="line"></span><br><span class="line">yay -S tmux</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用gpakosz的tmux主题</span></span><br><span class="line">cd ~ &amp;&amp; git clone https://github.com/gpakosz/.tmux.git</span><br><span class="line">ln -s -f .tmux/.tmux.conf</span><br><span class="line">cp .tmux/.tmux.conf.local .</span><br><span class="line"></span><br><span class="line">yay -S lsd</span><br><span class="line">git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf</span><br><span class="line">~/.fzf/install</span><br><span class="line">yay -S bat</span><br></pre></td></tr></tbody></table></figure>
-
-<p>在这里我想先辨析一下<code>终端</code>, <code>shell</code>, <code>命令行</code>这三个词:</p>
-<ul>
-<li><p><strong>终端</strong> (terminal), 最开始指的是一种用来与计算机主机交互的输入输出设备, 是硬件, 而我们如今绝大多数情况下说的终端实际上是终端模拟器 (terminal emulator) 的简称, 是一类模拟终端这种提供与计算机交互界面的功能的软件.  有的终端模拟器不仅可以显示字符还可以显示图像. 我用的终端是KDE提供的<strong>Konsole</strong>. 去掉标题栏及边框后能达到👇这样的效果, 我感觉还挺好看😁 <img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/terminal.png"></p>
-</li>
-<li><p><strong>shell</strong>, 指的是一种让用户能够与操作系统内核进行交互的软件 (我们通常说的是命令行界面shell, 但实际上shell这个概念还包含了GUI的shell, 比如KDE). Ubuntu及Manjaro等系统自带的shell程序是bash, MacOS自带的shell则是zsh. 实际上zsh是比bash体验好很多的shell程序, 自身的补全更加智能, 有很丰富的插件选择, 有<a href="https://ohmyz.sh/" target="_blank" rel="noopener">Oh My Zsh</a>这样的便利shell配置管理框架… 反正谁用谁知道 👍 我也不清楚为什么一种Linux系统仍将bash作为系统默认shell, 这点表扬MacOS. 用下面的命令来安装并切换默认shell为zsh.</p>
-</li>
-<li><p><strong>命令行</strong>, 看了前两者的描述能发现指的只是相对于图形化界面操作的一种操作方式, 一般是纯文本界面, 少数命令行程序支持鼠标操作, 比如vim (需要设置), htop (命令行任务管理器), ranger (命令行资源管理器), w3m (命令行浏览器), tmux.</p>
-</li>
-</ul>
-<p>然后我来介绍几个好用的命令行工具:</p>
-<ul>
-<li>tmux是一个终端复用器 (解释起来比较复杂, 建议自行搜索一下), 我主要用来在一个终端里开多个窗口 / 连服务器. tmux的设计使得与服务器交互时在服务器侧开一个tmux后即便丢失与服务器的连接, 服务器端tmux中的任务仍会正常执行下去, 并且下次连上服务器后进入tmux就可以回到这个工作现场. 推荐一下<a href="https://github.com/gpakosz/.tmux" target="_blank" rel="noopener">这个tmux主题</a>, 开箱就能有很不错的体验, 颜值很高, 配置也很容易个性化.</li>
-</ul>
-<ul>
-<li><p>lsd是<code>ls</code>命令的替代品, 最主要的价值是让ls命令的输出变成彩色而且每种文件有对应图标显示的了 😁 要注意需要安装<a href="https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md" target="_blank" rel="noopener">特定类型的字体</a></p>
-</li>
-<li><p>fzf是一个模糊查找器, 不止可以在zsh里用, vim, tmux中也有支持. 我主要喜欢用来在zsh中能模糊输入我设定了的几个命令, 结合<strong>bat</strong>, 这个升级版cat, 能获得很流畅的 (装逼) 体验. 之所以不从aur装fzf是因为从aur装的fzf不知为什么会缺少<code>.fzf.zsh</code>这个文件. 贴上我在<code>.zshrc</code>中对fzf的配置:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> fzf config</span></span><br><span class="line">    export FZF_COMPLETION_TRIGGER=']'</span><br><span class="line">    # Use fd (https://github.com/sharkdp/fd) instead of the default find</span><br><span class="line">    # command for listing path candidates.</span><br><span class="line">    # - The first argument to the function ($1) is the base path to start traversal</span><br><span class="line">    # - See the source code (completion.{bash,zsh}) for the details.</span><br><span class="line">    _fzf_compgen_path() {</span><br><span class="line">      fd --hidden --follow --exclude ".git" . "$1" --exclude ".deepinwine"</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    # Use fd to generate the list for directory completion</span><br><span class="line">    _fzf_compgen_dir() {</span><br><span class="line">      fd --type d --hidden --follow --exclude ".git" . "$1" --exclude ".deepinwine"</span><br><span class="line">    }</span><br><span class="line">    # (EXPERIMENTAL) Advanced customization of fzf options via _fzf_comprun function</span><br><span class="line">    # - The first argument to the function is the name of the command.</span><br><span class="line">    # - You should make sure to pass the rest of the arguments to fzf.</span><br><span class="line">    _fzf_comprun() {</span><br><span class="line">      local command=$1</span><br><span class="line">      shift</span><br><span class="line"></span><br><span class="line">      case "$command" in</span><br><span class="line">        cd)           fzf "$@" --preview 'lt {} | head -200' ;;</span><br><span class="line">        export|unset) fzf "$@" --preview "eval 'echo \$'{}" ;;</span><br><span class="line">        ssh)          fzf "$@" --preview 'dig {}' ;;</span><br><span class="line">        vim)          fzf "$@" --preview 'bat --style=numbers --color=always --line-range :500 {}' ;;</span><br><span class="line">        *)            fzf "$@" ;;</span><br><span class="line">      esac</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">[ -f ~/.fzf.zsh ] &amp;&amp; source ~/.fzf.zsh</span><br></pre></td></tr></tbody></table></figure>
-
-</li>
-</ul>
-<h3 id="服务器相关"><a href="#服务器相关" class="headerlink" title="服务器相关"></a>服务器相关</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S sshfs</span><br><span class="line">yay -S frp</span><br></pre></td></tr></tbody></table></figure>
-
-<p>sshfs允许以SFTP将SSH服务器的指定路径挂载到本机, 在懒得配服务器的IDE/编辑器时可以用这种方式在本地编辑, 对不需要IDE/编辑器的高阶调试时还是挺方便的. frp则是一种以反向代理的方式让我们能非常方便地ssh到一台内网服务器的方式! 使用非常简单, 在要访问的内网机器和作为跳板的公网服务器上分别放一个程序和配置文件就能用了👍 参见<a href="https://gofrp.org/docs/setup/" target="_blank" rel="noopener">frp文档</a></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>操作系统</category>
-        <category>Linux</category>
+        <category>Web</category>
       </categories>
   </entry>
 </search>
