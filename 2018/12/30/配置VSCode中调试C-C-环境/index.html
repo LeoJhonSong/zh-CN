@@ -39,7 +39,7 @@
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: true,
     mediumzoom: false,
-    lazyload: false,
+    lazyload: true,
     pangu: false,
     algolia: {
       appID: '',
@@ -67,12 +67,10 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="Language: English 中文   这里是为我在VSCode插件市场发布的 C/C++扩展包 写的Windows下VSCode中C/C++配置教程🎉">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/配置VSCode中调试C-C-环境/%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/example.gif">
 <meta property="og:updated_time" content="2019-10-06T22:13:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="配置VSCode中调试C&#x2F;C++环境">
 <meta name="twitter:description" content="Language: English 中文   这里是为我在VSCode插件市场发布的 C/C++扩展包 写的Windows下VSCode中C/C++配置教程🎉">
-<meta name="twitter:image" content="https://leojhonsong.github.io/zh-CN/2018/12/30/配置VSCode中调试C-C-环境/%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/example.gif">
   <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2018/12/30/配置VSCode中调试C-C-环境/">
 
 
@@ -119,7 +117,7 @@
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: true,
     mediumzoom: false,
-    lazyload: false,
+    lazyload: true,
     pangu: false,
     algolia: {
       appID: '',
@@ -580,7 +578,7 @@ IntelliSence是<strong>cpptools</strong>这个插件很重要的一部分, 通�
 
 <p>随着VSC的更新, VSC提供了一些<code>tasks.json</code>和<code>launch.json</code>的模板, 这让生成这两个文件变得十分容易!
 下面这个gif👇 是一个生成<code>tasks.json</code>和<code>launch.json</code>的示例.</p>
-<p><img src="%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/example.gif" alt=""></p>
+<p><img alt="" data-src="%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/example.gif"></p>
 <p>💡 这个gif是在Linux系统 (Ubuntu) 下录制的.</p>
 <p>下面则是对这两个文件内容的一些解释.</p>
 <h2 id="配置编译配置文件"><a href="#配置编译配置文件" class="headerlink" title="配置编译配置文件"></a>配置编译配置文件</h2><p>然后配置编译用的<code>tasks.json</code>.</p>
@@ -935,6 +933,7 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
   <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
 <script src="/zh-CN/js/utils.js?v=7.4.0"></script><script src="/zh-CN/js/motion.js?v=7.4.0"></script>
 <script src="/zh-CN/js/schemes/pisces.js?v=7.4.0"></script>
 <script src="/zh-CN/js/next-boot.js?v=7.4.0"></script>

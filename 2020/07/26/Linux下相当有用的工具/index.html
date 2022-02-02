@@ -39,7 +39,7 @@
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: true,
     mediumzoom: false,
-    lazyload: false,
+    lazyload: true,
     pangu: false,
     algolia: {
       appID: '',
@@ -67,17 +67,10 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="用Linux的时间已经比用Windows的时间还长了, 随着使用逐渐找到了各用途我最认可的工具, 或从软件源安装, 或在线使用. 在此整理一份我的Linux下各用途好用工具推荐. (出于私心将从一个Manjaro用户角度介绍) 💡各位如果有什么推荐的软件也可以跟我说, 我觉得好用会加进去的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/07/26/Linux下相当有用的工具/Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/Manjaro_Hello.png?70">
-<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/07/26/Linux下相当有用的工具/Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/inputMethod.gif?80">
-<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/07/26/Linux下相当有用的工具/Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/Dolphin.png?70">
-<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/07/26/Linux下相当有用的工具/Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/wps.png">
-<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/07/26/Linux下相当有用的工具/Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/onedrive.png">
-<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2020/07/26/Linux下相当有用的工具/Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/terminal.png">
 <meta property="og:updated_time" content="2021-05-24T08:18:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux下各用途我最认可的工具推荐">
 <meta name="twitter:description" content="用Linux的时间已经比用Windows的时间还长了, 随着使用逐渐找到了各用途我最认可的工具, 或从软件源安装, 或在线使用. 在此整理一份我的Linux下各用途好用工具推荐. (出于私心将从一个Manjaro用户角度介绍) 💡各位如果有什么推荐的软件也可以跟我说, 我觉得好用会加进去的">
-<meta name="twitter:image" content="https://leojhonsong.github.io/zh-CN/2020/07/26/Linux下相当有用的工具/Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/Manjaro_Hello.png?70">
   <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2020/07/26/Linux下相当有用的工具/">
 
 
@@ -124,7 +117,7 @@
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: true,
     mediumzoom: false,
-    lazyload: false,
+    lazyload: true,
     pangu: false,
     algolia: {
       appID: '',
@@ -481,13 +474,13 @@
 
 <blockquote>
 <p>首先, 不得不吹一下Manjaro是一个多么贴心的系统. Manjaro自带了一个叫<strong>Manjaro Hello</strong>的入门程序, 点进这个程序的<code>Applications</code>入口能看到Manjaro社区为各常见用途已经提供了一些推荐, 勾选就可以安装. 可以说没有更贴心的系统了!</p>
-<p><img src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/Manjaro_Hello.png?70" alt=""></p>
+<p><img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/Manjaro_Hello.png?70"></p>
 </blockquote>
 <h2 id="日常使用"><a href="#日常使用" class="headerlink" title="日常使用"></a>日常使用</h2><h3 id="中文输入法"><a href="#中文输入法" class="headerlink" title="中文输入法"></a>中文输入法</h3><p>随着fcitx5日渐成熟, 现在有了两种我推荐的中文输入法方案:</p>
 <h4 id="fcitx5框架-配套中文输入法"><a href="#fcitx5框架-配套中文输入法" class="headerlink" title="fcitx5框架+配套中文输入法"></a>fcitx5框架+配套中文输入法</h4><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yay -S fcitx5-im</span><br><span class="line">yay -S fcitx5-chinese-addons</span><br><span class="line">yay -S fcitx5-material-color</span><br></pre></td></tr></tbody></table></figure>
 
 <p>这个<strong>fcitx5-material-color</strong>是一个模仿win10的中文输入法的皮肤, 在fcitx5的设置中可以更换皮肤, 可以做到下面这样的效果 👇
-<img src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/inputMethod.gif?80" alt=""></p>
+<img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/inputMethod.gif?80"></p>
 <h4 id="fcitx4框架-搜狗输入法"><a href="#fcitx4框架-搜狗输入法" class="headerlink" title="fcitx4框架+搜狗输入法"></a>fcitx4框架+搜狗输入法</h4><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yay -S fcitx-im fcitx-configtool</span><br><span class="line">yay -S fcitx-sogoupinyin</span><br></pre></td></tr></tbody></table></figure>
 
 <hr>
@@ -557,7 +550,7 @@
 <p>有了<a href="https://www.ventoy.net/cn/index.html" target="_blank" rel="noopener">Ventoy</a>这个项目, balenaEtcher, rufus这些传统意义上的镜像烧录软件就可以丢弃了! Ventoy支持一个U盘里放多个镜像, 在以这个U盘启动时会进入一个GRUB界面, 在这个页面再选择到底进入哪个镜像 🐮 我在我U盘里放了Windows镜像, Manjaro-KDE, Ubuntu20.04, 还有一个可以用来修复分区的<a href="https://gparted.org/download.php" target="_blank" rel="noopener">GParted</a>镜像, 还换了个GRUB主题, 爽到.</p>
 <h2 id="系统工具"><a href="#系统工具" class="headerlink" title="系统工具"></a>系统工具</h2><h3 id="资源管理器"><a href="#资源管理器" class="headerlink" title="资源管理器"></a>资源管理器</h3><p><strong>Dolphin</strong>绝对是最好用的资源管理器! 多标签页, 显示预览等功能不在话下. Dolphin的右键菜单很贴心, Gnome自带资源管理器所没有的右键新建文件功能 (就离谱) 当然是有的, 也有创建快捷方式, 解压 (不论是rar还是zip还是tar都是同一个按键), 也可以很方便地自己创建脚本添加右键菜单的功能.</p>
 <p>而Dolphin最突出的功能是按<kbd>F4</kbd>可以直接打开一个<strong>Dolphin内嵌终端</strong>. 这个终端的路径会随着在资源管理器里点击自动切换 (除非已经打开类似vim这样的程序), 使用起来超方便, 结合了终端的便捷和GUI的可视化等优势.</p>
-<p><img src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/Dolphin.png?70" alt=""></p>
+<p><img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/Dolphin.png?70"></p>
 <h3 id="任务管理器"><a href="#任务管理器" class="headerlink" title="任务管理器"></a>任务管理器</h3><p><strong>htop</strong>是升级版的top. 一是交互人性化很多, 支持鼠标交互, 设置页面分了页, 直观很多. 二是能以列表或者树的样式显示丰富得多的值, 比如该进程的线程数等, 还支持以关键词过滤显示的进程等功能.</p>
 <h3 id="磁盘管理器"><a href="#磁盘管理器" class="headerlink" title="磁盘管理器"></a>磁盘管理器</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yay -S filelight</span><br><span class="line">yay -S partitionmanager</span><br></pre></td></tr></tbody></table></figure>
 
@@ -662,14 +655,14 @@
 <li>…如果上面几个功能都不支持我不如写Markdown文档了所以不用试了</li>
 </ol>
 <p>而另一边, <strong>WPS出乎我意料的好!</strong> 以上功能WPS统统支持, 用起来和MS Office真的是区别不大了👍 目前注意到的也就是没有平滑切换效果和不支持3D模型编辑 (但是也能显示成图片) 这两个MS Office的特色功能, 以及选中一些对象右键另存为图片时不能另存为svg或其他矢量图格式, 无伤大雅. 格式不完全兼容这个问题当然还是存在, 但是在接受范围内. 而且, WPS现在还挺好看的🐮</p>
-<p><img src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/wps.png" alt=""></p>
+<p><img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/wps.png"></p>
 <p>至于MS Office套件提供的其他我使用的软件:</p>
 <ul>
 <li><p>Outlook, 微软待办事项, 日历我使用的是网页版 (在Windows我也用的网页版, 因为可以和微软待办事项, 日历联动我觉得体验反而比Outlook本地客户端体验更加良好)</p>
 </li>
 <li><p>teams则是有官方Linux版本, 可以执行<code>yay -S teams</code>安装. 不过网页版也能获得完整的体验, 我感觉没什么差别</p>
 </li>
-<li><p>OneDrive的话虽然有人开发了<a href="https://abraunegg.github.io/" target="_blank" rel="noopener">OneDrive Linux客户端</a>, 但我并没有使用. 虽然我平时使用Linux系统, 但是我把我的Windows盘挂载在了我的Linux系统里, 可以访问并编辑OneDrive文件夹里的文件, 然后我对同步频率的要求没多高, 因此暂时没感觉不方便 (主要是很久以前试过这个客户端, 当时体验很一般). 比较有意思的是目前在企业版Office365 (学校给的) 的应用列表中直接有列出OneDrive Linux版的图标, 但链接到的是一个<a href="https://github.com/skilion/onedrive" target="_blank" rel="noopener">有很多bug功能很不全的版本</a>, 而且我的个人版Office365的应用列表并没有列出这个 😅<img src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/onedrive.png" alt=""></p>
+<li><p>OneDrive的话虽然有人开发了<a href="https://abraunegg.github.io/" target="_blank" rel="noopener">OneDrive Linux客户端</a>, 但我并没有使用. 虽然我平时使用Linux系统, 但是我把我的Windows盘挂载在了我的Linux系统里, 可以访问并编辑OneDrive文件夹里的文件, 然后我对同步频率的要求没多高, 因此暂时没感觉不方便 (主要是很久以前试过这个客户端, 当时体验很一般). 比较有意思的是目前在企业版Office365 (学校给的) 的应用列表中直接有列出OneDrive Linux版的图标, 但链接到的是一个<a href="https://github.com/skilion/onedrive" target="_blank" rel="noopener">有很多bug功能很不全的版本</a>, 而且我的个人版Office365的应用列表并没有列出这个 😅<img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/onedrive.png"></p>
 <p>在<a href="https://github.com/skilion/onedrive/issues/518" target="_blank" rel="noopener">这个issue</a>中可以看出skilion完全不想为社区开发, 但同时拒绝向abraunegg的版本引流或注明自己的版本的问题… 👎</p>
 </li>
 </ul>
@@ -679,7 +672,7 @@
 
 <p>在这里我想先辨析一下<code>终端</code>, <code>shell</code>, <code>命令行</code>这三个词:</p>
 <ul>
-<li><p><strong>终端</strong> (terminal), 最开始指的是一种用来与计算机主机交互的输入输出设备, 是硬件, 而我们如今绝大多数情况下说的终端实际上是终端模拟器 (terminal emulator) 的简称, 是一类模拟终端这种提供与计算机交互界面的功能的软件.  有的终端模拟器不仅可以显示字符还可以显示图像. 我用的终端是KDE提供的<strong>Konsole</strong>. 去掉标题栏及边框后能达到👇这样的效果, 我感觉还挺好看😁 <img src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/terminal.png" alt=""></p>
+<li><p><strong>终端</strong> (terminal), 最开始指的是一种用来与计算机主机交互的输入输出设备, 是硬件, 而我们如今绝大多数情况下说的终端实际上是终端模拟器 (terminal emulator) 的简称, 是一类模拟终端这种提供与计算机交互界面的功能的软件.  有的终端模拟器不仅可以显示字符还可以显示图像. 我用的终端是KDE提供的<strong>Konsole</strong>. 去掉标题栏及边框后能达到👇这样的效果, 我感觉还挺好看😁 <img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/terminal.png"></p>
 </li>
 <li><p><strong>shell</strong>, 指的是一种让用户能够与操作系统内核进行交互的软件 (我们通常说的是命令行界面shell, 但实际上shell这个概念还包含了GUI的shell, 比如KDE). Ubuntu及Manjaro等系统自带的shell程序是bash, MacOS自带的shell则是zsh. 实际上zsh是比bash体验好很多的shell程序, 自身的补全更加智能, 有很丰富的插件选择, 有<a href="https://ohmyz.sh/" target="_blank" rel="noopener">Oh My Zsh</a>这样的便利shell配置管理框架… 反正谁用谁知道 👍 我也不清楚为什么一种Linux系统仍将bash作为系统默认shell, 这点表扬MacOS. 用下面的命令来安装并切换默认shell为zsh.</p>
 </li>
@@ -1012,6 +1005,7 @@
   <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
 <script src="/zh-CN/js/utils.js?v=7.4.0"></script><script src="/zh-CN/js/motion.js?v=7.4.0"></script>
 <script src="/zh-CN/js/schemes/pisces.js?v=7.4.0"></script>
 <script src="/zh-CN/js/next-boot.js?v=7.4.0"></script>

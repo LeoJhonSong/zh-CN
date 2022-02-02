@@ -39,7 +39,7 @@
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: true,
     mediumzoom: false,
-    lazyload: false,
+    lazyload: true,
     pangu: false,
     algolia: {
       appID: '',
@@ -67,19 +67,10 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="前阵子带学弟学妹们入门Python时自己整理的一些觉得初学者需要知道的Python知识. 我本身既不是计算机专业的也说不出自己对Python还是挺了解的这样的话, 说实话心里还是有一点忐忑. 如有错误欢迎指出🙇">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/09/12/Python基础语法/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1565579206457.png">
-<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/09/12/Python基础语法/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571027624789.png">
-<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/09/12/Python基础语法/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571022411897.png">
-<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/09/12/Python基础语法/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571022628668.png">
-<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/09/12/Python基础语法/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571033275137.png">
-<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/09/12/Python基础语法/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/encode_decode.png">
-<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/09/12/Python基础语法/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/Unicode_Decoding_and_Encoding.png">
-<meta property="og:image" content="https://leojhonsong.github.io/zh-CN/2019/09/12/Python基础语法/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571142193232.png">
 <meta property="og:updated_time" content="2021-03-16T05:31:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python基础语法">
 <meta name="twitter:description" content="前阵子带学弟学妹们入门Python时自己整理的一些觉得初学者需要知道的Python知识. 我本身既不是计算机专业的也说不出自己对Python还是挺了解的这样的话, 说实话心里还是有一点忐忑. 如有错误欢迎指出🙇">
-<meta name="twitter:image" content="https://leojhonsong.github.io/zh-CN/2019/09/12/Python基础语法/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1565579206457.png">
   <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2019/09/12/Python基础语法/">
 
 
@@ -126,7 +117,7 @@
     bookmark: {"enable":false,"color":"#222","save":"auto"},
     fancybox: true,
     mediumzoom: false,
-    lazyload: false,
+    lazyload: true,
     pangu: false,
     algolia: {
       appID: '',
@@ -515,7 +506,7 @@
 </tr>
 </tbody></table>
 <p>我们通常所说的Python是<strong>CPython</strong>, 👇Python官方页面提供的是CPython</p>
-<p><img src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1565579206457.png" alt="1565579206457"></p>
+<p><img alt="1565579206457" data-src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1565579206457.png"></p>
 <h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>Python这种语言有<strong>Python2</strong>和<strong>Python3</strong>两个版本, 两者语法有少许不同, 比如Python2和Python3中<code>print()</code>的使用有区别, Python2和Python3中<code>input()</code>接受的数据类型有区别等.</p>
 <p>最新的Python2对大部分Python2, 3不同的语法做了兼容, 而在Python3对Python2的语法兼容性很差, 但是提供了一个叫<a href="https://docs.python.org/zh-cn/3.7/library/2to3.html" target="_blank" rel="noopener">2to3</a>的脚本帮助我们将Python2的程序转换为Python3的程序.</p>
 <h2 id="哲学"><a href="#哲学" class="headerlink" title="哲学"></a>哲学</h2><p><strong>万物皆对象</strong></p>
@@ -530,10 +521,10 @@
 <p>正如其名, 注解只是标注一下, 有了类型注解的程序和没有类型注解的程序运行起来没有区别, 但它能帮助程序员更好的发现问题, 也能让IDE提供更准确的代码补全和语法检查.</p>
 <h3 id="类型检查"><a href="#类型检查" class="headerlink" title="类型检查"></a>类型检查</h3><p>有时候为了保证程序的严谨性我们会检查一下变量是不是我们设想它应该是的类型, 这个时候我们用 <code>isinstance()</code></p>
 <p>之所以不使用 <code>type()</code> 是因为 <code>type()</code> 不会认为子类是一种父类类型, 不考虑继承关系. 举例说明:</p>
-<p><img src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571027624789.png" alt="1571027624789"></p>
+<p><img alt="1571027624789" data-src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571027624789.png"></p>
 <h3 id="不可变对象"><a href="#不可变对象" class="headerlink" title="不可变对象"></a>不可变对象</h3><p>❗️ <strong>我们可以给不可变对象重新赋值, 但其内存地址会改变</strong>. 以下是体现给可变对象/不可变对象重新赋值时它们的内存地址变化的例子.</p>
 <p>💡 <code>id()</code>能获取一个变量的内存地址</p>
-<p><img src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571022411897.png" alt="1571022411897"></p>
+<p><img alt="1571022411897" data-src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571022411897.png"></p>
 <h4 id="Number-数字"><a href="#Number-数字" class="headerlink" title="Number (数字)"></a>Number (数字)</h4><ul>
 <li>int (整数)</li>
 <li>long (长整数)</li>
@@ -542,7 +533,7 @@
 </ul>
 <p>Python中的Number我认为是比较特殊的, 因为它<strong>在内存中占用的空间大小是变动</strong>的.(在CPython中是如此, 但不知道为什么在IronPython下不是)</p>
 <p>💡 用<code>sys.getsizeof()</code>可以知道一个变量的占用的内存大小</p>
-<p><img src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571022628668.png" alt="1571022628668"></p>
+<p><img alt="1571022628668" data-src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571022628668.png"></p>
 <h4 id="String-字符串"><a href="#String-字符串" class="headerlink" title="String (字符串)"></a>String (字符串)</h4><h4 id="Tuple-元组"><a href="#Tuple-元组" class="headerlink" title="Tuple (元组)"></a>Tuple (元组)</h4><h3 id="可变对象"><a href="#可变对象" class="headerlink" title="可变对象"></a>可变对象</h3><p>可变对象可能带来的危险举例:</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myfunc</span><span class="params">(l = [])</span>:</span></span><br><span class="line">    l.append(<span class="string">'add'</span>)</span><br><span class="line">    print(l)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">myfunc([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">myfunc([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">myfunc()</span><br></pre></td></tr></tbody></table></figure>
 
@@ -593,7 +584,7 @@
 </tr>
 </tbody></table>
 <h3 id="Python中有关对象需要注意的问题"><a href="#Python中有关对象需要注意的问题" class="headerlink" title="Python中有关对象需要注意的问题"></a>Python中有关对象需要注意的问题</h3><p>python中向函数传递参数只是<strong>引用传递</strong>: 如果参数为可变对象, 在函数中变化会影响引用的这个变量, 而不可变对象不会. 在向类传递参数时也是如此.</p>
-<p><img src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571033275137.png" alt="1571033275137"></p>
+<p><img alt="1571033275137" data-src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571033275137.png"></p>
 <h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="Python内置帮助文档"><a href="#Python内置帮助文档" class="headerlink" title="Python内置帮助文档"></a>Python内置帮助文档</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help()</span><br></pre></td></tr></tbody></table></figure>
 
 <p>调用<code>help()</code>后就会进入Python内置帮助文档, 然后输入想查的类名/函数名/属性名就可以看到对应的帮助文档.</p>
@@ -646,12 +637,12 @@
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print1</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'111'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print2</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'222'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printDefault</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'default'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">switch = {</span><br><span class="line">    <span class="number">1</span>: print1,</span><br><span class="line">    <span class="number">2</span>: print2,</span><br><span class="line">    <span class="string">'default'</span>: printDefault</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">case = int(input(<span class="string">'input: '</span>))</span><br><span class="line">switch[case <span class="keyword">if</span> (case <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">3</span>)) <span class="keyword">else</span> <span class="string">'default'</span>]()</span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="编码格式-1"><a href="#编码格式-1" class="headerlink" title="编码格式"></a>编码格式</h3><p>字符串经过<strong>编码（encode）</strong> 就成为了一堆数据, 反过来, 数据经过<strong>解码（decode）</strong> 就变回我们认识的字符串.</p>
-<p><img src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/encode_decode.png" alt="img"></p>
+<p><img alt="img" data-src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/encode_decode.png"></p>
 <p>指定文件编码格式为 <code>utf-8</code></p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br></pre></td></tr></tbody></table></figure>
 
 <p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png?v8">💡</span> 如果不指定文件编码格式在有的Python2版本中无法识别中文, 即便是中文注释也会报错.</p>
-<p><img src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/Unicode_Decoding_and_Encoding.png" alt="Unicode Decoding and Encoding"></p>
+<p><img alt="Unicode Decoding and Encoding" data-src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/Unicode_Decoding_and_Encoding.png"></p>
 <p>Linux系统默认编码格式是<strong>UTF-8</strong>, 系统语言是简体中文时Windows10的编码格式是<strong>GB2312</strong> (也称GBK, 国标扩展, cp936)</p>
 <p>在python中 <code>str</code> 类型数据都以Unicode码点格式储存, 因此直接打印字符串会看到字符为’\u’开头</p>
 <h3 id="基本读写"><a href="#基本读写" class="headerlink" title="基本读写"></a>基本读写</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f = open(<span class="string">"test.txt"</span>, <span class="string">"r+"</span>)</span><br><span class="line">f.read()</span><br><span class="line">f.write(<span class="string">"text"</span>)</span><br><span class="line">f.close()</span><br></pre></td></tr></tbody></table></figure>
@@ -725,7 +716,7 @@
 <h2 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h2><p>我推荐遵从<a href="https://www.python.org/dev/peps/pep-0008/" target="_blank" rel="noopener">PEP8</a>. 当然一行一行看完这个规范不是一件令人愉快的事, 最简单的时刻遵守PEP8的方式是在代码工具里安一个<strong>代码风格检查器</strong> (linter).
 检查你的代码是否符合PEP8的linter是<a href="http://pycodestyle.pycqa.org/en/latest/intro.html" target="_blank" rel="noopener">pycodestyle</a></p>
 <p>💡 在VSC中可以在设置中搜索<strong>python.linting.pycodestyle</strong>, 勾选<strong>Pycodestyle Enabled</strong>, 这样在VSC中编写Python代码时使用的linter就是pycodestyle啦</p>
-<p><img src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571142193232.png" alt="1571142193232"></p>
+<p><img alt="1571142193232" data-src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571142193232.png"></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1037,6 +1028,7 @@
   <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
 <script src="/zh-CN/js/utils.js?v=7.4.0"></script><script src="/zh-CN/js/motion.js?v=7.4.0"></script>
 <script src="/zh-CN/js/schemes/pisces.js?v=7.4.0"></script>
 <script src="/zh-CN/js/next-boot.js?v=7.4.0"></script>

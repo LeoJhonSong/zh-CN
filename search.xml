@@ -59,7 +59,7 @@
 <p>官网提供的下载链接是<a href="http://download.qt.io/official_releases/online_installers/" target="_blank" rel="noopener">这个</a>,选择<em>qt-unified-windows-x86-online.exe<em>，是在线安装包。你也可以安装<a href="https://download.qt.io/official_releases/qt/5.11/5.11.1/?tdsourcetag=s_pctim_aiomsg" target="_blank" rel="noopener">离线安装包</a>,选择</em>qt-opensource-windows-x86-5.11.1.exe</em>.
 安装可以参考<a href="https://www.cnblogs.com/chenmingjun/p/8392713.html" target="_blank" rel="noopener">这个</a></p>
 <p>但实际上，只是为了安装SOFA的话，
-<img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/qt.jpg" alt="Qt组件">
+<img alt="Qt组件" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/qt.jpg">
 只需要如上图这个<strong>MSVC 2017 64-bit</strong>组件(博主当初不知道，把Qt5.11.1和Tools下所有东西都装了，下死我了)</p>
 <h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><blockquote>
 <p>接下来下载SOFA源代码，SoftRobots插件源代码，vcpkg等都要用到这个高级百*云</p>
@@ -100,29 +100,29 @@
 <blockquote>
 <p>博主推荐先修改一下设定，打开<code>Options</code>下的<strong>Warning Messages…</strong>,像下面这样勾选抑制警告的两项，关掉可能很多条，干扰视线而不影响Cmake的Warning提示，有利于稍后更容易地找出报错原因。</p>
 </blockquote>
-<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/warning.jpg" alt="Warning设置"></p>
+<p><img alt="Warning设置" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/warning.jpg"></p>
 <p>首先在<em>where is the source code</em>一栏填上你的<strong>sofa/src</strong>的地址，在<em>where to build the binaries</em>一栏填上你的<strong>sofa/build</strong>的地址，然后点击<code>Configure</code>。
-<img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/cmake.jpg" alt="CMake地址"></p>
+<img alt="CMake地址" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/cmake.jpg"></p>
 <p>然后为项目选择你将要使用的编译器，向下面这样选择。
-<img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/compiler.jpg" alt="选择编译器"></p>
+<img alt="选择编译器" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/compiler.jpg"></p>
 <p>P.S.虽然官网教程有提及可以使用<strong>Ninja</strong>来代替此处的选择，但我没研究出怎么使用，此处仍然选择VS的<strong>MSVC</strong>编译器。</p>
 <blockquote>
 <p>第一次Configure用时较长，，尤其是可能在<strong>Cloning into ‘SofaHighOrder’…</strong>一行停留许久。你可以稍微歇息一下</p>
 </blockquote>
-<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/error.jpg" alt="报错"></p>
+<p><img alt="报错" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/error.jpg"></p>
 <p>然后是频繁出现地报错。</p>
 <p>但不用担心，Configure这个操作本来就是要多次进行来逐渐更正错误，甚至可以在此期间调整要安装的插件。经过我的观察Generate多次也没有问题，只会在原本的基础上改动，不会出现重复的文件。因此放心大胆地来，每次你觉得修正了几个问题了就可以运行一次Configure。经过博主摸索发现了两种找报错原因的方式</p>
 <ul>
 <li>直接看<code>Configure</code>和<code>Generate</code>两个按键下面的信息框里的报错信息</li>
-<li><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/checkerror.jpg" alt="看报错信息方式1"></li>
+<li><img alt="看报错信息方式1" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/checkerror.jpg"></li>
 <li>打开在<strong>sofa/src/build/CMakeFiles/</strong>下的<em>CMakeError.log</em>（错误日志）。这个日志会记录你在Cmake过程中所有的报错 (包括每一次Configure的报错)。我的经验是错误原因通常在”<strong>生成失败。</strong>“这句话附近。如果有多个错误，一个一个耐心解决。</li>
 </ul>
 <h2 id="SOFA本体Configure过程中遇到的一些报错及解决"><a href="#SOFA本体Configure过程中遇到的一些报错及解决" class="headerlink" title="SOFA本体Configure过程中遇到的一些报错及解决"></a>SOFA本体Configure过程中遇到的一些报错及解决</h2><p>以下是博主在Cmake过程中遇到的一些报错及博主的解决方式。</p>
 <h3 id="fatal-error-C1083-无法打开包括文件-“pthread-h”-No-such-file-or-directory"><a href="#fatal-error-C1083-无法打开包括文件-“pthread-h”-No-such-file-or-directory" class="headerlink" title="fatal error C1083: 无法打开包括文件: “pthread.h”: No such file or directory"></a>fatal error C1083: 无法打开包括文件: “pthread.h”: No such file or directory</h3><p>好的，如果你出了这个报错说明你刚刚没有安装<a href="#pthread">推荐你安的pthread库</a>，让你懒哈哈哈哈哈</p>
 <p>不过即便安装pthread库后在<em>CMakeError.log</em>中仍然会有pthread相关报错。但不会影响SOFA的安装，可以忽略。</p>
-<h3 id="Unable-to-find-the-Boost-header-files"><a href="#Unable-to-find-the-Boost-header-files" class="headerlink" title="Unable to find the Boost header files"></a><span id="Boost">Unable to find the Boost header files</span></h3><p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/Boosterror.png" alt="Boost报错"></p>
+<h3 id="Unable-to-find-the-Boost-header-files"><a href="#Unable-to-find-the-Boost-header-files" class="headerlink" title="Unable to find the Boost header files"></a><span id="Boost">Unable to find the Boost header files</span></h3><p><img alt="Boost报错" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/Boosterror.png"></p>
 <p>如果你得到了类似这样的报错信息那你大概是像博主一样利用Vcpkg安装的Boost，Cmake没能找到你的Boost。(我错了，下次还犯)但用Vcpkg安装Boost真的很容易。Cmake给出了提示：</p>
-<h4 id="方法1："><a href="#方法1：" class="headerlink" title="方法1："></a>方法1：</h4><p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/addEntry.png" alt="添加Entry"></p>
+<h4 id="方法1："><a href="#方法1：" class="headerlink" title="方法1："></a>方法1：</h4><p><img alt="添加Entry" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/addEntry.png"></p>
 <p>点击<code>Add Entry</code>按键添加一个下面这样的Entry。</p>
 <table>
 <thead>
@@ -160,10 +160,10 @@
 <td><strong>你安装Vcpkg的文件夹/vcpkg/installed/x64-windows/include</strong>(比如博主的是<em>D:\vcpkg\installed\x64-windows\include</em>)</td>
 </tr>
 </tbody></table>
-<h3 id="sofa-src-applications-plugins-SofaHighOrder-ExternalProjectConfig-cmake-in-does-not-exist"><a href="#sofa-src-applications-plugins-SofaHighOrder-ExternalProjectConfig-cmake-in-does-not-exist" class="headerlink" title="sofa/src/applications/plugins/SofaHighOrder/ExternalProjectConfig.cmake.in does not exist."></a>sofa/src/applications/plugins/SofaHighOrder/ExternalProjectConfig.cmake.in does not exist.</h3><p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/lackCMake.png" alt="缺少CMake.in文件"></p>
+<h3 id="sofa-src-applications-plugins-SofaHighOrder-ExternalProjectConfig-cmake-in-does-not-exist"><a href="#sofa-src-applications-plugins-SofaHighOrder-ExternalProjectConfig-cmake-in-does-not-exist" class="headerlink" title="sofa/src/applications/plugins/SofaHighOrder/ExternalProjectConfig.cmake.in does not exist."></a>sofa/src/applications/plugins/SofaHighOrder/ExternalProjectConfig.cmake.in does not exist.</h3><p><img alt="缺少CMake.in文件" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/lackCMake.png"></p>
 <p>有可能当添加SofaHighOrder的子目录EXTERNAL的时候会发生这样的报错，有时候又不会发生。我怀疑<em>ExternalProjectConfig.cmake.in</em>这个文件特别容易丢包。但解决很容易，博主在前面下载SOFA源码的Github仓库里找到了这个<a href="https://github.com/sofa-framework/sofa/tree/master/applications/plugins/SofaHighOrder" target="_blank" rel="noopener">ExternalProjectConfig.cmake.in</a>你说神不神奇。把这个文件下载下来放到<b>sofa/src/applications/plugins/SofaHighOrder/</b>文件夹下即可。(其实博主不知道怎么下这个文件，就在sofa/src/applications/plugins/SofaHighOrder/文件夹下新建了一个ExternalProjectConfig.cmake.in并把Github上该文件里的内容复制粘贴了进去)</p>
 <p>在运行到SofaHighOrder这部分的时候你可能会碰到像下面这样的乱码，但不要紧，再Configure几次就没有了。</p>
-<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/messycode.png" alt="乱码"></p>
+<p><img alt="乱码" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/messycode.png"></p>
 <h3 id="找不到Python"><a href="#找不到Python" class="headerlink" title="找不到Python"></a>找不到Python</h3><p>博主为此专门下了一个Python2.7。</p>
 <p><code>你需要在搜索框中搜索Python以确保你确实添加上了SofaPython插件</code>。即便你单独下好了Python2.7你也可能需要手动勾选SofaPython选项（勾选前Enter列表中<strong>SofaPython_DIR</strong>显示找不到SofaPython，但你手动添加这个插件的话其实他找得到）</p>
 <h3 id="找不到Qt"><a href="#找不到Qt" class="headerlink" title="找不到Qt"></a>找不到Qt</h3><p>类似找不到Boost的解决办法，点击<code>Add Entry</code>,添加一个下面这样的Entry</p>
@@ -188,23 +188,23 @@
 </tr>
 </tbody></table>
 <p>再次运行Configure后刚添加的这个叫CMAKE_PREFIX_PATH的Entry会消失，取而代之的是一帮Qt的Entry</p>
-<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/QtEntry.png" alt="那堆Qt的Entry"></p>
+<p><img alt="那堆Qt的Entry" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/QtEntry.png"></p>
 <p><strong>以上便是博主安装SOFA本体过程中遇到过的报错，如果你遇到了别的无法解决的报错也欢迎讨论</strong></p>
-<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/noError.png" alt="无误反馈信息">
+<p><img alt="无误反馈信息" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/noError.png">
 这是博主在加装SoftRobots插件前得到的无误的反馈信息。并且你会发现本来一片红色的Entry列表此时全都是白/灰这种看起来就很OK的颜色。(如果还有红色的请再Configure一次。这之后如果还有，忽略)</p>
 <p>在此之前，在搜索框里输入python并确保你的<strong>PLUGIN_SOFAPYTHON</strong>打了勾，<strong>SofaPython_DIR</strong>不是not found</p>
-<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/checkPython.png" alt="确认SofaPython"></p>
+<p><img alt="确认SofaPython" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/checkPython.png"></p>
 <p>这样SOFA软件本体的安装就没有问题了，接下来添加SoftRobots插件(现在你在搜索框查找SoftRobots是什么也查不到的)。</p>
 <h2 id="添加SoftRobots插件"><a href="#添加SoftRobots插件" class="headerlink" title="添加SoftRobots插件"></a>添加SoftRobots插件</h2><blockquote>
 <p>博主一开始没看到正规添加SoftRobots插件的方法，手足无措下自行修改了SOFA的CMakeList.txt文件安上的…(狗屎英语教程)</p>
 </blockquote>
 <p>正规方法是在搜索框搜索<strong>SOFA_EXTERNAL_DIRECTORIES</strong>，找到这个Entry并将Value填为<strong>你安装SOFA的文件夹/sofa/src/applications/plugins/SoftRobots</strong>(比如博主的是<em>D:/sofa/src/applications/plugins/SoftRobots</em>)，</p>
-<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/softRobotEntrry.jpg" alt="SoftRobots相关Entry"></p>
+<p><img alt="SoftRobots相关Entry" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/softRobotEntrry.jpg"></p>
 <p>再次Configure，你就得到了与SoftRobots相关的几个Entry。不勾选这几个可选组件orz博主研究了很久也没能成功安装他们。根据名字和需要的库博主猜测<strong>SOFTROBOTS_GAMETRAKCONTROLLER</strong>是一个实现可以通过usb设备或蓝牙和外设交互的组件，<strong>SOFTROBOTS_COMMUNICATIONCONTROLLER</strong>似乎是实现利用网络通信和外设交互的组件，而<strong>SOFTROBOTS_ROBOTINOCONTROLLER</strong>猜测需要配合<strong>Robotino</strong>使用。<strong>Robotino</strong>是一款商业化的移动机器人系统，明显买不起。博主暂时不需要这个插件。</p>
 <p>再次Configure。</p>
 <p>完美。</p>
 <p>这是博主最终的无误版<strong>Configure</strong>的反馈信息。</p>
-<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/reaction.png" alt="最终版反馈信息"></p>
+<p><img alt="最终版反馈信息" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/reaction.png"></p>
 <p>现在安装已经接近尾声了(步骤方面，时间方面还得要一会)，你可以选择性的再安装几个部件。(报错了的话就放弃吧哈哈哈哈哈)给出官网上<a href="https://www.sofa-framework.org/community/doc/getting-started/build/build-options/" target="_blank" rel="noopener">相关网页</a>以供参考。</p>
 <p>当你对Configure的结果感到满意后，<code>Generate</code>，点击！</p>
 <p><code>注意，编译完成之前暂时先不要关闭CMake界面，否则可能编译失败</code></p>
@@ -212,14 +212,14 @@
 <p>你可以睡前来做这个</p>
 </blockquote>
 <p>进入<strong>sofa/build/</strong>,用VS打开<em>Sofa.sln</em>,经过一段令人尴尬的等待，</p>
-<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/howtocompile.png" alt="编译操作顺序"></p>
+<p><img alt="编译操作顺序" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/howtocompile.png"></p>
 <p>进入界面后先将解决方案配置调为<strong>Release</strong>，然后确保解决方案平台确实是你电脑的平台(博主的电脑是x64平台)，等待左下角显示<strong>就绪</strong>后，点击<strong>本地Windows调试器</strong>开始编译。</p>
 <p>然后你就可以去睡觉了。(即便你想用电脑做点别的应该也很难，不知道是我人品太差还是SOFA的编译真的很考验电脑，我的电脑呈现出了这样的尴尬局面 )</p>
-<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/mess.png" alt="编译车祸现场"></p>
+<p><img alt="编译车祸现场" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/mess.png"></p>
 <p>第二天(博主的电脑编译了两个多小时)，你会看到一个无法打开ALL_BUILD的报错，这是正常现象，无须在意。</p>
 <p><code>如果你没有看到其他报错，恭喜你编译成功了!</code></p>
 <h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>现在就可以来测试一下软件是否真的安装成功了。进入<strong>sofa/build/bin/release/</strong>，运行<em>rensofa.exe</em>,会进入这个蛇绕柱子的Demo。</p>
-<p><img src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/demo.jpg" alt="Demo"></p>
+<p><img alt="Demo" data-src="%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/demo.jpg"></p>
 <p>你可以通过打开在SoftRobots下的几个Example来进一步测试。可以参考官网给出的<a href="https://project.inria.fr/softrobot/install-get-started-2/tutorial/" target="_blank" rel="noopener">样例教程</a>。或者你也可以探索SOFA官网上的<a href="https://www.sofa-framework.org/community/doc/getting-started/tutorials/" target="_blank" rel="noopener">入门教程</a>。</p>
 <br>
 
@@ -368,7 +368,7 @@ IntelliSence是<strong>cpptools</strong>这个插件很重要的一部分, 通�
 
 <p>随着VSC的更新, VSC提供了一些<code>tasks.json</code>和<code>launch.json</code>的模板, 这让生成这两个文件变得十分容易!
 下面这个gif👇 是一个生成<code>tasks.json</code>和<code>launch.json</code>的示例.</p>
-<p><img src="%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/example.gif" alt=""></p>
+<p><img alt="" data-src="%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/example.gif"></p>
 <p>💡 这个gif是在Linux系统 (Ubuntu) 下录制的.</p>
 <p>下面则是对这两个文件内容的一些解释.</p>
 <h2 id="配置编译配置文件"><a href="#配置编译配置文件" class="headerlink" title="配置编译配置文件"></a>配置编译配置文件</h2><p>然后配置编译用的<code>tasks.json</code>.</p>
@@ -477,7 +477,7 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
 <a id="more"></a>
 
 <p>首先不得不说<a href="https://www.raspberrypi.org/documentation" target="_blank" rel="noopener">树莓派官方文档</a>实在是文档范本! 即便是初学者也能得到<strong>友好全面</strong>的帮助! 文档里包含了使用树莓派的绝大多数完整, 深入的教程, 而且方法都十分清爽 😆</p>
-<p><img src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/15826242887468.jpg?50" alt="img"></p>
+<p><img alt="img" data-src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/15826242887468.jpg?50"></p>
 <blockquote>
 <p>放一张树莓派4B布局图</p>
 </blockquote>
@@ -492,11 +492,11 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
 <blockquote>
 <p>放两张好看的树莓派引脚对照表 (实际上两张都不完善)</p>
 </blockquote>
-<p><img src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/175605x4nx4ryrywnn7hyw.jpg?50" alt="img"></p>
-<p><img src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/GPIO-Pi4-1587126749653.png?50" alt="Raspberry Pi 4 Model B GPIO Pinout Diagram | element14 | Raspberry Pi"></p>
+<p><img alt="img" data-src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/175605x4nx4ryrywnn7hyw.jpg?50"></p>
+<p><img alt="Raspberry Pi 4 Model B GPIO Pinout Diagram | element14 | Raspberry Pi" data-src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/GPIO-Pi4-1587126749653.png?50"></p>
 <p>🔗 这个<a href="http://pinout.xyz/" target="_blank" rel="noopener">交互式引脚排布图</a>对每种接口的介绍很详细.</p>
 <p><del>运行<code>gpio readall</code>可以打印一张包含引脚真实输入/输出值的引脚表. 对于树莓派4需要手动操作一下更新<strong>wiringPi</strong>至版本<code>2.52</code>, 否则无法识别. 操作参考<a href="http://wiringpi.com/wiringpi-updated-to-2-52-for-the-raspberry-pi-4b/" target="_blank" rel="noopener">wiringPi updated to 2.52 for the Raspberry Pi 4B</a></del></p>
-<p><img src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/image-20200417205537326.png?80" alt="image-20200417205537326"></p>
+<p><img alt="image-20200417205537326" data-src="%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/image-20200417205537326.png?80"></p>
 <p>但<code>gpio readall</code>无法打印出每个引脚所有可用功能, 而运行<code>raspi-gpio funcs</code>可用打印所有gpio的上拉/下拉, 所有可用功能.</p>
 <p>树莓派官方文档列出了几个很好用的gpio库, 其中这个<a href="https://gpiozero.readthedocs.io/" target="_blank" rel="noopener">GPIO Zero</a>将GPIO分类封装成了一些很简洁的类, 看起来很值得一试.</p>
 <blockquote>
@@ -629,139 +629,6 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
       </categories>
   </entry>
   <entry>
-    <title>麦语言速成</title>
-    <url>/zh-CN/2019/01/17/%E9%BA%A6%E8%AF%AD%E8%A8%80%E9%80%9F%E6%88%90/</url>
-    <content><![CDATA[<blockquote>
-<p>因为父亲经常炒期货，我速成一下<a href="https://www.wenhua.com.cn/myy/" target="_blank" rel="noopener">麦语言</a>来减轻一下他的工作量吧。</p>
-</blockquote>
-<a id="more"></a>
-
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 我体验下来觉得期货风险真的特别大, 能看盘时还是盯着点比较好.</p>
-<p>随着我逐渐了解才发现量化交易并没有我想象中那么简单…单说
-<a href="https://www.zhihu.com/question/25404359" target="_blank" rel="noopener">这些业内人士使用的语言</a>就五花八门…<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8">🤦♂</span>
-<a href="https://zhuanlan.zhihu.com/p/33839493" target="_blank" rel="noopener">这位仁兄</a>则让我大概了解了局面.
-站在一个接触编程有一段时间的人的角度，我是觉得用C#编写模型比用麦语言看着NB多了，但我明显没那水平和精力,更何况我觉得知乎这个提问里的回答都说的很有道理,<a href="https://www.zhihu.com/question/36803590" target="_blank" rel="noopener">能赚钱的工具就是好工具</a>
-。还是老老实实研究一下传说中用<strong>易语言</strong>编写的麦语言<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8">🤦♂</span></p>
-<blockquote>
-<p>看资料过程中<a href="http://www.tradeblazer.net/" target="_blank" rel="noopener">交易开拓者</a>(简称<strong>TB</strong>)和
-<a href="https://www.multicharts.cn/" target="_blank" rel="noopener">MultiCharts</a>(简称<strong>MC</strong>)也经常被提及。</p>
-</blockquote>
-<h2 id="主要参考资料"><a href="#主要参考资料" class="headerlink" title="主要参考资料"></a>主要参考资料</h2><p>我觉得最蛋疼的是这玩意好像没法debug啊!!<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f627.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f627.png?v8">😧</span></p>
-<ul>
-<li><a href="麦语言速成/教程.zip">网上找到的一套PPT教程</a>，并附上对应视频教程的<a href="https://pan.baidu.com/s/1foE6ORfqdGHyTQ-ZW9NPVg" target="_blank" rel="noopener">百度云链接</a></li>
-<li><a href="http://www.wenhua.com.cn/guide/wh8/index.htm" target="_blank" rel="noopener">智赢wh8使用说明书</a></li>
-<li><a href="http://www.wenhua.com.cn/guide/views41a3.htm" target="_blank" rel="noopener">wh8趋势跟踪模型语法参考</a></li>
-<li><a href="http://www.wenhua.com.cn/guide/wh8_zjyfhs2.htm" target="_blank" rel="noopener">wh8算法交易模型语法参考</a></li>
-</ul>
-<p>这套PPT有文华财经的水印，大概是官方教程吧。而且我觉得讲得很浅显也比较详细了,好评<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<h2 id="麦语言语法简记"><a href="#麦语言语法简记" class="headerlink" title="麦语言语法简记"></a>麦语言语法简记</h2><h3 id="算法交易模型与趋势跟踪模型"><a href="#算法交易模型与趋势跟踪模型" class="headerlink" title="算法交易模型与趋势跟踪模型"></a>算法交易模型与趋势跟踪模型</h3><p>打开wh8后我发现可以用来交易的分两种模型 (即代码), 分
-<a href="http://www.wenhua.com.cn/new_guide/Wh8/view4_6.html" target="_blank" rel="noopener">算法交易模型和趋势跟踪模型</a>,
-普通的趋势交易策略使用趋势模型编写，加载到程序化平台运行实现自动交易；与趋势无关的盘口高频交易模型，需要用算法模型编写. 一开始我并没有理解这两种模型的区别,
-(实际这两个模型的名字非常直白的指出了两者的应用领域)
-看到算法交易模型使用的是类C语法就果断开始写这个, 后来我才发现其中区别:</p>
-<ul>
-<li>趋势跟踪模型中可以调用很多常用分析指标, 比如布林通道, 比如指数加权移动平均, 更注重对目标的<strong>趋势</strong>的分析</li>
-<li>算法跟踪模型更多的是能调用未经处理的精确数据, 甚至不提供EMA等很常用的分析指标
-(如果需要只能自己写), 这类模型更注重于对<strong>实时行情</strong> (即<strong>盘口</strong>) 的处理.</li>
-<li>算法交易模型的回测只提供一日的tick数据, 不支持更久的回测.</li>
-</ul>
-<p>看了wh8说明书中<a href="http://www.wenhua.com.cn/new_guide/Wh8/view4_5.html" target="_blank" rel="noopener">相关章节</a>
-个人觉得算法交易模型更多应当与趋势跟踪模型配合使用, 说明书有句话说得好</p>
-<blockquote>
-<p>利用趋势模型可以有效捕捉趋势行情的交易方向，当交易方向确定，下一步便是寻找入场点。一个精准的入场点位是交易成功的起点，使用盘口的高频报价辅助判断无疑是最合适的方案</p>
-</blockquote>
-<p>也即是说由<strong>趋势模型</strong>判断是做多还是做空, 由<strong>算法模型</strong>判断买, 卖精确时间是比较科学的运用方式.</p>
-<p>由于我需要写的模型并不要求高频交易, 主要的是做小时线, 因此只建立趋势模型. (趋势模型语法太低级也只好忍了<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8">😢</span>)</p>
-<h3 id="一开一平信号过滤模型·加减仓模型等"><a href="#一开一平信号过滤模型·加减仓模型等" class="headerlink" title="一开一平信号过滤模型·加减仓模型等"></a>一开一平信号过滤模型·加减仓模型等</h3><p>以上是一种分类方式, 另外按交易行为分类可以分为一开一平信号过滤模型, 加减仓模型等模型.
-<strong>一开一平模型</strong>限定了必须一平跟随一开或者一开跟随一平, 如果是简单模型还是很方便, 但无法特定开仓手数, 只能在开始运行模型时指定整个模型开仓手数, 也无法加仓. 而<strong>加减仓模型</strong>打破了前述弊端, 但需要自己设置开闭仓信号滤波器, 费点脑子.
-<a href="http://www.wenhua.com.cn/popwin/cxhmingci.htm" target="_blank" rel="noopener">模型列表</a></p>
-<h3 id="算法交易模型与C的比较"><a href="#算法交易模型与C的比较" class="headerlink" title="算法交易模型与C的比较"></a>算法交易模型与C的比较</h3><p>因为也体验了一会算法模型的语法, 稍作整理. 使用下来感觉与C语言语法区别主要如下:</p>
-<ul>
-<li>不需要引用头文件</li>
-<li>变量可以用<strong>GLOBAL_VAR</strong>或<strong>VAR</strong>关键字来声明, 变量是动态数据类型, 似乎也可以使用
-<strong>WriteGlobal</strong>, <strong>WriteGlobalF</strong> 等来定义整型, 浮点等变量. (文华给出的所有示例中定义变量竟然全部定义的全局变量也是很迷了)</li>
-<li>函数类型可以是<strong>VOID</strong>或<strong>VAR</strong>, 当然如果需要返回值需要定义为<strong>VAR</strong>型</li>
-<li>函数, 变量可以先引用后声明</li>
-<li>麦语言的函数是可以有返回值的! 但是要把要返回的值括起来. (参考<a href="http://www.wenhua.com.cn/guide/wh8_zjyfhs2.htm" target="_blank" rel="noopener">这里</a>)</li>
-</ul>
-<h3 id="趋势跟踪模型语法简记"><a href="#趋势跟踪模型语法简记" class="headerlink" title="趋势跟踪模型语法简记"></a>趋势跟踪模型语法简记</h3><p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> 常用语句:</p>
-<table>
-<thead>
-<tr>
-<th>语句</th>
-<th>注释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>=</td>
-<td><strong>等于</strong>操作符 :warning:趋势模型中赋值操作符为<code>:=</code>. 应注意等于操作符<strong>只有一个</strong>=</td>
-</tr>
-<tr>
-<td>:</td>
-<td>定义变量并且加载模型时显示图线. 冒号前为变量名.</td>
-</tr>
-<tr>
-<td>:=</td>
-<td>定义变量并且不显示图线</td>
-</tr>
-<tr>
-<td>#IMPORT [PERIOD,N,FORMULA] AS VAR</td>
-<td><a href="#跨周期编写">见下</a></td>
-</tr>
-<tr>
-<td>&amp;&amp;</td>
-<td>逻辑与</td>
-</tr>
-<tr>
-<td>||</td>
-<td>逻辑或</td>
-</tr>
-<tr>
-<td>IF, THEN</td>
-<td>参见<a href="http://www.wenhua.com.cn/guide/views41a3.htm" target="_blank" rel="noopener">这里</a></td>
-</tr>
-</tbody></table>
-<h3 id="模组"><a href="#模组" class="headerlink" title="模组"></a>模组</h3><p>算法交易模型中可以调用的一大串函数有类似<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f447.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f447.png?v8">👇</span>这样的函数说明.</p>
-<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">注：</span><br><span class="line">该函数前必须用AA.的形式来调用，其中AA为字符串变量或者模组名。该函数不能单独使用。</span><br></pre></td></tr></tbody></table></figure>
-
-<p>开始我以为模组也是模型的意思, 后来看到示例里的用法似乎模组类似于<strong>类</strong>, 每个模组对应一个实例, 可以调用里面的各种函数来处理这个合约的数据, 而且每个模型也可以是一个模组一个模型可以调用另一个模型的函数, 就很像类. <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8">🤔</span>我是这样理解的</p>
-<h3 id="逻辑判断"><a href="#逻辑判断" class="headerlink" title="逻辑判断"></a>逻辑判断</h3><p>看过wh8给出的示例后我发现官方风格写法里趋势模型基本没有用过IF, ELSE什么的, 普遍是一句话浓缩一串条件搞定. 主要这玩意语法就让人懒得写IF, ELSE…而算法模型中运用IF, ELSE较多.</p>
-<p>很有意思的是趋势模型中可以将一串判断条件赋值给一个变量作为布林变量. 然后通常是以下面这样的形式来调用</p>
-<p><code>[布林变量], [交易指令]</code></p>
-<p>另外趋势模型中逻辑运算操作符只有逻辑与和逻辑或, 如果需要其他运算, 我是使用的<code>NOT()</code>函数</p>
-<h3 id="跨周期编写"><a href="#跨周期编写" class="headerlink" title="跨周期编写"></a>跨周期编写</h3><p>跨周期模型函数: #IMPORT [PERIOD,N,FORMULA]</p>
-<p>举例: <code>#IMPORT[DAY,2,WHBXSF] AS VAR1</code><br>调取自定义2日线周期上WHBXSF指标中的数据. 需要先编写被引用的指标 (只有一串变量的模型似乎称为<strong>指标</strong>)</p>
-<p>具体可以参考<a href="http://www.2818668.com/369.html" target="_blank" rel="noopener">这个</a></p>
-<h2 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h2><ul>
-<li>到现在我也不确定这些模型是循环运行还是怎么在执行, 如果是循环运行一次运行时间是多长</li>
-</ul>
-<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>搜索过程中看到的<a href="https://zhuanlan.zhihu.com/p/52867020" target="_blank" rel="noopener">十六套经典策略</a></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>量化交易</category>
-        <category>语言</category>
-        <category>麦语言</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Bug List</title>
     <url>/zh-CN/2019/02/05/Bug-List/</url>
     <content><![CDATA[<p>我想记录一下我遇到过的各种bug, 不论大小. 原本我从一开始学编程的时候就在这么做了, 但我也忘了我什么时候竟然怠慢了这件事! 我会想到记录这些是上大学前的暑假看到
@@ -791,7 +658,7 @@ python3的程序, 可以将<code>pip install</code> 换为 <code>pip3 install</c
 <h1 id="谨防数据溢出"><a href="#谨防数据溢出" class="headerlink" title="谨防数据溢出"></a>谨防数据溢出</h1><p>这个例子是我在尝试细化图像的时候遇到的</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Xihua</span><span class="params">(image, array, num=<span class="number">1</span>)</span>:</span></span><br><span class="line">    iXihua = np.zeros(image.shape, np.uint8)</span><br><span class="line">    iXihua = image.copy()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num):</span><br><span class="line">        VThin(iXihua, array)</span><br><span class="line">    <span class="keyword">return</span> iXihua</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">VThin</span><span class="params">(image, array)</span>:</span></span><br><span class="line">    h = height</span><br><span class="line">    w = width</span><br><span class="line">    NEXT = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(h):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(w):</span><br><span class="line">            <span class="keyword">if</span> NEXT == <span class="number">0</span>:</span><br><span class="line">                NEXT = <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                M = (image[i, j<span class="number">-1</span>] + image[i, j] + image[i, j+<span class="number">1</span>]) <span class="keyword">if</span> <span class="number">0</span>&lt;j&lt;w<span class="number">-1</span> <span class="keyword">else</span> <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> image[i, j] == <span class="number">0</span> <span class="keyword">and</span> M != <span class="number">0</span>:</span><br><span class="line">                    a = [<span class="number">0</span>] * <span class="number">9</span></span><br><span class="line">                    <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">                        <span class="keyword">for</span> l <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">                            <span class="keyword">if</span> <span class="number">-1</span>&lt;(i<span class="number">-1</span>+k)&lt;h <span class="keyword">and</span> <span class="number">-1</span> &lt;(j<span class="number">-1</span>+l)&lt;w <span class="keyword">and</span> image[i<span class="number">-1</span>+k, j<span class="number">-1</span>+l]==<span class="number">255</span>:</span><br><span class="line">                                a[k*<span class="number">3</span>+l] = <span class="number">1</span></span><br><span class="line">                    sum = a[<span class="number">0</span>]*<span class="number">1</span>+a[<span class="number">1</span>]*<span class="number">2</span>+a[<span class="number">2</span>]*<span class="number">4</span>+a[<span class="number">3</span>]*<span class="number">8</span>+a[<span class="number">5</span>]*<span class="number">16</span>+a[<span class="number">6</span>]*<span class="number">32</span>+a[<span class="number">7</span>]*<span class="number">64</span>+a[<span class="number">8</span>]*<span class="number">128</span></span><br><span class="line">                    image[i, j] = array[sum] * <span class="number">255</span></span><br><span class="line">                    <span class="keyword">if</span> array[sum] == <span class="number">1</span>:</span><br><span class="line">                        NEXT = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> image</span><br></pre></td></tr></tbody></table></figure>
 
-<h2 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h2><p><img src="Bug-List/%E5%9B%BE%E5%83%8F%E7%BB%86%E5%8C%96%E4%BB%A3%E7%A0%81%E7%9A%84%E6%8A%A5%E9%94%99.png" alt="报错信息"></p>
+<h2 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h2><p><img alt="报错信息" data-src="Bug-List/%E5%9B%BE%E5%83%8F%E7%BB%86%E5%8C%96%E4%BB%A3%E7%A0%81%E7%9A%84%E6%8A%A5%E9%94%99.png"></p>
 <h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>M默认与image[i, j]同数据类型，而image[i, j]设定的是ubyte类型，范围-255~256，M极有可能数据溢出。</p>
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>将18行改为下面代码, 将M数据类型强制转为int</p>
 <figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">M = (int(image[i, j<span class="number">-1</span>]) + int(image[i, j]) + int(image[i, j+<span class="number">1</span>])) <span class="keyword">if</span> <span class="number">0</span>&lt;j&lt;w<span class="number">-1</span> <span class="keyword">else</span> <span class="number">1</span></span><br></pre></td></tr></tbody></table></figure>
@@ -843,7 +710,7 @@ python3的程序, 可以将<code>pip install</code> 换为 <code>pip3 install</c
 <p>🔗 <a href="https://www.nltk.org/book/ch03.html" target="_blank" rel="noopener">Processing Raw Text</a></p>
 <p>而在网上搜图的时候我搜到了这段讲python中处理文本的各种方法的话.</p>
 <p>其中提到了如下图这样的方式防止出现乱码.</p>
-<p><img src="Bug-List/Unicode_Decoding_and_Encoding.png" alt="Unicode Decoding and Encoding"></p>
+<p><img alt="Unicode Decoding and Encoding" data-src="Bug-List/Unicode_Decoding_and_Encoding.png"></p>
 <p>正如 “Python 2 字符串编码踩坑小结” 中提到的, 在python3中<code>str</code>类型数据都以Unicode码点格式储存. 实际上我们<a href="https://zh.wikipedia.org/wiki/Unicode#%E8%BE%93%E5%85%A5%E6%96%B9%E6%B3%95" target="_blank" rel="noopener">可以直接输入Unicode码点</a>.</p>
 <h1 id="Verilog中要写完整控制语句"><a href="#Verilog中要写完整控制语句" class="headerlink" title="Verilog中要写完整控制语句"></a>Verilog中要写完整控制语句</h1><p>Verilog中如果不写完整if-else结构和case结构会产生latch, 会将毛刺传给下一级电路的那种latch.</p>
 <p>参见我的另一篇博客 <a href="https://leojhonsong.github.io/zh-CN/Verilog%E6%9D%82%E8%AE%B0/#%E5%85%B3%E4%BA%8E%20default">Verilog 杂记-有关default</a></p>
@@ -859,7 +726,7 @@ python3的程序, 可以将<code>pip install</code> 换为 <code>pip3 install</c
 <p>我拿这个问题问我的C++大佬同学, 他说应该是因为\0让C++认为字符串到头了, 于是只有前三个字符.</p>
 <p>我说: ? 我这字符串里哪有\0? 你别骗我读书少.</p>
 <p>然后他发了一张图来:</p>
-<p><img src="Bug-List/C++%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%93%E6%9D%9F%E7%AC%A6.jpg" alt="C++字符串结束符"></p>
+<p><img alt="C++字符串结束符" data-src="Bug-List/C++%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%93%E6%9D%9F%E7%AC%A6.jpg"></p>
 <p>…我是真的吃了读书少的亏, 竟然特么\0和\x00是一个意思🤦‍</p>
 <p>然后在string类型变量里写入\0的方法似乎只有用<code>assign()</code>和指定字符串长度的构造函数
 . 其实用<code>=</code>赋值在变量声明和定义同时出现时是只有字符串值这个参数的构造函数, 否则就是只有字符串值这个参数的<code>assign()</code>函数.</p>
@@ -920,7 +787,7 @@ Address already in use</strong>, 我的服务器端监听的端口处于 <strong
 <h4 id="GitHub-Desktop"><a href="#GitHub-Desktop" class="headerlink" title="GitHub Desktop"></a>GitHub Desktop</h4><p>🔗 <a href="https://desktop.github.com/" target="_blank" rel="noopener">下载地址</a></p>
 <p>GitHub官方客户端. 这是一个对新手很友好的客户端, 我自己也在用. 它的缺点是<strong>只能管理托管在GitHub的git仓库</strong>. 它很有用的一点是<strong>能在一个面板上看到你每个仓库的更新情况</strong>. (我经常忘记哪个仓库有没有上传)</p>
 <p>❗️ 要打开软件等它检测一会才会显示出来状态.</p>
-<p><img src="Git%E6%9D%82%E8%AE%B0/image-20200227141011525.png" alt="image-20200227141011525"></p>
+<p><img alt="image-20200227141011525" data-src="Git%E6%9D%82%E8%AE%B0/image-20200227141011525.png"></p>
 <blockquote>
 <p>仓库名字后有蓝色点表示有本地更改未提交, 有向上箭头表示有本地提交未上传, 有向下箭头表示有远程端有比本地更新的提交需要拉取.</p>
 </blockquote>
@@ -928,7 +795,7 @@ Address already in use</strong>, 我的服务器端监听的端口处于 <strong
 <h4 id="Tower"><a href="#Tower" class="headerlink" title="Tower"></a>Tower</h4><p>🔗 <a href="https://www.git-tower.com/" target="_blank" rel="noopener">下载地址</a></p>
 <p>这个软件看起来比GitHub Desktop功能强大些, 并且不像后者只能管理托管在GitHub的git仓库. 这个软件只能免费试用, 但申请了这个<a href="https://education.github.com/pack" target="_blank" rel="noopener">GitHub学生大礼包</a>的话可以免费用一年.</p>
 <h4 id="开发工具集成的git管理"><a href="#开发工具集成的git管理" class="headerlink" title="开发工具集成的git管理"></a>开发工具集成的git管理</h4><p>🌟 实际上这是我最常使用的方式</p>
-<p><img src="Git%E6%9D%82%E8%AE%B0/image-202002271546.png" alt="img"></p>
+<p><img alt="img" data-src="Git%E6%9D%82%E8%AE%B0/image-202002271546.png"></p>
 <p>这是装了<strong>GitLens</strong>插件的<strong>Visual Studio Code</strong>的源代码控制面板和编辑窗口截图. 可以看到左下角显示了当前分支及同步状态, 编辑窗口里有颜色条标示文件更改情况, 右上角有可以对文件进行的一些git操作, etc…</p>
 <h3 id="登陆git"><a href="#登陆git" class="headerlink" title="登陆git"></a>登陆git</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">git config --global user.name "Your Name"</span><br><span class="line">git config --global user.email "email@example.com"</span><br></pre></td></tr></tbody></table></figure>
 
@@ -2012,11 +1879,11 @@ abbreviation</strong>)</p>
 <p>什么? <strong>360杀毒是毒瘤?</strong> 什么? <strong>电脑城就是个坑?</strong></p>
 <p>我开始是不太信的, 后来我格式化了电脑告别360. 再后来我在小米之家看着和我电脑同价位但配置好许多的电脑沉默了一会.</p>
 <p><strong>但是!!</strong> 这次出的幺蛾子让我忍不了. 前几天电脑刚开机就弹出👇</p>
-<p><img src="%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/HardDiskProblems.png?50" alt="hard disk problems detected"></p>
+<p><img alt="hard disk problems detected" data-src="%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/HardDiskProblems.png?50"></p>
 <p>什么? <b style="color:red;">我硬盘快挂了?</b>
 当时把我吓坏了, 还以为我硬盘要爆炸了, 点开了 <strong>Disks</strong> 工具的
 <strong>SMART Data &amp; Self-Tests</strong>.</p>
-<p><img src="%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/self-test.png" alt="self-test"></p>
+<p><img alt="self-test" data-src="%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/self-test.png"></p>
 <p>我???</p>
 <p>上网搜索了一下<a href="https://help.ubuntu.com/stable/ubuntu-help/disk-check.html.en" target="_blank" rel="noopener">年老的硬盘就容易出这种事</a>. 加上那个self-test也说我硬盘 <strong>Old-Age</strong> 了, 最多也就该有<strong>50</strong>个的坏道我现在有<strong>16376</strong>个, 那大概硬盘是真的快挂了吧. 行吧.</p>
 <p>秋头麻袋. 我这电脑才买了一年啊💢 我和几个群友交流了一下自认使用习惯还是不算差, 虽然没有及时发现坏道并隔离 (我才知道这玩意还能传染) 是我的锅, 但铁定我买来这电脑就有点问题. 忍不了💢</p>
@@ -3075,7 +2942,7 @@ shift 字母</kbd>和<kbd>Ctrl 字母</kbd>的输出没有区别.</p>
 </ol>
 <h2 id="更改编辑界面颜色主题"><a href="#更改编辑界面颜色主题" class="headerlink" title="更改编辑界面颜色主题"></a>更改编辑界面颜色主题</h2><p>在vim, VSC, VS, CLION, Pycharm等工具用惯了黑暗主题以后拿到啥都想先换个黑暗主题. 但是找了半天也只找到了设置编辑界面颜色主题的方式, 普通操作似乎并不能自定义丑陋的灰色工具栏.</p>
 <p>最终我把界面变成了这样 👇</p>
-<p><img src="MATLAB%E6%9D%82%E8%AE%B0/appearance.png" alt="界面"></p>
+<p><img alt="界面" data-src="MATLAB%E6%9D%82%E8%AE%B0/appearance.png"></p>
 <ul>
 <li>颜色主题是通过<a href="https://github.com/scottclowe/matlab-schemer" target="_blank" rel="noopener">MATLAB Schemer</a>里的脚本更换的, 一键更换好评👍 因为我比较喜欢糖果色的颜色主题然后又不喜欢注释是灰色 (不管在黑色背景还是白色背景里辨析度都很低), 于是选择的主题是<a href="https://github.com/scottclowe/matlab-schemer/tree/master/schemes#dark-steel" target="_blank" rel="noopener">Dark Steel</a>.</li>
 <li>字体用的是<a href="https://github.com/powerline/fonts/tree/master/DejaVuSansMono" target="_blank" rel="noopener">DejaVu Sans Mono for Powerline</a>, 大小是11, 不过不知道为什么MATLAB显示不带效果的字体看着很粗糙, <strong>边缘锯齿状过于明显</strong>, 效果设置为了 <strong>bold</strong>, 这回好多了!</li>
@@ -3465,26 +3332,26 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 <ul>
 <li>更详细的语法说明在Typora内可以查看Typora自带的Markdown语法参考手册</li>
 </ul>
-<p><img src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569274096465.png" alt="1569274096465"></p>
+<p><img alt="1569274096465" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569274096465.png"></p>
 <h2 id="Typora安利"><a href="#Typora安利" class="headerlink" title="Typora安利"></a>Typora安利</h2><p>那么用什么软件来写Markdown呢? 认准<a href="https://typora.io/#download" target="_blank" rel="noopener"><strong>Typora</strong></a>!</p>
 <p>Typora的优点多到我不想写 (不其实是单纯不想写了), 最突出的优点我觉得是它的<strong>颜值</strong>,
 以及<strong>能直接将图片粘贴到文件中</strong>.</p>
 <h3 id="Typora快速入门"><a href="#Typora快速入门" class="headerlink" title="Typora快速入门"></a>Typora快速入门</h3><h4 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h4><p>在<strong>Themes</strong>一栏可以切换软件的主题</p>
-<p><img src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569271897771.png" alt="1569271897771"></p>
+<p><img alt="1569271897771" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569271897771.png"></p>
 <h4 id="大纲视图"><a href="#大纲视图" class="headerlink" title="大纲视图"></a>大纲视图</h4><p>可以按这个<strong>OutLine</strong>或者按左下角的小圆圈触发大纲视图, 点击大纲视图里的标题可以快速跳转.</p>
-<p><img src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569272130639.png" alt="1569272130639"></p>
+<p><img alt="1569272130639" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569272130639.png"></p>
 <h4 id="源代码视图"><a href="#源代码视图" class="headerlink" title="源代码视图"></a>源代码视图</h4><p>按左下角这个<kbd>&lt;/&gt;</kbd>可以切换到源代码视图</p>
-<p><img src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569272534032.png" alt="1569272534032"></p>
+<p><img alt="1569272534032" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569272534032.png"></p>
 <h4 id="拼写检查"><a href="#拼写检查" class="headerlink" title="拼写检查"></a>拼写检查</h4><p>右下角这里可以选择进行拼写检查的语言或者关闭这个功能.</p>
-<p><img src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569272445049.png" alt="1569272445049"></p>
+<p><img alt="1569272445049" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569272445049.png"></p>
 <h4 id="更多设置"><a href="#更多设置" class="headerlink" title="更多设置"></a>更多设置</h4><p>按这个<strong>Preference</strong>可以进行更多偏好设置.</p>
-<p><img src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569272312746.png" alt="1569272312746"></p>
+<p><img alt="1569272312746" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569272312746.png"></p>
 <p>以下是我的推荐设置</p>
-<p><img src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/TIM%E5%9B%BE%E7%89%8720190924051240.png" alt=""></p>
-<p><img src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/image-20200227124912356.png" alt="image-20200227124912356"></p>
+<p><img alt="" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/TIM%E5%9B%BE%E7%89%8720190924051240.png"></p>
+<p><img alt="image-20200227124912356" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/image-20200227124912356.png"></p>
 <p>勾选<strong>对网络图片应用上述规则</strong>那直接粘贴从浏览器复制的图片时Typora会自动将该图片下载到这个指定文件夹.</p>
 <p>忽略单个换行让Typora遵循GFM: 单个换行不渲染为换行, 两个换行才渲染为换行</p>
-<p><img src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/TIM%E5%9B%BE%E7%89%8720190924051204.png" alt=""></p>
+<p><img alt="" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/TIM%E5%9B%BE%E7%89%8720190924051204.png"></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -3552,7 +3419,7 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 </tr>
 </tbody></table>
 <p>我们通常所说的Python是<strong>CPython</strong>, 👇Python官方页面提供的是CPython</p>
-<p><img src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1565579206457.png" alt="1565579206457"></p>
+<p><img alt="1565579206457" data-src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1565579206457.png"></p>
 <h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>Python这种语言有<strong>Python2</strong>和<strong>Python3</strong>两个版本, 两者语法有少许不同, 比如Python2和Python3中<code>print()</code>的使用有区别, Python2和Python3中<code>input()</code>接受的数据类型有区别等.</p>
 <p>最新的Python2对大部分Python2, 3不同的语法做了兼容, 而在Python3对Python2的语法兼容性很差, 但是提供了一个叫<a href="https://docs.python.org/zh-cn/3.7/library/2to3.html" target="_blank" rel="noopener">2to3</a>的脚本帮助我们将Python2的程序转换为Python3的程序.</p>
 <h2 id="哲学"><a href="#哲学" class="headerlink" title="哲学"></a>哲学</h2><p><strong>万物皆对象</strong></p>
@@ -3567,10 +3434,10 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 <p>正如其名, 注解只是标注一下, 有了类型注解的程序和没有类型注解的程序运行起来没有区别, 但它能帮助程序员更好的发现问题, 也能让IDE提供更准确的代码补全和语法检查.</p>
 <h3 id="类型检查"><a href="#类型检查" class="headerlink" title="类型检查"></a>类型检查</h3><p>有时候为了保证程序的严谨性我们会检查一下变量是不是我们设想它应该是的类型, 这个时候我们用 <code>isinstance()</code></p>
 <p>之所以不使用 <code>type()</code> 是因为 <code>type()</code> 不会认为子类是一种父类类型, 不考虑继承关系. 举例说明:</p>
-<p><img src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571027624789.png" alt="1571027624789"></p>
+<p><img alt="1571027624789" data-src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571027624789.png"></p>
 <h3 id="不可变对象"><a href="#不可变对象" class="headerlink" title="不可变对象"></a>不可变对象</h3><p>❗️ <strong>我们可以给不可变对象重新赋值, 但其内存地址会改变</strong>. 以下是体现给可变对象/不可变对象重新赋值时它们的内存地址变化的例子.</p>
 <p>💡 <code>id()</code>能获取一个变量的内存地址</p>
-<p><img src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571022411897.png" alt="1571022411897"></p>
+<p><img alt="1571022411897" data-src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571022411897.png"></p>
 <h4 id="Number-数字"><a href="#Number-数字" class="headerlink" title="Number (数字)"></a>Number (数字)</h4><ul>
 <li>int (整数)</li>
 <li>long (长整数)</li>
@@ -3579,7 +3446,7 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 </ul>
 <p>Python中的Number我认为是比较特殊的, 因为它<strong>在内存中占用的空间大小是变动</strong>的.(在CPython中是如此, 但不知道为什么在IronPython下不是)</p>
 <p>💡 用<code>sys.getsizeof()</code>可以知道一个变量的占用的内存大小</p>
-<p><img src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571022628668.png" alt="1571022628668"></p>
+<p><img alt="1571022628668" data-src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571022628668.png"></p>
 <h4 id="String-字符串"><a href="#String-字符串" class="headerlink" title="String (字符串)"></a>String (字符串)</h4><h4 id="Tuple-元组"><a href="#Tuple-元组" class="headerlink" title="Tuple (元组)"></a>Tuple (元组)</h4><h3 id="可变对象"><a href="#可变对象" class="headerlink" title="可变对象"></a>可变对象</h3><p>可变对象可能带来的危险举例:</p>
 <figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myfunc</span><span class="params">(l = [])</span>:</span></span><br><span class="line">    l.append(<span class="string">'add'</span>)</span><br><span class="line">    print(l)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">myfunc([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">myfunc([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">myfunc()</span><br></pre></td></tr></tbody></table></figure>
 
@@ -3630,7 +3497,7 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 </tr>
 </tbody></table>
 <h3 id="Python中有关对象需要注意的问题"><a href="#Python中有关对象需要注意的问题" class="headerlink" title="Python中有关对象需要注意的问题"></a>Python中有关对象需要注意的问题</h3><p>python中向函数传递参数只是<strong>引用传递</strong>: 如果参数为可变对象, 在函数中变化会影响引用的这个变量, 而不可变对象不会. 在向类传递参数时也是如此.</p>
-<p><img src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571033275137.png" alt="1571033275137"></p>
+<p><img alt="1571033275137" data-src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571033275137.png"></p>
 <h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="Python内置帮助文档"><a href="#Python内置帮助文档" class="headerlink" title="Python内置帮助文档"></a>Python内置帮助文档</h3><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">help()</span><br></pre></td></tr></tbody></table></figure>
 
 <p>调用<code>help()</code>后就会进入Python内置帮助文档, 然后输入想查的类名/函数名/属性名就可以看到对应的帮助文档.</p>
@@ -3683,12 +3550,12 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 <figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print1</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'111'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print2</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'222'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printDefault</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'default'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">switch = {</span><br><span class="line">    <span class="number">1</span>: print1,</span><br><span class="line">    <span class="number">2</span>: print2,</span><br><span class="line">    <span class="string">'default'</span>: printDefault</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">case = int(input(<span class="string">'input: '</span>))</span><br><span class="line">switch[case <span class="keyword">if</span> (case <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">3</span>)) <span class="keyword">else</span> <span class="string">'default'</span>]()</span><br></pre></td></tr></tbody></table></figure>
 
 <h3 id="编码格式-1"><a href="#编码格式-1" class="headerlink" title="编码格式"></a>编码格式</h3><p>字符串经过<strong>编码（encode）</strong> 就成为了一堆数据, 反过来, 数据经过<strong>解码（decode）</strong> 就变回我们认识的字符串.</p>
-<p><img src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/encode_decode.png" alt="img"></p>
+<p><img alt="img" data-src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/encode_decode.png"></p>
 <p>指定文件编码格式为 <code>utf-8</code></p>
 <figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br></pre></td></tr></tbody></table></figure>
 
 <p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png?v8">💡</span> 如果不指定文件编码格式在有的Python2版本中无法识别中文, 即便是中文注释也会报错.</p>
-<p><img src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/Unicode_Decoding_and_Encoding.png" alt="Unicode Decoding and Encoding"></p>
+<p><img alt="Unicode Decoding and Encoding" data-src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/Unicode_Decoding_and_Encoding.png"></p>
 <p>Linux系统默认编码格式是<strong>UTF-8</strong>, 系统语言是简体中文时Windows10的编码格式是<strong>GB2312</strong> (也称GBK, 国标扩展, cp936)</p>
 <p>在python中 <code>str</code> 类型数据都以Unicode码点格式储存, 因此直接打印字符串会看到字符为’\u’开头</p>
 <h3 id="基本读写"><a href="#基本读写" class="headerlink" title="基本读写"></a>基本读写</h3><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">f = open(<span class="string">"test.txt"</span>, <span class="string">"r+"</span>)</span><br><span class="line">f.read()</span><br><span class="line">f.write(<span class="string">"text"</span>)</span><br><span class="line">f.close()</span><br></pre></td></tr></tbody></table></figure>
@@ -3762,7 +3629,7 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 <h2 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h2><p>我推荐遵从<a href="https://www.python.org/dev/peps/pep-0008/" target="_blank" rel="noopener">PEP8</a>. 当然一行一行看完这个规范不是一件令人愉快的事, 最简单的时刻遵守PEP8的方式是在代码工具里安一个<strong>代码风格检查器</strong> (linter).
 检查你的代码是否符合PEP8的linter是<a href="http://pycodestyle.pycqa.org/en/latest/intro.html" target="_blank" rel="noopener">pycodestyle</a></p>
 <p>💡 在VSC中可以在设置中搜索<strong>python.linting.pycodestyle</strong>, 勾选<strong>Pycodestyle Enabled</strong>, 这样在VSC中编写Python代码时使用的linter就是pycodestyle啦</p>
-<p><img src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571142193232.png" alt="1571142193232"></p>
+<p><img alt="1571142193232" data-src="Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/1571142193232.png"></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -3842,7 +3709,7 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 </ul>
 <p>总之我要到zsh去了, bash再见👋</p>
 <p>下面是部分功能的展示</p>
-<p><img src="%E6%88%91%E5%B0%86shell%E6%8D%A2%E4%B8%BA%E4%BA%86zsh/screencast.gif" alt=""></p>
+<p><img alt="" data-src="%E6%88%91%E5%B0%86shell%E6%8D%A2%E4%B8%BA%E4%BA%86zsh/screencast.gif"></p>
 <p>下面我大致说一下我的zsh配置</p>
 <ul>
 <li>zsh配置管理工具: <a href="https://ohmyz.sh" target="_blank" rel="noopener">Oh My Zsh</a></li>
@@ -4039,11 +3906,11 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 <blockquote>
 <p>图一 Ubuntu系统下含汉字数字文件名排序</p>
 </blockquote>
-<p><img src="%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/image-20200207181027438.png" alt=""></p>
+<p><img alt="" data-src="%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/image-20200207181027438.png"></p>
 <blockquote>
 <p>图二 百度云里含数字文件名排序</p>
 </blockquote>
-<p><img src="%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/Screenshot_20200207_181843.jpg" alt=""></p>
+<p><img alt="" data-src="%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/Screenshot_20200207_181843.jpg"></p>
 <p>因此如果想在文件名中包含有排序功能的数字, 或者表达顺序之意时应当<strong>用阿拉伯数字而不是汉字, 并且位数不足的用0在左侧占位</strong>.</p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -4088,7 +3955,7 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 <h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h3><p>还是先来个Hello World 😏</p>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">digraph G{</span><br><span class="line">    Hello -&gt; World;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/helloworld.svg?20" alt=""></p>
+<p><img alt="" data-src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/helloworld.svg?20"></p>
 <h3 id="常见用法"><a href="#常见用法" class="headerlink" title="常见用法"></a>常见用法</h3><p>因为graphviz许多概念解释起来会套娃, 要理解概念A要先理解概念B, 要理解概念B则需要先知道什么是概念A 🤤 因此这里先放上一些常用属性来快速入门.</p>
 <p>🌟 不明白到底如何使用属性的话点<a href="#属性">这里</a>快速跳转后文的实例.</p>
 <table>
@@ -4197,19 +4064,19 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 <p>💡 以下布局的图例除了最后一个都来自<a href="https://emden.github.io/gallery/" target="_blank" rel="noopener">graphviz-gallary</a></p>
 <h4 id="dot"><a href="#dot" class="headerlink" title="dot"></a>dot</h4><p>用于绘制<strong>有向图</strong>, 他的布局算法原理上面已经说了, 特点是绘制出的图<strong>很有层次</strong>.</p>
 <p>❗️ 注意dot布局和DOT语言不是一个东西.</p>
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/cluster.png?20" alt="img"></p>
+<p><img alt="img" data-src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/cluster.png?20"></p>
 <h4 id="neato"><a href="#neato" class="headerlink" title="neato"></a>neato</h4><p>用于绘制<strong>无向图</strong>. neato布局算法的原理是构建一个虚拟物理模型并不断对其迭代最终得到一个<strong>最低总能量排布</strong> (low-energy configuration). 这个虚拟物理模型具体指的是在每个节点间放置一个<strong>理想弹簧</strong>, 这样得到的布局通常很合理. (在统计学中这种算法也被称作<strong>多维缩放</strong>). neato布局很适合用于<strong>通信网络</strong>及<strong>计算机程序</strong>的绘制.</p>
 <p>💡 当图较大 (超过100个节点)时就该考虑换成fdp或者sfdp布局了</p>
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/ER.png?30" alt="在这里插入图片描述"></p>
+<p><img alt="在这里插入图片描述" data-src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/ER.png?30"></p>
 <h4 id="fdp"><a href="#fdp" class="headerlink" title="fdp"></a>fdp</h4><p>同样是基于弹簧模型. 区别在于fdp算法的迭代是在试图减小节点间弹簧的力的大小而不是弹簧能量大小.</p>
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/fdpclust.png?40" alt="在这里插入图片描述"></p>
+<p><img alt="在这里插入图片描述" data-src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/fdpclust.png?40"></p>
 <h4 id="sfdp"><a href="#sfdp" class="headerlink" title="sfdp"></a>sfdp</h4><p>为大规模图而生的多尺度版fdp</p>
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/JGD_BIBD@bibd_17_3.gif?40" alt="在这里插入图片描述"></p>
+<p><img alt="在这里插入图片描述" data-src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/JGD_BIBD@bibd_17_3.gif?40"></p>
 <p>上面这个图得自🔗 <a href="http://yifanhu.net/GALLERY/GRAPHS/index.html" target="_blank" rel="noopener">A Gallery of Large Graphs</a>. 这个网站还有<strong>很多</strong>很壮观的图😳</p>
 <h4 id="twopi"><a href="#twopi" class="headerlink" title="twopi"></a>twopi</h4><p>径向布局.</p>
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/twopi2.png?50" alt="在这里插入图片描述"></p>
+<p><img alt="在这里插入图片描述" data-src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/twopi2.png?50"></p>
 <h4 id="circo"><a href="#circo" class="headerlink" title="circo"></a>circo</h4><p>圆形布局. 很适合有许多环路结构的图, 比如电信网络.</p>
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/circo.png?30" alt="在这里插入图片描述"></p>
+<p><img alt="在这里插入图片描述" data-src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/circo.png?30"></p>
 <h3 id="有关三种主要描述对象"><a href="#有关三种主要描述对象" class="headerlink" title="有关三种主要描述对象"></a>有关三种主要描述对象</h3><p>DOT语言主要描述三种对象: <strong>graph</strong>, <strong>node</strong>, <strong>edge</strong>. 这里分别翻译为<strong>图</strong>, <strong>节点</strong>, <strong>边线</strong>. 每一种对象有各自可以设置的一组属性.</p>
 <h4 id="Graph-图"><a href="#Graph-图" class="headerlink" title="Graph (图)"></a>Graph (图)</h4><p>最外层的graph (main graph)可以被设定为<strong>有向图</strong><code>digraph</code>(directed graph)或是<strong>无向图</strong><code>graph</code>(undirected graph). main graph内可以用<code>subgraph</code>来定义一个节点和边线的集合. 也可以通过设定最外层图为<code>strict digraph</code>或者<code>strict graph</code>来禁用<strong>multi-edges</strong>. 也就是说<code>strict digraph</code>会让有向图中一个指向节点和一个被指向节点间只能有一条边线 (不过反过来还可以有一条, 也就是两节点间最多两条边线), <code>strict graph</code>则会让无向图中两节点间只能有一条边线.</p>
 <p>最外层的图又称top-level graph, root graph (反正开发组文档都没能统一这东西的叫法). 图可以有子图 (subgraph), 子图会继承父级的显式设置的大部分属性. 有一种特殊的子图被称为<a href="#Cluster-簇"><strong>簇</strong></a>.</p>
@@ -4241,14 +4108,14 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 </blockquote>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">digraph G {</span><br><span class="line">  rankdir=LR</span><br><span class="line">  node [shape=plaintext]</span><br><span class="line">  a [</span><br><span class="line">    label=&lt;</span><br><span class="line">      &lt;TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD ROWSPAN="3" BGCOLOR="yellow"&gt;class&lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD PORT="here" BGCOLOR="lightblue"&gt;qualifier&lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">      &lt;/TABLE&gt;</span><br><span class="line">    &gt;</span><br><span class="line">  ]</span><br><span class="line">  b [shape=ellipse style=filled</span><br><span class="line">    label=&lt;</span><br><span class="line">      &lt;TABLE BGCOLOR="bisque"&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD COLSPAN="3"&gt;elephant&lt;/TD&gt;</span><br><span class="line">          &lt;TD ROWSPAN="2" BGCOLOR="chartreuse" VALIGN="bottom" ALIGN="right"&gt;two&lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD COLSPAN="2" ROWSPAN="2"&gt;</span><br><span class="line">            &lt;TABLE BGCOLOR="grey"&gt;</span><br><span class="line">              &lt;TR&gt; &lt;TD&gt;corn&lt;/TD&gt; &lt;/TR&gt;</span><br><span class="line">              &lt;TR&gt; &lt;TD BGCOLOR="yellow"&gt;c&lt;/TD&gt; &lt;/TR&gt;</span><br><span class="line">              &lt;TR&gt; &lt;TD&gt;f&lt;/TD&gt; &lt;/TR&gt;</span><br><span class="line">            &lt;/TABLE&gt;</span><br><span class="line">          &lt;/TD&gt;</span><br><span class="line">          &lt;TD BGCOLOR="white"&gt;penguin&lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD COLSPAN="2" BORDER="4" ALIGN="right" PORT="there"&gt;4&lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">      &lt;/TABLE&gt;</span><br><span class="line">    &gt;</span><br><span class="line">  ]</span><br><span class="line">  c [</span><br><span class="line">    label=&lt;long line 1&lt;BR/&gt;line 2&lt;BR ALIGN="LEFT"/&gt;line 3&lt;BR ALIGN="RIGHT"/&gt;&gt;</span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line">  subgraph { rank=same b c }</span><br><span class="line">  a:here -&gt; b:there [dir=both arrowtail=diamond]</span><br><span class="line">  c -&gt; b</span><br><span class="line">  d [shape=triangle]</span><br><span class="line">  d -&gt; c [</span><br><span class="line">    label=&lt;</span><br><span class="line">      &lt;TABLE&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD BGCOLOR="red" WIDTH="10"&gt; &lt;/TD&gt;</span><br><span class="line">          &lt;TD&gt;Edge labels&lt;BR/&gt;also&lt;/TD&gt;</span><br><span class="line">          &lt;TD BGCOLOR="blue" WIDTH="10"&gt; &lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">      &lt;/TABLE&gt;</span><br><span class="line">    &gt;</span><br><span class="line">  ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/html-like_label.svg?60" alt=""></p>
+<p><img alt="" data-src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/html-like_label.svg?60"></p>
 <h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>属性是通过<code>name=value</code>形式来设置的. 节点与边线的属性需要放在<code>[]</code>方括号中.</p>
 <blockquote>
 <p>一个展示属性写法以及属性能做些什么的例子</p>
 </blockquote>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">digraph G {</span><br><span class="line">    size ="4,4"; //设置图形尺寸为4英寸长宽</span><br><span class="line">    方形节点 [shape=box];  /*这是一种注释写法*/</span><br><span class="line">    方形节点 -&gt; 上面是加粗线 [style=bold];</span><br><span class="line">    上面是加粗线 -&gt; 和下面的对比;</span><br><span class="line">    方形节点 -&gt; 上面是虚线 [style=dotted];</span><br><span class="line">    方形节点 -&gt; 重量更大导致垂直指下的节点[weight=4];</span><br><span class="line">    "和下面的对比" -&gt; { make_string; 上面是有标签的红线}  //可以一次连接多个节点</span><br><span class="line">    上面是虚线 -&gt; make_string;</span><br><span class="line">    edge [color=red];  // 这是另一种注释写法</span><br><span class="line">    方形节点 -&gt; 上面是有标签的红线 [label="100 times"];</span><br><span class="line">    make_string [label="多行\n标签"];</span><br><span class="line">    node [shape=box,style=filled,color=".7 .3 1.0"];</span><br><span class="line">    和下面的对比 -&gt; 在节点默认属性改变后才创建的节点;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/attr.svg" alt=""></p>
+<p><img alt="" data-src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/attr.svg"></p>
 <h4 id="常用属性的默认值"><a href="#常用属性的默认值" class="headerlink" title="常用属性的默认值"></a>常用属性的默认值</h4><p><strong>图</strong>的默认属性:</p>
 <ul>
 <li>labeljust=”c”</li>
@@ -4277,15 +4144,15 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 </blockquote>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">digraph G {</span><br><span class="line">    compound=true;</span><br><span class="line">    subgraph cluster0 {</span><br><span class="line">        a -&gt; b;</span><br><span class="line">        a -&gt; c;</span><br><span class="line">        b -&gt; d;</span><br><span class="line">        c -&gt; d;</span><br><span class="line">    }</span><br><span class="line">    subgraph cluster1 {</span><br><span class="line">        e -&gt; g;</span><br><span class="line">        e -&gt; f;</span><br><span class="line">    }</span><br><span class="line">    b -&gt; f [lhead=cluster1];</span><br><span class="line">    d -&gt; e;</span><br><span class="line">    c -&gt; g [ltail=cluster0,lhead=cluster1];</span><br><span class="line">    c -&gt; e [ltail=cluster0];</span><br><span class="line">    d -&gt; h;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/cluster.svg?20" alt=""></p>
+<p><img alt="" data-src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/cluster.svg?20"></p>
 <h2 id="高级语法"><a href="#高级语法" class="headerlink" title="高级语法"></a>高级语法</h2><p>以下是几条我认为<strong>用来提示图的美观程度</strong>的语法.</p>
 <h3 id="优化布局"><a href="#优化布局" class="headerlink" title="优化布局"></a>优化布局</h3><p>知道了上面提到的<a href="#Layout-布局">布局的原理</a>我们就可以进行一些更个性化的布局, 比如设置<code>rankdir</code>可以设置节点的排布方向, 默认为<strong>TB</strong>, top to bottom, 也就是从上到下. 可选值有<strong>TB</strong>, <strong>BT</strong>, <strong>LR</strong>, <strong>RL</strong>.</p>
 <p>再比如设置节点的<code>rank</code>属性我们可以改变节点的布局. <code>rank</code>的可选值有: <strong>same</strong>, <strong>min</strong>, <strong>source</strong>, <strong>max</strong>, <strong>sink</strong>.</p>
 <blockquote>
 <p>一个展示设置rank属性能达到什么效果的例子 (代码和图形都截自旧版文档, 因为代码没给全我也懒得写, 就这么放着吧👍)</p>
 </blockquote>
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/image-20200313010630547.png?60" alt="image-20200313010630547"></p>
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/image-20200313010749024.png?80" alt="image-20200313010749024"></p>
+<p><img alt="image-20200313010630547" data-src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/image-20200313010630547.png?60"></p>
+<p><img alt="image-20200313010749024" data-src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/image-20200313010749024.png?80"></p>
 <h3 id="Node-Port-节点端口"><a href="#Node-Port-节点端口" class="headerlink" title="Node Port (节点端口)"></a>Node Port (节点端口)</h3><p>Graphviz提供了节点端口来指定边线应连接到节点的什么位置. 这提供了更高的个性化. 当没有被指定节点端口时边线是指向节点中心并在节点边界处被截断的.</p>
 <p>一共有两种节点端口:</p>
 <ul>
@@ -4294,7 +4161,7 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 </ul>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">digraph G {</span><br><span class="line">    node [shape = box]</span><br><span class="line">    node0:n -&gt; node1:n [label = "n"]</span><br><span class="line">    node2:ne -&gt; node3:ne [label = "ne"]</span><br><span class="line">    node4:e -&gt; node5:e [label = "e"]</span><br><span class="line">    node6:se -&gt; node7:se [label = "se"]</span><br><span class="line">    node8:s -&gt; node9:s [label = "s"]</span><br><span class="line">    node10:sw -&gt; node11:sw [label = "sw"]</span><br><span class="line">    node12:w -&gt; node13:w [label = "w"]</span><br><span class="line">    node14:nw -&gt; node15:nw [label = "nw"]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-<p><img src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/node_port.svg" alt=""></p>
+<p><img alt="" data-src="Graphviz%E7%AE%80%E8%A6%81%E8%AF%AD%E6%B3%95/node_port.svg"></p>
 <h3 id="Concentrators-边线合并"><a href="#Concentrators-边线合并" class="headerlink" title="Concentrators (边线合并)"></a>Concentrators (边线合并)</h3><p>在根图中设置<code>concentrate=true</code>将允许边线融合来避免图变得一团乱麻.</p>
 <p>边线合并的条件是:</p>
 <ul>
@@ -4379,7 +4246,7 @@ Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</stron
 <a id="more"></a>
 
 <p>也不知道最近自己时间都浪费哪里去了😑 3月7号弄好的东西现在才得以闲下来记录一番. 先秀一张GRUB界面😏</p>
-<p><img src="%E5%8D%95%E7%A1%AC%E7%9B%98%E4%B8%89%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95/grub.jpg" alt=""></p>
+<p><img alt="" data-src="%E5%8D%95%E7%A1%AC%E7%9B%98%E4%B8%89%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E8%AE%B0%E5%BD%95/grub.jpg"></p>
 <h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><p>说说我的心路历程😏</p>
 <p>直到上大学我都对电脑了解甚少, <strong>只知道有Windows系统</strong>, 并不知道还可以有其他系统, 更别说在这之上的骚操作了😂 上大学后<strong>我逐渐熟悉了Windows系统</strong>并且喜欢上了这个很有现代感的系统. 但随着我对编程的学习逐渐深入, 以及我为了尽早熟悉机器人相关知识而想要了解Linux系统, 在听人介绍后我费了些力气<strong>在虚拟机里装上了Ubuntu16.04</strong>, 不过那时候了解的还是太少, 只是跟着网上的教程将这个东西装好了, 没什么收获. 装好后因为那时也没什么夸张到要开虚拟机在Ubuntu里编程的项目, 所以就体验了几下就束之高阁了. 毕竟那时对于编程, 甚至查找资料的经验都太少了, 只看到一些令人头大的辣鸡资料, 因此并没能学到什么.</p>
 <p>大一下的时候我选了一门叫智能嵌入式的课, 其中有个课题是要编写一个能手势识别的程序并移植到树莓派上. 因此我就买了一个树莓派3b+. 不过那时懵懂的我对于怎么给一个SD卡安装系统手足无措, 就在网上搜资料给树莓派依次装了Ubuntu Mate, ArchLinux, 最后才是Raspbian😂 (我记得Mate是因为我当时没有找到arm架构的国内源就抛弃了, 而ArchLinux我就根本没装上…) 费劲心力我最后总算是把那个课题做完了, 但一方面我写得很差, 再加上树莓派3b+对图像处理的性能很一般, 所以我的手势识别程序移植到树莓派后十分卡顿😅 那是我<strong>第一次将程序移植到Linux平台, 也是第一次接触Linux嵌入式</strong></p>
@@ -4560,13 +4427,13 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 
 <blockquote>
 <p>首先, 不得不吹一下Manjaro是一个多么贴心的系统. Manjaro自带了一个叫<strong>Manjaro Hello</strong>的入门程序, 点进这个程序的<code>Applications</code>入口能看到Manjaro社区为各常见用途已经提供了一些推荐, 勾选就可以安装. 可以说没有更贴心的系统了!</p>
-<p><img src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/Manjaro_Hello.png?70" alt=""></p>
+<p><img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/Manjaro_Hello.png?70"></p>
 </blockquote>
 <h2 id="日常使用"><a href="#日常使用" class="headerlink" title="日常使用"></a>日常使用</h2><h3 id="中文输入法"><a href="#中文输入法" class="headerlink" title="中文输入法"></a>中文输入法</h3><p>随着fcitx5日渐成熟, 现在有了两种我推荐的中文输入法方案:</p>
 <h4 id="fcitx5框架-配套中文输入法"><a href="#fcitx5框架-配套中文输入法" class="headerlink" title="fcitx5框架+配套中文输入法"></a>fcitx5框架+配套中文输入法</h4><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S fcitx5-im</span><br><span class="line">yay -S fcitx5-chinese-addons</span><br><span class="line">yay -S fcitx5-material-color</span><br></pre></td></tr></tbody></table></figure>
 
 <p>这个<strong>fcitx5-material-color</strong>是一个模仿win10的中文输入法的皮肤, 在fcitx5的设置中可以更换皮肤, 可以做到下面这样的效果 👇
-<img src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/inputMethod.gif?80" alt=""></p>
+<img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/inputMethod.gif?80"></p>
 <h4 id="fcitx4框架-搜狗输入法"><a href="#fcitx4框架-搜狗输入法" class="headerlink" title="fcitx4框架+搜狗输入法"></a>fcitx4框架+搜狗输入法</h4><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S fcitx-im fcitx-configtool</span><br><span class="line">yay -S fcitx-sogoupinyin</span><br></pre></td></tr></tbody></table></figure>
 
 <hr>
@@ -4636,7 +4503,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <p>有了<a href="https://www.ventoy.net/cn/index.html" target="_blank" rel="noopener">Ventoy</a>这个项目, balenaEtcher, rufus这些传统意义上的镜像烧录软件就可以丢弃了! Ventoy支持一个U盘里放多个镜像, 在以这个U盘启动时会进入一个GRUB界面, 在这个页面再选择到底进入哪个镜像 🐮 我在我U盘里放了Windows镜像, Manjaro-KDE, Ubuntu20.04, 还有一个可以用来修复分区的<a href="https://gparted.org/download.php" target="_blank" rel="noopener">GParted</a>镜像, 还换了个GRUB主题, 爽到.</p>
 <h2 id="系统工具"><a href="#系统工具" class="headerlink" title="系统工具"></a>系统工具</h2><h3 id="资源管理器"><a href="#资源管理器" class="headerlink" title="资源管理器"></a>资源管理器</h3><p><strong>Dolphin</strong>绝对是最好用的资源管理器! 多标签页, 显示预览等功能不在话下. Dolphin的右键菜单很贴心, Gnome自带资源管理器所没有的右键新建文件功能 (就离谱) 当然是有的, 也有创建快捷方式, 解压 (不论是rar还是zip还是tar都是同一个按键), 也可以很方便地自己创建脚本添加右键菜单的功能.</p>
 <p>而Dolphin最突出的功能是按<kbd>F4</kbd>可以直接打开一个<strong>Dolphin内嵌终端</strong>. 这个终端的路径会随着在资源管理器里点击自动切换 (除非已经打开类似vim这样的程序), 使用起来超方便, 结合了终端的便捷和GUI的可视化等优势.</p>
-<p><img src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/Dolphin.png?70" alt=""></p>
+<p><img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/Dolphin.png?70"></p>
 <h3 id="任务管理器"><a href="#任务管理器" class="headerlink" title="任务管理器"></a>任务管理器</h3><p><strong>htop</strong>是升级版的top. 一是交互人性化很多, 支持鼠标交互, 设置页面分了页, 直观很多. 二是能以列表或者树的样式显示丰富得多的值, 比如该进程的线程数等, 还支持以关键词过滤显示的进程等功能.</p>
 <h3 id="磁盘管理器"><a href="#磁盘管理器" class="headerlink" title="磁盘管理器"></a>磁盘管理器</h3><figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S filelight</span><br><span class="line">yay -S partitionmanager</span><br></pre></td></tr></tbody></table></figure>
 
@@ -4741,14 +4608,14 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <li>…如果上面几个功能都不支持我不如写Markdown文档了所以不用试了</li>
 </ol>
 <p>而另一边, <strong>WPS出乎我意料的好!</strong> 以上功能WPS统统支持, 用起来和MS Office真的是区别不大了👍 目前注意到的也就是没有平滑切换效果和不支持3D模型编辑 (但是也能显示成图片) 这两个MS Office的特色功能, 以及选中一些对象右键另存为图片时不能另存为svg或其他矢量图格式, 无伤大雅. 格式不完全兼容这个问题当然还是存在, 但是在接受范围内. 而且, WPS现在还挺好看的🐮</p>
-<p><img src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/wps.png" alt=""></p>
+<p><img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/wps.png"></p>
 <p>至于MS Office套件提供的其他我使用的软件:</p>
 <ul>
 <li><p>Outlook, 微软待办事项, 日历我使用的是网页版 (在Windows我也用的网页版, 因为可以和微软待办事项, 日历联动我觉得体验反而比Outlook本地客户端体验更加良好)</p>
 </li>
 <li><p>teams则是有官方Linux版本, 可以执行<code>yay -S teams</code>安装. 不过网页版也能获得完整的体验, 我感觉没什么差别</p>
 </li>
-<li><p>OneDrive的话虽然有人开发了<a href="https://abraunegg.github.io/" target="_blank" rel="noopener">OneDrive Linux客户端</a>, 但我并没有使用. 虽然我平时使用Linux系统, 但是我把我的Windows盘挂载在了我的Linux系统里, 可以访问并编辑OneDrive文件夹里的文件, 然后我对同步频率的要求没多高, 因此暂时没感觉不方便 (主要是很久以前试过这个客户端, 当时体验很一般). 比较有意思的是目前在企业版Office365 (学校给的) 的应用列表中直接有列出OneDrive Linux版的图标, 但链接到的是一个<a href="https://github.com/skilion/onedrive" target="_blank" rel="noopener">有很多bug功能很不全的版本</a>, 而且我的个人版Office365的应用列表并没有列出这个 😅<img src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/onedrive.png" alt=""></p>
+<li><p>OneDrive的话虽然有人开发了<a href="https://abraunegg.github.io/" target="_blank" rel="noopener">OneDrive Linux客户端</a>, 但我并没有使用. 虽然我平时使用Linux系统, 但是我把我的Windows盘挂载在了我的Linux系统里, 可以访问并编辑OneDrive文件夹里的文件, 然后我对同步频率的要求没多高, 因此暂时没感觉不方便 (主要是很久以前试过这个客户端, 当时体验很一般). 比较有意思的是目前在企业版Office365 (学校给的) 的应用列表中直接有列出OneDrive Linux版的图标, 但链接到的是一个<a href="https://github.com/skilion/onedrive" target="_blank" rel="noopener">有很多bug功能很不全的版本</a>, 而且我的个人版Office365的应用列表并没有列出这个 😅<img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/onedrive.png"></p>
 <p>在<a href="https://github.com/skilion/onedrive/issues/518" target="_blank" rel="noopener">这个issue</a>中可以看出skilion完全不想为社区开发, 但同时拒绝向abraunegg的版本引流或注明自己的版本的问题… 👎</p>
 </li>
 </ul>
@@ -4758,7 +4625,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 
 <p>在这里我想先辨析一下<code>终端</code>, <code>shell</code>, <code>命令行</code>这三个词:</p>
 <ul>
-<li><p><strong>终端</strong> (terminal), 最开始指的是一种用来与计算机主机交互的输入输出设备, 是硬件, 而我们如今绝大多数情况下说的终端实际上是终端模拟器 (terminal emulator) 的简称, 是一类模拟终端这种提供与计算机交互界面的功能的软件.  有的终端模拟器不仅可以显示字符还可以显示图像. 我用的终端是KDE提供的<strong>Konsole</strong>. 去掉标题栏及边框后能达到👇这样的效果, 我感觉还挺好看😁 <img src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/terminal.png" alt=""></p>
+<li><p><strong>终端</strong> (terminal), 最开始指的是一种用来与计算机主机交互的输入输出设备, 是硬件, 而我们如今绝大多数情况下说的终端实际上是终端模拟器 (terminal emulator) 的简称, 是一类模拟终端这种提供与计算机交互界面的功能的软件.  有的终端模拟器不仅可以显示字符还可以显示图像. 我用的终端是KDE提供的<strong>Konsole</strong>. 去掉标题栏及边框后能达到👇这样的效果, 我感觉还挺好看😁 <img alt="" data-src="Linux%E4%B8%8B%E7%9B%B8%E5%BD%93%E6%9C%89%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7/terminal.png"></p>
 </li>
 <li><p><strong>shell</strong>, 指的是一种让用户能够与操作系统内核进行交互的软件 (我们通常说的是命令行界面shell, 但实际上shell这个概念还包含了GUI的shell, 比如KDE). Ubuntu及Manjaro等系统自带的shell程序是bash, MacOS自带的shell则是zsh. 实际上zsh是比bash体验好很多的shell程序, 自身的补全更加智能, 有很丰富的插件选择, 有<a href="https://ohmyz.sh/" target="_blank" rel="noopener">Oh My Zsh</a>这样的便利shell配置管理框架… 反正谁用谁知道 👍 我也不清楚为什么一种Linux系统仍将bash作为系统默认shell, 这点表扬MacOS. 用下面的命令来安装并切换默认shell为zsh.</p>
 </li>
@@ -4941,7 +4808,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <li><strong>三级预防 (治已病)</strong>: 根据宫颈癌的临床分期, 开展适宜的手术、放疗、化疗及姑息疗法</li>
 </ol>
 <p>🌟 筛查比hpv疫苗重要得多</p>
-<p><img src="HPV%E4%B8%8E%E5%AE%AB%E9%A2%88%E7%99%8C%E5%B0%8F%E7%9F%A5%E8%AF%86/screening.jpg" alt="图片"></p>
+<p><img alt="图片" data-src="HPV%E4%B8%8E%E5%AE%AB%E9%A2%88%E7%99%8C%E5%B0%8F%E7%9F%A5%E8%AF%86/screening.jpg"></p>
 <h2 id="HPV疫苗"><a href="#HPV疫苗" class="headerlink" title="HPV疫苗"></a>HPV疫苗</h2><h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p>以L1蛋白外壳模拟HPV病毒, 本身不是病毒, 不会造成感染</p>
 <h3 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h3><ul>
 <li><p>预防大部分有致癌风险的HPV</p>
@@ -4954,7 +4821,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <li>目前大陆没有开放男性接种HPV疫苗 (国外可以)</li>
 <li>肌肉注射 (首选上臂三角肌), 每次0.5ml</li>
 </ul>
-<h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><p><img src="HPV%E4%B8%8E%E5%AE%AB%E9%A2%88%E7%99%8C%E5%B0%8F%E7%9F%A5%E8%AF%86/types.png" alt="image-20210109163343942"></p>
+<h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><p><img alt="image-20210109163343942" data-src="HPV%E4%B8%8E%E5%AE%AB%E9%A2%88%E7%99%8C%E5%B0%8F%E7%9F%A5%E8%AF%86/types.png"></p>
 <p>共二, 四, 九价三种HPV疫苗, “价”指疫苗能预防的HPV亚种数. 目前全世界只有葛兰素史克 (英国), 默沙东 (美国), 万泰沧海 (中国) 三家能生产HPV疫苗, 其中四价, 九价疫苗目前只有默沙东能生产.</p>
 <h3 id="性价比"><a href="#性价比" class="headerlink" title="性价比"></a>性价比</h3><p><strong>万泰沧海二价 &gt; GSK二价 &gt; 默沙东九价 &gt; 默沙东四价</strong></p>
 <ul>
@@ -4985,7 +4852,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <li><p>截至2020年7月国内HPV疫苗研发概况👇 (可以看到甚至十一, 十四价HPV疫苗也已经开始研发了), 但是我看网上消息的意思, 直到2026年估计不会有国产九价疫苗上市 🤦‍♂ ️</p>
 </li>
 </ul>
-<p><img src="HPV%E4%B8%8E%E5%AE%AB%E9%A2%88%E7%99%8C%E5%B0%8F%E7%9F%A5%E8%AF%86/outline.jpeg" alt="img"></p>
+<p><img alt="img" data-src="HPV%E4%B8%8E%E5%AE%AB%E9%A2%88%E7%99%8C%E5%B0%8F%E7%9F%A5%E8%AF%86/outline.jpeg"></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -5028,7 +4895,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <h2 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h2><p>💡 这里有一份<a href="./初级急救员笔记/2011年国际急救与复苏指南.pdf">2011年国际急救与复苏指南</a>和<a href="./初级急救员笔记/日常急救手册.pdf">日常急救手册</a>可供下载. 以下<a href="#心肺复苏">心肺复苏</a>, <a href="#气道异物梗阻">气道异物梗阻</a>, <a href="#创伤">创伤</a>, <a href="#其他">其他</a>几个板块是急救培训老师着重讲的部分, 其实在前面这本急救与复苏指南里还有好一些内容.</p>
 <p>❗这里会涉及到许多没有实际操作过就无法把握要点的技术, 这只是一份<strong>笔记</strong>.</p>
 <h3 id="心肺复苏"><a href="#心肺复苏" class="headerlink" title="心肺复苏"></a>心肺复苏</h3><h4 id="判断是否进行心肺复苏"><a href="#判断是否进行心肺复苏" class="headerlink" title="判断是否进行心肺复苏"></a>判断是否进行心肺复苏</h4><p>虽然人人都知道有个叫心肺复苏的技术能救命, 但实际上实施心肺复苏有一定的条件, 盲目进行心肺复苏反而容易出问题. 下面便是判断是否进行心肺复苏的流程.</p>
-<p><img src="./%E5%88%9D%E7%BA%A7%E6%80%A5%E6%95%91%E5%91%98%E7%AC%94%E8%AE%B0/%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E8%BF%9B%E8%A1%8C%E5%BF%83%E8%82%BA%E5%A4%8D%E8%8B%8F%E6%B5%81%E7%A8%8B%E5%9B%BE.svg?50" alt="判断是否进行心肺复苏流程图"></p>
+<p><img alt="判断是否进行心肺复苏流程图" data-src="./%E5%88%9D%E7%BA%A7%E6%80%A5%E6%95%91%E5%91%98%E7%AC%94%E8%AE%B0/%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E8%BF%9B%E8%A1%8C%E5%BF%83%E8%82%BA%E5%A4%8D%E8%8B%8F%E6%B5%81%E7%A8%8B%E5%9B%BE.svg?50"></p>
 <p>❗是的<strong>对于非专业人士来说判断是否进行心肺复苏并不需要判断伤病员是否有脉搏</strong>. 另外要注意即便专业人士也只会判断是否有脉搏, 是<strong>不会判断是否心脏停跳</strong>的. (详见下文<a href="#AED的使用">AED的使用</a>)</p>
 <h5 id="确认现场环境安全"><a href="#确认现场环境安全" class="headerlink" title="确认现场环境安全"></a>确认现场环境安全</h5><p>举例:</p>
 <ul>
@@ -5187,12 +5054,12 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="复苏体位"><a href="#复苏体位" class="headerlink" title="复苏体位"></a>复苏体位</h4><p>将伤病员置于复苏体位是为了防止因气道堵塞导致窒息. 有两种原因可能导致气道阻塞: 机械阻塞 (大部分情况是由于伤员失去意识而失去对舌头的控制, 舌头后坠至咽后部), 液体阻塞 (胃里出来的呕吐物之类)</p>
 <p>💡打呼噜也是舌头后坠导致的</p>
 <p>目前比较受认可的复苏体位有两种: 侧卧体位和HAINES体位. 要点是要将头微微后仰, 如此保证打开气道. HAINES体位和侧卧体位的操作方法类似, 区别在于可能有脊柱损失时HAINES体位比侧卧体位更安全. (但这个体位没有侧卧体位舒服)</p>
-<p><img src="%E5%88%9D%E7%BA%A7%E6%80%A5%E6%95%91%E5%91%98%E7%AC%94%E8%AE%B0/%E4%BE%A7%E5%8D%A7%E4%BD%93%E4%BD%8D.png?50" alt=""></p>
-<p><img src="%E5%88%9D%E7%BA%A7%E6%80%A5%E6%95%91%E5%91%98%E7%AC%94%E8%AE%B0/HAINES%E4%BD%93%E4%BD%8D.jpg?80" alt=""></p>
+<p><img alt="" data-src="%E5%88%9D%E7%BA%A7%E6%80%A5%E6%95%91%E5%91%98%E7%AC%94%E8%AE%B0/%E4%BE%A7%E5%8D%A7%E4%BD%93%E4%BD%8D.png?50"></p>
+<p><img alt="" data-src="%E5%88%9D%E7%BA%A7%E6%80%A5%E6%95%91%E5%91%98%E7%AC%94%E8%AE%B0/HAINES%E4%BD%93%E4%BD%8D.jpg?80"></p>
 <h4 id="误食强酸-强碱"><a href="#误食强酸-强碱" class="headerlink" title="误食强酸/强碱"></a>误食强酸/强碱</h4><p>喝下大量强酸/强碱不宜利用中和反应中和 (会大量放热) 或者催吐 (伤害食道), 应服用大量蛋白质.</p>
 <h4 id="烫伤"><a href="#烫伤" class="headerlink" title="烫伤"></a>烫伤</h4><p>烫伤后应用流动凉水冲洗. 不要弄破烫伤导致的水泡, 普通烫伤的水泡第三天起为吸收期, 7-8天恢复.</p>
 <h4 id="脑卒中"><a href="#脑卒中" class="headerlink" title="脑卒中"></a>脑卒中</h4><p>脑卒中, 即中风, 是由于脑部血管突然破裂或因血管阻塞导致血液不能流入大脑而引起脑组织损伤的一组疾病, 根据是血管破裂还是血管阻塞导致的分为出血性脑卒中和缺血性脑卒中. 其中缺血性脑卒中发病率更高, 出血性脑卒中死亡率更高. 面对脑卒中牢记<strong>FAST原则</strong>:</p>
-<p><img src="%E5%88%9D%E7%BA%A7%E6%80%A5%E6%95%91%E5%91%98%E7%AC%94%E8%AE%B0/FAST%E5%8E%9F%E5%88%99.png?65" alt=""></p>
+<p><img alt="" data-src="%E5%88%9D%E7%BA%A7%E6%80%A5%E6%95%91%E5%91%98%E7%AC%94%E8%AE%B0/FAST%E5%8E%9F%E5%88%99.png?65"></p>
 <p>❗ 禁食, 水</p>
 <h4 id="淹溺"><a href="#淹溺" class="headerlink" title="淹溺"></a>淹溺</h4><p>抢救上岸后以干毛巾由远心端向近心端摩擦, 促进血液循环.</p>
 <p>❗ 溺水导致的心脏停搏在进行心肺复苏前并<strong>不需要排出伤员呛的水</strong>, 这样做甚至可能导致肺炎. 这些水都在胃里, 很少会进到肺里.</p>
@@ -5257,7 +5124,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <p>大致看了一遍上面链接后就知道怎么用LaTeX写一份用Markdown或者word写也很方便的文档啦. 但要用来写一份高逼格论文的话还需要深入一些, 不然LaTeX的优势也体现不出来了. 首先来看一些绕不开且容易的语法, 然后是各种插入富文本的语法, 最后是关于让引用不管是插入还是看起来体验都更好的内容 (因为需要更改构建工具链这个部分在overleaf无法实现).</p>
 <h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── 📁Appendices        各个附录的tex文件文件夹</span><br><span class="line">├── 📁Figures           图片文件夹</span><br><span class="line">├── 📁Front             前置页的tex文件文件夹</span><br><span class="line">├── 📁Sections          各个章节的tex文件文件夹</span><br><span class="line">├── 📑main.tex          根文件</span><br><span class="line">└── 📑References.bib    所有引用的bibtex放这里</span><br></pre></td></tr></tbody></table></figure>
 
-<p>在Overleaf的快速教程中能看到只用一个tex文件就可以写LaTeX了, 但一般见到的论文模板都是多个文件的 (比如我更新的<a href="https://github.com/LeoJhonSong/UESTC-Glasgow-Final-Year-Report-Template/blob/master/README.md" target="_blank" rel="noopener">学院毕设模板</a>), 类似上面这样的结构. 将不同内容分别放在不同文件, 不然太长了不能方便组织以及查找出错地方. 通常在根目录的<strong>main.tex</strong>被作为根文件 (root file), <strong>只有根文件中有<code>\begin{document}</code></strong>. 通常习惯将各种全局设置, 包的引用, 标题, 作者, 自己定义的新命令, 宏定义等导言 (<a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes#The_preamble_of_a_document" target="_blank" rel="noopener">preamble</a>), 都放在<strong>main.tex</strong>中. 而<code>\begin{document}</code>后的正文内容基本是以<code>\include{}</code>插入在<strong>Front</strong>, <strong>Sections</strong>, <strong>Appendices</strong>中的tex文件, 以及插入目录, 插入图表索引, 插入引用的语句等. 也就是说<strong>main.tex</strong>中没有具体内容, 基本是环境配置, 参数设置, 大纲这样子. main.tex的大致结构如下:</p>
+<p>在Overleaf的快速教程中能看到只用一个tex文件就可以写LaTeX了, 但一般见到的论文模板都是多个文件的 (比如我更新的<a href="https://github.com/LeoJhonSong/UESTC-Glasgow-Final-Year-Report-Template/blob/master/README.md" target="_blank" rel="noopener">学院毕设模板</a>), 类似上面这样的结构. 将不同内容分别放在不同文件, 不然太长了不方便组织以及查找出错地方. 通常在根目录的<strong>main.tex</strong>被作为根文件 (root file), <strong>只有根文件中有<code>\begin{document}</code></strong>. 通常习惯将各种全局设置, 包的引用, 标题, 作者, 自己定义的新命令, 宏定义等导言 (<a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes#The_preamble_of_a_document" target="_blank" rel="noopener">preamble</a>), 都放在<strong>main.tex</strong>中. 而<code>\begin{document}</code>后的正文内容基本是以<code>\include{}</code>插入在<strong>Front</strong>, <strong>Sections</strong>, <strong>Appendices</strong>中的tex文件, 以及插入目录, 插入图表索引, 插入引用的语句等. 也就是说<strong>main.tex</strong>中没有具体内容, 基本是环境配置, 参数设置, 大纲这样子. main.tex的大致结构如下:</p>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">\documentclass{article}</span><br><span class="line">% 导言部分 (preamble)</span><br><span class="line">% 一些包的导入, 一些全局设置等</span><br><span class="line">\begin{document}</span><br><span class="line">% 正文部分 (指大纲)</span><br><span class="line">\end{document}</span><br><span class="line">% 这后面即便有内容也会被忽略</span><br></pre></td></tr></tbody></table></figure>
 
 <p>💡 也有的模板是单独将导言放在一个文件, 根文件中则只有正文. 到底怎么分割文件其实都可以, 最重要的是要<strong>能让自己分清哪部分是导言</strong>. 具体正文中引用哪些包, 配置什么全局参数会出问题我没有一一试过, 但文档推荐放在导言部分的语句就尽量听文档的, 免得出问题 👍</p>
@@ -5271,7 +5138,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <p>实际上想用latex文件生成pdf有好几个编译器可以用, 最常被提到且速度最快的是<code>pdflatex</code>, 但pdflatex对UTF-8支持不够好, 对现代字体支持也不够好, 而且可能因为我的文档页数不够多, 我真没体验出速度有什么差别. <code>xelatex</code>对特殊字符及现代字体支持很好, 对中文兼容也很好, 因此目前我更偏向使用xelatex. 这个编译器生成的pdf文件会比pdflatex无参数生成的小不少, 因为它默认会进行无损压缩.</p>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">\usepackage{fontspec}</span><br><span class="line">\setromanfont{Times New Roman}  % 指定普通字体</span><br><span class="line">\setsansfont{Arial}  % 指定无衬线字体</span><br><span class="line">\setmonofont{Courier New}  % 指定等宽字体</span><br><span class="line">\usepackage{xeCJK}  % 中文支持</span><br></pre></td></tr></tbody></table></figure>
 
-<p>当使用<code>xelatex</code>作为编译器时可以使用<code>fontspec</code>包来指定字体. 更详细的指定方式参见<a href="https://es.overleaf.com/learn/latex/XeLaTeX" target="_blank" rel="noopener">Overleaf的文档</a>. 不过虽然我们学院的论文格式要求也对字体提出了要求, 但所要求的<strong>Times New Roman</strong>, <strong>Arial</strong>这几个字体其实都是Windows系统专有的. 我的Manjaro系统虽然也有替代字体, 但是我感觉默认字体看着也挺好而且老师其实没管所以就没折腾. 实际写作我并没有主动使用过切换字体的命令, 暂时感觉用不到.</p>
+<p>当使用<code>xelatex</code>作为编译器时可以使用<em>fontspec</em>包来指定字体. 更详细的指定方式参见<a href="https://es.overleaf.com/learn/latex/XeLaTeX" target="_blank" rel="noopener">Overleaf的文档</a>. 不过虽然我们学院的论文格式要求也对字体提出了要求, 但所要求的<strong>Times New Roman</strong>, <strong>Arial</strong>这几个字体其实都是Windows系统专有的. 我的Manjaro系统虽然也有替代字体, 但是我感觉默认字体看着也挺好而且老师其实没管所以就没折腾. 实际写作我并没有主动使用过切换字体的命令, 暂时感觉用不到.</p>
 <p>当设置好全文字体大小及字体后, 在文中想设置文字的样式, 比如加粗/斜体/下划线/小型大写字母, 或者大点/小点的, 用到的命令<a href="https://www.overleaf.com/learn/latex/Font_sizes%2C_families%2C_and_styles#Reference_guide" target="_blank" rel="noopener">这里</a>有一个列表可查. 注意变更样式的部分用大括号括起来, 不然后面所有字符的样式都会维持这样.</p>
 <h3 id="两个常见问题"><a href="#两个常见问题" class="headerlink" title="两个常见问题"></a>两个常见问题</h3><h4 id="如何创建能在目录中显示的四级标题"><a href="#如何创建能在目录中显示的四级标题" class="headerlink" title="如何创建能在目录中显示的四级标题"></a>如何创建能在目录中显示的四级标题</h4><p>LaTeX原生提供了7级标题:</p>
 <ul>
@@ -5284,9 +5151,10 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <li><strong>5</strong> <code>\subparagraph{}</code></li>
 </ul>
 <p>但是<code>\paragraph{}</code>和<code>\subparagraph{}</code>并不会被显示在目录中, 在文中也看着不太像是标题而只是加粗的正文. 下图中<strong>test 1</strong>为<code>\paragraph{}</code>, <strong>test 2</strong>为<code>\subparagraph{}</code>, <strong>test 3</strong>为<code>\subsubsection{}</code>.</p>
-<p><img src="LaTeX%E6%9D%82%E8%AE%B0/sections.jpg?80" alt=""></p>
+<img width="80%" style="display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/sections.jpg">
+
 <p>因此真要说的话在article这种文档类型中LaTeX原生提供的标题只有三级. 要是写短篇论文的话确实也不需要更小的标题了, 但是记个笔记之类还是有可能需要更多级的标题. <a href="https://tex.stackexchange.com/questions/60209/how-to-add-an-extra-level-of-sections-with-headings-below-subsubsection" target="_blank" rel="noopener">这个stackoverflow问题</a>有给出一些解决方案.</p>
-<h4 id="underfull和overfull警告是什么"><a href="#underfull和overfull警告是什么" class="headerlink" title="underfull和overfull警告是什么"></a>underfull和overfull警告是什么</h4><p>这两种警告是在编译后非常常见的警告, 意味着编译器在这一行找不到合适的换行的地方, 导致这一行在文字框限制内排版出来要不是太空了 (underfull) 要不就是太挤了 (overfull). 也就是说这基本是英文这样的字母语言才会遇到的问题. Overleaf<a href="https://www.overleaf.com/learn/how-to/Understanding_underfull_and_overfull_box_warnings" target="_blank" rel="noopener">这篇文章</a>很详细讲了原因, 但几乎没给处理办法. 💡 要注意其中提到的<code>microtype</code>包xelatex<a href="https://tex.stackexchange.com/questions/118713/is-microtype-fully-supported-now-by-xelatex-if-not-how-can-i-keep-myself-up-to" target="_blank" rel="noopener">目前几乎不支持</a>, 但我感觉我就用默认排版工具生成的pdf排版也还挺好的? 以下是一些关于断行的小技巧.</p>
+<h4 id="underfull和overfull警告是什么"><a href="#underfull和overfull警告是什么" class="headerlink" title="underfull和overfull警告是什么"></a>underfull和overfull警告是什么</h4><p>这两种警告是在编译后非常常见的警告, 意味着编译器在这一行找不到合适的换行的地方, 导致这一行在文字框限制内排版出来要不是太空了 (underfull) 要不就是太挤了 (overfull). 也就是说这基本是英文这样的字母语言才会遇到的问题. Overleaf<a href="https://www.overleaf.com/learn/how-to/Understanding_underfull_and_overfull_box_warnings" target="_blank" rel="noopener">这篇文章</a>很详细讲了原因, 但几乎没给处理办法. 💡 要注意其中提到的<em>microtype</em>包xelatex<a href="https://tex.stackexchange.com/questions/118713/is-microtype-fully-supported-now-by-xelatex-if-not-how-can-i-keep-myself-up-to" target="_blank" rel="noopener">目前几乎不支持</a>, 但我感觉我就用默认排版工具生成的pdf排版也还挺好的? 以下是一些关于断行的小技巧.</p>
 <h5 id="断词与不要断词"><a href="#断词与不要断词" class="headerlink" title="断词与不要断词"></a>断词与不要断词</h5><p>实际上遇到行末长单词干扰LaTeX排版的时候LaTeX会自动按音节将这个长单词断词, 在行末留个<code>-</code>. 不过有时会想要指定一些单词的断词位置, 有两种方式:</p>
 <ol>
 <li><p>在正文中通过加入<code>\-</code>允许在此处断词. 可以指定多处允许断词的地方, 然后LaTeX会选择其中一个位置来断词:</p>
@@ -5311,9 +5179,8 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <ul>
 <li>在LaTeX中多个空格会被当成一个空格 (多个回车也只会产生到下一段的效果). 想用word那样的空格魔法或者回车魔法的话用<code>\hspace{len}</code>和<code>\vspace{len}</code> 😏.</li>
 <li><strong>带子</strong> (tie) <code>~</code>. 在两个单词间加<code>~</code>而不是空格能产生一个不会被断行的空格. 一般用在人名之类的地方.</li>
-<li>句末标点 (<strong>小写字母</strong>后的./?/!) 后的空格会比普通空格长一些. 之所以强调是小写字母后的, 是因为以大写字母结尾会被LaTeX认为最后这个词是人名因而不加长空格. 此时 (如果你真在意这个的话) 用<code>\@</code>手动指明. 你会发现下面这个图里<code>OK.</code>后的空格长度确实有区别, 但区别非常小:
-<img src="LaTeX%E6%9D%82%E8%AE%B0/space.jpg?80" alt="">
-另一种情况则是非句末标点被识别为句末标点了, 比如”Prof. Smith”. 此时可以用<code>~</code>或者<code>\</code> (👈 注意\后面有个空格)来缩短间距. 不过<code>~</code>不允许空格处断行而<code>\</code>允许.</li>
+<li>句末标点 (<strong>小写字母</strong>后的./?/!) 后的空格会比普通空格长一些. 之所以强调是小写字母后的, 是因为以大写字母结尾会被LaTeX认为最后这个词是人名因而不加长空格. 此时 (如果你真在意这个的话) 用<code>\@</code>手动指明. 你会发现下面这个图里<code>OK.</code>后的空格长度确实有区别, 但区别非常小:<img width="80%" style="display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/space.jpg">
+另一种情况则是非句末标点被识别为句末标点了, 比如"Prof. Smith". 此时可以用`~`或者`\ ` (👈 注意\\后面有个空格)来缩短间距. 不过`~`不允许空格处断行而`\ `允许.</li>
 <li>还有时会看到<code>\Tex{} Live</code>或<code>\Tex\ Live</code>这样明明不支持参数的命令 (如<code>\Tex</code>) 后却有{}或者<code>\</code>, 这是为了让不支持参数的命令后的空格能被正常排版.</li>
 </ul>
 <h5 id="手动断行"><a href="#手动断行" class="headerlink" title="手动断行"></a>手动断行</h5><p>用<code>\\</code>可以在段落内手动换行. 但不同于在word中到处用回车, <a href="https://www.overleaf.com/learn/how-to/Understanding_underfull_and_overfull_box_warnings?#Notes_on_using_.5C.5C" target="_blank" rel="noopener">无脑<code>\\</code>似乎是不被推荐的</a>. 在上文中推荐的<em>一份不太简短的LaTeX2ε介绍</em>中<strong>2.4.2 手动断行和断页</strong>这节有提到几种断行命令的具体区别 (但我感觉没必要管就没看).</p>
@@ -5323,12 +5190,13 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">% 放在导言部分</span><br><span class="line">\special{dvipdfmx:config z 0}  % 👈这个0换成9就是最大压缩等级了.</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><h3 id="数学公式-样式"><a href="#数学公式-样式" class="headerlink" title="数学公式, 样式"></a>数学公式, 样式</h3><p>这个CSDN上的<a href="https://blog.csdn.net/ethmery/article/details/50670297" target="_blank" rel="noopener">LaTeX基本数学公式语法</a>列出了希腊字母, 上下标, 矢量, 特殊符号, 矩阵等数学公式常用命令, 还挺全的.</p>
-<p>作为一个菜鸟我还没用LaTeX写过很复杂的公式, 因此还没有用过<code>amsmath</code>这个增强<a href="https://www.overleaf.com/learn/latex/Aligning%20equations%20with%20amsmath" target="_blank" rel="noopener">公式排版</a>的包, 但据overleaf这篇文章原生支持对排版支持不够好, 因此我先码住.</p>
+<p>作为一个菜鸟我还没用LaTeX写过很复杂的公式, 因此还没有用过<em>amsmath</em>这个增强<a href="https://www.overleaf.com/learn/latex/Aligning%20equations%20with%20amsmath" target="_blank" rel="noopener">公式排版</a>的包, 但据overleaf这篇文章原生支持对排版支持不够好, 因此我先码住.</p>
 <p>然后这还有一篇Overleaf的<a href="https://www.overleaf.com/learn/latex/Mathematics" target="_blank" rel="noopener">数学相关内容合集</a> 🐮</p>
 <h3 id="浮动体"><a href="#浮动体" class="headerlink" title="浮动体"></a>浮动体</h3><p>figure和table是LaTeX原生的两种浮动体环境, 用于灵活排版图片和表格, 并且为图表标题 (caption) 提供环境 (就是说即便不放在浮动体里也可以将图片表格插入LaTeX). 而且其实这两种环境中什么都能放, 没有限定只能放图片或表格. 这两种环境都可以给[<em>placement</em>]参数 (默认是<code>btp</code>), 通过指定<code>htb</code>限制只能放在这三种位置 (也就是不允许单独成页). 可用参数参见<a href="https://www.overleaf.com/learn/latex/Inserting_Images#Positioning" target="_blank" rel="noopener">这附近有的一个表格</a>. 值得一提的是LaTeX总是以h-t-b-p的优先级来决定浮动体位置, 和填的参数的顺序无关. 💡 除单独成页外, 默认每页不超过3个浮动体, 其中顶部不超过2个, 底部不超过1个以及浮动体空间占页面的百分比 (默认顶部不超过70%, 底部不超过30%)</p>
 <p>关于双栏环境下浮动体的排版以及其他细节见<em>一份不太简短的LaTeX2ε介绍</em>的<strong>3.9 浮动体</strong>.</p>
 <h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4><p>先上一个论文利用的懒人模板样例 (效果如图):</p>
-<p><img src="LaTeX%E6%9D%82%E8%AE%B0/figure.jpg?60" alt=""></p>
+<img width="60%" style="display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/figure.jpg">
+
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">% 导言部分</span><br><span class="line">\usepackage{graphicx}  % 图片插入支持宏包</span><br><span class="line">\graphicspath{{./}}  % 将之后插入图片的检索路径设为根文件所在目录, 不然插入图片时的图片地址是相对于当前tex文件的, 会比较麻烦</span><br><span class="line">% \graphicspath{{./Figures}}  % 其实更常见的是直接将检索路径设为你的图片文件夹, 但我为了能触发我VSC的路径补全所以只设成了根文件所在目录</span><br><span class="line">\usepackage[</span><br><span class="line">   colorlinks=true,</span><br><span class="line">]{hyperref}  % 给交叉引用的引用编号添加超链接支持</span><br><span class="line"></span><br><span class="line">% 正文部分</span><br><span class="line">\begin{figure}[htb]</span><br><span class="line">      \centering  % 让图片居中. 默认是左对齐</span><br><span class="line">      \includegraphics[width=0.8\textwidth]{Figures/mesh.jpg}  % 限制图片宽度为0.8倍版面宽度</span><br><span class="line">      \caption[Test]{Test: blablabla}\label{f:mesh}</span><br><span class="line">\end{figure}</span><br><span class="line"></span><br><span class="line">As you can see in \autoref{f:mesh}, the function grows near 0.</span><br></pre></td></tr></tbody></table></figure>
 
 <p>用<code>\caption</code>命令可以给图片等浮动体加标题, 在<code>{}</code>中的是长标题, 就是显示在图下那个. 而在<code>[]</code>中的短标题是会显示在图目录中的标题 (用<code>\listoffigures</code>来生成图目录). 我习惯在长标题里开头用短标题, 能实现很多论文里<strong>概要: 详细描述</strong>的图标题形式.</p>
@@ -5345,20 +5213,23 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><p>同样先上个懒人模板:</p>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">% 导言部分</span><br><span class="line">\usepackage{tabularx}  % 表格插入支持宏包</span><br><span class="line">\usepackage{booktabs}  % 好像只是拿来画分隔线的</span><br><span class="line"></span><br><span class="line">% 正文部分</span><br><span class="line">\begin{table}[htb]</span><br><span class="line">    \renewcommand*{\arraystretch}{1.3}  % 增大一点行间距让表格不那么紧凑</span><br><span class="line">    \centering</span><br><span class="line">    \caption[Short Title]{Short Title: long description}\label{t:table_test}</span><br><span class="line">    \begin{tabularx}{0.6\textwidth}{Xcc}</span><br><span class="line">        \toprule</span><br><span class="line">        title1 &amp; title2 &amp; title3 \\</span><br><span class="line">        \midrule</span><br><span class="line">        experiment 1 &amp; item 11 &amp; item 12 \\</span><br><span class="line">        experiment 2  &amp; item 21  &amp; item 22 \\</span><br><span class="line">        \bottomrule</span><br><span class="line">    \end{tabularx}</span><br><span class="line">\end{table}</span><br></pre></td></tr></tbody></table></figure>
 
-<p><img src="LaTeX%E6%9D%82%E8%AE%B0/table.jpg?60" alt=""></p>
-<p>图中前一个表格是上面的模板的效果, 后一个表格是没有增大行间距的表格的效果. 插入表格有几种环境可用, <code>tabularx</code>这个环境是允许指定整个表的宽度和每列的对齐方式后自动计算每列宽度, 我觉得比<code>tabular</code>环境更智能省心. <code>tabularx</code>环境接受两个参数, 前一个是整个表格的宽度, 后一个是每列的对齐方式. <code>X</code>和<code>l</code>都是左对齐, 但<code>X</code>会让这列的列宽更宽, 让内容能占满整个表格. 比如上图前面的表格第一列就是<code>X</code>而后一个表格第一列是<code>l</code>, 就只有刚好适应单元格内容的列宽. 从单元格的侧边框可以看出最后一列确实是居中对齐, 但因为LaTeX是从左到右排版表格的, 因此多了些空余… <code>c</code>和<code>r</code>则是适应单元格宽度的居中对齐和右对齐. 想要智能宽度的居中对齐和右对齐的话用<code>&gt;{\centering\arraybackslash}X</code>和<code>&gt;{\raggedleft\arraybackslash}X</code> (没错这一长串和<code>l</code>一样往里填)</p>
-<p><code>&amp;</code>用来分隔一行中的单元格, <code>\\</code>表示一行的末尾. <code>booktabs</code>这个包里好像只有一些分隔线, <code>\toprule</code>, <code>\midrule</code>这些的. 更多画边框线的方式参加<a href="https://www.overleaf.com/learn/latex/tables" target="_blank" rel="noopener">overleaf-表格</a>.</p>
+<img width="60%" style="display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/table.jpg">
+
+<p>图中前一个表格是上面的模板的效果, 后一个表格是没有增大行间距的表格的效果. 插入表格有几种环境可用, <em>tabularx</em>这个环境是允许指定整个表的宽度和每列的对齐方式后自动计算每列宽度, 我觉得比<em>tabular</em>环境更智能省心. <em>tabularx</em>环境接受两个参数, 前一个是整个表格的宽度, 后一个是每列的对齐方式. <code>X</code>和<code>l</code>都是左对齐, 但<code>X</code>会让这列的列宽更宽, 让内容能占满整个表格. 比如上图前面的表格第一列就是<code>X</code>而后一个表格第一列是<code>l</code>, 就只有刚好适应单元格内容的列宽. 从单元格的侧边框可以看出最后一列确实是居中对齐, 但因为LaTeX是从左到右排版表格的, 因此多了些空余… <code>c</code>和<code>r</code>则是适应单元格宽度的居中对齐和右对齐. 想要智能宽度的居中对齐和右对齐的话用<code>&gt;{\centering\arraybackslash}X</code>和<code>&gt;{\raggedleft\arraybackslash}X</code> (没错这一长串和<code>l</code>一样往里填)</p>
+<p><code>&amp;</code>用来分隔一行中的单元格, <code>\\</code>表示一行的末尾. <em>booktabs</em>这个包里好像只有一些分隔线, <code>\toprule</code>, <code>\midrule</code>这些的. 更多画边框线的方式参加<a href="https://www.overleaf.com/learn/latex/tables" target="_blank" rel="noopener">overleaf-表格</a>.</p>
 <h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>有序列表用<code>enumerate</code>环境, 无序列表用<code>itemize</code>环境. 这个没啥难的, 有问题参见<a href="https://www.overleaf.com/learn/latex/lists" target="_blank" rel="noopener">overleaf-列表</a>.</p>
 <p>💡 另外这里有个通过给<code>itemize</code>和<code>enumerate</code>环境的选项的方式<a href="https://tex.stackexchange.com/questions/10684/vertical-space-in-lists" target="_blank" rel="noopener">调整列表行间距的方法</a>.</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><code>lstlisting</code>环境 (需要导入<em>listings*宏包</em>) 是传统的插入代码用环境, 只是插入个代码的话倒是语法也很简单, 但是要想让插入的代码有语法高亮的话就必须<a href="https://www.overleaf.com/learn/latex/Code_listing#Code_styles_and_colours" target="_blank" rel="noopener">这样</a>自己在导言区放一个语法高亮配色方案, 很不简洁. 强推一下<code>minted</code>环境 (需要导入<em>minted</em>宏包), 这是一个自带多种语法高亮配色方案且支持绝大多数语言语法高亮的很现代的代码插入环境! 使用方式见<a href="https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted#Introduction" target="_blank" rel="noopener">overleaf-用minted语法高亮</a>. 如果你追求比较高, 觉得minted自带的语法高亮不够细致,  比如minted对yaml的语法高亮不会像VSC那样将布尔值, 数字, 字符串等类型值用颜色标示出来, 那可以看看stackoverflow上这个<a href="https://tex.stackexchange.com/questions/152829/how-can-i-highlight-yaml-code-in-a-pretty-way-with-listings" target="_blank" rel="noopener">自定义语法高亮问题</a>.</p>
 <p>补充: <a href="https://tex.stackexchange.com/questions/12428/code-spanning-over-two-pages-with-minted-inside-listing-with-caption" target="_blank" rel="noopener">跨页代码无法caption问题</a>.</p>
-<h3 id="特殊符号"><a href="#特殊符号" class="headerlink" title="特殊符号"></a>特殊符号</h3><p><img src="LaTeX%E6%9D%82%E8%AE%B0/symbol.jpg?70" alt=""></p>
+<h3 id="特殊符号"><a href="#特殊符号" class="headerlink" title="特殊符号"></a>特殊符号</h3><img width="70%" style="display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/symbol.jpg">
+
 <p>LaTeX里更特殊的符号其实是靠<code>tkiz</code>包绘制出来的, 比如上面这段话里的圆圈1, 是通过在导言区定义了一个新的命令<code>\ballnumber{}</code>然后在文中调用的方式来实现的:</p>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">% 导言区</span><br><span class="line">\usepackage{tikz}  % 绘图宏包</span><br><span class="line">\newcommand{\ballnumber}[1]{</span><br><span class="line">    \tikz[baseline=(myanchor.base)]</span><br><span class="line">    \node[circle,fill=.,inner sep=1pt](myanchor){\color{-.}\bfseries\footnotesize #1};</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>这样的东西要用只能是现场上网搜了. 在这个<a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="noopener">手绘查询符号网站</a>可以通过手绘的方式查到绝大多数符号 (但上面说的这个圆圈1查不到). 这里再吹一下VSC的LaTeX Workshop插件, 提供了一个快速插入常见符号LaTeX命令的面板, 还能快速插入常用tkiz绘制 🐮</p>
-<p><img src="LaTeX%E6%9D%82%E8%AE%B0/snippet.jpg?60" alt=""></p>
-<h2 id="中文支持"><a href="#中文支持" class="headerlink" title="中文支持"></a>中文支持</h2><p><a href="https://www.overleaf.com/learn/latex/Chinese#xeCJK_with_XeLaTeX" target="_blank" rel="noopener">中文支持</a></p>
+<img width="35%" style="display: block;margin-left: auto; margin-right: auto;" data-src="./LaTeX杂记/snippet.jpg">
+
+<h2 id="中文支持"><a href="#中文支持" class="headerlink" title="中文支持"></a>中文支持</h2><p>我目前还没用LaTeX写过中文内容, 不过看起来<em>xeCJK</em>宏包提供的中文支持效果还不错 (前提是用xelatex作为编译器), 不知道大量使用中文时会不会出问题. 这篇<a href="https://www.overleaf.com/learn/latex/Chinese#xeCJK_with_XeLaTeX" target="_blank" rel="noopener">overleaf-中文支持</a>我先码住.</p>
 <h2 id="构建流程"><a href="#构建流程" class="headerlink" title="构建流程"></a>构建流程</h2><p><a href="https://www.overleaf.com/learn/latex/Choosing_a_LaTeX_Compiler" target="_blank" rel="noopener">选择overleaf编译器</a></p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://libguides.nps.edu/citation/ieee-bibtex" target="_blank" rel="noopener">各种东西的bibtex</a></p>
 <p><a href="https://www.overleaf.com/learn/latex/Biblatex_citation_styles" target="_blank" rel="noopener">biblatex引用</a></p>
@@ -5370,7 +5241,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <p><a href="https://tex.stackexchange.com/questions/266434/extend-the-hyperref-link-to-figure-and-a-b-c" target="_blank" rel="noopener">自定义样式\ref</a></p>
 <p><a href="https://tex.stackexchange.com/questions/50747/options-for-appearance-of-links-in-hyperref" target="_blank" rel="noopener">链接颜色</a></p>
 <p><a href="https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX" target="_blank" rel="noopener">LaTeX中颜色</a></p>
-<p><img src="LaTeX%E6%9D%82%E8%AE%B0/image-20210420201512181.png" alt="image-20210420201512181"></p>
+<p><img alt="image-20210420201512181" data-src="LaTeX%E6%9D%82%E8%AE%B0/image-20210420201512181.png"></p>
 <p><a href="https://tex.stackexchange.com/questions/348640/how-to-effectively-use-list-of-symbols-for-a-thesis" target="_blank" rel="noopener">list of notations</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -5395,6 +5266,50 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
         <category>杂记</category>
         <category>语言</category>
         <category>LaTeX</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
+    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<div align="right">Language:
+<a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a>
+<a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a>
+</div>
+
+<a id="more"></a>
+
+<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="更改配置后页面未出现变化"><a href="#更改配置后页面未出现变化" class="headerlink" title="更改配置后页面未出现变化"></a>更改配置后页面未出现变化</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
+<h3 id="markdown中文换行导致的空格问题"><a href="#markdown中文换行导致的空格问题" class="headerlink" title="markdown中文换行导致的空格问题"></a>markdown中文换行导致的空格问题</h3><p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Google站点地图报错"><a href="#Google站点地图报错" class="headerlink" title="Google站点地图报错"></a>Google站点地图报错</h3><p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
+<h3 id="如何建立多级分类"><a href="#如何建立多级分类" class="headerlink" title="如何建立多级分类"></a>如何建立多级分类</h3><p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
+<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><h3 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h3><p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a>
+<a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>软件配置</category>
+        <category>Web</category>
       </categories>
   </entry>
   <entry>
@@ -5492,24 +5407,113 @@ VSCode之后发现这个选项没被勾上.</p>
       </categories>
   </entry>
   <entry>
-    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
-    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<div align="right">Language:
-<a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a>
-<a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a>
-</div>
-
+    <title>麦语言速成</title>
+    <url>/zh-CN/2019/01/17/%E9%BA%A6%E8%AF%AD%E8%A8%80%E9%80%9F%E6%88%90/</url>
+    <content><![CDATA[<blockquote>
+<p>因为父亲经常炒期货，我速成一下<a href="https://www.wenhua.com.cn/myy/" target="_blank" rel="noopener">麦语言</a>来减轻一下他的工作量吧。</p>
+</blockquote>
 <a id="more"></a>
 
-<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="更改配置后页面未出现变化"><a href="#更改配置后页面未出现变化" class="headerlink" title="更改配置后页面未出现变化"></a>更改配置后页面未出现变化</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
-<h3 id="markdown中文换行导致的空格问题"><a href="#markdown中文换行导致的空格问题" class="headerlink" title="markdown中文换行导致的空格问题"></a>markdown中文换行导致的空格问题</h3><p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
-<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 我体验下来觉得期货风险真的特别大, 能看盘时还是盯着点比较好.</p>
+<p>随着我逐渐了解才发现量化交易并没有我想象中那么简单…单说
+<a href="https://www.zhihu.com/question/25404359" target="_blank" rel="noopener">这些业内人士使用的语言</a>就五花八门…<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8">🤦♂</span>
+<a href="https://zhuanlan.zhihu.com/p/33839493" target="_blank" rel="noopener">这位仁兄</a>则让我大概了解了局面.
+站在一个接触编程有一段时间的人的角度，我是觉得用C#编写模型比用麦语言看着NB多了，但我明显没那水平和精力,更何况我觉得知乎这个提问里的回答都说的很有道理,<a href="https://www.zhihu.com/question/36803590" target="_blank" rel="noopener">能赚钱的工具就是好工具</a>
+。还是老老实实研究一下传说中用<strong>易语言</strong>编写的麦语言<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8">🤦♂</span></p>
+<blockquote>
+<p>看资料过程中<a href="http://www.tradeblazer.net/" target="_blank" rel="noopener">交易开拓者</a>(简称<strong>TB</strong>)和
+<a href="https://www.multicharts.cn/" target="_blank" rel="noopener">MultiCharts</a>(简称<strong>MC</strong>)也经常被提及。</p>
+</blockquote>
+<h2 id="主要参考资料"><a href="#主要参考资料" class="headerlink" title="主要参考资料"></a>主要参考资料</h2><p>我觉得最蛋疼的是这玩意好像没法debug啊!!<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f627.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f627.png?v8">😧</span></p>
+<ul>
+<li><a href="麦语言速成/教程.zip">网上找到的一套PPT教程</a>，并附上对应视频教程的<a href="https://pan.baidu.com/s/1foE6ORfqdGHyTQ-ZW9NPVg" target="_blank" rel="noopener">百度云链接</a></li>
+<li><a href="http://www.wenhua.com.cn/guide/wh8/index.htm" target="_blank" rel="noopener">智赢wh8使用说明书</a></li>
+<li><a href="http://www.wenhua.com.cn/guide/views41a3.htm" target="_blank" rel="noopener">wh8趋势跟踪模型语法参考</a></li>
+<li><a href="http://www.wenhua.com.cn/guide/wh8_zjyfhs2.htm" target="_blank" rel="noopener">wh8算法交易模型语法参考</a></li>
+</ul>
+<p>这套PPT有文华财经的水印，大概是官方教程吧。而且我觉得讲得很浅显也比较详细了,好评<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<h2 id="麦语言语法简记"><a href="#麦语言语法简记" class="headerlink" title="麦语言语法简记"></a>麦语言语法简记</h2><h3 id="算法交易模型与趋势跟踪模型"><a href="#算法交易模型与趋势跟踪模型" class="headerlink" title="算法交易模型与趋势跟踪模型"></a>算法交易模型与趋势跟踪模型</h3><p>打开wh8后我发现可以用来交易的分两种模型 (即代码), 分
+<a href="http://www.wenhua.com.cn/new_guide/Wh8/view4_6.html" target="_blank" rel="noopener">算法交易模型和趋势跟踪模型</a>,
+普通的趋势交易策略使用趋势模型编写，加载到程序化平台运行实现自动交易；与趋势无关的盘口高频交易模型，需要用算法模型编写. 一开始我并没有理解这两种模型的区别,
+(实际这两个模型的名字非常直白的指出了两者的应用领域)
+看到算法交易模型使用的是类C语法就果断开始写这个, 后来我才发现其中区别:</p>
+<ul>
+<li>趋势跟踪模型中可以调用很多常用分析指标, 比如布林通道, 比如指数加权移动平均, 更注重对目标的<strong>趋势</strong>的分析</li>
+<li>算法跟踪模型更多的是能调用未经处理的精确数据, 甚至不提供EMA等很常用的分析指标
+(如果需要只能自己写), 这类模型更注重于对<strong>实时行情</strong> (即<strong>盘口</strong>) 的处理.</li>
+<li>算法交易模型的回测只提供一日的tick数据, 不支持更久的回测.</li>
+</ul>
+<p>看了wh8说明书中<a href="http://www.wenhua.com.cn/new_guide/Wh8/view4_5.html" target="_blank" rel="noopener">相关章节</a>
+个人觉得算法交易模型更多应当与趋势跟踪模型配合使用, 说明书有句话说得好</p>
+<blockquote>
+<p>利用趋势模型可以有效捕捉趋势行情的交易方向，当交易方向确定，下一步便是寻找入场点。一个精准的入场点位是交易成功的起点，使用盘口的高频报价辅助判断无疑是最合适的方案</p>
+</blockquote>
+<p>也即是说由<strong>趋势模型</strong>判断是做多还是做空, 由<strong>算法模型</strong>判断买, 卖精确时间是比较科学的运用方式.</p>
+<p>由于我需要写的模型并不要求高频交易, 主要的是做小时线, 因此只建立趋势模型. (趋势模型语法太低级也只好忍了<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8">😢</span>)</p>
+<h3 id="一开一平信号过滤模型·加减仓模型等"><a href="#一开一平信号过滤模型·加减仓模型等" class="headerlink" title="一开一平信号过滤模型·加减仓模型等"></a>一开一平信号过滤模型·加减仓模型等</h3><p>以上是一种分类方式, 另外按交易行为分类可以分为一开一平信号过滤模型, 加减仓模型等模型.
+<strong>一开一平模型</strong>限定了必须一平跟随一开或者一开跟随一平, 如果是简单模型还是很方便, 但无法特定开仓手数, 只能在开始运行模型时指定整个模型开仓手数, 也无法加仓. 而<strong>加减仓模型</strong>打破了前述弊端, 但需要自己设置开闭仓信号滤波器, 费点脑子.
+<a href="http://www.wenhua.com.cn/popwin/cxhmingci.htm" target="_blank" rel="noopener">模型列表</a></p>
+<h3 id="算法交易模型与C的比较"><a href="#算法交易模型与C的比较" class="headerlink" title="算法交易模型与C的比较"></a>算法交易模型与C的比较</h3><p>因为也体验了一会算法模型的语法, 稍作整理. 使用下来感觉与C语言语法区别主要如下:</p>
+<ul>
+<li>不需要引用头文件</li>
+<li>变量可以用<strong>GLOBAL_VAR</strong>或<strong>VAR</strong>关键字来声明, 变量是动态数据类型, 似乎也可以使用
+<strong>WriteGlobal</strong>, <strong>WriteGlobalF</strong> 等来定义整型, 浮点等变量. (文华给出的所有示例中定义变量竟然全部定义的全局变量也是很迷了)</li>
+<li>函数类型可以是<strong>VOID</strong>或<strong>VAR</strong>, 当然如果需要返回值需要定义为<strong>VAR</strong>型</li>
+<li>函数, 变量可以先引用后声明</li>
+<li>麦语言的函数是可以有返回值的! 但是要把要返回的值括起来. (参考<a href="http://www.wenhua.com.cn/guide/wh8_zjyfhs2.htm" target="_blank" rel="noopener">这里</a>)</li>
+</ul>
+<h3 id="趋势跟踪模型语法简记"><a href="#趋势跟踪模型语法简记" class="headerlink" title="趋势跟踪模型语法简记"></a>趋势跟踪模型语法简记</h3><p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> 常用语句:</p>
+<table>
+<thead>
+<tr>
+<th>语句</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>=</td>
+<td><strong>等于</strong>操作符 :warning:趋势模型中赋值操作符为<code>:=</code>. 应注意等于操作符<strong>只有一个</strong>=</td>
+</tr>
+<tr>
+<td>:</td>
+<td>定义变量并且加载模型时显示图线. 冒号前为变量名.</td>
+</tr>
+<tr>
+<td>:=</td>
+<td>定义变量并且不显示图线</td>
+</tr>
+<tr>
+<td>#IMPORT [PERIOD,N,FORMULA] AS VAR</td>
+<td><a href="#跨周期编写">见下</a></td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>逻辑与</td>
+</tr>
+<tr>
+<td>||</td>
+<td>逻辑或</td>
+</tr>
+<tr>
+<td>IF, THEN</td>
+<td>参见<a href="http://www.wenhua.com.cn/guide/views41a3.htm" target="_blank" rel="noopener">这里</a></td>
+</tr>
+</tbody></table>
+<h3 id="模组"><a href="#模组" class="headerlink" title="模组"></a>模组</h3><p>算法交易模型中可以调用的一大串函数有类似<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f447.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f447.png?v8">👇</span>这样的函数说明.</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">注：</span><br><span class="line">该函数前必须用AA.的形式来调用，其中AA为字符串变量或者模组名。该函数不能单独使用。</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="Google站点地图报错"><a href="#Google站点地图报错" class="headerlink" title="Google站点地图报错"></a>Google站点地图报错</h3><p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
-<h3 id="如何建立多级分类"><a href="#如何建立多级分类" class="headerlink" title="如何建立多级分类"></a>如何建立多级分类</h3><p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
-<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><h3 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h3><p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a>
-<a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
+<p>开始我以为模组也是模型的意思, 后来看到示例里的用法似乎模组类似于<strong>类</strong>, 每个模组对应一个实例, 可以调用里面的各种函数来处理这个合约的数据, 而且每个模型也可以是一个模组一个模型可以调用另一个模型的函数, 就很像类. <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8">🤔</span>我是这样理解的</p>
+<h3 id="逻辑判断"><a href="#逻辑判断" class="headerlink" title="逻辑判断"></a>逻辑判断</h3><p>看过wh8给出的示例后我发现官方风格写法里趋势模型基本没有用过IF, ELSE什么的, 普遍是一句话浓缩一串条件搞定. 主要这玩意语法就让人懒得写IF, ELSE…而算法模型中运用IF, ELSE较多.</p>
+<p>很有意思的是趋势模型中可以将一串判断条件赋值给一个变量作为布林变量. 然后通常是以下面这样的形式来调用</p>
+<p><code>[布林变量], [交易指令]</code></p>
+<p>另外趋势模型中逻辑运算操作符只有逻辑与和逻辑或, 如果需要其他运算, 我是使用的<code>NOT()</code>函数</p>
+<h3 id="跨周期编写"><a href="#跨周期编写" class="headerlink" title="跨周期编写"></a>跨周期编写</h3><p>跨周期模型函数: #IMPORT [PERIOD,N,FORMULA]</p>
+<p>举例: <code>#IMPORT[DAY,2,WHBXSF] AS VAR1</code><br>调取自定义2日线周期上WHBXSF指标中的数据. 需要先编写被引用的指标 (只有一串变量的模型似乎称为<strong>指标</strong>)</p>
+<p>具体可以参考<a href="http://www.2818668.com/369.html" target="_blank" rel="noopener">这个</a></p>
+<h2 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h2><ul>
+<li>到现在我也不确定这些模型是循环运行还是怎么在执行, 如果是循环运行一次运行时间是多长</li>
+</ul>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>搜索过程中看到的<a href="https://zhuanlan.zhihu.com/p/52867020" target="_blank" rel="noopener">十六套经典策略</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -5530,9 +5534,9 @@ VSCode之后发现这个选项没被勾上.</p>
           });
       </script>]]></content>
       <categories>
-        <category>工具</category>
-        <category>软件配置</category>
-        <category>Web</category>
+        <category>语言</category>
+        <category>量化交易</category>
+        <category>麦语言</category>
       </categories>
   </entry>
 </search>
