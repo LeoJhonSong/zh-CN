@@ -598,7 +598,8 @@
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">% 导言区</span><br><span class="line">\usepackage{tikz}  % 绘图宏包</span><br><span class="line">\newcommand{\ballnumber}[1]{</span><br><span class="line">    \tikz[baseline=(myanchor.base)]</span><br><span class="line">    \node[circle,fill=.,inner sep=1pt](myanchor){\color{-.}\bfseries\footnotesize #1};</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>这样的东西要用只能是现场上网搜了. 在这个<a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="noopener">手绘查询符号网站</a>可以通过手绘的方式查到绝大多数符号 (但上面说的这个圆圈1查不到). 这里再吹一下VSC的LaTeX Workshop插件, 提供了一个快速插入常见符号LaTeX命令的面板, 还能快速插入常用tkiz绘制 🐮</p>
-<p>*<img style="width:35%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/snippet.jpg">*</p>
+   <img style="width:35%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/snippet.jpg">
+
 <h2 id="中文支持"><a href="#中文支持" class="headerlink" title="中文支持"></a>中文支持</h2><p>我目前还没用LaTeX写过中文内容, 不过看起来<strong><em>xeCJK</em></strong>宏包提供的中文支持效果还不错 (前提是用xelatex作为编译器), 不知道大量使用中文时会不会出问题. 这篇<a href="https://www.overleaf.com/learn/latex/Chinese#xeCJK_with_XeLaTeX" target="_blank" rel="noopener">overleaf-中文支持</a>我先码住.</p>
 <h2 id="构建流程"><a href="#构建流程" class="headerlink" title="构建流程"></a>构建流程</h2><p><a href="https://www.overleaf.com/learn/latex/Choosing_a_LaTeX_Compiler" target="_blank" rel="noopener">选择overleaf编译器</a></p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://libguides.nps.edu/citation/ieee-bibtex" target="_blank" rel="noopener">各种东西的bibtex</a></p>
