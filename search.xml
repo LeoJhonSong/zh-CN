@@ -762,499 +762,6 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
       </categories>
   </entry>
   <entry>
-    <title>关于Linux下开发单片机的猜测</title>
-    <url>/zh-CN/2019/03/28/%E5%85%B3%E4%BA%8ELinux%E4%B8%8B%E5%BC%80%E5%8F%91%E5%8D%95%E7%89%87%E6%9C%BA%E7%9A%84%E7%8C%9C%E6%B5%8B/</url>
-    <content><![CDATA[<p>现在也算个Linux爱好者啦, 但在Linux下怎么配置单片机开发环境我一直一头雾水, 直到最近我找到了相关文章!</p>
-<a id="more"></a>
-
-<p>💡 目前已经有
-<a href="http://docs.platformio.org/en/stable/what-is-platformio.html" target="_blank" rel="noopener">PlatformIO</a>可以让我们进行大部分单片机, 嵌入式系统的开发, 但也有部分开发板他们还没有收录, 除了向项目提issue, 我们也可以尝试不用PlatformIO配置一套Linux下单片机开发环境.</p>
-<p>网上虽然也有那么些讲在Linux开发单片机的文章, 但我看到的基本是开发C51, 顶多是有开发STM32的.
-我是觉得没人会费事在 Linux 下开发C51, 反正我想开发的比如
-<a href="https://www.infineon.com/cms/en/product/microcontroller/16-bit-c166-microcontroller/xc2200-family-body/xc22xxm-series/sak-xc2267m-104f80lr-ab/" target="_blank" rel="noopener">英飞凌 (infineon) 的 XC2267M</a>,
-<a href="https://www.nxp.com/products/processors-and-microcontrollers/arm-based-processors-and-mcus/kinetis-cortex-m-mcus/k-seriesperformancem4/k6x-ethernet/kinetis-k60-100-mhz-mixed-signal-integration-microcontrollers-based-on-arm-cortex-m4-core:K60_100" target="_blank" rel="noopener">飞思卡尔 (Freescale) 的 k60</a>
-之类是没看到相关文章🤷‍</p>
-<p>🌟🌟🌟 最近我看到了两篇配置英飞凌XMC系列单片机开发环境的文章!
-<a href="https://github.com/notandy/xmc4500-relax-linux" target="_blank" rel="noopener">xmc4500-relax-linux</a>讲述了在
-Linux开发xmc4500需要什么工具以及编译方式,
-<a href="https://github.com/furtnerthomas/Linux-XMC-Development" target="_blank" rel="noopener">Linux-XMC-Development</a>
-则<strong>十分详细</strong>地讲述了如何配置基于<strong>eclipse</strong>的XMC系列单片机开发环境.</p>
-<p>🔗 参考:</p>
-<ul>
-<li><a href="https://blog.csdn.net/thinkerleo1997/article/details/53145972" target="_blank" rel="noopener">在Linux下搭建51单片机的开发烧写环境</a></li>
-<li><a href="https://www.amobbs.com/thread-5568167-1-1.html" target="_blank" rel="noopener">ubuntu下安装stm32开发环境 秒杀keil和IAR</a></li>
-<li><a href="https://www.cnblogs.com/amanlikethis/p/3803736.html#lab35" target="_blank" rel="noopener">Linux下STM32开发环境的搭建</a></li>
-</ul>
-<p>参考以上几篇文章我明白了单片机开发都是以下流程, 那我猜只要找到对应工具就OK了:</p>
-<ol>
-<li>交叉编译生成 bin 或者 hex 文件</li>
-<li>烧录到单片机</li>
-<li>调试</li>
-</ol>
-<p>也就是说我们找到对应的交叉编译器, 烧录工具, 调试工具就可以了.</p>
-<p>而什么是对应工具, 要在哪里找到对应工具这个问题又让我苦恼了一阵子, 但后来我发现特么就在每个单片机的页面上! (也可能是在该单片机的系列介绍页面)</p>
-<p>比如 Infineon XC2267M 的交叉编译工具, 调试工具, 烧录工具都在
-<a href="https://www.infineon.com/cms/en/product/microcontroller/16-bit-c166-microcontroller/xc2200-family-body/xc22xxm-series/#!tools" target="_blank" rel="noopener">这里</a>
-列了出来! 当然有些工具是收费的, 但<a href="http://www.infineonic.org/module/forum/thread-554295-1-1.html" target="_blank" rel="noopener">这都不是事</a>😁. 不过似乎这个免费版<a href="http://www.infineonic.org/module/forum/thread-487158-1-1.html" target="_blank" rel="noopener">有点点局限</a></p>
-<p>另一款我提到的k60芯片也在介绍页面给出了相关工具的链接.</p>
-<p>不过看起来很多工具都是基于Eclipse的. (但我觉得Eclipse的图标不好看所以就用过一次)</p>
-<p>🔗 更多相关链接</p>
-<ul>
-<li><a href="https://blog.csdn.net/passerbyyuan/article/details/51404226" target="_blank" rel="noopener">单片机的下载方式分类</a></li>
-<li><a href="https://blog.csdn.net/qlexcel/article/details/84374768" target="_blank" rel="noopener">程序编译生成的Hex、Bin、axf和elf格式</a></li>
-<li><a href="http://www.21ic.com/jichuzhishi/mcu/write/2014-03-20/216132.html" target="_blank" rel="noopener">单片机ISP、IAP和ICP几种烧录方式的区别</a></li>
-</ul>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>软件配置</category>
-        <category>操作系统</category>
-        <category>Linux</category>
-        <category>嵌入式</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>对伺服电机PID的理解</title>
-    <url>/zh-CN/2019/03/27/%E5%AF%B9%E4%BC%BA%E6%9C%8D%E7%94%B5%E6%9C%BAPID%E7%9A%84%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[<p>行吧, 继上次手搓简单卡尔曼算法后我又接触到了更多控制方面的东西. 想我一个电子工程的弟弟在这里研究术语都不知道几个的控制… 命苦啊! 最近在调机械腿, 应该说还在调那条腿, 对伺服电机里的PID算法有了些许感悟.</p>
-<a id="more"></a>
-
-<p>这条腿的传感噪声问题因为换了传感器已经解决了, 最近的问题是<strong>不能快速, 稳定, 准确的到达指定位置</strong>. 目前通过<strong>限制电机的加速度</strong>改善了情况.</p>
-<h1 id="PID也没有那么简单"><a href="#PID也没有那么简单" class="headerlink" title="PID也没有那么简单"></a>PID也没有那么简单</h1><p>在改动前机械腿在低速状态 (很低速那种) 下表现得还是蛮好的, 但速度一旦快起来就明显有<strong>过冲</strong>, 是一抖一抖运动的, 到达位置时间反而比低速还长… 虽然我以前买了一个很简陋的四轴穿越机调过一点点PID, 感觉这算法也不难理解 (至少比卡尔曼好理解😁), 但这次发现要达到一定的精度PID也不是那么简单的东西: 经常是 “这参数加了20了怎么毛的变化都没有啊 黑人问号”, 但实际用起来又确实地感受到了差别. 并且当情况复杂的时候一个普通PID是不能满足的, 可能会用串级PID, 分段PID, 模糊PID, 专家系统PID, 容错PID, 前馈, 非线性控制之类的来改善😵</p>
-<p>🔗 参考: <a href="https://www.zhihu.com/question/22603676/answer/28847509" target="_blank" rel="noopener">关于永磁同步电机交流伺服控制系统的算法问题？ - 小心假设的回答 - 知乎</a></p>
-<h1 id="PI-·-PD-·-PID"><a href="#PI-·-PD-·-PID" class="headerlink" title="PI · PD · PID"></a>PI · PD · PID</h1><p>另外我知道了在工业中说是说PID控制器, 但<strong>实际大多是PI控制器</strong>, 因为D虽然可以增大系统阻尼, 使系统具有一定预见性, 增强了对微小变化的响应, 但也因此造成系统容易震荡, 不稳定. 而根据网上说的<strong>I比D更容易引起不稳定, 因为I引入了另一个极点.</strong> 具体啥时候用PI, PD, PID我还没有头绪.</p>
-<p>🔗 参考:</p>
-<ul>
-<li><a href="https://www.zhihu.com/question/26944678/answer/44687208" target="_blank" rel="noopener">哪些控制类的算法惊艳了你？ - 三郎的回答 - 知乎</a></li>
-<li><a href="http://www.sohu.com/a/155185294_464086" target="_blank" rel="noopener">PID控制算法精华和参数整定三大招</a></li>
-</ul>
-<h1 id="三环控制"><a href="#三环控制" class="headerlink" title="三环控制"></a>三环控制</h1><p>再有就是我大致理解了伺服电机三环PID是一种多么精妙而自然的设计.</p>
-<p>在调PID的时候我和师兄一度绝望, 我就说: “要不我们只保留转距环, 上层的我们重新写一遍.”当时我们使用的是<strong>位置模式</strong>控制电机. 我看电机驱动器的说明书都看得晕呼呼的, 还没怎么理解三环控制.
-但我要保留转距环的想法是很正常的:</p>
-<p>电机最基本的控制方式就是控制流过电机的电流, 也就是控制电机输出的转距. 在这一环里不是单纯的PID, 驱动器还设置了一些阈值, 防止过流烧坏电机什么的. 这一环是驱动器自整定的, 但效果也不错, 因此我认为不必自己重写这一环.</p>
-<p>然后我说:”上层我们用一个PID, 达到: 当当前位置比目标位置小就加正向转距, 当当前位置比目标位置大时加逆向转距的效果.”</p>
-<p>学长立即指出这样机械腿到达位置时的<strong>速度是不定的</strong>.我:”那就加一环速度PID, 生成一个百分数乘以转距来达到控制达到目标位置时的速度的效果”</p>
-<p>说完我一愣, 我特么这不是说了一遍<strong>电流环, 速度环, 位置环</strong>的所谓<strong>三环控制</strong>🐴</p>
-<p>🔗 参考:</p>
-<ul>
-<li><a href="http://www.voidcn.com/article/p-hxjakzgh-pw.html" target="_blank" rel="noopener">伺服电机三环控制的原理（位置环，运动环，电流环）</a></li>
-<li><a href="https://blog.csdn.net/Andy20081251/article/details/79457911" target="_blank" rel="noopener">浅谈伺服电机三种控制方式</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/21311021" target="_blank" rel="noopener">伺服电机的控制方式简述</a></li>
-</ul>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>随笔</category>
-        <category>自动控制</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>常见术语缩写</title>
-    <url>/zh-CN/2019/03/02/%E5%B8%B8%E8%A7%81%E6%9C%AF%E8%AF%AD%E7%BC%A9%E5%86%99/</url>
-    <content><![CDATA[<p>作为一个非英语母语的程序员, 经常看到各种奇奇怪怪的缩写让人摸不到头脑, 而如果能知道这些拼凑起来的字母是什么的缩写的话, 不仅便于记忆, 也便于理解. 另外能知道点冷知识还是很有意思
-<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f62c.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f62c.png?v8">😬</span>因此在此记录我看到的各种缩写.
-(英文中缩写分为Acronym, 首字母缩写和Abbreviation, 单词简写两种, 此处所说缩写<strong>主要指
-abbreviation</strong>)</p>
-<a id="more"></a>
-
-<p>原本我想开一个GitHub仓库号召大家一起贡献的, 但随后我发现了
-<a href="https://acronyms.thefreedictionary.com/ps" target="_blank" rel="noopener">这个网站</a>, 一方面看到有类似的工具了
-(这个网站很不错的!),
-一方面大家也可以看到<code>ps</code>这一个词在各种领域都有特定的含义, 总共多达248种全称, 如果我开的仓库也将所有对应全称收录的话, 过多的含义反而让它变得很鸡肋, 而只收录一些领域的含义未免小众. 因此决定只记录一下我认为有必要记录的缩写与对应全称.</p>
-<table>
-<thead>
-<tr>
-<th>abbr</th>
-<th>full name</th>
-<th>field</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>a</td>
-<td>all/add</td>
-<td>\</td>
-</tr>
-<tr>
-<td>apt</td>
-<td>Advanced Packaging Tools</td>
-<td>Linux</td>
-</tr>
-<tr>
-<td>arg</td>
-<td>argument</td>
-<td>\</td>
-</tr>
-<tr>
-<td>ARP</td>
-<td>Address Resolution Protocol</td>
-<td>TCP/IP</td>
-</tr>
-<tr>
-<td>awk</td>
-<td>Aho Weinberger and Kernighan (此命令为三位作者的名字)</td>
-<td>Linux command</td>
-</tr>
-<tr>
-<td>bin</td>
-<td>binary</td>
-<td>\</td>
-</tr>
-<tr>
-<td>cat</td>
-<td>concatenate</td>
-<td>Linux command</td>
-</tr>
-<tr>
-<td>cd</td>
-<td>change directory</td>
-<td>Linux command</td>
-</tr>
-<tr>
-<td>chkTeX</td>
-<td>check LaTeX</td>
-<td>LaTeX</td>
-</tr>
-<tr>
-<td>ch</td>
-<td>change</td>
-<td>\</td>
-</tr>
-<tr>
-<td>chmod</td>
-<td>change mode / change permissions</td>
-<td>Linux command</td>
-</tr>
-<tr>
-<td>clk</td>
-<td>clock</td>
-<td>\</td>
-</tr>
-<tr>
-<td>cp</td>
-<td>copy</td>
-<td>Linux command</td>
-</tr>
-<tr>
-<td>CV</td>
-<td>Computer Vision</td>
-<td>Computer Vision</td>
-</tr>
-<tr>
-<td>cwd</td>
-<td>current working directory / chang working directory</td>
-<td>\</td>
-</tr>
-<tr>
-<td>dir</td>
-<td>directory</td>
-<td>\</td>
-</tr>
-<tr>
-<td>dst</td>
-<td>destination image</td>
-<td>computer vision</td>
-</tr>
-<tr>
-<td>env</td>
-<td>environment</td>
-<td>\</td>
-</tr>
-<tr>
-<td>g</td>
-<td>global / generate</td>
-<td>\</td>
-</tr>
-<tr>
-<td>GFW</td>
-<td>Great Fire Wall</td>
-<td>GFW</td>
-</tr>
-<tr>
-<td>grep</td>
-<td>global regular expression and print</td>
-<td>Linux command</td>
-</tr>
-<tr>
-<td>img</td>
-<td>image</td>
-<td>cv</td>
-</tr>
-<tr>
-<td>int</td>
-<td>integer</td>
-<td>\</td>
-</tr>
-<tr>
-<td>LANCE</td>
-<td>Local Area Network Controller for Ethernet</td>
-<td>CISCO router</td>
-</tr>
-<tr>
-<td>lib</td>
-<td>library</td>
-<td>\</td>
-</tr>
-<tr>
-<td>ln</td>
-<td>link</td>
-<td>Linux command</td>
-</tr>
-<tr>
-<td>ls</td>
-<td>list</td>
-<td>Linux command</td>
-</tr>
-<tr>
-<td>mkdir</td>
-<td>make directory</td>
-<td>Linux command</td>
-</tr>
-<tr>
-<td>mnt</td>
-<td>mount</td>
-<td>Linux</td>
-</tr>
-<tr>
-<td>mv</td>
-<td>move</td>
-<td>Linux command</td>
-</tr>
-<tr>
-<td>passwd</td>
-<td>password</td>
-<td>Linux command</td>
-</tr>
-<tr>
-<td>pkg</td>
-<td>package</td>
-<td>\</td>
-</tr>
-<tr>
-<td>pwd</td>
-<td>present working directory / password</td>
-<td>Linux command / \</td>
-</tr>
-<tr>
-<td>pts</td>
-<td>pseudo tty slave</td>
-<td>Linux / Unix</td>
-</tr>
-<tr>
-<td>pty</td>
-<td>pseudo tty</td>
-<td>Linux / Unix</td>
-</tr>
-<tr>
-<td>q</td>
-<td>quit</td>
-<td>\</td>
-</tr>
-<tr>
-<td>rc</td>
-<td>run command / run configure</td>
-<td>Linux初始化文件</td>
-</tr>
-<tr>
-<td>rm</td>
-<td>remove</td>
-<td>Linux command</td>
-</tr>
-<tr>
-<td>RPM</td>
-<td>Redhat Package Manager</td>
-<td>Linux</td>
-</tr>
-<tr>
-<td>sed</td>
-<td>stream editor</td>
-<td>Linux command</td>
-</tr>
-<tr>
-<td>shebang</td>
-<td>hash bang (#!)</td>
-<td>\</td>
-</tr>
-<tr>
-<td>src</td>
-<td>source / source image</td>
-<td>web / cv</td>
-</tr>
-<tr>
-<td>ssh</td>
-<td>Secure Shell</td>
-<td>\</td>
-</tr>
-<tr>
-<td>ssr</td>
-<td>Socket Shell R</td>
-<td>GFW</td>
-</tr>
-<tr>
-<td>stat</td>
-<td>status</td>
-<td>\</td>
-</tr>
-<tr>
-<td>str</td>
-<td>string</td>
-<td>\</td>
-</tr>
-<tr>
-<td>sys</td>
-<td>system</td>
-<td>\</td>
-</tr>
-<tr>
-<td>tar</td>
-<td>tape archive</td>
-<td>Linux command</td>
-</tr>
-<tr>
-<td>TLDR</td>
-<td>Too Long; Didn’t Read 指前面太长没看, 此部分为概述性文字</td>
-<td>\</td>
-</tr>
-<tr>
-<td>tty</td>
-<td>teletype, 通常指物理形式的终端</td>
-<td>Linux / Unix</td>
-</tr>
-<tr>
-<td>usr</td>
-<td>Unix Shared/Software/System Resources</td>
-<td>Linux / Unix</td>
-</tr>
-<tr>
-<td>wc</td>
-<td>word count</td>
-<td>Linux command</td>
-</tr>
-<tr>
-<td>yum</td>
-<td>Yellow Dog Updater</td>
-<td>Linux</td>
-</tr>
-</tbody></table>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>杂记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>我打算换电脑了</title>
-    <url>/zh-CN/2019/03/30/%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/</url>
-    <content><![CDATA[<p>行吧, 电脑城是真的坑. 这辈子不会进电脑城了. 不会真香的.</p>
-<a id="more"></a>
-
-<h2 id="吐槽一下"><a href="#吐槽一下" class="headerlink" title="吐槽一下"></a>吐槽一下</h2><p>我现在的电脑是刚入大学时买的, 在电脑城😁. 我进大学被一群大佬带飞之前是个纯小白, 每天打开电脑跟随360提示赚取积分那种. 后来在群里窥视大佬们聊天, 学到了第一课:</p>
-<p>什么? <strong>360杀毒是毒瘤?</strong> 什么? <strong>电脑城就是个坑?</strong></p>
-<p>我开始是不太信的, 后来我格式化了电脑告别360. 再后来我在小米之家看着和我电脑同价位但配置好许多的电脑沉默了一会.</p>
-<p><strong>但是!!</strong> 这次出的幺蛾子让我忍不了. 前几天电脑刚开机就弹出👇</p>
-<p><img alt="hard disk problems detected" data-src="%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/HardDiskProblems.png?50"></p>
-<p>什么? <b style="color:red;">我硬盘快挂了?</b>
-当时把我吓坏了, 还以为我硬盘要爆炸了, 点开了 <strong>Disks</strong> 工具的
-<strong>SMART Data &amp; Self-Tests</strong>.</p>
-<p><img alt="self-test" data-src="%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/self-test.png"></p>
-<p>我???</p>
-<p>上网搜索了一下<a href="https://help.ubuntu.com/stable/ubuntu-help/disk-check.html.en" target="_blank" rel="noopener">年老的硬盘就容易出这种事</a>. 加上那个self-test也说我硬盘 <strong>Old-Age</strong> 了, 最多也就该有<strong>50</strong>个的坏道我现在有<strong>16376</strong>个, 那大概硬盘是真的快挂了吧. 行吧.</p>
-<p>秋头麻袋. 我这电脑才买了一年啊💢 我和几个群友交流了一下自认使用习惯还是不算差, 虽然没有及时发现坏道并隔离 (我才知道这玩意还能传染) 是我的锅, 但铁定我买来这电脑就有点问题. 忍不了💢</p>
-<h2 id="信息整理"><a href="#信息整理" class="headerlink" title="信息整理"></a>信息整理</h2><p>顺便整理一下我从群友们那听来的购买笔记本电脑的知识点好了:</p>
-<ul>
-<li><p>只是编程不打游戏的话主要关注<strong>内存大小</strong>和<strong>硬盘读写速度</strong>就好了. (机械硬盘是不能要的, 这我已经得到血泪教训了)</p>
-</li>
-<li><p>笔记本电脑的话不管 <strong>i5</strong>, <strong>i7</strong> 还是 <strong>i9</strong> 区别很小, 因为一般散热性能都不够, 处理器升温之后性能下降, 基本性能差不多. 也就是说为了省钱买 <strong>i5</strong> 就可以了. 当然有钱肯定是 <strong>i9</strong>
-走着.</p>
-</li>
-<li><p><strong>显卡</strong>一般也就游戏, 设计, 科学计算会用到的样子, 因此我这不打游戏的直男程序员就不需要太好的显卡了
-(但我发现显卡过于差的话放PPT都卡)</p>
-</li>
-<li><p>虽然几个群友强烈安利我买有至少有2k画质显示屏的电脑, 或者买来后自己换一个屏幕, 因为2k以上分辨率的屏幕体验极佳. 但他们都说<strong>看惯了2k完全不适应1080P</strong>. 那我当然是只买1080P啊😁 另外个人觉得干活用的电脑没必要弄触屏屏幕, 鼠标都嫌打断思路, 更何况触摸屏.</p>
-</li>
-<li><p>虽然linux也是用户群体极大的系统, 但linux对一些硬件设备支持相当的差, 比如有人蓝牙经常断之类. 网上也有许多地方列出了一些公认linux支持不错的电脑. 我看了一圈感觉<strong>ThinkPad</strong>和 <strong>Dell</strong> 都值得信赖. 我还翻到了个<a href="https://certification.ubuntu.com/certification/desktop/" target="_blank" rel="noopener">Ubuntu 个人电脑认证硬件</a>. 不明觉厉.</p>
-</li>
-<li><p>另外个人觉得比较重要的一点是<strong>键盘背光灯</strong>! 晚上不开灯没有背光的话真的只能埋头打字啊!</p>
-</li>
-<li><p>很多电脑虽然 <strong>处理器, 内存, 显卡, 硬盘, 屏幕</strong> 这几项是一样或者相当的, 但价格相差很多. 这是因为其他方面有关. 比如说 <strong>电池容量</strong> (和续航能力有比较大的关系), <strong>接口数量及类型</strong> (比如有几个雷电3), <strong>电脑外壳材质</strong> (比如X1C是碳纤维外壳), 是否有<strong>指纹识别器</strong> (现在Linux下也有指纹识别器的驱动了, 似乎<em>可以拿来输入sudo的密码</em>), 是否有<strong>红外摄像头</strong> (这个linux下似乎没有相关驱动, 目前唯一用处似乎就是Windows Hello), <strong>可拓展性</strong> (比如ThinkPad T480可以把内存加到32G, 而T480S最多只能加到24G), 键盘手感 (我倒是一直用不惯机械键盘😒), <strong>售后服务</strong>等</p>
-</li>
-</ul>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Bug List</title>
     <url>/zh-CN/2019/02/05/Bug-List/</url>
     <content><![CDATA[<p>我想记录一下我遇到过的各种bug, 不论大小. 原本我从一开始学编程的时候就在这么做了, 但我也忘了我什么时候竟然怠慢了这件事! 我会想到记录这些是上大学前的暑假看到
@@ -1563,8 +1070,8 @@ Address already in use</strong>, 我的服务器端监听的端口处于 <strong
           });
       </script>]]></content>
       <categories>
-        <category>杂记</category>
         <category>CI/CD</category>
+        <category>杂记</category>
         <category>语言</category>
         <category>版本控制</category>
         <category>Git</category>
@@ -2060,6 +1567,499 @@ Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可�
         <category>软件配置</category>
         <category>VSC</category>
         <category>技巧</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>关于Linux下开发单片机的猜测</title>
+    <url>/zh-CN/2019/03/28/%E5%85%B3%E4%BA%8ELinux%E4%B8%8B%E5%BC%80%E5%8F%91%E5%8D%95%E7%89%87%E6%9C%BA%E7%9A%84%E7%8C%9C%E6%B5%8B/</url>
+    <content><![CDATA[<p>现在也算个Linux爱好者啦, 但在Linux下怎么配置单片机开发环境我一直一头雾水, 直到最近我找到了相关文章!</p>
+<a id="more"></a>
+
+<p>💡 目前已经有
+<a href="http://docs.platformio.org/en/stable/what-is-platformio.html" target="_blank" rel="noopener">PlatformIO</a>可以让我们进行大部分单片机, 嵌入式系统的开发, 但也有部分开发板他们还没有收录, 除了向项目提issue, 我们也可以尝试不用PlatformIO配置一套Linux下单片机开发环境.</p>
+<p>网上虽然也有那么些讲在Linux开发单片机的文章, 但我看到的基本是开发C51, 顶多是有开发STM32的.
+我是觉得没人会费事在 Linux 下开发C51, 反正我想开发的比如
+<a href="https://www.infineon.com/cms/en/product/microcontroller/16-bit-c166-microcontroller/xc2200-family-body/xc22xxm-series/sak-xc2267m-104f80lr-ab/" target="_blank" rel="noopener">英飞凌 (infineon) 的 XC2267M</a>,
+<a href="https://www.nxp.com/products/processors-and-microcontrollers/arm-based-processors-and-mcus/kinetis-cortex-m-mcus/k-seriesperformancem4/k6x-ethernet/kinetis-k60-100-mhz-mixed-signal-integration-microcontrollers-based-on-arm-cortex-m4-core:K60_100" target="_blank" rel="noopener">飞思卡尔 (Freescale) 的 k60</a>
+之类是没看到相关文章🤷‍</p>
+<p>🌟🌟🌟 最近我看到了两篇配置英飞凌XMC系列单片机开发环境的文章!
+<a href="https://github.com/notandy/xmc4500-relax-linux" target="_blank" rel="noopener">xmc4500-relax-linux</a>讲述了在
+Linux开发xmc4500需要什么工具以及编译方式,
+<a href="https://github.com/furtnerthomas/Linux-XMC-Development" target="_blank" rel="noopener">Linux-XMC-Development</a>
+则<strong>十分详细</strong>地讲述了如何配置基于<strong>eclipse</strong>的XMC系列单片机开发环境.</p>
+<p>🔗 参考:</p>
+<ul>
+<li><a href="https://blog.csdn.net/thinkerleo1997/article/details/53145972" target="_blank" rel="noopener">在Linux下搭建51单片机的开发烧写环境</a></li>
+<li><a href="https://www.amobbs.com/thread-5568167-1-1.html" target="_blank" rel="noopener">ubuntu下安装stm32开发环境 秒杀keil和IAR</a></li>
+<li><a href="https://www.cnblogs.com/amanlikethis/p/3803736.html#lab35" target="_blank" rel="noopener">Linux下STM32开发环境的搭建</a></li>
+</ul>
+<p>参考以上几篇文章我明白了单片机开发都是以下流程, 那我猜只要找到对应工具就OK了:</p>
+<ol>
+<li>交叉编译生成 bin 或者 hex 文件</li>
+<li>烧录到单片机</li>
+<li>调试</li>
+</ol>
+<p>也就是说我们找到对应的交叉编译器, 烧录工具, 调试工具就可以了.</p>
+<p>而什么是对应工具, 要在哪里找到对应工具这个问题又让我苦恼了一阵子, 但后来我发现特么就在每个单片机的页面上! (也可能是在该单片机的系列介绍页面)</p>
+<p>比如 Infineon XC2267M 的交叉编译工具, 调试工具, 烧录工具都在
+<a href="https://www.infineon.com/cms/en/product/microcontroller/16-bit-c166-microcontroller/xc2200-family-body/xc22xxm-series/#!tools" target="_blank" rel="noopener">这里</a>
+列了出来! 当然有些工具是收费的, 但<a href="http://www.infineonic.org/module/forum/thread-554295-1-1.html" target="_blank" rel="noopener">这都不是事</a>😁. 不过似乎这个免费版<a href="http://www.infineonic.org/module/forum/thread-487158-1-1.html" target="_blank" rel="noopener">有点点局限</a></p>
+<p>另一款我提到的k60芯片也在介绍页面给出了相关工具的链接.</p>
+<p>不过看起来很多工具都是基于Eclipse的. (但我觉得Eclipse的图标不好看所以就用过一次)</p>
+<p>🔗 更多相关链接</p>
+<ul>
+<li><a href="https://blog.csdn.net/passerbyyuan/article/details/51404226" target="_blank" rel="noopener">单片机的下载方式分类</a></li>
+<li><a href="https://blog.csdn.net/qlexcel/article/details/84374768" target="_blank" rel="noopener">程序编译生成的Hex、Bin、axf和elf格式</a></li>
+<li><a href="http://www.21ic.com/jichuzhishi/mcu/write/2014-03-20/216132.html" target="_blank" rel="noopener">单片机ISP、IAP和ICP几种烧录方式的区别</a></li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>软件配置</category>
+        <category>操作系统</category>
+        <category>Linux</category>
+        <category>嵌入式</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>对伺服电机PID的理解</title>
+    <url>/zh-CN/2019/03/27/%E5%AF%B9%E4%BC%BA%E6%9C%8D%E7%94%B5%E6%9C%BAPID%E7%9A%84%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<p>行吧, 继上次手搓简单卡尔曼算法后我又接触到了更多控制方面的东西. 想我一个电子工程的弟弟在这里研究术语都不知道几个的控制… 命苦啊! 最近在调机械腿, 应该说还在调那条腿, 对伺服电机里的PID算法有了些许感悟.</p>
+<a id="more"></a>
+
+<p>这条腿的传感噪声问题因为换了传感器已经解决了, 最近的问题是<strong>不能快速, 稳定, 准确的到达指定位置</strong>. 目前通过<strong>限制电机的加速度</strong>改善了情况.</p>
+<h1 id="PID也没有那么简单"><a href="#PID也没有那么简单" class="headerlink" title="PID也没有那么简单"></a>PID也没有那么简单</h1><p>在改动前机械腿在低速状态 (很低速那种) 下表现得还是蛮好的, 但速度一旦快起来就明显有<strong>过冲</strong>, 是一抖一抖运动的, 到达位置时间反而比低速还长… 虽然我以前买了一个很简陋的四轴穿越机调过一点点PID, 感觉这算法也不难理解 (至少比卡尔曼好理解😁), 但这次发现要达到一定的精度PID也不是那么简单的东西: 经常是 “这参数加了20了怎么毛的变化都没有啊 黑人问号”, 但实际用起来又确实地感受到了差别. 并且当情况复杂的时候一个普通PID是不能满足的, 可能会用串级PID, 分段PID, 模糊PID, 专家系统PID, 容错PID, 前馈, 非线性控制之类的来改善😵</p>
+<p>🔗 参考: <a href="https://www.zhihu.com/question/22603676/answer/28847509" target="_blank" rel="noopener">关于永磁同步电机交流伺服控制系统的算法问题？ - 小心假设的回答 - 知乎</a></p>
+<h1 id="PI-·-PD-·-PID"><a href="#PI-·-PD-·-PID" class="headerlink" title="PI · PD · PID"></a>PI · PD · PID</h1><p>另外我知道了在工业中说是说PID控制器, 但<strong>实际大多是PI控制器</strong>, 因为D虽然可以增大系统阻尼, 使系统具有一定预见性, 增强了对微小变化的响应, 但也因此造成系统容易震荡, 不稳定. 而根据网上说的<strong>I比D更容易引起不稳定, 因为I引入了另一个极点.</strong> 具体啥时候用PI, PD, PID我还没有头绪.</p>
+<p>🔗 参考:</p>
+<ul>
+<li><a href="https://www.zhihu.com/question/26944678/answer/44687208" target="_blank" rel="noopener">哪些控制类的算法惊艳了你？ - 三郎的回答 - 知乎</a></li>
+<li><a href="http://www.sohu.com/a/155185294_464086" target="_blank" rel="noopener">PID控制算法精华和参数整定三大招</a></li>
+</ul>
+<h1 id="三环控制"><a href="#三环控制" class="headerlink" title="三环控制"></a>三环控制</h1><p>再有就是我大致理解了伺服电机三环PID是一种多么精妙而自然的设计.</p>
+<p>在调PID的时候我和师兄一度绝望, 我就说: “要不我们只保留转距环, 上层的我们重新写一遍.”当时我们使用的是<strong>位置模式</strong>控制电机. 我看电机驱动器的说明书都看得晕呼呼的, 还没怎么理解三环控制.
+但我要保留转距环的想法是很正常的:</p>
+<p>电机最基本的控制方式就是控制流过电机的电流, 也就是控制电机输出的转距. 在这一环里不是单纯的PID, 驱动器还设置了一些阈值, 防止过流烧坏电机什么的. 这一环是驱动器自整定的, 但效果也不错, 因此我认为不必自己重写这一环.</p>
+<p>然后我说:”上层我们用一个PID, 达到: 当当前位置比目标位置小就加正向转距, 当当前位置比目标位置大时加逆向转距的效果.”</p>
+<p>学长立即指出这样机械腿到达位置时的<strong>速度是不定的</strong>.我:”那就加一环速度PID, 生成一个百分数乘以转距来达到控制达到目标位置时的速度的效果”</p>
+<p>说完我一愣, 我特么这不是说了一遍<strong>电流环, 速度环, 位置环</strong>的所谓<strong>三环控制</strong>🐴</p>
+<p>🔗 参考:</p>
+<ul>
+<li><a href="http://www.voidcn.com/article/p-hxjakzgh-pw.html" target="_blank" rel="noopener">伺服电机三环控制的原理（位置环，运动环，电流环）</a></li>
+<li><a href="https://blog.csdn.net/Andy20081251/article/details/79457911" target="_blank" rel="noopener">浅谈伺服电机三种控制方式</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/21311021" target="_blank" rel="noopener">伺服电机的控制方式简述</a></li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>自动控制</category>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>常见术语缩写</title>
+    <url>/zh-CN/2019/03/02/%E5%B8%B8%E8%A7%81%E6%9C%AF%E8%AF%AD%E7%BC%A9%E5%86%99/</url>
+    <content><![CDATA[<p>作为一个非英语母语的程序员, 经常看到各种奇奇怪怪的缩写让人摸不到头脑, 而如果能知道这些拼凑起来的字母是什么的缩写的话, 不仅便于记忆, 也便于理解. 另外能知道点冷知识还是很有意思
+<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f62c.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f62c.png?v8">😬</span>因此在此记录我看到的各种缩写.
+(英文中缩写分为Acronym, 首字母缩写和Abbreviation, 单词简写两种, 此处所说缩写<strong>主要指
+abbreviation</strong>)</p>
+<a id="more"></a>
+
+<p>原本我想开一个GitHub仓库号召大家一起贡献的, 但随后我发现了
+<a href="https://acronyms.thefreedictionary.com/ps" target="_blank" rel="noopener">这个网站</a>, 一方面看到有类似的工具了
+(这个网站很不错的!),
+一方面大家也可以看到<code>ps</code>这一个词在各种领域都有特定的含义, 总共多达248种全称, 如果我开的仓库也将所有对应全称收录的话, 过多的含义反而让它变得很鸡肋, 而只收录一些领域的含义未免小众. 因此决定只记录一下我认为有必要记录的缩写与对应全称.</p>
+<table>
+<thead>
+<tr>
+<th>abbr</th>
+<th>full name</th>
+<th>field</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>a</td>
+<td>all/add</td>
+<td>\</td>
+</tr>
+<tr>
+<td>apt</td>
+<td>Advanced Packaging Tools</td>
+<td>Linux</td>
+</tr>
+<tr>
+<td>arg</td>
+<td>argument</td>
+<td>\</td>
+</tr>
+<tr>
+<td>ARP</td>
+<td>Address Resolution Protocol</td>
+<td>TCP/IP</td>
+</tr>
+<tr>
+<td>awk</td>
+<td>Aho Weinberger and Kernighan (此命令为三位作者的名字)</td>
+<td>Linux command</td>
+</tr>
+<tr>
+<td>bin</td>
+<td>binary</td>
+<td>\</td>
+</tr>
+<tr>
+<td>cat</td>
+<td>concatenate</td>
+<td>Linux command</td>
+</tr>
+<tr>
+<td>cd</td>
+<td>change directory</td>
+<td>Linux command</td>
+</tr>
+<tr>
+<td>chkTeX</td>
+<td>check LaTeX</td>
+<td>LaTeX</td>
+</tr>
+<tr>
+<td>ch</td>
+<td>change</td>
+<td>\</td>
+</tr>
+<tr>
+<td>chmod</td>
+<td>change mode / change permissions</td>
+<td>Linux command</td>
+</tr>
+<tr>
+<td>clk</td>
+<td>clock</td>
+<td>\</td>
+</tr>
+<tr>
+<td>cp</td>
+<td>copy</td>
+<td>Linux command</td>
+</tr>
+<tr>
+<td>CV</td>
+<td>Computer Vision</td>
+<td>Computer Vision</td>
+</tr>
+<tr>
+<td>cwd</td>
+<td>current working directory / chang working directory</td>
+<td>\</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>directory</td>
+<td>\</td>
+</tr>
+<tr>
+<td>dst</td>
+<td>destination image</td>
+<td>computer vision</td>
+</tr>
+<tr>
+<td>env</td>
+<td>environment</td>
+<td>\</td>
+</tr>
+<tr>
+<td>g</td>
+<td>global / generate</td>
+<td>\</td>
+</tr>
+<tr>
+<td>GFW</td>
+<td>Great Fire Wall</td>
+<td>GFW</td>
+</tr>
+<tr>
+<td>grep</td>
+<td>global regular expression and print</td>
+<td>Linux command</td>
+</tr>
+<tr>
+<td>img</td>
+<td>image</td>
+<td>cv</td>
+</tr>
+<tr>
+<td>int</td>
+<td>integer</td>
+<td>\</td>
+</tr>
+<tr>
+<td>LANCE</td>
+<td>Local Area Network Controller for Ethernet</td>
+<td>CISCO router</td>
+</tr>
+<tr>
+<td>lib</td>
+<td>library</td>
+<td>\</td>
+</tr>
+<tr>
+<td>ln</td>
+<td>link</td>
+<td>Linux command</td>
+</tr>
+<tr>
+<td>ls</td>
+<td>list</td>
+<td>Linux command</td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td>make directory</td>
+<td>Linux command</td>
+</tr>
+<tr>
+<td>mnt</td>
+<td>mount</td>
+<td>Linux</td>
+</tr>
+<tr>
+<td>mv</td>
+<td>move</td>
+<td>Linux command</td>
+</tr>
+<tr>
+<td>passwd</td>
+<td>password</td>
+<td>Linux command</td>
+</tr>
+<tr>
+<td>pkg</td>
+<td>package</td>
+<td>\</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>present working directory / password</td>
+<td>Linux command / \</td>
+</tr>
+<tr>
+<td>pts</td>
+<td>pseudo tty slave</td>
+<td>Linux / Unix</td>
+</tr>
+<tr>
+<td>pty</td>
+<td>pseudo tty</td>
+<td>Linux / Unix</td>
+</tr>
+<tr>
+<td>q</td>
+<td>quit</td>
+<td>\</td>
+</tr>
+<tr>
+<td>rc</td>
+<td>run command / run configure</td>
+<td>Linux初始化文件</td>
+</tr>
+<tr>
+<td>rm</td>
+<td>remove</td>
+<td>Linux command</td>
+</tr>
+<tr>
+<td>RPM</td>
+<td>Redhat Package Manager</td>
+<td>Linux</td>
+</tr>
+<tr>
+<td>sed</td>
+<td>stream editor</td>
+<td>Linux command</td>
+</tr>
+<tr>
+<td>shebang</td>
+<td>hash bang (#!)</td>
+<td>\</td>
+</tr>
+<tr>
+<td>src</td>
+<td>source / source image</td>
+<td>web / cv</td>
+</tr>
+<tr>
+<td>ssh</td>
+<td>Secure Shell</td>
+<td>\</td>
+</tr>
+<tr>
+<td>ssr</td>
+<td>Socket Shell R</td>
+<td>GFW</td>
+</tr>
+<tr>
+<td>stat</td>
+<td>status</td>
+<td>\</td>
+</tr>
+<tr>
+<td>str</td>
+<td>string</td>
+<td>\</td>
+</tr>
+<tr>
+<td>sys</td>
+<td>system</td>
+<td>\</td>
+</tr>
+<tr>
+<td>tar</td>
+<td>tape archive</td>
+<td>Linux command</td>
+</tr>
+<tr>
+<td>TLDR</td>
+<td>Too Long; Didn’t Read 指前面太长没看, 此部分为概述性文字</td>
+<td>\</td>
+</tr>
+<tr>
+<td>tty</td>
+<td>teletype, 通常指物理形式的终端</td>
+<td>Linux / Unix</td>
+</tr>
+<tr>
+<td>usr</td>
+<td>Unix Shared/Software/System Resources</td>
+<td>Linux / Unix</td>
+</tr>
+<tr>
+<td>wc</td>
+<td>word count</td>
+<td>Linux command</td>
+</tr>
+<tr>
+<td>yum</td>
+<td>Yellow Dog Updater</td>
+<td>Linux</td>
+</tr>
+</tbody></table>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>杂记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>我打算换电脑了</title>
+    <url>/zh-CN/2019/03/30/%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/</url>
+    <content><![CDATA[<p>行吧, 电脑城是真的坑. 这辈子不会进电脑城了. 不会真香的.</p>
+<a id="more"></a>
+
+<h2 id="吐槽一下"><a href="#吐槽一下" class="headerlink" title="吐槽一下"></a>吐槽一下</h2><p>我现在的电脑是刚入大学时买的, 在电脑城😁. 我进大学被一群大佬带飞之前是个纯小白, 每天打开电脑跟随360提示赚取积分那种. 后来在群里窥视大佬们聊天, 学到了第一课:</p>
+<p>什么? <strong>360杀毒是毒瘤?</strong> 什么? <strong>电脑城就是个坑?</strong></p>
+<p>我开始是不太信的, 后来我格式化了电脑告别360. 再后来我在小米之家看着和我电脑同价位但配置好许多的电脑沉默了一会.</p>
+<p><strong>但是!!</strong> 这次出的幺蛾子让我忍不了. 前几天电脑刚开机就弹出👇</p>
+<p><img alt="hard disk problems detected" data-src="%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/HardDiskProblems.png?50"></p>
+<p>什么? <b style="color:red;">我硬盘快挂了?</b>
+当时把我吓坏了, 还以为我硬盘要爆炸了, 点开了 <strong>Disks</strong> 工具的
+<strong>SMART Data &amp; Self-Tests</strong>.</p>
+<p><img alt="self-test" data-src="%E6%88%91%E6%89%93%E7%AE%97%E6%8D%A2%E7%94%B5%E8%84%91%E4%BA%86/self-test.png"></p>
+<p>我???</p>
+<p>上网搜索了一下<a href="https://help.ubuntu.com/stable/ubuntu-help/disk-check.html.en" target="_blank" rel="noopener">年老的硬盘就容易出这种事</a>. 加上那个self-test也说我硬盘 <strong>Old-Age</strong> 了, 最多也就该有<strong>50</strong>个的坏道我现在有<strong>16376</strong>个, 那大概硬盘是真的快挂了吧. 行吧.</p>
+<p>秋头麻袋. 我这电脑才买了一年啊💢 我和几个群友交流了一下自认使用习惯还是不算差, 虽然没有及时发现坏道并隔离 (我才知道这玩意还能传染) 是我的锅, 但铁定我买来这电脑就有点问题. 忍不了💢</p>
+<h2 id="信息整理"><a href="#信息整理" class="headerlink" title="信息整理"></a>信息整理</h2><p>顺便整理一下我从群友们那听来的购买笔记本电脑的知识点好了:</p>
+<ul>
+<li><p>只是编程不打游戏的话主要关注<strong>内存大小</strong>和<strong>硬盘读写速度</strong>就好了. (机械硬盘是不能要的, 这我已经得到血泪教训了)</p>
+</li>
+<li><p>笔记本电脑的话不管 <strong>i5</strong>, <strong>i7</strong> 还是 <strong>i9</strong> 区别很小, 因为一般散热性能都不够, 处理器升温之后性能下降, 基本性能差不多. 也就是说为了省钱买 <strong>i5</strong> 就可以了. 当然有钱肯定是 <strong>i9</strong>
+走着.</p>
+</li>
+<li><p><strong>显卡</strong>一般也就游戏, 设计, 科学计算会用到的样子, 因此我这不打游戏的直男程序员就不需要太好的显卡了
+(但我发现显卡过于差的话放PPT都卡)</p>
+</li>
+<li><p>虽然几个群友强烈安利我买有至少有2k画质显示屏的电脑, 或者买来后自己换一个屏幕, 因为2k以上分辨率的屏幕体验极佳. 但他们都说<strong>看惯了2k完全不适应1080P</strong>. 那我当然是只买1080P啊😁 另外个人觉得干活用的电脑没必要弄触屏屏幕, 鼠标都嫌打断思路, 更何况触摸屏.</p>
+</li>
+<li><p>虽然linux也是用户群体极大的系统, 但linux对一些硬件设备支持相当的差, 比如有人蓝牙经常断之类. 网上也有许多地方列出了一些公认linux支持不错的电脑. 我看了一圈感觉<strong>ThinkPad</strong>和 <strong>Dell</strong> 都值得信赖. 我还翻到了个<a href="https://certification.ubuntu.com/certification/desktop/" target="_blank" rel="noopener">Ubuntu 个人电脑认证硬件</a>. 不明觉厉.</p>
+</li>
+<li><p>另外个人觉得比较重要的一点是<strong>键盘背光灯</strong>! 晚上不开灯没有背光的话真的只能埋头打字啊!</p>
+</li>
+<li><p>很多电脑虽然 <strong>处理器, 内存, 显卡, 硬盘, 屏幕</strong> 这几项是一样或者相当的, 但价格相差很多. 这是因为其他方面有关. 比如说 <strong>电池容量</strong> (和续航能力有比较大的关系), <strong>接口数量及类型</strong> (比如有几个雷电3), <strong>电脑外壳材质</strong> (比如X1C是碳纤维外壳), 是否有<strong>指纹识别器</strong> (现在Linux下也有指纹识别器的驱动了, 似乎<em>可以拿来输入sudo的密码</em>), 是否有<strong>红外摄像头</strong> (这个linux下似乎没有相关驱动, 目前唯一用处似乎就是Windows Hello), <strong>可拓展性</strong> (比如ThinkPad T480可以把内存加到32G, 而T480S最多只能加到24G), 键盘手感 (我倒是一直用不惯机械键盘😒), <strong>售后服务</strong>等</p>
+</li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>随笔</category>
       </categories>
   </entry>
   <entry>
@@ -5429,6 +5429,50 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
       </categories>
   </entry>
   <entry>
+    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
+    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<div align="right">Language:
+<a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a>
+<a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a>
+</div>
+
+<a id="more"></a>
+
+<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="更改配置后页面未出现变化"><a href="#更改配置后页面未出现变化" class="headerlink" title="更改配置后页面未出现变化"></a>更改配置后页面未出现变化</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
+<h3 id="markdown中文换行导致的空格问题"><a href="#markdown中文换行导致的空格问题" class="headerlink" title="markdown中文换行导致的空格问题"></a>markdown中文换行导致的空格问题</h3><p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Google站点地图报错"><a href="#Google站点地图报错" class="headerlink" title="Google站点地图报错"></a>Google站点地图报错</h3><p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
+<h3 id="如何建立多级分类"><a href="#如何建立多级分类" class="headerlink" title="如何建立多级分类"></a>如何建立多级分类</h3><p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
+<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><h3 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h3><p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a>
+<a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>软件配置</category>
+        <category>Web</category>
+      </categories>
+  </entry>
+  <entry>
     <title>当VSCode成为一种生活方式</title>
     <url>/zh-CN/2019/01/07/%E5%BD%93VSCode%E6%88%90%E4%B8%BA%E4%B8%80%E7%A7%8D%E7%94%9F%E6%B4%BB%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<div align="right">Language:
@@ -5520,50 +5564,6 @@ VSCode之后发现这个选项没被勾上.</p>
       </script>]]></content>
       <categories>
         <category>技巧</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
-    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<div align="right">Language:
-<a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a>
-<a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a>
-</div>
-
-<a id="more"></a>
-
-<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="更改配置后页面未出现变化"><a href="#更改配置后页面未出现变化" class="headerlink" title="更改配置后页面未出现变化"></a>更改配置后页面未出现变化</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
-<h3 id="markdown中文换行导致的空格问题"><a href="#markdown中文换行导致的空格问题" class="headerlink" title="markdown中文换行导致的空格问题"></a>markdown中文换行导致的空格问题</h3><p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
-<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="Google站点地图报错"><a href="#Google站点地图报错" class="headerlink" title="Google站点地图报错"></a>Google站点地图报错</h3><p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
-<h3 id="如何建立多级分类"><a href="#如何建立多级分类" class="headerlink" title="如何建立多级分类"></a>如何建立多级分类</h3><p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
-<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><h3 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h3><p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a>
-<a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>软件配置</category>
-        <category>Web</category>
       </categories>
   </entry>
 </search>
