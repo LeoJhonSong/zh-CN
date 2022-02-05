@@ -5271,7 +5271,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <li>插入tex文件内容可以用<code>\include{}</code>或者<code>\input{}</code>, 区别在于<code>\include{}</code>会另起一页再插入内容, 如果刚好一个文件放一章的话, 那每章开头都会另起一页 (看着会比较多).</li>
 <li><code>\pagestyle{}</code>是用来设置页眉页脚样式的. 在<a href="https://www.overleaf.com/learn/latex/Headers_and_footers#Setting_page_style_for_current_page_only" target="_blank" rel="noopener">Overleaf的页眉页脚文档</a>中可以看到<code>plain</code>样式是没有页眉, 有显示页码的页脚. 因为我<strong>Cover.tex</strong>中的内容包含在<code>titlepage</code>环境中, 所以不显示页码. 之所以把<code>\pagenumbering{roman}</code>放在插入封面页后面是因为要是调换顺序, 封面页还是不会显示页码, 摘要页页码则是<strong>ii</strong>, <strong>i</strong>页就消失了. 我这种写法目录页, 图表目录和术语表也会有罗马数字页码, 不想要的话可以在这几页前设置<code>\pagestyle{empty}</code>, 就什么页眉页脚都没有了.</li>
 </ul>
-<h3 id="术语表"><a href="#术语表" class="headerlink" title="术语表"></a>术语表</h3><img style="width:40%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/notation.jpg">
+<h3 id="术语表"><a href="#术语表" class="headerlink" title="术语表"></a>术语表</h3><div><img style="width:40%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/notation.jpg"></div>
 
 <p>论文中有很多专业名词/缩写/符号的话可以放一个术语表在前头, 类似上面☝这样, 在这个表上也可以反向列出这些词都在哪里出现过. 在术语表的实现上<a href="https://www.overleaf.com/learn/latex/Glossaries#Compiling_the_glossary" target="_blank" rel="noopener">overleaf给出的方案</a>只是最基础的方式, 这里有个<a href="http://mirror.ctan.org/macros/latex/contrib/glossaries/glossaries-user.html#tab:options" target="_blank" rel="noopener">术语表实现方案比较表</a>, 不过对比得比较细节. 大意就是用<code>bib2gls</code>的方案除了需要额外安装<code>bib2gls</code>和java的缺点全是优点. 而这两个东西一点都不难安: <code>bib2gls</code>似乎并不需要额外安装, 至少我这安装了<em>texlive-most</em>后就已经有了. 而Java, 至少在Linux系统上, 网上随便一搜就一堆教程, 基本也就是几句命令的事. 从上图我的示例可以看出这个方案生成的术语表可以很好的排序混杂有希腊字母以及下标的各种术语, 而且用一个单独的bib文件管理所有术语, 只有文章里实际用到的术语才会列在术语表里, 很省心.</p>
 <p>安好了<code>bib2gls</code>和java, 如果你是用VSCode来编辑LaTeX的, 那事情很简单. 打开VSCode的用户级配置json, 然后把LaTeX Workshop的编译工具链方案配置改成这个 (反正默认配置json里还有默认配置, 别担心):</p>
@@ -5303,7 +5303,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 </ul>
 <p>💡如果刻意不想让某一章节/子章节之类出现在标题中, 那就用<code>\section*{}</code>, <code>\subsection*{}</code>这样带星号的.</p>
 <p><code>\paragraph{}</code>和<code>\subparagraph{}</code>无法被显示在目录中, 在文中看着也不太像是标题, 更像加粗的正文. 下图中<strong>test 1</strong>为<code>\paragraph{}</code>, <strong>test 2</strong>为<code>\subparagraph{}</code>, <strong>test 3</strong>为<code>\subsubsection{}</code>.</p>
-<img style="width:80%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/sections.jpg">
+<div><img style="width:80%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/sections.jpg"></div>
 
 <p>因此真要说的话在article这种文档类型中LaTeX原生提供的标题只有三级. 要是写短篇论文的话确实也不需要更小的标题了, 但是记个笔记之类还是有可能需要更多级的标题. <a href="https://tex.stackexchange.com/questions/60209/how-to-add-an-extra-level-of-sections-with-headings-below-subsubsection" target="_blank" rel="noopener">这个stackoverflow问题</a>有给出一些解决方案.</p>
 <h4 id="underfull和overfull警告是什么"><a href="#underfull和overfull警告是什么" class="headerlink" title="underfull和overfull警告是什么"></a>underfull和overfull警告是什么</h4><p>这两种警告是在编译后非常常见的警告, 意味着编译器在这一行找不到合适的换行的地方, 导致这一行在文字框限制内排版出来要不是太空了 (underfull) 要不就是太挤了 (overfull). 也就是说这基本是英文这样的字母语言才会遇到的问题. Overleaf<a href="https://www.overleaf.com/learn/how-to/Understanding_underfull_and_overfull_box_warnings" target="_blank" rel="noopener">这篇文章</a>很详细讲了原因, 但几乎没给处理办法. 💡 要注意其中提到的<strong><em>microtype</em></strong>包xelatex<a href="https://tex.stackexchange.com/questions/118713/is-microtype-fully-supported-now-by-xelatex-if-not-how-can-i-keep-myself-up-to" target="_blank" rel="noopener">目前几乎不支持</a>, 但我感觉我就用默认排版工具生成的pdf排版也还挺好的? 以下是一些关于断行的小技巧.</p>
@@ -5339,8 +5339,10 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">\usepackage[svgnames]{xcolor}  % colouring</span><br><span class="line">\definecolor{bleu_cite}{RGB}{34,111,212}</span><br><span class="line"></span><br><span class="line">\usepackage{hyperref}  % 这个包的导入最好放在导言区最后</span><br><span class="line">\hypersetup{</span><br><span class="line">    colorlinks=true,</span><br><span class="line">    linkcolor=LightSlateGray,  % 默认值red</span><br><span class="line">    citecolor=bleu_cite,  % 默认值green</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>这年代写论文超链接肯定得有, 不然逼格不太够. 导入了<strong><em>hyperref</em></strong>这个包, 目录, 参考文献引用, 图表的交叉引用, 网页链接等才会具有超链接的特性. 上面是我的配置. 导入<strong><em>xcolor</em></strong>包可以用<code>\definecolor{}</code>命令自定义一些颜色, 带参数的话也可以使用<strong><em>xcolor</em></strong>提供的很多种颜色, 比如上面用的<code>svgnames</code>这个颜色集里有<code>LightSlateGray</code>. 我基本就用这个颜色集, 下图列出了<em>svgnames<em>提供的所有颜色. 这里的</em>linkcolor<em>指的不是网页链接的颜色, 是页内链接的, 比如目录, 术语到术语表的跳转链接等. 网页链接的颜色值对应的是</em>urlcolor</em>, 默认颜色是品红色, 还挺好看的, 我就没改. 正如在有的论文中见到的那样, 超链接也可以改成带颜色框的样式, 操作方式参考<a href="https://tex.stackexchange.com/questions/50747/options-for-appearance-of-links-in-hyperref" target="_blank" rel="noopener">这个回答</a>.</p>
+<div>
 <img style="width:60%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/color1.jpg">
 <img style="width:60%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/color2.jpg">
+</div>
 
 <h2 id="加速生成"><a href="#加速生成" class="headerlink" title="加速生成"></a>加速生成</h2><h3 id="草稿模式"><a href="#草稿模式" class="headerlink" title="草稿模式"></a>草稿模式</h3><p>随着工程大起来生成pdf会变慢, 有一些技巧可以加速生成不完整的pdf, 在写作过程中快速检查. 因为LaTeX每次生成并不能利用.</p>
 <p>一种方式是开启草稿模式. 方式是在上面提到的<code>\documentclass[]{}</code>的参数里加个<code>draft</code>. 以草稿模式生成的pdf里图片不会实际插入, 是用一个同样大小的方框来表示. 超链接, 书签等功能也会被关闭. 另外比较好的一点是在underfull/overfull的行会被在行末添加一个黑色方块标记出来.</p>
@@ -5353,7 +5355,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <h3 id="浮动体"><a href="#浮动体" class="headerlink" title="浮动体"></a>浮动体</h3><p>figure和table是LaTeX原生的两种浮动体环境, 用于灵活排版图片和表格, 并且为图表标题 (caption) 提供环境 (就是说即便不放在浮动体里也可以将图片表格插入LaTeX). 而且其实这两种环境中什么都能放, 没有限定只能放图片或表格. 这两种环境都可以给[<em>placement</em>]参数 (默认是<code>btp</code>), 通过指定<code>htb</code>限制只能放在这三种位置 (也就是不允许单独成页). 可用参数参见<a href="https://www.overleaf.com/learn/latex/Inserting_Images#Positioning" target="_blank" rel="noopener">这附近有的一个表格</a>. 值得一提的是LaTeX总是以h-t-b-p的优先级来决定浮动体位置, 和填的参数的顺序无关. 💡 除单独成页外, 默认每页不超过3个浮动体, 其中顶部不超过2个, 底部不超过1个以及浮动体空间占页面的百分比 (默认顶部不超过70%, 底部不超过30%)</p>
 <p>关于双栏环境下浮动体的排版以及其他细节见<em>一份不太简短的LaTeX2ε介绍</em>的<strong>3.9 浮动体</strong>.</p>
 <h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4><p>先上一个论文利用的懒人模板样例 (效果如图):</p>
-<img style="width:60%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/figure.jpg">
+<div><img style="width:60%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/figure.jpg"></div>
 
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">% 导言部分</span><br><span class="line">\usepackage{graphicx}  % 图片插入支持宏包</span><br><span class="line">\graphicspath{{./}}  % 将之后插入图片的检索路径设为根文件所在目录, 不然插入图片时的图片地址是相对于当前tex文件的, 会比较麻烦</span><br><span class="line">% \graphicspath{{./Figures}}  % 其实更常见的是直接将检索路径设为你的图片文件夹, 但我为了能触发我VSC的路径补全所以只设成了根文件所在目录</span><br><span class="line">\usepackage[</span><br><span class="line">   colorlinks=true,</span><br><span class="line">]{hyperref}  % 给交叉引用的引用编号添加超链接支持</span><br><span class="line"></span><br><span class="line">% 正文部分</span><br><span class="line">\begin{figure}[htb]</span><br><span class="line">      \centering  % 让图片居中. 默认是左对齐</span><br><span class="line">      \includegraphics[width=0.8\textwidth]{Figures/mesh.jpg}  % 限制图片宽度为0.8倍版面宽度</span><br><span class="line">      \caption[Test]{Test: blablabla}\label{f:mesh}</span><br><span class="line">\end{figure}</span><br><span class="line"></span><br><span class="line">As you can see in \autoref{f:mesh}, the function grows near 0.</span><br></pre></td></tr></tbody></table></figure>
 
@@ -5371,7 +5373,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><p>同样先上个懒人模板:</p>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">% 导言部分</span><br><span class="line">\usepackage{tabularx}  % 表格插入支持宏包</span><br><span class="line">\usepackage{booktabs}  % 好像只是拿来画分隔线的</span><br><span class="line"></span><br><span class="line">% 正文部分</span><br><span class="line">\begin{table}[htb]</span><br><span class="line">    \renewcommand*{\arraystretch}{1.3}  % 增大一点行间距让表格不那么紧凑</span><br><span class="line">    \centering</span><br><span class="line">    \caption[Short Title]{Short Title: long description}\label{t:table_test}</span><br><span class="line">    \begin{tabularx}{0.6\textwidth}{Xcc}</span><br><span class="line">        \toprule</span><br><span class="line">        title1 &amp; title2 &amp; title3 \\</span><br><span class="line">        \midrule</span><br><span class="line">        experiment 1 &amp; item 11 &amp; item 12 \\</span><br><span class="line">        experiment 2  &amp; item 21  &amp; item 22 \\</span><br><span class="line">        \bottomrule</span><br><span class="line">    \end{tabularx}</span><br><span class="line">\end{table}</span><br></pre></td></tr></tbody></table></figure>
 
-<img style="width:60%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/table.jpg">
+<div><img style="width:60%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/table.jpg"></div>
 
 <p>图中前一个表格是上面的模板的效果, 后一个表格是没有增大行间距的表格的效果. 插入表格有几种环境可用, <code>tabularx</code>这个环境是允许指定整个表的宽度和每列的对齐方式后自动计算每列宽度, 我觉得比<code>tabular</code>环境更智能省心. <code>tabularx</code>环境接受两个参数, 前一个是整个表格的宽度, 后一个是每列的对齐方式. <code>X</code>和<code>l</code>都是左对齐, 但<code>X</code>会让这列的列宽更宽, 让内容能占满整个表格. 比如上图前面的表格第一列就是<code>X</code>而后一个表格第一列是<code>l</code>, 就只有刚好适应单元格内容的列宽. 从单元格的侧边框可以看出最后一列确实是居中对齐, 但因为LaTeX是从左到右排版表格的, 因此多了些空余… <code>c</code>和<code>r</code>则是适应单元格宽度的居中对齐和右对齐. 想要智能宽度的居中对齐和右对齐的话用<code>&gt;{\centering\arraybackslash}X</code>和<code>&gt;{\raggedleft\arraybackslash}X</code> (没错这一长串和<code>l</code>一样往里填)</p>
 <p><code>&amp;</code>用来分隔一行中的单元格, <code>\\</code>表示一行的末尾. <strong><em>booktabs</em></strong>这个包里好像只有一些分隔线, <code>\toprule</code>, <code>\midrule</code>这些的. 更多画边框线的方式参加<a href="https://www.overleaf.com/learn/latex/tables" target="_blank" rel="noopener">overleaf-表格</a>.</p>
@@ -5380,20 +5382,20 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><code>lstlisting</code>环境 (需要导入<strong><em>listings</em></strong>宏包) 是传统的插入代码用环境, 只是插入个代码的话倒是语法也很简单, 但是要想让插入的代码有语法高亮的话就必须<a href="https://www.overleaf.com/learn/latex/Code_listing#Code_styles_and_colours" target="_blank" rel="noopener">这样</a>自己在导言区放一个语法高亮配色方案, 很不简洁. 强推一下<code>minted</code>环境 (需要导入<strong><em>minted</em></strong>宏包), 这是一个自带多种语法高亮配色方案且支持绝大多数语言语法高亮的很现代的代码插入环境! 使用方式见<a href="https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted#Introduction" target="_blank" rel="noopener">overleaf-用minted语法高亮</a>. 如果你追求比较高, 觉得minted自带的语法高亮不够细致,  比如minted对yaml的语法高亮不会像VSC那样将布尔值, 数字, 字符串等类型值用颜色标示出来, 那可以看看stackoverflow上这个<a href="https://tex.stackexchange.com/questions/152829/how-can-i-highlight-yaml-code-in-a-pretty-way-with-listings" target="_blank" rel="noopener">自定义语法高亮问题</a>.</p>
 <p>💡 <strong><em>minted</em></strong>包依赖于一个叫<em>Pygments</em>的python包. 如果你环境里本来就有python那事情就很简单了, 一句<code>pip install pygments</code>搞定.</p>
 <p>补充: <a href="https://tex.stackexchange.com/questions/12428/code-spanning-over-two-pages-with-minted-inside-listing-with-caption" target="_blank" rel="noopener">跨页代码无法caption问题</a>.</p>
-<h3 id="特殊符号"><a href="#特殊符号" class="headerlink" title="特殊符号"></a>特殊符号</h3><img style="width:70%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/symbol.jpg">
+<h3 id="特殊符号"><a href="#特殊符号" class="headerlink" title="特殊符号"></a>特殊符号</h3><div><img style="width:70%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/symbol.jpg"></div>
 
 <p>LaTeX里更特殊的符号其实是靠<strong><em>tkiz</em></strong>包绘制出来的, 比如上面这段话里的圆圈1, 是通过在导言区定义了一个新的命令<code>\ballnumber{}</code>然后在文中调用的方式来实现的:</p>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">% 导言区</span><br><span class="line">\usepackage{tikz}  % 绘图宏包</span><br><span class="line">\newcommand{\ballnumber}[1]{</span><br><span class="line">    \tikz[baseline=(myanchor.base)]</span><br><span class="line">    \node[circle,fill=.,inner sep=1pt](myanchor){\color{-.}\bfseries\footnotesize #1};</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>这样的东西要用只能是现场上网搜了. 在这个<a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="noopener">手绘查询符号网站</a>可以通过手绘的方式查到绝大多数符号 (但上面说的这个圆圈1查不到). 这里再吹一下VSC的LaTeX Workshop插件, 提供了一个快速插入常见符号LaTeX命令的面板, 还能快速插入常用tkiz绘制 🐮</p>
-   <img style="width:35%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/snippet.jpg">
+<div><img style="width:35%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/snippet.jpg"></div>
 
 <h2 id="中文支持"><a href="#中文支持" class="headerlink" title="中文支持"></a>中文支持</h2><p>我目前还没用LaTeX写过中文内容, 不过看起来<strong><em>xeCJK</em></strong>宏包提供的中文支持效果还不错 (前提是用xelatex作为编译器), 不知道大量使用中文时会不会出问题. 这篇<a href="https://www.overleaf.com/learn/latex/Chinese#xeCJK_with_XeLaTeX" target="_blank" rel="noopener">overleaf-中文支持</a>我先码住.</p>
 <h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><code>biblatex</code>是毋庸置疑比<code>bibtex</code>更现代使用更简洁灵活的参考文献管理工具. 先上个我偏好的配置:</p>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">% 导言区</span><br><span class="line">\usepackage[</span><br><span class="line">    backend=biber,</span><br><span class="line">    style=ieee,  % 参考文献列表显示格式</span><br><span class="line">    citestyle=authoryear,  % 引用显示格式</span><br><span class="line">    backref=true,  % 在参考文献列表中反向列出当前引用条目被引用的页码</span><br><span class="line">    maxcitenames=1,  % 在引用处最多显示作者数量</span><br><span class="line">    maxbibnames=999,  % 在参考文献列表中最多显示作者数量. 直接拉到一个很大的数强制显示全部作者</span><br><span class="line">    sorting=ynt,  % 参考文献列表中条目排序主键: year-name-title</span><br><span class="line">]{biblatex}</span><br><span class="line">% 添加参考文献bib文件 (可以有多个)</span><br><span class="line">\addbibresource{References.bib}  % 然后放一个References.bib在根目录</span><br><span class="line">% 让链接包含整个\cite{}对应的内容</span><br><span class="line">\makeatletter</span><br><span class="line">    \let\abx@macro@citeOrig\abx@macro@cite{}</span><br><span class="line">    \renewbibmacro{cite}{\bibhyperref{\let\bibhyperref\relax\relax\abx@macro@citeOrig{}}}</span><br><span class="line">\makeatother{}</span><br><span class="line">% 使\citetitle{}对应内容支持超链接</span><br><span class="line">\DeclareCiteCommand{\citetitle}{\usebibmacro{prenote}}{</span><br><span class="line">    \ifciteindex{\indexfield{indextitle}}{}\printtext[bibhyperref]{\printfield[citetitle]{labeltitle}}</span><br><span class="line">}{\multicitedelim}{\usebibmacro{postnote}}</span><br><span class="line"></span><br><span class="line">\usepackage[colorlinks=true]{hyperref}  % 开启超链接支持</span><br><span class="line"></span><br><span class="line">% 正文</span><br><span class="line">\cite{test}  %在要引用的地方用个这个就行, 参数填bib文件中这个参考文献条目的标识 (大括号后第一个东西)</span><br><span class="line"></span><br><span class="line">\printbibliography  % 输出参考文献列表</span><br></pre></td></tr></tbody></table></figure>
 
-<img style="width:70%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/cite.jpg">
-<img style="width:70%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/bib.jpg">
+<div><img style="width:70%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/cite.jpg">
+<img style="width:70%; display:block; margin-left:auto; margin-right:auto;" data-src="./LaTeX杂记/bib.jpg"></div>
 
 <ul>
 <li><code>backend=biber</code>是因为<code>biblatex</code>需要额外工具<strong>biber</strong>作为后端来生成参考文献列表. 因此我<a href="#术语表">这附近</a>给出的VSCode的LaTeX编译工具链配置里有一环是<strong>biber</strong>.</li>
@@ -5426,6 +5428,50 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
         <category>杂记</category>
         <category>语言</category>
         <category>LaTeX</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
+    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<div align="right">Language:
+<a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a>
+<a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a>
+</div>
+
+<a id="more"></a>
+
+<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="更改配置后页面未出现变化"><a href="#更改配置后页面未出现变化" class="headerlink" title="更改配置后页面未出现变化"></a>更改配置后页面未出现变化</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
+<h3 id="markdown中文换行导致的空格问题"><a href="#markdown中文换行导致的空格问题" class="headerlink" title="markdown中文换行导致的空格问题"></a>markdown中文换行导致的空格问题</h3><p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Google站点地图报错"><a href="#Google站点地图报错" class="headerlink" title="Google站点地图报错"></a>Google站点地图报错</h3><p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
+<h3 id="如何建立多级分类"><a href="#如何建立多级分类" class="headerlink" title="如何建立多级分类"></a>如何建立多级分类</h3><p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
+<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><h3 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h3><p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a>
+<a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>软件配置</category>
+        <category>Web</category>
       </categories>
   </entry>
   <entry>
@@ -5520,50 +5566,6 @@ VSCode之后发现这个选项没被勾上.</p>
         <category>软件配置</category>
         <category>VSC</category>
         <category>技巧</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
-    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<div align="right">Language:
-<a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a>
-<a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a>
-</div>
-
-<a id="more"></a>
-
-<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="更改配置后页面未出现变化"><a href="#更改配置后页面未出现变化" class="headerlink" title="更改配置后页面未出现变化"></a>更改配置后页面未出现变化</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
-<h3 id="markdown中文换行导致的空格问题"><a href="#markdown中文换行导致的空格问题" class="headerlink" title="markdown中文换行导致的空格问题"></a>markdown中文换行导致的空格问题</h3><p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
-<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="Google站点地图报错"><a href="#Google站点地图报错" class="headerlink" title="Google站点地图报错"></a>Google站点地图报错</h3><p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
-<h3 id="如何建立多级分类"><a href="#如何建立多级分类" class="headerlink" title="如何建立多级分类"></a>如何建立多级分类</h3><p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
-<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><h3 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h3><p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a>
-<a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>软件配置</category>
-        <category>Web</category>
       </categories>
   </entry>
 </search>
