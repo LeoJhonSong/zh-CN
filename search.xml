@@ -541,6 +541,139 @@ VSCode之后发现这个选项没被勾上.</p>
       </categories>
   </entry>
   <entry>
+    <title>麦语言速成</title>
+    <url>/zh-CN/2019/01/17/%E9%BA%A6%E8%AF%AD%E8%A8%80%E9%80%9F%E6%88%90/</url>
+    <content><![CDATA[<blockquote>
+<p>因为父亲经常炒期货，我速成一下<a href="https://www.wenhua.com.cn/myy/" target="_blank" rel="noopener">麦语言</a>来减轻一下他的工作量吧。</p>
+</blockquote>
+<a id="more"></a>
+
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 我体验下来觉得期货风险真的特别大, 能看盘时还是盯着点比较好.</p>
+<p>随着我逐渐了解才发现量化交易并没有我想象中那么简单…单说
+<a href="https://www.zhihu.com/question/25404359" target="_blank" rel="noopener">这些业内人士使用的语言</a>就五花八门…<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8">🤦♂</span>
+<a href="https://zhuanlan.zhihu.com/p/33839493" target="_blank" rel="noopener">这位仁兄</a>则让我大概了解了局面.
+站在一个接触编程有一段时间的人的角度，我是觉得用C#编写模型比用麦语言看着NB多了，但我明显没那水平和精力,更何况我觉得知乎这个提问里的回答都说的很有道理,<a href="https://www.zhihu.com/question/36803590" target="_blank" rel="noopener">能赚钱的工具就是好工具</a>
+。还是老老实实研究一下传说中用<strong>易语言</strong>编写的麦语言<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8">🤦♂</span></p>
+<blockquote>
+<p>看资料过程中<a href="http://www.tradeblazer.net/" target="_blank" rel="noopener">交易开拓者</a>(简称<strong>TB</strong>)和
+<a href="https://www.multicharts.cn/" target="_blank" rel="noopener">MultiCharts</a>(简称<strong>MC</strong>)也经常被提及。</p>
+</blockquote>
+<h2 id="主要参考资料"><a href="#主要参考资料" class="headerlink" title="主要参考资料"></a>主要参考资料</h2><p>我觉得最蛋疼的是这玩意好像没法debug啊!!<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f627.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f627.png?v8">😧</span></p>
+<ul>
+<li><a href="麦语言速成/教程.zip">网上找到的一套PPT教程</a>，并附上对应视频教程的<a href="https://pan.baidu.com/s/1foE6ORfqdGHyTQ-ZW9NPVg" target="_blank" rel="noopener">百度云链接</a></li>
+<li><a href="http://www.wenhua.com.cn/guide/wh8/index.htm" target="_blank" rel="noopener">智赢wh8使用说明书</a></li>
+<li><a href="http://www.wenhua.com.cn/guide/views41a3.htm" target="_blank" rel="noopener">wh8趋势跟踪模型语法参考</a></li>
+<li><a href="http://www.wenhua.com.cn/guide/wh8_zjyfhs2.htm" target="_blank" rel="noopener">wh8算法交易模型语法参考</a></li>
+</ul>
+<p>这套PPT有文华财经的水印，大概是官方教程吧。而且我觉得讲得很浅显也比较详细了,好评<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<h2 id="麦语言语法简记"><a href="#麦语言语法简记" class="headerlink" title="麦语言语法简记"></a>麦语言语法简记</h2><h3 id="算法交易模型与趋势跟踪模型"><a href="#算法交易模型与趋势跟踪模型" class="headerlink" title="算法交易模型与趋势跟踪模型"></a>算法交易模型与趋势跟踪模型</h3><p>打开wh8后我发现可以用来交易的分两种模型 (即代码), 分
+<a href="http://www.wenhua.com.cn/new_guide/Wh8/view4_6.html" target="_blank" rel="noopener">算法交易模型和趋势跟踪模型</a>,
+普通的趋势交易策略使用趋势模型编写，加载到程序化平台运行实现自动交易；与趋势无关的盘口高频交易模型，需要用算法模型编写. 一开始我并没有理解这两种模型的区别,
+(实际这两个模型的名字非常直白的指出了两者的应用领域)
+看到算法交易模型使用的是类C语法就果断开始写这个, 后来我才发现其中区别:</p>
+<ul>
+<li>趋势跟踪模型中可以调用很多常用分析指标, 比如布林通道, 比如指数加权移动平均, 更注重对目标的<strong>趋势</strong>的分析</li>
+<li>算法跟踪模型更多的是能调用未经处理的精确数据, 甚至不提供EMA等很常用的分析指标
+(如果需要只能自己写), 这类模型更注重于对<strong>实时行情</strong> (即<strong>盘口</strong>) 的处理.</li>
+<li>算法交易模型的回测只提供一日的tick数据, 不支持更久的回测.</li>
+</ul>
+<p>看了wh8说明书中<a href="http://www.wenhua.com.cn/new_guide/Wh8/view4_5.html" target="_blank" rel="noopener">相关章节</a>
+个人觉得算法交易模型更多应当与趋势跟踪模型配合使用, 说明书有句话说得好</p>
+<blockquote>
+<p>利用趋势模型可以有效捕捉趋势行情的交易方向，当交易方向确定，下一步便是寻找入场点。一个精准的入场点位是交易成功的起点，使用盘口的高频报价辅助判断无疑是最合适的方案</p>
+</blockquote>
+<p>也即是说由<strong>趋势模型</strong>判断是做多还是做空, 由<strong>算法模型</strong>判断买, 卖精确时间是比较科学的运用方式.</p>
+<p>由于我需要写的模型并不要求高频交易, 主要的是做小时线, 因此只建立趋势模型. (趋势模型语法太低级也只好忍了<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8">😢</span>)</p>
+<h3 id="一开一平信号过滤模型·加减仓模型等"><a href="#一开一平信号过滤模型·加减仓模型等" class="headerlink" title="一开一平信号过滤模型·加减仓模型等"></a>一开一平信号过滤模型·加减仓模型等</h3><p>以上是一种分类方式, 另外按交易行为分类可以分为一开一平信号过滤模型, 加减仓模型等模型.
+<strong>一开一平模型</strong>限定了必须一平跟随一开或者一开跟随一平, 如果是简单模型还是很方便, 但无法特定开仓手数, 只能在开始运行模型时指定整个模型开仓手数, 也无法加仓. 而<strong>加减仓模型</strong>打破了前述弊端, 但需要自己设置开闭仓信号滤波器, 费点脑子.
+<a href="http://www.wenhua.com.cn/popwin/cxhmingci.htm" target="_blank" rel="noopener">模型列表</a></p>
+<h3 id="算法交易模型与C的比较"><a href="#算法交易模型与C的比较" class="headerlink" title="算法交易模型与C的比较"></a>算法交易模型与C的比较</h3><p>因为也体验了一会算法模型的语法, 稍作整理. 使用下来感觉与C语言语法区别主要如下:</p>
+<ul>
+<li>不需要引用头文件</li>
+<li>变量可以用<strong>GLOBAL_VAR</strong>或<strong>VAR</strong>关键字来声明, 变量是动态数据类型, 似乎也可以使用
+<strong>WriteGlobal</strong>, <strong>WriteGlobalF</strong> 等来定义整型, 浮点等变量. (文华给出的所有示例中定义变量竟然全部定义的全局变量也是很迷了)</li>
+<li>函数类型可以是<strong>VOID</strong>或<strong>VAR</strong>, 当然如果需要返回值需要定义为<strong>VAR</strong>型</li>
+<li>函数, 变量可以先引用后声明</li>
+<li>麦语言的函数是可以有返回值的! 但是要把要返回的值括起来. (参考<a href="http://www.wenhua.com.cn/guide/wh8_zjyfhs2.htm" target="_blank" rel="noopener">这里</a>)</li>
+</ul>
+<h3 id="趋势跟踪模型语法简记"><a href="#趋势跟踪模型语法简记" class="headerlink" title="趋势跟踪模型语法简记"></a>趋势跟踪模型语法简记</h3><p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> 常用语句:</p>
+<table>
+<thead>
+<tr>
+<th>语句</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>=</td>
+<td><strong>等于</strong>操作符 :warning:趋势模型中赋值操作符为<code>:=</code>. 应注意等于操作符<strong>只有一个</strong>=</td>
+</tr>
+<tr>
+<td>:</td>
+<td>定义变量并且加载模型时显示图线. 冒号前为变量名.</td>
+</tr>
+<tr>
+<td>:=</td>
+<td>定义变量并且不显示图线</td>
+</tr>
+<tr>
+<td>#IMPORT [PERIOD,N,FORMULA] AS VAR</td>
+<td><a href="#跨周期编写">见下</a></td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>逻辑与</td>
+</tr>
+<tr>
+<td>||</td>
+<td>逻辑或</td>
+</tr>
+<tr>
+<td>IF, THEN</td>
+<td>参见<a href="http://www.wenhua.com.cn/guide/views41a3.htm" target="_blank" rel="noopener">这里</a></td>
+</tr>
+</tbody></table>
+<h3 id="模组"><a href="#模组" class="headerlink" title="模组"></a>模组</h3><p>算法交易模型中可以调用的一大串函数有类似<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f447.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f447.png?v8">👇</span>这样的函数说明.</p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">注：</span><br><span class="line">该函数前必须用AA.的形式来调用，其中AA为字符串变量或者模组名。该函数不能单独使用。</span><br></pre></td></tr></tbody></table></figure>
+
+<p>开始我以为模组也是模型的意思, 后来看到示例里的用法似乎模组类似于<strong>类</strong>, 每个模组对应一个实例, 可以调用里面的各种函数来处理这个合约的数据, 而且每个模型也可以是一个模组一个模型可以调用另一个模型的函数, 就很像类. <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8">🤔</span>我是这样理解的</p>
+<h3 id="逻辑判断"><a href="#逻辑判断" class="headerlink" title="逻辑判断"></a>逻辑判断</h3><p>看过wh8给出的示例后我发现官方风格写法里趋势模型基本没有用过IF, ELSE什么的, 普遍是一句话浓缩一串条件搞定. 主要这玩意语法就让人懒得写IF, ELSE…而算法模型中运用IF, ELSE较多.</p>
+<p>很有意思的是趋势模型中可以将一串判断条件赋值给一个变量作为布林变量. 然后通常是以下面这样的形式来调用</p>
+<p><code>[布林变量], [交易指令]</code></p>
+<p>另外趋势模型中逻辑运算操作符只有逻辑与和逻辑或, 如果需要其他运算, 我是使用的<code>NOT()</code>函数</p>
+<h3 id="跨周期编写"><a href="#跨周期编写" class="headerlink" title="跨周期编写"></a>跨周期编写</h3><p>跨周期模型函数: #IMPORT [PERIOD,N,FORMULA]</p>
+<p>举例: <code>#IMPORT[DAY,2,WHBXSF] AS VAR1</code><br>调取自定义2日线周期上WHBXSF指标中的数据. 需要先编写被引用的指标 (只有一串变量的模型似乎称为<strong>指标</strong>)</p>
+<p>具体可以参考<a href="http://www.2818668.com/369.html" target="_blank" rel="noopener">这个</a></p>
+<h2 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h2><ul>
+<li>到现在我也不确定这些模型是循环运行还是怎么在执行, 如果是循环运行一次运行时间是多长</li>
+</ul>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>搜索过程中看到的<a href="https://zhuanlan.zhihu.com/p/52867020" target="_blank" rel="noopener">十六套经典策略</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>量化交易</category>
+        <category>语言</category>
+        <category>麦语言</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Bug List</title>
     <url>/zh-CN/2019/02/05/Bug-List/</url>
     <content><![CDATA[<p>我想记录一下我遇到过的各种bug, 不论大小. 原本我从一开始学编程的时候就在这么做了, 但我也忘了我什么时候竟然怠慢了这件事! 我会想到记录这些是上大学前的暑假看到
@@ -2991,41 +3124,21 @@ C/C++接口时.其他部分全部用Python糊!</p>
 <a id="more"></a>
 
 <p>比如这样:</p>
-<p style="color:purple">
-[MESSAGE] Turning left
-</p>
-<p style="color:yellow">
-[DEBUG] target: 4
-</p>
-<p style="color:red">
-[Error] target not found
-</p>
-<p style="color:purple">
-[MESSAGE] Turning left
-</p>
-<p style="color:purple">
-[MESSAGE] Diving
-</p>
-<p style="color:green">
-[INFO] depth: 9m
-</p>
-<p style="color:purple">
-[MESSAGE] Diving
-</p>
-<p style="color:green">
-[INFO] depth: 10m
-</p>
-<p style="color:purple">
-[MESSAGE] Forward
-</p>
-<p style="color:purple">
-[MESSAGE] Turing right
-</p>
-
+<p style="color:purple">[MESSAGE] Turning left</p>
+<p style="color:yellow">[DEBUG] target: 4</p>
+<p style="color:red">[Error] target not found</p>
+<p style="color:purple">[MESSAGE] Turning left</p>
+<p style="color:purple">[MESSAGE] Diving</p>
+<p style="color:green">[INFO] depth: 9m</p>
+<p style="color:purple">[MESSAGE] Diving</p>
+<p style="color:green">[INFO] depth: 10m</p>
+<p style="color:purple">[MESSAGE] Forward</p>
+<p style="color:purple">[MESSAGE] Turing right</p>
 
 <p>能极大的增强终端信息的可读性!😆</p>
 <p>这应该是Linux终端的特性, (我并不清楚是否兼容Windows命令行), shell, python, C++的彩色文字语法几乎是一样的.</p>
-<h2 id="颜色表"><a href="#颜色表" class="headerlink" title="颜色表"></a>颜色表</h2><table>
+<h2 id="颜色表"><a href="#颜色表" class="headerlink" title="颜色表"></a>颜色表</h2><p><a href="https://en.wikipedia.org/wiki/ANSI_escape_code#Colors" target="_blank" rel="noopener">维基的表</a></p>
+<table>
 <thead>
 <tr>
 <th>前景色 (字体颜色) 代码</th>
@@ -3106,6 +3219,9 @@ C/C++接口时.其他部分全部用Python糊!</p>
 <td>不可见</td>
 </tr>
 </tbody></table>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><ul>
+<li><a href="https://stackoverflow.com/a/55773513/10088906" target="_blank" rel="noopener">readline的提示符误将不可见字符认为可见</a></li>
+</ul>
 <h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="shell语法"><a href="#shell语法" class="headerlink" title="shell语法"></a>shell语法</h3><p>举例:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">echo "\e[31;43;1mError\!\e[0m"</span><br></pre></td></tr></tbody></table></figure>
 
@@ -5210,113 +5326,24 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
       </categories>
   </entry>
   <entry>
-    <title>麦语言速成</title>
-    <url>/zh-CN/2019/01/17/%E9%BA%A6%E8%AF%AD%E8%A8%80%E9%80%9F%E6%88%90/</url>
-    <content><![CDATA[<blockquote>
-<p>因为父亲经常炒期货，我速成一下<a href="https://www.wenhua.com.cn/myy/" target="_blank" rel="noopener">麦语言</a>来减轻一下他的工作量吧。</p>
-</blockquote>
+    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
+    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<div align="right">Language:
+<a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a>
+<a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a>
+</div>
+
 <a id="more"></a>
 
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 我体验下来觉得期货风险真的特别大, 能看盘时还是盯着点比较好.</p>
-<p>随着我逐渐了解才发现量化交易并没有我想象中那么简单…单说
-<a href="https://www.zhihu.com/question/25404359" target="_blank" rel="noopener">这些业内人士使用的语言</a>就五花八门…<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8">🤦♂</span>
-<a href="https://zhuanlan.zhihu.com/p/33839493" target="_blank" rel="noopener">这位仁兄</a>则让我大概了解了局面.
-站在一个接触编程有一段时间的人的角度，我是觉得用C#编写模型比用麦语言看着NB多了，但我明显没那水平和精力,更何况我觉得知乎这个提问里的回答都说的很有道理,<a href="https://www.zhihu.com/question/36803590" target="_blank" rel="noopener">能赚钱的工具就是好工具</a>
-。还是老老实实研究一下传说中用<strong>易语言</strong>编写的麦语言<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8">🤦♂</span></p>
-<blockquote>
-<p>看资料过程中<a href="http://www.tradeblazer.net/" target="_blank" rel="noopener">交易开拓者</a>(简称<strong>TB</strong>)和
-<a href="https://www.multicharts.cn/" target="_blank" rel="noopener">MultiCharts</a>(简称<strong>MC</strong>)也经常被提及。</p>
-</blockquote>
-<h2 id="主要参考资料"><a href="#主要参考资料" class="headerlink" title="主要参考资料"></a>主要参考资料</h2><p>我觉得最蛋疼的是这玩意好像没法debug啊!!<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f627.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f627.png?v8">😧</span></p>
-<ul>
-<li><a href="麦语言速成/教程.zip">网上找到的一套PPT教程</a>，并附上对应视频教程的<a href="https://pan.baidu.com/s/1foE6ORfqdGHyTQ-ZW9NPVg" target="_blank" rel="noopener">百度云链接</a></li>
-<li><a href="http://www.wenhua.com.cn/guide/wh8/index.htm" target="_blank" rel="noopener">智赢wh8使用说明书</a></li>
-<li><a href="http://www.wenhua.com.cn/guide/views41a3.htm" target="_blank" rel="noopener">wh8趋势跟踪模型语法参考</a></li>
-<li><a href="http://www.wenhua.com.cn/guide/wh8_zjyfhs2.htm" target="_blank" rel="noopener">wh8算法交易模型语法参考</a></li>
-</ul>
-<p>这套PPT有文华财经的水印，大概是官方教程吧。而且我觉得讲得很浅显也比较详细了,好评<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<h2 id="麦语言语法简记"><a href="#麦语言语法简记" class="headerlink" title="麦语言语法简记"></a>麦语言语法简记</h2><h3 id="算法交易模型与趋势跟踪模型"><a href="#算法交易模型与趋势跟踪模型" class="headerlink" title="算法交易模型与趋势跟踪模型"></a>算法交易模型与趋势跟踪模型</h3><p>打开wh8后我发现可以用来交易的分两种模型 (即代码), 分
-<a href="http://www.wenhua.com.cn/new_guide/Wh8/view4_6.html" target="_blank" rel="noopener">算法交易模型和趋势跟踪模型</a>,
-普通的趋势交易策略使用趋势模型编写，加载到程序化平台运行实现自动交易；与趋势无关的盘口高频交易模型，需要用算法模型编写. 一开始我并没有理解这两种模型的区别,
-(实际这两个模型的名字非常直白的指出了两者的应用领域)
-看到算法交易模型使用的是类C语法就果断开始写这个, 后来我才发现其中区别:</p>
-<ul>
-<li>趋势跟踪模型中可以调用很多常用分析指标, 比如布林通道, 比如指数加权移动平均, 更注重对目标的<strong>趋势</strong>的分析</li>
-<li>算法跟踪模型更多的是能调用未经处理的精确数据, 甚至不提供EMA等很常用的分析指标
-(如果需要只能自己写), 这类模型更注重于对<strong>实时行情</strong> (即<strong>盘口</strong>) 的处理.</li>
-<li>算法交易模型的回测只提供一日的tick数据, 不支持更久的回测.</li>
-</ul>
-<p>看了wh8说明书中<a href="http://www.wenhua.com.cn/new_guide/Wh8/view4_5.html" target="_blank" rel="noopener">相关章节</a>
-个人觉得算法交易模型更多应当与趋势跟踪模型配合使用, 说明书有句话说得好</p>
-<blockquote>
-<p>利用趋势模型可以有效捕捉趋势行情的交易方向，当交易方向确定，下一步便是寻找入场点。一个精准的入场点位是交易成功的起点，使用盘口的高频报价辅助判断无疑是最合适的方案</p>
-</blockquote>
-<p>也即是说由<strong>趋势模型</strong>判断是做多还是做空, 由<strong>算法模型</strong>判断买, 卖精确时间是比较科学的运用方式.</p>
-<p>由于我需要写的模型并不要求高频交易, 主要的是做小时线, 因此只建立趋势模型. (趋势模型语法太低级也只好忍了<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8">😢</span>)</p>
-<h3 id="一开一平信号过滤模型·加减仓模型等"><a href="#一开一平信号过滤模型·加减仓模型等" class="headerlink" title="一开一平信号过滤模型·加减仓模型等"></a>一开一平信号过滤模型·加减仓模型等</h3><p>以上是一种分类方式, 另外按交易行为分类可以分为一开一平信号过滤模型, 加减仓模型等模型.
-<strong>一开一平模型</strong>限定了必须一平跟随一开或者一开跟随一平, 如果是简单模型还是很方便, 但无法特定开仓手数, 只能在开始运行模型时指定整个模型开仓手数, 也无法加仓. 而<strong>加减仓模型</strong>打破了前述弊端, 但需要自己设置开闭仓信号滤波器, 费点脑子.
-<a href="http://www.wenhua.com.cn/popwin/cxhmingci.htm" target="_blank" rel="noopener">模型列表</a></p>
-<h3 id="算法交易模型与C的比较"><a href="#算法交易模型与C的比较" class="headerlink" title="算法交易模型与C的比较"></a>算法交易模型与C的比较</h3><p>因为也体验了一会算法模型的语法, 稍作整理. 使用下来感觉与C语言语法区别主要如下:</p>
-<ul>
-<li>不需要引用头文件</li>
-<li>变量可以用<strong>GLOBAL_VAR</strong>或<strong>VAR</strong>关键字来声明, 变量是动态数据类型, 似乎也可以使用
-<strong>WriteGlobal</strong>, <strong>WriteGlobalF</strong> 等来定义整型, 浮点等变量. (文华给出的所有示例中定义变量竟然全部定义的全局变量也是很迷了)</li>
-<li>函数类型可以是<strong>VOID</strong>或<strong>VAR</strong>, 当然如果需要返回值需要定义为<strong>VAR</strong>型</li>
-<li>函数, 变量可以先引用后声明</li>
-<li>麦语言的函数是可以有返回值的! 但是要把要返回的值括起来. (参考<a href="http://www.wenhua.com.cn/guide/wh8_zjyfhs2.htm" target="_blank" rel="noopener">这里</a>)</li>
-</ul>
-<h3 id="趋势跟踪模型语法简记"><a href="#趋势跟踪模型语法简记" class="headerlink" title="趋势跟踪模型语法简记"></a>趋势跟踪模型语法简记</h3><p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> 常用语句:</p>
-<table>
-<thead>
-<tr>
-<th>语句</th>
-<th>注释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>=</td>
-<td><strong>等于</strong>操作符 :warning:趋势模型中赋值操作符为<code>:=</code>. 应注意等于操作符<strong>只有一个</strong>=</td>
-</tr>
-<tr>
-<td>:</td>
-<td>定义变量并且加载模型时显示图线. 冒号前为变量名.</td>
-</tr>
-<tr>
-<td>:=</td>
-<td>定义变量并且不显示图线</td>
-</tr>
-<tr>
-<td>#IMPORT [PERIOD,N,FORMULA] AS VAR</td>
-<td><a href="#跨周期编写">见下</a></td>
-</tr>
-<tr>
-<td>&amp;&amp;</td>
-<td>逻辑与</td>
-</tr>
-<tr>
-<td>||</td>
-<td>逻辑或</td>
-</tr>
-<tr>
-<td>IF, THEN</td>
-<td>参见<a href="http://www.wenhua.com.cn/guide/views41a3.htm" target="_blank" rel="noopener">这里</a></td>
-</tr>
-</tbody></table>
-<h3 id="模组"><a href="#模组" class="headerlink" title="模组"></a>模组</h3><p>算法交易模型中可以调用的一大串函数有类似<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f447.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f447.png?v8">👇</span>这样的函数说明.</p>
-<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">注：</span><br><span class="line">该函数前必须用AA.的形式来调用，其中AA为字符串变量或者模组名。该函数不能单独使用。</span><br></pre></td></tr></tbody></table></figure>
+<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="更改配置后页面未出现变化"><a href="#更改配置后页面未出现变化" class="headerlink" title="更改配置后页面未出现变化"></a>更改配置后页面未出现变化</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
+<h3 id="markdown中文换行导致的空格问题"><a href="#markdown中文换行导致的空格问题" class="headerlink" title="markdown中文换行导致的空格问题"></a>markdown中文换行导致的空格问题</h3><p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
 
-<p>开始我以为模组也是模型的意思, 后来看到示例里的用法似乎模组类似于<strong>类</strong>, 每个模组对应一个实例, 可以调用里面的各种函数来处理这个合约的数据, 而且每个模型也可以是一个模组一个模型可以调用另一个模型的函数, 就很像类. <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8">🤔</span>我是这样理解的</p>
-<h3 id="逻辑判断"><a href="#逻辑判断" class="headerlink" title="逻辑判断"></a>逻辑判断</h3><p>看过wh8给出的示例后我发现官方风格写法里趋势模型基本没有用过IF, ELSE什么的, 普遍是一句话浓缩一串条件搞定. 主要这玩意语法就让人懒得写IF, ELSE…而算法模型中运用IF, ELSE较多.</p>
-<p>很有意思的是趋势模型中可以将一串判断条件赋值给一个变量作为布林变量. 然后通常是以下面这样的形式来调用</p>
-<p><code>[布林变量], [交易指令]</code></p>
-<p>另外趋势模型中逻辑运算操作符只有逻辑与和逻辑或, 如果需要其他运算, 我是使用的<code>NOT()</code>函数</p>
-<h3 id="跨周期编写"><a href="#跨周期编写" class="headerlink" title="跨周期编写"></a>跨周期编写</h3><p>跨周期模型函数: #IMPORT [PERIOD,N,FORMULA]</p>
-<p>举例: <code>#IMPORT[DAY,2,WHBXSF] AS VAR1</code><br>调取自定义2日线周期上WHBXSF指标中的数据. 需要先编写被引用的指标 (只有一串变量的模型似乎称为<strong>指标</strong>)</p>
-<p>具体可以参考<a href="http://www.2818668.com/369.html" target="_blank" rel="noopener">这个</a></p>
-<h2 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h2><ul>
-<li>到现在我也不确定这些模型是循环运行还是怎么在执行, 如果是循环运行一次运行时间是多长</li>
-</ul>
-<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>搜索过程中看到的<a href="https://zhuanlan.zhihu.com/p/52867020" target="_blank" rel="noopener">十六套经典策略</a></p>
+<h3 id="Google站点地图报错"><a href="#Google站点地图报错" class="headerlink" title="Google站点地图报错"></a>Google站点地图报错</h3><p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
+<h3 id="如何建立多级分类"><a href="#如何建立多级分类" class="headerlink" title="如何建立多级分类"></a>如何建立多级分类</h3><p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
+<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><h3 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h3><p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a>
+<a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -5337,9 +5364,9 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
           });
       </script>]]></content>
       <categories>
-        <category>语言</category>
-        <category>量化交易</category>
-        <category>麦语言</category>
+        <category>工具</category>
+        <category>软件配置</category>
+        <category>Web</category>
       </categories>
   </entry>
   <entry>
@@ -5522,50 +5549,6 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
         <category>工具</category>
         <category>软件配置</category>
         <category>VSC</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
-    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<div align="right">Language:
-<a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a>
-<a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a>
-</div>
-
-<a id="more"></a>
-
-<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="更改配置后页面未出现变化"><a href="#更改配置后页面未出现变化" class="headerlink" title="更改配置后页面未出现变化"></a>更改配置后页面未出现变化</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
-<h3 id="markdown中文换行导致的空格问题"><a href="#markdown中文换行导致的空格问题" class="headerlink" title="markdown中文换行导致的空格问题"></a>markdown中文换行导致的空格问题</h3><p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
-<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="Google站点地图报错"><a href="#Google站点地图报错" class="headerlink" title="Google站点地图报错"></a>Google站点地图报错</h3><p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
-<h3 id="如何建立多级分类"><a href="#如何建立多级分类" class="headerlink" title="如何建立多级分类"></a>如何建立多级分类</h3><p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
-<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><h3 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h3><p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a>
-<a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>软件配置</category>
-        <category>Web</category>
       </categories>
   </entry>
 </search>

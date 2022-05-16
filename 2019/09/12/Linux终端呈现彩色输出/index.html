@@ -472,41 +472,21 @@
 <a id="more"></a>
 
 <p>比如这样:</p>
-<p style="color:purple">
-[MESSAGE] Turning left
-</p>
-<p style="color:yellow">
-[DEBUG] target: 4
-</p>
-<p style="color:red">
-[Error] target not found
-</p>
-<p style="color:purple">
-[MESSAGE] Turning left
-</p>
-<p style="color:purple">
-[MESSAGE] Diving
-</p>
-<p style="color:green">
-[INFO] depth: 9m
-</p>
-<p style="color:purple">
-[MESSAGE] Diving
-</p>
-<p style="color:green">
-[INFO] depth: 10m
-</p>
-<p style="color:purple">
-[MESSAGE] Forward
-</p>
-<p style="color:purple">
-[MESSAGE] Turing right
-</p>
-
+<p style="color:purple">[MESSAGE] Turning left</p>
+<p style="color:yellow">[DEBUG] target: 4</p>
+<p style="color:red">[Error] target not found</p>
+<p style="color:purple">[MESSAGE] Turning left</p>
+<p style="color:purple">[MESSAGE] Diving</p>
+<p style="color:green">[INFO] depth: 9m</p>
+<p style="color:purple">[MESSAGE] Diving</p>
+<p style="color:green">[INFO] depth: 10m</p>
+<p style="color:purple">[MESSAGE] Forward</p>
+<p style="color:purple">[MESSAGE] Turing right</p>
 
 <p>能极大的增强终端信息的可读性!😆</p>
 <p>这应该是Linux终端的特性, (我并不清楚是否兼容Windows命令行), shell, python, C++的彩色文字语法几乎是一样的.</p>
-<h2 id="颜色表"><a href="#颜色表" class="headerlink" title="颜色表"></a>颜色表</h2><table>
+<h2 id="颜色表"><a href="#颜色表" class="headerlink" title="颜色表"></a>颜色表</h2><p><a href="https://en.wikipedia.org/wiki/ANSI_escape_code#Colors" target="_blank" rel="noopener">维基的表</a></p>
+<table>
 <thead>
 <tr>
 <th>前景色 (字体颜色) 代码</th>
@@ -587,6 +567,9 @@
 <td>不可见</td>
 </tr>
 </tbody></table>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><ul>
+<li><a href="https://stackoverflow.com/a/55773513/10088906" target="_blank" rel="noopener">readline的提示符误将不可见字符认为可见</a></li>
+</ul>
 <h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="shell语法"><a href="#shell语法" class="headerlink" title="shell语法"></a>shell语法</h3><p>举例:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo "\e[31;43;1mError\!\e[0m"</span><br></pre></td></tr></tbody></table></figure>
 
@@ -738,7 +721,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#颜色表"><span class="nav-number">1.</span> <span class="nav-text">颜色表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字体效果表"><span class="nav-number">2.</span> <span class="nav-text">字体效果表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">3.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shell语法"><span class="nav-number">3.1.</span> <span class="nav-text">shell语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python语法"><span class="nav-number">3.2.</span> <span class="nav-text">python语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-语法"><span class="nav-number">3.3.</span> <span class="nav-text">C++语法</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#颜色表"><span class="nav-number">1.</span> <span class="nav-text">颜色表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字体效果表"><span class="nav-number">2.</span> <span class="nav-text">字体效果表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题"><span class="nav-number">3.</span> <span class="nav-text">常见问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">4.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shell语法"><span class="nav-number">4.1.</span> <span class="nav-text">shell语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python语法"><span class="nav-number">4.2.</span> <span class="nav-text">python语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-语法"><span class="nav-number">4.3.</span> <span class="nav-text">C++语法</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -873,7 +856,7 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">147k</span>
+    <span title="站点总字数">148k</span>
 </div>
 
         
