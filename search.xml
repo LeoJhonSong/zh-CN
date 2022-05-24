@@ -35,50 +35,6 @@
       </script>]]></content>
   </entry>
   <entry>
-    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
-    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<div align="right">Language:
-<a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a>
-<a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a>
-</div>
-
-<a id="more"></a>
-
-<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="更改配置后页面未出现变化"><a href="#更改配置后页面未出现变化" class="headerlink" title="更改配置后页面未出现变化"></a>更改配置后页面未出现变化</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
-<h3 id="markdown中文换行导致的空格问题"><a href="#markdown中文换行导致的空格问题" class="headerlink" title="markdown中文换行导致的空格问题"></a>markdown中文换行导致的空格问题</h3><p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
-<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="Google站点地图报错"><a href="#Google站点地图报错" class="headerlink" title="Google站点地图报错"></a>Google站点地图报错</h3><p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
-<h3 id="如何建立多级分类"><a href="#如何建立多级分类" class="headerlink" title="如何建立多级分类"></a>如何建立多级分类</h3><p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
-<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><h3 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h3><p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a>
-<a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>Web</category>
-        <category>工具</category>
-        <category>软件配置</category>
-      </categories>
-  </entry>
-  <entry>
     <title>记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历</title>
     <url>/zh-CN/2018/12/30/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%9C%A8Win10%E4%B8%8B%E5%AE%89%E8%A3%85SOFA%E4%BB%BF%E7%9C%9F%E8%BD%AF%E4%BB%B6%E5%B9%B6%E5%8A%A0%E8%A3%85SoftRobots%E6%8F%92%E4%BB%B6%E7%9A%84%E7%BB%8F%E5%8E%86/</url>
     <content><![CDATA[<p><strong>前言</strong> ：博主是个不怎么懂软件的菜鸟，前几天为了学习Soft Robotics企图装一个带SoftRobots插件的SOFA，但我搜了半天也没有较新的安装教程（连下载方式都变了好吗）。虽然有官网的安装教程但我在安装过程中还是出了很多意外。感慨于在身边诸多大佬们的帮助下我这个对软件一窍不通的人才安装成功，我以一个不怎么接触编程的人的角度写下这篇博客帮助也想学习Soft Robotics的各位。(博主为了写这篇教程忍痛把安好的SOFA删了又下了一遍）</p>
@@ -5415,8 +5371,8 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
       </categories>
   </entry>
   <entry>
-    <title>探海利器-声呐学习笔记</title>
-    <url>/zh-CN/2022/05/23/%E6%8E%A2%E6%B5%B7%E5%88%A9%E5%99%A8-%E5%A3%B0%E5%91%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <title>探海利器-声呐课程笔记</title>
+    <url>/zh-CN/2022/05/23/%E6%8E%A2%E6%B5%B7%E5%88%A9%E5%99%A8-%E5%A3%B0%E5%91%90%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>看了<a href="https://www.bilibili.com/video/BV1qu411679n" target="_blank" rel="noopener">哈工程公开课-探海利器-声呐</a>这门概论性质的课对声呐有了一个最基础的了解, 看的过程中记了一些笔记. 搜索的时候还发现另外两门更深入的课程: <a href="https://www.icourse163.org/course/HRBEU-1002013001" target="_blank" rel="noopener">哈工程-水声学</a>, <a href="https://www.xuetangx.com/course/nau07021002103/10327221" target="_blank" rel="noopener">海军航空大学-声纳技术</a>, 有机会也来看一看.</p>
 <a id="more"></a>
 
@@ -5441,7 +5397,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <li><p>压力+1atm, 声速+0.17m/s</p>
 </li>
 <li><p>声速随海水深度先降后升, 声速最小处称<strong>声道轴</strong>. 在海面附近由于阳光照射温度较高, 越往下温度越低.水深到一定程度后温度几乎不变, 由于盐度和压力也在增加所以速度又增大. 💡淡水中目前没有发现声道轴, 主要受温度影响, 会有声线弯曲.</p>
-<div><img style="width:30%; display:block; margin-left:auto; margin-right:auto;" data-src="./探海利器-声呐学习笔记/声速深度曲线图.jpg"></div>
+<div><img style="width:30%; display:block; margin-left:auto; margin-right:auto;" data-src="./探海利器-声呐课程笔记/声速深度曲线图.jpg"></div>
 </li>
 </ul>
 </li>
@@ -5477,7 +5433,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 </li>
 <li>信息载体不同 (声波/ 电磁波), 信道不同 (海洋/空气)</li>
 </ul>
-<div><img style="width:80%; display:block; margin-left:auto; margin-right:auto;" data-src="./探海利器-声呐学习笔记/水声信道无线信道对比.jpg"></div>
+<div><img style="width:80%; display:block; margin-left:auto; margin-right:auto;" data-src="./探海利器-声呐课程笔记/水声信道无线信道对比.jpg"></div>
 
 <h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><h3 id="按工作方式"><a href="#按工作方式" class="headerlink" title="按工作方式"></a>按工作方式</h3><ul>
 <li><p>主动声呐</p>
@@ -5495,19 +5451,19 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <h3 id="按用途分-测绘声呐"><a href="#按用途分-测绘声呐" class="headerlink" title="按用途分 (测绘声呐)"></a>按用途分 (测绘声呐)</h3><p>💡 不知道有没有类似平行光源 (比如激光) 概念的平行声源, 理论上是否可实现. 等我有机会问问老师.</p>
 <div>
   <div style="display:inline-block;width:33%;">
-    <img data-src="./探海利器-声呐学习笔记/测扫声呐.jpg">
+    <img data-src="./探海利器-声呐课程笔记/测扫声呐.jpg">
   </div>
   <div style="display:inline-block;width:33%;">
-    <img data-src="./探海利器-声呐学习笔记/多波束测深声呐.jpg">
+    <img data-src="./探海利器-声呐课程笔记/多波束测深声呐.jpg">
   </div>
   <div style="display:inline-block;width:32%;">
-  <img data-src="./探海利器-声呐学习笔记/浅地层剖面声呐.jpg">
+  <img data-src="./探海利器-声呐课程笔记/浅地层剖面声呐.jpg">
   </div>
 </div>
 
 <ul>
 <li><p>测扫声呐: 探测海底底质. 收发合置的测扫声呐只能发射完成再接收, 收发分置的测扫声呐可以边发边收.</p>
-<div><img style="width:50%; display:block; margin-left:auto; margin-right:auto;" data-src="./探海利器-声呐学习笔记/测扫声呐原理.jpg"></div>
+<div><img style="width:50%; display:block; margin-left:auto; margin-right:auto;" data-src="./探海利器-声呐课程笔记/测扫声呐原理.jpg"></div>
 
 <blockquote>
 <p>测扫声呐工作原理 ⚠ 注意6的回波比5先回到换能器.</p>
@@ -5526,10 +5482,10 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 </ul>
 <h2 id="声呐信号处理"><a href="#声呐信号处理" class="headerlink" title="声呐信号处理"></a>声呐信号处理</h2><div>
   <div style="display:inline-block;width:47%;">
-    <img data-src="./探海利器-声呐学习笔记/声呐系统.jpg">
+    <img data-src="./探海利器-声呐课程笔记/声呐系统.jpg">
   </div>
   <div style="display:inline-block;width:49%;">
-    <img data-src="./探海利器-声呐学习笔记/声呐系统典型构成.jpg">
+    <img data-src="./探海利器-声呐课程笔记/声呐系统典型构成.jpg">
   </div>
 </div>
 
@@ -5550,7 +5506,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <li>海底表面沉积物类别</li>
 <li>海底表面以下的地层构造 (分层结构及沉积物类别)</li>
 </ul>
-<h2 id="水声通信"><a href="#水声通信" class="headerlink" title="水声通信"></a>水声通信</h2><div><img style="width:80%; display:block; margin-left:auto; margin-right:auto;" data-src="./探海利器-声呐学习笔记/海陆空天一体化通信体系.jpg"></div>
+<h2 id="水声通信"><a href="#水声通信" class="headerlink" title="水声通信"></a>水声通信</h2><div><img style="width:80%; display:block; margin-left:auto; margin-right:auto;" data-src="./探海利器-声呐课程笔记/海陆空天一体化通信体系.jpg"></div>
 
 <p>蛟龙号水声通信种类:</p>
 <ul>
@@ -5558,7 +5514,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <li>非相干水声通信: 中速, 用于传输文字, 指令, 数据</li>
 <li>扩频通信: 远程, 低速, 用于传输指令</li>
 </ul>
-<div><img style="width:60%; display:block; margin-left:auto; margin-right:auto;" data-src="./探海利器-声呐学习笔记/水声信道典型带宽.jpg"></div>
+<div><img style="width:60%; display:block; margin-left:auto; margin-right:auto;" data-src="./探海利器-声呐课程笔记/水声信道典型带宽.jpg"></div>
 
 <blockquote>
 <p>水声信道典型带宽</p>
@@ -5768,6 +5724,50 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
         <category>工具</category>
         <category>软件配置</category>
         <category>VSC</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
+    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<div align="right">Language:
+<a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a>
+<a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a>
+</div>
+
+<a id="more"></a>
+
+<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="更改配置后页面未出现变化"><a href="#更改配置后页面未出现变化" class="headerlink" title="更改配置后页面未出现变化"></a>更改配置后页面未出现变化</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
+<h3 id="markdown中文换行导致的空格问题"><a href="#markdown中文换行导致的空格问题" class="headerlink" title="markdown中文换行导致的空格问题"></a>markdown中文换行导致的空格问题</h3><p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Google站点地图报错"><a href="#Google站点地图报错" class="headerlink" title="Google站点地图报错"></a>Google站点地图报错</h3><p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
+<h3 id="如何建立多级分类"><a href="#如何建立多级分类" class="headerlink" title="如何建立多级分类"></a>如何建立多级分类</h3><p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
+<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><h3 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h3><p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a>
+<a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>软件配置</category>
+        <category>Web</category>
       </categories>
   </entry>
 </search>
