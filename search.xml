@@ -5373,12 +5373,14 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
   <entry>
     <title>微积分课程笔记</title>
     <url>/zh-CN/2022/05/26/%E5%BE%AE%E7%A7%AF%E5%88%86%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>前前后后数理基础课也学了好几遍了, 但这些内容不常用就容易忘记. 虽然每次学都会记手写的电子笔记, 但这次我打算记一份能长期维护的印刷体电子笔记, 因为大概不会再需要一板一眼地把这几门最基础的课学一遍了. 我的想法是记术语和技巧, 以及一些易错点, 这样当我忘记内容时能很快知道我需要的是什么, 然后具体推导和习题再看教材就好.</p>
+    <content><![CDATA[<p>前前后后数理基础课也学了好几遍了, 但这些内容不常用就容易忘记. 虽然每次学都会记手写的电子笔记, 但这次我打算记一份能长期维护的印刷体电子笔记, 因为大概不会再需要一板一眼地把这几门最基础的课学一遍了. 我的想法是记术语和技巧, 以及一些易错点, 这样当我忘记内容时能很快知道我需要的是什么, 然后具体推导和习题再看教材就好 💪</p>
 <a id="more"></a>
 
 <div class="note success">
-            <h3 id="教材"><a href="#教材" class="headerlink" title="教材"></a>教材</h3><ol><li><a href="https://zh.b-ok.cc/book/5589738/691ece" target="_blank" rel="noopener">高等数学 同济第七版 上</a></li><li><a href="https://zh.b-ok.cc/book/5589739/7ed05b" target="_blank" rel="noopener">高等数学 同济第七版 下</a></li><li><a href="https://zh.b-ok.cc/book/11736398/a2e1f4" target="_blank" rel="noopener">高等数学习题全解指南 同济第七版 上</a></li><li><a href="https://zh.b-ok.cc/book/5589740/4a8648" target="_blank" rel="noopener">高等数学习题全解指南 同济第七版 下</a></li></ol>
-          </div><script>
+            <h2 id="教材"><a href="#教材" class="headerlink" title="教材"></a>教材</h2><ol><li><a href="https://zh.b-ok.cc/book/5589738/691ece" target="_blank" rel="noopener">高等数学 同济第七版 上</a></li><li><a href="https://zh.b-ok.cc/book/5589739/7ed05b" target="_blank" rel="noopener">高等数学 同济第七版 下</a></li><li><a href="https://zh.b-ok.cc/book/11736398/a2e1f4" target="_blank" rel="noopener">高等数学习题全解指南 同济第七版 上</a></li><li><a href="https://zh.b-ok.cc/book/5589740/4a8648" target="_blank" rel="noopener">高等数学习题全解指南 同济第七版 下</a></li></ol>
+          </div>
+
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -5577,50 +5579,6 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
       </categories>
   </entry>
   <entry>
-    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
-    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<div align="right">Language:
-<a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a>
-<a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a>
-</div>
-
-<a id="more"></a>
-
-<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="更改配置后页面未出现变化"><a href="#更改配置后页面未出现变化" class="headerlink" title="更改配置后页面未出现变化"></a>更改配置后页面未出现变化</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
-<h3 id="markdown中文换行导致的空格问题"><a href="#markdown中文换行导致的空格问题" class="headerlink" title="markdown中文换行导致的空格问题"></a>markdown中文换行导致的空格问题</h3><p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
-<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="Google站点地图报错"><a href="#Google站点地图报错" class="headerlink" title="Google站点地图报错"></a>Google站点地图报错</h3><p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
-<h3 id="如何建立多级分类"><a href="#如何建立多级分类" class="headerlink" title="如何建立多级分类"></a>如何建立多级分类</h3><p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
-<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><h3 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h3><p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a>
-<a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>软件配置</category>
-        <category>Web</category>
-      </categories>
-  </entry>
-  <entry>
     <title>配置VSCode中调试C/C++环境</title>
     <url>/zh-CN/2018/12/30/%E9%85%8D%E7%BD%AEVSCode%E4%B8%AD%E8%B0%83%E8%AF%95C-C-%E7%8E%AF%E5%A2%83/</url>
     <content><![CDATA[<div align="right">Language:
@@ -5800,6 +5758,50 @@ Attach指的是开始调试时程序已经在运行了 (比如在服务器上的
         <category>工具</category>
         <category>软件配置</category>
         <category>VSC</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
+    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<div align="right">Language:
+<a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a>
+<a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a>
+</div>
+
+<a id="more"></a>
+
+<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="更改配置后页面未出现变化"><a href="#更改配置后页面未出现变化" class="headerlink" title="更改配置后页面未出现变化"></a>更改配置后页面未出现变化</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
+<h3 id="markdown中文换行导致的空格问题"><a href="#markdown中文换行导致的空格问题" class="headerlink" title="markdown中文换行导致的空格问题"></a>markdown中文换行导致的空格问题</h3><p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Google站点地图报错"><a href="#Google站点地图报错" class="headerlink" title="Google站点地图报错"></a>Google站点地图报错</h3><p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
+<h3 id="如何建立多级分类"><a href="#如何建立多级分类" class="headerlink" title="如何建立多级分类"></a>如何建立多级分类</h3><p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
+<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><h3 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h3><p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a>
+<a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>软件配置</category>
+        <category>Web</category>
       </categories>
   </entry>
 </search>
