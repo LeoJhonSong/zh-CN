@@ -2421,57 +2421,6 @@ UCS和Unicode分别由<strong>ISO</strong> (国际标准化组织) 和<strong>�
       </categories>
   </entry>
   <entry>
-    <title>有关人工智能的一点思考</title>
-    <url>/zh-CN/2019/06/21/%E6%9C%89%E5%85%B3%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%9D%E8%80%83/</url>
-    <content><![CDATA[<p>以下仅为个人见解</p>
-<a id="more"></a>
-
-<p>突然思考了一下<strong>什么是人工智能?</strong></p>
-<blockquote>
-<p>从学科角度讲, 人工智能是一门研究 <strong>模拟, 延伸, 扩展人类智能</strong> 的学科</p>
-</blockquote>
-<blockquote>
-<p>人工智能是在机器上实现的人类智能</p>
-</blockquote>
-<p>这两条是我比较认可的对人工智能的描述. 可以看出<code>人工智能</code>是相对于<code>人类智能</code>的一个概念, 理解起来既简单又困难. 要说简单, 人工智能可以很直观的理解为<strong>人为制造的智能</strong>, 要说难, 人们至今仍在探索<strong>什么是人类智能</strong>. 这是一个极其抽象的哲学概念.
-实际上试图制造人工智能正是人们探索人类智能的途径之一: 能知道如何制造出一个智能了, 我们也就基本摸清什么是人类智能了.</p>
-<p>目前人工智能的实现有三种研究方法:</p>
-<ul>
-<li><strong>功能模拟</strong>: 符号主义, 认为人工智能源自数理逻辑, 以及人类智能的基本单元是符号, 认知的过程是符号表示下符号运算的过程.</li>
-<li><strong>结构模拟</strong>: 连接主义, 认为人工智能源自仿生学, 特别是人脑模型的研究, 主要模拟神经元生理机制.</li>
-<li><strong>行为模拟</strong>: 控制论主义, 认为人工智能源自控制论, 原理是控制论及激励-响应控制系统.</li>
-</ul>
-<p>回顾了一番后我终于理清了之前一直不太懂的 <strong>人工智能, 机器学习, 深度学习的关系</strong>:</p>
-<p><code>人工智能</code>是人们提出的一个理想化的概念, 在得出人类智能的定义前谁也没法说出到底什么是人工智能, 到底某机器是否具备人工智能. <code>机器学习</code>是人们以制造人工智能为目标造出的各种具有部分智能的东西, 而<code>深度学习</code>是其中从仿生角度出发的研究.</p>
-<p>💡很有意思的是智能另有一个含义: <strong>能对环境作出反馈</strong>. 比如智能材料, 狭义的智能机器人等.</p>
-<p>这番思考总结后我认为图灵测试并不能<strong>绝对</strong>判定一个东西是否具有人类智能.</p>
-<p>一方面<strong>中文房间</strong>实验是很有力的反驳. 也许有人认为这个实验所假设的完美的指导书是不存在的, 是理想化的, 但实际上图灵测试也是这样的东西, 能够完美检测被测试者是否具有智能的测试是不存在的. 我们只需要足够大的”指导书”就能够应付图灵测试. 参考<code>无穷大</code>
-的数学定义, 我们可以有这样的结论: <strong>假设我们以M来衡量一个图灵测试的测试范围, 对任意给定M测试范围的图灵测试, 我们总能写出这样的”指导书”X: X让机器在当前图灵测试内表现得像一个人</strong>.</p>
-<p>另一方面是因为我认为人们目前对人类智能的认知是不够的. 打个比方: 牛顿得出三条牛顿定律, 被人们奉为铁律, 后来相对论推翻了它, 牛顿定律变为了只在低速情况下适用. 但相对论又是绝对正确的吗? 目前它还没被推翻. 而我们对智能的判别甚至还停留在以经验来判断的阶段. (这里又存在一个哲学问题了: 存在绝对的真理吗? 这里我们暂且不讨论.) 也许我们可以说图灵测试在当前对人类智能的认知水平下可以作为是否具有智能的标准, 但它是那样的简陋, 早晚是要被取代的.</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-  </entry>
-  <entry>
     <title>机器人案例学习</title>
     <url>/zh-CN/2019/06/10/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A1%88%E4%BE%8B%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<p>正如我在 <a href="https://leojhonsong.github.io/zh-CN/about/">about</a> 中提到的, <strong>我立志为软体机器人领域贡献一份力</strong>, 那就先从积累开始吧. 在此记录我觉得很精妙的机器人,
@@ -2748,6 +2697,57 @@ C++程序使用的库链接. <code>gcc</code>把后缀为 <strong>.c</strong> �
       </categories>
   </entry>
   <entry>
+    <title>有关人工智能的一点思考</title>
+    <url>/zh-CN/2019/06/21/%E6%9C%89%E5%85%B3%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E4%B8%80%E7%82%B9%E6%80%9D%E8%80%83/</url>
+    <content><![CDATA[<p>以下仅为个人见解</p>
+<a id="more"></a>
+
+<p>突然思考了一下<strong>什么是人工智能?</strong></p>
+<blockquote>
+<p>从学科角度讲, 人工智能是一门研究 <strong>模拟, 延伸, 扩展人类智能</strong> 的学科</p>
+</blockquote>
+<blockquote>
+<p>人工智能是在机器上实现的人类智能</p>
+</blockquote>
+<p>这两条是我比较认可的对人工智能的描述. 可以看出<code>人工智能</code>是相对于<code>人类智能</code>的一个概念, 理解起来既简单又困难. 要说简单, 人工智能可以很直观的理解为<strong>人为制造的智能</strong>, 要说难, 人们至今仍在探索<strong>什么是人类智能</strong>. 这是一个极其抽象的哲学概念.
+实际上试图制造人工智能正是人们探索人类智能的途径之一: 能知道如何制造出一个智能了, 我们也就基本摸清什么是人类智能了.</p>
+<p>目前人工智能的实现有三种研究方法:</p>
+<ul>
+<li><strong>功能模拟</strong>: 符号主义, 认为人工智能源自数理逻辑, 以及人类智能的基本单元是符号, 认知的过程是符号表示下符号运算的过程.</li>
+<li><strong>结构模拟</strong>: 连接主义, 认为人工智能源自仿生学, 特别是人脑模型的研究, 主要模拟神经元生理机制.</li>
+<li><strong>行为模拟</strong>: 控制论主义, 认为人工智能源自控制论, 原理是控制论及激励-响应控制系统.</li>
+</ul>
+<p>回顾了一番后我终于理清了之前一直不太懂的 <strong>人工智能, 机器学习, 深度学习的关系</strong>:</p>
+<p><code>人工智能</code>是人们提出的一个理想化的概念, 在得出人类智能的定义前谁也没法说出到底什么是人工智能, 到底某机器是否具备人工智能. <code>机器学习</code>是人们以制造人工智能为目标造出的各种具有部分智能的东西, 而<code>深度学习</code>是其中从仿生角度出发的研究.</p>
+<p>💡很有意思的是智能另有一个含义: <strong>能对环境作出反馈</strong>. 比如智能材料, 狭义的智能机器人等.</p>
+<p>这番思考总结后我认为图灵测试并不能<strong>绝对</strong>判定一个东西是否具有人类智能.</p>
+<p>一方面<strong>中文房间</strong>实验是很有力的反驳. 也许有人认为这个实验所假设的完美的指导书是不存在的, 是理想化的, 但实际上图灵测试也是这样的东西, 能够完美检测被测试者是否具有智能的测试是不存在的. 我们只需要足够大的”指导书”就能够应付图灵测试. 参考<code>无穷大</code>
+的数学定义, 我们可以有这样的结论: <strong>假设我们以M来衡量一个图灵测试的测试范围, 对任意给定M测试范围的图灵测试, 我们总能写出这样的”指导书”X: X让机器在当前图灵测试内表现得像一个人</strong>.</p>
+<p>另一方面是因为我认为人们目前对人类智能的认知是不够的. 打个比方: 牛顿得出三条牛顿定律, 被人们奉为铁律, 后来相对论推翻了它, 牛顿定律变为了只在低速情况下适用. 但相对论又是绝对正确的吗? 目前它还没被推翻. 而我们对智能的判别甚至还停留在以经验来判断的阶段. (这里又存在一个哲学问题了: 存在绝对的真理吗? 这里我们暂且不讨论.) 也许我们可以说图灵测试在当前对人类智能的认知水平下可以作为是否具有智能的标准, 但它是那样的简陋, 早晚是要被取代的.</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Python中的小技巧</title>
     <url>/zh-CN/2019/07/03/Python%E4%B8%AD%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
     <content><![CDATA[<p>俺也记不住语法, 在这里记录一下常见语句.</p>
@@ -2826,6 +2826,36 @@ reverse flag can be set to request the result in descending order.</p>
         <category>技巧</category>
         <category>语言</category>
         <category>Python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>C++学习笔记</title>
+    <url>/zh-CN/2019/08/11/C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>… 前几天刚说最近没有用C的需求我就开始要写C++了 🤦</p>
+<p>TODO</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>杂记</category>
+        <category>语言</category>
+        <category>C/C++</category>
       </categories>
   </entry>
   <entry>
@@ -3018,36 +3048,6 @@ shift 字母</kbd>和<kbd>Ctrl 字母</kbd>的输出没有区别.</p>
       <categories>
         <category>工具</category>
         <category>vim</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>C++学习笔记</title>
-    <url>/zh-CN/2019/08/11/C-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>… 前几天刚说最近没有用C的需求我就开始要写C++了 🤦</p>
-<p>TODO</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>杂记</category>
-        <category>语言</category>
-        <category>C/C++</category>
       </categories>
   </entry>
   <entry>
@@ -5011,12 +5011,15 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 </blockquote>
 <p>实际上这样的”突发事件或意外伤害”发生在身边, 甚至亲友身上的几率<strong>并不小</strong>. 实际上我已经有过<strong>两次</strong>我在场时亲人发生突发事件的经历了. 正是第一次遇到这种情况时的无助让我在高中结束时思考假期做什么第一个想到了学急救培训. 但即便我认真地做了笔记, 也不时地关注一些急救信息, 我第二次面临这样的情况时仍然完全没法沉着冷静. 虽然做了些调整体位, 等救护车等力所能及的事情, 但是我内心仍然是茫然无助的. 毕竟只是普通人, 又只学了些急救的皮毛, 非常容易遇到没有头绪的情况 (甚至可能因为经验太少而产生误判). 因此遇到突发事件我的经验是:</p>
 <p><strong>第一要务是给120打电话, 说明情况并寻求帮助</strong></p>
-<p>这是否意味着自己就没有学急救的意义了呢? 学习急救知识对于普通人来说仍然是十分必要的, 因为急救讲究争分夺秒, 在救护车赶来前, 如果我们能做一些应急措施, 那将是非常有意义的. 但是如果我们毫无相关常识 (甚至可能有错误的认知), 比如不知道<a href="#复苏体位">复苏体位</a>到底是怎样的, 不知道<a href="#标准心肺复苏">心肺复苏的要点</a>, 不清楚<a href="#误食强酸强碱">喝了大量强酸</a>该怎么办… 那么即便有120在旁电话指导我们仍然很难做出有效的应对措施. 身边人的健康是非常重要的事情, 学一学成本不大, 但价值极高 👍</p>
+<p>这是否意味着自己就没有学急救的意义了呢? 学习急救知识对于普通人来说仍然是十分必要的, 因为急救讲究争分夺秒, 在救护车赶来前, 如果我们能做一些应急措施, 那将是非常有意义的. 但是如果我们毫无相关常识 (甚至可能有错误的认知), 比如不知道<a href="#复苏体位">复苏体位</a>到底是怎样的, 不知道<a href="#标准心肺复苏">心肺复苏的要点</a>, 不清楚<a href="#误食强酸-强碱">喝了大量强酸</a>该马上找什么… 那么即便有120在旁电话指导我们仍然很难做出有效的应对措施. 身边人的健康是非常重要的事情, 学一学成本不大, 但价值极高 👍</p>
 <h3 id="报名渠道"><a href="#报名渠道" class="headerlink" title="报名渠道"></a>报名渠道</h3><p>在各地的红十字会官网上应当就能搜到报名方式.</p>
 <p>🔗 <a href="http://www.scredcross.org.cn/htm/detail_6355.html" target="_blank" rel="noopener">四川红会的课程介绍</a> 🔗 <a href="http://www.chengduredcross.cn/list_wjpx.asp?ClassID=020501" target="_blank" rel="noopener">成都红会初级急救员培训报名渠道</a></p>
 <p>这个培训要收个两百多的报名费, 但也不算贵, 毕竟会发一个培训用创伤训练包 👍 (说起来培训的氛围非常好, 老师特别亲和)</p>
 <h2 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h2><p>💡 这里有一份<a href="./初级急救员笔记/2011年国际急救与复苏指南.pdf">2011年国际急救与复苏指南</a>和<a href="./初级急救员笔记/日常急救手册.pdf">日常急救手册</a>可供下载. 以下<a href="#心肺复苏">心肺复苏</a>, <a href="#气道异物梗阻">气道异物梗阻</a>, <a href="#创伤">创伤</a>, <a href="#其他">其他</a>几个板块是急救培训老师着重讲的部分, 其实在前面这本急救与复苏指南里还有好一些内容.</p>
-<p>❗这里会涉及到许多没有实际操作过就无法把握要点的技术, 这只是一份<strong>笔记</strong>.</p>
+<div class="note warning">
+            <p>这里会涉及到许多没有实际操作过就无法把握要点的技术, 这只是一份<strong>笔记</strong>.</p>
+          </div>
+
 <h3 id="心肺复苏"><a href="#心肺复苏" class="headerlink" title="心肺复苏"></a>心肺复苏</h3><h4 id="判断是否进行心肺复苏"><a href="#判断是否进行心肺复苏" class="headerlink" title="判断是否进行心肺复苏"></a>判断是否进行心肺复苏</h4><p>虽然人人都知道有个叫心肺复苏的技术能救命, 但实际上实施心肺复苏有一定的条件, 盲目进行心肺复苏反而容易出问题. 下面便是判断是否进行心肺复苏的流程.</p>
 <p><img alt="" data-src="./%E5%88%9D%E7%BA%A7%E6%80%A5%E6%95%91%E5%91%98%E7%AC%94%E8%AE%B0/%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E8%BF%9B%E8%A1%8C%E5%BF%83%E8%82%BA%E5%A4%8D%E8%8B%8F%E6%B5%81%E7%A8%8B%E5%9B%BE.svg?50" style="width: 50%"></p>
 <p>❗是的<strong>对于非专业人士来说判断是否进行心肺复苏并不需要判断伤病员是否有脉搏</strong>. 另外要注意即便专业人士也只会判断是否有脉搏, 是<strong>不会判断是否心脏停跳</strong>的. (详见下文<a href="#AED的使用">AED的使用</a>)</p>
@@ -5041,7 +5044,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <li>向周围人表明急救员身份</li>
 <li><strong>指定</strong>一个人拨打120</li>
 <li>寻求他人帮助 (比如寻找AED)</li>
-<li>向他人问明伤员情况, 如是否有内出血/骨折/脊柱损失等. (周围人也许就知道, 也有可能就有人目睹了心脏骤停)</li>
+<li>向他人问明伤员情况, 如是否有内出血/骨折/脊柱损伤等. (万一周围人就知道点什么呢)</li>
 <li>记录时间 (现在这个时代了, 拿出手机随便照一张就把时间地点什么的都记录在照片的元数据里了👍)</li>
 </ol>
 <p><strong>如伤病员有反应</strong>:</p>
@@ -5055,7 +5058,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <h5 id="判断有无呼吸"><a href="#判断有无呼吸" class="headerlink" title="判断有无呼吸"></a>判断有无呼吸</h5><p>此处提供两种方法, 一种是培训班老师教的, 一种是我在网上看到的, 同样有效且我觉得操作难度更低的.</p>
 <h6 id="老师教的方法"><a href="#老师教的方法" class="headerlink" title="老师教的方法"></a>老师教的方法</h6><p>伏低身子, 以伤病员头至脚方向观察胸部起伏. 从<strong>1001数到1008</strong> (数四位数是以实际的发音代替了停顿, 这样数得更精确), 这期间应当观察到<strong>两次起伏</strong>. ❗到底数多快见下方<a href="#参考视频">参考视频</a>, 基本上一秒数一下.</p>
 <p>💡 正常人3-4秒一次呼吸, 一分钟15-20次呼吸.</p>
-<h6 id="我更推荐的方法"><a href="#我更推荐的方法" class="headerlink" title="我更推荐的方法"></a>我更推荐的方法</h6><p>将眼镜或者手机屏幕等玻璃凑到伤病员鼻子前, 如果观察到水汽则有呼吸.</p>
+<h6 id="我更推荐的方法"><a href="#我更推荐的方法" class="headerlink" title="我更推荐的方法"></a>我更推荐的方法</h6><p>我自己想到了一个我感觉挺有效的方法, 将眼镜或者手机屏幕等玻璃凑到伤病员鼻子前, 如果观察到水汽则有呼吸.</p>
 <p>之所以我更推荐这个方法是因为实际上微弱的胸部起伏很难观察到, 一般还需要解开伤病员衣服. 而观察是否有水汽是一件非常容易的事情, 而且很灵敏 👍</p>
 <p><strong>如果伤病员有呼吸</strong>:</p>
 <ol>
@@ -5089,13 +5092,13 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <p>💡 心脏停跳后10秒晕厥, 15秒抽搐, 30秒呼吸停止, 1-2分钟瞳孔放大, 3-5分钟致死, 7分钟大脑遭受不可逆性损伤.<br>💡 室颤会迅速消耗心肌细胞的能量, 应在1-2分钟内进行除颤.</p>
 <p>❗ 要注意心脏停搏和心脏停跳是不一样的, 心脏停搏指的是<strong>心脏射血功能停止</strong>, 可能是由于心脏停跳, 但也可能是因为心脏电气活动紊乱等.</p>
 <h5 id="AED的使用"><a href="#AED的使用" class="headerlink" title="AED的使用"></a>AED的使用</h5><p>首先我们需要意识到AED是在心肺复苏时<strong>很重要</strong>的工具, 不仅使用非常简单 (基本不需要培训, 跟着语音来就行), 而且功能丰富. 另外虽然从名字来说它只是用来除颤的机器, 但现在的AED也能对许多其他情况提供帮助. AED里面通常还包含用于人工呼吸的脸罩, 一些常用的急救工具等. 而且现在的AED不止可以除颤, 显示心电图, 还有些AED的电极贴片上有传感器, 支持监测胸外按压的频率和深度, 从而指导急救者进行有效的心肺复苏. 还有些支持记录音频, 心电图, 电击数据等… 👍nb</p>
-<p>要注意<strong>A</strong>utomated <strong>E</strong>xternal <strong>D</strong>efibrillator, 即自动体外心脏<strong>除颤</strong>器, 其功能是断特定的心率不正, 并且给予去颤电击, 强制终止心脏所有电活动. 电击后需要急救员立即进行胸外按压帮助心脏重新开始电活动. 相当于当电脑出问题了无脑重启一下. 更具体一点, 正如傻瓜相机虽然操作简单但也功能有限, AED功能也有限:</p>
+<p>要注意<strong>A</strong>utomated <strong>E</strong>xternal <strong>D</strong>efibrillator, 即自动体外心脏<strong>除颤</strong>器, 其功能是判断特定的心率不正, 并且给予去颤电击, 强制终止心脏所有电活动. 电击后需要急救员立即进行胸外按压帮助心脏重新开始电活动. 相当于当电脑出问题了无脑重启一下. 更具体一点, 正如傻瓜相机虽然操作简单但也功能有限, AED功能也有限:</p>
 <blockquote>
 <p>(摘自维基百科) <strong>AED只能针对两种情况: 心室纤维性颤动和无脉性室性心动过速</strong>. 不同于一般专为医疗人员设计的专业心脏电击器，除了以上所提的两种情形外，它无法诊断其他各式各样的心率不整也无法提供治疗，而且它无法对心搏过慢提供体外心率调节的功能。</p>
 </blockquote>
-<p>就是说AED没法处理心脏停跳的情况. 那个针对心脏停跳的是心脏起搏器, 是用外部电信号带动心脏跳动. 不过作为非专业人士我们也没法判断到底是什么情况. 好在AED能够自动根据心电图判断是否给予电击. 如果是上述AED没法处理的情况AED会直接发出不建议进行电击的提示. (即便按电击键也没法强制电击)</p>
-<p>目前常见的AED有两种: 全自动和半自动. 区别在于AED判读心电图决定是否电击后是否需要操作者按下电击键才开始电击.</p>
-<p>💡 有的人贴电极的地方会因为电击出现类似烧伤的症状, 但问题不大.</p>
+<p>就是说AED没法处理心脏停跳的情况. 那个针对心脏停跳的是心脏起搏器, 是用外部电信号带动心脏跳动. 不过作为非专业人士我们也没法判断到底是什么情况. 好在AED能够自动根据心电图判断是否应该给予电击. 如果是上述AED没法处理的情况AED会直接发出不建议进行电击的提示 (即便按电击键也没法强制电击).</p>
+<p>目前常见的AED有两种: 全自动和半自动. 区别在于AED判读心电图决定是否电击后, 是否需要操作者按下电击键才开始电击.</p>
+<p>💡 有的人贴电极的地方会因为电击出现类似烧伤的症状, 但这是小问题.</p>
 <h5 id="标准心肺复苏"><a href="#标准心肺复苏" class="headerlink" title="标准心肺复苏"></a>标准心肺复苏</h5><p>⭐ 要点: (具体动作见下<a href="#参考视频">参考视频</a>)</p>
 <ol>
 <li>在硬的地面上进行</li>
@@ -5154,7 +5157,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 </li>
 <li>肠管溢出: 采取仰卧屈膝位 (就是做卷腹运动的准备姿势), 以干净塑料膜或者浸湿的敷料覆盖, 然后用碗盖住, 捆在身上.</li>
 <li>上肢<ol>
-<li>大出血: (方法一) 上臂上1/3处用止血带, 绞棒. ❗<strong>记得标注时间</strong>, 以便每40min放一次血, 放2-3min, 让手臂不会因为长时间不过血受伤.<br>(方法二)按压上臂中点 (肱动脉), 如果是手指创伤, 按压指根两侧.</li>
+<li>大出血: (方法一) 上臂上1/3处用止血带, 绞棒. ❗<strong>记得标注时间</strong>, 以便每40min放一次血, 放2-3min, 让手臂不会因为长时间不过血受伤, 甚至坏死.<br>(方法二)按压上臂中点 (肱动脉), 如果是手指创伤, 按压指根两侧.</li>
 <li>骨折: 若是关节骨折, 以肢体为夹板. 夹板需要长过该骨. 💡悬臂带需要包住肘而露出手指.</li>
 <li>包扎方法: 肢体八字. 螺旋, 螺旋反转 (适用于无弹性绷带), 关节八字. 包扎好后, 如果没有用到止血带, 需要检查一下血液循环: 按压指尖, 两秒内恢复; 在皮肤上划动测试知觉; 测试活动能力</li>
 </ol>
@@ -5165,7 +5168,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 </ol>
 </li>
 </ol>
-<p>tips</p>
+<p>💡tips</p>
 <ul>
 <li>心率过快时考虑有内出血; 外观失血不多但是有休克症状考虑有内出血; 左右上腹受创时考虑肝, 脾包膜内出血, 不可轻易移动, 否则容易变为外出血; 臀部受创时考虑骨盆内出血.</li>
 <li>深伤口不宜包扎.</li>
@@ -5179,7 +5182,7 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
 <p>目前比较受认可的复苏体位有两种: 侧卧体位和HAINES体位. 要点是要将头微微后仰, 如此保证打开气道. HAINES体位和侧卧体位的操作方法类似, 区别在于可能有脊柱损失时HAINES体位比侧卧体位更安全. (但这个体位没有侧卧体位舒服)</p>
 <p><img alt="" data-src="%E5%88%9D%E7%BA%A7%E6%80%A5%E6%95%91%E5%91%98%E7%AC%94%E8%AE%B0/%E4%BE%A7%E5%8D%A7%E4%BD%93%E4%BD%8D.png?50" style="width: 50%"></p>
 <p><img alt="" data-src="%E5%88%9D%E7%BA%A7%E6%80%A5%E6%95%91%E5%91%98%E7%AC%94%E8%AE%B0/HAINES%E4%BD%93%E4%BD%8D.jpg?80" style="width: 80%"></p>
-<h4 id="误食强酸-强碱"><a href="#误食强酸-强碱" class="headerlink" title="误食强酸/强碱"></a>误食强酸/强碱</h4><p>喝下大量强酸/强碱不宜利用中和反应中和 (会大量放热) 或者催吐 (伤害食道), 应服用大量蛋白质.</p>
+<h4 id="误食强酸-强碱"><a href="#误食强酸-强碱" class="headerlink" title="误食强酸/强碱"></a>误食强酸/强碱</h4><p>喝下大量强酸/强碱不宜利用中和反应中和 (会大量放热) 或者催吐 (伤害食道), 应<strong>服用大量蛋白质</strong>.</p>
 <h4 id="烫伤"><a href="#烫伤" class="headerlink" title="烫伤"></a>烫伤</h4><p>烫伤后应用流动凉水冲洗. 不要弄破烫伤导致的水泡, 普通烫伤的水泡第三天起为吸收期, 7-8天恢复.</p>
 <h4 id="脑卒中"><a href="#脑卒中" class="headerlink" title="脑卒中"></a>脑卒中</h4><p>脑卒中, 即中风, 是由于脑部血管突然破裂或因血管阻塞导致血液不能流入大脑而引起脑组织损伤的一组疾病, 根据是血管破裂还是血管阻塞导致的分为出血性脑卒中和缺血性脑卒中. 其中缺血性脑卒中发病率更高, 出血性脑卒中死亡率更高. 面对脑卒中牢记<strong>FAST原则</strong>:</p>
 <p><img alt="" data-src="%E5%88%9D%E7%BA%A7%E6%80%A5%E6%95%91%E5%91%98%E7%AC%94%E8%AE%B0/FAST%E5%8E%9F%E5%88%99.png?65" style="width: 65%"></p>
@@ -5667,6 +5670,82 @@ the menu; and then adjust the default setting via /etc/default/grub.</p>
       </categories>
   </entry>
   <entry>
+    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
+    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<div align="right">Language:
+<a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a>
+<a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a>
+</div>
+
+<a id="more"></a>
+
+<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="更改配置后页面未出现变化"><a href="#更改配置后页面未出现变化" class="headerlink" title="更改配置后页面未出现变化"></a>更改配置后页面未出现变化</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
+<h3 id="markdown中文换行导致的空格问题"><a href="#markdown中文换行导致的空格问题" class="headerlink" title="markdown中文换行导致的空格问题"></a>markdown中文换行导致的空格问题</h3><p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="Google站点地图报错"><a href="#Google站点地图报错" class="headerlink" title="Google站点地图报错"></a>Google站点地图报错</h3><p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
+<h3 id="如何建立多级分类"><a href="#如何建立多级分类" class="headerlink" title="如何建立多级分类"></a>如何建立多级分类</h3><p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
+<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><h3 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h3><p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a>
+<a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>软件配置</category>
+        <category>Web</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>几个提高效率的小技巧</title>
+    <url>/zh-CN/2019/01/18/%E5%87%A0%E4%B8%AA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>记录和分享一些我觉得提高了自己效率的技巧。</p>
+<a id="more"></a>
+
+<h1 id="虚拟桌面分割任务"><a href="#虚拟桌面分割任务" class="headerlink" title="虚拟桌面分割任务"></a>虚拟桌面分割任务</h1><p>Windows有一个我觉得蛮有意思的功能, <strong>虚拟桌面</strong>. 按 <code>Windows+Tab</code> 或者点击任务栏上有个长得有点奇怪的图标可以打开<strong>任务视图</strong>, 然后可以新建桌面, 管理桌面. 通过把应用界面分别放到不同桌面可以让任务栏不会堆积很多页面. 有时候同时写多个项目的时候会用浏览器搜好几个主题 (是的我就是浏览器选手) 如果都放到一起太乱太多了, 因此放到不同桌面是个非常不错的选择. 我经常将娱乐的玩意, 什么网易云, 百度云之类放一个桌面, 然后一个项目放一个桌面, 心情愉悦让效率大大提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<h1 id="更改输入法符号"><a href="#更改输入法符号" class="headerlink" title="更改输入法符号"></a>更改输入法符号</h1><p>有时, 比如写中文文档时, 我们需要频繁切换中英文输入法, 而代码中打符号的时候我总是忘记切换成英文输入法, 打出万恶的中文字符, 比如；什么的. 而我发现快捷键 <code>Ctrl+.</code>可以只切换符号的中英文! 也就是说你可以在中文输入法下打出英文标点 (比如我的句号是英文句号). 这样就解决了中英文标点易混淆的烦恼<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<!-- TODO -->
+<!-- chrom --><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>技巧</category>
+      </categories>
+  </entry>
+  <entry>
     <title>当VSCode成为一种生活方式</title>
     <url>/zh-CN/2019/01/07/%E5%BD%93VSCode%E6%88%90%E4%B8%BA%E4%B8%80%E7%A7%8D%E7%94%9F%E6%B4%BB%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<div align="right">Language:
@@ -5726,82 +5805,6 @@ VSCode之后发现这个选项没被勾上.</p>
         <category>软件配置</category>
         <category>VSC</category>
         <category>技巧</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>几个提高效率的小技巧</title>
-    <url>/zh-CN/2019/01/18/%E5%87%A0%E4%B8%AA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<p>记录和分享一些我觉得提高了自己效率的技巧。</p>
-<a id="more"></a>
-
-<h1 id="虚拟桌面分割任务"><a href="#虚拟桌面分割任务" class="headerlink" title="虚拟桌面分割任务"></a>虚拟桌面分割任务</h1><p>Windows有一个我觉得蛮有意思的功能, <strong>虚拟桌面</strong>. 按 <code>Windows+Tab</code> 或者点击任务栏上有个长得有点奇怪的图标可以打开<strong>任务视图</strong>, 然后可以新建桌面, 管理桌面. 通过把应用界面分别放到不同桌面可以让任务栏不会堆积很多页面. 有时候同时写多个项目的时候会用浏览器搜好几个主题 (是的我就是浏览器选手) 如果都放到一起太乱太多了, 因此放到不同桌面是个非常不错的选择. 我经常将娱乐的玩意, 什么网易云, 百度云之类放一个桌面, 然后一个项目放一个桌面, 心情愉悦让效率大大提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<h1 id="更改输入法符号"><a href="#更改输入法符号" class="headerlink" title="更改输入法符号"></a>更改输入法符号</h1><p>有时, 比如写中文文档时, 我们需要频繁切换中英文输入法, 而代码中打符号的时候我总是忘记切换成英文输入法, 打出万恶的中文字符, 比如；什么的. 而我发现快捷键 <code>Ctrl+.</code>可以只切换符号的中英文! 也就是说你可以在中文输入法下打出英文标点 (比如我的句号是英文句号). 这样就解决了中英文标点易混淆的烦恼<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<!-- TODO -->
-<!-- chrom --><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>技巧</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
-    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<div align="right">Language:
-<a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a>
-<a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a>
-</div>
-
-<a id="more"></a>
-
-<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><h3 id="更改配置后页面未出现变化"><a href="#更改配置后页面未出现变化" class="headerlink" title="更改配置后页面未出现变化"></a>更改配置后页面未出现变化</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
-<h3 id="markdown中文换行导致的空格问题"><a href="#markdown中文换行导致的空格问题" class="headerlink" title="markdown中文换行导致的空格问题"></a>markdown中文换行导致的空格问题</h3><p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
-<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="Google站点地图报错"><a href="#Google站点地图报错" class="headerlink" title="Google站点地图报错"></a>Google站点地图报错</h3><p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
-<h3 id="如何建立多级分类"><a href="#如何建立多级分类" class="headerlink" title="如何建立多级分类"></a>如何建立多级分类</h3><p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
-<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><h3 id="多语言"><a href="#多语言" class="headerlink" title="多语言"></a>多语言</h3><p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a>
-<a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>软件配置</category>
-        <category>Web</category>
       </categories>
   </entry>
 </search>
