@@ -60,17 +60,17 @@
   };
 </script>
 
-  <meta name="description" content="行吧, 继上次手搓简单卡尔曼算法后我又接触到了更多控制方面的东西. 想我一个电子工程的弟弟在这里研究术语都不知道几个的控制… 命苦啊! 最近在调机械腿, 应该说还在调那条腿, 对伺服电机里的PID算法有了些许感悟.">
+  <meta name="description" content="行吧, 继上次手搓简单卡尔曼算法后我又接触到了更多控制方面的东西. 想我一个电子工程的弟弟在这里研究术语都不知道几个的控制... 命苦啊! 最近在调机械腿, 应该说还在调那条腿, 对伺服电机里的PID算法有了些许感悟.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="对伺服电机PID的理解">
 <meta property="og:url" content="https://leojhonsong.github.io/zh-CN/2019/03/27/对伺服电机PID的理解/index.html">
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
-<meta property="og:description" content="行吧, 继上次手搓简单卡尔曼算法后我又接触到了更多控制方面的东西. 想我一个电子工程的弟弟在这里研究术语都不知道几个的控制… 命苦啊! 最近在调机械腿, 应该说还在调那条腿, 对伺服电机里的PID算法有了些许感悟.">
+<meta property="og:description" content="行吧, 继上次手搓简单卡尔曼算法后我又接触到了更多控制方面的东西. 想我一个电子工程的弟弟在这里研究术语都不知道几个的控制... 命苦啊! 最近在调机械腿, 应该说还在调那条腿, 对伺服电机里的PID算法有了些许感悟.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2020-03-23T09:26:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="对伺服电机PID的理解">
-<meta name="twitter:description" content="行吧, 继上次手搓简单卡尔曼算法后我又接触到了更多控制方面的东西. 想我一个电子工程的弟弟在这里研究术语都不知道几个的控制… 命苦啊! 最近在调机械腿, 应该说还在调那条腿, 对伺服电机里的PID算法有了些许感悟.">
+<meta name="twitter:description" content="行吧, 继上次手搓简单卡尔曼算法后我又接触到了更多控制方面的东西. 想我一个电子工程的弟弟在这里研究术语都不知道几个的控制... 命苦啊! 最近在调机械腿, 应该说还在调那条腿, 对伺服电机里的PID算法有了些许感悟.">
   <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2019/03/27/对伺服电机PID的理解/">
 
 
@@ -468,24 +468,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>行吧, 继上次手搓简单卡尔曼算法后我又接触到了更多控制方面的东西. 想我一个电子工程的弟弟在这里研究术语都不知道几个的控制… 命苦啊! 最近在调机械腿, 应该说还在调那条腿, 对伺服电机里的PID算法有了些许感悟.</p>
+        <p>行吧, 继上次手搓简单卡尔曼算法后我又接触到了更多控制方面的东西. 想我一个电子工程的弟弟在这里研究术语都不知道几个的控制... 命苦啊! 最近在调机械腿, 应该说还在调那条腿, 对伺服电机里的PID算法有了些许感悟.</p>
 <a id="more"></a>
-
 <p>这条腿的传感噪声问题因为换了传感器已经解决了, 最近的问题是<strong>不能快速, 稳定, 准确的到达指定位置</strong>. 目前通过<strong>限制电机的加速度</strong>改善了情况.</p>
-<h1 id="PID也没有那么简单"><a href="#PID也没有那么简单" class="headerlink" title="PID也没有那么简单"></a>PID也没有那么简单</h1><p>在改动前机械腿在低速状态 (很低速那种) 下表现得还是蛮好的, 但速度一旦快起来就明显有<strong>过冲</strong>, 是一抖一抖运动的, 到达位置时间反而比低速还长… 虽然我以前买了一个很简陋的四轴穿越机调过一点点PID, 感觉这算法也不难理解 (至少比卡尔曼好理解😁), 但这次发现要达到一定的精度PID也不是那么简单的东西: 经常是 “这参数加了20了怎么毛的变化都没有啊 黑人问号”, 但实际用起来又确实地感受到了差别. 并且当情况复杂的时候一个普通PID是不能满足的, 可能会用串级PID, 分段PID, 模糊PID, 专家系统PID, 容错PID, 前馈, 非线性控制之类的来改善😵</p>
+<h1 id="pid也没有那么简单">PID也没有那么简单</h1>
+<p>在改动前机械腿在低速状态 (很低速那种) 下表现得还是蛮好的, 但速度一旦快起来就明显有<strong>过冲</strong>, 是一抖一抖运动的, 到达位置时间反而比低速还长... 虽然我以前买了一个很简陋的四轴穿越机调过一点点PID, 感觉这算法也不难理解 (至少比卡尔曼好理解😁), 但这次发现要达到一定的精度PID也不是那么简单的东西: 经常是 "这参数加了20了怎么毛的变化都没有啊 黑人问号", 但实际用起来又确实地感受到了差别. 并且当情况复杂的时候一个普通PID是不能满足的, 可能会用串级PID, 分段PID, 模糊PID, 专家系统PID, 容错PID, 前馈, 非线性控制之类的来改善😵</p>
 <p>🔗 参考: <a href="https://www.zhihu.com/question/22603676/answer/28847509" target="_blank" rel="noopener">关于永磁同步电机交流伺服控制系统的算法问题？ - 小心假设的回答 - 知乎</a></p>
-<h1 id="PI-·-PD-·-PID"><a href="#PI-·-PD-·-PID" class="headerlink" title="PI · PD · PID"></a>PI · PD · PID</h1><p>另外我知道了在工业中说是说PID控制器, 但<strong>实际大多是PI控制器</strong>, 因为D虽然可以增大系统阻尼, 使系统具有一定预见性, 增强了对微小变化的响应, 但也因此造成系统容易震荡, 不稳定. 而根据网上说的<strong>I比D更容易引起不稳定, 因为I引入了另一个极点.</strong> 具体啥时候用PI, PD, PID我还没有头绪.</p>
-<p>🔗 参考:</p>
-<ul>
-<li><a href="https://www.zhihu.com/question/26944678/answer/44687208" target="_blank" rel="noopener">哪些控制类的算法惊艳了你？ - 三郎的回答 - 知乎</a></li>
-<li><a href="http://www.sohu.com/a/155185294_464086" target="_blank" rel="noopener">PID控制算法精华和参数整定三大招</a></li>
-</ul>
-<h1 id="三环控制"><a href="#三环控制" class="headerlink" title="三环控制"></a>三环控制</h1><p>再有就是我大致理解了伺服电机三环PID是一种多么精妙而自然的设计.</p>
-<p>在调PID的时候我和师兄一度绝望, 我就说: “要不我们只保留转距环, 上层的我们重新写一遍.”当时我们使用的是<strong>位置模式</strong>控制电机. 我看电机驱动器的说明书都看得晕呼呼的, 还没怎么理解三环控制.
-但我要保留转距环的想法是很正常的:</p>
+<h1 id="pi-pd-pid">PI · PD · PID</h1>
+<p>另外我知道了在工业中说是说PID控制器, 但<strong>实际大多是PI控制器</strong>, 因为D虽然可以增大系统阻尼, 使系统具有一定预见性, 增强了对微小变化的响应, 但也因此造成系统容易震荡, 不稳定. 而根据网上说的<strong>I比D更容易引起不稳定, 因为I引入了另一个极点.</strong> 具体啥时候用PI, PD, PID我还没有头绪.</p>
+<p>🔗 参考: - <a href="https://www.zhihu.com/question/26944678/answer/44687208" target="_blank" rel="noopener">哪些控制类的算法惊艳了你？ - 三郎的回答 - 知乎</a> - <a href="http://www.sohu.com/a/155185294_464086" target="_blank" rel="noopener">PID控制算法精华和参数整定三大招</a></p>
+<h1 id="三环控制">三环控制</h1>
+<p>再有就是我大致理解了伺服电机三环PID是一种多么精妙而自然的设计.</p>
+<p>在调PID的时候我和师兄一度绝望, 我就说: "要不我们只保留转距环, 上层的我们重新写一遍."当时我们使用的是<strong>位置模式</strong>控制电机. 我看电机驱动器的说明书都看得晕呼呼的, 还没怎么理解三环控制. 但我要保留转距环的想法是很正常的:</p>
 <p>电机最基本的控制方式就是控制流过电机的电流, 也就是控制电机输出的转距. 在这一环里不是单纯的PID, 驱动器还设置了一些阈值, 防止过流烧坏电机什么的. 这一环是驱动器自整定的, 但效果也不错, 因此我认为不必自己重写这一环.</p>
-<p>然后我说:”上层我们用一个PID, 达到: 当当前位置比目标位置小就加正向转距, 当当前位置比目标位置大时加逆向转距的效果.”</p>
-<p>学长立即指出这样机械腿到达位置时的<strong>速度是不定的</strong>.我:”那就加一环速度PID, 生成一个百分数乘以转距来达到控制达到目标位置时的速度的效果”</p>
+<p>然后我说:"上层我们用一个PID, 达到: 当当前位置比目标位置小就加正向转距, 当当前位置比目标位置大时加逆向转距的效果."</p>
+<p>学长立即指出这样机械腿到达位置时的<strong>速度是不定的</strong>.我:"那就加一环速度PID, 生成一个百分数乘以转距来达到控制达到目标位置时的速度的效果"</p>
 <p>说完我一愣, 我特么这不是说了一遍<strong>电流环, 速度环, 位置环</strong>的所谓<strong>三环控制</strong>🐴</p>
 <p>🔗 参考:</p>
 <ul>
@@ -620,7 +617,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PID也没有那么简单"><span class="nav-number">1.</span> <span class="nav-text">PID也没有那么简单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PI-·-PD-·-PID"><span class="nav-number">2.</span> <span class="nav-text">PI · PD · PID</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三环控制"><span class="nav-number">3.</span> <span class="nav-text">三环控制</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#pid也没有那么简单"><span class="nav-number">1.</span> <span class="nav-text">PID也没有那么简单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pi-pd-pid"><span class="nav-number">2.</span> <span class="nav-text">PI · PD · PID</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三环控制"><span class="nav-number">3.</span> <span class="nav-text">三环控制</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -755,7 +752,7 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">149k</span>
+    <span title="站点总字数">152k</span>
 </div>
 
         

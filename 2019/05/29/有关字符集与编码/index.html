@@ -67,7 +67,7 @@
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="当我在解决Linux下解压zip文件的问题时发现编码方面的问题还蛮多的, 在此记录.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2022-05-29T13:07:55.584Z">
+<meta property="og:updated_time" content="2022-05-29T13:57:06.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="有关字符集与编码">
 <meta name="twitter:description" content="当我在解决Linux下解压zip文件的问题时发现编码方面的问题还蛮多的, 在此记录.">
@@ -392,7 +392,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-29 21:07:55" itemprop="dateModified" datetime="2022-05-29T21:07:55+08:00">2022-05-29</time>
+                <time title="修改时间：2022-05-29 21:57:06" itemprop="dateModified" datetime="2022-05-29T21:57:06+08:00">2022-05-29</time>
               </span>
             
           
@@ -456,8 +456,8 @@
       
         <p>当我在解决<a href="https://leojhonsong.github.io/zh-CN/Linux%E6%9D%82%E8%AE%B0/#%E8%A7%A3%E5%8E%8B%20-zip%20%E5%8E%8B%E7%BC%A9%E5%8C%85%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%90%8D%E4%B8%BA%E4%B9%B1%E7%A0%81">Linux下解压zip文件的问题</a>时发现编码方面的问题还蛮多的, 在此记录.</p>
 <a id="more"></a>
-
-<h1 id="Windows下编码方式的坑"><a href="#Windows下编码方式的坑" class="headerlink" title="Windows下编码方式的坑"></a>Windows下编码方式的坑</h1><p>🔗 <a href="https://www.zhihu.com/question/20650946/answer/15745831" target="_blank" rel="noopener">知乎-Windows记事本的ANSI, Unicode, UTF-8这三种编码模式有什么区别？</a></p>
+<h1 id="windows下编码方式的坑">Windows下编码方式的坑</h1>
+<p>🔗 <a href="https://www.zhihu.com/question/20650946/answer/15745831" target="_blank" rel="noopener">知乎-Windows记事本的ANSI, Unicode, UTF-8这三种编码模式有什么区别？</a></p>
 <p>🔗 <a href="https://www.zhihu.com/question/20167122" target="_blank" rel="noopener">「带 BOM 的 UTF-8」和「无 BOM 的 UTF-8」有什么区别？网页代码一般使用哪个</a></p>
 <p>总结一下, 在Windows中:</p>
 <ul>
@@ -465,36 +465,30 @@
 <li>所谓的「Unicode」指的是带有 BOM 的小端序 UTF-16</li>
 <li>所谓的「UTF-8」指的是带 BOM 的 UTF-8</li>
 </ul>
-<p>之前一直听说Windows自带的记事本不要用, 会自动在文件开头加一个东西, 导致一些地方显示该文件开头有一个 “?” , 一直不知道是多了个啥, 原来是UTF-8/UTF-16编码的文件会在文件开头多一个
-BOM. <strong>UTF-8与带BOM的UTF-8的区别在于带BOM的UTF-8文件开头有U+FEFF.</strong> 微软使用带BOM的UTF-8
-的目的是将UTF-8与ASCII等编码方式区分开, 但这就导致了在很多时候UTF-8默认是不带BOM时文件读取有误.</p>
-<h1 id="GBK不是一种编码格式"><a href="#GBK不是一种编码格式" class="headerlink" title="GBK不是一种编码格式"></a>GBK不是一种编码格式</h1><p>GBK并不是一种编码格式, 而<strong>是一个字符集</strong>. 我觉得很low的是GBK的全称是 <strong>Guojia Biaozhun
-Kuozhan</strong> 🤦‍…low得不要不要的. 不过也可以理解, 毕竟这三个字母是从”国标扩”的首拼发展来的.</p>
-<h2 id="自整理的中文字符集发展史"><a href="#自整理的中文字符集发展史" class="headerlink" title="自整理的中文字符集发展史"></a>自整理的中文字符集发展史</h2><p>以下是我整理的中文字符集发展史:</p>
+<p>之前一直听说Windows自带的记事本不要用, 会自动在文件开头加一个东西, 导致一些地方显示该文件开头有一个 "?" , 一直不知道是多了个啥, 原来是UTF-8/UTF-16编码的文件会在文件开头多一个 BOM. <strong>UTF-8与带BOM的UTF-8的区别在于带BOM的UTF-8文件开头有U+FEFF.</strong> 微软使用带BOM的UTF-8 的目的是将UTF-8与ASCII等编码方式区分开, 但这就导致了在很多时候UTF-8默认是不带BOM时文件读取有误.</p>
+<h1 id="gbk不是一种编码格式">GBK不是一种编码格式</h1>
+<p>GBK并不是一种编码格式, 而<strong>是一个字符集</strong>. 我觉得很low的是GBK的全称是 <strong>Guojia Biaozhun Kuozhan</strong> 🤦‍...low得不要不要的. 不过也可以理解, 毕竟这三个字母是从"国标扩"的首拼发展来的.</p>
+<h2 id="自整理的中文字符集发展史">自整理的中文字符集发展史</h2>
+<p>以下是我整理的中文字符集发展史:</p>
 <ul>
-<li>最开始中国国家标准化管理委员会发布了
-<a href="http://www.std.gov.cn/gb/search/gbDetailed?id=71F772D79E19D3A7E05397BE0A0AB82A" target="_blank" rel="noopener"><code>GB/T2312-1980</code></a> (<strong>GB</strong>为<strong>国标</strong>首拼, <strong>T</strong>是<strong>推</strong>, 指推广,
-非强制性的标准), 包括了<strong>6763</strong>个常用汉字, 发布以后许多有汉字的语言也采用了这个字符集. 但这个字符集很不够, 缺少很多生僻字, 繁体字, 对日本, 韩国汉字收录也很不全.</li>
-<li>微软根据GB2312做出了<code>cp936</code> (code page936), 字符集方案为GB2312, 编码方案为
-<strong>EUC-CN</strong>.</li>
+<li>最开始中国国家标准化管理委员会发布了 <a href="http://www.std.gov.cn/gb/search/gbDetailed?id=71F772D79E19D3A7E05397BE0A0AB82A" target="_blank" rel="noopener"><code>GB/T2312-1980</code></a> (<strong>GB</strong>为<strong>国标</strong>首拼, <strong>T</strong>是<strong>推</strong>, 指推广, 非强制性的标准), 包括了<strong>6763</strong>个常用汉字, 发布以后许多有汉字的语言也采用了这个字符集. 但这个字符集很不够, 缺少很多生僻字, 繁体字, 对日本, 韩国汉字收录也很不全.</li>
+<li>微软根据GB2312做出了<code>cp936</code> (code page936), 字符集方案为GB2312, 编码方案为 <strong>EUC-CN</strong>.</li>
 <li>1993年<strong>Unicode1.1</strong>发布后国标委抄过来发布了<a href="http://www.std.gov.cn/gb/search/gbDetailed?id=71F772D7860AD3A7E05397BE0A0AB82A" target="_blank" rel="noopener"><code>GB 13000.1-1993</code></a>.</li>
-<li>这时微软利用<strong>cp936</strong>中收录GB2312-1980后未使用完的码位收录了GB13000.1-1993的全部字符,
-这样既兼容了GB2312又添加了许多字符. 这个新版本cp936最早实现于<strong>Windows95简体中文版</strong>.
-这之后微软又陆陆续续给cp936加了几个字符. 直到2002年<a href="https://www.iana.org/assignments/charset-reg/GBK" target="_blank" rel="noopener">IANA将cp936的字符集注册为<code>GBK</code></a>. GBK共收录<strong>21886</strong>个汉字和图形符号.</li>
-<li>再后来因为字符还是不全 (比如emoji什么的)以及其他原因发布了<a href="http://www.std.gov.cn/gb/search/gbDetailed?id=71F772D79585D3A7E05397BE0A0AB82A" target="_blank" rel="noopener"><code>GB 18030-2000</code></a>, 在
-Windows的对应代码页为<code>cp54936</code>. 但值得一提的是尽管2000年就有了新标准, 但Windows系统的系统语言为简体中文时的默认代码页仍为<strong>cp936</strong>. 原因可以参考<a href="https://linux.cn/article-1213-1.html" target="_blank" rel="noopener">这里</a>. 文章大意: 微软划水, 国家也没上心.</li>
+<li>这时微软利用<strong>cp936</strong>中收录GB2312-1980后未使用完的码位收录了GB13000.1-1993的全部字符, 这样既兼容了GB2312又添加了许多字符. 这个新版本cp936最早实现于<strong>Windows95简体中文版</strong>. 这之后微软又陆陆续续给cp936加了几个字符. 直到2002年<a href="https://www.iana.org/assignments/charset-reg/GBK" target="_blank" rel="noopener">IANA将cp936的字符集注册为<code>GBK</code></a>. GBK共收录<strong>21886</strong>个汉字和图形符号.</li>
+<li>再后来因为字符还是不全 (比如emoji什么的)以及其他原因发布了<a href="http://www.std.gov.cn/gb/search/gbDetailed?id=71F772D79585D3A7E05397BE0A0AB82A" target="_blank" rel="noopener"><code>GB 18030-2000</code></a>, 在 Windows的对应代码页为<code>cp54936</code>. 但值得一提的是尽管2000年就有了新标准, 但Windows系统的系统语言为简体中文时的默认代码页仍为<strong>cp936</strong>. 原因可以参考<a href="https://linux.cn/article-1213-1.html" target="_blank" rel="noopener">这里</a>. 文章大意: 微软划水, 国家也没上心.</li>
 <li>最近的一版标准字符集是<a href="http://www.std.gov.cn/gb/search/gbDetailed?id=71F772D800B5D3A7E05397BE0A0AB82A" target="_blank" rel="noopener"><code>GB 18030-2005</code></a>. 但这个好像有点复杂, 我并没有太看懂, 反正和之前的几个标准很不同. 怎么个不一样可以参考<a href="https://zhuanlan.zhihu.com/p/31643128" target="_blank" rel="noopener">这里</a>.</li>
 </ul>
-<h1 id="Unicode与UTF-8是不同层面的东西"><a href="#Unicode与UTF-8是不同层面的东西" class="headerlink" title="Unicode与UTF-8是不同层面的东西"></a>Unicode与UTF-8是不同层面的东西</h1><p>我曾经以为Unicode是一种编码格式, 就像UTF-8是一种编码格式, 但后来我发现这两者根本是不同层面上的东西.</p>
-<h2 id="Unicode与UCS"><a href="#Unicode与UCS" class="headerlink" title="Unicode与UCS"></a>Unicode与UCS</h2><h3 id="两者关系"><a href="#两者关系" class="headerlink" title="两者关系"></a>两者关系</h3><p>与<strong>Unicode</strong> (统一码) 同一层面的概念是<strong>UCS</strong> (Universal Character Set, 通用字符集).
-UCS和Unicode分别由<strong>ISO</strong> (国际标准化组织) 和<strong>一帮软件制造商</strong> (Xerox, 苹果等成立了个统一码联盟) 先后发起. 后来他们才合并工作. 实际上两者是差不多的玩意. 我并不相信统一码联盟在成立时不知道ISO已经在开发UCS了
-(UCS项目启动比Unicode早<strong>4年</strong>), 而在这样的情况下还要开发Unicode, 个人认为是商业原因.
-直到现在这仍然是两个独立的项目, 但项目进度同步且两个组织都宣称要和对方<strong>保持兼容</strong>. 个人觉得很蠢🤷‍</p>
-<h3 id="两者差异"><a href="#两者差异" class="headerlink" title="两者差异"></a>两者差异</h3><p>硬要说的话其实Unicode与UCS有一些细节不同.</p>
+<h1 id="unicode与utf-8是不同层面的东西">Unicode与UTF-8是不同层面的东西</h1>
+<p>我曾经以为Unicode是一种编码格式, 就像UTF-8是一种编码格式, 但后来我发现这两者根本是不同层面上的东西.</p>
+<h2 id="unicode与ucs">Unicode与UCS</h2>
+<h3 id="两者关系">两者关系</h3>
+<p>与<strong>Unicode</strong> (统一码) 同一层面的概念是<strong>UCS</strong> (Universal Character Set, 通用字符集). UCS和Unicode分别由<strong>ISO</strong> (国际标准化组织) 和<strong>一帮软件制造商</strong> (Xerox, 苹果等成立了个统一码联盟) 先后发起. 后来他们才合并工作. 实际上两者是差不多的玩意. 我并不相信统一码联盟在成立时不知道ISO已经在开发UCS了 (UCS项目启动比Unicode早<strong>4年</strong>), 而在这样的情况下还要开发Unicode, 个人认为是商业原因. 直到现在这仍然是两个独立的项目, 但项目进度同步且两个组织都宣称要和对方<strong>保持兼容</strong>. 个人觉得很蠢🤷‍</p>
+<h3 id="两者差异">两者差异</h3>
+<p>硬要说的话其实Unicode与UCS有一些细节不同.</p>
 <p>比如ISO/IEC 10646-1使用四种不同风格的变体来显示简体中文, 繁体中文, 日语, 韩语汉字, 但Unicode2.0中只有简体中文的变体. 因此有过日本人无法接受Unicode的说法. (现在应该是没这问题了)</p>
 <p>应该还有小区别吧? 其他区别我不知道, 也懒得找了😁</p>
-<h2 id="现代编码模型"><a href="#现代编码模型" class="headerlink" title="现代编码模型"></a>现代编码模型</h2><p>Unicode是一套有些复杂的编码系统, 并不是单纯一个字符集方案或是一个编码方案, 而是构建出了一个
-<strong>现代编码模型</strong>. (这段话对UCS同理)</p>
+<h2 id="现代编码模型">现代编码模型</h2>
+<p>Unicode是一套有些复杂的编码系统, 并不是单纯一个字符集方案或是一个编码方案, 而是构建出了一个 <strong>现代编码模型</strong>. (这段话对UCS同理)</p>
 <p>这个模型分五层:</p>
 <ul>
 <li>抽象字符集(Abstract character repertoire)</li>
@@ -503,8 +497,7 @@ UCS和Unicode分别由<strong>ISO</strong> (国际标准化组织) 和<strong>�
 <li>字符编码方案(Character Encoding Scheme)</li>
 <li>传输编码语法(Transfer Encoding Syntax)</li>
 </ul>
-<p>按我的理解: 抽象字符集是一个抽象字符的<strong>集合</strong>, 不关注字形, 更关注字意. 比如钟和鐘的抽象字符是同一个, 而编码字符集是一个<strong>映射</strong>, 规定把一个抽象字符映射到哪个<a href="https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#%E5%9F%BA%E6%9C%AC%E5%A4%9A%E6%96%87%E7%A7%8D%E5%B9%B3%E9%9D%A2" target="_blank" rel="noopener">字符平面</a>, 哪个<strong>码点</strong>. 但这并不是一一映射, 为了兼容或者有的字 (比如CJK字) 可能有多个变体. 字符编码方式又称为”storage format”, 我猜这是因为这一层<strong>将码点编码成码元</strong>(这里的编码方式就是<strong>U</strong>nicode <strong>T</strong>ransformation <strong>F</strong>ormat,
-包括UTF-8, UTF-16, UTF-32等方法), 而码元正是每次从文件中读取到的字符的格式.</p>
+<p>按我的理解: 抽象字符集是一个抽象字符的<strong>集合</strong>, 不关注字形, 更关注字意. 比如钟和鐘的抽象字符是同一个, 而编码字符集是一个<strong>映射</strong>, 规定把一个抽象字符映射到哪个<a href="https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#%E5%9F%BA%E6%9C%AC%E5%A4%9A%E6%96%87%E7%A7%8D%E5%B9%B3%E9%9D%A2" target="_blank" rel="noopener">字符平面</a>, 哪个<strong>码点</strong>. 但这并不是一一映射, 为了兼容或者有的字 (比如CJK字) 可能有多个变体. 字符编码方式又称为"storage format", 我猜这是因为这一层<strong>将码点编码成码元</strong>(这里的编码方式就是<strong>U</strong>nicode <strong>T</strong>ransformation <strong>F</strong>ormat, 包括UTF-8, UTF-16, UTF-32等方法), 而码元正是每次从文件中读取到的字符的格式.</p>
 <p>Unicode编码模型详细阐述可以参考<a href="https://zhuanlan.zhihu.com/p/27026033" target="_blank" rel="noopener">这里</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -633,7 +626,7 @@ UCS和Unicode分别由<strong>ISO</strong> (国际标准化组织) 和<strong>�
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows下编码方式的坑"><span class="nav-number">1.</span> <span class="nav-text">Windows下编码方式的坑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GBK不是一种编码格式"><span class="nav-number">2.</span> <span class="nav-text">GBK不是一种编码格式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自整理的中文字符集发展史"><span class="nav-number">2.1.</span> <span class="nav-text">自整理的中文字符集发展史</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Unicode与UTF-8是不同层面的东西"><span class="nav-number">3.</span> <span class="nav-text">Unicode与UTF-8是不同层面的东西</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Unicode与UCS"><span class="nav-number">3.1.</span> <span class="nav-text">Unicode与UCS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#两者关系"><span class="nav-number">3.1.1.</span> <span class="nav-text">两者关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两者差异"><span class="nav-number">3.1.2.</span> <span class="nav-text">两者差异</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#现代编码模型"><span class="nav-number">3.2.</span> <span class="nav-text">现代编码模型</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#windows下编码方式的坑"><span class="nav-number">1.</span> <span class="nav-text">Windows下编码方式的坑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gbk不是一种编码格式"><span class="nav-number">2.</span> <span class="nav-text">GBK不是一种编码格式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自整理的中文字符集发展史"><span class="nav-number">2.1.</span> <span class="nav-text">自整理的中文字符集发展史</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#unicode与utf-8是不同层面的东西"><span class="nav-number">3.</span> <span class="nav-text">Unicode与UTF-8是不同层面的东西</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#unicode与ucs"><span class="nav-number">3.1.</span> <span class="nav-text">Unicode与UCS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#两者关系"><span class="nav-number">3.1.1.</span> <span class="nav-text">两者关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两者差异"><span class="nav-number">3.1.2.</span> <span class="nav-text">两者差异</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#现代编码模型"><span class="nav-number">3.2.</span> <span class="nav-text">现代编码模型</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -768,7 +761,7 @@ UCS和Unicode分别由<strong>ISO</strong> (国际标准化组织) 和<strong>�
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">149k</span>
+    <span title="站点总字数">152k</span>
 </div>
 
         

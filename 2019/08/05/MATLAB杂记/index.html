@@ -484,7 +484,6 @@
       
         <p>再开学的课程就要用MATLAB了, 而且了解很多机械系唯一要求学的编程语言就是MATLAB, 我决定还是稍微了解下.</p>
 <a id="more"></a>
-
 <p>首先, <a href="https://www.zhihu.com/question/37824202/answer/767114071" target="_blank" rel="noopener">MATLAB到底是不是编程语言?</a></p>
 <p>从<strong>TIOBE</strong>上有MATLAB而且MATLAB排名还不低可以看出MATLAB确实是一门编程语言, 但从上面链接可以看出MATLAB算是<strong>残疾</strong>的编程语言, 很多特性没有, 更多的是<strong>用来验证算法可行性</strong>.但我又想验证算法可行性为啥不用Python什么的, 语法也不麻烦呀? 然后我发现原本用<strong>Octave</strong>教深度学习的吴恩达现在改用<strong>Python</strong>了 😁</p>
 <p>💡 (这条是后来补的) 但其实随着使用我发现在<strong>矩阵计算方面</strong>MATLAB的语法还是比python简单很多.</p>
@@ -496,32 +495,34 @@
 <li>很多工具都有图形界面, 操作简单, 按按键就可以, 不用写那么多代码.</li>
 </ul>
 <p>总而言之, 虽然缺点多多, MATLAB还是很值得一学的</p>
-<h1 id="MATLAB软件个性化设置"><a href="#MATLAB软件个性化设置" class="headerlink" title="MATLAB软件个性化设置"></a>MATLAB软件个性化设置</h1><h2 id="设置初始工作文件夹"><a href="#设置初始工作文件夹" class="headerlink" title="设置初始工作文件夹"></a>设置初始工作文件夹</h2><p>使用HOME目录作为起始工作文件夹我觉得不是什么好事, 所以最好自己指定一个合适的目录. 我使用的是MATLAB默认的<code>userpath</code>, 即<strong>Documents/MATLAB</strong>文件夹. 一方面这个文件夹看着比较合理, 一方面MATLAB说<a href="https://ww2.mathworks.cn/help/matlab/matlab_env/matlab-startup-folder.html#bujzf43" target="_blank" rel="noopener">使用userpath作为初始工作文件夹有一定好处</a>.</p>
+<h1 id="matlab软件个性化设置">MATLAB软件个性化设置</h1>
+<h2 id="设置初始工作文件夹">设置初始工作文件夹</h2>
+<p>使用HOME目录作为起始工作文件夹我觉得不是什么好事, 所以最好自己指定一个合适的目录. 我使用的是MATLAB默认的<code>userpath</code>, 即<strong>Documents/MATLAB</strong>文件夹. 一方面这个文件夹看着比较合理, 一方面MATLAB说<a href="https://ww2.mathworks.cn/help/matlab/matlab_env/matlab-startup-folder.html#bujzf43" target="_blank" rel="noopener">使用userpath作为初始工作文件夹有一定好处</a>.</p>
 <p>Linux下设置MATLAB的初始工作文件夹方法和在Windows下改快捷方式的起始位置这种方法不一样, 要达到这个目的有两种方式:</p>
-<ol>
+<ol type="1">
 <li>在终端输入 <code>matlab -useStartupFolderPref</code> 打开MATLAB. -useStartupFolderPref选项指定初始工作文件夹为在<strong>Preference</strong>中<strong>Initial working folder option</strong>的指定文件夹.</li>
 <li>在终端输入 <code>matlab -sd [folder]</code> 打开MATLAB. -sd选项指定初始工作文件夹为[folder]文件夹.</li>
 </ol>
-<h2 id="更改编辑界面颜色主题"><a href="#更改编辑界面颜色主题" class="headerlink" title="更改编辑界面颜色主题"></a>更改编辑界面颜色主题</h2><p>在vim, VSC, VS, CLION, Pycharm等工具用惯了黑暗主题以后拿到啥都想先换个黑暗主题. 但是找了半天也只找到了设置编辑界面颜色主题的方式, 普通操作似乎并不能自定义丑陋的灰色工具栏.</p>
+<h2 id="更改编辑界面颜色主题">更改编辑界面颜色主题</h2>
+<p>在vim, VSC, VS, CLION, Pycharm等工具用惯了黑暗主题以后拿到啥都想先换个黑暗主题. 但是找了半天也只找到了设置编辑界面颜色主题的方式, 普通操作似乎并不能自定义丑陋的灰色工具栏.</p>
 <p>最终我把界面变成了这样 👇</p>
-<p><img alt="界面" data-src="MATLAB%E6%9D%82%E8%AE%B0/appearance.png"></p>
+<figure>
+<img alt="界面" data-src="MATLAB杂记/appearance.png"><figcaption>界面</figcaption>
+</figure>
 <ul>
 <li>颜色主题是通过<a href="https://github.com/scottclowe/matlab-schemer" target="_blank" rel="noopener">MATLAB Schemer</a>里的脚本更换的, 一键更换好评👍 因为我比较喜欢糖果色的颜色主题然后又不喜欢注释是灰色 (不管在黑色背景还是白色背景里辨析度都很低), 于是选择的主题是<a href="https://github.com/scottclowe/matlab-schemer/tree/master/schemes#dark-steel" target="_blank" rel="noopener">Dark Steel</a>.</li>
 <li>字体用的是<a href="https://github.com/powerline/fonts/tree/master/DejaVuSansMono" target="_blank" rel="noopener">DejaVu Sans Mono for Powerline</a>, 大小是11, 不过不知道为什么MATLAB显示不带效果的字体看着很粗糙, <strong>边缘锯齿状过于明显</strong>, 效果设置为了 <strong>bold</strong>, 这回好多了!</li>
 <li>布局改成了和我常用的vim, VSC差不多的布局: 资源管理器在左上, 细节信息在左下, 编辑窗口在右</li>
 </ul>
-<h1 id="MATLAB语法和工具"><a href="#MATLAB语法和工具" class="headerlink" title="MATLAB语法和工具"></a>MATLAB语法和工具</h1><h2 id="在终端运行"><a href="#在终端运行" class="headerlink" title="在终端运行"></a>在终端运行</h2><p>曾经我因为嫌MATLAB界面太丑又不能个性化想过在终端像用交互式Python一样用交互式
-MATLAB以及运行脚本. 我发现这是可行的:</p>
+<h1 id="matlab语法和工具">MATLAB语法和工具</h1>
+<h2 id="在终端运行">在终端运行</h2>
+<p>曾经我因为嫌MATLAB界面太丑又不能个性化想过在终端像用交互式Python一样用交互式 MATLAB以及运行脚本. 我发现这是可行的:</p>
 <p>在终端启动交互式MATLAB:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">matlab -nojvm</span><br></pre></td></tr></tbody></table></figure>
-
-<p><code>-nojvm</code>选项本身是<strong>不启动Java虚拟机</strong>的意思, 但因为Matlab的GUI都是用Java写的
-(听网上说的), 所以也有<code>-nosplash</code> (<strong>不显示启动画面</strong>), <code>-nodesktop</code>
-(<strong>不启动图形界面</strong>) 的功能. 另外因为没有启动jvm这样启动MATLAB十分迅速.</p>
+<p><code>-nojvm</code>选项本身是<strong>不启动Java虚拟机</strong>的意思, 但因为Matlab的GUI都是用Java写的 (听网上说的), 所以也有<code>-nosplash</code> (<strong>不显示启动画面</strong>), <code>-nodesktop</code> (<strong>不启动图形界面</strong>) 的功能. 另外因为没有启动jvm这样启动MATLAB十分迅速.</p>
 <p>💡 要注意用<code>-nojvm</code>选项时会创建图形界面的命令会报错.</p>
 <p>在终端运行MATLAB脚本:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">matlab -batch [MATLAB_command]</span><br></pre></td></tr></tbody></table></figure>
-
 <p><code>-batch</code>选项和<code>-r</code>选项的区别在于前者不会启动图形界面而后者会. 另外如果脚本中没有与图形界面有关的语句同样可以加上<code>-nojvm</code>选项.</p>
 <p><strong>但是啊!</strong></p>
 <p>我后来发现这样就<strong>本末倒置</strong>了! MATLAB的亮点我觉得一是所有变量都是全局变量, 能迅速可视化变量, 工具集成度非常高, 适合迅速验证各种算法, 二是社区非常完善, 提供了很多工具能轻松仿真很多模型.</p>
@@ -653,7 +654,7 @@ MATLAB以及运行脚本. 我发现这是可行的:</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MATLAB软件个性化设置"><span class="nav-number">1.</span> <span class="nav-text">MATLAB软件个性化设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#设置初始工作文件夹"><span class="nav-number">1.1.</span> <span class="nav-text">设置初始工作文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改编辑界面颜色主题"><span class="nav-number">1.2.</span> <span class="nav-text">更改编辑界面颜色主题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MATLAB语法和工具"><span class="nav-number">2.</span> <span class="nav-text">MATLAB语法和工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在终端运行"><span class="nav-number">2.1.</span> <span class="nav-text">在终端运行</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#matlab软件个性化设置"><span class="nav-number">1.</span> <span class="nav-text">MATLAB软件个性化设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#设置初始工作文件夹"><span class="nav-number">1.1.</span> <span class="nav-text">设置初始工作文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改编辑界面颜色主题"><span class="nav-number">1.2.</span> <span class="nav-text">更改编辑界面颜色主题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#matlab语法和工具"><span class="nav-number">2.</span> <span class="nav-text">MATLAB语法和工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在终端运行"><span class="nav-number">2.1.</span> <span class="nav-text">在终端运行</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -788,7 +789,7 @@ MATLAB以及运行脚本. 我发现这是可行的:</p>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">149k</span>
+    <span title="站点总字数">152k</span>
 </div>
 
         

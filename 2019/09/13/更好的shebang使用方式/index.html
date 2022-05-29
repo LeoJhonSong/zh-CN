@@ -460,11 +460,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在Linux系统的脚本第一行我们通常用
-<a href="https://zh.wikipedia.org/wiki/Shebang" target="_blank" rel="noopener">shebang</a>语句来指明解释器路径, 一方面有的脚本没有文件后缀名, 需要通过shebang语句指明系统才知道要用什么解释器运行. 另一方面有时候为了兼容性我们会指明使用标准位置的系统安装版本解释器.</p>
+        <p>在Linux系统的脚本第一行我们通常用 <a href="https://zh.wikipedia.org/wiki/Shebang" target="_blank" rel="noopener">shebang</a>语句来指明解释器路径, 一方面有的脚本没有文件后缀名, 需要通过shebang语句指明系统才知道要用什么解释器运行. 另一方面有时候为了兼容性我们会指明使用标准位置的系统安装版本解释器.</p>
 <p>但我发现有时候我们并不能确定使用者把我们需要类型的解释器装到了地方, 如果我们只想指出<strong>使用的解释器类型</strong>而不是具体路径, 可以使用<code>/usr/bin/env</code>命令. 比如如果我们想用Python3解释器执行一个脚本, 可以在第一行加:</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/env python3</span></span><br></pre></td></tr></tbody></table></figure>
-
 <p><code>env</code>会调用用户<strong>$PATH</strong>中首先出现的解释器版本.</p>
 <p>当然对于更复杂的情况更建议专门写一段程序来决定用哪个解释器.</p>
 <script>
@@ -727,7 +725,7 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">149k</span>
+    <span title="站点总字数">152k</span>
 </div>
 
         

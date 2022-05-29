@@ -454,45 +454,44 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>我想记录一下我遇到过的各种bug, 不论大小. 原本我从一开始学编程的时候就在这么做了, 但我也忘了我什么时候竟然怠慢了这件事! 我会想到记录这些是上大学前的暑假看到
-<a href="https://zhuanlan.zhihu.com/p/22266788" target="_blank" rel="noopener">这篇让人深受启发的教诲</a>而想要养成的习惯之一.
-我认为这绝对不是浪费时间. 正如初高中学习时的错题本 (虽然我那时的错题本一共也没能记几笔)
-只要我偶尔能想起来记几笔, 我想总是能为以后节省一些时间的.</p>
+        <p>我想记录一下我遇到过的各种bug, 不论大小. 原本我从一开始学编程的时候就在这么做了, 但我也忘了我什么时候竟然怠慢了这件事! 我会想到记录这些是上大学前的暑假看到 <a href="https://zhuanlan.zhihu.com/p/22266788" target="_blank" rel="noopener">这篇让人深受启发的教诲</a>而想要养成的习惯之一. 我认为这绝对不是浪费时间. 正如初高中学习时的错题本 (虽然我那时的错题本一共也没能记几笔) 只要我偶尔能想起来记几笔, 我想总是能为以后节省一些时间的.</p>
 <a id="more"></a>
-
-<h1 id="有时候等号两侧不能加空格"><a href="#有时候等号两侧不能加空格" class="headerlink" title="有时候等号两侧不能加空格"></a>有时候等号两侧不能加空格</h1><ul>
+<h1 id="有时候等号两侧不能加空格">有时候等号两侧不能加空格</h1>
+<ul>
 <li>在bash中赋值时等号两侧不能有空格</li>
 <li>在swift中等号两侧要不都加等号, 要不都不加, 不可只有单侧有等号</li>
 </ul>
-<h1 id="此python非彼python"><a href="#此python非彼python" class="headerlink" title="此python非彼python"></a>此python非彼python</h1><p>有时会遇到明明刚安装了一个包但调用的时候报错未找到该包, 再次安装显示已安装最新版的神奇情况</p>
+<h1 id="此python非彼python">此python非彼python</h1>
+<p>有时会遇到明明刚安装了一个包但调用的时候报错未找到该包, 再次安装显示已安装最新版的神奇情况</p>
 <p>有以下几种可能 (总体来说是安装包的python环境和调用包的python环境不一样):</p>
-<ol>
+<ol type="1">
 <li><p>如果你是用命令行安装的 (或者你安装了Anaconda,用conda安装的), 在IDE中调用的, 那你应当检查一下你的IDE调用的pytohn interpreter和cmd调用的是不是一个了. 比如Anaconda自带的Spyder默认的是python2.7, 但我设置的cmd调用的是一个3.6.4的python</p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> Anaconda中切换Spyder环境可以参考
-<a href="https://www.zhihu.com/question/49144687" target="_blank" rel="noopener">这里</a></p>
-</li>
-<li><p>如果环境中同时有python2和python3, 有可能将包安装到了python2的环境中但你的程序是
-python3的程序, 可以将<code>pip install</code> 换为 <code>pip3 install</code> 试试</p>
-</li>
+<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> Anaconda中切换Spyder环境可以参考 <a href="https://www.zhihu.com/question/49144687" target="_blank" rel="noopener">这里</a></li>
+<li><p>如果环境中同时有python2和python3, 有可能将包安装到了python2的环境中但你的程序是 python3的程序, 可以将<code>pip install</code> 换为 <code>pip3 install</code> 试试</p></li>
 </ol>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 如果安装了conda那么安装python库最好使用conda, 尽量不要混用conda和pip,
-<strong>conda和pip的包格式不同, 两者是不兼容的, 甚至有的库在conda和pip中名字不同</strong>.
-有关在conda中没有某库但pip中有的情况可以参考<a href="https://www.zhihu.com/question/49144687" target="_blank" rel="noopener">这里</a>, 而关于混用conda与pip的危害可以参考<a href="http://onoz000.hatenablog.com/entry/2018/02/11/142347" target="_blank" rel="noopener">这位日本兄弟的文章</a></p>
-<h1 id="谨防数据溢出"><a href="#谨防数据溢出" class="headerlink" title="谨防数据溢出"></a>谨防数据溢出</h1><p>这个例子是我在尝试细化图像的时候遇到的</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Xihua</span><span class="params">(image, array, num=<span class="number">1</span>)</span>:</span></span><br><span class="line">    iXihua = np.zeros(image.shape, np.uint8)</span><br><span class="line">    iXihua = image.copy()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num):</span><br><span class="line">        VThin(iXihua, array)</span><br><span class="line">    <span class="keyword">return</span> iXihua</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">VThin</span><span class="params">(image, array)</span>:</span></span><br><span class="line">    h = height</span><br><span class="line">    w = width</span><br><span class="line">    NEXT = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(h):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(w):</span><br><span class="line">            <span class="keyword">if</span> NEXT == <span class="number">0</span>:</span><br><span class="line">                NEXT = <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                M = (image[i, j<span class="number">-1</span>] + image[i, j] + image[i, j+<span class="number">1</span>]) <span class="keyword">if</span> <span class="number">0</span>&lt;j&lt;w<span class="number">-1</span> <span class="keyword">else</span> <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> image[i, j] == <span class="number">0</span> <span class="keyword">and</span> M != <span class="number">0</span>:</span><br><span class="line">                    a = [<span class="number">0</span>] * <span class="number">9</span></span><br><span class="line">                    <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">                        <span class="keyword">for</span> l <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">                            <span class="keyword">if</span> <span class="number">-1</span>&lt;(i<span class="number">-1</span>+k)&lt;h <span class="keyword">and</span> <span class="number">-1</span> &lt;(j<span class="number">-1</span>+l)&lt;w <span class="keyword">and</span> image[i<span class="number">-1</span>+k, j<span class="number">-1</span>+l]==<span class="number">255</span>:</span><br><span class="line">                                a[k*<span class="number">3</span>+l] = <span class="number">1</span></span><br><span class="line">                    sum = a[<span class="number">0</span>]*<span class="number">1</span>+a[<span class="number">1</span>]*<span class="number">2</span>+a[<span class="number">2</span>]*<span class="number">4</span>+a[<span class="number">3</span>]*<span class="number">8</span>+a[<span class="number">5</span>]*<span class="number">16</span>+a[<span class="number">6</span>]*<span class="number">32</span>+a[<span class="number">7</span>]*<span class="number">64</span>+a[<span class="number">8</span>]*<span class="number">128</span></span><br><span class="line">                    image[i, j] = array[sum] * <span class="number">255</span></span><br><span class="line">                    <span class="keyword">if</span> array[sum] == <span class="number">1</span>:</span><br><span class="line">                        NEXT = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> image</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h2><p><img alt="报错信息" data-src="Bug-List/%E5%9B%BE%E5%83%8F%E7%BB%86%E5%8C%96%E4%BB%A3%E7%A0%81%E7%9A%84%E6%8A%A5%E9%94%99.png"></p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>M默认与image[i, j]同数据类型，而image[i, j]设定的是ubyte类型，范围-255~256，M极有可能数据溢出。</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>将18行改为下面代码, 将M数据类型强制转为int</p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 如果安装了conda那么安装python库最好使用conda, 尽量不要混用conda和pip, <strong>conda和pip的包格式不同, 两者是不兼容的, 甚至有的库在conda和pip中名字不同</strong>. 有关在conda中没有某库但pip中有的情况可以参考<a href="https://www.zhihu.com/question/49144687" target="_blank" rel="noopener">这里</a>, 而关于混用conda与pip的危害可以参考<a href="http://onoz000.hatenablog.com/entry/2018/02/11/142347" target="_blank" rel="noopener">这位日本兄弟的文章</a></p>
+<h1 id="谨防数据溢出">谨防数据溢出</h1>
+<p>这个例子是我在尝试细化图像的时候遇到的</p>
+<h2 id="代码">代码</h2>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Xihua</span><span class="params">(image, array, num=<span class="number">1</span>)</span>:</span></span><br><span class="line">    iXihua = np.zeros(image.shape, np.uint8)</span><br><span class="line">    iXihua = image.copy()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num):</span><br><span class="line">        VThin(iXihua, array)</span><br><span class="line">    <span class="keyword">return</span> iXihua</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">VThin</span><span class="params">(image, array)</span>:</span></span><br><span class="line">    h = height</span><br><span class="line">    w = width</span><br><span class="line">    NEXT = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(h):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(w):</span><br><span class="line">            <span class="keyword">if</span> NEXT == <span class="number">0</span>:</span><br><span class="line">                NEXT = <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                M = (image[i, j<span class="number">-1</span>] + image[i, j] + image[i, j+<span class="number">1</span>]) <span class="keyword">if</span> <span class="number">0</span>&lt;j&lt;w<span class="number">-1</span> <span class="keyword">else</span> <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> image[i, j] == <span class="number">0</span> <span class="keyword">and</span> M != <span class="number">0</span>:</span><br><span class="line">                    a = [<span class="number">0</span>] * <span class="number">9</span></span><br><span class="line">                    <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">                        <span class="keyword">for</span> l <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">                            <span class="keyword">if</span> <span class="number">-1</span>&lt;(i<span class="number">-1</span>+k)&lt;h <span class="keyword">and</span> <span class="number">-1</span> &lt;(j<span class="number">-1</span>+l)&lt;w <span class="keyword">and</span> image[i<span class="number">-1</span>+k, j<span class="number">-1</span>+l]==<span class="number">255</span>:</span><br><span class="line">                                a[k*<span class="number">3</span>+l] = <span class="number">1</span></span><br><span class="line">                    sum = a[<span class="number">0</span>]*<span class="number">1</span>+a[<span class="number">1</span>]*<span class="number">2</span>+a[<span class="number">2</span>]*<span class="number">4</span>+a[<span class="number">3</span>]*<span class="number">8</span>+a[<span class="number">5</span>]*<span class="number">16</span>+a[<span class="number">6</span>]*<span class="number">32</span>+a[<span class="number">7</span>]*<span class="number">64</span>+a[<span class="number">8</span>]*<span class="number">128</span></span><br><span class="line">                    image[i, j] = array[sum] * <span class="number">255</span></span><br><span class="line">                    <span class="keyword">if</span> array[sum] == <span class="number">1</span>:</span><br><span class="line">                        NEXT = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> image</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="报错信息">报错信息</h2>
+<figure>
+<img alt="报错信息" data-src="Bug-List/图像细化代码的报错.png"><figcaption>报错信息</figcaption>
+</figure>
+<h2 id="原因">原因</h2>
+<p>M默认与image[i, j]同数据类型，而image[i, j]设定的是ubyte类型，范围-255~256，M极有可能数据溢出。</p>
+<h2 id="解决方法">解决方法</h2>
+<p>将18行改为下面代码, 将M数据类型强制转为int</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">M = (int(image[i, j<span class="number">-1</span>]) + int(image[i, j]) + int(image[i, j+<span class="number">1</span>])) <span class="keyword">if</span> <span class="number">0</span>&lt;j&lt;w<span class="number">-1</span> <span class="keyword">else</span> <span class="number">1</span></span><br></pre></td></tr></tbody></table></figure>
-
-<h1 id="迭代中的计数器记得归零"><a href="#迭代中的计数器记得归零" class="headerlink" title="迭代中的计数器记得归零"></a>迭代中的计数器记得归零</h1><p>在迭代中的迭代中的计数器 (简称迭中迭) 要记得在一次迭代后归零, 或者应当将一次迭代的代码分割出来封装成一个函数, 在函数中给计数器设定初值. 这样每次调用都会是从零开始而不是累积的.</p>
-<h1 id="python中赋值的坑"><a href="#python中赋值的坑" class="headerlink" title="python中赋值的坑"></a>python中赋值的坑</h1><p>一次我得到一个list, 想要将其从小到大重新排序, 但不影响原来的list. 因此我试图将这个<code>list</code>
-复制到<code>listSort</code>中, 对listSort排序:</p>
+<h1 id="迭代中的计数器记得归零">迭代中的计数器记得归零</h1>
+<p>在迭代中的迭代中的计数器 (简称迭中迭) 要记得在一次迭代后归零, 或者应当将一次迭代的代码分割出来封装成一个函数, 在函数中给计数器设定初值. 这样每次调用都会是从零开始而不是累积的.</p>
+<h1 id="python中赋值的坑">python中赋值的坑</h1>
+<p>一次我得到一个list, 想要将其从小到大重新排序, 但不影响原来的list. 因此我试图将这个<code>list</code> 复制到<code>listSort</code>中, 对listSort排序:</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">listSort = list</span><br><span class="line">listSort.sort()</span><br></pre></td></tr></tbody></table></figure>
-
 <p>但我发现这样完全没有达到我的目的! list会随着listSort的改变而改变, 与我想保持list不变的目的完全相悖. 随后我才知道在python中<strong>赋值是将变量名指向对象</strong>, 与C语言中变量不止是个名字, 也是字节集合并真实存在于内存某个位置上的情况是不同的.</p>
-<h2 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h2><h3 id="可变对象与不可变对象"><a href="#可变对象与不可变对象" class="headerlink" title="可变对象与不可变对象"></a>可变对象与不可变对象</h3><p>python中的不可变对象有:</p>
+<h2 id="错误原因">错误原因</h2>
+<h3 id="可变对象与不可变对象">可变对象与不可变对象</h3>
+<p>python中的不可变对象有:</p>
 <ul>
 <li>int</li>
 <li>float</li>
@@ -507,74 +506,69 @@ python3的程序, 可以将<code>pip install</code> 换为 <code>pip3 install</c
 <li>set</li>
 </ul>
 <p>:exclamation: 要注意python中对一个可变对象重新赋值对象重新赋值对象地址不会变化, 而对一个不可变对象重新赋值其地址会发生改变 (可以用<code>id(var)</code>语句来查看变量的地址).</p>
-<p>另外python中向函数传递参数只是<strong>引用传递</strong>: 如果参数为可变对象, 在函数中变化会影响外层该变量,
-而不可变对象不会. 在向类传递参数时也是如此.</p>
+<p>另外python中向函数传递参数只是<strong>引用传递</strong>: 如果参数为可变对象, 在函数中变化会影响外层该变量, 而不可变对象不会. 在向类传递参数时也是如此.</p>
 <p>可变对象有时是一种很方便的特性, 但很多时候是<strong>很危险的</strong>.</p>
-<h4 id="函数默认参数一定要设定为不可变对象"><a href="#函数默认参数一定要设定为不可变对象" class="headerlink" title="函数默认参数一定要设定为不可变对象"></a>函数默认参数一定要设定为<strong>不可变对象</strong></h4><p>否则可能会引发一些错误, 我们来看下面一个例子:</p>
+<h4 id="函数默认参数一定要设定为不可变对象">函数默认参数一定要设定为<strong>不可变对象</strong></h4>
+<p>否则可能会引发一些错误, 我们来看下面一个例子:</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">myfunc</span><span class="params">(l=[])</span>:</span></span><br><span class="line"><span class="meta">... </span>    l.append(<span class="string">'add'</span>)</span><br><span class="line"><span class="meta">... </span>    print(l)</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>myfunc([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="string">'add'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>myfunc([<span class="string">'a'</span>, <span class="string">'b'</span>])</span><br><span class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'add'</span>]</span><br></pre></td></tr></tbody></table></figure>
-
 <p>上面代码是正常运行的, 我们来看下面这些:</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>myfunc()</span><br><span class="line">[<span class="string">'add'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>myfunc()</span><br><span class="line">[<span class="string">'add'</span>, <span class="string">'add'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>myfunc()</span><br><span class="line">[<span class="string">'add'</span>, <span class="string">'add'</span>, <span class="string">'add'</span>]</span><br></pre></td></tr></tbody></table></figure>
-
 <p>按理说应该每次都是<code>['add']</code>, 但是现在出现了意想不到的错误.</p>
 <p>这是因为<code>l = []</code>是在<strong>函数定义时就确定下来了的</strong>, 所以之后每次调用这个函数, 使用的<strong>l</strong>都是同一个, 如果不指定这个参数的新值, 就会出现上面这个问题.</p>
 <p>上面这个<strong>l</strong>可以默认设置为<strong>None</strong>, 这就是一个不可变对象.</p>
-<h4 id="类的属性通常是可变对象"><a href="#类的属性通常是可变对象" class="headerlink" title="类的属性通常是可变对象"></a>类的属性通常是可变对象</h4><p>有意思的是类的属性通常都是可以访问和修改的, 也就是说属性都是可变对象. 主要有两种方法使我们可以创建不可变的属性:</p>
+<h4 id="类的属性通常是可变对象">类的属性通常是可变对象</h4>
+<p>有意思的是类的属性通常都是可以访问和修改的, 也就是说属性都是可变对象. 主要有两种方法使我们可以创建不可变的属性:</p>
 <ul>
 <li>设置<code>__setattr__</code>直接抛出异常, 即只要想设置属性值, 就会抛出异常</li>
 <li>设置<code>__slot__</code>限制属性的访问, 如果属性都不能访问了, 那就肯定不能修改</li>
 </ul>
-<h2 id="复制列表的正确操作"><a href="#复制列表的正确操作" class="headerlink" title="复制列表的正确操作"></a>复制列表的正确操作</h2><p>:link: 这个<a href="https://www.cnblogs.com/ifantastic/p/3811145.html" target="_blank" rel="noopener">链接</a>说明了我的错误原因并列出了五种复制列表的方法的比较, 但实际上还有一种
-<a href="https://www.programiz.com/python-programming/methods/list/copy" target="_blank" rel="noopener">我很喜欢的方法</a>
-他没有列出. 从中可以看出<code>copy.deepcopy()</code>是最保险的方法.</p>
-<h2 id="赋值-浅拷贝与深拷贝"><a href="#赋值-浅拷贝与深拷贝" class="headerlink" title="赋值, 浅拷贝与深拷贝"></a>赋值, 浅拷贝与深拷贝</h2><p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8">🔗</span> 请参考<a href="https://www.jianshu.com/p/1059318d38e0" target="_blank" rel="noopener">这里</a></p>
-<h1 id="python写入中文字符串变乱码"><a href="#python写入中文字符串变乱码" class="headerlink" title="python写入中文字符串变乱码"></a>python写入中文字符串变乱码</h1><p>🔗 <a href="https://ericfu.me/python-2-str-and-unicode/" target="_blank" rel="noopener">Python 2 字符串编码踩坑小结</a></p>
+<h2 id="复制列表的正确操作">复制列表的正确操作</h2>
+<p>:link: 这个<a href="https://www.cnblogs.com/ifantastic/p/3811145.html" target="_blank" rel="noopener">链接</a>说明了我的错误原因并列出了五种复制列表的方法的比较, 但实际上还有一种 <a href="https://www.programiz.com/python-programming/methods/list/copy" target="_blank" rel="noopener">我很喜欢的方法</a> 他没有列出. 从中可以看出<code>copy.deepcopy()</code>是最保险的方法.</p>
+<h2 id="赋值-浅拷贝与深拷贝">赋值, 浅拷贝与深拷贝</h2>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8">🔗</span> 请参考<a href="https://www.jianshu.com/p/1059318d38e0" target="_blank" rel="noopener">这里</a></p>
+<h1 id="python写入中文字符串变乱码">python写入中文字符串变乱码</h1>
+<p>🔗 <a href="https://ericfu.me/python-2-str-and-unicode/" target="_blank" rel="noopener">Python 2 字符串编码踩坑小结</a></p>
 <p>虽然我并不怎么写python2的代码但👆这篇文章确实对python中编码问题很有启发.</p>
 <p>🔗 <a href="https://www.nltk.org/book/ch03.html" target="_blank" rel="noopener">Processing Raw Text</a></p>
 <p>而在网上搜图的时候我搜到了这段讲python中处理文本的各种方法的话.</p>
 <p>其中提到了如下图这样的方式防止出现乱码.</p>
-<p><img alt="Unicode Decoding and Encoding" data-src="Bug-List/Unicode_Decoding_and_Encoding.png"></p>
-<p>正如 “Python 2 字符串编码踩坑小结” 中提到的, 在python3中<code>str</code>类型数据都以Unicode码点格式储存. 实际上我们<a href="https://zh.wikipedia.org/wiki/Unicode#%E8%BE%93%E5%85%A5%E6%96%B9%E6%B3%95" target="_blank" rel="noopener">可以直接输入Unicode码点</a>.</p>
-<h1 id="Verilog中要写完整控制语句"><a href="#Verilog中要写完整控制语句" class="headerlink" title="Verilog中要写完整控制语句"></a>Verilog中要写完整控制语句</h1><p>Verilog中如果不写完整if-else结构和case结构会产生latch, 会将毛刺传给下一级电路的那种latch.</p>
+<figure>
+<img alt="Unicode Decoding and Encoding" data-src="Bug-List/Unicode_Decoding_and_Encoding.png"><figcaption>Unicode Decoding and Encoding</figcaption>
+</figure>
+<p>正如 "Python 2 字符串编码踩坑小结" 中提到的, 在python3中<code>str</code>类型数据都以Unicode码点格式储存. 实际上我们<a href="https://zh.wikipedia.org/wiki/Unicode#%E8%BE%93%E5%85%A5%E6%96%B9%E6%B3%95" target="_blank" rel="noopener">可以直接输入Unicode码点</a>.</p>
+<h1 id="verilog中要写完整控制语句">Verilog中要写完整控制语句</h1>
+<p>Verilog中如果不写完整if-else结构和case结构会产生latch, 会将毛刺传给下一级电路的那种latch.</p>
 <p>参见我的另一篇博客 <a href="https://leojhonsong.github.io/zh-CN/Verilog%E6%9D%82%E8%AE%B0/#%E5%85%B3%E4%BA%8E%20default">Verilog 杂记-有关default</a></p>
-<h1 id="Verilog中因不同条件触发的变量应在不同always块中描述"><a href="#Verilog中因不同条件触发的变量应在不同always块中描述" class="headerlink" title="Verilog中因不同条件触发的变量应在不同always块中描述"></a>Verilog中因不同条件触发的变量应在不同always块中描述</h1><p>参见我的另一篇博客 <a href="https://leojhonsong.github.io/zh-CN/Verilog%E6%9D%82%E8%AE%B0/#%E6%9C%89%E5%85%B3%20always">Verilog 杂记-有关always</a></p>
-<h1 id="C-字符串赋值坑"><a href="#C-字符串赋值坑" class="headerlink" title="C++字符串赋值坑"></a>C++字符串赋值坑</h1><p>在写一段C++代码时我遇到了这样的问题: 用如下代码给一个string类型的变量<code>str</code>赋值为
-“\xfe\xfe\x03\x00\x00\x3e\xfd”, 也就是一个16进制表示的ASCII编码值为 fe fe 03 00 00 3e fd 的字符串,但这样做始终只能让<code>str</code>的值变为”\xfe\xfe\x03”!</p>
+<h1 id="verilog中因不同条件触发的变量应在不同always块中描述">Verilog中因不同条件触发的变量应在不同always块中描述</h1>
+<p>参见我的另一篇博客 <a href="https://leojhonsong.github.io/zh-CN/Verilog%E6%9D%82%E8%AE%B0/#%E6%9C%89%E5%85%B3%20always">Verilog 杂记-有关always</a></p>
+<h1 id="c字符串赋值坑">C++字符串赋值坑</h1>
+<p>在写一段C++代码时我遇到了这样的问题: 用如下代码给一个string类型的变量<code>str</code>赋值为 "0300003e", 也就是一个16进制表示的ASCII编码值为 fe fe 03 00 00 3e fd 的字符串,但这样做始终只能让<code>str</code>的值变为"03"!</p>
 <figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> str = <span class="string">"\xfe\xfe\x03\x00\x00\x3e\xfd"</span>;</span><br></pre></td></tr></tbody></table></figure>
-
 <p>但同时我发现用<code>assign()</code>来指定长度赋值就不会出现这种问题:</p>
 <figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> str;</span><br><span class="line">str.assign(<span class="string">"\xfe\xfe\x03\x00\x00\x3e\xfd"</span>, <span class="number">7</span>);</span><br></pre></td></tr></tbody></table></figure>
-
-<p>⚠️要注意的是传给<code>assign()</code>的字符串长度不能用<code>length()</code>, <code>size()</code>等函数来给出, 他们同样会把\0视为字符串末尾… 我的方法是手动给出, 反正我的程序里字符串是定长的.</p>
+<p>⚠️要注意的是传给<code>assign()</code>的字符串长度不能用<code>length()</code>, <code>size()</code>等函数来给出, 他们同样会把\0视为字符串末尾... 我的方法是手动给出, 反正我的程序里字符串是定长的.</p>
 <p>我拿这个问题问我的C++大佬同学, 他说应该是因为\0让C++认为字符串到头了, 于是只有前三个字符.</p>
 <p>我说: ? 我这字符串里哪有\0? 你别骗我读书少.</p>
 <p>然后他发了一张图来:</p>
-<p><img alt="C++字符串结束符" data-src="Bug-List/C++%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%BB%93%E6%9D%9F%E7%AC%A6.jpg"></p>
-<p>…我是真的吃了读书少的亏, 竟然特么\0和\x00是一个意思🤦‍</p>
-<p>然后在string类型变量里写入\0的方法似乎只有用<code>assign()</code>和指定字符串长度的构造函数
-. 其实用<code>=</code>赋值在变量声明和定义同时出现时是只有字符串值这个参数的构造函数, 否则就是只有字符串值这个参数的<code>assign()</code>函数.</p>
-<h1 id="socket的Address-already-in-use问题"><a href="#socket的Address-already-in-use问题" class="headerlink" title="socket的Address already in use问题"></a>socket的Address already in use问题</h1><p>前几天写了一段socket服务器端的代码, 运行了一遍没毛病, 再运行第二遍竟然在创建业务
-socket时报错了. 过了一会运行第三遍竟然又没问题了🤦‍ 我记得报错似乎是这个<strong>Error:
-Address already in use</strong>, 我的服务器端监听的端口处于 <strong>TIME_WAIT</strong> 状态. 后来我发现<a href="https://stackoverflow.com/questions/15198834/bind-failed-address-already-in-use/15199016#15199016" target="_blank" rel="noopener">这个描述</a>
-符合我的情况 (虽然我是在创建业务socket时出错的). 没想到是因为socket关得太慢了我重新启动程序时上次程序的socket还在占用端口…虽然我觉得这有点神奇但设置
-<strong>SO_REUSEADDR</strong> 确实解决了我的问题. 解决方法很简单,紧跟着创建了监听socket代码的那一行后面加两句:</p>
+<figure>
+<img alt="C++字符串结束符" data-src="Bug-List/C++字符串结束符.jpg"><figcaption>C++字符串结束符</figcaption>
+</figure>
+<p>...我是真的吃了读书少的亏, 竟然特么\0和00是一个意思🤦‍</p>
+<p>然后在string类型变量里写入\0的方法似乎只有用<code>assign()</code>和指定字符串长度的构造函数 . 其实用<code>=</code>赋值在变量声明和定义同时出现时是只有字符串值这个参数的构造函数, 否则就是只有字符串值这个参数的<code>assign()</code>函数.</p>
+<h1 id="socket的address-already-in-use问题">socket的Address already in use问题</h1>
+<p>前几天写了一段socket服务器端的代码, 运行了一遍没毛病, 再运行第二遍竟然在创建业务 socket时报错了. 过了一会运行第三遍竟然又没问题了🤦‍ 我记得报错似乎是这个<strong>Error: Address already in use</strong>, 我的服务器端监听的端口处于 <strong>TIME_WAIT</strong> 状态. 后来我发现<a href="https://stackoverflow.com/questions/15198834/bind-failed-address-already-in-use/15199016#15199016" target="_blank" rel="noopener">这个描述</a> 符合我的情况 (虽然我是在创建业务socket时出错的). 没想到是因为socket关得太慢了我重新启动程序时上次程序的socket还在占用端口...虽然我觉得这有点神奇但设置 <strong>SO_REUSEADDR</strong> 确实解决了我的问题. 解决方法很简单,紧跟着创建了监听socket代码的那一行后面加两句:</p>
 <figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> enable = <span class="number">1</span>;</span><br><span class="line">setsocketopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &amp;enable, <span class="keyword">sizeof</span>(enable));</span><br></pre></td></tr></tbody></table></figure>
-
 <p>或者更严谨一点:</p>
 <figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> enable = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span> (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &amp;enable, <span class="keyword">sizeof</span>(enable)) &lt; <span class="number">0</span>)</span><br><span class="line">    error(<span class="string">"setsockopt(SO_REUSEADDR) failed"</span>);</span><br></pre></td></tr></tbody></table></figure>
-
-<h1 id="make编译提示Clock-skew-detected"><a href="#make编译提示Clock-skew-detected" class="headerlink" title="make编译提示Clock skew detected"></a>make编译提示Clock skew detected</h1><p>有次在用make编译时给出如下warning:</p>
+<h1 id="make编译提示clock-skew-detected">make编译提示Clock skew detected</h1>
+<p>有次在用make编译时给出如下warning:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make: warning: Clock skew detected. Your build may be incomplete.</span><br></pre></td></tr></tbody></table></figure>
-
 <p>💡 Clock skew 可以翻译时钟错误</p>
-<p>我当时都懵了, 这编译咋还和时间扯上关系了…查了一下说这个warning是说<strong>某个文件的时间戳大于系统的当前时间</strong>. 而之所以说编译可能不完全是因为<strong>make完全依赖各个文件的时间戳来确定哪个文件最近被修改了, 随后决定哪个文件需要重新生成</strong>, 因此文件时间戳出问题了的话, make对需要编译哪些文件的判断可能出错. 虽然此处只是文件时间大于系统时间, 看起来并没有顺序问题. 但是因为时间戳问题通常出现于<strong>NFS</strong> (网络文件系统)
-中, 因为不同设备的时间不同步而导致, 而这<strong>很可能导致最新的代码无法被应</strong>用, 算是很严重的问题, 因此make还是会给出给出warning.</p>
-<p>但是! 我一直是在本地运行的, 通常来说是不会出现这种问题的啊…</p>
-<p>后来我发现是因为<a href="https://leojhonsong.github.io/zh-CN/Linux%E6%9D%82%E8%AE%B0/#Linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E5%92%8CWindows%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E5%B7%AE8%E5%B0%8F%E6%97%B6">我Linux系统时间比Windows系统时间多八个小时</a>,
-而虽然我的Linux系统能够自动进行网络校时, 但我这次关闭Windows系统 (Windows系统校准过时间) 再打开Linux系统使用过程中并没有联网… <strong>这使得Linux系统时间比实际时间少了8个小时</strong>. 那么如果距我上次对Makefile的修改没到八个小时就会遇到这个warning 😁</p>
+<p>我当时都懵了, 这编译咋还和时间扯上关系了...查了一下说这个warning是说<strong>某个文件的时间戳大于系统的当前时间</strong>. 而之所以说编译可能不完全是因为<strong>make完全依赖各个文件的时间戳来确定哪个文件最近被修改了, 随后决定哪个文件需要重新生成</strong>, 因此文件时间戳出问题了的话, make对需要编译哪些文件的判断可能出错. 虽然此处只是文件时间大于系统时间, 看起来并没有顺序问题. 但是因为时间戳问题通常出现于<strong>NFS</strong> (网络文件系统) 中, 因为不同设备的时间不同步而导致, 而这<strong>很可能导致最新的代码无法被应</strong>用, 算是很严重的问题, 因此make还是会给出给出warning.</p>
+<p>但是! 我一直是在本地运行的, 通常来说是不会出现这种问题的啊...</p>
+<p>后来我发现是因为<a href="https://leojhonsong.github.io/zh-CN/Linux%E6%9D%82%E8%AE%B0/#Linux%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E5%92%8CWindows%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4%E5%B7%AE8%E5%B0%8F%E6%97%B6">我Linux系统时间比Windows系统时间多八个小时</a>, 而虽然我的Linux系统能够自动进行网络校时, 但我这次关闭Windows系统 (Windows系统校准过时间) 再打开Linux系统使用过程中并没有联网... <strong>这使得Linux系统时间比实际时间少了8个小时</strong>. 那么如果距我上次对Makefile的修改没到八个小时就会遇到这个warning 😁</p>
 <p>💡 这个问题解决起来很简单, 只需要<code>touch</code>每一个文件来更新时间戳即可. 找到当前目录下每个文件并touch的命令如下:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -exec touch {} +</span><br></pre></td></tr></tbody></table></figure>
-
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -702,7 +696,7 @@ Address already in use</strong>, 我的服务器端监听的端口处于 <strong
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#有时候等号两侧不能加空格"><span class="nav-number">1.</span> <span class="nav-text">有时候等号两侧不能加空格</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#此python非彼python"><span class="nav-number">2.</span> <span class="nav-text">此python非彼python</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#谨防数据溢出"><span class="nav-number">3.</span> <span class="nav-text">谨防数据溢出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#报错信息"><span class="nav-number">3.2.</span> <span class="nav-text">报错信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因"><span class="nav-number">3.3.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方法"><span class="nav-number">3.4.</span> <span class="nav-text">解决方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#迭代中的计数器记得归零"><span class="nav-number">4.</span> <span class="nav-text">迭代中的计数器记得归零</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python中赋值的坑"><span class="nav-number">5.</span> <span class="nav-text">python中赋值的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#错误原因"><span class="nav-number">5.1.</span> <span class="nav-text">错误原因</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可变对象与不可变对象"><span class="nav-number">5.1.1.</span> <span class="nav-text">可变对象与不可变对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数默认参数一定要设定为不可变对象"><span class="nav-number">5.1.1.1.</span> <span class="nav-text">函数默认参数一定要设定为不可变对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类的属性通常是可变对象"><span class="nav-number">5.1.1.2.</span> <span class="nav-text">类的属性通常是可变对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制列表的正确操作"><span class="nav-number">5.2.</span> <span class="nav-text">复制列表的正确操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赋值-浅拷贝与深拷贝"><span class="nav-number">5.3.</span> <span class="nav-text">赋值, 浅拷贝与深拷贝</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python写入中文字符串变乱码"><span class="nav-number">6.</span> <span class="nav-text">python写入中文字符串变乱码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Verilog中要写完整控制语句"><span class="nav-number">7.</span> <span class="nav-text">Verilog中要写完整控制语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Verilog中因不同条件触发的变量应在不同always块中描述"><span class="nav-number">8.</span> <span class="nav-text">Verilog中因不同条件触发的变量应在不同always块中描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-字符串赋值坑"><span class="nav-number">9.</span> <span class="nav-text">C++字符串赋值坑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#socket的Address-already-in-use问题"><span class="nav-number">10.</span> <span class="nav-text">socket的Address already in use问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#make编译提示Clock-skew-detected"><span class="nav-number">11.</span> <span class="nav-text">make编译提示Clock skew detected</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#有时候等号两侧不能加空格"><span class="nav-number">1.</span> <span class="nav-text">有时候等号两侧不能加空格</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#此python非彼python"><span class="nav-number">2.</span> <span class="nav-text">此python非彼python</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#谨防数据溢出"><span class="nav-number">3.</span> <span class="nav-text">谨防数据溢出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#报错信息"><span class="nav-number">3.2.</span> <span class="nav-text">报错信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因"><span class="nav-number">3.3.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方法"><span class="nav-number">3.4.</span> <span class="nav-text">解决方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#迭代中的计数器记得归零"><span class="nav-number">4.</span> <span class="nav-text">迭代中的计数器记得归零</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python中赋值的坑"><span class="nav-number">5.</span> <span class="nav-text">python中赋值的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#错误原因"><span class="nav-number">5.1.</span> <span class="nav-text">错误原因</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可变对象与不可变对象"><span class="nav-number">5.1.1.</span> <span class="nav-text">可变对象与不可变对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数默认参数一定要设定为不可变对象"><span class="nav-number">5.1.1.1.</span> <span class="nav-text">函数默认参数一定要设定为不可变对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类的属性通常是可变对象"><span class="nav-number">5.1.1.2.</span> <span class="nav-text">类的属性通常是可变对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制列表的正确操作"><span class="nav-number">5.2.</span> <span class="nav-text">复制列表的正确操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#赋值-浅拷贝与深拷贝"><span class="nav-number">5.3.</span> <span class="nav-text">赋值, 浅拷贝与深拷贝</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python写入中文字符串变乱码"><span class="nav-number">6.</span> <span class="nav-text">python写入中文字符串变乱码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#verilog中要写完整控制语句"><span class="nav-number">7.</span> <span class="nav-text">Verilog中要写完整控制语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#verilog中因不同条件触发的变量应在不同always块中描述"><span class="nav-number">8.</span> <span class="nav-text">Verilog中因不同条件触发的变量应在不同always块中描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#c字符串赋值坑"><span class="nav-number">9.</span> <span class="nav-text">C++字符串赋值坑</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#socket的address-already-in-use问题"><span class="nav-number">10.</span> <span class="nav-text">socket的Address already in use问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#make编译提示clock-skew-detected"><span class="nav-number">11.</span> <span class="nav-text">make编译提示Clock skew detected</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -837,7 +831,7 @@ Address already in use</strong>, 我的服务器端监听的端口处于 <strong
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">149k</span>
+    <span title="站点总字数">152k</span>
 </div>
 
         

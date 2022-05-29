@@ -468,209 +468,180 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>最近使用Linux频繁了起来, 接触到更多各种各样的命令, 然后我脑容量不够了<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8">😁</span>
-由于有<a href="https://github.com/tldr-pages/tldr" target="_blank" rel="noopener">TLDR</a>这种神器, 在这里并不会无脑记录所有看到的命令, 而是小白最常用或者不太容易懂含义的几个命令.</p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8">🔗</span>如果弄不清命令的含义, 我在
-<a href="https://leojhonsong.github.io/zh-CN/%E5%B8%B8%E8%A7%81%E6%9C%AF%E8%AF%AD%E7%BC%A9%E5%86%99/">另一篇博客</a>
-记录了一些缩写及对应含义, 希望有所帮助.</p>
+        <p>最近使用Linux频繁了起来, 接触到更多各种各样的命令, 然后我脑容量不够了<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png?v8">😁</span> 由于有<a href="https://github.com/tldr-pages/tldr" target="_blank" rel="noopener">TLDR</a>这种神器, 在这里并不会无脑记录所有看到的命令, 而是小白最常用或者不太容易懂含义的几个命令.</p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8">🔗</span>如果弄不清命令的含义, 我在 <a href="https://leojhonsong.github.io/zh-CN/%E5%B8%B8%E8%A7%81%E6%9C%AF%E8%AF%AD%E7%BC%A9%E5%86%99/">另一篇博客</a> 记录了一些缩写及对应含义, 希望有所帮助.</p>
 <p>💡 推荐一个觉得很不错的Linux命令入门教程<a href="https://happypeter.github.io/LGCB/" target="_blank" rel="noopener">LGCB</a></p>
 <a id="more"></a>
-
-<h1 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h1><h2 id="查看内核版本"><a href="#查看内核版本" class="headerlink" title="查看内核版本"></a>查看内核版本</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></tbody></table></figure>
-
+<h1 id="查看版本">查看版本</h1>
+<h2 id="查看内核版本">查看内核版本</h2>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></tbody></table></figure>
 <p>这条更加详细, 提issue时常用到</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/version</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="查看发行版版本"><a href="#查看发行版版本" class="headerlink" title="查看发行版版本"></a>查看发行版版本</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/issue</span><br></pre></td></tr></tbody></table></figure>
-
+<h2 id="查看发行版版本">查看发行版版本</h2>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/issue</span><br></pre></td></tr></tbody></table></figure>
 <p>这个更详细:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo lsb_release -a</span><br></pre></td></tr></tbody></table></figure>
-
-<h1 id="软件安装卸载等"><a href="#软件安装卸载等" class="headerlink" title="软件安装卸载等"></a>软件安装卸载等</h1><p>apt: <strong>Advanced Packaging Tools</strong></p>
-<h2 id="源列表备份与恢复"><a href="#源列表备份与恢复" class="headerlink" title="源列表备份与恢复"></a>源列表备份与恢复</h2><p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8">❗</span> 我建议换源之前做好备份. 使用如下命令可备份<strong>source.list</strong>至
-<strong>source.list_backup</strong>. 甚至再谨慎一些每次更新源列表后都可以做一份备份, 在文件名中加入时间或者更新信息来作区分.</p>
+<h1 id="软件安装卸载等">软件安装卸载等</h1>
+<p>apt: <strong>Advanced Packaging Tools</strong></p>
+<h2 id="源列表备份与恢复">源列表备份与恢复</h2>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8">❗</span> 我建议换源之前做好备份. 使用如下命令可备份<strong>source.list</strong>至 <strong>source.list_backup</strong>. 甚至再谨慎一些每次更新源列表后都可以做一份备份, 在文件名中加入时间或者更新信息来作区分.</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list_backup</span><br></pre></td></tr></tbody></table></figure>
-
 <p>如果哪天把源列表弄脏了可以随时用一下命令恢复.</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list_backup /etc/apt/sources.list</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list</span><br></pre></td></tr></tbody></table></figure>
-
+<h2 id="换源">换源</h2>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list</span><br></pre></td></tr></tbody></table></figure>
 <p>另一种换源方式是进入source.list进行修改, 参见以下链接.</p>
 <p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8">🔗</span> <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/ubuntu" target="_blank" rel="noopener">中科大Ubuntu镜像使用帮助</a></p>
 <p>(我对这个和我校校名只有一字之差的学校还是很有好感<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span>)</p>
 <p>💡 其中以<strong>deb-src</strong>开头的行是源代码的地址, 只有取消这些行的注释才能下载源代码.</p>
-<h2 id="包列表更新"><a href="#包列表更新" class="headerlink" title="包列表更新"></a>包列表更新</h2><p>这一命令虽然看似唰唰唰下了好些东西, 实际上只是下载了个软件目录, 然后我们执行 <code>sudo apt install
-[package]</code> 的时候apt就会从这个列表中找到名字对应的下载连接之类的去下载和安装. 这就是为什么很多安装教程都会要求先执行一次这条命令 – 保证安装的是最新版.</p>
+<h2 id="包列表更新">包列表更新</h2>
+<p>这一命令虽然看似唰唰唰下了好些东西, 实际上只是下载了个软件目录, 然后我们执行 <code>sudo apt install [package]</code> 的时候apt就会从这个列表中找到名字对应的下载连接之类的去下载和安装. 这就是为什么很多安装教程都会要求先执行一次这条命令 -- 保证安装的是最新版.</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="包升级"><a href="#包升级" class="headerlink" title="包升级"></a>包升级</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt upgrade</span><br></pre></td></tr></tbody></table></figure>
-
+<h2 id="包升级">包升级</h2>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt upgrade</span><br></pre></td></tr></tbody></table></figure>
 <p>:warning: 需在运行<code>sudo apt update</code>后运行</p>
-<h2 id="包搜索"><a href="#包搜索" class="headerlink" title="包搜索"></a>包搜索</h2><p>这怕是少数几条不用sudo的<code>apt</code>命令</p>
+<h2 id="包搜索">包搜索</h2>
+<p>这怕是少数几条不用sudo的<code>apt</code>命令</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt search [package]</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="包安装"><a href="#包安装" class="headerlink" title="包安装"></a>包安装</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install [package]</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="包卸载"><a href="#包卸载" class="headerlink" title="包卸载"></a>包卸载</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt remove [package]</span><br></pre></td></tr></tbody></table></figure>
-
-<p>💡<code>apt remove</code>只会删除软件包而不会删除配置文件, 而手动删除配置文件还容易有
-<a href="https://www.jianshu.com/p/f6176973b56f" target="_blank" rel="noopener">麻烦</a>, 因此不想用某软件了应当运行:</p>
+<h2 id="包安装">包安装</h2>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install [package]</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="包卸载">包卸载</h2>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt remove [package]</span><br></pre></td></tr></tbody></table></figure>
+<p>💡<code>apt remove</code>只会删除软件包而不会删除配置文件, 而手动删除配置文件还容易有 <a href="https://www.jianshu.com/p/f6176973b56f" target="_blank" rel="noopener">麻烦</a>, 因此不想用某软件了应当运行:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt purge [package]</span><br></pre></td></tr></tbody></table></figure>
-
 <p>中文唤做<strong>净化</strong>! 💪</p>
-<h2 id="进阶操作"><a href="#进阶操作" class="headerlink" title="进阶操作"></a>进阶操作</h2><p>有很多东西并不是用包管理工具就能轻松搞定的， 让人欲哭无泪， 主要有以下几种情况：</p>
-<h3 id="下载下来的压缩包里有看着像安装脚本的玩意"><a href="#下载下来的压缩包里有看着像安装脚本的玩意" class="headerlink" title="下载下来的压缩包里有看着像安装脚本的玩意"></a>下载下来的压缩包里有看着像安装脚本的玩意</h3><p>这种一般会给出<strong>README</strong>的, 不用担心, 即便没给也可以用编辑器点开看着像安装用脚本的文件脑力运行一边看看是不是它😏 有的安装脚本是交互式的, 还是挺有趣的, 有的甚至有图形界面 (一般需要加选项才能有图形界面)</p>
-<h3 id="有deb包"><a href="#有deb包" class="headerlink" title="有deb包"></a>有deb包</h3><h4 id="普通安装"><a href="#普通安装" class="headerlink" title="普通安装"></a>普通安装</h4><ol>
+<h2 id="进阶操作">进阶操作</h2>
+<p>有很多东西并不是用包管理工具就能轻松搞定的， 让人欲哭无泪， 主要有以下几种情况：</p>
+<h3 id="下载下来的压缩包里有看着像安装脚本的玩意">下载下来的压缩包里有看着像安装脚本的玩意</h3>
+<p>这种一般会给出<strong>README</strong>的, 不用担心, 即便没给也可以用编辑器点开看着像安装用脚本的文件脑力运行一边看看是不是它😏 有的安装脚本是交互式的, 还是挺有趣的, 有的甚至有图形界面 (一般需要加选项才能有图形界面)</p>
+<h3 id="有deb包">有deb包</h3>
+<h4 id="普通安装">普通安装</h4>
+<ol type="1">
 <li>有图形界面的话点击就能安装</li>
 <li>终端进入deb包所在文件夹, 运行<code>sudo dpkg -i [package]</code></li>
 </ol>
-<h4 id="遇到报错"><a href="#遇到报错" class="headerlink" title="遇到报错"></a>遇到报错</h4><h5 id="修复依赖关系"><a href="#修复依赖关系" class="headerlink" title="修复依赖关系"></a>修复依赖关系</h5><p>有时候我们会因为缺少一些包而安装失败, 这个是个很容易解决的问题, 只需运行
-<code>apt --fix-broken install</code>. 这样普通问题apt就能帮我们解决了✌️</p>
+<h4 id="遇到报错">遇到报错</h4>
+<h5 id="修复依赖关系">修复依赖关系</h5>
+<p>有时候我们会因为缺少一些包而安装失败, 这个是个很容易解决的问题, 只需运行 <code>apt --fix-broken install</code>. 这样普通问题apt就能帮我们解决了✌️</p>
 <p>💡另一条相同作用的命令是<code>apt install -f</code></p>
-<h5 id="需要对包的依赖关系进行修改"><a href="#需要对包的依赖关系进行修改" class="headerlink" title="需要对包的依赖关系进行修改"></a>需要对包的依赖关系进行修改</h5><ol>
+<h5 id="需要对包的依赖关系进行修改">需要对包的依赖关系进行修改</h5>
+<ol type="1">
 <li><p><strong>在要安装的deb包所在目录中</strong>创建相关文件夹:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir extract</span><br><span class="line">mkdir extract/DEBIAN</span><br><span class="line">mkdir build</span><br></pre></td></tr></tbody></table></figure>
-</li>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir extract</span><br><span class="line">mkdir extract/DEBIAN</span><br><span class="line">mkdir build</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>解压出包中的文件到<strong>extract</strong>目录下:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -X [package] extract/</span><br></pre></td></tr></tbody></table></figure>
-</li>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -X [package] extract/</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>解压出包的控制信息到<strong>extract/DEBIAN/</strong>下:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -e [package] extract/DEBIAN/</span><br></pre></td></tr></tbody></table></figure>
-</li>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -e [package] extract/DEBIAN/</span><br></pre></td></tr></tbody></table></figure></li>
 <li><p>将修改后的内容重新进行打包生成deb包到<strong>build</strong>目录下:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg-deb -b extract/ build/</span><br></pre></td></tr></tbody></table></figure>
-</li>
-<li><p>进入<strong>build</strong>文件夹安装修改后的deb包</p>
-</li>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg-deb -b extract/ build/</span><br></pre></td></tr></tbody></table></figure></li>
+<li><p>进入<strong>build</strong>文件夹安装修改后的deb包</p></li>
 </ol>
-<h3 id="需要自己编译"><a href="#需要自己编译" class="headerlink" title="需要自己编译"></a>需要自己编译</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></tbody></table></figure>
-
-<h1 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h1><p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8">🔗</span> 在搜索过程中看到
-<a href="https://www.ibm.com/developerworks/cn/linux/l-cn-hardandsymb-links/index.html" target="_blank" rel="noopener">这篇文章</a>,
-感觉对Linux下文件系统描述得很好, 比如其中说</p>
+<h3 id="需要自己编译">需要自己编译</h3>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="文件系统">文件系统</h1>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8">🔗</span> 在搜索过程中看到 <a href="https://www.ibm.com/developerworks/cn/linux/l-cn-hardandsymb-links/index.html" target="_blank" rel="noopener">这篇文章</a>, 感觉对Linux下文件系统描述得很好, 比如其中说</p>
 <blockquote>
-<p>Linux系统中进程之外皆文件, 即便文件夹也是一个文件, 是记录了其他文件名的文件.
-设备也被视为一个文件.</p>
+<p>Linux系统中进程之外皆文件, 即便文件夹也是一个文件, 是记录了其他文件名的文件. 设备也被视为一个文件.</p>
 </blockquote>
-<p>再比如其中说到了
-<a href="https://www.ibm.com/developerworks/cn/linux/l-cn-hardandsymb-links/index.html/#major4" target="_blank" rel="noopener">Linux系统有多个文件系统</a>,
-VFS 作为一个通用的文件系统, 抽象了文件系统的四个基本概念: 文件, 目录项
-(dentry, directory entry的缩写), 索引节点 (inode) 及挂载点.</p>
+<p>再比如其中说到了 <a href="https://www.ibm.com/developerworks/cn/linux/l-cn-hardandsymb-links/index.html/#major4" target="_blank" rel="noopener">Linux系统有多个文件系统</a>, VFS 作为一个通用的文件系统, 抽象了文件系统的四个基本概念: 文件, 目录项 (dentry, directory entry的缩写), 索引节点 (inode) 及挂载点.</p>
 <blockquote>
 <p>文件名仅是为了方便人们的记忆和使用, 系统或程序通过inode号寻找正确的文件数据块.</p>
 </blockquote>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>ln: link</p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8">🔗</span> <a href="https://www.ibm.com/developerworks/cn/linux/l-cn-hardandsymb-links/index.html/#major2" target="_blank" rel="noopener">这里</a>
-有对软链接与硬链接的比较. 其中:</p>
+<h2 id="链接">链接</h2>
+<p>ln: link</p>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f517.png?v8">🔗</span> <a href="https://www.ibm.com/developerworks/cn/linux/l-cn-hardandsymb-links/index.html/#major2" target="_blank" rel="noopener">这里</a> 有对软链接与硬链接的比较. 其中:</p>
 <ul>
-<li>软链接以<strong>路径</strong>的形式存在,类似于Windows操作系统中的<strong>快捷方式</strong>. 硬链接以
-<strong>文件副本</strong>的形式存在, 但不占用实际空间</li>
+<li>软链接以<strong>路径</strong>的形式存在,类似于Windows操作系统中的<strong>快捷方式</strong>. 硬链接以 <strong>文件副本</strong>的形式存在, 但不占用实际空间</li>
 <li>软链接可以跨文件系统创建，硬链接不可以</li>
 <li>软链接可以对一个不存在的文件名进行链接</li>
 <li>软链接可以对目录进行链接, 硬链接不可以</li>
 </ul>
-<p>目前我只用到了软链, 还没有用到硬链. 个人觉得软链很方便, 它使得一个文件/文件夹在另一个地方有了一个时刻同步的备份. 比如可以像<a href="https://github.com/LeoJhonSong/vimrc" target="_blank" rel="noopener">这样</a>, 从github
-下载了一个.vimrc, 将它软链到home目录 (vim默认从这里读取.vimrc). 这样一来无论是修改了这两处那一个.vimrc另一个也会同步. 这很方便将更改备份到github.</p>
-<h3 id="建立软链"><a href="#建立软链" class="headerlink" title="建立软链"></a>建立软链</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s [source] [destination]</span><br></pre></td></tr></tbody></table></figure>
-
-<p>❗️要注意的是此处<code>destination</code>和<code>source</code>似乎必须写<strong>绝对路径</strong>, 不然建立的链接就是损坏的.
-如果<code>destination</code>处写的是一个目录, 那会生成一个和源文件/文件夹同名的软链, 而如果<code>destination</code>
-写的是一个存在的目录下一个不存在的名字, 那么会生成一个这个名字的软链, 和源文件/文件夹链接.</p>
-<h2 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h2><p>cp: copy</p>
-<p>:warning: 目标位置必须已经存在, <code>cp</code>命令无法创建目录. 另外如果没有文件复制的权限会报错. <code>cp</code>命令不止可以复制, 还可以建立链接.
-<code>cp</code>命令支持..表示上级文件夹等, 支持正则表达</p>
-<h3 id="常用选项"><a href="#常用选项" class="headerlink" title="常用选项"></a>常用选项</h3><ul>
-<li><p>-a：此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容。其作用等于dpR参数组合</p>
-</li>
-<li><p>-d：复制时建立软链接</p>
-</li>
-<li><p>-f：覆盖已经存在的目标文件而不给出提示</p>
-</li>
-<li><p>-i：与-f选项相反，在覆盖目标文件之前给出提示，要求用户确认是否覆盖，回答”y”时目标文件将被覆盖</p>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span>保险起见每次都加上此选项</p>
-</li>
-<li><p>-p：除复制文件的内容外，还把修改时间和访问权限也复制到新文件中。</p>
-</li>
-<li><p>-r：若给出的源文件是一个目录文件，此时将复制该目录下所有的子目录和文件</p>
-</li>
-<li><p>-l：建立硬链接, 不复制文件</p>
-</li>
+<p>目前我只用到了软链, 还没有用到硬链. 个人觉得软链很方便, 它使得一个文件/文件夹在另一个地方有了一个时刻同步的备份. 比如可以像<a href="https://github.com/LeoJhonSong/vimrc" target="_blank" rel="noopener">这样</a>, 从github 下载了一个.vimrc, 将它软链到home目录 (vim默认从这里读取.vimrc). 这样一来无论是修改了这两处那一个.vimrc另一个也会同步. 这很方便将更改备份到github.</p>
+<h3 id="建立软链">建立软链</h3>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s [source] [destination]</span><br></pre></td></tr></tbody></table></figure>
+<p>❗️要注意的是此处<code>destination</code>和<code>source</code>似乎必须写<strong>绝对路径</strong>, 不然建立的链接就是损坏的. 如果<code>destination</code>处写的是一个目录, 那会生成一个和源文件/文件夹同名的软链, 而如果<code>destination</code> 写的是一个存在的目录下一个不存在的名字, 那么会生成一个这个名字的软链, 和源文件/文件夹链接.</p>
+<h2 id="复制">复制</h2>
+<p>cp: copy</p>
+<p>:warning: 目标位置必须已经存在, <code>cp</code>命令无法创建目录. 另外如果没有文件复制的权限会报错. <code>cp</code>命令不止可以复制, 还可以建立链接. <code>cp</code>命令支持..表示上级文件夹等, 支持正则表达</p>
+<h3 id="常用选项">常用选项</h3>
+<ul>
+<li>-a：此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容。其作用等于dpR参数组合</li>
+<li>-d：复制时建立软链接</li>
+<li>-f：覆盖已经存在的目标文件而不给出提示</li>
+<li><p>-i：与-f选项相反，在覆盖目标文件之前给出提示，要求用户确认是否覆盖，回答"y"时目标文件将被覆盖</p>
+<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span>保险起见每次都加上此选项</li>
+<li>-p：除复制文件的内容外，还把修改时间和访问权限也复制到新文件中。</li>
+<li>-r：若给出的源文件是一个目录文件，此时将复制该目录下所有的子目录和文件</li>
+<li><p>-l：建立硬链接, 不复制文件</p></li>
 </ul>
-<h3 id="正则使用举例"><a href="#正则使用举例" class="headerlink" title="正则使用举例"></a>正则使用举例</h3><p>将目录 <strong>/usr/men</strong> 中的以<code>m</code>打头的所有<code>.c</code>文件复制到目录 <strong>/usr/zh</strong> 中</p>
+<h3 id="正则使用举例">正则使用举例</h3>
+<p>将目录 <strong>/usr/men</strong> 中的以<code>m</code>打头的所有<code>.c</code>文件复制到目录 <strong>/usr/zh</strong> 中</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/men m*.c /usr/zh</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><p>rm: remove</p>
-<h3 id="常用选项-1"><a href="#常用选项-1" class="headerlink" title="常用选项"></a>常用选项</h3><ul>
+<h2 id="删除">删除</h2>
+<p>rm: remove</p>
+<h3 id="常用选项-1">常用选项</h3>
+<ul>
 <li>-i 删除前逐一询问确认</li>
 <li>-f 即使原档案属性设为唯读，亦直接删除，无需逐一确认</li>
 <li>-r 将目录及以下之档案亦逐一删除</li>
 </ul>
-<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm [path/to/file] [path/to/another/file]</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="删除文件夹"><a href="#删除文件夹" class="headerlink" title="删除文件夹"></a>删除文件夹</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -r [path/to/folder]</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="删除当前文件夹下所有文件及文件夹"><a href="#删除当前文件夹下所有文件及文件夹" class="headerlink" title="删除当前文件夹下所有文件及文件夹"></a>删除当前文件夹下所有文件及文件夹</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -r *</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="解压-压缩"><a href="#解压-压缩" class="headerlink" title="解压/压缩"></a>解压/压缩</h2><p>tar: tape archive. <code>tar</code> 命令原本是用来建立，还原备份文件的工具程序, 但Linux下最常见的压缩包就是tar.gz格式的. <strong>.gz</strong>是GNU zip的缩写.</p>
-<p>❗️ 要注意<code>tar</code>命令无法解压 <strong>.rar</strong> 格式的压缩包, 也无法生成 <strong>.rar</strong> 格式. 需要另外安装
-rar工具:</p>
+<h3 id="删除文件">删除文件</h3>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm [path/to/file] [path/to/another/file]</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="删除文件夹">删除文件夹</h3>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -r [path/to/folder]</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="删除当前文件夹下所有文件及文件夹">删除当前文件夹下所有文件及文件夹</h3>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -r *</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="解压压缩">解压/压缩</h2>
+<p>tar: tape archive. <code>tar</code> 命令原本是用来建立，还原备份文件的工具程序, 但Linux下最常见的压缩包就是tar.gz格式的. <strong>.gz</strong>是GNU zip的缩写.</p>
+<p>❗️ 要注意<code>tar</code>命令无法解压 <strong>.rar</strong> 格式的压缩包, 也无法生成 <strong>.rar</strong> 格式. 需要另外安装 rar工具:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install rar</span><br></pre></td></tr></tbody></table></figure>
-
 <p>另外在Linux下解压来自Windows的zip压缩包容易出<a href="#解压.zip压缩包中文文件名为乱码">文件名乱码问题</a>.</p>
-<h3 id="常用选项-2"><a href="#常用选项-2" class="headerlink" title="常用选项"></a>常用选项</h3><ul>
-<li>-c或–create 建立新的备份文件</li>
-<li>-f&lt;备份文件&gt;或–file=&lt;备份文件&gt; 指定备份文件</li>
-<li>-t或–list 列出备份文件的内容</li>
-<li>-v或–verbose 显示指令执行过程</li>
-<li>-x或–extract或–get 从备份文件中还原文件</li>
-<li>-z或–gzip或–ungzip 通过gzip指令处理备份文件</li>
+<h3 id="常用选项-2">常用选项</h3>
+<ul>
+<li>-c或--create 建立新的备份文件</li>
+<li>-f&lt;备份文件&gt;或--file=&lt;备份文件&gt; 指定备份文件<!--备份文件--><!--备份文件--></li>
+<li>-t或--list 列出备份文件的内容</li>
+<li>-v或--verbose 显示指令执行过程</li>
+<li>-x或--extract或--get 从备份文件中还原文件</li>
+<li>-z或--gzip或--ungzip 通过gzip指令处理备份文件</li>
 </ul>
-<h3 id="列出压缩文件内容"><a href="#列出压缩文件内容" class="headerlink" title="列出压缩文件内容"></a>列出压缩文件内容</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -tvzf [source.tar.gz]</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvzf [source.tar.gz]</span><br></pre></td></tr></tbody></table></figure>
-
+<h3 id="列出压缩文件内容">列出压缩文件内容</h3>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -tvzf [source.tar.gz]</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="解压文件">解压文件</h3>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvzf [source.tar.gz]</span><br></pre></td></tr></tbody></table></figure>
 <p>如果是.rar文件:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rar x [source.rar]</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="压缩文件"><a href="#压缩文件" class="headerlink" title="压缩文件"></a>压缩文件</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -czvf [target.tar.gz] [file1] [file2] [file3]</span><br></pre></td></tr></tbody></table></figure>
-
+<h3 id="压缩文件">压缩文件</h3>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -czvf [target.tar.gz] [file1] [file2] [file3]</span><br></pre></td></tr></tbody></table></figure>
 <p>如果是要压缩成.rar文件 (不是别人要求的话不推荐):</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rar a [compressede_package_name] [source_folder_name]</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="格式化U盘"><a href="#格式化U盘" class="headerlink" title="格式化U盘"></a>格式化U盘</h2><p>虽然在 Ubuntu 下图形化界面里可以无脑格式化U盘, 但是有时候U盘出问题的时候需要在命令行蛮力格式化.
-此处以U盘为 <strong>/dev/sdb1</strong> 为例.</p>
+<h2 id="格式化u盘">格式化U盘</h2>
+<p>虽然在 Ubuntu 下图形化界面里可以无脑格式化U盘, 但是有时候U盘出问题的时候需要在命令行蛮力格式化. 此处以U盘为 <strong>/dev/sdb1</strong> 为例.</p>
 <p>首先确保U盘未挂载:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo umount /dev/sdb1</span><br></pre></td></tr></tbody></table></figure>
-
 <p>然后将之格式化为FAT32格式(Linux, Windows都可识别的格式):</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mkfs.vfat -F 32 /dev/sdb1</span><br></pre></td></tr></tbody></table></figure>
-
-<p>这样之后可以回图形界面设置U盘的名字或者重新格式化为其他格式之类.</p>
-<h1 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h1><h2 id="查看环境变量"><a href="#查看环境变量" class="headerlink" title="查看环境变量"></a>查看环境变量</h2><h3 id="查看所有环境变量"><a href="#查看所有环境变量" class="headerlink" title="查看所有环境变量"></a>查看所有环境变量</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export -p</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="查看PATH"><a href="#查看PATH" class="headerlink" title="查看PATH"></a>查看PATH</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $PATH</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="查看当前运行shell"><a href="#查看当前运行shell" class="headerlink" title="查看当前运行shell"></a>查看当前运行shell</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $SHELL</span><br></pre></td></tr></tbody></table></figure>
-
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8">❗</span> shell不止一种, 大多数Linux系统默认shell为
-<strong>Bash shell</strong> (Bourne Again shell), 似乎<strong>Bourne shell</strong>仍是许多Unix系统默认的shell. 比较著名的还有
-<strong>Z shell</strong> (Zsh), <strong>friendly interactive shell</strong> (fish).</p>
-<h2 id="添加路径到PATH"><a href="#添加路径到PATH" class="headerlink" title="添加路径到PATH"></a>添加路径到PATH</h2><h3 id="临时添加"><a href="#临时添加" class="headerlink" title="临时添加"></a>临时添加</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=[path/to/append]:$PATH</span><br></pre></td></tr></tbody></table></figure>
-
+<p>这样之后可以回图形界面设置U盘的名字或者重新格式化为其他格式之类. # 环境变量</p>
+<h2 id="查看环境变量">查看环境变量</h2>
+<h3 id="查看所有环境变量">查看所有环境变量</h3>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export -p</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="查看path">查看PATH</h3>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $PATH</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="查看当前运行shell">查看当前运行shell</h3>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $SHELL</span><br></pre></td></tr></tbody></table></figure>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8">❗</span> shell不止一种, 大多数Linux系统默认shell为 <strong>Bash shell</strong> (Bourne Again shell), 似乎<strong>Bourne shell</strong>仍是许多Unix系统默认的shell. 比较著名的还有 <strong>Z shell</strong> (Zsh), <strong>friendly interactive shell</strong> (fish).</p>
+<h2 id="添加路径到path">添加路径到PATH</h2>
+<h3 id="临时添加">临时添加</h3>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=[path/to/append]:$PATH</span><br></pre></td></tr></tbody></table></figure>
 <p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 应注意export命令仅作用于当前终端.</p>
-<p>:bulb: 在有些文档中会使用下面这样的方式来添加路径到PATH, 但我觉得这样不够稳妥. 因为用下面这种方式的话如果这个变量原本不存在, 假如我们添加<code>/usr/bin/bash</code>到PATH, 那么当我们使用
-<code>echo $PATH</code>来查看PATH变量的值会发现其值为 <strong>:/usr/bin/bash</strong>. 这是因为bash会将
-<strong>PATH=</strong>后的视为一整个字符串, 而 <strong>$PATH</strong>是取PATH现在的值的意思. 个人认为<code>/usr/bin/bash:</code>
-比<code>:/usr/bin/bash</code> OK一些<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f605.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f605.png?v8">😅</span></p>
+<p>:bulb: 在有些文档中会使用下面这样的方式来添加路径到PATH, 但我觉得这样不够稳妥. 因为用下面这种方式的话如果这个变量原本不存在, 假如我们添加<code>/usr/bin/bash</code>到PATH, 那么当我们使用 <code>echo $PATH</code>来查看PATH变量的值会发现其值为 <strong>:/usr/bin/bash</strong>. 这是因为bash会将 <strong>PATH=</strong>后的视为一整个字符串, 而 <strong>$PATH</strong>是取PATH现在的值的意思. 个人认为<code>/usr/bin/bash:</code> 比<code>:/usr/bin/bash</code> OK一些<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f605.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f605.png?v8">😅</span></p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=$PATH:[path/to/append]</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="永久添加"><a href="#永久添加" class="headerlink" title="永久添加"></a>永久添加</h3><p>首先我们需要了解哪些文件与环境变量有关.</p>
-<p>在Linux系统中<strong>最常见</strong>与环境配置有关的文件是四个shell初始化文件, 想要添加环境变量最常见的方法就是将命令添加到适当文件中, 这样每当shell被唤起, 在初始化时, 环境变量都会被添加进去.
-但但不同情况下会加载不同的初始化文件, 究竟需要更改哪一个/几个呢? 他们的比较如下:</p>
+<h3 id="永久添加">永久添加</h3>
+<p>首先我们需要了解哪些文件与环境变量有关.</p>
+<p>在Linux系统中<strong>最常见</strong>与环境配置有关的文件是四个shell初始化文件, 想要添加环境变量最常见的方法就是将命令添加到适当文件中, 这样每当shell被唤起, 在初始化时, 环境变量都会被添加进去. 但但不同情况下会加载不同的初始化文件, 究竟需要更改哪一个/几个呢? 他们的比较如下:</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th></th>
 <th><code>/etc/profile</code></th>
 <th><code>/etc/bash.bashrc</code></th>
@@ -678,118 +649,109 @@ rar工具:</p>
 <th><code>~/.bashrc</code></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>等级</td>
 <td>系统级</td>
 <td>系统级</td>
 <td>用户级</td>
 <td>用户级</td>
 </tr>
-<tr>
+<tr class="even">
 <td>自动加载的情况</td>
 <td>login shell</td>
 <td>interactive shell</td>
 <td>login shell</td>
 <td>interactive shell</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>作用于哪些shell</td>
 <td>Bourne系shell</td>
 <td>仅Bash</td>
 <td>Bourne系shell</td>
 <td>仅Bash</td>
 </tr>
-<tr>
+<tr class="even">
 <td>加载顺序</td>
 <td>先</td>
 <td>先</td>
 <td>后</td>
 <td>后</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>🔗 实际上在Linux系统中有非常多配置文件可以用来设置环境变量, 可以看看<a href="https://blog.lilydjwg.me/2020/7/22/linux-environment-variables.215496.html" target="_blank" rel="noopener">Linux的环境变量怎么设</a></p>
 <p>⚠️ 在有些系统中不是<code>/etc/bash.bashrc</code>, 而是<code>/etc/bashrc</code></p>
-<p>⚠️ <code>/etc/profile</code>仅针对Bourne系shell是指当shell为Bourne Shell, Bash, ksh
-等的时候<code>/etc/profile</code>才可能被加载, 而当我唤起一个<strong>zsh</strong>时, <strong>以上四个初始化文件都没有被加载</strong>
-<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f937-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f937-2642.png?v8">🤷♂</span></p>
+<p>⚠️ <code>/etc/profile</code>仅针对Bourne系shell是指当shell为Bourne Shell, Bash, ksh 等的时候<code>/etc/profile</code>才可能被加载, 而当我唤起一个<strong>zsh</strong>时, <strong>以上四个初始化文件都没有被加载</strong> <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f937-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f937-2642.png?v8">🤷♂</span></p>
 <p>⚠️ 在用户目录可能还存在<code>~/.bash_profile</code>, <code>~/.bash_login</code>这两文件, 系统会依次查找<code>~/.bash_profile</code>, <code>~/.bash_login</code> 和 <code>~/.profile</code>这三个配置文件, 读取和执行这三个中的<strong>第一个</strong>存在且可读的文件中命令, 因此建议将三个合并为一个.</p>
-<p>⚠️ 当<strong>bashrc</strong>一系和<strong>profile</strong>一系都会被加载时两者哪个会先被加载并不一定, 有点玄学… 经我测试运行<code>bash -cl bash</code> <strong>profile</strong>一系会先被加载, 而运行
-<code>bash -l</code>则<strong>bashrc</strong>一系会先被加载<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8">🤦♂</span> 但很明确的一点是:
-系统级初始化文件一定会先与用户级文件被加载. 即便根据应当允许用户个性化设置这种尝试也能推断出 (用户级初始化文件后于系统级初始化文件被加载, 所以用户级文件中的配置会覆盖系统级文件的对应配置)</p>
+<p>⚠️ 当<strong>bashrc</strong>一系和<strong>profile</strong>一系都会被加载时两者哪个会先被加载并不一定, 有点玄学... 经我测试运行<code>bash -cl bash</code> <strong>profile</strong>一系会先被加载, 而运行 <code>bash -l</code>则<strong>bashrc</strong>一系会先被加载<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8">🤦♂</span> 但很明确的一点是: 系统级初始化文件一定会先与用户级文件被加载. 即便根据应当允许用户个性化设置这种尝试也能推断出 (用户级初始化文件后于系统级初始化文件被加载, 所以用户级文件中的配置会覆盖系统级文件的对应配置)</p>
 <p>✔️ 有关四种shell模式个人感觉坑挺多的:</p>
 <ul>
-<li><p><strong>login shell</strong>: 笼统地理解就是有<strong>输入用户名和密码</strong>这一过程才能进入的shell, 比如
-<strong>通过ssh访问远程服务器</strong>, 否则就是<strong>non-login shell</strong> 但是! 比如<strong>通过<code>su</code>切换用户</strong>时默认进入的是<strong>non-login shell</strong>,
-如需切换用户进入login shell需要加选项<code>-l</code><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8">🤦♂</span> 还有, 经过GitHub
-广大网友建议, <strong>进入WSL</strong>默认进入的是<strong>login shell</strong>, 即便你并没有输入用户名密码.</p>
-</li>
-<li><p><strong>interactive shell</strong>指的是你一句电脑一句这样交互式的终端, 而<strong>no-interactive shell</strong>
-指的是<strong>通过脚本</strong>, <strong>运行<code>bash -c [command]</code></strong>之类指哪打哪和电脑没有交流的shell.</p>
-</li>
-<li><p>检测当前是login shell还是non-login shell: 有一个特点是login模式运行的shell进程名第一个字符是-, 因此如果你输入<code>echo $0</code>输出的是<strong>-bash</strong>, 那么你就是在login shell中,
-如果是<strong>bash</strong>, 那就是在non-login shell中.</p>
-</li>
+<li><strong>login shell</strong>: 笼统地理解就是有<strong>输入用户名和密码</strong>这一过程才能进入的shell, 比如 <strong>通过ssh访问远程服务器</strong>, 否则就是<strong>non-login shell</strong> 但是! 比如<strong>通过<code>su</code>切换用户</strong>时默认进入的是<strong>non-login shell</strong>, 如需切换用户进入login shell需要加选项<code>-l</code><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f926-2642.png?v8">🤦♂</span> 还有, 经过GitHub 广大网友建议, <strong>进入WSL</strong>默认进入的是<strong>login shell</strong>, 即便你并没有输入用户名密码.</li>
+<li><p><strong>interactive shell</strong>指的是你一句电脑一句这样交互式的终端, 而<strong>no-interactive shell</strong> 指的是<strong>通过脚本</strong>, <strong>运行<code>bash -c [command]</code></strong>之类指哪打哪和电脑没有交流的shell.</p></li>
+<li><p>检测当前是login shell还是non-login shell: 有一个特点是login模式运行的shell进程名第一个字符是-, 因此如果你输入<code>echo $0</code>输出的是<strong>-bash</strong>, 那么你就是在login shell中, 如果是<strong>bash</strong>, 那就是在non-login shell中.</p></li>
 </ul>
 <p>🌟 有了以上的知识储备我们就知道需要将环境变量添加到什么文件里了.</p>
-<h2 id="删除一个环境变量"><a href="#删除一个环境变量" class="headerlink" title="删除一个环境变量"></a>删除一个环境变量</h2><h3 id="临时删除"><a href="#临时删除" class="headerlink" title="临时删除"></a>临时删除</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export -n [VARIABLE]</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="永久删除"><a href="#永久删除" class="headerlink" title="永久删除"></a>永久删除</h3><p>参考永久添加的操作.</p>
-<h2 id="系统命令软链"><a href="#系统命令软链" class="headerlink" title="系统命令软链"></a>系统命令软链</h2><p>⭐️⭐️⭐️ <code>update-alternatives</code>是一条十分实用的命令! 这是Debian一系系统 (比如Ubuntu)
-中创建, 删除, 管理系统命令软链的工具. 在一个系统中同时存在同一软件的多个版本是很常见的事, 比如
-python2和python3并存, gcc多个版本并存. 当在命令行输入<code>python</code>时到底该进入python2还是
-python3呢? update-altenatives能够帮助我们.</p>
-<h3 id="创建-添加一个系统命令软链"><a href="#创建-添加一个系统命令软链" class="headerlink" title="创建/添加一个系统命令软链"></a>创建/添加一个系统命令软链</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update-alternatives --install [path/to/system_link] [command_name] [path/to/command_binary] [priority]</span><br></pre></td></tr></tbody></table></figure>
-
+<h2 id="删除一个环境变量">删除一个环境变量</h2>
+<h3 id="临时删除">临时删除</h3>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export -n [VARIABLE]</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="永久删除">永久删除</h3>
+<p>参考永久添加的操作.</p>
+<h2 id="系统命令软链">系统命令软链</h2>
+<p>⭐️⭐️⭐️ <code>update-alternatives</code>是一条十分实用的命令! 这是Debian一系系统 (比如Ubuntu) 中创建, 删除, 管理系统命令软链的工具. 在一个系统中同时存在同一软件的多个版本是很常见的事, 比如 python2和python3并存, gcc多个版本并存. 当在命令行输入<code>python</code>时到底该进入python2还是 python3呢? update-altenatives能够帮助我们.</p>
+<h3 id="创建添加一个系统命令软链">创建/添加一个系统命令软链</h3>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update-alternatives --install [path/to/system_link] [command_name] [path/to/command_binary] [priority]</span><br></pre></td></tr></tbody></table></figure>
 <p>几个参数分别是: 系统命令的链接, 系统命令名, 要用系统命令调用的软件的二进制文件的链接, 优先级大小</p>
 <p>以<strong>python</strong>这个命令举例:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update-alternatives --install /usr/bin/python python /home/leo/anaconda3/bin/python3 100</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="配置系统命令软链"><a href="#配置系统命令软链" class="headerlink" title="配置系统命令软链"></a>配置系统命令软链</h3><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update-alternatives --config [command_name]</span><br></pre></td></tr></tbody></table></figure>
-
+<h3 id="配置系统命令软链">配置系统命令软链</h3>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update-alternatives --config [command_name]</span><br></pre></td></tr></tbody></table></figure>
 <p>alternative软链系统会把优先级数值最大的一个软件二进制文件链接作为当前该系统命令链接到的二进制文件地址, 因此比如要改变python版本只需调整优先级大小.</p>
-<h3 id="删除一个系统命令软链"><a href="#删除一个系统命令软链" class="headerlink" title="删除一个系统命令软链"></a>删除一个系统命令软链</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update-alternatives --remove [path/to/system_link] [command_name] [path/to/command_binary] [priority]</span><br></pre></td></tr></tbody></table></figure>
-
-<h1 id="文本编辑"><a href="#文本编辑" class="headerlink" title="文本编辑"></a>文本编辑</h1><h2 id="显示文件内容"><a href="#显示文件内容" class="headerlink" title="显示文件内容"></a>显示文件内容</h2><p>cat: concatenate</p>
-<h3 id="常用选项-3"><a href="#常用选项-3" class="headerlink" title="常用选项"></a>常用选项</h3><ul>
-<li><p>-n 或 –number：由 1 开始对所有输出的行数编号。</p>
-</li>
-<li><p>-b 或 –number-nonblank：和 -n 相似，只不过对于空白行不编号。</p>
-</li>
+<h3 id="删除一个系统命令软链">删除一个系统命令软链</h3>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update-alternatives --remove [path/to/system_link] [command_name] [path/to/command_binary] [priority]</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="文本编辑">文本编辑</h1>
+<h2 id="显示文件内容">显示文件内容</h2>
+<p>cat: concatenate</p>
+<h3 id="常用选项-3">常用选项</h3>
+<ul>
+<li><p>-n 或 --number：由 1 开始对所有输出的行数编号。</p></li>
+<li><p>-b 或 --number-nonblank：和 -n 相似，只不过对于空白行不编号。</p></li>
 </ul>
-<h3 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h3><p>cat 也可以用来制作镜像文件. 例如要制作软盘的镜像文件, 将软盘放好后输入：</p>
+<h3 id="镜像">镜像</h3>
+<p>cat 也可以用来制作镜像文件. 例如要制作软盘的镜像文件, 将软盘放好后输入：</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /dev/fd0 &gt; [OUTFILE]</span><br></pre></td></tr></tbody></table></figure>
-
 <p>相反的, 如果想把 image file 写到软盘, 输入：</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat [IMG_FILE] &gt; /dev/fd0</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="覆盖目标文件的写入"><a href="#覆盖目标文件的写入" class="headerlink" title="覆盖目标文件的写入"></a>覆盖目标文件的写入</h2><p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8">❗</span>一定别和添加内容到文件的命令搞混了!</p>
-<h3 id="写入一些文件的内容"><a href="#写入一些文件的内容" class="headerlink" title="写入一些文件的内容"></a>写入一些文件的内容</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat [file1] [file2] &gt; [target_file]</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="写入一个字符串"><a href="#写入一个字符串" class="headerlink" title="写入一个字符串"></a>写入一个字符串</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo ["string"] &gt; [target_file]</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="添加到目标文件的写入"><a href="#添加到目标文件的写入" class="headerlink" title="添加到目标文件的写入"></a>添加到目标文件的写入</h2><h3 id="写入一些文件的内容-1"><a href="#写入一些文件的内容-1" class="headerlink" title="写入一些文件的内容"></a>写入一些文件的内容</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat [file1] [file2] &gt;&gt; [target_file]</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="写入一个字符串-1"><a href="#写入一个字符串-1" class="headerlink" title="写入一个字符串"></a>写入一个字符串</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo ["string"] &gt;&gt; [target_file]</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="清空文件内容"><a href="#清空文件内容" class="headerlink" title="清空文件内容"></a>清空文件内容</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /dev/null &gt; [target_file]</span><br></pre></td></tr></tbody></table></figure>
-
-<h1 id="文件权限设置"><a href="#文件权限设置" class="headerlink" title="文件权限设置"></a>文件权限设置</h1><p>chmod: change file mode bits</p>
+<h2 id="覆盖目标文件的写入">覆盖目标文件的写入</h2>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8">❗</span>一定别和添加内容到文件的命令搞混了!</p>
+<h3 id="写入一些文件的内容">写入一些文件的内容</h3>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat [file1] [file2] &gt; [target_file]</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="写入一个字符串">写入一个字符串</h3>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo ["string"] &gt; [target_file]</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="添加到目标文件的写入">添加到目标文件的写入</h2>
+<h3 id="写入一些文件的内容-1">写入一些文件的内容</h3>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat [file1] [file2] &gt;&gt; [target_file]</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="写入一个字符串-1">写入一个字符串</h3>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo ["string"] &gt;&gt; [target_file]</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="清空文件内容">清空文件内容</h2>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /dev/null &gt; [target_file]</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="文件权限设置">文件权限设置</h1>
+<p>chmod: change file mode bits</p>
 <p>chown: change file owner and group</p>
-<h2 id="所有人可运行"><a href="#所有人可运行" class="headerlink" title="所有人可运行"></a>所有人可运行</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod a+x</span><br></pre></td></tr></tbody></table></figure>
-
+<h2 id="所有人可运行">所有人可运行</h2>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod a+x</span><br></pre></td></tr></tbody></table></figure>
 <p>拥有者, 群组可读写, 运行, 其他用户可读, 执行</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 755</span><br></pre></td></tr></tbody></table></figure>
-
 <p>用一个三位八进制数来表示文件权限, 规定4, 2和1表示读、写、执行权限, 每一位都是这三个数相加的结果, 三位分别表示u (user), g (group), o (others).</p>
-<h1 id="后台不挂起运行"><a href="#后台不挂起运行" class="headerlink" title="后台不挂起运行"></a>后台不挂起运行</h1><p>通过在命令尾加上<code>&amp;</code>可以让命令在后台运行. <strong>后台运行</strong>是指<strong>当前进程不在前台占用屏幕</strong>. 后台运行的程序一样会把输出显示到终端, 通常通过在命令末尾加上<code>1&gt;/dev/null
-2&gt;error.log</code> 将标准输出重定向至黑洞 (<code>/dev/null</code>是一个很特殊的设备, 写入它的内容都会被丢弃, 而读取它会得到EOF), 输出标准错误输出到当前文件夹的<code>error.log</code>.</p>
+<h1 id="后台不挂起运行">后台不挂起运行</h1>
+<p>通过在命令尾加上<code>&amp;</code>可以让命令在后台运行. <strong>后台运行</strong>是指<strong>当前进程不在前台占用屏幕</strong>. 后台运行的程序一样会把输出显示到终端, 通常通过在命令末尾加上<code>1&gt;/dev/null 2&gt;error.log</code> 将标准输出重定向至黑洞 (<code>/dev/null</code>是一个很特殊的设备, 写入它的内容都会被丢弃, 而读取它会得到EOF), 输出标准错误输出到当前文件夹的<code>error.log</code>.</p>
 <p>💡 <code>&amp;</code>能让进程在后台运行, 但<strong>一旦当前终端关闭这个进程就会被挂起</strong>. 当进程被切换到后台, 称为<strong>job</strong></p>
 <p>而<code>nohup [command]</code>能让进程不挂起地运行, 即退出当前终端进程仍然在运行. 但这条命令会一直占据终端而且不再接受输入, 因此关闭这个终端会提示还有程序在运行, 强行关闭的话这条命令就会被终止, 就更不用说不挂起运行了.</p>
 <p>如果想不挂起后台运行要用下面这条. 这样关闭当前终端程序也会继续运行了😄</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup [command] &amp; 1&gt;/dev/null 2&gt;error.log</span><br></pre></td></tr></tbody></table></figure>
-
 <p>💡 丢弃标准输出并将标准错误输出重定向到当前文件夹的<code>error.log</code>是我的习惯, 当然你可以重定向到别的地方.</p>
-<h1 id="TCP-UDP工具"><a href="#TCP-UDP工具" class="headerlink" title="TCP/UDP工具"></a>TCP/UDP工具</h1><p>nc: netcat, 是一个读写TCP/UDP协议下数据的工具.</p>
+<h1 id="tcpudp工具">TCP/UDP工具</h1>
+<p>nc: netcat, 是一个读写TCP/UDP协议下数据的工具.</p>
 <p>我感觉netcat能当作Windows下的TCP调试助手, 但也有远比TCP调试助手多的功能和用途,是很强大的工具, 但得自己加选项来实现各种功能, 可能还需要和其他工具配合, 使用不是很直观.</p>
 <p>常用选项:</p>
 <ul>
@@ -800,70 +762,61 @@ python3呢? update-altenatives能够帮助我们.</p>
 <li>-w 一定时间内无法连接则timeout, 单位为秒</li>
 </ul>
 <p>我目前遇到的几种用法:</p>
-<h2 id="监听某端口"><a href="#监听某端口" class="headerlink" title="监听某端口"></a>监听某端口</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l localhost 8000</span><br></pre></td></tr></tbody></table></figure>
-
+<h2 id="监听某端口">监听某端口</h2>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -l localhost 8000</span><br></pre></td></tr></tbody></table></figure>
 <p>❗️ nc的manpage说在建立链接后就不要在意哪边是server哪边是client了.</p>
-<h2 id="发送一段16进制的ASCII码"><a href="#发送一段16进制的ASCII码" class="headerlink" title="发送一段16进制的ASCII码"></a>发送一段16进制的ASCII码</h2><p>在看网友们实现这个时我体会到了linux命令是多么强大, 以下收录几个例子</p>
+<h2 id="发送一段16进制的ascii码">发送一段16进制的ASCII码</h2>
+<p>在看网友们实现这个时我体会到了linux命令是多么强大, 以下收录几个例子</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo '0006303030304e43' | xxd -r -p | nc -l localhost 8000</span><br></pre></td></tr></tbody></table></figure>
-
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo -ne '\x00\x06\x30\x30\x30\x30\x4e\x43' | nc -l localhost 8000</span><br></pre></td></tr></tbody></table></figure>
-
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo -ne "$(echo '0006303030304e43' | sed -e 's/../\\x&amp;/g')" | nc -l localhost 8000</span><br></pre></td></tr></tbody></table></figure>
-
-<h2 id="以16进制显示接收到的信息"><a href="#以16进制显示接收到的信息" class="headerlink" title="以16进制显示接收到的信息"></a>以16进制显示接收到的信息</h2><p>hd: hexdump
-xxd: make a hexdump or do the reverse</p>
+<h2 id="以16进制显示接收到的信息">以16进制显示接收到的信息</h2>
+<p>hd: hexdump xxd: make a hexdump or do the reverse</p>
 <p>hexdump和xxd都可以将数据转为16进制, 但体验后我觉得xxd更易记, 显示更直观.</p>
 <p>xxd默认按单字节转换, 而hexdump默认按双字节小端转换, 差评.</p>
-<h3 id="按单字节以一定格式显示"><a href="#按单字节以一定格式显示" class="headerlink" title="按单字节以一定格式显示"></a>按单字节以一定格式显示</h3><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc localhost 8000 | xxd -c [cols]</span><br></pre></td></tr></tbody></table></figure>
-
+<h3 id="按单字节以一定格式显示">按单字节以一定格式显示</h3>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc localhost 8000 | xxd -c [cols]</span><br></pre></td></tr></tbody></table></figure>
 <p>选项-c指定一行显示列数, 如果显示的数据是定长的话设置为数据长度很舒服. xxd默认两字节一组显示, 即两个字节间一个空格, 可以用<code>-g [bytes]</code>指定几个字节一组.</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc localhost 8000 | hexdump -C</span><br></pre></td></tr></tbody></table></figure>
-
 <p>选项-C指定按单字节以一定格式显示. 这个格式可以看hexdump的manpage下<code>-C</code>选项的描述</p>
 <p>不过看manpage似乎hexdump支持的骚显示方式更多.</p>
-<h2 id="扫描端口"><a href="#扫描端口" class="headerlink" title="扫描端口"></a>扫描端口</h2><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -v -n -z -w 1 localhost 1-1000</span><br></pre></td></tr></tbody></table></figure>
-
+<h2 id="扫描端口">扫描端口</h2>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -v -n -z -w 1 localhost 1-1000</span><br></pre></td></tr></tbody></table></figure>
 <p>nc甚至可以通过重定向文件描述符来在端口使用终端 🐮🍺</p>
 <p>在nc的manpage可以找到操作方式.</p>
-<h1 id="遇到过的问题"><a href="#遇到过的问题" class="headerlink" title="遇到过的问题"></a>遇到过的问题</h1><h2 id="Ubuntu开机紫屏"><a href="#Ubuntu开机紫屏" class="headerlink" title="Ubuntu开机紫屏"></a>Ubuntu开机紫屏</h2><p>linux文件系统损坏导致的不正常开/关机, 此时一般等一等系统就会提示你进行文件系统修复.</p>
+<h1 id="遇到过的问题">遇到过的问题</h1>
+<h2 id="ubuntu开机紫屏">Ubuntu开机紫屏</h2>
+<p>linux文件系统损坏导致的不正常开/关机, 此时一般等一等系统就会提示你进行文件系统修复.</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fsck -a /dev/sda1</span><br></pre></td></tr></tbody></table></figure>
-
-<p>一般用这条命令修复. fsck (file system check) 是检测与修复文件系统的命令.<code>-a</code>选项会报告损坏
-block并自动修复 (反正手动修复也只是确认是否修复).</p>
+<p>一般用这条命令修复. fsck (file system check) 是检测与修复文件系统的命令.<code>-a</code>选项会报告损坏 block并自动修复 (反正手动修复也只是确认是否修复).</p>
 <p>具体参考<a href="https://blog.csdn.net/liujianlin01/article/details/82937708" target="_blank" rel="noopener">这里</a></p>
-<h2 id="Ubuntu烦人的开机报错"><a href="#Ubuntu烦人的开机报错" class="headerlink" title="Ubuntu烦人的开机报错"></a>Ubuntu烦人的开机报错</h2><p>把这个报错关了就完事了😁</p>
+<h2 id="ubuntu烦人的开机报错">Ubuntu烦人的开机报错</h2>
+<p>把这个报错关了就完事了😁</p>
 <p>参考<a href="https://www.cnblogs.com/greatfish/p/8042026.html" target="_blank" rel="noopener">Ubuntu开机弹出System porgram detected</a></p>
-<h2 id="ibus的中文输入法无法选择除第一个的候选词bug"><a href="#ibus的中文输入法无法选择除第一个的候选词bug" class="headerlink" title="ibus的中文输入法无法选择除第一个的候选词bug"></a>ibus的中文输入法无法选择除第一个的候选词bug</h2><p>需要删除几个缓存的数据库文件</p>
+<h2 id="ibus的中文输入法无法选择除第一个的候选词bug">ibus的中文输入法无法选择除第一个的候选词bug</h2>
+<p>需要删除几个缓存的数据库文件</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf ~/.cache/ibus/libpinyin/</span><br></pre></td></tr></tbody></table></figure>
-
 <p>这个issue具体参考<a href="https://github.com/libpinyin/ibus-libpinyin/issues/127" target="_blank" rel="noopener">这里</a></p>
-<p>⭐️推荐直接换掉ibus转用<strong>fcitx</strong>. fcitx的中文输入法推荐<strong>GooglePinyin</strong>, 日语输入法推荐
-<strong>Mocz</strong>. 通过以下命令可以安装.</p>
+<p>⭐️推荐直接换掉ibus转用<strong>fcitx</strong>. fcitx的中文输入法推荐<strong>GooglePinyin</strong>, 日语输入法推荐 <strong>Mocz</strong>. 通过以下命令可以安装.</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装谷歌拼音</span></span><br><span class="line">sudo apt install fcitx-googlepinyin</span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装Mocz日语输入法</span></span><br><span class="line">sudo apt install fcitx-mozc</span><br></pre></td></tr></tbody></table></figure>
-
-<p>❗️值得一提的是fcitx的输入法分激活和非激活 (通常将英语设为非激活), 输入法切换快捷键也分两种,
-一种在非激活输入法和激活输入法间切换, 一种在激活输入法间切换.</p>
-<h2 id="没有显卡驱动无法正常显示"><a href="#没有显卡驱动无法正常显示" class="headerlink" title="没有显卡驱动无法正常显示"></a>没有显卡驱动无法正常显示</h2><p>有时候买了不靠谱的显卡可能你的发行版中没有, 或者你安装的时候没有安装对应的驱动, 因此开机后可能是花屏或者黑屏. 解决方法是: 开机时在grub界面按 <code>e</code> 进入编辑模式将什么什么splash后的—改为 
-<code>nomodeset</code>. 这样就会让内核不改变显示设置, 保证至少能看到东西. (但这模式很有可能显示出来辣眼睛😅)</p>
-<h2 id="解压-zip压缩包中文文件名为乱码"><a href="#解压-zip压缩包中文文件名为乱码" class="headerlink" title="解压.zip压缩包中文文件名为乱码"></a>解压.zip压缩包中文文件名为乱码</h2><p>当我在Ubuntu1804像往常解压<code>.tar.gz</code>文件那样用右键菜单的<strong>extract here</strong>解压<code>.zip</code>文件后我发现中文文件名全部变成了乱码, 文件里面倒是没问题.</p>
+<p>❗️值得一提的是fcitx的输入法分激活和非激活 (通常将英语设为非激活), 输入法切换快捷键也分两种, 一种在非激活输入法和激活输入法间切换, 一种在激活输入法间切换.</p>
+<h2 id="没有显卡驱动无法正常显示">没有显卡驱动无法正常显示</h2>
+<p>有时候买了不靠谱的显卡可能你的发行版中没有, 或者你安装的时候没有安装对应的驱动, 因此开机后可能是花屏或者黑屏. 解决方法是: 开机时在grub界面按 <code>e</code> 进入编辑模式将什么什么splash后的---改为 <code>nomodeset</code>. 这样就会让内核不改变显示设置, 保证至少能看到东西. (但这模式很有可能显示出来辣眼睛😅)</p>
+<h2 id="解压.zip压缩包中文文件名为乱码">解压.zip压缩包中文文件名为乱码</h2>
+<p>当我在Ubuntu1804像往常解压<code>.tar.gz</code>文件那样用右键菜单的<strong>extract here</strong>解压<code>.zip</code>文件后我发现中文文件名全部变成了乱码, 文件里面倒是没问题.</p>
 <p>这是因为<strong>zip压缩包并没有指明编码格式</strong>, 解压工具会以Linux的默认编码格式<strong>UTF-8</strong>解压, 而在系统语言为简体中文的Windows系统下默认<strong>字符集</strong>为<code>GBK</code>, <strong>编码格式</strong>为<code>EUC-CN</code>, 所以会文件名乱码.</p>
 <p>我目前的解决方法是命令行输入以下命令解压.</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip -O cp936 [filename]</span><br></pre></td></tr></tbody></table></figure>
-
-<p>此处选项<code>-O</code>指以指定编码格式解压. <strong>cp936</strong>指<a href="https://en.wikipedia.org/wiki/Code_page_936_(Microsoft_Windows)" target="_blank" rel="noopener">微软编写的代码页936页</a>的编码格式
-(注意与<a href="https://en.wikipedia.org/wiki/Code_page_936_(IBM)" target="_blank" rel="noopener">IBM的code page936</a>区别),
-即字符集为GBK, 编码格式为EUC-CN. (经我实验UTF-8编码的文件名以cp936编码解压出来显示正常…
-我也不知道为什么)</p>
-<h2 id="Linux系统时间和Windows系统时间差8小时"><a href="#Linux系统时间和Windows系统时间差8小时" class="headerlink" title="Linux系统时间和Windows系统时间差8小时"></a>Linux系统时间和Windows系统时间差8小时</h2><p>这个问题蛮有意思的:</p>
-<p>Linux系统将硬件时间 (BIOS中的时间) 作为系统的<strong>UTC时间</strong>, 而Windows系统将硬件时间作为<strong>本地时间</strong>.也就是说如果现在我有一台在北京 (东八区) 的电脑, <strong>BIOS时间</strong>
-为8:30 (24小时制), 那<strong>Linux系统时间</strong>为16:30, <strong>Windows系统时间</strong>为8:30.</p>
+<p>此处选项<code>-O</code>指以指定编码格式解压. <strong>cp936</strong>指<a href="https://en.wikipedia.org/wiki/Code_page_936_(Microsoft_Windows)" target="_blank" rel="noopener">微软编写的代码页936页</a>的编码格式 (注意与<a href="https://en.wikipedia.org/wiki/Code_page_936_(IBM)" target="_blank" rel="noopener">IBM的code page936</a>区别), 即字符集为GBK, 编码格式为EUC-CN. (经我实验UTF-8编码的文件名以cp936编码解压出来显示正常... 我也不知道为什么)</p>
+<h2 id="linux系统时间和windows系统时间差8小时">Linux系统时间和Windows系统时间差8小时</h2>
+<p>这个问题蛮有意思的:</p>
+<p>Linux系统将硬件时间 (BIOS中的时间) 作为系统的<strong>UTC时间</strong>, 而Windows系统将硬件时间作为<strong>本地时间</strong>.也就是说如果现在我有一台在北京 (东八区) 的电脑, <strong>BIOS时间</strong> 为8:30 (24小时制), 那<strong>Linux系统时间</strong>为16:30, <strong>Windows系统时间</strong>为8:30.</p>
 <p>因此Linux系统时间与Windows系统时间有时差是正常的 (可以通过设置让Windows系统将硬件时间作为UTC时间). 但我的Linux和Windows系统都开启了网络校时功能, 理论上即便存在上述问题也不应当表现出来, 而应是开机后自动校准了. 我面临的问题是Linux系统时间是准确的,而Windows系统时间总是早了8小时, 这说明Windows系统的网络校时功能未生效.</p>
-<p>后来我发现是有个叫<strong>Windows Time</strong>的服务 (网络校时功能在这个服务里) 的启动类型不合理 (<strong>服务</strong>可以通过在开始搜索框搜索打开). 这个服务的缺省启动类型为<code>手动(触发器启动)</code>, 也就是说需要通过我们手动在某处触发. (与另一种启动类型<code>手动</code>的区别是后者只能在<strong>服务</strong>页面手动启动)举例来说, 每次我从Linux系统关机,重启打开Windows系统后, Windows系统显示的时间是不准确的, 此处<strong>Windows Time</strong>服务因为未触发,处于未运行状态, 而当我在设置的时间与地区里手动关闭 <strong>“自动设置时间”</strong> 再打开后, 我发现
-<strong>Windows Time</strong>服务此时已经处于运行状态了.</p>
-<p>🤦‍… 没准是微软的锅? 咱也不知道, 咱也不敢问.</p>
+<p>后来我发现是有个叫<strong>Windows Time</strong>的服务 (网络校时功能在这个服务里) 的启动类型不合理 (<strong>服务</strong>可以通过在开始搜索框搜索打开). 这个服务的缺省启动类型为<code>手动(触发器启动)</code>, 也就是说需要通过我们手动在某处触发. (与另一种启动类型<code>手动</code>的区别是后者只能在<strong>服务</strong>页面手动启动)举例来说, 每次我从Linux系统关机,重启打开Windows系统后, Windows系统显示的时间是不准确的, 此处<strong>Windows Time</strong>服务因为未触发,处于未运行状态, 而当我在设置的时间与地区里手动关闭 <strong>"自动设置时间"</strong> 再打开后, 我发现 <strong>Windows Time</strong>服务此时已经处于运行状态了.</p>
+<p>🤦‍... 没准是微软的锅? 咱也不知道, 咱也不敢问.</p>
 <p>当我将这个服务的启动类型设置为<code>自动(延迟启动)</code> (延迟启动指在所有系统服务启动后再启动本服务) 后问题解决.</p>
-<h2 id="fcitx无法用Super-Space切换输入法"><a href="#fcitx无法用Super-Space切换输入法" class="headerlink" title="fcitx无法用Super+Space切换输入法"></a>fcitx无法用Super+Space切换输入法</h2><p>这是因为这个组合键被系统的输入法切换快捷键占用了. 在系统设置里 <strong>Devices -&gt;
-Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可以了.</p>
+<h2 id="fcitx无法用superspace切换输入法">fcitx无法用Super+Space切换输入法</h2>
+<p>这是因为这个组合键被系统的输入法切换快捷键占用了. 在系统设置里 <strong>Devices -&gt; Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可以了.</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -991,7 +944,7 @@ Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可�
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#查看版本"><span class="nav-number">1.</span> <span class="nav-text">查看版本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看内核版本"><span class="nav-number">1.1.</span> <span class="nav-text">查看内核版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看发行版版本"><span class="nav-number">1.2.</span> <span class="nav-text">查看发行版版本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件安装卸载等"><span class="nav-number">2.</span> <span class="nav-text">软件安装卸载等</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#源列表备份与恢复"><span class="nav-number">2.1.</span> <span class="nav-text">源列表备份与恢复</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#换源"><span class="nav-number">2.2.</span> <span class="nav-text">换源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包列表更新"><span class="nav-number">2.3.</span> <span class="nav-text">包列表更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包升级"><span class="nav-number">2.4.</span> <span class="nav-text">包升级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包搜索"><span class="nav-number">2.5.</span> <span class="nav-text">包搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包安装"><span class="nav-number">2.6.</span> <span class="nav-text">包安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包卸载"><span class="nav-number">2.7.</span> <span class="nav-text">包卸载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进阶操作"><span class="nav-number">2.8.</span> <span class="nav-text">进阶操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载下来的压缩包里有看着像安装脚本的玩意"><span class="nav-number">2.8.1.</span> <span class="nav-text">下载下来的压缩包里有看着像安装脚本的玩意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有deb包"><span class="nav-number">2.8.2.</span> <span class="nav-text">有deb包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#普通安装"><span class="nav-number">2.8.2.1.</span> <span class="nav-text">普通安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遇到报错"><span class="nav-number">2.8.2.2.</span> <span class="nav-text">遇到报错</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#修复依赖关系"><span class="nav-number">2.8.2.2.1.</span> <span class="nav-text">修复依赖关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#需要对包的依赖关系进行修改"><span class="nav-number">2.8.2.2.2.</span> <span class="nav-text">需要对包的依赖关系进行修改</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需要自己编译"><span class="nav-number">2.8.3.</span> <span class="nav-text">需要自己编译</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件系统"><span class="nav-number">3.</span> <span class="nav-text">文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#链接"><span class="nav-number">3.1.</span> <span class="nav-text">链接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#建立软链"><span class="nav-number">3.1.1.</span> <span class="nav-text">建立软链</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制"><span class="nav-number">3.2.</span> <span class="nav-text">复制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用选项"><span class="nav-number">3.2.1.</span> <span class="nav-text">常用选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则使用举例"><span class="nav-number">3.2.2.</span> <span class="nav-text">正则使用举例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除"><span class="nav-number">3.3.</span> <span class="nav-text">删除</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用选项-1"><span class="nav-number">3.3.1.</span> <span class="nav-text">常用选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除文件"><span class="nav-number">3.3.2.</span> <span class="nav-text">删除文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除文件夹"><span class="nav-number">3.3.3.</span> <span class="nav-text">删除文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除当前文件夹下所有文件及文件夹"><span class="nav-number">3.3.4.</span> <span class="nav-text">删除当前文件夹下所有文件及文件夹</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解压-压缩"><span class="nav-number">3.4.</span> <span class="nav-text">解压/压缩</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用选项-2"><span class="nav-number">3.4.1.</span> <span class="nav-text">常用选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列出压缩文件内容"><span class="nav-number">3.4.2.</span> <span class="nav-text">列出压缩文件内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解压文件"><span class="nav-number">3.4.3.</span> <span class="nav-text">解压文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩文件"><span class="nav-number">3.4.4.</span> <span class="nav-text">压缩文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#格式化U盘"><span class="nav-number">3.5.</span> <span class="nav-text">格式化U盘</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境变量"><span class="nav-number">4.</span> <span class="nav-text">环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看环境变量"><span class="nav-number">4.1.</span> <span class="nav-text">查看环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看所有环境变量"><span class="nav-number">4.1.1.</span> <span class="nav-text">查看所有环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看PATH"><span class="nav-number">4.1.2.</span> <span class="nav-text">查看PATH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看当前运行shell"><span class="nav-number">4.1.3.</span> <span class="nav-text">查看当前运行shell</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加路径到PATH"><span class="nav-number">4.2.</span> <span class="nav-text">添加路径到PATH</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#临时添加"><span class="nav-number">4.2.1.</span> <span class="nav-text">临时添加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#永久添加"><span class="nav-number">4.2.2.</span> <span class="nav-text">永久添加</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除一个环境变量"><span class="nav-number">4.3.</span> <span class="nav-text">删除一个环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#临时删除"><span class="nav-number">4.3.1.</span> <span class="nav-text">临时删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#永久删除"><span class="nav-number">4.3.2.</span> <span class="nav-text">永久删除</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统命令软链"><span class="nav-number">4.4.</span> <span class="nav-text">系统命令软链</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-添加一个系统命令软链"><span class="nav-number">4.4.1.</span> <span class="nav-text">创建/添加一个系统命令软链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置系统命令软链"><span class="nav-number">4.4.2.</span> <span class="nav-text">配置系统命令软链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除一个系统命令软链"><span class="nav-number">4.4.3.</span> <span class="nav-text">删除一个系统命令软链</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文本编辑"><span class="nav-number">5.</span> <span class="nav-text">文本编辑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#显示文件内容"><span class="nav-number">5.1.</span> <span class="nav-text">显示文件内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用选项-3"><span class="nav-number">5.1.1.</span> <span class="nav-text">常用选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#镜像"><span class="nav-number">5.1.2.</span> <span class="nav-text">镜像</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#覆盖目标文件的写入"><span class="nav-number">5.2.</span> <span class="nav-text">覆盖目标文件的写入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#写入一些文件的内容"><span class="nav-number">5.2.1.</span> <span class="nav-text">写入一些文件的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写入一个字符串"><span class="nav-number">5.2.2.</span> <span class="nav-text">写入一个字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加到目标文件的写入"><span class="nav-number">5.3.</span> <span class="nav-text">添加到目标文件的写入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#写入一些文件的内容-1"><span class="nav-number">5.3.1.</span> <span class="nav-text">写入一些文件的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写入一个字符串-1"><span class="nav-number">5.3.2.</span> <span class="nav-text">写入一个字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清空文件内容"><span class="nav-number">5.4.</span> <span class="nav-text">清空文件内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件权限设置"><span class="nav-number">6.</span> <span class="nav-text">文件权限设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#所有人可运行"><span class="nav-number">6.1.</span> <span class="nav-text">所有人可运行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后台不挂起运行"><span class="nav-number">7.</span> <span class="nav-text">后台不挂起运行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-UDP工具"><span class="nav-number">8.</span> <span class="nav-text">TCP/UDP工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#监听某端口"><span class="nav-number">8.1.</span> <span class="nav-text">监听某端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发送一段16进制的ASCII码"><span class="nav-number">8.2.</span> <span class="nav-text">发送一段16进制的ASCII码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以16进制显示接收到的信息"><span class="nav-number">8.3.</span> <span class="nav-text">以16进制显示接收到的信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#按单字节以一定格式显示"><span class="nav-number">8.3.1.</span> <span class="nav-text">按单字节以一定格式显示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扫描端口"><span class="nav-number">8.4.</span> <span class="nav-text">扫描端口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遇到过的问题"><span class="nav-number">9.</span> <span class="nav-text">遇到过的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu开机紫屏"><span class="nav-number">9.1.</span> <span class="nav-text">Ubuntu开机紫屏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu烦人的开机报错"><span class="nav-number">9.2.</span> <span class="nav-text">Ubuntu烦人的开机报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ibus的中文输入法无法选择除第一个的候选词bug"><span class="nav-number">9.3.</span> <span class="nav-text">ibus的中文输入法无法选择除第一个的候选词bug</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#没有显卡驱动无法正常显示"><span class="nav-number">9.4.</span> <span class="nav-text">没有显卡驱动无法正常显示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解压-zip压缩包中文文件名为乱码"><span class="nav-number">9.5.</span> <span class="nav-text">解压.zip压缩包中文文件名为乱码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux系统时间和Windows系统时间差8小时"><span class="nav-number">9.6.</span> <span class="nav-text">Linux系统时间和Windows系统时间差8小时</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fcitx无法用Super-Space切换输入法"><span class="nav-number">9.7.</span> <span class="nav-text">fcitx无法用Super+Space切换输入法</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#查看版本"><span class="nav-number">1.</span> <span class="nav-text">查看版本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看内核版本"><span class="nav-number">1.1.</span> <span class="nav-text">查看内核版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看发行版版本"><span class="nav-number">1.2.</span> <span class="nav-text">查看发行版版本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软件安装卸载等"><span class="nav-number">2.</span> <span class="nav-text">软件安装卸载等</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#源列表备份与恢复"><span class="nav-number">2.1.</span> <span class="nav-text">源列表备份与恢复</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#换源"><span class="nav-number">2.2.</span> <span class="nav-text">换源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包列表更新"><span class="nav-number">2.3.</span> <span class="nav-text">包列表更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包升级"><span class="nav-number">2.4.</span> <span class="nav-text">包升级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包搜索"><span class="nav-number">2.5.</span> <span class="nav-text">包搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包安装"><span class="nav-number">2.6.</span> <span class="nav-text">包安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包卸载"><span class="nav-number">2.7.</span> <span class="nav-text">包卸载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进阶操作"><span class="nav-number">2.8.</span> <span class="nav-text">进阶操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载下来的压缩包里有看着像安装脚本的玩意"><span class="nav-number">2.8.1.</span> <span class="nav-text">下载下来的压缩包里有看着像安装脚本的玩意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有deb包"><span class="nav-number">2.8.2.</span> <span class="nav-text">有deb包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#普通安装"><span class="nav-number">2.8.2.1.</span> <span class="nav-text">普通安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遇到报错"><span class="nav-number">2.8.2.2.</span> <span class="nav-text">遇到报错</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#修复依赖关系"><span class="nav-number">2.8.2.2.1.</span> <span class="nav-text">修复依赖关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#需要对包的依赖关系进行修改"><span class="nav-number">2.8.2.2.2.</span> <span class="nav-text">需要对包的依赖关系进行修改</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需要自己编译"><span class="nav-number">2.8.3.</span> <span class="nav-text">需要自己编译</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件系统"><span class="nav-number">3.</span> <span class="nav-text">文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#链接"><span class="nav-number">3.1.</span> <span class="nav-text">链接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#建立软链"><span class="nav-number">3.1.1.</span> <span class="nav-text">建立软链</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制"><span class="nav-number">3.2.</span> <span class="nav-text">复制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用选项"><span class="nav-number">3.2.1.</span> <span class="nav-text">常用选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则使用举例"><span class="nav-number">3.2.2.</span> <span class="nav-text">正则使用举例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除"><span class="nav-number">3.3.</span> <span class="nav-text">删除</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用选项-1"><span class="nav-number">3.3.1.</span> <span class="nav-text">常用选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除文件"><span class="nav-number">3.3.2.</span> <span class="nav-text">删除文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除文件夹"><span class="nav-number">3.3.3.</span> <span class="nav-text">删除文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除当前文件夹下所有文件及文件夹"><span class="nav-number">3.3.4.</span> <span class="nav-text">删除当前文件夹下所有文件及文件夹</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解压压缩"><span class="nav-number">3.4.</span> <span class="nav-text">解压/压缩</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用选项-2"><span class="nav-number">3.4.1.</span> <span class="nav-text">常用选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列出压缩文件内容"><span class="nav-number">3.4.2.</span> <span class="nav-text">列出压缩文件内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解压文件"><span class="nav-number">3.4.3.</span> <span class="nav-text">解压文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#压缩文件"><span class="nav-number">3.4.4.</span> <span class="nav-text">压缩文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#格式化u盘"><span class="nav-number">3.5.</span> <span class="nav-text">格式化U盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看环境变量"><span class="nav-number">3.6.</span> <span class="nav-text">查看环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看所有环境变量"><span class="nav-number">3.6.1.</span> <span class="nav-text">查看所有环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看path"><span class="nav-number">3.6.2.</span> <span class="nav-text">查看PATH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看当前运行shell"><span class="nav-number">3.6.3.</span> <span class="nav-text">查看当前运行shell</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加路径到path"><span class="nav-number">3.7.</span> <span class="nav-text">添加路径到PATH</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#临时添加"><span class="nav-number">3.7.1.</span> <span class="nav-text">临时添加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#永久添加"><span class="nav-number">3.7.2.</span> <span class="nav-text">永久添加</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除一个环境变量"><span class="nav-number">3.8.</span> <span class="nav-text">删除一个环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#临时删除"><span class="nav-number">3.8.1.</span> <span class="nav-text">临时删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#永久删除"><span class="nav-number">3.8.2.</span> <span class="nav-text">永久删除</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统命令软链"><span class="nav-number">3.9.</span> <span class="nav-text">系统命令软链</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建添加一个系统命令软链"><span class="nav-number">3.9.1.</span> <span class="nav-text">创建/添加一个系统命令软链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置系统命令软链"><span class="nav-number">3.9.2.</span> <span class="nav-text">配置系统命令软链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除一个系统命令软链"><span class="nav-number">3.9.3.</span> <span class="nav-text">删除一个系统命令软链</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文本编辑"><span class="nav-number">4.</span> <span class="nav-text">文本编辑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#显示文件内容"><span class="nav-number">4.1.</span> <span class="nav-text">显示文件内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用选项-3"><span class="nav-number">4.1.1.</span> <span class="nav-text">常用选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#镜像"><span class="nav-number">4.1.2.</span> <span class="nav-text">镜像</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#覆盖目标文件的写入"><span class="nav-number">4.2.</span> <span class="nav-text">覆盖目标文件的写入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#写入一些文件的内容"><span class="nav-number">4.2.1.</span> <span class="nav-text">写入一些文件的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写入一个字符串"><span class="nav-number">4.2.2.</span> <span class="nav-text">写入一个字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加到目标文件的写入"><span class="nav-number">4.3.</span> <span class="nav-text">添加到目标文件的写入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#写入一些文件的内容-1"><span class="nav-number">4.3.1.</span> <span class="nav-text">写入一些文件的内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写入一个字符串-1"><span class="nav-number">4.3.2.</span> <span class="nav-text">写入一个字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清空文件内容"><span class="nav-number">4.4.</span> <span class="nav-text">清空文件内容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件权限设置"><span class="nav-number">5.</span> <span class="nav-text">文件权限设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#所有人可运行"><span class="nav-number">5.1.</span> <span class="nav-text">所有人可运行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后台不挂起运行"><span class="nav-number">6.</span> <span class="nav-text">后台不挂起运行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tcpudp工具"><span class="nav-number">7.</span> <span class="nav-text">TCP/UDP工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#监听某端口"><span class="nav-number">7.1.</span> <span class="nav-text">监听某端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发送一段16进制的ascii码"><span class="nav-number">7.2.</span> <span class="nav-text">发送一段16进制的ASCII码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以16进制显示接收到的信息"><span class="nav-number">7.3.</span> <span class="nav-text">以16进制显示接收到的信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#按单字节以一定格式显示"><span class="nav-number">7.3.1.</span> <span class="nav-text">按单字节以一定格式显示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扫描端口"><span class="nav-number">7.4.</span> <span class="nav-text">扫描端口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遇到过的问题"><span class="nav-number">8.</span> <span class="nav-text">遇到过的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu开机紫屏"><span class="nav-number">8.1.</span> <span class="nav-text">Ubuntu开机紫屏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu烦人的开机报错"><span class="nav-number">8.2.</span> <span class="nav-text">Ubuntu烦人的开机报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ibus的中文输入法无法选择除第一个的候选词bug"><span class="nav-number">8.3.</span> <span class="nav-text">ibus的中文输入法无法选择除第一个的候选词bug</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#没有显卡驱动无法正常显示"><span class="nav-number">8.4.</span> <span class="nav-text">没有显卡驱动无法正常显示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解压.zip压缩包中文文件名为乱码"><span class="nav-number">8.5.</span> <span class="nav-text">解压.zip压缩包中文文件名为乱码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#linux系统时间和windows系统时间差8小时"><span class="nav-number">8.6.</span> <span class="nav-text">Linux系统时间和Windows系统时间差8小时</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fcitx无法用superspace切换输入法"><span class="nav-number">8.7.</span> <span class="nav-text">fcitx无法用Super+Space切换输入法</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -1126,7 +1079,7 @@ Keyboard -&gt; Switch to next input source</strong> 关掉这个快捷键就可�
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">149k</span>
+    <span title="站点总字数">152k</span>
 </div>
 
         

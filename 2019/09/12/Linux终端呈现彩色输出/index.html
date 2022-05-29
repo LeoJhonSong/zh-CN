@@ -470,129 +470,151 @@
       
         <p>最近写的程序会在终端给出大量输出, 如果都是黑底白字那这一大堆字刷刷刷往上冒一会就能把人看眼晕, 但我发现了一个很实用而简单的技巧: <strong>让特定类型的输出显示为特定的颜色</strong>!</p>
 <a id="more"></a>
-
 <p>比如这样:</p>
-<p style="color:purple">[MESSAGE] Turning left</p>
-<p style="color:yellow">[DEBUG] target: 4</p>
-<p style="color:red">[Error] target not found</p>
-<p style="color:purple">[MESSAGE] Turning left</p>
-<p style="color:purple">[MESSAGE] Diving</p>
-<p style="color:green">[INFO] depth: 9m</p>
-<p style="color:purple">[MESSAGE] Diving</p>
-<p style="color:green">[INFO] depth: 10m</p>
-<p style="color:purple">[MESSAGE] Forward</p>
-<p style="color:purple">[MESSAGE] Turing right</p>
-
+<p style="color:purple">
+[MESSAGE] Turning left
+</p>
+<p style="color:yellow">
+[DEBUG] target: 4
+</p>
+<p style="color:red">
+[Error] target not found
+</p>
+<p style="color:purple">
+[MESSAGE] Turning left
+</p>
+<p style="color:purple">
+[MESSAGE] Diving
+</p>
+<p style="color:green">
+[INFO] depth: 9m
+</p>
+<p style="color:purple">
+[MESSAGE] Diving
+</p>
+<p style="color:green">
+[INFO] depth: 10m
+</p>
+<p style="color:purple">
+[MESSAGE] Forward
+</p>
+<p style="color:purple">
+[MESSAGE] Turing right
+</p>
 <p>能极大的增强终端信息的可读性!😆</p>
 <p>这应该是Linux终端的特性, (我并不清楚是否兼容Windows命令行), shell, python, C++的彩色文字语法几乎是一样的.</p>
-<h2 id="颜色表"><a href="#颜色表" class="headerlink" title="颜色表"></a>颜色表</h2><p><a href="https://en.wikipedia.org/wiki/ANSI_escape_code#Colors" target="_blank" rel="noopener">维基的表</a></p>
+<h2 id="颜色表">颜色表</h2>
+<p><a href="https://en.wikipedia.org/wiki/ANSI_escape_code#Colors" target="_blank" rel="noopener">维基的表</a></p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>前景色 (字体颜色) 代码</th>
 <th>背景色代码</th>
 <th>颜色</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>30</td>
 <td>40</td>
 <td>黑色</td>
 </tr>
-<tr>
+<tr class="even">
 <td>31</td>
 <td>41</td>
 <td>紅色</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>32</td>
 <td>42</td>
 <td>綠色</td>
 </tr>
-<tr>
+<tr class="even">
 <td>33</td>
 <td>43</td>
 <td>黃色</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>34</td>
 <td>44</td>
 <td>藍色</td>
 </tr>
-<tr>
+<tr class="even">
 <td>35</td>
 <td>45</td>
 <td>紫紅色</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>36</td>
 <td>46</td>
 <td>青藍色</td>
 </tr>
-<tr>
+<tr class="even">
 <td>37</td>
 <td>47</td>
 <td>白色</td>
 </tr>
-</tbody></table>
-<h2 id="字体效果表"><a href="#字体效果表" class="headerlink" title="字体效果表"></a>字体效果表</h2><table>
+</tbody>
+</table>
+<h2 id="字体效果表">字体效果表</h2>
+<table>
 <thead>
-<tr>
+<tr class="header">
 <th>代码</th>
 <th>效果</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>0</td>
 <td>默认</td>
 </tr>
-<tr>
+<tr class="even">
 <td>1</td>
 <td>高亮(加粗)</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>4</td>
 <td>下划线</td>
 </tr>
-<tr>
+<tr class="even">
 <td>5</td>
 <td>闪烁</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>7</td>
 <td>反色</td>
 </tr>
-<tr>
+<tr class="even">
 <td>8</td>
 <td>不可见</td>
 </tr>
-</tbody></table>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><ul>
+</tbody>
+</table>
+<h2 id="常见问题">常见问题</h2>
+<ul>
 <li><a href="https://stackoverflow.com/a/55773513/10088906" target="_blank" rel="noopener">readline的提示符误将不可见字符认为可见</a></li>
 </ul>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="shell语法"><a href="#shell语法" class="headerlink" title="shell语法"></a>shell语法</h3><p>举例:</p>
+<h2 id="语法">语法</h2>
+<h3 id="shell语法">shell语法</h3>
+<p>举例:</p>
 <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo "\e[31;43;1mError\!\e[0m"</span><br></pre></td></tr></tbody></table></figure>
-
 <p>💡 如果上面这条命令不是彩色的, 执行<code>echo -e "\e[31;43;1mError\!\e[0m"</code></p>
-<p>运行上面这条命令会输出一个黄底红色粗体字的”Error!”. 前景色, 背景色和字体效果的代码没有先后顺序之分. 建议每个<code>\e[a;b;c</code>都接一个<code>\e[0m</code>将字体效果恢复默认, 不然后续输出还是带特殊效果的.</p>
-<h3 id="python语法"><a href="#python语法" class="headerlink" title="python语法"></a>python语法</h3><p>在<code>print()</code>中使用的示例:</p>
+<p>运行上面这条命令会输出一个黄底红色粗体字的"Error!". 前景色, 背景色和字体效果的代码没有先后顺序之分. 建议每个<code>\e[a;b;c</code>都接一个<code>\e[0m</code>将字体效果恢复默认, 不然后续输出还是带特殊效果的.</p>
+<h3 id="python语法">python语法</h3>
+<p>在<code>print()</code>中使用的示例:</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"\033[31;43;1mError!\033[0m"</span>)</span><br></pre></td></tr></tbody></table></figure>
-
 <p>或者可以通过python执行shell命令:</p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.system(<span class="string">'echo "\e[31;43;1mError!\e[0m"'</span>)</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="C-语法"><a href="#C-语法" class="headerlink" title="C++语法"></a>C++语法</h3><p>在C++中使用的语法和在python中是一样的:</p>
+<h3 id="c语法">C++语法</h3>
+<p>在C++中使用的语法和在python中是一样的:</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>:<span class="built_in">cout</span> &lt;&lt; <span class="string">"\033[31;43;1m"</span> &lt;&lt; <span class="string">"Error!"</span> &lt;&lt; <span class="string">"\033[0m"</span> &lt;&lt; <span class="built_in">std</span>:<span class="built_in">endl</span>;</span><br></pre></td></tr></tbody></table></figure>
-
 <p>一个小技巧是可以单独写一个<code>color_print.h</code>, 内容示例:</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> COLOR_PRINT_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> COLOR_PRINT_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RESET   <span class="meta-string">"\033[0m"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BLACK   <span class="meta-string">"\033[30m"</span>      <span class="comment">/* Black */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RED     <span class="meta-string">"\033[31m"</span>      <span class="comment">/* Red */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> GREEN   <span class="meta-string">"\033[32m"</span>      <span class="comment">/* Green */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> YELLOW  <span class="meta-string">"\033[33m"</span>      <span class="comment">/* Yellow */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BLUE    <span class="meta-string">"\033[34m"</span>      <span class="comment">/* Blue */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAGENTA <span class="meta-string">"\033[35m"</span>      <span class="comment">/* Magenta */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CYAN    <span class="meta-string">"\033[36m"</span>      <span class="comment">/* Cyan */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WHITE   <span class="meta-string">"\033[37m"</span>      <span class="comment">/* White */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BOLDBLACK   <span class="meta-string">"\033[1m\033[30m"</span>      <span class="comment">/* Bold Black */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BOLDRED     <span class="meta-string">"\033[1m\033[31m"</span>      <span class="comment">/* Bold Red */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BOLDGREEN   <span class="meta-string">"\033[1m\033[32m"</span>      <span class="comment">/* Bold Green */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BOLDYELLOW  <span class="meta-string">"\033[1m\033[33m"</span>      <span class="comment">/* Bold Yellow */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BOLDBLUE    <span class="meta-string">"\033[1m\033[34m"</span>      <span class="comment">/* Bold Blue */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BOLDMAGENTA <span class="meta-string">"\033[1m\033[35m"</span>      <span class="comment">/* Bold Magenta */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BOLDCYAN    <span class="meta-string">"\033[1m\033[36m"</span>      <span class="comment">/* Bold Cyan */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BOLDWHITE   <span class="meta-string">"\033[1m\033[37m"</span>      <span class="comment">/* Bold White */</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> print(color, context) std::cout &lt;&lt; color &lt;&lt; context &lt;&lt; RESET &lt;&lt; std::endl</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></tbody></table></figure>
-
 <p>然后在要显示彩色输出的cpp文件中引用这个头文件, 打印语句示例:</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(BOLDRED, <span class="string">"Error!"</span>);</span><br></pre></td></tr></tbody></table></figure>
-
 <p>因为是宏替换因此<code>context</code>字段其实可以随意填, 比如有一个变量<code>depth</code>, 用下面语句来打印深度是可以的:</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(BOLDGREEN, <span class="string">"depth: "</span> &lt;&lt; depth &lt;&lt; <span class="string">"m"</span>)</span><br></pre></td></tr></tbody></table></figure>
-
 <p>超好用!😆</p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -721,7 +743,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#颜色表"><span class="nav-number">1.</span> <span class="nav-text">颜色表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字体效果表"><span class="nav-number">2.</span> <span class="nav-text">字体效果表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题"><span class="nav-number">3.</span> <span class="nav-text">常见问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">4.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shell语法"><span class="nav-number">4.1.</span> <span class="nav-text">shell语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python语法"><span class="nav-number">4.2.</span> <span class="nav-text">python语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-语法"><span class="nav-number">4.3.</span> <span class="nav-text">C++语法</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#颜色表"><span class="nav-number">1.</span> <span class="nav-text">颜色表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字体效果表"><span class="nav-number">2.</span> <span class="nav-text">字体效果表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见问题"><span class="nav-number">3.</span> <span class="nav-text">常见问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">4.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shell语法"><span class="nav-number">4.1.</span> <span class="nav-text">shell语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python语法"><span class="nav-number">4.2.</span> <span class="nav-text">python语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c语法"><span class="nav-number">4.3.</span> <span class="nav-text">C++语法</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -856,7 +878,7 @@
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">149k</span>
+    <span title="站点总字数">152k</span>
 </div>
 
         
