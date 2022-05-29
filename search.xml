@@ -5655,6 +5655,73 @@ D(x)=\begin{cases}
       </categories>
   </entry>
   <entry>
+    <title>当VSCode成为一种生活方式</title>
+    <url>/zh-CN/2019/01/07/%E5%BD%93VSCode%E6%88%90%E4%B8%BA%E4%B8%80%E7%A7%8D%E7%94%9F%E6%B4%BB%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<div data-align="right">
+<p>Language: <a href="/2018/12/25/When-VSCode-Becomes-A-Lifestyle"><kbd>English</kbd></a> <a href="/zh-CN/2019/01/07/当VSCode成为一种生活方式"><kbd>中文</kbd></a></p>
+</div>
+<!-- TODO -->
+<p>VSCode是一款很强大的编辑器, 因为我现在的电脑性能不太好, 开规模很大的那些2IDE特别慢, 我很喜欢用VSCode. 而且用VSCode在某些方面确实能获得很不错的体验<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span> 本文算是VSCode 安利和我个人的使用技巧.</p>
+<a id="more"></a>
+<h1 id="why-vscode">Why VSCode</h1>
+<h2 id="写markdown">写Markdown</h2>
+<h2 id="写前端">写前端</h2>
+<h2 id="写小段代码">写小段代码</h2>
+<h3 id="写python">写Python</h3>
+<h3 id="写cc">写C/C++</h3>
+<h2 id="写latex">写LaTeX</h2>
+<h1 id="插件安利">插件安利</h1>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 要注意的是最好不要在一个项目中使用过多插件, 这会让VSCode最开始的加载非常慢, 这是得不偿失的. 我们仍要记得VSCode只是一个编辑器. 而我们通常面临的尴尬情况是:有很多日常会用到的插件, 但并不是在每个项目中都需要用到全部的插件, 很多本工作区用不到的插件放在那里只会浪费资源. 而通过将一些插件设为<strong>禁用(工作区)</strong>可以仅在这个项目中禁用这个插件! 这样能大大缩短VSCode启动时间<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<h1 id="vscode-个性化设置">VSCode 个性化设置</h1>
+<h2 id="改编辑器选项卡关闭按钮位置至左边">改编辑器选项卡关闭按钮位置至左边</h2>
+<p>在这之前有一件让我很恼火的事: 我经常由于文件标题过长而选项卡关闭按钮在右侧而不能轻松地关闭一个选项卡, 因为关闭按钮没能显示出来! 而我将关闭按钮改至左侧后, <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8">😆</span>爽到!</p>
+<p>:heavy_check_mark: 更改方法: 在设置中搜索 <code>workbench.editor.tabCloseButton</code>, 设置为<strong>left</strong></p>
+<h2 id="在一定数量的等宽字符后显示垂直标尺">在一定数量的等宽字符后显示垂直标尺</h2>
+<p>VSCode有许多很好用的功能!<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8">😆</span> 这是其中之一. 你可以设置任意多个标尺来作为字数的参考线!</p>
+<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>editor.rulers</code>, 选择后在数组中填入要画线处的字数.</p>
+<h2 id="代码格式化">代码格式化</h2>
+<p>统一用 <code>Alt+shift+F</code> 作为代码格式化快捷键</p>
+<h2 id="查看键盘快捷方式">查看键盘快捷方式</h2>
+<p>如果你新安装了一个插件, 其中几个快捷键不知道为什么不好用或者效果不对, 你应当到 <strong>键盘快捷方式</strong>查看一下这个快捷键在该情况下是不是对应了不止一个命令.</p>
+<h2 id="关闭enter键接受建议">关闭Enter键接受建议</h2>
+<p>很多时候原本想换行的, 但是按Enter却接受了VSCode的沙雕建议, 令人郁闷, 通过关掉Enter接受建议能让心情好很多<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8">😏</span> 虽然习惯Enter接受建议突然改成只能用Tab接受建议会有点不适应, 但再适应一下就会觉得非常舒服了<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44f.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44f.png?v8">👏</span></p>
+<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>editor.acceptSuggestionOnEnter</code>, 改为 <strong>off</strong></p>
+<h2 id="设置git-commit成功即上传">设置git commit成功即上传</h2>
+<p>在使用个人repository时我认为commit和push是没必要分开进行的, 因为只有自己用, 在本地存着和在云端存着没什么区别. 甚至有可能发生代码忘记上传云端就把电脑格式化了因而损失大段代码的惨案<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8">😭</span> 因此git有一项选项特别适合我: commit成功即push</p>
+<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>git.postCommitCommand</code>, 设置为<strong>push</strong></p>
+<h2 id="打开用户设置的同时打开默认设置">打开用户设置的同时打开默认设置</h2>
+<p>虽然打开<strong>settings.json</strong>时同时打开默认设置的json文件应当是默认设置, 但我有一次安装 VSCode之后发现这个选项没被勾上.</p>
+<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>workbench.settings.openDefaultSettings</code>, 设置为<strong>true</strong>.</p>
+<h2 id="允许编辑器中水平滚动">允许编辑器中水平滚动</h2>
+<p>触摸板和一些鼠标 (比如我的Microsooft Arch) 是支持水平滚动界面的, 但VSCode默认禁止水平滚动, 只能滑动底下的滑条来左右滑, 但这个选项可以打开.</p>
+<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>workbench.tree.horizontalScrolling</code>, 设置为<strong>true</strong></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>软件配置</category>
+        <category>VSC</category>
+        <category>技巧</category>
+      </categories>
+  </entry>
+  <entry>
     <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
     <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<div data-align="right">
@@ -5731,73 +5798,6 @@ D(x)=\begin{cases}
           });
       </script>]]></content>
       <categories>
-        <category>技巧</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>当VSCode成为一种生活方式</title>
-    <url>/zh-CN/2019/01/07/%E5%BD%93VSCode%E6%88%90%E4%B8%BA%E4%B8%80%E7%A7%8D%E7%94%9F%E6%B4%BB%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<div data-align="right">
-<p>Language: <a href="/2018/12/25/When-VSCode-Becomes-A-Lifestyle"><kbd>English</kbd></a> <a href="/zh-CN/2019/01/07/当VSCode成为一种生活方式"><kbd>中文</kbd></a></p>
-</div>
-<!-- TODO -->
-<p>VSCode是一款很强大的编辑器, 因为我现在的电脑性能不太好, 开规模很大的那些2IDE特别慢, 我很喜欢用VSCode. 而且用VSCode在某些方面确实能获得很不错的体验<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span> 本文算是VSCode 安利和我个人的使用技巧.</p>
-<a id="more"></a>
-<h1 id="why-vscode">Why VSCode</h1>
-<h2 id="写markdown">写Markdown</h2>
-<h2 id="写前端">写前端</h2>
-<h2 id="写小段代码">写小段代码</h2>
-<h3 id="写python">写Python</h3>
-<h3 id="写cc">写C/C++</h3>
-<h2 id="写latex">写LaTeX</h2>
-<h1 id="插件安利">插件安利</h1>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 要注意的是最好不要在一个项目中使用过多插件, 这会让VSCode最开始的加载非常慢, 这是得不偿失的. 我们仍要记得VSCode只是一个编辑器. 而我们通常面临的尴尬情况是:有很多日常会用到的插件, 但并不是在每个项目中都需要用到全部的插件, 很多本工作区用不到的插件放在那里只会浪费资源. 而通过将一些插件设为<strong>禁用(工作区)</strong>可以仅在这个项目中禁用这个插件! 这样能大大缩短VSCode启动时间<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<h1 id="vscode-个性化设置">VSCode 个性化设置</h1>
-<h2 id="改编辑器选项卡关闭按钮位置至左边">改编辑器选项卡关闭按钮位置至左边</h2>
-<p>在这之前有一件让我很恼火的事: 我经常由于文件标题过长而选项卡关闭按钮在右侧而不能轻松地关闭一个选项卡, 因为关闭按钮没能显示出来! 而我将关闭按钮改至左侧后, <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8">😆</span>爽到!</p>
-<p>:heavy_check_mark: 更改方法: 在设置中搜索 <code>workbench.editor.tabCloseButton</code>, 设置为<strong>left</strong></p>
-<h2 id="在一定数量的等宽字符后显示垂直标尺">在一定数量的等宽字符后显示垂直标尺</h2>
-<p>VSCode有许多很好用的功能!<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8">😆</span> 这是其中之一. 你可以设置任意多个标尺来作为字数的参考线!</p>
-<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>editor.rulers</code>, 选择后在数组中填入要画线处的字数.</p>
-<h2 id="代码格式化">代码格式化</h2>
-<p>统一用 <code>Alt+shift+F</code> 作为代码格式化快捷键</p>
-<h2 id="查看键盘快捷方式">查看键盘快捷方式</h2>
-<p>如果你新安装了一个插件, 其中几个快捷键不知道为什么不好用或者效果不对, 你应当到 <strong>键盘快捷方式</strong>查看一下这个快捷键在该情况下是不是对应了不止一个命令.</p>
-<h2 id="关闭enter键接受建议">关闭Enter键接受建议</h2>
-<p>很多时候原本想换行的, 但是按Enter却接受了VSCode的沙雕建议, 令人郁闷, 通过关掉Enter接受建议能让心情好很多<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8">😏</span> 虽然习惯Enter接受建议突然改成只能用Tab接受建议会有点不适应, 但再适应一下就会觉得非常舒服了<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44f.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44f.png?v8">👏</span></p>
-<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>editor.acceptSuggestionOnEnter</code>, 改为 <strong>off</strong></p>
-<h2 id="设置git-commit成功即上传">设置git commit成功即上传</h2>
-<p>在使用个人repository时我认为commit和push是没必要分开进行的, 因为只有自己用, 在本地存着和在云端存着没什么区别. 甚至有可能发生代码忘记上传云端就把电脑格式化了因而损失大段代码的惨案<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8">😭</span> 因此git有一项选项特别适合我: commit成功即push</p>
-<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>git.postCommitCommand</code>, 设置为<strong>push</strong></p>
-<h2 id="打开用户设置的同时打开默认设置">打开用户设置的同时打开默认设置</h2>
-<p>虽然打开<strong>settings.json</strong>时同时打开默认设置的json文件应当是默认设置, 但我有一次安装 VSCode之后发现这个选项没被勾上.</p>
-<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>workbench.settings.openDefaultSettings</code>, 设置为<strong>true</strong>.</p>
-<h2 id="允许编辑器中水平滚动">允许编辑器中水平滚动</h2>
-<p>触摸板和一些鼠标 (比如我的Microsooft Arch) 是支持水平滚动界面的, 但VSCode默认禁止水平滚动, 只能滑动底下的滑条来左右滑, 但这个选项可以打开.</p>
-<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>workbench.tree.horizontalScrolling</code>, 设置为<strong>true</strong></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>软件配置</category>
-        <category>VSC</category>
         <category>技巧</category>
       </categories>
   </entry>
