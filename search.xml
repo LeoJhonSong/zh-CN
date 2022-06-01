@@ -481,180 +481,6 @@
       </categories>
   </entry>
   <entry>
-    <title>树莓派杂记</title>
-    <url>/zh-CN/2019/01/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/</url>
-    <content><![CDATA[<p>因为我是一个记性很差并且接触东西很杂的人, 很多很基础的命令根本记不住,但每次都去查一遍很浪费时间, 于是整理一下. 这是树莓派相关的.</p>
-<a id="more"></a>
-<p>首先不得不说<a href="https://www.raspberrypi.org/documentation" target="_blank" rel="noopener">树莓派官方文档</a>实在是文档范本! 即便是初学者也能得到<strong>友好全面</strong>的帮助! 文档里包含了使用树莓派的绝大多数完整, 深入的教程, 而且方法都十分清爽 😆</p>
-<figure>
-<embed src="树莓派杂记/15826242887468.jpg?50"><figcaption>img</figcaption>
-</figure>
-<blockquote>
-<p>放一张树莓派4B布局图</p>
-</blockquote>
-<h2 id="关于树莓派4">关于树莓派4</h2>
-<p>我买了一个4GB的DDR4内存的树莓派4B, 性能确实比树莓派3B+强大很多! 运行图像识别的python程序完全不成问题, 通过VNC的虚拟桌面, 用网页看b站高清视频只有40%的内存在被使用, 温度也并不高. 属实牛皮.</p>
-<p>而我觉得最神奇的是树莓派4B的UART. 在树莓派3上使用UART一直是个麻烦事, 因为一共只内置两个UART, 其中一共是阉割版, 仅有的一个PL011 UART (硬件UART) 还默认被蓝牙模块占用了. 而树莓派4就很🐮🍺了. 他内置<strong>六个</strong>UART, 5个PL011 UART, 1个阉割UART. 开始看树莓派4引脚分配表时还以为我理解错了, 直到我看到这句话</p>
-<blockquote>
-<p>11.1. Overview</p>
-<p>The BCM2711 device has six UARTs. One mini UART (UART1) and five PL011 UARTs (UART0, UART2,UART3, UART4 &amp; UART5). This section describes the PL011 UARTs</p>
-</blockquote>
-<p>🔗 开启UART2~5后从哪些GPIO端口连接参见<a href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2711/rpi_DATA_2711_1p0.pdf" target="_blank" rel="noopener">树莓派4片上系统datasheet</a>的<strong>11.3. Primary UART Inputs and Outputs</strong>.</p>
-<h2 id="gpio">GPIO</h2>
-<p>🔗 <a href="https://www.raspberrypi.org/documentation/computers/os.html#gpio-and-the-40-pin-header" target="_blank" rel="noopener">树莓派官方GPIO部分文档</a></p>
-<blockquote>
-<p>放两张好看的树莓派引脚对照表 (实际上两张都不完善)</p>
-</blockquote>
-<figure>
-<embed src="树莓派杂记/175605x4nx4ryrywnn7hyw.jpg?50"><figcaption>img</figcaption>
-</figure>
-<figure>
-<embed src="树莓派杂记/GPIO-Pi4-1587126749653.png?50"><figcaption>Raspberry Pi 4 Model B GPIO Pinout Diagram | element14 | Raspberry Pi</figcaption>
-</figure>
-<p>🔗 这个<a href="http://pinout.xyz/" target="_blank" rel="noopener">交互式引脚排布图</a>对每种接口的介绍很详细.</p>
-<p><del>运行<code>gpio readall</code>可以打印一张包含引脚真实输入/输出值的引脚表. 对于树莓派4需要手动操作一下更新<strong>wiringPi</strong>至版本<code>2.52</code>, 否则无法识别. 操作参考<a href="http://wiringpi.com/wiringpi-updated-to-2-52-for-the-raspberry-pi-4b/" target="_blank" rel="noopener">wiringPi updated to 2.52 for the Raspberry Pi 4B</a></del></p>
-<figure>
-<embed src="树莓派杂记/image-20200417205537326.png?80"><figcaption>image-20200417205537326</figcaption>
-</figure>
-<p>但<code>gpio readall</code>无法打印出每个引脚所有可用功能, 而运行<code>raspi-gpio funcs</code>可用打印所有gpio的上拉/下拉, 所有可用功能.</p>
-<p>树莓派官方文档列出了几个很好用的gpio库, 其中这个<a href="https://gpiozero.readthedocs.io/" target="_blank" rel="noopener">GPIO Zero</a>将GPIO分类封装成了一些很简洁的类, 看起来很值得一试.</p>
-<blockquote>
-<p>wiringPi的开发者被嘴臭网友喷自闭了, 停止维护项目了, 现在GPIO Zero是最好的代替, 安装后执行<code>pinout</code>也可以输出一个很直观的引脚功能表.</p>
-</blockquote>
-<h3 id="串口">串口</h3>
-<p><del>如前面提到的, 树莓派4内置6个UART. 关于如何同时使用多个UART可用看看<a href="https://www.raspberrypi.org/forums/viewtopic.php?f=107&amp;t=244827&amp;sid=478967f5e58d920a422de08085f343d8" target="_blank" rel="noopener">这个讨论</a>. 截止目前树莓派还没有就此更新官方文档.</del></p>
-<blockquote>
-<p>泪目, 官方更新文档详细介绍各代树莓派主副串口如何分配, mini-UART是什么, 以及如何配置了: <a href="https://www.raspberrypi.org/documentation/computers/configuration.html#configuring-uarts" target="_blank" rel="noopener">文档</a></p>
-</blockquote>
-<p>官方文档给出了这样几个概念:</p>
-<ul>
-<li>主串口: 从<code>GPIO14</code>, <code>GPIO15</code> (引脚8, 引脚10) 连接到的串口. 主串口默认绑定了Linux串口控制台, 可以<a href="https://www.raspberrypi.org/documentation/computers/configuration.html#disabling-the-linux-serial-console" target="_blank" rel="noopener">在<code>raspi-config</code>中关闭</a>, 变成正常串口.</li>
-<li>副串口 (蓝牙串口): 副串口无法直接从40pin端口连接到, 在大部分树莓派中都是连接到了蓝牙模块, 基本上是只能给蓝牙用的串口.</li>
-<li>PL011串口: 遵循ARM提出的PL011电气规格的串口, 包括UART0, UART2, UART3, UART4, UART5 (后四个只有树莓派4有)</li>
-<li>mini串口: 丐版串口, 包括UART1, 我感觉是专门拿来连蓝牙的.</li>
-</ul>
-<p>比如说在树莓派3中UART0默认分配为了蓝牙串口, mini串口被分配为了该从<code>GPIO14</code>, <code>GPIO15</code>连接的主串口, 但<strong>mini串口不管作为主串口还是副串口都默认没有开启</strong>, 因此手动开启mini串口后才可以从<code>GPIO14</code>, <code>GPIO15</code>连接到mini串口的UART1.</p>
-<p>💡看过上面的BCM2711的datasheet会发现无法从树莓派的40pin端口上连接到mini串口的UART1, <code>GPIO32</code>, <code>GPIO33</code>或者<code>GPIO40</code>, <code>GPIO41</code>都没有被实现到这个40pin端口上. 因此我估计要想连到UART1只能将mini串口作为主串口, 从<code>GPIO14</code>, <code>GPIO15</code>连.</p>
-<p>PL011串口与mini串口的区别根据树莓派官方文档总结下来就是:</p>
-<ul>
-<li>mini串口的FIFO更小而没有流控制功能, 因此在高波特率下更容易丢帧</li>
-<li>mini串口的时钟参考源是系统时钟, 因此很可能一直在变化, 因此波特率是不稳定的 (因此使用时要求固定系统时钟频率)</li>
-<li>mini串口没有断线检测</li>
-<li>mini串口没有没有帧错误检测</li>
-<li>mini串口没有奇偶校验位</li>
-<li>mini串口没有接收超时中断</li>
-<li>mini串口没有DCD，DSR，DTR或RI信号</li>
-</ul>
-<p>emmm看起来就是个废物呢. 我感觉就拿来作为蓝牙串口就好.</p>
-<p>关于如何在树莓派3B+等设备上启动UART0与外部通信, <a href="https://www.raspberrypi.org/documentation/computers/configuration.html#uarts-and-device-tree" target="_blank" rel="noopener">官方教程</a>是通过添加设备树overlay的方式来实现的. <code>disable-bt</code>overlay会禁用蓝牙并使UART0成为主串口, <code>miniuart-bt</code>会切换蓝牙到使用mini串口并使UART0成为主串口, 但这样会限制蓝牙的最大波特率 (我觉得影响不大).</p>
-<h2 id="故障提示">故障提示</h2>
-<h3 id="固件警告图标">固件警告图标</h3>
-<p>有时候屏幕右上角会有表示异常状态图标出现 (如果你有显示屏的话), 图标及对应含义如下:</p>
-<ul>
-<li>⚡ 闪电 : 电源电压不足</li>
-<li>🌡 温度计: 温度过高</li>
-</ul>
-<p>🔗 <a href="https://www.raspberrypi.org/documentation/computers/configuration.html#firmware-warning-icons" target="_blank" rel="noopener">对应官方文档</a></p>
-<p>(以前还有种表示电源电流不足的彩虹图标, 看文档现在似乎没有这个了)</p>
-<h3 id="led警告闪烁代码">LED警告闪烁代码</h3>
-<p>如果树莓派因为一些神秘原因无法启动或者需要断电, 电源插口旁边的LED会以特定次数闪烁, 闪烁代码及对应状态查看<a href="https://www.raspberrypi.org/documentation/computers/configuration.html#led-warning-flash-codes" target="_blank" rel="noopener">对应官方文档</a></p>
-<h2 id="vnc使用">VNC使用</h2>
-<p><a href="https://www.raspberrypi.org/documentation/computers/remote-access.html#vnc" target="_blank" rel="noopener">VNC使用的官方文档</a>已经把大多数东西都说清了. 值得一提的是如果树莓派没有连接显示器, (这特么不是废话吗, 如果有屏幕谁还需要VNC😅) 直接用RealVNC访问树莓派ip很可能看到的不是树莓派界面, 而是看到<a href="https://www.raspberrypi.org/forums/viewtopic.php?t=216737" target="_blank" rel="noopener">Cannot currently show the dekstop</a>这样的字样. 树莓派官方对这种情况给出的办法是使用虚拟桌面, 每次需要手动启动. 而上面这个链接里提到其实只需在<code>raspi-config</code>中手动指定一个分辨率就能正常使用了, 亲测有效.</p>
-<p>💡 我觉得VNC也就是偷懒用的, 虽然ssh无法看到画面但大多数需要看到画面的需求都可以用别的方式满足. 比如使用<a href="https://www.raspberrypi.org/documentation/remote-access/ssh/sshfs.md" target="_blank" rel="noopener">sshfs</a>来将树莓派文件当做本地文件编辑, 比如通过创建RTSP (实时视频流)或者使用<a href="https://elinux.org/RPi-Cam-Web-Interface#Remote_access_to_website_with_User.2FPass_and_changing_port" target="_blank" rel="noopener">RPi-Cam-Web-Interface</a>这样成熟的工具实现远程查看摄像头输出/自定义视频流.</p>
-<p>当然如果你想玩树莓派自带的那些推荐软件那当我没说 😁</p>
-<h3 id="开启vnc的server与viewer的剪贴板共享">开启VNC的server与viewer的剪贴板共享</h3>
-<p>在linux中执行</p>
-<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">vncconfig -nowin&amp;</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="屏幕调节">屏幕调节</h2>
-<h3 id="禁止息屏">禁止息屏</h3>
-<p>最近买了一块7寸触摸显示屏😁 (不我没有在炫耀), 发现系统默认开启了息屏功能, 但我的应用场景要求屏幕常亮. 问题不大, 这个可以禁用. 在网上看到了两种方法:</p>
-<h4 id="通过raspbian默认桌面显示管理器lightdm">通过Raspbian默认桌面显示管理器lightdm</h4>
-<p>进入 <code>/etc/lightdm/lightdm.cfg</code>, 找到 <strong>[Seat:*]</strong> 字段, 取消<code>xserver-command</code> 的注释, 设置为:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">xserver-command=X -s 0 -dpms</span><br></pre></td></tr></tbody></table></figure>
-<p>⚠️ 需要重启树莓派</p>
-<p>其中:</p>
-<ul>
-<li><code>-s</code> 设置屏幕保护不启用</li>
-<li><code>-dpms</code> 关闭电源节能管理, 我猜这是 <strong>D</strong>isplay <strong>P</strong>ower <strong>M</strong>anagemant <strong>S</strong>ystem的缩写</li>
-</ul>
-<h4 id="使用screen.sh">使用<code>Screen.sh</code></h4>
-<p>在 <code>/etc/profile.d/</code>下新建<code>Screen.sh</code>, 写入:</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">xsetdpms 0 0 0</span><br><span class="line">xsets off</span><br></pre></td></tr></tbody></table></figure>
-<p>⚠️ 需要重启树莓派</p>
-<p>列出一些相关指令及其含义</p>
-<table>
-<thead>
-<tr class="header">
-<th>指令</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>xset s off</td>
-<td>禁用屏幕保护</td>
-</tr>
-<tr class="even">
-<td>xset s 3600 3600</td>
-<td>设置空闲时间为1小时</td>
-</tr>
-<tr class="odd">
-<td>xset -dpms</td>
-<td>关闭 DPMS</td>
-</tr>
-<tr class="even">
-<td>xset s off -dpms</td>
-<td>禁用 DPMS 并阻止屏幕进入空闲</td>
-</tr>
-<tr class="odd">
-<td>xset dpms force off</td>
-<td>立即关闭屏幕</td>
-</tr>
-<tr class="even">
-<td>xset dpms force standby</td>
-<td>强制屏幕进入待命状态</td>
-</tr>
-<tr class="odd">
-<td>xset dpms force suspend</td>
-<td>强制屏幕进入暂停状态</td>
-</tr>
-</tbody>
-</table>
-<h3 id="屏幕亮度调节">屏幕亮度调节</h3>
-<p>调节范围为0-255</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">echo [value] &gt; /sys/class/backlight/rpi-backlight/brightness</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="关闭背光">关闭背光</h3>
-<p>看网上说法关闭背光和关闭显示屏的区别在于只关闭背光的话屏幕其实仍在工作, 如果自己拿光照还是能看到画面的. 也就是说关闭背光应该和将屏幕亮度调至0效果一样.</p>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">echo 0 &gt; /sys/class/backlight/rpi_backlight/bl_power</span><br></pre></td></tr></tbody></table></figure>
-<p>0为开启背光，1为关闭背光. (我总觉得这和通常对01的理解不同)</p>
-<h2 id="查看cpu温度">查看CPU温度</h2>
-<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">cat /sys/class/thermal/thermal_zone0/temp</span><br></pre></td></tr></tbody></table></figure>
-<p>这个返回值除1000就是一个<strong>摄氏度</strong>单位的CPU温度值了</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>硬件</category>
-        <category>树莓派</category>
-      </categories>
-  </entry>
-  <entry>
     <title>麦语言速成</title>
     <url>/zh-CN/2019/01/17/%E9%BA%A6%E8%AF%AD%E8%A8%80%E9%80%9F%E6%88%90/</url>
     <content><![CDATA[<blockquote>
@@ -4539,8 +4365,8 @@
           });
       </script>]]></content>
       <categories>
-        <category>硬件</category>
         <category>杂记</category>
+        <category>硬件</category>
       </categories>
   </entry>
   <entry>
@@ -5452,36 +5278,11 @@
 <blockquote>
 <p>高等数学的研究对象是变动的量. 所谓函数关系就是变量之间的依赖关系, 极限方法是研究变量的一种基本方法.</p>
 </blockquote>
-<h3 id="函数">函数</h3>
-<h4 id="函数的几种特性">函数的几种特性</h4>
-<ol type="1">
-<li><strong>有界性</strong></li>
-<li><strong>单调性</strong></li>
-<li><strong>奇偶性</strong></li>
-<li><strong>周期性</strong> 设函数<span class="math inline">\(f(x)\)</span>的定义域为<span class="math inline">\(D\)</span>. 如果存在一个<strong>正数</strong><span class="math inline">\(T\)</span>, 使得对于任意<span class="math inline">\(x \in D\)</span>有<span class="math inline">\((x \pm T) \in D\)</span>, 且 <span class="math display">\[f(x+T)=f(x)\]</span> 恒成立, 则<span class="math inline">\(f(x)\)</span>为周期函数, <span class="math inline">\(T\)</span>称为<span class="math inline">\(f(x)\)</span>的周期. 通常我们说周期函数的周期指的是<strong>最小正周期</strong>.</li>
-</ol>
-<h4 id="一些函数">一些函数</h4>
-<p><em>狄利克雷 (Dirichlet)函数</em>:</p>
-<p><span class="math display">\[
-D(x)=\begin{cases}
-1, x \in Q, \\
-0, x \in Q^c. \\
-\end{cases}
-\]</span></p>
-<p><span class="math inline">\(Q\)</span>是有理数集, <span class="math inline">\(Q^c\)</span>是无理数集. 易证任何正有理数<span class="math inline">\(r\)</span>都是它的周期. 因为不存在最小的正有理数, 所以狄利克雷函数<strong>没有最小正周期</strong>.</p>
-<p><em>初等函数</em>: 以下五类函数统称为<strong>基本初等函数</strong>, 由常数和基本初等函数经过有限次四则运算和有限次函数复合所构成并可以用一个式子表示的函数, 称为初等函数.</p>
-<ul>
-<li>幂函数<span class="math inline">\(y=x^ \alpha\)</span></li>
-<li>指数函数<span class="math inline">\(y=a^x\)</span></li>
-<li>对数函数<span class="math inline">\(y=\log_{a}x\)</span></li>
-<li>三角函数</li>
-<li>反三角函数</li>
-</ul>
-<h3 id="极限">极限</h3>
+<h4 id="极限">极限</h4>
 <blockquote>
 <p>极限概念是在探求某些实际问题的精确解答过程中产生的. 极限方法已称为高等数学中的一种基本方法.</p>
 </blockquote>
-<h4 id="数列的极限">数列的极限</h4>
+<h5 id="数列的极限">数列的极限</h5>
 <p><em>数列</em>: 如果按照某一法则, 对每个<span class="math inline">\(n \in N\)</span>, 对应着一个确定的实数<span class="math inline">\(x_n\)</span>, 这些实数<span class="math inline">\(x_n\)</span>按照下标<span class="math inline">\(n\)</span>从小到大排列得到的一个序列<span class="math inline">\(x_{1}, x_{2}, x_{3}, \dots, x_{n}, \dots\)</span>就叫数列.</p>
 <p><em>数列极限定义</em>:</p>
 <p><span class="math display">\[
@@ -5493,7 +5294,7 @@ D(x)=\begin{cases}
 <li><strong><span class="math inline">\(N\)</span>是随着<span class="math inline">\(\epsilon\)</span>的给定而选定的</strong></li>
 <li>更好理解的说法是, 选定一个以<span class="math inline">\(a\)</span>为中心的开区间<span class="math inline">\((a-\epsilon, a+\epsilon)\)</span>后, 对于数列<span class="math inline">\(\{x_{n}\}\)</span>只有有限个 (不多于<span class="math inline">\(N\)</span>个) <span class="math inline">\(\{x_{n}\}\)</span>的项在这个区间外. 如果这个区间可以任意小, 那当然可以说<span class="math inline">\(x_{n}\)</span>是无限接近<span class="math inline">\(a\)</span>的.</li>
 </ul>
-<h5 id="数列极限的性质">数列极限的性质</h5>
+<h6 id="数列极限的性质">数列极限的性质</h6>
 <ol type="1">
 <li><strong>唯一性</strong></li>
 <li><strong>有界性</strong></li>
@@ -5504,7 +5305,7 @@ D(x)=\begin{cases}
 <li><strong>有两个收敛于不同极限的子数列<span class="math inline">\(\to\)</span>原数列发散</strong></li>
 </ol></li>
 </ol>
-<h4 id="函数的极限">函数的极限</h4>
+<h5 id="函数的极限">函数的极限</h5>
 <blockquote>
 <p>从数列极限可以引申出函数极限的一般概念: 在自变量的某个变化过程中, 如果对应的函数值无限接近于某个确定的数, 那么这个确定的数就叫在这一变化过程中函数的极限.</p>
 </blockquote>
@@ -5531,7 +5332,7 @@ D(x)=\begin{cases}
 \]</span></li>
 <li><span class="math inline">\(\lim_{ x \to x_0 }f(x)\)</span>是否存在和<span class="math inline">\(f(x_{0})\)</span>是否存在<strong>没有关系</strong></li>
 </ul>
-<h5 id="函数极限的性质">函数极限的性质</h5>
+<h6 id="函数极限的性质">函数极限的性质</h6>
 <p>参照数列极限的性质可以得到相应的函数极限性质, 同样由于函数极限的定义按自变量的变化过程不同有不同形式.</p>
 <ol type="1">
 <li><strong>唯一性</strong>: 如果<span class="math inline">\(\lim_{ x \to x_0 } f(x)\)</span>或<span class="math inline">\(\lim_{ x \to \infty } f(x)\)</span>存在, 则此极限唯一. 因此: <span class="math display">\[\begin{align*}&amp;\lim_{ x \to +\infty } e^x=+\infty, \lim_{ x \to -\infty } e^x=0 \to \color{pink}{\lim_{ x \to \infty } e^x不存在\ (\lim_{ x \to \infty } e^{\frac{1}{x}}同理)}
@@ -5544,6 +5345,42 @@ D(x)=\begin{cases}
 <li>函数极限与数列极限的关系 (<strong>海涅定理</strong>): 设<span class="math inline">\(\{x_n\}\)</span>为任一<span class="math inline">\(f(x)\)</span>定义域内以<span class="math inline">\(x_0\)</span>为极限的数列 (<span class="math inline">\(x_{n}\neq x_{0}\)</span>), 有 <span class="math display">\[\lim_{ x \to x_{0} } f(x)=A \leftrightarrow \lim_{\color{pink}{n \to \infty}} f(x_{n})=A
 \]</span> 💡<span class="math inline">\(x\)</span>是变量而<span class="math inline">\(x_n\)</span>只是具体的数</li>
 </ol>
+<h6 id="两个重要极限">两个重要极限</h6>
+<p><span class="math display">\[\begin{align}
+&amp;\lim_{ x \to 0 } \frac{\sin x}{x}=1 \\
+&amp;\lim_{ x \to \infty } \left( 1+\frac{1}{x} \right)^x=e
+\end{align}
+\]</span></p>
+<h5 id="求数列函数极限的方法">求数列/函数极限的方法</h5>
+<ol type="1">
+<li>定义法==TODO==</li>
+</ol>
+<h4 id="函数">函数</h4>
+<h5 id="函数的几种特性">函数的几种特性</h5>
+<ol type="1">
+<li><strong>有界性</strong></li>
+<li><strong>单调性</strong></li>
+<li><strong>奇偶性</strong></li>
+<li><strong>周期性</strong> 设函数<span class="math inline">\(f(x)\)</span>的定义域为<span class="math inline">\(D\)</span>. 如果存在一个<strong>正数</strong><span class="math inline">\(T\)</span>, 使得对于任意<span class="math inline">\(x \in D\)</span>有<span class="math inline">\((x \pm T) \in D\)</span>, 且 <span class="math display">\[f(x+T)=f(x)\]</span> 恒成立, 则<span class="math inline">\(f(x)\)</span>为周期函数, <span class="math inline">\(T\)</span>称为<span class="math inline">\(f(x)\)</span>的周期. 通常我们说周期函数的周期指的是<strong>最小正周期</strong>.</li>
+</ol>
+<h5 id="一些函数">一些函数</h5>
+<p><em>狄利克雷 (Dirichlet)函数</em>:</p>
+<p><span class="math display">\[
+D(x)=\begin{cases}
+1, x \in Q, \\
+0, x \in Q^c. \\
+\end{cases}
+\]</span></p>
+<p><span class="math inline">\(Q\)</span>是有理数集, <span class="math inline">\(Q^c\)</span>是无理数集. 易证任何正有理数<span class="math inline">\(r\)</span>都是它的周期. 因为不存在最小的正有理数, 所以狄利克雷函数<strong>没有最小正周期</strong>.</p>
+<p><em>初等函数</em>: 以下五类函数统称为<strong>基本初等函数</strong>, 由常数和基本初等函数经过有限次四则运算和有限次函数复合所构成并可以用一个式子表示的函数, 称为初等函数.</p>
+<ul>
+<li>幂函数<span class="math inline">\(y=x^ \alpha\)</span></li>
+<li>指数函数<span class="math inline">\(y=a^x\)</span></li>
+<li>对数函数<span class="math inline">\(y=\log_{a}x\)</span></li>
+<li>三角函数</li>
+<li>反三角函数</li>
+</ul>
+<h5 id="函数的连续性">函数的连续性</h5>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -5742,6 +5579,40 @@ D(x)=\begin{cases}
       </categories>
   </entry>
   <entry>
+    <title>几个提高效率的小技巧</title>
+    <url>/zh-CN/2019/01/18/%E5%87%A0%E4%B8%AA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>记录和分享一些我觉得提高了自己效率的技巧。</p>
+<a id="more"></a>
+<h1 id="虚拟桌面分割任务">虚拟桌面分割任务</h1>
+<p>Windows有一个我觉得蛮有意思的功能, <strong>虚拟桌面</strong>. 按 <code>Windows+Tab</code> 或者点击任务栏上有个长得有点奇怪的图标可以打开<strong>任务视图</strong>, 然后可以新建桌面, 管理桌面. 通过把应用界面分别放到不同桌面可以让任务栏不会堆积很多页面. 有时候同时写多个项目的时候会用浏览器搜好几个主题 (是的我就是浏览器选手) 如果都放到一起太乱太多了, 因此放到不同桌面是个非常不错的选择. 我经常将娱乐的玩意, 什么网易云, 百度云之类放一个桌面, 然后一个项目放一个桌面, 心情愉悦让效率大大提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<h1 id="更改输入法符号">更改输入法符号</h1>
+<p>有时, 比如写中文文档时, 我们需要频繁切换中英文输入法, 而代码中打符号的时候我总是忘记切换成英文输入法, 打出万恶的中文字符, 比如；什么的. 而我发现快捷键 <code>Ctrl+.</code>可以只切换符号的中英文! 也就是说你可以在中文输入法下打出英文标点 (比如我的句号是英文句号). 这样就解决了中英文标点易混淆的烦恼<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<!-- TODO -->
+<!-- chrom -->
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>技巧</category>
+      </categories>
+  </entry>
+  <entry>
     <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
     <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<div data-align="right">
@@ -5855,16 +5726,155 @@ D(x)=\begin{cases}
       </categories>
   </entry>
   <entry>
-    <title>几个提高效率的小技巧</title>
-    <url>/zh-CN/2019/01/18/%E5%87%A0%E4%B8%AA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<p>记录和分享一些我觉得提高了自己效率的技巧。</p>
+    <title>树莓派杂记</title>
+    <url>/zh-CN/2019/01/18/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%9D%82%E8%AE%B0/</url>
+    <content><![CDATA[<p>因为我是一个记性很差并且接触东西很杂的人, 很多很基础的命令根本记不住,但每次都去查一遍很浪费时间, 于是整理一下. 这是树莓派相关的.</p>
 <a id="more"></a>
-<h1 id="虚拟桌面分割任务">虚拟桌面分割任务</h1>
-<p>Windows有一个我觉得蛮有意思的功能, <strong>虚拟桌面</strong>. 按 <code>Windows+Tab</code> 或者点击任务栏上有个长得有点奇怪的图标可以打开<strong>任务视图</strong>, 然后可以新建桌面, 管理桌面. 通过把应用界面分别放到不同桌面可以让任务栏不会堆积很多页面. 有时候同时写多个项目的时候会用浏览器搜好几个主题 (是的我就是浏览器选手) 如果都放到一起太乱太多了, 因此放到不同桌面是个非常不错的选择. 我经常将娱乐的玩意, 什么网易云, 百度云之类放一个桌面, 然后一个项目放一个桌面, 心情愉悦让效率大大提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<h1 id="更改输入法符号">更改输入法符号</h1>
-<p>有时, 比如写中文文档时, 我们需要频繁切换中英文输入法, 而代码中打符号的时候我总是忘记切换成英文输入法, 打出万恶的中文字符, 比如；什么的. 而我发现快捷键 <code>Ctrl+.</code>可以只切换符号的中英文! 也就是说你可以在中文输入法下打出英文标点 (比如我的句号是英文句号). 这样就解决了中英文标点易混淆的烦恼<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<!-- TODO -->
-<!-- chrom -->
+<p>首先不得不说<a href="https://www.raspberrypi.org/documentation" target="_blank" rel="noopener">树莓派官方文档</a>实在是文档范本! 即便是初学者也能得到<strong>友好全面</strong>的帮助! 文档里包含了使用树莓派的绝大多数完整, 深入的教程, 而且方法都十分清爽 😆</p>
+<figure>
+<embed src="树莓派杂记/15826242887468.jpg?50"><figcaption>img</figcaption>
+</figure>
+<blockquote>
+<p>放一张树莓派4B布局图</p>
+</blockquote>
+<h2 id="关于树莓派4">关于树莓派4</h2>
+<p>我买了一个4GB的DDR4内存的树莓派4B, 性能确实比树莓派3B+强大很多! 运行图像识别的python程序完全不成问题, 通过VNC的虚拟桌面, 用网页看b站高清视频只有40%的内存在被使用, 温度也并不高. 属实牛皮.</p>
+<p>而我觉得最神奇的是树莓派4B的UART. 在树莓派3上使用UART一直是个麻烦事, 因为一共只内置两个UART, 其中一共是阉割版, 仅有的一个PL011 UART (硬件UART) 还默认被蓝牙模块占用了. 而树莓派4就很🐮🍺了. 他内置<strong>六个</strong>UART, 5个PL011 UART, 1个阉割UART. 开始看树莓派4引脚分配表时还以为我理解错了, 直到我看到这句话</p>
+<blockquote>
+<p>11.1. Overview</p>
+<p>The BCM2711 device has six UARTs. One mini UART (UART1) and five PL011 UARTs (UART0, UART2,UART3, UART4 &amp; UART5). This section describes the PL011 UARTs</p>
+</blockquote>
+<p>🔗 开启UART2~5后从哪些GPIO端口连接参见<a href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2711/rpi_DATA_2711_1p0.pdf" target="_blank" rel="noopener">树莓派4片上系统datasheet</a>的<strong>11.3. Primary UART Inputs and Outputs</strong>.</p>
+<h2 id="gpio">GPIO</h2>
+<p>🔗 <a href="https://www.raspberrypi.org/documentation/computers/os.html#gpio-and-the-40-pin-header" target="_blank" rel="noopener">树莓派官方GPIO部分文档</a></p>
+<blockquote>
+<p>放两张好看的树莓派引脚对照表 (实际上两张都不完善)</p>
+</blockquote>
+<figure>
+<embed src="树莓派杂记/175605x4nx4ryrywnn7hyw.jpg?50"><figcaption>img</figcaption>
+</figure>
+<figure>
+<embed src="树莓派杂记/GPIO-Pi4-1587126749653.png?50"><figcaption>Raspberry Pi 4 Model B GPIO Pinout Diagram | element14 | Raspberry Pi</figcaption>
+</figure>
+<p>🔗 这个<a href="http://pinout.xyz/" target="_blank" rel="noopener">交互式引脚排布图</a>对每种接口的介绍很详细.</p>
+<p><del>运行<code>gpio readall</code>可以打印一张包含引脚真实输入/输出值的引脚表. 对于树莓派4需要手动操作一下更新<strong>wiringPi</strong>至版本<code>2.52</code>, 否则无法识别. 操作参考<a href="http://wiringpi.com/wiringpi-updated-to-2-52-for-the-raspberry-pi-4b/" target="_blank" rel="noopener">wiringPi updated to 2.52 for the Raspberry Pi 4B</a></del></p>
+<figure>
+<embed src="树莓派杂记/image-20200417205537326.png?80"><figcaption>image-20200417205537326</figcaption>
+</figure>
+<p>但<code>gpio readall</code>无法打印出每个引脚所有可用功能, 而运行<code>raspi-gpio funcs</code>可用打印所有gpio的上拉/下拉, 所有可用功能.</p>
+<p>树莓派官方文档列出了几个很好用的gpio库, 其中这个<a href="https://gpiozero.readthedocs.io/" target="_blank" rel="noopener">GPIO Zero</a>将GPIO分类封装成了一些很简洁的类, 看起来很值得一试.</p>
+<blockquote>
+<p>wiringPi的开发者被嘴臭网友喷自闭了, 停止维护项目了, 现在GPIO Zero是最好的代替, 安装后执行<code>pinout</code>也可以输出一个很直观的引脚功能表.</p>
+</blockquote>
+<h3 id="串口">串口</h3>
+<p><del>如前面提到的, 树莓派4内置6个UART. 关于如何同时使用多个UART可用看看<a href="https://www.raspberrypi.org/forums/viewtopic.php?f=107&amp;t=244827&amp;sid=478967f5e58d920a422de08085f343d8" target="_blank" rel="noopener">这个讨论</a>. 截止目前树莓派还没有就此更新官方文档.</del></p>
+<blockquote>
+<p>泪目, 官方更新文档详细介绍各代树莓派主副串口如何分配, mini-UART是什么, 以及如何配置了: <a href="https://www.raspberrypi.org/documentation/computers/configuration.html#configuring-uarts" target="_blank" rel="noopener">文档</a></p>
+</blockquote>
+<p>官方文档给出了这样几个概念:</p>
+<ul>
+<li>主串口: 从<code>GPIO14</code>, <code>GPIO15</code> (引脚8, 引脚10) 连接到的串口. 主串口默认绑定了Linux串口控制台, 可以<a href="https://www.raspberrypi.org/documentation/computers/configuration.html#disabling-the-linux-serial-console" target="_blank" rel="noopener">在<code>raspi-config</code>中关闭</a>, 变成正常串口.</li>
+<li>副串口 (蓝牙串口): 副串口无法直接从40pin端口连接到, 在大部分树莓派中都是连接到了蓝牙模块, 基本上是只能给蓝牙用的串口.</li>
+<li>PL011串口: 遵循ARM提出的PL011电气规格的串口, 包括UART0, UART2, UART3, UART4, UART5 (后四个只有树莓派4有)</li>
+<li>mini串口: 丐版串口, 包括UART1, 我感觉是专门拿来连蓝牙的.</li>
+</ul>
+<p>比如说在树莓派3中UART0默认分配为了蓝牙串口, mini串口被分配为了该从<code>GPIO14</code>, <code>GPIO15</code>连接的主串口, 但<strong>mini串口不管作为主串口还是副串口都默认没有开启</strong>, 因此手动开启mini串口后才可以从<code>GPIO14</code>, <code>GPIO15</code>连接到mini串口的UART1.</p>
+<p>💡看过上面的BCM2711的datasheet会发现无法从树莓派的40pin端口上连接到mini串口的UART1, <code>GPIO32</code>, <code>GPIO33</code>或者<code>GPIO40</code>, <code>GPIO41</code>都没有被实现到这个40pin端口上. 因此我估计要想连到UART1只能将mini串口作为主串口, 从<code>GPIO14</code>, <code>GPIO15</code>连.</p>
+<p>PL011串口与mini串口的区别根据树莓派官方文档总结下来就是:</p>
+<ul>
+<li>mini串口的FIFO更小而没有流控制功能, 因此在高波特率下更容易丢帧</li>
+<li>mini串口的时钟参考源是系统时钟, 因此很可能一直在变化, 因此波特率是不稳定的 (因此使用时要求固定系统时钟频率)</li>
+<li>mini串口没有断线检测</li>
+<li>mini串口没有没有帧错误检测</li>
+<li>mini串口没有奇偶校验位</li>
+<li>mini串口没有接收超时中断</li>
+<li>mini串口没有DCD，DSR，DTR或RI信号</li>
+</ul>
+<p>emmm看起来就是个废物呢. 我感觉就拿来作为蓝牙串口就好.</p>
+<p>关于如何在树莓派3B+等设备上启动UART0与外部通信, <a href="https://www.raspberrypi.org/documentation/computers/configuration.html#uarts-and-device-tree" target="_blank" rel="noopener">官方教程</a>是通过添加设备树overlay的方式来实现的. <code>disable-bt</code>overlay会禁用蓝牙并使UART0成为主串口, <code>miniuart-bt</code>会切换蓝牙到使用mini串口并使UART0成为主串口, 但这样会限制蓝牙的最大波特率 (我觉得影响不大).</p>
+<h2 id="故障提示">故障提示</h2>
+<h3 id="固件警告图标">固件警告图标</h3>
+<p>有时候屏幕右上角会有表示异常状态图标出现 (如果你有显示屏的话), 图标及对应含义如下:</p>
+<ul>
+<li>⚡ 闪电 : 电源电压不足</li>
+<li>🌡 温度计: 温度过高</li>
+</ul>
+<p>🔗 <a href="https://www.raspberrypi.org/documentation/computers/configuration.html#firmware-warning-icons" target="_blank" rel="noopener">对应官方文档</a></p>
+<p>(以前还有种表示电源电流不足的彩虹图标, 看文档现在似乎没有这个了)</p>
+<h3 id="led警告闪烁代码">LED警告闪烁代码</h3>
+<p>如果树莓派因为一些神秘原因无法启动或者需要断电, 电源插口旁边的LED会以特定次数闪烁, 闪烁代码及对应状态查看<a href="https://www.raspberrypi.org/documentation/computers/configuration.html#led-warning-flash-codes" target="_blank" rel="noopener">对应官方文档</a></p>
+<h2 id="vnc使用">VNC使用</h2>
+<p><a href="https://www.raspberrypi.org/documentation/computers/remote-access.html#vnc" target="_blank" rel="noopener">VNC使用的官方文档</a>已经把大多数东西都说清了. 值得一提的是如果树莓派没有连接显示器, (这特么不是废话吗, 如果有屏幕谁还需要VNC😅) 直接用RealVNC访问树莓派ip很可能看到的不是树莓派界面, 而是看到<a href="https://www.raspberrypi.org/forums/viewtopic.php?t=216737" target="_blank" rel="noopener">Cannot currently show the dekstop</a>这样的字样. 树莓派官方对这种情况给出的办法是使用虚拟桌面, 每次需要手动启动. 而上面这个链接里提到其实只需在<code>raspi-config</code>中手动指定一个分辨率就能正常使用了, 亲测有效.</p>
+<p>💡 我觉得VNC也就是偷懒用的, 虽然ssh无法看到画面但大多数需要看到画面的需求都可以用别的方式满足. 比如使用<a href="https://www.raspberrypi.org/documentation/remote-access/ssh/sshfs.md" target="_blank" rel="noopener">sshfs</a>来将树莓派文件当做本地文件编辑, 比如通过创建RTSP (实时视频流)或者使用<a href="https://elinux.org/RPi-Cam-Web-Interface#Remote_access_to_website_with_User.2FPass_and_changing_port" target="_blank" rel="noopener">RPi-Cam-Web-Interface</a>这样成熟的工具实现远程查看摄像头输出/自定义视频流.</p>
+<p>当然如果你想玩树莓派自带的那些推荐软件那当我没说 😁</p>
+<h3 id="开启vnc的server与viewer的剪贴板共享">开启VNC的server与viewer的剪贴板共享</h3>
+<p>在linux中执行</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">vncconfig -nowin&amp;</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="屏幕调节">屏幕调节</h2>
+<h3 id="禁止息屏">禁止息屏</h3>
+<p>最近买了一块7寸触摸显示屏😁 (不我没有在炫耀), 发现系统默认开启了息屏功能, 但我的应用场景要求屏幕常亮. 问题不大, 这个可以禁用. 在网上看到了两种方法:</p>
+<h4 id="通过raspbian默认桌面显示管理器lightdm">通过Raspbian默认桌面显示管理器lightdm</h4>
+<p>进入 <code>/etc/lightdm/lightdm.cfg</code>, 找到 <strong>[Seat:*]</strong> 字段, 取消<code>xserver-command</code> 的注释, 设置为:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">xserver-command=X -s 0 -dpms</span><br></pre></td></tr></tbody></table></figure>
+<p>⚠️ 需要重启树莓派</p>
+<p>其中:</p>
+<ul>
+<li><code>-s</code> 设置屏幕保护不启用</li>
+<li><code>-dpms</code> 关闭电源节能管理, 我猜这是 <strong>D</strong>isplay <strong>P</strong>ower <strong>M</strong>anagemant <strong>S</strong>ystem的缩写</li>
+</ul>
+<h4 id="使用screen.sh">使用<code>Screen.sh</code></h4>
+<p>在 <code>/etc/profile.d/</code>下新建<code>Screen.sh</code>, 写入:</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">xsetdpms 0 0 0</span><br><span class="line">xsets off</span><br></pre></td></tr></tbody></table></figure>
+<p>⚠️ 需要重启树莓派</p>
+<p>列出一些相关指令及其含义</p>
+<table>
+<thead>
+<tr class="header">
+<th>指令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>xset s off</td>
+<td>禁用屏幕保护</td>
+</tr>
+<tr class="even">
+<td>xset s 3600 3600</td>
+<td>设置空闲时间为1小时</td>
+</tr>
+<tr class="odd">
+<td>xset -dpms</td>
+<td>关闭 DPMS</td>
+</tr>
+<tr class="even">
+<td>xset s off -dpms</td>
+<td>禁用 DPMS 并阻止屏幕进入空闲</td>
+</tr>
+<tr class="odd">
+<td>xset dpms force off</td>
+<td>立即关闭屏幕</td>
+</tr>
+<tr class="even">
+<td>xset dpms force standby</td>
+<td>强制屏幕进入待命状态</td>
+</tr>
+<tr class="odd">
+<td>xset dpms force suspend</td>
+<td>强制屏幕进入暂停状态</td>
+</tr>
+</tbody>
+</table>
+<h3 id="屏幕亮度调节">屏幕亮度调节</h3>
+<p>调节范围为0-255</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">echo [value] &gt; /sys/class/backlight/rpi-backlight/brightness</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="关闭背光">关闭背光</h3>
+<p>看网上说法关闭背光和关闭显示屏的区别在于只关闭背光的话屏幕其实仍在工作, 如果自己拿光照还是能看到画面的. 也就是说关闭背光应该和将屏幕亮度调至0效果一样.</p>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">echo 0 &gt; /sys/class/backlight/rpi_backlight/bl_power</span><br></pre></td></tr></tbody></table></figure>
+<p>0为开启背光，1为关闭背光. (我总觉得这和通常对01的理解不同)</p>
+<h2 id="查看cpu温度">查看CPU温度</h2>
+<figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">cat /sys/class/thermal/thermal_zone0/temp</span><br></pre></td></tr></tbody></table></figure>
+<p>这个返回值除1000就是一个<strong>摄氏度</strong>单位的CPU温度值了</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -5885,7 +5895,8 @@ D(x)=\begin{cases}
           });
       </script>]]></content>
       <categories>
-        <category>技巧</category>
+        <category>硬件</category>
+        <category>树莓派</category>
       </categories>
   </entry>
 </search>
