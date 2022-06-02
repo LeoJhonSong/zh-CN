@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2022-06-03 02:30:47" itemprop="dateCreated datePublished" datetime="2022-06-03T02:30:47+08:00">2022-06-03</time>
+              <time title="创建时间：2022-06-03 03:23:21" itemprop="dateCreated datePublished" datetime="2022-06-03T03:23:21+08:00">2022-06-03</time>
             </span>
           
             
@@ -448,7 +448,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>4.2k</span>
+              <span>4.9k</span>
             </span>
           
 
@@ -565,9 +565,51 @@
 <h6 id="两个重要极限">两个重要极限</h6>
 <p><span class="math inline">\(\lim\limits_{ x \to 0 } \frac{\sin x}{x}=1\)</span></p>
 <p><span class="math inline">\(\lim\limits_{ x \to \infty } \left( 1+\frac{1}{x} \right)^x=e\)</span></p>
-<h5 id="求数列函数极限的方法">求数列/函数极限的方法</h5>
+<h6 id="求函数极限的方法">求函数极限的方法</h6>
 <ol type="1">
-<li>定义法</li>
+<li>化简
+<ol type="1">
+<li>提出极限存在<strong>但不为0</strong>的因式</li>
+<li>考虑<span class="math inline">\(t=\frac{1}{x}\)</span>倒代换</li>
+<li>无穷小量替换 (<strong>只能以给整个式子乘以值为1的<span class="math inline">\(\frac{f(x)}{g(x)}\)</span>的方式</strong>):
+<ul>
+<li><span class="math inline">\(x\to 0\)</span>
+<ul>
+<li><span class="math inline">\(a^x-1\sim x\ln a\)</span></li>
+<li><span class="math inline">\(1-\cos x\sim \frac{1}{2}x^2\)</span></li>
+<li><span class="math inline">\(\ln(x+\sqrt{ 1+x^2 })\sim x\)</span></li>
+</ul></li>
+<li><span class="math inline">\(x\to 1\)</span>
+<ul>
+<li><span class="math inline">\(\ln x\sim x-1\)</span></li>
+</ul></li>
+</ul></li>
+</ol></li>
+<li>判断类型
+<ol type="1">
+<li>直接背公式:
+<ul>
+<li><span class="math inline">\(\lim\limits_{ x \to 0 } x^x=0\)</span></li>
+<li><span class="math inline">\(\lim\limits_{ n \to \infty } \sum\limits^n_{i=1}f\left( \frac{i}{n} \right) \frac{1}{n}=\int^1_{0} f(x) \, dx\)</span></li>
+<li><span class="math inline">\(\lim\limits_{ x \to a } \frac{f(x)}{g(x)}存在\to \lim\limits_{ x \to a } \frac{f(x)}{g(x)}(x-a)=0\)</span></li>
+<li><span class="math inline">\(\lim\limits_{ x \to a } \frac{f(x)}{g(x)}=0\to \lim\limits_{ x \to a } f(x)=0\)</span></li>
+</ul></li>
+<li>有反三角函数直接泰勒展开</li>
+<li>有取整必然用夹逼法</li>
+<li>有根式相减先有理化</li>
+<li>七种未定式
+<ol type="1">
+<li><span class="math inline">\(\frac{0}{0}/\frac{\infty}{\infty}/0 \cdot \infty\)</span>
+<ol type="1">
+<li>洛必达 (<strong>结果存在或为<span class="math inline">\(\infty\)</span>时才有效</strong>)</li>
+<li>泰勒展开</li>
+<li>夹逼法</li>
+</ol></li>
+<li><span class="math inline">\(\infty-\infty\)</span>: 有理化/倒代换/通分</li>
+<li><span class="math inline">\(\infty^0/0^0\)</span>: <span class="math inline">\(\lim u^v=e^{\lim v\ln u}\to e^{0\cdot \infty}\)</span>变成第一种</li>
+<li><span class="math inline">\(1^\infty\)</span>: <strong>(慎用)</strong> <span class="math inline">\(\lim u^v=e^{\lim (u-1)v}\to e^{0\cdot \infty}\)</span>变成第一种</li>
+</ol></li>
+</ol></li>
 </ol>
 <h4 id="函数">函数</h4>
 <h5 id="函数的几种特性">函数的几种特性</h5>
@@ -718,7 +760,7 @@ D(x)=\begin{cases}
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教材"><span class="nav-number">1.</span> <span class="nav-text">教材</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内容"><span class="nav-number">2.</span> <span class="nav-text">内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数与极限"><span class="nav-number">2.1.</span> <span class="nav-text">函数与极限</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#极限"><span class="nav-number">2.1.1.</span> <span class="nav-text">极限</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数列的极限"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">数列的极限</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#数列极限的性质"><span class="nav-number">2.1.1.1.1.</span> <span class="nav-text">数列极限的性质</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#求数列极限的方法"><span class="nav-number">2.1.1.1.2.</span> <span class="nav-text">求数列极限的方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数的极限"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">函数的极限</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#函数极限的性质"><span class="nav-number">2.1.1.2.1.</span> <span class="nav-text">函数极限的性质</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#两个重要极限"><span class="nav-number">2.1.1.2.2.</span> <span class="nav-text">两个重要极限</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#求数列函数极限的方法"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">求数列/函数极限的方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数"><span class="nav-number">2.1.2.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#函数的几种特性"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">函数的几种特性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一些函数"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">一些函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数的连续性"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">函数的连续性</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教材"><span class="nav-number">1.</span> <span class="nav-text">教材</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内容"><span class="nav-number">2.</span> <span class="nav-text">内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数与极限"><span class="nav-number">2.1.</span> <span class="nav-text">函数与极限</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#极限"><span class="nav-number">2.1.1.</span> <span class="nav-text">极限</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数列的极限"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">数列的极限</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#数列极限的性质"><span class="nav-number">2.1.1.1.1.</span> <span class="nav-text">数列极限的性质</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#求数列极限的方法"><span class="nav-number">2.1.1.1.2.</span> <span class="nav-text">求数列极限的方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数的极限"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">函数的极限</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#函数极限的性质"><span class="nav-number">2.1.1.2.1.</span> <span class="nav-text">函数极限的性质</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#两个重要极限"><span class="nav-number">2.1.1.2.2.</span> <span class="nav-text">两个重要极限</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#求函数极限的方法"><span class="nav-number">2.1.1.2.3.</span> <span class="nav-text">求函数极限的方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数"><span class="nav-number">2.1.2.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#函数的几种特性"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">函数的几种特性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一些函数"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">一些函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数的连续性"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">函数的连续性</span></a></li></ol></li></ol></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -853,7 +895,7 @@ D(x)=\begin{cases}
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">156k</span>
+    <span title="站点总字数">157k</span>
 </div>
 
         
