@@ -63,7 +63,7 @@
   <meta name="description" content="前前后后数理基础课也学了好几遍了, 但这些内容不常用就容易忘记. 虽然每次学都会记手写的电子笔记, 但这次我打算记一份能长期维护的印刷体电子笔记, 因为大概不会再需要一板一眼地把这几门最基础的课学一遍了. 我的想法是记重要概念, 术语, 重要思路和技巧, 以及一些易错点, 这样当我忘记内容时能很快知道我需要的是什么, 然后具体推导和习题再看教材就好 💪">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微积分课程笔记">
-<meta property="og:url" content="https://leojhonsong.github.io/zh-CN/2022/06/02/微积分课程笔记/index.html">
+<meta property="og:url" content="https://leojhonsong.github.io/zh-CN/2022/06/03/微积分课程笔记/index.html">
 <meta property="og:site_name" content="LeoJhon.Song&#39;s Blog">
 <meta property="og:description" content="前前后后数理基础课也学了好几遍了, 但这些内容不常用就容易忘记. 虽然每次学都会记手写的电子笔记, 但这次我打算记一份能长期维护的印刷体电子笔记, 因为大概不会再需要一板一眼地把这几门最基础的课学一遍了. 我的想法是记重要概念, 术语, 重要思路和技巧, 以及一些易错点, 这样当我忘记内容时能很快知道我需要的是什么, 然后具体推导和习题再看教材就好 💪">
 <meta property="og:locale" content="zh-CN">
@@ -71,7 +71,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微积分课程笔记">
 <meta name="twitter:description" content="前前后后数理基础课也学了好几遍了, 但这些内容不常用就容易忘记. 虽然每次学都会记手写的电子笔记, 但这次我打算记一份能长期维护的印刷体电子笔记, 因为大概不会再需要一板一眼地把这几门最基础的课学一遍了. 我的想法是记重要概念, 术语, 重要思路和技巧, 以及一些易错点, 这样当我忘记内容时能很快知道我需要的是什么, 然后具体推导和习题再看教材就好 💪">
-  <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2022/06/02/微积分课程笔记/">
+  <link rel="canonical" href="https://leojhonsong.github.io/zh-CN/2022/06/03/微积分课程笔记/">
 
 
 <script id="page-configurations">
@@ -353,7 +353,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://leojhonsong.github.io/zh-CN/zh-CN/2022/06/02/微积分课程笔记/">
+    <link itemprop="mainEntityOfPage" href="https://leojhonsong.github.io/zh-CN/zh-CN/2022/06/03/微积分课程笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LeoJhon.Song">
@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2022-06-02 21:13:37" itemprop="dateCreated datePublished" datetime="2022-06-02T21:13:37+08:00">2022-06-02</time>
+              <time title="创建时间：2022-06-03 02:30:47" itemprop="dateCreated datePublished" datetime="2022-06-03T02:30:47+08:00">2022-06-03</time>
             </span>
           
             
@@ -436,7 +436,7 @@
       
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/zh-CN/2022/06/02/微积分课程笔记/#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/06/02/微积分课程笔记/" itemprop="commentCount"></span></a>
+    <a title="disqus" href="/zh-CN/2022/06/03/微积分课程笔记/#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/06/03/微积分课程笔记/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -448,7 +448,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>3.7k</span>
+              <span>4.2k</span>
             </span>
           
 
@@ -490,11 +490,13 @@
 <h6 id="数列极限的性质">数列极限的性质</h6>
 <ol type="1">
 <li><strong>唯一性</strong></li>
-<li><strong>有界性</strong></li>
+<li><strong>有界性</strong>: 收敛<span class="math inline">\(\textcolor{red}{\to}\)</span>有界. 比如<span class="math inline">\((-1)^n\)</span>有界但不收敛.</li>
 <li><strong>保号性</strong></li>
-<li>收敛数列与其子数列间的关系: 如果数列<span class="math inline">\(\{x_{n}\}\)</span>收敛于<span class="math inline">\(a\)</span>, 那么它的任一子数列也收敛且极限为<span class="math inline">\(a\)</span>. 由此可以得出两个有用推论:</li>
+<li>收敛数列与其子数列间的关系: 如果数列<span class="math inline">\(\{x_{n}\}\)</span>收敛于<span class="math inline">\(a\)</span>, 那么它的任一子数列也收敛且极限为<span class="math inline">\(a\)</span>. 由此可以得出两个有用推论:
+<ol type="1">
 <li><strong>子数列发散<span class="math inline">\(\to\)</span>原数列发散</strong></li>
 <li><strong>有两个收敛于不同极限的子数列<span class="math inline">\(\to\)</span>原数列发散</strong></li>
+</ol></li>
 </ol>
 <h6 id="求数列极限的方法">求数列极限的方法</h6>
 <ol type="1">
@@ -504,10 +506,19 @@
 \end{cases} \to \lim_{ n \to \infty } f(x_{n})=A\]</span> <span class="math display">\[\begin{align*}\tiny
 比如\lim_{ x \to 0 } f(x)=A \to \lim_{ n \to \infty } f\left( \frac{1}{n} \right)=A
 \end{align*}\]</span></li>
-<li><strong>单调有界</strong>
+<li><strong>单调有界</strong>数列必有极限:
 <ol type="1">
-<li>先假设法求出极限值<span class="math inline">\(a\)</span>, 则<span class="math inline">\(a\)</span>应该为<span class="math inline">\(\{x_{n}\}\)</span>的上/下界</li>
+<li>先假设法求出极限值<span class="math inline">\(a\)</span>, 然后想办法证明<span class="math inline">\(a\)</span>是<span class="math inline">\(\{x_{n}\}\)</span>的上/下界</li>
+<li>计算<span class="math inline">\(x_{n+1}-x_{n}\)</span>或<span class="math inline">\(\frac{x_{n+1}}{x_{n}} (\textcolor{red}{\{x_{n}\}同号})\)</span>证出数列单调 (可能会用到<span class="math inline">\(a\)</span>是上/下界的条件)</li>
 </ol></li>
+<li><strong>夹逼法</strong>: 用<em>不等式缩放</em>出一大一小两个好求极限且收敛于同一值的数列</li>
+<li><strong>定义法1</strong>:
+<ol type="1">
+<li>假设极限存在, 求出<span class="math inline">\(a\)</span></li>
+<li>构造出 <span class="math display">\[\mid x_{n}-a\mid=k\mid x_{n-1}-a\mid=\dots=k^n\mid x_{0}-a\mid, 0&lt;k&lt;1\]</span></li>
+<li><span class="math inline">\(\lim\limits_{ n \to \infty } \mid x_{n}-a\mid=0 \to \lim\limits_{ n \to \infty } x_{n}=a\)</span></li>
+</ol></li>
+<li><strong>定义法2</strong>: 由<span class="math inline">\(\mid x_{n}-a\mid&lt;\epsilon\)</span>得<span class="math inline">\(n\)</span>关于<span class="math inline">\(\epsilon\)</span>的取值范围, 然后用<span class="math inline">\(N\)</span>替换<span class="math inline">\(n\)</span>并向上取整得到<span class="math inline">\(N=\lceil f(\epsilon)\rceil\)</span></li>
 </ol>
 <h5 id="函数的极限">函数的极限</h5>
 <blockquote>
@@ -842,7 +853,7 @@ D(x)=\begin{cases}
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">155k</span>
+    <span title="站点总字数">156k</span>
 </div>
 
         
@@ -1063,8 +1074,8 @@ if (document.querySelectorAll('div.pdf').length) {
 </script>
 <script>
   function disqus_config() {
-    this.page.url = "https://leojhonsong.github.io/zh-CN/2022/06/02/微积分课程笔记/";
-    this.page.identifier = "2022/06/02/微积分课程笔记/";
+    this.page.url = "https://leojhonsong.github.io/zh-CN/2022/06/03/微积分课程笔记/";
+    this.page.identifier = "2022/06/03/微积分课程笔记/";
     this.page.title = '微积分课程笔记';};
   function loadComments() {
     if (window.DISQUS) {
