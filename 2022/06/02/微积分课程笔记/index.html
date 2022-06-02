@@ -381,7 +381,7 @@
                 
               
 
-              <time title="创建时间：2022-06-02 20:55:19" itemprop="dateCreated datePublished" datetime="2022-06-02T20:55:19+08:00">2022-06-02</time>
+              <time title="创建时间：2022-06-02 21:13:37" itemprop="dateCreated datePublished" datetime="2022-06-02T21:13:37+08:00">2022-06-02</time>
             </span>
           
             
@@ -448,7 +448,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>3.3k</span>
+              <span>3.7k</span>
             </span>
           
 
@@ -492,10 +492,21 @@
 <li><strong>唯一性</strong></li>
 <li><strong>有界性</strong></li>
 <li><strong>保号性</strong></li>
-<li>收敛数列与其子数列间的关系: 如果数列<span class="math inline">\(\{x_{n}\}\)</span>收敛于<span class="math inline">\(a\)</span>, 那么它的任一子数列也收敛且极限为<span class="math inline">\(a\)</span>. 由此可以得出两个有用推论:
-<ol type="1">
+<li>收敛数列与其子数列间的关系: 如果数列<span class="math inline">\(\{x_{n}\}\)</span>收敛于<span class="math inline">\(a\)</span>, 那么它的任一子数列也收敛且极限为<span class="math inline">\(a\)</span>. 由此可以得出两个有用推论:</li>
 <li><strong>子数列发散<span class="math inline">\(\to\)</span>原数列发散</strong></li>
 <li><strong>有两个收敛于不同极限的子数列<span class="math inline">\(\to\)</span>原数列发散</strong></li>
+</ol>
+<h6 id="求数列极限的方法">求数列极限的方法</h6>
+<ol type="1">
+<li>根据<strong>海涅定理</strong>有: <span class="math display">\[\begin{cases}
+\lim\limits_{ x \to x_{0} } f(x)=A \\
+\lim\limits_{ n \to \infty } \{x_{n}\}=x_{0}
+\end{cases} \to \lim_{ n \to \infty } f(x_{n})=A\]</span> <span class="math display">\[\begin{align*}\tiny
+比如\lim_{ x \to 0 } f(x)=A \to \lim_{ n \to \infty } f\left( \frac{1}{n} \right)=A
+\end{align*}\]</span></li>
+<li><strong>单调有界</strong>
+<ol type="1">
+<li>先假设法求出极限值<span class="math inline">\(a\)</span>, 则<span class="math inline">\(a\)</span>应该为<span class="math inline">\(\{x_{n}\}\)</span>的上/下界</li>
 </ol></li>
 </ol>
 <h5 id="函数的极限">函数的极限</h5>
@@ -508,11 +519,10 @@
 \lim_{ x \to \infty } f(x)=A \leftrightarrow \lim_{ x \to -\infty } f(x)=\lim_{ x \to +\infty } f(x)=A
 \]</span></p>
 <ul>
-<li>函数当自变量趋于<strong>正无穷大</strong>时的极限: (趋于负无穷大时的极限就是把范围换成<span class="math inline">\(\color{yellow}{x&lt;-X}\)</span>) <span class="math display">\[
-\lim_{ x \to +\infty } f(x)=A \leftrightarrow \forall \epsilon&gt;0, \exists X&gt;0, 当\color{yellow}{x&gt;X}时, 有\mid f(x)-A\mid&lt;\epsilon
+<li>函数当自变量趋于<strong>正无穷大</strong>时的极限: (趋于负无穷大时的极限就是把范围换成<span class="math inline">\(\textcolor{yellow}{x&lt;-X}\)</span>) <span class="math display">\[
+\lim_{ x \to +\infty } f(x)=A \leftrightarrow \forall \epsilon&gt;0, \exists X&gt;0, 当\textcolor{yellow}{x&gt;X}时, 有\mid f(x)-A\mid&lt;\epsilon
 \]</span></li>
-<li>无穷大不是具体的数, 本身就是一种极限<br>
-</li>
+<li>无穷大不是具体的数, 本身就是一种极限</li>
 <li>无穷大指的是<strong>绝对值</strong>大于任何具体的数, 因此同时包括正无穷大和负无穷大.</li>
 </ul>
 <p><em>函数极限定义2 (自变量<strong>从两侧</strong>趋于<strong>有限值</strong>)</em>: 左右极限分别存在且相等.</p>
@@ -520,33 +530,33 @@
 \lim_{ x \to x_{0} } f(x)=A \leftrightarrow \lim_{ x \to -x_{0} } f(x)=\lim_{ x \to +x_{0} } f(x)=A
 \]</span></p>
 <ul>
-<li>函数左极限定义 (自变量<strong>仅从左侧</strong>趋于<strong>有限值</strong>): 右极限就是把范围换成<span class="math inline">\(\color{yellow}{x_{0}&lt;x&lt;x_{0}+\epsilon}\)</span> <span class="math display">\[
-\lim_{ x \to x_{0}^- } f(x)=A \leftrightarrow \forall\epsilon&gt;0, \exists\delta&gt;0, 当\color{yellow}{x_{0}-\delta&lt;x&lt;x_{0}}时, 有\mid f(x)-A\mid&lt;\epsilon
+<li>函数左极限定义 (自变量<strong>仅从左侧</strong>趋于<strong>有限值</strong>): 右极限就是把范围换成<span class="math inline">\(\textcolor{yellow}{x_{0}&lt;x&lt;x_{0}+\epsilon}\)</span> <span class="math display">\[
+\lim_{ x \to x_{0}^- } f(x)=A \leftrightarrow \forall\epsilon&gt;0, \exists\delta&gt;0, 当\textcolor{yellow}{x_{0}-\delta&lt;x&lt;x_{0}}时, 有\mid f(x)-A\mid&lt;\epsilon
 \]</span></li>
-<li><span class="math inline">\(\lim_{ x \to x_0 }f(x)\)</span>是否存在和<span class="math inline">\(f(x_{0})\)</span>是否存在<strong>没有关系</strong></li>
+<li><span class="math inline">\(\lim\limits_{ x \to x_0 }f(x)\)</span>是否存在和<span class="math inline">\(f(x_{0})\)</span>是否存在<strong>没有关系</strong></li>
 </ul>
 <h6 id="函数极限的性质">函数极限的性质</h6>
 <p>参照数列极限的性质可以得到相应的函数极限性质, 同样由于函数极限的定义按自变量的变化过程不同有不同形式.</p>
 <ol type="1">
-<li><strong>唯一性</strong>: 如果<span class="math inline">\(\lim_{ x \to x_0 } f(x)\)</span>或<span class="math inline">\(\lim_{ x \to \infty } f(x)\)</span>存在, 则此极限唯一. 因此: <span class="math display">\[\begin{align*}&amp;\lim_{ x \to +\infty } e^x=+\infty, \lim_{ x \to -\infty } e^x=0 \to \color{pink}{\lim_{ x \to \infty } e^x不存在\ (\lim_{ x \to \infty } e^{\frac{1}{x}}同理)}
- \\&amp;\lim_{ x \to +0 } \frac{\sin x}{\mid x\mid}=1, \lim_{ x \to -0 } \frac{\sin x}{\mid x\mid}=-1 \to \color{pink}{\lim_{ x \to 0 } \frac{\sin x}{\mid x\mid}不存在}
-\\&amp;在x=0附近\frac{1}{x}\sin \frac{1}{x}是无界量, 在(-\infty, +\infty)范围振荡\ (因此不是无穷大量) \to \color{pink}{\lim_{ x \to 0 } \frac{1}{x}\sin \frac{1}{x}不存在}
-\\&amp;\tiny{(可以通过找几个收敛于不同极限的子数列来反证函数不收敛)}
+<li><strong>唯一性</strong>: 如果<span class="math inline">\(\lim_{ x \to x_0 } f(x)\)</span>或<span class="math inline">\(\lim_{ x \to \infty } f(x)\)</span>存在, 则此极限唯一. 因此: <span class="math display">\[\begin{align*}&amp;\lim_{ x \to +\infty } e^x=+\infty, \lim_{ x \to -\infty } e^x=0 \to \textcolor{pink}{\lim_{ x \to \infty } e^x不存在\ (\lim_{ x \to \infty } e^{\frac{1}{x}}同理)} \\
+&amp;\lim_{ x \to +0 } \frac{\sin x}{\mid x\mid}=1, \lim_{ x \to -0 } \frac{\sin x}{\mid x\mid}=-1 \to \textcolor{pink}{\lim_{ x \to 0 } \frac{\sin x}{\mid x\mid}不存在} \\
+&amp;在x=0附近\frac{1}{x}\sin \frac{1}{x}是无界量, 在(-\infty, +\infty)范围振荡\ (因此不是无穷大量) \to \textcolor{pink}{\lim_{ x \to 0 } \frac{1}{x}\sin \frac{1}{x}不存在} \\
+&amp;\tiny{(可以通过找几个收敛于不同极限的子数列来反证函数不收敛)}
 \end{align*}\]</span></li>
 <li><strong>局部有界性</strong></li>
 <li><strong>局部保号性</strong></li>
-<li>函数极限与数列极限的关系 (<strong>海涅定理</strong>): 设<span class="math inline">\(\{x_n\}\)</span>为任一<span class="math inline">\(f(x)\)</span>定义域内以<span class="math inline">\(x_0\)</span>为极限的数列 (<span class="math inline">\(x_{n}\neq x_{0}\)</span>), 有 <span class="math display">\[\lim_{ x \to x_{0} } f(x)=A \leftrightarrow \lim_{\color{pink}{n \to \infty}} f(x_{n})=A
+<li>函数极限与数列极限的关系 (<strong>海涅定理</strong>): <span class="math display">\[\lim_{ x \to x_{0} } f(x)=A \leftrightarrow \begin{cases}
+\textcolor{red}{\forall \{x_{n}\}}, \lim\limits_{ n \to \infty } \{x_{n}\}=x_{0}, f(x)定义域内 \\
+\lim\limits_\textcolor{pink}{n \to \infty} f(x_{n})=A
+\end{cases}
 \]</span> 💡<span class="math inline">\(x\)</span>是变量而<span class="math inline">\(x_n\)</span>只是具体的数</li>
 </ol>
 <h6 id="两个重要极限">两个重要极限</h6>
-<p><span class="math display">\[\begin{align}
-&amp;\lim_{ x \to 0 } \frac{\sin x}{x}=1 \\
-&amp;\lim_{ x \to \infty } \left( 1+\frac{1}{x} \right)^x=e
-\end{align}
-\]</span></p>
+<p><span class="math inline">\(\lim\limits_{ x \to 0 } \frac{\sin x}{x}=1\)</span></p>
+<p><span class="math inline">\(\lim\limits_{ x \to \infty } \left( 1+\frac{1}{x} \right)^x=e\)</span></p>
 <h5 id="求数列函数极限的方法">求数列/函数极限的方法</h5>
 <ol type="1">
-<li>定义法==TODO==</li>
+<li>定义法</li>
 </ol>
 <h4 id="函数">函数</h4>
 <h5 id="函数的几种特性">函数的几种特性</h5>
@@ -697,7 +707,7 @@ D(x)=\begin{cases}
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教材"><span class="nav-number">1.</span> <span class="nav-text">教材</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内容"><span class="nav-number">2.</span> <span class="nav-text">内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数与极限"><span class="nav-number">2.1.</span> <span class="nav-text">函数与极限</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#极限"><span class="nav-number">2.1.1.</span> <span class="nav-text">极限</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数列的极限"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">数列的极限</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#数列极限的性质"><span class="nav-number">2.1.1.1.1.</span> <span class="nav-text">数列极限的性质</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数的极限"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">函数的极限</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#函数极限的性质"><span class="nav-number">2.1.1.2.1.</span> <span class="nav-text">函数极限的性质</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#两个重要极限"><span class="nav-number">2.1.1.2.2.</span> <span class="nav-text">两个重要极限</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#求数列函数极限的方法"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">求数列/函数极限的方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数"><span class="nav-number">2.1.2.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#函数的几种特性"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">函数的几种特性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一些函数"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">一些函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数的连续性"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">函数的连续性</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#教材"><span class="nav-number">1.</span> <span class="nav-text">教材</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内容"><span class="nav-number">2.</span> <span class="nav-text">内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数与极限"><span class="nav-number">2.1.</span> <span class="nav-text">函数与极限</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#极限"><span class="nav-number">2.1.1.</span> <span class="nav-text">极限</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数列的极限"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">数列的极限</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#数列极限的性质"><span class="nav-number">2.1.1.1.1.</span> <span class="nav-text">数列极限的性质</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#求数列极限的方法"><span class="nav-number">2.1.1.1.2.</span> <span class="nav-text">求数列极限的方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数的极限"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">函数的极限</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#函数极限的性质"><span class="nav-number">2.1.1.2.1.</span> <span class="nav-text">函数极限的性质</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#两个重要极限"><span class="nav-number">2.1.1.2.2.</span> <span class="nav-text">两个重要极限</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#求数列函数极限的方法"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">求数列/函数极限的方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数"><span class="nav-number">2.1.2.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#函数的几种特性"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">函数的几种特性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#一些函数"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">一些函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数的连续性"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">函数的连续性</span></a></li></ol></li></ol></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
