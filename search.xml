@@ -4037,7 +4037,7 @@
 <h3 id="hello-world">Hello World</h3>
 <p>还是先来个Hello World 😏</p>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">digraph G{</span><br><span class="line">    Hello -&gt; World;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p><embed src="Graphviz简要语法/helloworld.svg?20"></p>
+<p><img style="zoom:25%;" data-src="Graphviz简要语法/helloworld.svg"></p>
 <h3 id="常见用法">常见用法</h3>
 <p>因为graphviz许多概念解释起来会套娃, 要理解概念A要先理解概念B, 要理解概念B则需要先知道什么是概念A 🤤 因此这里先放上一些常用属性来快速入门.</p>
 <p>🌟 不明白到底如何使用属性的话点<a href="#属性">这里</a>快速跳转后文的实例.</p>
@@ -4154,36 +4154,24 @@
 <h4 id="dot">dot</h4>
 <p>用于绘制<strong>有向图</strong>, 他的布局算法原理上面已经说了, 特点是绘制出的图<strong>很有层次</strong>.</p>
 <p>❗️ 注意dot布局和DOT语言不是一个东西.</p>
-<figure>
-<embed src="Graphviz简要语法/cluster.png?20"><figcaption>img</figcaption>
-</figure>
+<p><img alt="img" style="zoom:25%;" data-src="Graphviz简要语法/cluster.png"></p>
 <h4 id="neato">neato</h4>
 <p>用于绘制<strong>无向图</strong>. neato布局算法的原理是构建一个虚拟物理模型并不断对其迭代最终得到一个<strong>最低总能量排布</strong> (low-energy configuration). 这个虚拟物理模型具体指的是在每个节点间放置一个<strong>理想弹簧</strong>, 这样得到的布局通常很合理. (在统计学中这种算法也被称作<strong>多维缩放</strong>). neato布局很适合用于<strong>通信网络</strong>及<strong>计算机程序</strong>的绘制.</p>
 <p>💡 当图较大 (超过100个节点)时就该考虑换成fdp或者sfdp布局了</p>
-<figure>
-<embed src="Graphviz简要语法/ER.png?30"><figcaption>在这里插入图片描述</figcaption>
-</figure>
+<p><img style="zoom:33%;" data-src="Graphviz简要语法/ER.png"></p>
 <h4 id="fdp">fdp</h4>
 <p>同样是基于弹簧模型. 区别在于fdp算法的迭代是在试图减小节点间弹簧的力的大小而不是弹簧能量大小.</p>
-<figure>
-<embed src="Graphviz简要语法/fdpclust.png?40"><figcaption>在这里插入图片描述</figcaption>
-</figure>
+<p><img style="zoom:40%;" data-src="Graphviz简要语法/fdpclust.png"></p>
 <h4 id="sfdp">sfdp</h4>
 <p>为大规模图而生的多尺度版fdp</p>
-<figure>
-<embed src="Graphviz简要语法/JGD_BIBD@bibd_17_3.gif?40"><figcaption>在这里插入图片描述</figcaption>
-</figure>
+<p><img style="zoom:40%;" data-src="Graphviz简要语法/JGD_BIBD@bibd_17_3.gif"></p>
 <p>上面这个图得自🔗 <a href="http://yifanhu.net/GALLERY/GRAPHS/index.html" target="_blank" rel="noopener">A Gallery of Large Graphs</a>. 这个网站还有<strong>很多</strong>很壮观的图😳</p>
 <h4 id="twopi">twopi</h4>
 <p>径向布局.</p>
-<figure>
-<embed src="Graphviz简要语法/twopi2.png?50"><figcaption>在这里插入图片描述</figcaption>
-</figure>
+<p><img style="zoom:50%;" data-src="Graphviz简要语法/twopi2.png"></p>
 <h4 id="circo">circo</h4>
 <p>圆形布局. 很适合有许多环路结构的图, 比如电信网络.</p>
-<figure>
-<embed src="Graphviz简要语法/circo.png?30"><figcaption>在这里插入图片描述</figcaption>
-</figure>
+<p><img style="zoom:33%;" data-src="Graphviz简要语法/circo.png"></p>
 <h3 id="有关三种主要描述对象">有关三种主要描述对象</h3>
 <p>DOT语言主要描述三种对象: <strong>graph</strong>, <strong>node</strong>, <strong>edge</strong>. 这里分别翻译为<strong>图</strong>, <strong>节点</strong>, <strong>边线</strong>. 每一种对象有各自可以设置的一组属性.</p>
 <h4 id="graph-图">Graph (图)</h4>
@@ -4220,7 +4208,7 @@
 <p>一个展示类HTML标签能带来的丰富样式的例子</p>
 </blockquote>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">digraph G {</span><br><span class="line">  rankdir=LR</span><br><span class="line">  node [shape=plaintext]</span><br><span class="line">  a [</span><br><span class="line">    label=&lt;</span><br><span class="line">      &lt;TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD ROWSPAN="3" BGCOLOR="yellow"&gt;class&lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD PORT="here" BGCOLOR="lightblue"&gt;qualifier&lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">      &lt;/TABLE&gt;</span><br><span class="line">    &gt;</span><br><span class="line">  ]</span><br><span class="line">  b [shape=ellipse style=filled</span><br><span class="line">    label=&lt;</span><br><span class="line">      &lt;TABLE BGCOLOR="bisque"&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD COLSPAN="3"&gt;elephant&lt;/TD&gt;</span><br><span class="line">          &lt;TD ROWSPAN="2" BGCOLOR="chartreuse" VALIGN="bottom" ALIGN="right"&gt;two&lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD COLSPAN="2" ROWSPAN="2"&gt;</span><br><span class="line">            &lt;TABLE BGCOLOR="grey"&gt;</span><br><span class="line">              &lt;TR&gt; &lt;TD&gt;corn&lt;/TD&gt; &lt;/TR&gt;</span><br><span class="line">              &lt;TR&gt; &lt;TD BGCOLOR="yellow"&gt;c&lt;/TD&gt; &lt;/TR&gt;</span><br><span class="line">              &lt;TR&gt; &lt;TD&gt;f&lt;/TD&gt; &lt;/TR&gt;</span><br><span class="line">            &lt;/TABLE&gt;</span><br><span class="line">          &lt;/TD&gt;</span><br><span class="line">          &lt;TD BGCOLOR="white"&gt;penguin&lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD COLSPAN="2" BORDER="4" ALIGN="right" PORT="there"&gt;4&lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">      &lt;/TABLE&gt;</span><br><span class="line">    &gt;</span><br><span class="line">  ]</span><br><span class="line">  c [</span><br><span class="line">    label=&lt;long line 1&lt;BR/&gt;line 2&lt;BR ALIGN="LEFT"/&gt;line 3&lt;BR ALIGN="RIGHT"/&gt;&gt;</span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line">  subgraph { rank=same b c }</span><br><span class="line">  a:here -&gt; b:there [dir=both arrowtail=diamond]</span><br><span class="line">  c -&gt; b</span><br><span class="line">  d [shape=triangle]</span><br><span class="line">  d -&gt; c [</span><br><span class="line">    label=&lt;</span><br><span class="line">      &lt;TABLE&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD BGCOLOR="red" WIDTH="10"&gt; &lt;/TD&gt;</span><br><span class="line">          &lt;TD&gt;Edge labels&lt;BR/&gt;also&lt;/TD&gt;</span><br><span class="line">          &lt;TD BGCOLOR="blue" WIDTH="10"&gt; &lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">      &lt;/TABLE&gt;</span><br><span class="line">    &gt;</span><br><span class="line">  ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p><embed src="Graphviz简要语法/html-like_label.svg?60"></p>
+<p><img style="zoom:60%;" data-src="Graphviz简要语法/html-like_label.svg"></p>
 <h3 id="属性">属性</h3>
 <p>属性是通过<code>name=value</code>形式来设置的. 节点与边线的属性需要放在<code>[]</code>方括号中.</p>
 <blockquote>
@@ -4257,7 +4245,7 @@
 <p>一个使用簇, 并且有连接节点与簇的边线的例子</p>
 </blockquote>
 <figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">digraph G {</span><br><span class="line">    compound=true;</span><br><span class="line">    subgraph cluster0 {</span><br><span class="line">        a -&gt; b;</span><br><span class="line">        a -&gt; c;</span><br><span class="line">        b -&gt; d;</span><br><span class="line">        c -&gt; d;</span><br><span class="line">    }</span><br><span class="line">    subgraph cluster1 {</span><br><span class="line">        e -&gt; g;</span><br><span class="line">        e -&gt; f;</span><br><span class="line">    }</span><br><span class="line">    b -&gt; f [lhead=cluster1];</span><br><span class="line">    d -&gt; e;</span><br><span class="line">    c -&gt; g [ltail=cluster0,lhead=cluster1];</span><br><span class="line">    c -&gt; e [ltail=cluster0];</span><br><span class="line">    d -&gt; h;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p><embed src="Graphviz简要语法/cluster.svg?20"></p>
+<p><img style="zoom:20%;" data-src="Graphviz简要语法/cluster.svg"></p>
 <h2 id="高级语法">高级语法</h2>
 <p>以下是几条我认为<strong>用来提示图的美观程度</strong>的语法.</p>
 <h3 id="优化布局">优化布局</h3>
@@ -4266,12 +4254,8 @@
 <blockquote>
 <p>一个展示设置rank属性能达到什么效果的例子 (代码和图形都截自旧版文档, 因为代码没给全我也懒得写, 就这么放着吧👍)</p>
 </blockquote>
-<figure>
-<embed src="Graphviz简要语法/image-20200313010630547.png?60"><figcaption>image-20200313010630547</figcaption>
-</figure>
-<figure>
-<embed src="Graphviz简要语法/image-20200313010749024.png?80"><figcaption>image-20200313010749024</figcaption>
-</figure>
+<p><img style="zoom:60%;" data-src="Graphviz简要语法/image-20200313010630547.png"></p>
+<p><img style="zoom:80%;" data-src="Graphviz简要语法/image-20200313010749024.png"></p>
 <h3 id="node-port-节点端口">Node Port (节点端口)</h3>
 <p>Graphviz提供了节点端口来指定边线应连接到节点的什么位置. 这提供了更高的个性化. 当没有被指定节点端口时边线是指向节点中心并在节点边界处被截断的.</p>
 <p>一共有两种节点端口:</p>
@@ -5441,7 +5425,7 @@
   </entry>
   <entry>
     <title>微积分课程笔记</title>
-    <url>/zh-CN/2022/09/26/%E5%BE%AE%E7%A7%AF%E5%88%86%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/</url>
+    <url>/zh-CN/2022/09/27/%E5%BE%AE%E7%A7%AF%E5%88%86%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>前前后后数理基础课也学了好几遍了, 但这些内容不常用就容易忘记. 虽然每次学都会记手写的电子笔记, 但这次我打算记一份能长期维护的印刷体电子笔记, 因为大概不会再需要一板一眼地把这几门最基础的课学一遍了. 我的想法是记重要概念, 术语, 重要思路和技巧, 以及一些易错点, 这样当我忘记内容时能很快知道我需要的是什么, 然后具体推导和习题再看教材就好 💪</p>
 <a id="more"></a>
 <div class="note success">
@@ -5851,6 +5835,52 @@ D(x)=\begin{cases}
       </categories>
   </entry>
   <entry>
+    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
+    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<div data-align="right">
+<p>Language: <a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a> <a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a></p>
+</div>
+<a id="more"></a>
+<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
+<h2 id="遇到的问题">遇到的问题</h2>
+<h3 id="更改配置后页面未出现变化">更改配置后页面未出现变化</h3>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
+<h3 id="markdown中文换行导致的空格问题">markdown中文换行导致的空格问题</h3>
+<p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="google站点地图报错">Google站点地图报错</h3>
+<p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
+<h3 id="如何建立多级分类">如何建立多级分类</h3>
+<p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
+<h2 id="个性化配置">个性化配置</h2>
+<h3 id="多语言">多语言</h3>
+<p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a> <a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>软件配置</category>
+        <category>Web</category>
+      </categories>
+  </entry>
+  <entry>
     <title>当VSCode成为一种生活方式</title>
     <url>/zh-CN/2019/01/07/%E5%BD%93VSCode%E6%88%90%E4%B8%BA%E4%B8%80%E7%A7%8D%E7%94%9F%E6%B4%BB%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<div data-align="right">
@@ -5915,52 +5945,6 @@ D(x)=\begin{cases}
         <category>软件配置</category>
         <category>VSC</category>
         <category>技巧</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
-    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<div data-align="right">
-<p>Language: <a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a> <a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a></p>
-</div>
-<a id="more"></a>
-<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
-<h2 id="遇到的问题">遇到的问题</h2>
-<h3 id="更改配置后页面未出现变化">更改配置后页面未出现变化</h3>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
-<h3 id="markdown中文换行导致的空格问题">markdown中文换行导致的空格问题</h3>
-<p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
-<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="google站点地图报错">Google站点地图报错</h3>
-<p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
-<h3 id="如何建立多级分类">如何建立多级分类</h3>
-<p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
-<h2 id="个性化配置">个性化配置</h2>
-<h3 id="多语言">多语言</h3>
-<p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a> <a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>软件配置</category>
-        <category>Web</category>
       </categories>
   </entry>
 </search>

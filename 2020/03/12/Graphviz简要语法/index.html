@@ -455,7 +455,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span>8.4k</span>
+              <span>8.3k</span>
             </span>
           
 
@@ -486,7 +486,7 @@
 <h3 id="hello-world">Hello World</h3>
 <p>还是先来个Hello World 😏</p>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">digraph G{</span><br><span class="line">    Hello -&gt; World;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p><embed src="Graphviz简要语法/helloworld.svg?20"></p>
+<p><img style="zoom:25%;" data-src="Graphviz简要语法/helloworld.svg"></p>
 <h3 id="常见用法">常见用法</h3>
 <p>因为graphviz许多概念解释起来会套娃, 要理解概念A要先理解概念B, 要理解概念B则需要先知道什么是概念A 🤤 因此这里先放上一些常用属性来快速入门.</p>
 <p>🌟 不明白到底如何使用属性的话点<a href="#属性">这里</a>快速跳转后文的实例.</p>
@@ -603,36 +603,24 @@
 <h4 id="dot">dot</h4>
 <p>用于绘制<strong>有向图</strong>, 他的布局算法原理上面已经说了, 特点是绘制出的图<strong>很有层次</strong>.</p>
 <p>❗️ 注意dot布局和DOT语言不是一个东西.</p>
-<figure>
-<embed src="Graphviz简要语法/cluster.png?20"><figcaption>img</figcaption>
-</figure>
+<p><img alt="img" style="zoom:25%;" data-src="Graphviz简要语法/cluster.png"></p>
 <h4 id="neato">neato</h4>
 <p>用于绘制<strong>无向图</strong>. neato布局算法的原理是构建一个虚拟物理模型并不断对其迭代最终得到一个<strong>最低总能量排布</strong> (low-energy configuration). 这个虚拟物理模型具体指的是在每个节点间放置一个<strong>理想弹簧</strong>, 这样得到的布局通常很合理. (在统计学中这种算法也被称作<strong>多维缩放</strong>). neato布局很适合用于<strong>通信网络</strong>及<strong>计算机程序</strong>的绘制.</p>
 <p>💡 当图较大 (超过100个节点)时就该考虑换成fdp或者sfdp布局了</p>
-<figure>
-<embed src="Graphviz简要语法/ER.png?30"><figcaption>在这里插入图片描述</figcaption>
-</figure>
+<p><img style="zoom:33%;" data-src="Graphviz简要语法/ER.png"></p>
 <h4 id="fdp">fdp</h4>
 <p>同样是基于弹簧模型. 区别在于fdp算法的迭代是在试图减小节点间弹簧的力的大小而不是弹簧能量大小.</p>
-<figure>
-<embed src="Graphviz简要语法/fdpclust.png?40"><figcaption>在这里插入图片描述</figcaption>
-</figure>
+<p><img style="zoom:40%;" data-src="Graphviz简要语法/fdpclust.png"></p>
 <h4 id="sfdp">sfdp</h4>
 <p>为大规模图而生的多尺度版fdp</p>
-<figure>
-<embed src="Graphviz简要语法/JGD_BIBD@bibd_17_3.gif?40"><figcaption>在这里插入图片描述</figcaption>
-</figure>
+<p><img style="zoom:40%;" data-src="Graphviz简要语法/JGD_BIBD@bibd_17_3.gif"></p>
 <p>上面这个图得自🔗 <a href="http://yifanhu.net/GALLERY/GRAPHS/index.html" target="_blank" rel="noopener">A Gallery of Large Graphs</a>. 这个网站还有<strong>很多</strong>很壮观的图😳</p>
 <h4 id="twopi">twopi</h4>
 <p>径向布局.</p>
-<figure>
-<embed src="Graphviz简要语法/twopi2.png?50"><figcaption>在这里插入图片描述</figcaption>
-</figure>
+<p><img style="zoom:50%;" data-src="Graphviz简要语法/twopi2.png"></p>
 <h4 id="circo">circo</h4>
 <p>圆形布局. 很适合有许多环路结构的图, 比如电信网络.</p>
-<figure>
-<embed src="Graphviz简要语法/circo.png?30"><figcaption>在这里插入图片描述</figcaption>
-</figure>
+<p><img style="zoom:33%;" data-src="Graphviz简要语法/circo.png"></p>
 <h3 id="有关三种主要描述对象">有关三种主要描述对象</h3>
 <p>DOT语言主要描述三种对象: <strong>graph</strong>, <strong>node</strong>, <strong>edge</strong>. 这里分别翻译为<strong>图</strong>, <strong>节点</strong>, <strong>边线</strong>. 每一种对象有各自可以设置的一组属性.</p>
 <h4 id="graph-图">Graph (图)</h4>
@@ -669,7 +657,7 @@
 <p>一个展示类HTML标签能带来的丰富样式的例子</p>
 </blockquote>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">digraph G {</span><br><span class="line">  rankdir=LR</span><br><span class="line">  node [shape=plaintext]</span><br><span class="line">  a [</span><br><span class="line">    label=&lt;</span><br><span class="line">      &lt;TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD ROWSPAN="3" BGCOLOR="yellow"&gt;class&lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD PORT="here" BGCOLOR="lightblue"&gt;qualifier&lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">      &lt;/TABLE&gt;</span><br><span class="line">    &gt;</span><br><span class="line">  ]</span><br><span class="line">  b [shape=ellipse style=filled</span><br><span class="line">    label=&lt;</span><br><span class="line">      &lt;TABLE BGCOLOR="bisque"&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD COLSPAN="3"&gt;elephant&lt;/TD&gt;</span><br><span class="line">          &lt;TD ROWSPAN="2" BGCOLOR="chartreuse" VALIGN="bottom" ALIGN="right"&gt;two&lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD COLSPAN="2" ROWSPAN="2"&gt;</span><br><span class="line">            &lt;TABLE BGCOLOR="grey"&gt;</span><br><span class="line">              &lt;TR&gt; &lt;TD&gt;corn&lt;/TD&gt; &lt;/TR&gt;</span><br><span class="line">              &lt;TR&gt; &lt;TD BGCOLOR="yellow"&gt;c&lt;/TD&gt; &lt;/TR&gt;</span><br><span class="line">              &lt;TR&gt; &lt;TD&gt;f&lt;/TD&gt; &lt;/TR&gt;</span><br><span class="line">            &lt;/TABLE&gt;</span><br><span class="line">          &lt;/TD&gt;</span><br><span class="line">          &lt;TD BGCOLOR="white"&gt;penguin&lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD COLSPAN="2" BORDER="4" ALIGN="right" PORT="there"&gt;4&lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">      &lt;/TABLE&gt;</span><br><span class="line">    &gt;</span><br><span class="line">  ]</span><br><span class="line">  c [</span><br><span class="line">    label=&lt;long line 1&lt;BR/&gt;line 2&lt;BR ALIGN="LEFT"/&gt;line 3&lt;BR ALIGN="RIGHT"/&gt;&gt;</span><br><span class="line">  ]</span><br><span class="line"></span><br><span class="line">  subgraph { rank=same b c }</span><br><span class="line">  a:here -&gt; b:there [dir=both arrowtail=diamond]</span><br><span class="line">  c -&gt; b</span><br><span class="line">  d [shape=triangle]</span><br><span class="line">  d -&gt; c [</span><br><span class="line">    label=&lt;</span><br><span class="line">      &lt;TABLE&gt;</span><br><span class="line">        &lt;TR&gt;</span><br><span class="line">          &lt;TD BGCOLOR="red" WIDTH="10"&gt; &lt;/TD&gt;</span><br><span class="line">          &lt;TD&gt;Edge labels&lt;BR/&gt;also&lt;/TD&gt;</span><br><span class="line">          &lt;TD BGCOLOR="blue" WIDTH="10"&gt; &lt;/TD&gt;</span><br><span class="line">        &lt;/TR&gt;</span><br><span class="line">      &lt;/TABLE&gt;</span><br><span class="line">    &gt;</span><br><span class="line">  ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p><embed src="Graphviz简要语法/html-like_label.svg?60"></p>
+<p><img style="zoom:60%;" data-src="Graphviz简要语法/html-like_label.svg"></p>
 <h3 id="属性">属性</h3>
 <p>属性是通过<code>name=value</code>形式来设置的. 节点与边线的属性需要放在<code>[]</code>方括号中.</p>
 <blockquote>
@@ -706,7 +694,7 @@
 <p>一个使用簇, 并且有连接节点与簇的边线的例子</p>
 </blockquote>
 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">digraph G {</span><br><span class="line">    compound=true;</span><br><span class="line">    subgraph cluster0 {</span><br><span class="line">        a -&gt; b;</span><br><span class="line">        a -&gt; c;</span><br><span class="line">        b -&gt; d;</span><br><span class="line">        c -&gt; d;</span><br><span class="line">    }</span><br><span class="line">    subgraph cluster1 {</span><br><span class="line">        e -&gt; g;</span><br><span class="line">        e -&gt; f;</span><br><span class="line">    }</span><br><span class="line">    b -&gt; f [lhead=cluster1];</span><br><span class="line">    d -&gt; e;</span><br><span class="line">    c -&gt; g [ltail=cluster0,lhead=cluster1];</span><br><span class="line">    c -&gt; e [ltail=cluster0];</span><br><span class="line">    d -&gt; h;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
-<p><embed src="Graphviz简要语法/cluster.svg?20"></p>
+<p><img style="zoom:20%;" data-src="Graphviz简要语法/cluster.svg"></p>
 <h2 id="高级语法">高级语法</h2>
 <p>以下是几条我认为<strong>用来提示图的美观程度</strong>的语法.</p>
 <h3 id="优化布局">优化布局</h3>
@@ -715,12 +703,8 @@
 <blockquote>
 <p>一个展示设置rank属性能达到什么效果的例子 (代码和图形都截自旧版文档, 因为代码没给全我也懒得写, 就这么放着吧👍)</p>
 </blockquote>
-<figure>
-<embed src="Graphviz简要语法/image-20200313010630547.png?60"><figcaption>image-20200313010630547</figcaption>
-</figure>
-<figure>
-<embed src="Graphviz简要语法/image-20200313010749024.png?80"><figcaption>image-20200313010749024</figcaption>
-</figure>
+<p><img style="zoom:60%;" data-src="Graphviz简要语法/image-20200313010630547.png"></p>
+<p><img style="zoom:80%;" data-src="Graphviz简要语法/image-20200313010749024.png"></p>
 <h3 id="node-port-节点端口">Node Port (节点端口)</h3>
 <p>Graphviz提供了节点端口来指定边线应连接到节点的什么位置. 这提供了更高的个性化. 当没有被指定节点端口时边线是指向节点中心并在节点边界处被截断的.</p>
 <p>一共有两种节点端口:</p>
