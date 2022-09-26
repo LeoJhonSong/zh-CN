@@ -486,9 +486,7 @@
     <content><![CDATA[<p>因为我是一个记性很差并且接触东西很杂的人, 很多很基础的命令根本记不住,但每次都去查一遍很浪费时间, 于是整理一下. 这是树莓派相关的.</p>
 <a id="more"></a>
 <p>首先不得不说<a href="https://www.raspberrypi.org/documentation" target="_blank" rel="noopener">树莓派官方文档</a>实在是文档范本! 即便是初学者也能得到<strong>友好全面</strong>的帮助! 文档里包含了使用树莓派的绝大多数完整, 深入的教程, 而且方法都十分清爽 😆</p>
-<div>
-<img alt="img" style="width:80%; display:block; margin-left:auto; margin-right:auto;" data-src="树莓派杂记/15826242887468.jpg">
-</div>
+<p><img alt="img" style="width:80%; display:block; margin-left:auto; margin-right:auto;" data-src="树莓派杂记/15826242887468.jpg"></p>
 <blockquote>
 <p>放一张树莓派4B布局图</p>
 </blockquote>
@@ -505,17 +503,11 @@
 <blockquote>
 <p>放两张好看的树莓派引脚对照表 (实际上两张都不完善)</p>
 </blockquote>
-<div>
-<img alt="img" style="width:80%; display:block; margin-left:auto; margin-right:auto;" data-src="树莓派杂记/175605x4nx4ryrywnn7hyw.jpg">
-</div>
-<div>
-<img alt="Raspberry Pi 4 Model B GPIO Pinout Diagram | element14 | Raspberry Pi" style="width:80%; display:block; margin-left:auto; margin-right:auto;" data-src="树莓派杂记/GPIO-Pi4-1587126749653.png">
-</div>
+<p><img alt="img" style="width:80%; display:block; margin-left:auto; margin-right:auto;" data-src="树莓派杂记/175605x4nx4ryrywnn7hyw.jpg"></p>
+<p><img alt="Raspberry Pi 4 Model B GPIO Pinout Diagram | element14 | Raspberry Pi" style="width:80%; display:block; margin-left:auto; margin-right:auto;" data-src="树莓派杂记/GPIO-Pi4-1587126749653.png"></p>
 <p>🔗 这个<a href="http://pinout.xyz/" target="_blank" rel="noopener">交互式引脚排布图</a>对每种接口的介绍很详细.</p>
 <p><del>运行<code>gpio readall</code>可以打印一张包含引脚真实输入/输出值的引脚表. 对于树莓派4需要手动操作一下更新<strong>wiringPi</strong>至版本<code>2.52</code>, 否则无法识别. 操作参考<a href="http://wiringpi.com/wiringpi-updated-to-2-52-for-the-raspberry-pi-4b/" target="_blank" rel="noopener">wiringPi updated to 2.52 for the Raspberry Pi 4B</a></del></p>
-<div>
-<img alt="image-20200417205537326" style="width:80%; display:block; margin-left:auto; margin-right:auto;" data-src="树莓派杂记/image-20200417205537326.png">
-</div>
+<p><img alt="image-20200417205537326" style="width:80%; display:block; margin-left:auto; margin-right:auto;" data-src="树莓派杂记/image-20200417205537326.png"></p>
 <p>但<code>gpio readall</code>无法打印出每个引脚所有可用功能, 而运行<code>raspi-gpio funcs</code>可用打印所有gpio的上拉/下拉, 所有可用功能.</p>
 <p>树莓派官方文档列出了几个很好用的gpio库, 其中这个<a href="https://gpiozero.readthedocs.io/" target="_blank" rel="noopener">GPIO Zero</a>将GPIO分类封装成了一些很简洁的类, 看起来很值得一试.</p>
 <blockquote>
@@ -1946,9 +1938,7 @@
 <p>什么? <strong>360杀毒是毒瘤?</strong> 什么? <strong>电脑城就是个坑?</strong></p>
 <p>我开始是不太信的, 后来我格式化了电脑告别360. 再后来我在小米之家看着和我电脑同价位但配置好许多的电脑沉默了一会.</p>
 <p><strong>但是!!</strong> 这次出的幺蛾子让我忍不了. 前几天电脑刚开机就弹出👇</p>
-<figure>
-<embed src="我打算换电脑了/HardDiskProblems.png?50"><figcaption>hard disk problems detected</figcaption>
-</figure>
+<p><img alt="hard disk problems detected" style="zoom:50%;" data-src="我打算换电脑了/HardDiskProblems.png"></p>
 <p>什么? <b style="color:red;">我硬盘快挂了?</b> 当时把我吓坏了, 还以为我硬盘要爆炸了, 点开了 <strong>Disks</strong> 工具的 <strong>SMART Data &amp; Self-Tests</strong>.</p>
 <figure>
 <img alt="self-test" data-src="我打算换电脑了/self-test.png"><figcaption>self-test</figcaption>
@@ -4538,14 +4528,14 @@
 <a id="more"></a>
 <blockquote>
 <p>首先, 不得不吹一下Manjaro是一个多么贴心的系统. Manjaro自带了一个叫<strong>Manjaro Hello</strong>的入门程序, 点进这个程序的<code>Applications</code>入口能看到Manjaro社区为各常见用途已经提供了一些推荐, 勾选就可以安装. 可以说没有更贴心的系统了!</p>
-<p><embed src="Linux下各用途我最认可的工具推荐/Manjaro_Hello.jpg?70"></p>
+<p><img style="zoom:70%;" data-src="Linux下各用途我最认可的工具推荐/Manjaro_Hello.jpg"></p>
 </blockquote>
 <h2 id="日常使用">日常使用</h2>
 <h3 id="中文输入法">中文输入法</h3>
 <p>随着fcitx5日渐成熟, 现在有了两种我推荐的中文输入法方案:</p>
 <h4 id="fcitx5框架配套中文输入法">fcitx5框架+配套中文输入法</h4>
 <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S fcitx5-im</span><br><span class="line">yay -S fcitx5-chinese-addons</span><br><span class="line">yay -S fcitx5-material-color</span><br></pre></td></tr></tbody></table></figure>
-<p>这个<strong>fcitx5-material-color</strong>是一个模仿win10的中文输入法的皮肤, 在fcitx5的设置中可以更换皮肤, 可以做到下面这样的效果 👇 <embed src="Linux下各用途我最认可的工具推荐/inputMethod.gif?80"></p>
+<p>这个<strong>fcitx5-material-color</strong>是一个模仿win10的中文输入法的皮肤, 在fcitx5的设置中可以更换皮肤, 可以做到下面这样的效果 👇 <img style="zoom:80%;" data-src="Linux下各用途我最认可的工具推荐/inputMethod.gif"></p>
 <h4 id="fcitx4框架搜狗输入法">fcitx4框架+搜狗输入法</h4>
 <figure class="highlight shell"><table><tbody><tr><td class="code"><pre><span class="line">yay -S fcitx-im fcitx-configtool</span><br><span class="line">yay -S fcitx-sogoupinyin</span><br></pre></td></tr></tbody></table></figure>
 <hr>
@@ -4625,7 +4615,7 @@
 <h3 id="资源管理器">资源管理器</h3>
 <p><strong>Dolphin</strong>绝对是最好用的资源管理器! 多标签页, 显示预览等功能不在话下. Dolphin的右键菜单很贴心, Gnome自带资源管理器所没有的右键新建文件功能 (就离谱) 当然是有的, 也有创建快捷方式, 解压 (不论是rar还是zip还是tar都是同一个按键), 也可以很方便地自己创建脚本添加右键菜单的功能.</p>
 <p>而Dolphin最突出的功能是按<kbd>F4</kbd>可以直接打开一个<strong>Dolphin内嵌终端</strong>. 这个终端的路径会随着在资源管理器里点击自动切换 (除非已经打开类似vim这样的程序), 使用起来超方便, 结合了终端的便捷和GUI的可视化等优势.</p>
-<p><embed src="Linux下各用途我最认可的工具推荐/Dolphin.png?70"></p>
+<p><img style="zoom:70%;" data-src="Linux下各用途我最认可的工具推荐/Dolphin.png"></p>
 <h3 id="任务管理器">任务管理器</h3>
 <figure class="highlight sh"><table><tbody><tr><td class="code"><pre><span class="line">yay -S htop</span><br></pre></td></tr></tbody></table></figure>
 <p><strong>htop</strong>是升级版的top. 一是交互人性化很多, 支持鼠标交互, 设置页面分了页, 直观很多. 二是能以列表或者树的样式显示丰富得多的值, 比如该进程的线程数等, 还支持以关键词过滤显示的进程等功能.</p>
@@ -5027,7 +5017,7 @@
 <h3 id="心肺复苏">心肺复苏</h3>
 <h4 id="判断是否进行心肺复苏">判断是否进行心肺复苏</h4>
 <p>虽然人人都知道有个叫心肺复苏的技术能救命, 但实际上实施心肺复苏有一定的条件, 盲目进行心肺复苏反而容易出问题. 下面便是判断是否进行心肺复苏的流程.</p>
-<p><embed src="./初级急救员笔记/判断是否进行心肺复苏流程图.svg?50"></p>
+<p><img style="zoom:50%;" data-src="./初级急救员笔记/判断是否进行心肺复苏流程图.svg"></p>
 <p>❗是的<strong>对于非专业人士来说判断是否进行心肺复苏并不需要判断伤病员是否有脉搏</strong>. 另外要注意即便专业人士也只会判断是否有脉搏, 是<strong>不会判断是否心脏停跳</strong>的. (详见下文<a href="#AED的使用">AED的使用</a>)</p>
 <h5 id="确认现场环境安全">确认现场环境安全</h5>
 <p>举例: - 关闭受损汽车的发动机, 拉下手刹 - 在抢救触电者前切断电源 - 远离危险地带 (比如易塌墙) - 远离有毒有害气体 (比如开窗通风)</p>
@@ -5145,15 +5135,15 @@
 <p>将伤病员置于复苏体位是为了防止因气道堵塞导致窒息. 有两种原因可能导致气道阻塞: 机械阻塞 (大部分情况是由于伤员失去意识而失去对舌头的控制, 舌头后坠至咽后部), 液体阻塞 (胃里出来的呕吐物之类)</p>
 <p>💡打呼噜也是舌头后坠导致的</p>
 <p>目前比较受认可的复苏体位有两种: 侧卧体位和HAINES体位. 要点是要将头微微后仰, 如此保证打开气道. HAINES体位和侧卧体位的操作方法类似, 区别在于可能有脊柱损失时HAINES体位比侧卧体位更安全. (但这个体位没有侧卧体位舒服)</p>
-<p><embed src="初级急救员笔记/侧卧体位.png?50"></p>
-<p><embed src="初级急救员笔记/HAINES体位.jpg?80"></p>
+<p><img style="zoom:50%;" data-src="初级急救员笔记/侧卧体位.png"></p>
+<p><img style="zoom:80%;" data-src="初级急救员笔记/HAINES体位.jpg"></p>
 <h4 id="误食强酸强碱">误食强酸/强碱</h4>
 <p>喝下大量强酸/强碱不宜利用中和反应中和 (会大量放热) 或者催吐 (伤害食道), 应<strong>服用大量蛋白质</strong>.</p>
 <h4 id="烫伤">烫伤</h4>
 <p>烫伤后应用流动凉水冲洗. 不要弄破烫伤导致的水泡, 普通烫伤的水泡第三天起为吸收期, 7-8天恢复.</p>
 <h4 id="脑卒中">脑卒中</h4>
 <p>脑卒中, 即中风, 是由于脑部血管突然破裂或因血管阻塞导致血液不能流入大脑而引起脑组织损伤的一组疾病, 根据是血管破裂还是血管阻塞导致的分为出血性脑卒中和缺血性脑卒中. 其中缺血性脑卒中发病率更高, 出血性脑卒中死亡率更高. 面对脑卒中牢记<strong>FAST原则</strong>:</p>
-<p><embed src="初级急救员笔记/FAST原则.png?65"></p>
+<p><img style="zoom:65%;" data-src="初级急救员笔记/FAST原则.png"></p>
 <p>❗ 禁食, 水</p>
 <h4 id="淹溺">淹溺</h4>
 <p>抢救上岸后以干毛巾由远心端向近心端摩擦, 促进血液循环.</p>
@@ -5193,7 +5183,7 @@
   </entry>
   <entry>
     <title>LaTeX杂记</title>
-    <url>/zh-CN/2021/05/24/LaTeX%E6%9D%82%E8%AE%B0/</url>
+    <url>/zh-CN/2021/04/24/LaTeX%E6%9D%82%E8%AE%B0/</url>
     <content><![CDATA[<p>最近在用LaTeX写毕业论文 (学院支持甚至提供了LaTeX模板真是太幸运了), 在此记录下我写论文用到的一些语法方便以后抄.</p>
 <a id="more"></a>
 <p>为了专注一个主题, 我只想在这里记录一些我可能用到的语法 (要是你只是想写一份精美本科毕设论文的话也不用管太多). 想更系统更详细了解LaTeX的话, 我推荐下列三个详细程度递减的教程:</p>
@@ -5389,9 +5379,8 @@
   <entry>
     <title>2022年5月15日 版本控制与敏捷项目管理分享</title>
     <url>/zh-CN/2022/05/23/2022%E5%B9%B45%E6%9C%8815%E6%97%A5%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E4%B8%8E%E6%95%8F%E6%8D%B7%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%88%86%E4%BA%AB/</url>
-    <content><![CDATA[<p><span></span></p>
+    <content><![CDATA[<p>最近又在<a href="https://uestc-msc.github.io/" target="_blank" rel="noopener">电子科大微软学生俱乐部</a>做了一次分享, 这次的主题是版本控制与敏捷项目管理, 不过因为时间远超我的预期 (我以为一小时就能讲完了结果楞是讲了三个小时), 因此项目管理这部分一笔带过了.</p>
 <a id="more"></a>
-<p>最近又在<a href="https://uestc-msc.github.io/" target="_blank" rel="noopener">电子科大微软学生俱乐部</a>做了一次分享, 这次的主题是版本控制与敏捷项目管理, 不过因为时间远超我的预期 (我以为一小时就能讲完了结果楞是讲了三个小时), 因此项目管理这部分一笔带过了.</p>
 <p><a href="https://github.com/uestc-msc/VCPM-salon" target="_blank" rel="noopener">📑 文字稿</a> (包含视频中用到的所有链接)</p>
 <iframe src="//player.bilibili.com/player.html?aid=726745413&amp;bvid=BV1DS4y1B7XP&amp;cid=723097569&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true">
 </iframe>
@@ -5801,40 +5790,6 @@ D(x)=\begin{cases}
       </categories>
   </entry>
   <entry>
-    <title>几个提高效率的小技巧</title>
-    <url>/zh-CN/2019/01/18/%E5%87%A0%E4%B8%AA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<p>记录和分享一些我觉得提高了自己效率的技巧。</p>
-<a id="more"></a>
-<h1 id="虚拟桌面分割任务">虚拟桌面分割任务</h1>
-<p>Windows有一个我觉得蛮有意思的功能, <strong>虚拟桌面</strong>. 按 <code>Windows+Tab</code> 或者点击任务栏上有个长得有点奇怪的图标可以打开<strong>任务视图</strong>, 然后可以新建桌面, 管理桌面. 通过把应用界面分别放到不同桌面可以让任务栏不会堆积很多页面. 有时候同时写多个项目的时候会用浏览器搜好几个主题 (是的我就是浏览器选手) 如果都放到一起太乱太多了, 因此放到不同桌面是个非常不错的选择. 我经常将娱乐的玩意, 什么网易云, 百度云之类放一个桌面, 然后一个项目放一个桌面, 心情愉悦让效率大大提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<h1 id="更改输入法符号">更改输入法符号</h1>
-<p>有时, 比如写中文文档时, 我们需要频繁切换中英文输入法, 而代码中打符号的时候我总是忘记切换成英文输入法, 打出万恶的中文字符, 比如；什么的. 而我发现快捷键 <code>Ctrl+.</code>可以只切换符号的中英文! 也就是说你可以在中文输入法下打出英文标点 (比如我的句号是英文句号). 这样就解决了中英文标点易混淆的烦恼<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<!-- TODO -->
-<!-- chrom -->
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>技巧</category>
-      </categories>
-  </entry>
-  <entry>
     <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
     <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<div data-align="right">
@@ -5878,6 +5833,40 @@ D(x)=\begin{cases}
         <category>工具</category>
         <category>软件配置</category>
         <category>Web</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>几个提高效率的小技巧</title>
+    <url>/zh-CN/2019/01/18/%E5%87%A0%E4%B8%AA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>记录和分享一些我觉得提高了自己效率的技巧。</p>
+<a id="more"></a>
+<h1 id="虚拟桌面分割任务">虚拟桌面分割任务</h1>
+<p>Windows有一个我觉得蛮有意思的功能, <strong>虚拟桌面</strong>. 按 <code>Windows+Tab</code> 或者点击任务栏上有个长得有点奇怪的图标可以打开<strong>任务视图</strong>, 然后可以新建桌面, 管理桌面. 通过把应用界面分别放到不同桌面可以让任务栏不会堆积很多页面. 有时候同时写多个项目的时候会用浏览器搜好几个主题 (是的我就是浏览器选手) 如果都放到一起太乱太多了, 因此放到不同桌面是个非常不错的选择. 我经常将娱乐的玩意, 什么网易云, 百度云之类放一个桌面, 然后一个项目放一个桌面, 心情愉悦让效率大大提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<h1 id="更改输入法符号">更改输入法符号</h1>
+<p>有时, 比如写中文文档时, 我们需要频繁切换中英文输入法, 而代码中打符号的时候我总是忘记切换成英文输入法, 打出万恶的中文字符, 比如；什么的. 而我发现快捷键 <code>Ctrl+.</code>可以只切换符号的中英文! 也就是说你可以在中文输入法下打出英文标点 (比如我的句号是英文句号). 这样就解决了中英文标点易混淆的烦恼<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<!-- TODO -->
+<!-- chrom -->
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>技巧</category>
       </categories>
   </entry>
   <entry>
