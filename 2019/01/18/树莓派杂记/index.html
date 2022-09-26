@@ -464,7 +464,7 @@
         <p>因为我是一个记性很差并且接触东西很杂的人, 很多很基础的命令根本记不住,但每次都去查一遍很浪费时间, 于是整理一下. 这是树莓派相关的.</p>
 <a id="more"></a>
 <p>首先不得不说<a href="https://www.raspberrypi.org/documentation" target="_blank" rel="noopener">树莓派官方文档</a>实在是文档范本! 即便是初学者也能得到<strong>友好全面</strong>的帮助! 文档里包含了使用树莓派的绝大多数完整, 深入的教程, 而且方法都十分清爽 😆</p>
-<p><img alt="img" style="zoom:50%;" data-src="树莓派杂记/15826242887468.jpg"></p>
+<p><img alt="img" style="width:80%; display:block; margin-left:auto; margin-right:auto;" data-src="树莓派杂记/15826242887468.jpg"></p>
 <blockquote>
 <p>放一张树莓派4B布局图</p>
 </blockquote>
@@ -481,11 +481,11 @@
 <blockquote>
 <p>放两张好看的树莓派引脚对照表 (实际上两张都不完善)</p>
 </blockquote>
-<p><img alt="img" style="zoom:50%;" data-src="树莓派杂记/175605x4nx4ryrywnn7hyw.jpg"></p>
-<p><img alt="Raspberry Pi 4 Model B GPIO Pinout Diagram | element14 | Raspberry Pi" style="zoom:50%;" data-src="树莓派杂记/GPIO-Pi4-1587126749653.png"></p>
+<p><img alt="img" style="width:80%; display:block; margin-left:auto; margin-right:auto;" data-src="树莓派杂记/175605x4nx4ryrywnn7hyw.jpg"></p>
+<p><img alt="Raspberry Pi 4 Model B GPIO Pinout Diagram | element14 | Raspberry Pi" style="width:80%; display:block; margin-left:auto; margin-right:auto;" data-src="树莓派杂记/GPIO-Pi4-1587126749653.png"></p>
 <p>🔗 这个<a href="http://pinout.xyz/" target="_blank" rel="noopener">交互式引脚排布图</a>对每种接口的介绍很详细.</p>
 <p><del>运行<code>gpio readall</code>可以打印一张包含引脚真实输入/输出值的引脚表. 对于树莓派4需要手动操作一下更新<strong>wiringPi</strong>至版本<code>2.52</code>, 否则无法识别. 操作参考<a href="http://wiringpi.com/wiringpi-updated-to-2-52-for-the-raspberry-pi-4b/" target="_blank" rel="noopener">wiringPi updated to 2.52 for the Raspberry Pi 4B</a></del></p>
-<p><img alt="image-20200417205537326" style="zoom:80%;" data-src="树莓派杂记/image-20200417205537326.png"></p>
+<p><img alt="image-20200417205537326" style="width:80%; display:block; margin-left:auto; margin-right:auto;" data-src="树莓派杂记/image-20200417205537326.png"></p>
 <p>但<code>gpio readall</code>无法打印出每个引脚所有可用功能, 而运行<code>raspi-gpio funcs</code>可用打印所有gpio的上拉/下拉, 所有可用功能.</p>
 <p>树莓派官方文档列出了几个很好用的gpio库, 其中这个<a href="https://gpiozero.readthedocs.io/" target="_blank" rel="noopener">GPIO Zero</a>将GPIO分类封装成了一些很简洁的类, 看起来很值得一试.</p>
 <blockquote>
