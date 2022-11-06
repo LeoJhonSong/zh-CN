@@ -450,6 +450,153 @@
       </categories>
   </entry>
   <entry>
+    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
+    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<div data-align="right">
+<p>Language: <a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a> <a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a></p>
+</div>
+<a id="more"></a>
+<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
+<h2 id="遇到的问题">遇到的问题</h2>
+<h3 id="更改配置后页面未出现变化">更改配置后页面未出现变化</h3>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
+<h3 id="markdown中文换行导致的空格问题">markdown中文换行导致的空格问题</h3>
+<p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="google站点地图报错">Google站点地图报错</h3>
+<p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
+<h3 id="如何建立多级分类">如何建立多级分类</h3>
+<p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
+<h2 id="个性化配置">个性化配置</h2>
+<h3 id="多语言">多语言</h3>
+<p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a> <a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>Web</category>
+        <category>软件配置</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>几个提高效率的小技巧</title>
+    <url>/zh-CN/2019/01/18/%E5%87%A0%E4%B8%AA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<p>记录和分享一些我觉得提高了自己效率的技巧。</p>
+<a id="more"></a>
+<h1 id="虚拟桌面分割任务">虚拟桌面分割任务</h1>
+<p>Windows有一个我觉得蛮有意思的功能, <strong>虚拟桌面</strong>. 按 <code>Windows+Tab</code> 或者点击任务栏上有个长得有点奇怪的图标可以打开<strong>任务视图</strong>, 然后可以新建桌面, 管理桌面. 通过把应用界面分别放到不同桌面可以让任务栏不会堆积很多页面. 有时候同时写多个项目的时候会用浏览器搜好几个主题 (是的我就是浏览器选手) 如果都放到一起太乱太多了, 因此放到不同桌面是个非常不错的选择. 我经常将娱乐的玩意, 什么网易云, 百度云之类放一个桌面, 然后一个项目放一个桌面, 心情愉悦让效率大大提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<h1 id="更改输入法符号">更改输入法符号</h1>
+<p>有时, 比如写中文文档时, 我们需要频繁切换中英文输入法, 而代码中打符号的时候我总是忘记切换成英文输入法, 打出万恶的中文字符, 比如；什么的. 而我发现快捷键 <code>Ctrl+.</code>可以只切换符号的中英文! 也就是说你可以在中文输入法下打出英文标点 (比如我的句号是英文句号). 这样就解决了中英文标点易混淆的烦恼<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<!-- TODO -->
+<!-- chrom -->
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>技巧</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>当VSCode成为一种生活方式</title>
+    <url>/zh-CN/2019/01/07/%E5%BD%93VSCode%E6%88%90%E4%B8%BA%E4%B8%80%E7%A7%8D%E7%94%9F%E6%B4%BB%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<div data-align="right">
+<p>Language: <a href="/2018/12/25/When-VSCode-Becomes-A-Lifestyle"><kbd>English</kbd></a> <a href="/zh-CN/2019/01/07/当VSCode成为一种生活方式"><kbd>中文</kbd></a></p>
+</div>
+<!-- TODO -->
+<p>VSCode是一款很强大的编辑器, 因为我现在的电脑性能不太好, 开规模很大的那些2IDE特别慢, 我很喜欢用VSCode. 而且用VSCode在某些方面确实能获得很不错的体验<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span> 本文算是VSCode 安利和我个人的使用技巧.</p>
+<a id="more"></a>
+<h1 id="why-vscode">Why VSCode</h1>
+<h2 id="写markdown">写Markdown</h2>
+<h2 id="写前端">写前端</h2>
+<h2 id="写小段代码">写小段代码</h2>
+<h3 id="写python">写Python</h3>
+<h3 id="写cc">写C/C++</h3>
+<h2 id="写latex">写LaTeX</h2>
+<h1 id="插件安利">插件安利</h1>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 要注意的是最好不要在一个项目中使用过多插件, 这会让VSCode最开始的加载非常慢, 这是得不偿失的. 我们仍要记得VSCode只是一个编辑器. 而我们通常面临的尴尬情况是:有很多日常会用到的插件, 但并不是在每个项目中都需要用到全部的插件, 很多本工作区用不到的插件放在那里只会浪费资源. 而通过将一些插件设为<strong>禁用(工作区)</strong>可以仅在这个项目中禁用这个插件! 这样能大大缩短VSCode启动时间<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
+<h1 id="vscode-个性化设置">VSCode 个性化设置</h1>
+<h2 id="改编辑器选项卡关闭按钮位置至左边">改编辑器选项卡关闭按钮位置至左边</h2>
+<p>在这之前有一件让我很恼火的事: 我经常由于文件标题过长而选项卡关闭按钮在右侧而不能轻松地关闭一个选项卡, 因为关闭按钮没能显示出来! 而我将关闭按钮改至左侧后, <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8">😆</span>爽到!</p>
+<p>:heavy_check_mark: 更改方法: 在设置中搜索 <code>workbench.editor.tabCloseButton</code>, 设置为<strong>left</strong></p>
+<h2 id="在一定数量的等宽字符后显示垂直标尺">在一定数量的等宽字符后显示垂直标尺</h2>
+<p>VSCode有许多很好用的功能!<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8">😆</span> 这是其中之一. 你可以设置任意多个标尺来作为字数的参考线!</p>
+<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>editor.rulers</code>, 选择后在数组中填入要画线处的字数.</p>
+<h2 id="代码格式化">代码格式化</h2>
+<p>统一用 <code>Alt+shift+F</code> 作为代码格式化快捷键</p>
+<h2 id="查看键盘快捷方式">查看键盘快捷方式</h2>
+<p>如果你新安装了一个插件, 其中几个快捷键不知道为什么不好用或者效果不对, 你应当到 <strong>键盘快捷方式</strong>查看一下这个快捷键在该情况下是不是对应了不止一个命令.</p>
+<h2 id="关闭enter键接受建议">关闭Enter键接受建议</h2>
+<p>很多时候原本想换行的, 但是按Enter却接受了VSCode的沙雕建议, 令人郁闷, 通过关掉Enter接受建议能让心情好很多<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8">😏</span> 虽然习惯Enter接受建议突然改成只能用Tab接受建议会有点不适应, 但再适应一下就会觉得非常舒服了<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44f.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44f.png?v8">👏</span></p>
+<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>editor.acceptSuggestionOnEnter</code>, 改为 <strong>off</strong></p>
+<h2 id="设置git-commit成功即上传">设置git commit成功即上传</h2>
+<p>在使用个人repository时我认为commit和push是没必要分开进行的, 因为只有自己用, 在本地存着和在云端存着没什么区别. 甚至有可能发生代码忘记上传云端就把电脑格式化了因而损失大段代码的惨案<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8">😭</span> 因此git有一项选项特别适合我: commit成功即push</p>
+<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>git.postCommitCommand</code>, 设置为<strong>push</strong></p>
+<h2 id="打开用户设置的同时打开默认设置">打开用户设置的同时打开默认设置</h2>
+<p>虽然打开<strong>settings.json</strong>时同时打开默认设置的json文件应当是默认设置, 但我有一次安装 VSCode之后发现这个选项没被勾上.</p>
+<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>workbench.settings.openDefaultSettings</code>, 设置为<strong>true</strong>.</p>
+<h2 id="允许编辑器中水平滚动">允许编辑器中水平滚动</h2>
+<p>触摸板和一些鼠标 (比如我的Microsooft Arch) 是支持水平滚动界面的, 但VSCode默认禁止水平滚动, 只能滑动底下的滑条来左右滑, 但这个选项可以打开.</p>
+<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>workbench.tree.horizontalScrolling</code>, 设置为<strong>true</strong></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <categories>
+        <category>工具</category>
+        <category>技巧</category>
+        <category>软件配置</category>
+        <category>VSC</category>
+      </categories>
+  </entry>
+  <entry>
     <title>搓一个Python/C++的简易卡尔曼滤波器</title>
     <url>/zh-CN/2019/01/07/%E6%90%93%E4%B8%80%E4%B8%AAPython-C-%E7%9A%84%E7%AE%80%E6%98%93%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2%E5%99%A8/</url>
     <content><![CDATA[<div data-align="right">
@@ -1510,9 +1657,9 @@
       </script>]]></content>
       <categories>
         <category>工具</category>
+        <category>技巧</category>
         <category>软件配置</category>
         <category>VSC</category>
-        <category>技巧</category>
       </categories>
   </entry>
   <entry>
@@ -1619,8 +1766,8 @@
       </script>]]></content>
       <categories>
         <category>算法</category>
-        <category>自动控制</category>
         <category>随笔</category>
+        <category>自动控制</category>
       </categories>
   </entry>
   <entry>
@@ -2194,7 +2341,7 @@
 </ul>
 <p>之前一直听说Windows自带的记事本不要用, 会自动在文件开头加一个东西, 导致一些地方显示该文件开头有一个 "?" , 一直不知道是多了个啥, 原来是UTF-8/UTF-16编码的文件会在文件开头多一个 BOM. <strong>UTF-8与带BOM的UTF-8的区别在于带BOM的UTF-8文件开头有U+FEFF.</strong> 微软使用带BOM的UTF-8 的目的是将UTF-8与ASCII等编码方式区分开, 但这就导致了在很多时候UTF-8默认是不带BOM时文件读取有误.</p>
 <h1 id="gbk不是一种编码格式">GBK不是一种编码格式</h1>
-<p>GBK并不是一种编码格式, 而<strong>是一个字符集</strong>. 我觉得很low的是GBK的全称是 <strong>Guojia Biaozhun Kuozhan</strong> 🤦‍...low得不要不要的. 不过也可以理解, 毕竟这三个字母是从"国标扩"的首拼发展来的.</p>
+<p>GBK并不是一种编码格式, 而<strong>是一个字符集</strong>. 我觉得很low的是GBK的全称是 <strong>Guojia Biaozhun Kuozhan</strong> 🤦‍ 不过也可以理解, 毕竟这三个字母是从"国标扩"的首拼发展来的.</p>
 <h2 id="自整理的中文字符集发展史">自整理的中文字符集发展史</h2>
 <p>以下是我整理的中文字符集发展史:</p>
 <ul>
@@ -2224,7 +2371,7 @@
 <li>字符编码方案(Character Encoding Scheme)</li>
 <li>传输编码语法(Transfer Encoding Syntax)</li>
 </ul>
-<p>按我的理解: 抽象字符集是一个抽象字符的<strong>集合</strong>, 不关注字形, 更关注字意. 比如钟和鐘的抽象字符是同一个, 而编码字符集是一个<strong>映射</strong>, 规定把一个抽象字符映射到哪个<a href="https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#%E5%9F%BA%E6%9C%AC%E5%A4%9A%E6%96%87%E7%A7%8D%E5%B9%B3%E9%9D%A2" target="_blank" rel="noopener">字符平面</a>, 哪个<strong>码点</strong>. 但这并不是一一映射, 为了兼容或者有的字 (比如CJK字) 可能有多个变体. 字符编码方式又称为"storage format", 我猜这是因为这一层<strong>将码点编码成码元</strong>(这里的编码方式就是<strong>U</strong>nicode <strong>T</strong>ransformation <strong>F</strong>ormat, 包括UTF-8, UTF-16, UTF-32等方法), 而码元正是每次从文件中读取到的字符的格式.</p>
+<p>按我的理解: 抽象字符集是一个抽象字符的<strong>集合</strong>, 不关注字形, 更关注字意. 比如钟和鐘的抽象字符是同一个, 而编码字符集是一个<strong>映射</strong>, 规定把一个抽象字符映射到哪个<a href="https://zh.wikipedia.org/wiki/Unicode%E5%AD%97%E7%AC%A6%E5%B9%B3%E9%9D%A2%E6%98%A0%E5%B0%84#%E5%9F%BA%E6%9C%AC%E5%A4%9A%E6%96%87%E7%A7%8D%E5%B9%B3%E9%9D%A2" target="_blank" rel="noopener">字符平面</a>, 哪个<strong>码点</strong>. 但这并不是一一映射, 为了兼容或者有的字 (比如CJK字) 可能有多个变体. 字符编码方式又称为"storage format", 我猜这是因为这一层<strong>将码点编码成码元</strong>(这里的编码方式就是<strong>U</strong>nicode <strong>T</strong>ransformation <strong>F</strong>ormat, 包括UTF-8, UTF-16, UTF-32等方法, 也有GBK, Big5等), 而码元正是每次从文件中读取到的字符的格式.</p>
 <p>Unicode编码模型详细阐述可以参考<a href="https://zhuanlan.zhihu.com/p/27026033" target="_blank" rel="noopener">这里</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -3271,457 +3418,9 @@
           });
       </script>]]></content>
       <categories>
-        <category>操作系统</category>
         <category>技巧</category>
+        <category>操作系统</category>
         <category>Linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Markdown安利&amp;Typora简要使用教程</title>
-    <url>/zh-CN/2019/09/23/Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<p>在此我来安利一下<strong>Markdown</strong>和<strong>Typora</strong>.</p>
-<a id="more"></a>
-<h2 id="markdown安利">Markdown安利</h2>
-<h3 id="什么是markdown">什么是Markdown</h3>
-<p>Markdown是一门语言, 一门轻量级的<strong>标记语言</strong> (Markup Language). 有没有觉得这个词很眼熟? 是的, HTML全称<strong>HyperText Markup Language</strong>. Markdown和HTML同属于Markup Language(Markdown是一门Markup Language是Markdown作者的恶趣味), 它们与C, Python等编程语言并不是一类东西. <strong>Markup</strong>这个词源自<strong>印刷业</strong>, 指的是在电子排版技术出现之前人们对印刷物内容的排版进行标记的方式. 比如一段文字应当是<strong>粗体</strong>, <em>斜体</em>, <u>有下划线</u>还是<del>有删除线</del>, 使用什么字体, 字体大小, 左页边距应当是多少, 一张图片该放在哪里, 多大等等...</p>
-<p>💡 也就是说以前的人们在将原稿最终印刷出来前想知道会印成什么样基本靠脑补, 而现在我们称这个由标记语言文件得到最终效果的过程为<strong>渲染</strong> (render).</p>
-<p>而之所以我们说Markdown是一门<strong>轻量级</strong>的标记语言是因为在Markdown的语法比HTML等标记语言要简洁太多😆</p>
-<ul>
-<li>一</li>
-<li>二</li>
-</ul>
-<p>比如👆 上面这个列表的Markdown实现代码为</p>
-<figure class="highlight markdown"><table><tbody><tr><td class="code"><pre><span class="line"><span class="bullet">- </span>一</span><br><span class="line"><span class="bullet">- </span>二</span><br></pre></td></tr></tbody></table></figure>
-<p>而HTML实现代码为</p>
-<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>一<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>二<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
-<p>但Markdown有时候也会让人觉得太过轻量级以至于缺少一些语法, 比如这个<u>下划线</u> 其实是用HTML标签实现的. 好在你也可以在Markdown文件中写HTML, 如今的Markdown渲染工具基本都支持这个功能.</p>
-<p>也是由于上面这个原因, 在Markdown作者们推出的 <a href="https://commonmark.org/" target="_blank" rel="noopener"><strong>CommonMark</strong></a>的基础上有了添加了更多语法的各种 Markdown超集, 比如GitHub发布的<a href="https://github.github.com/gfm/" target="_blank" rel="noopener"><strong>GitHub Flavored Markdown</strong></a>.</p>
-<h3 id="markdown应用广泛吗">Markdown应用广泛吗</h3>
-<p>实际上如今Markdown的使用相当广泛, 只要是支持所谓<strong>富文本</strong>的社区/论坛等, 比如说 <strong>GitHub</strong>, <strong>知乎</strong>, <strong>Stack OverFlow</strong>, <strong>CSDN博客</strong>, <strong>Wikipedia</strong>都是使用的 Markdown. 另外因为Markdown和HTML的转换十分容易, 目前大多个人博客都是编辑Markdown 格式的文章再生成HTML页面, 比如我正在码的也是Markdown文件.</p>
-<p>再有就是目前大多数项目根目录的<strong>README</strong>文档都是Markdown格式, 而在线查看项目代码时 GitHub等代码托管网站都会自动将项目中所有Markdown文件渲染出来.</p>
-<h3 id="为什么我们使用markdown">为什么我们使用Markdown</h3>
-<p>以下是网上的一些总结和我个人的体会.</p>
-<ol type="1">
-<li>Markdown的设计理念是易读易写, 因此<strong>即便不渲染Markdown文件的可读性也很高</strong>, 这让没有Markdown渲染工具的人也能很好地阅读, 而如果要脑力渲染HTML, 一会就眼晕了.</li>
-<li>这种格式能让文档很方便的排列为很简洁好看的排版, <strong>能让人专注于书写内容</strong>, 不必费神排版</li>
-<li>支持代码按语言的语法高亮</li>
-<li><strong>能很方便的进行版本管理</strong>. 在要进行版本管理的项目中的Word文件简直是毒瘤, 不操作一番的话版本管理工具比如git并不能识别word文件具体变化, 而使用纯文本的 Markdown能让每次的更改被体现出来!</li>
-<li><strong>占用空间小</strong> (可以想一想一个word文档的大小)</li>
-<li><strong>能很容易地转为多种格式</strong>. Markdown和HTML是兄弟关系,因此Markdown文件能轻松转换成 <strong>HTML</strong>文件格式以及HTML文件能轻易转换为的格式(<strong>PDF</strong>, <strong>jpg</strong>, <strong>Epub</strong>等) 是显而易见的. 通过一些额外工具(比如<a href="https://pandoc.org/" target="_blank" rel="noopener">Pandoc</a>)的帮助, Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</strong>, <strong>Word</strong>, <strong>OpenOffice</strong>, <strong>Media Wiki</strong>等.</li>
-<li>能方便的插入图片, 表格, 超链接等</li>
-<li>兼容HTML语法, 因此我们想让页面显示成什么样就可以显示成什么样</li>
-<li>可以兼容LaTeX语法, 可以很方便的显示复杂公式</li>
-<li>还可以兼容<strong>Graphviz</strong>, <strong>Mermaid</strong>等流程图工具等等...</li>
-</ol>
-<h3 id="markdown简明语法">Markdown简明语法</h3>
-<ul>
-<li><p>一个标题以几个<code>#</code>开头, 空格后是文字. 以#的个数来表示第几级标题</p></li>
-<li><p>以 - 开头接一个空格开始一个子弹列表, 以 1. 接空格开始一个有序列表</p></li>
-<li><p>在要加粗的词两侧加 ** 来加粗. 如果要打出 ** 等特殊字符要在星号前加 &nbsp;来转义</p></li>
-<li><p>在<strong>行内代码</strong>两侧加 ` . 注意这不是单引号, 在我键盘上在<kbd>Esc</kbd> 键下面. 当然这个不只是用来放行内代码的, 也可以放别的.</p></li>
-<li><p>在代码块上下行加 ``` , 第一个```后写代码的语言.</p></li>
-<li><p>在Typora这个软件里插入图片很容易, 直接<code>Ctrl V</code>粘贴就好了, 或者右键, 里面有插入图片的按键. 插入图片的markdown语法是</p>
-<figure class="highlight markdown"><table><tbody><tr><td class="code"><pre><span class="line">![<span class="string">当图片失效时此处显示的文字</span>](<span class="link">图片地址</span>)</span><br></pre></td></tr></tbody></table></figure></li>
-<li><p>插入超链接的语法和插入图片的语法很像, 此处举例说明. 这是点击进入百度的链接👉 <a href="https://www.baidu.com" target="_blank" rel="noopener">百度</a></p>
-<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">[百度](https://www.baidu.com)</span><br></pre></td></tr></tbody></table></figure></li>
-<li><p>表格用<code>|</code>分隔每个元素, 第一行是各列的名字, 第二行的 <code>|</code>间是<code>-</code>, 分隔列名和值. 以下是一个例子</p></li>
-</ul>
-<table>
-<thead>
-<tr class="header">
-<th>第一列</th>
-<th>第二列</th>
-<th>第三列</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>a</td>
-<td>b</td>
-<td>c</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>更详细的语法说明在Typora内可以查看Typora自带的Markdown语法参考手册</li>
-</ul>
-<figure>
-<img alt="1569274096465" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569274096465.png"><figcaption>1569274096465</figcaption>
-</figure>
-<h2 id="typora安利">Typora安利</h2>
-<p>那么用什么软件来写Markdown呢? 认准<a href="https://typora.io/#download" target="_blank" rel="noopener"><strong>Typora</strong></a>!</p>
-<p>Typora的优点多到我不想写 (不其实是单纯不想写了), 最突出的优点我觉得是它的<strong>颜值</strong>, 以及<strong>能直接将图片粘贴到文件中</strong>.</p>
-<h3 id="typora快速入门">Typora快速入门</h3>
-<h4 id="主题">主题</h4>
-<p>在<strong>Themes</strong>一栏可以切换软件的主题</p>
-<figure>
-<img alt="1569271897771" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569271897771.png"><figcaption>1569271897771</figcaption>
-</figure>
-<h4 id="大纲视图">大纲视图</h4>
-<p>可以按这个<strong>OutLine</strong>或者按左下角的小圆圈触发大纲视图, 点击大纲视图里的标题可以快速跳转.</p>
-<figure>
-<img alt="1569272130639" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569272130639.png"><figcaption>1569272130639</figcaption>
-</figure>
-<h4 id="源代码视图">源代码视图</h4>
-<p>按左下角这个<kbd>&lt;/&gt;</kbd>可以切换到源代码视图</p>
-<figure>
-<img alt="1569272534032" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569272534032.png"><figcaption>1569272534032</figcaption>
-</figure>
-<h4 id="拼写检查">拼写检查</h4>
-<p>右下角这里可以选择进行拼写检查的语言或者关闭这个功能.</p>
-<figure>
-<img alt="1569272445049" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569272445049.png"><figcaption>1569272445049</figcaption>
-</figure>
-<h4 id="更多设置">更多设置</h4>
-<p>按这个<strong>Preference</strong>可以进行更多偏好设置.</p>
-<figure>
-<img alt="1569272312746" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569272312746.png"><figcaption>1569272312746</figcaption>
-</figure>
-<p>以下是我的推荐设置</p>
-<p><img data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/TIM%E5%9B%BE%E7%89%8720190924051240.png"></p>
-<figure>
-<img alt="image-20200227124912356" data-src="Markdown安利-Typora简要使用教程/image-20200227124912356.png"><figcaption>image-20200227124912356</figcaption>
-</figure>
-<p>勾选<strong>对网络图片应用上述规则</strong>那直接粘贴从浏览器复制的图片时Typora会自动将该图片下载到这个指定文件夹.</p>
-<p>忽略单个换行让Typora遵循GFM: 单个换行不渲染为换行, 两个换行才渲染为换行</p>
-<p><img data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/TIM%E5%9B%BE%E7%89%8720190924051204.png"></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>工具</category>
-        <category>杂记</category>
-        <category>语言</category>
-        <category>Markdown</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Python基础语法</title>
-    <url>/zh-CN/2019/09/12/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
-    <content><![CDATA[<p>前阵子带学弟学妹们入门Python时自己整理的一些觉得初学者需要知道的Python知识. 我本身既不是计算机专业的也说不出自己对Python还是挺了解的这样的话, 说实话心里还是有一点忐忑. 如有错误欢迎指出🙇</p>
-<a id="more"></a>
-<h2 id="python解释器">Python解释器</h2>
-<h2 id="实现">实现</h2>
-<table>
-<thead>
-<tr class="header">
-<th>版本</th>
-<th>实现方式</th>
-<th>特点</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>CPython</td>
-<td>C语言写的Python</td>
-<td>速度快</td>
-</tr>
-<tr class="even">
-<td>JPython</td>
-<td>由Java编写的Python</td>
-<td>可以直接调用Java的各种函数库</td>
-</tr>
-<tr class="odd">
-<td>PyPy</td>
-<td>由rPython编写的Python</td>
-<td>更灵活, 易于使用和试验</td>
-</tr>
-<tr class="even">
-<td>IronPython</td>
-<td>以. NET和Mono实现的Python</td>
-<td>面向NET和ECMA CLI的Python实现</td>
-</tr>
-<tr class="odd">
-<td>ZhPy</td>
-<td>只是把Python翻译了一遍而已</td>
-<td>又称中蟒, 可以完全用中文编程. 但中蟒目前已经停止更新了.</td>
-</tr>
-</tbody>
-</table>
-<p>我们通常所说的Python是<strong>CPython</strong>, 👇Python官方页面提供的是CPython</p>
-<figure>
-<img alt="1565579206457" data-src="Python基础语法/1565579206457.png"><figcaption>1565579206457</figcaption>
-</figure>
-<h2 id="版本">版本</h2>
-<p>Python这种语言有<strong>Python2</strong>和<strong>Python3</strong>两个版本, 两者语法有少许不同, 比如Python2和Python3中<code>print()</code>的使用有区别, Python2和Python3中<code>input()</code>接受的数据类型有区别等.</p>
-<p>最新的Python2对大部分Python2, 3不同的语法做了兼容, 而在Python3对Python2的语法兼容性很差, 但是提供了一个叫<a href="https://docs.python.org/zh-cn/3.7/library/2to3.html" target="_blank" rel="noopener">2to3</a>的脚本帮助我们将Python2的程序转换为Python3的程序.</p>
-<h2 id="哲学">哲学</h2>
-<p><strong>万物皆对象</strong></p>
-<p>python在设计初始是一种<strong>面向对象</strong>语言.</p>
-<p>💡 面向对象是一种<strong>编程范式</strong></p>
-<h2 id="数据类型">数据类型</h2>
-<p>Python是一门<strong>动态类型</strong>语言</p>
-<h3 id="类型注解">类型注解</h3>
-<p>在Python3中有了一个新特性: <strong>类型注解</strong></p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x:int, y:int)</span> -&gt; int:</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></tbody></table></figure>
-<p>正如其名, 注解只是标注一下, 有了类型注解的程序和没有类型注解的程序运行起来没有区别, 但它能帮助程序员更好的发现问题, 也能让IDE提供更准确的代码补全和语法检查.</p>
-<h3 id="类型检查">类型检查</h3>
-<p>有时候为了保证程序的严谨性我们会检查一下变量是不是我们设想它应该是的类型, 这个时候我们用 <code>isinstance()</code></p>
-<p>之所以不使用 <code>type()</code> 是因为 <code>type()</code> 不会认为子类是一种父类类型, 不考虑继承关系. 举例说明:</p>
-<figure>
-<img alt="1571027624789" data-src="Python基础语法/1571027624789.png"><figcaption>1571027624789</figcaption>
-</figure>
-<h3 id="不可变对象">不可变对象</h3>
-<p>❗️ <strong>我们可以给不可变对象重新赋值, 但其内存地址会改变</strong>. 以下是体现给可变对象/不可变对象重新赋值时它们的内存地址变化的例子.</p>
-<p>💡 <code>id()</code>能获取一个变量的内存地址</p>
-<figure>
-<img alt="1571022411897" data-src="Python基础语法/1571022411897.png"><figcaption>1571022411897</figcaption>
-</figure>
-<h4 id="number-数字">Number (数字)</h4>
-<ul>
-<li>int (整数)</li>
-<li>long (长整数)</li>
-<li>float (浮点数, 即小数)</li>
-<li>bool (布尔值, 即 <code>True</code> 和 <code>False</code> )</li>
-</ul>
-<p>Python中的Number我认为是比较特殊的, 因为它<strong>在内存中占用的空间大小是变动</strong>的.(在CPython中是如此, 但不知道为什么在IronPython下不是)</p>
-<p>💡 用<code>sys.getsizeof()</code>可以知道一个变量的占用的内存大小</p>
-<figure>
-<img alt="1571022628668" data-src="Python基础语法/1571022628668.png"><figcaption>1571022628668</figcaption>
-</figure>
-<h4 id="string-字符串">String (字符串)</h4>
-<h4 id="tuple-元组">Tuple (元组)</h4>
-<h3 id="可变对象">可变对象</h3>
-<p>可变对象可能带来的危险举例:</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myfunc</span><span class="params">(l = [])</span>:</span></span><br><span class="line">    l.append(<span class="string">'add'</span>)</span><br><span class="line">    print(l)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">myfunc([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">myfunc([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">myfunc()</span><br></pre></td></tr></tbody></table></figure>
-<h4 id="list-列表">List (列表)</h4>
-<p>💡 <strong>string</strong>和<strong>tuple</strong>都是特殊的<strong>list</strong></p>
-<h4 id="set-集合">Set (集合)</h4>
-<h4 id="dictionary-字典">Dictionary (字典)</h4>
-<p>👇 在网上偷的<strong>string, tuple, list, dictionary的突出区别比较</strong>.</p>
-<table>
-<thead>
-<tr class="header">
-<th>名字</th>
-<th>是否可变</th>
-<th>是否可迭代</th>
-<th>是否可切片</th>
-<th>访问方式</th>
-<th>写法举例</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>string</td>
-<td>no</td>
-<td>yes</td>
-<td>yes</td>
-<td>下标索引</td>
-<td>“abcd”</td>
-</tr>
-<tr class="even">
-<td>tuple</td>
-<td>no</td>
-<td>yes</td>
-<td>yes</td>
-<td>下标索引</td>
-<td>(‘a’,‘b’,‘c’,‘d’,‘abcd’)</td>
-</tr>
-<tr class="odd">
-<td>list</td>
-<td>yes</td>
-<td>yes</td>
-<td>yes</td>
-<td>下标索引</td>
-<td>[‘a’,‘b’,‘c’,‘d’,‘abcd’]</td>
-</tr>
-<tr class="even">
-<td>dictionary</td>
-<td>yes</td>
-<td>yes</td>
-<td>no</td>
-<td>关键字索引</td>
-<td>{‘1’:‘a’,‘2’:‘b’}</td>
-</tr>
-</tbody>
-</table>
-<h3 id="python中有关对象需要注意的问题">Python中有关对象需要注意的问题</h3>
-<p>python中向函数传递参数只是<strong>引用传递</strong>: 如果参数为可变对象, 在函数中变化会影响引用的这个变量, 而不可变对象不会. 在向类传递参数时也是如此.</p>
-<figure>
-<img alt="1571033275137" data-src="Python基础语法/1571033275137.png"><figcaption>1571033275137</figcaption>
-</figure>
-<h2 id="基础语法">基础语法</h2>
-<h3 id="python内置帮助文档">Python内置帮助文档</h3>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">help()</span><br></pre></td></tr></tbody></table></figure>
-<p>调用<code>help()</code>后就会进入Python内置帮助文档, 然后输入想查的类名/函数名/属性名就可以看到对应的帮助文档.</p>
-<p>:bulb: 要注意输入的只有名字, 不带括号什么的, 以及要看一个包里的函数文档时需要先引用该包. 比如如果想查看<strong>time.time()</strong>的帮助文档, 首先<code>import time</code>, 然后输入<code>help()</code>进入帮助文档, 然后输入<code>time.time</code>, 就会看到<strong>time.time()</strong>函数的帮助文档. 按一次<kbd>q</kbd>退出<strong>time.time()</strong>的文档, 再按一次<kbd>q</kbd>退出帮助文档返回交互式Python界面.</p>
-<h3 id="注释">注释</h3>
-<p>在Python中 <code>#</code> 开头的为注释</p>
-<h4 id="特殊注释">特殊注释</h4>
-<h5 id="shebang">shebang</h5>
-<p>shenbang (hashbang) 指的是以 <code>#!</code> 开头的语句. Linux操作系统的程序加载器会分析 Shebang 后的内容，将这些内容作为解释器指令，并调用该指令，并将载有 Shebang 的文件路径作为该解释器的参数. 因为在很多语言中以 <code>#</code> 开头的是注释, 所以不会影响程序.</p>
-<h5 id="编码格式">编码格式</h5>
-<p>有的python文件是这么开头的:</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br></pre></td></tr></tbody></table></figure>
-<p>第一行是给<strong>Linux系统</strong>的程序加载器看的, 因此在Windows下不需要这句, 第二句是指定文件的编码格式为<strong>UTF-8</strong>, 避免文件中的<strong>非ASCII字符</strong>被识别为乱码.</p>
-<h5 id="docstring">docstring</h5>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(int x, int y)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    这里是docstring, 是特殊的注释, 能让IDE, 编辑器在鼠标移动到有docstring的函数, 类上时显示这段docstring</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">a = func(i)</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="条件语句及循环">条件语句及循环</h3>
-<h4 id="if-elif-else">if, elif, else</h4>
-<p>下面是按a &lt; 10, 10 &lt; a &lt; 20, 20 &lt; a &lt; 30, a &gt; 30分类的举例.</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> a &lt; <span class="number">10</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">elif</span> a &lt; <span class="number">20</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">elif</span> a &lt; <span class="number">30</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></tbody></table></figure>
-<p>另外有一种one liner会很喜欢的用法:</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">a = <span class="number">2</span> <span class="keyword">if</span> <span class="number">2</span> &gt; <span class="number">3</span> <span class="keyword">else</span> <span class="number">4</span></span><br></pre></td></tr></tbody></table></figure>
-<p>上面这句与下面这句等效.</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="number">2</span> &gt; <span class="number">3</span>:</span><br><span class="line">    a = <span class="number">2</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    a = <span class="number">4</span></span><br></pre></td></tr></tbody></table></figure>
-<h4 id="生成器-迭代器range">生成器 ·迭代器·range</h4>
-<p>语法类似于<a href="#切片">切片</a></p>
-<h3 id="推导式">推导式</h3>
-<p><strong>推导式comprehensions</strong>（又称解析式）, 是Python的一种独有特性.<strong>推导式是可以从一个数据序列构建另一个新的数据序列的结构体</strong>. 换句话说能从一组数据中求出满足条件的新数据, 比如a, b两个等长列表中都为偶数的项的乘积. 共有三种推导式, 在Python2和3 中都有支持:</p>
-<ul>
-<li>列表推导式</li>
-<li>字典推导式</li>
-<li>集合推导式</li>
-</ul>
-<p>列表推导式的语法:</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">l = [output_expression <span class="keyword">for</span> out_exp <span class="keyword">in</span> input_list <span class="keyword">if</span> expression]</span><br></pre></td></tr></tbody></table></figure>
-<p>使用举例:</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># 1</span></span><br><span class="line">a = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">30</span>) <span class="keyword">if</span> i % <span class="number">3</span> <span class="keyword">is</span> <span class="number">0</span>]</span><br><span class="line"><span class="comment"># 2</span></span><br><span class="line">names = [<span class="string">'Bob'</span>,<span class="string">'Tom'</span>,<span class="string">'alice'</span>,<span class="string">'Jerry'</span>,<span class="string">'Wendy'</span>,<span class="string">'Smith'</span>]</span><br><span class="line">LONG_NAMES = [name.upper() <span class="keyword">for</span> name <span class="keyword">in</span> names <span class="keyword">if</span> len(name)&gt;<span class="number">3</span>]</span><br><span class="line"><span class="comment"># 3</span></span><br><span class="line">a = [x*y <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">5</span>) <span class="keyword">if</span> x &gt; <span class="number">2</span> <span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">4</span>) <span class="keyword">if</span> y &lt; <span class="number">3</span>]</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="切片">切片</h3>
-<p>因为tuple, string其实都是特殊的列表, 所以列表, 字符串, 元组都可以进行切片.</p>
-<p>语法: l_sliced = a[begin : end : step]</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">l = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line">l_sliced = l[<span class="number">1</span>:<span class="number">5</span>:<span class="number">2</span>]</span><br></pre></td></tr></tbody></table></figure>
-<p>在没有<strong>numpy</strong>库的情况下<strong>多维切片</strong>是通过推导式实现的:</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">a = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]]</span><br><span class="line">b = [a[i][:<span class="number">-1</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">3</span>)]</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="函数">函数</h3>
-<p>💡 要注意函数名后的 <code>()</code> 也是一种运算符, 称为<strong>函数调用运算符</strong>. 如果调用函数的时候不加()只会创建一个该函数的对象而不会调用它.</p>
-<h4 id="定义函数">定义函数</h4>
-<p>python中以 <code>def</code> 关键字定义函数, 结构如下:</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> 函数名<span class="params">(参数列表)</span>:</span></span><br><span class="line">    函数主体</span><br></pre></td></tr></tbody></table></figure>
-<p>python中的函数可以有返回值也可以没有返回值</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func2</span><span class="params">(l)</span>:</span></span><br><span class="line">    l.appeend(<span class="string">'add'</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func3</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="用字典来实现case">用字典来实现case</h3>
-<p>示例:</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print1</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'111'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print2</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'222'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printDefault</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'default'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">switch = {</span><br><span class="line">    <span class="number">1</span>: print1,</span><br><span class="line">    <span class="number">2</span>: print2,</span><br><span class="line">    <span class="string">'default'</span>: printDefault</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">case = int(input(<span class="string">'input: '</span>))</span><br><span class="line">switch[case <span class="keyword">if</span> (case <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">3</span>)) <span class="keyword">else</span> <span class="string">'default'</span>]()</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="编码格式-1">编码格式</h3>
-<p>字符串经过<strong>编码（encode）</strong> 就成为了一堆数据, 反过来, 数据经过<strong>解码（decode）</strong> 就变回我们认识的字符串.</p>
-<figure>
-<img alt="img" data-src="Python基础语法/encode_decode.png"><figcaption>img</figcaption>
-</figure>
-<p>指定文件编码格式为 <code>utf-8</code></p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br></pre></td></tr></tbody></table></figure>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png?v8">💡</span> 如果不指定文件编码格式在有的Python2版本中无法识别中文, 即便是中文注释也会报错.</p>
-<figure>
-<img alt="Unicode Decoding and Encoding" data-src="Python基础语法/Unicode_Decoding_and_Encoding.png"><figcaption>Unicode Decoding and Encoding</figcaption>
-</figure>
-<p>Linux系统默认编码格式是<strong>UTF-8</strong>, 系统语言是简体中文时Windows10的编码格式是<strong>GB2312</strong> (也称GBK, 国标扩展, cp936)</p>
-<p>在python中 <code>str</code> 类型数据都以Unicode码点格式储存, 因此直接打印字符串会看到字符为'开头</p>
-<h3 id="基本读写">基本读写</h3>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">f = open(<span class="string">"test.txt"</span>, <span class="string">"r+"</span>)</span><br><span class="line">f.read()</span><br><span class="line">f.write(<span class="string">"text"</span>)</span><br><span class="line">f.close()</span><br></pre></td></tr></tbody></table></figure>
-<p>或者</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">"test.txt"</span>, <span class="string">"r+"</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.read()</span><br><span class="line">    f.write(<span class="string">"test"</span>)</span><br></pre></td></tr></tbody></table></figure>
-<p>💡 <strong>使用with语句打开文件是最推荐的方式</strong>, 原因见<a href="https://www.cnblogs.com/ymjyqsx/p/6554817.html" target="_blank" rel="noopener">这里</a></p>
-<p>下表是open时要指定的读写模式的比较.</p>
-<table>
-<thead>
-<tr class="header">
-<th>读写模式</th>
-<th>是否可读</th>
-<th>是否可写</th>
-<th>文件指针位置</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>r</td>
-<td>是</td>
-<td>否</td>
-<td>文件开头</td>
-<td>读取文件, 如果文件不存在则报错</td>
-</tr>
-<tr class="even">
-<td>r+</td>
-<td>是</td>
-<td>是</td>
-<td>文件开头</td>
-<td>读取并写入文件, 如果文件不存在则报错</td>
-</tr>
-<tr class="odd">
-<td>w</td>
-<td>否</td>
-<td>是</td>
-<td>文件开头</td>
-<td>覆写原文件, 如果文件不存在则创建</td>
-</tr>
-<tr class="even">
-<td>w+</td>
-<td>是</td>
-<td>是</td>
-<td>文件开头</td>
-<td>读取并覆盖写原内容, 如果文件不存在则创建</td>
-</tr>
-<tr class="odd">
-<td>a</td>
-<td>否</td>
-<td>是</td>
-<td>文件末尾</td>
-<td>追加文件内容, 如果文件不存在则报错</td>
-</tr>
-<tr class="even">
-<td>a+</td>
-<td>是</td>
-<td>是</td>
-<td>文件末尾</td>
-<td>追加文件内容并且可读, 如果文件不存在则报错</td>
-</tr>
-</tbody>
-</table>
-<p>另外还有<code>b</code>模式, 以二进制打开, 允许我们对二进制文件进行编辑, <code>b</code>可以与其他模式组合使用, 比如 <code>rb</code></p>
-<p>🔗 <a href="https://www.cnblogs.com/nulige/p/6128948.html" target="_blank" rel="noopener">python基础-文件读写'r' 和 'rb'区别</a></p>
-<h2 id="脚本和普通程序的区别">脚本和普通程序的区别</h2>
-<p>脚本这个词来源于戏剧, 能用于舞台演出的戏剧文本就称为<strong>脚本</strong>. 在编程中的脚本是解释执行的程序, 通常只用来做简单的处理, 做自动化处理</p>
-<h2 id="解释器的使用技巧">解释器的使用技巧</h2>
-<p>在解释器中交互式编程时要注意缩进不要错</p>
-<h3 id="清屏">清屏</h3>
-<p>python解释器本身没有清屏命令, 只能通过调用命令行的清屏命令来达到效果</p>
-<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="comment"># Windows下</span></span><br><span class="line">os.system(<span class="string">'cls'</span>)</span><br><span class="line"><span class="comment"># Linux下</span></span><br><span class="line">os.system(<span class="string">'clear'</span>)</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="代码风格">代码风格</h2>
-<p>我推荐遵从<a href="https://www.python.org/dev/peps/pep-0008/" target="_blank" rel="noopener">PEP8</a>. 当然一行一行看完这个规范不是一件令人愉快的事, 最简单的时刻遵守PEP8的方式是在代码工具里安一个<strong>代码风格检查器</strong> (linter). 检查你的代码是否符合PEP8的linter是<a href="http://pycodestyle.pycqa.org/en/latest/intro.html" target="_blank" rel="noopener">pycodestyle</a></p>
-<p>💡 在VSC中可以在设置中搜索<strong>python.linting.pycodestyle</strong>, 勾选<strong>Pycodestyle Enabled</strong>, 这样在VSC中编写Python代码时使用的linter就是pycodestyle啦</p>
-<figure>
-<img alt="1571142193232" data-src="Python基础语法/1571142193232.png"><figcaption>1571142193232</figcaption>
-</figure>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>杂记</category>
-        <category>语言</category>
-        <category>Python</category>
       </categories>
   </entry>
   <entry>
@@ -3838,8 +3537,8 @@
           });
       </script>]]></content>
       <categories>
-        <category>操作系统</category>
         <category>技巧</category>
+        <category>操作系统</category>
         <category>Linux</category>
       </categories>
   </entry>
@@ -5414,7 +5113,7 @@
   </entry>
   <entry>
     <title>微积分课程笔记</title>
-    <url>/zh-CN/2022/10/22/%E5%BE%AE%E7%A7%AF%E5%88%86%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/</url>
+    <url>/zh-CN/2022/11/06/%E5%BE%AE%E7%A7%AF%E5%88%86%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>前前后后数理基础课也学了好几遍了, 但这些内容不常用就容易忘记. 虽然每次学都会记手写的电子笔记, 但这次我打算记一份能长期维护的印刷体电子笔记, 因为大概不会再需要一板一眼地把这几门最基础的课学一遍了. 我的想法是记重要概念, 术语, 重要思路和技巧, 以及一些易错点, 这样当我忘记内容时能很快知道我需要的是什么, 然后具体推导和习题再看教材就好 💪</p>
 <a id="more"></a>
 <div class="note success">
@@ -5775,26 +5474,114 @@ D(x)=\begin{cases}
       </categories>
   </entry>
   <entry>
-    <title>关于我的NexT主题博客的个性化配置以及遇到的一些问题</title>
-    <url>/zh-CN/2019/01/07/%E5%85%B3%E4%BA%8E%E6%88%91%E7%9A%84NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9A%84%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<div data-align="right">
-<p>Language: <a href="/2018/12/24/About-My-Custom-Settings-of-My-Next-Theme-Blog-and-Problem-Killing"><kbd>English</kbd></a> <a href="/zh-CN/2019/01/07/关于我的NexT主题博客的个性化配置以及遇到的一些问题"><kbd>中文</kbd></a></p>
-</div>
+    <title>Markdown安利&amp;Typora简要使用教程</title>
+    <url>/zh-CN/2019/09/23/Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<p>在此我来安利一下<strong>Markdown</strong>和<strong>Typora</strong>.</p>
 <a id="more"></a>
-<p><span style="color:red"><strong>更多配置请见英文页面</strong></span></p>
-<h2 id="遇到的问题">遇到的问题</h2>
-<h3 id="更改配置后页面未出现变化">更改配置后页面未出现变化</h3>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity" target="_blank" rel="noopener">priority</a></p>
-<h3 id="markdown中文换行导致的空格问题">markdown中文换行导致的空格问题</h3>
-<p>请看<a href="https://codehut.me/posts/Y3Vyc29yOjg=" target="_blank" rel="noopener">这里</a>，它完美解决了问题。我在<strong>themes/next/scripts/</strong>下放了一个<code>fuck_chinese_space.js</code>,里面正是上面这位老兄博文里写的：</p>
-<figure class="highlight js"><table><tbody><tr><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">'after_render:html'</span>, fix);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fix</span>(<span class="params">str</span>) </span>{ <span class="keyword">return</span> str.replace(<span class="regexp">/([¡«·»¿;·՚-՟։׀׃׆׳-״؉-؊،-؍؛؞-؟٪-٭۔܀-܍߷-߹।-॥॰෴๏๚-๛༄-༒྅࿐-࿔၊-၏჻፡-፨᙭-᙮᛫-᛭᜵-᜶។-៖៘-៚᠀-᠅᠇-᠊᥄-᥅᧞-᧟᨞-᨟᭚-᭠᰻-᰿᱾-᱿\u2000-\u206e⳹-⳼⳾-⳿⸀-\u2e7e⺀-\u2efe\u3000-〾・㇀-\u31ee㈀-㋾㌀-㏾㐀-\u4dbe一-\u9ffe꘍-꘏꙳꙾꡴-꡷꣎-꣏꤮-꤯꥟꩜-꩟豈-\ufafe︐-︖︙︰-﹎﹐-﹒﹔-﹗﹟-﹡﹨﹪-﹫！-＃％-＇＊，．-／：-；？-＠＼｡､-･]|[\ud840-\ud868\ud86a-\ud86c][\udc00-\udfff]|\ud800[\udd00-\udd01\udf9f\udfd0]|\ud802[\udd1f\udd3f\ude50-\ude58]|\ud809[\udc00-\udc7e]|\ud869[\udc00-\udede\udf00-\udfff]|\ud86d[\udc00-\udf3e\udf40-\udfff]|\ud86e[\udc00-\udc1e]|\ud87e[\udc00-\ude1e])\n\s*/g</span>, <span class="string">'$1'</span>); }</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="google站点地图报错">Google站点地图报错</h3>
-<p><a href="https://alanlee.fun/2017/12/30/google-sitemap/" target="_blank" rel="noopener">这里</a></p>
-<h3 id="如何建立多级分类">如何建立多级分类</h3>
-<p>参见<a href="http://aiellochan.com/2018/02/13/hexo/Hexo-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%A4%9A%E4%B8%AA-categories/" target="_blank" rel="noopener">这里</a></p>
-<h2 id="个性化配置">个性化配置</h2>
-<h3 id="多语言">多语言</h3>
-<p><a href="https://www.ieclipse.cn/2016/06/02/other/tech-hexo-i18n/index.html" target="_blank" rel="noopener">参考1</a> <a href="https://bambooom.github.io/2018/03/08/hexo-multi-lang/" target="_blank" rel="noopener">参考2</a></p>
+<h2 id="markdown安利">Markdown安利</h2>
+<h3 id="什么是markdown">什么是Markdown</h3>
+<p>Markdown是一门语言, 一门轻量级的<strong>标记语言</strong> (Markup Language). 有没有觉得这个词很眼熟? 是的, HTML全称<strong>HyperText Markup Language</strong>. Markdown和HTML同属于Markup Language(Markdown是一门Markup Language是Markdown作者的恶趣味), 它们与C, Python等编程语言并不是一类东西. <strong>Markup</strong>这个词源自<strong>印刷业</strong>, 指的是在电子排版技术出现之前人们对印刷物内容的排版进行标记的方式. 比如一段文字应当是<strong>粗体</strong>, <em>斜体</em>, <u>有下划线</u>还是<del>有删除线</del>, 使用什么字体, 字体大小, 左页边距应当是多少, 一张图片该放在哪里, 多大等等...</p>
+<p>💡 也就是说以前的人们在将原稿最终印刷出来前想知道会印成什么样基本靠脑补, 而现在我们称这个由标记语言文件得到最终效果的过程为<strong>渲染</strong> (render).</p>
+<p>而之所以我们说Markdown是一门<strong>轻量级</strong>的标记语言是因为在Markdown的语法比HTML等标记语言要简洁太多😆</p>
+<ul>
+<li>一</li>
+<li>二</li>
+</ul>
+<p>比如👆 上面这个列表的Markdown实现代码为</p>
+<figure class="highlight markdown"><table><tbody><tr><td class="code"><pre><span class="line"><span class="bullet">- </span>一</span><br><span class="line"><span class="bullet">- </span>二</span><br></pre></td></tr></tbody></table></figure>
+<p>而HTML实现代码为</p>
+<figure class="highlight html"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>一<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>二<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>但Markdown有时候也会让人觉得太过轻量级以至于缺少一些语法, 比如这个<u>下划线</u> 其实是用HTML标签实现的. 好在你也可以在Markdown文件中写HTML, 如今的Markdown渲染工具基本都支持这个功能.</p>
+<p>也是由于上面这个原因, 在Markdown作者们推出的 <a href="https://commonmark.org/" target="_blank" rel="noopener"><strong>CommonMark</strong></a>的基础上有了添加了更多语法的各种 Markdown超集, 比如GitHub发布的<a href="https://github.github.com/gfm/" target="_blank" rel="noopener"><strong>GitHub Flavored Markdown</strong></a>.</p>
+<h3 id="markdown应用广泛吗">Markdown应用广泛吗</h3>
+<p>实际上如今Markdown的使用相当广泛, 只要是支持所谓<strong>富文本</strong>的社区/论坛等, 比如说 <strong>GitHub</strong>, <strong>知乎</strong>, <strong>Stack OverFlow</strong>, <strong>CSDN博客</strong>, <strong>Wikipedia</strong>都是使用的 Markdown. 另外因为Markdown和HTML的转换十分容易, 目前大多个人博客都是编辑Markdown 格式的文章再生成HTML页面, 比如我正在码的也是Markdown文件.</p>
+<p>再有就是目前大多数项目根目录的<strong>README</strong>文档都是Markdown格式, 而在线查看项目代码时 GitHub等代码托管网站都会自动将项目中所有Markdown文件渲染出来.</p>
+<h3 id="为什么我们使用markdown">为什么我们使用Markdown</h3>
+<p>以下是网上的一些总结和我个人的体会.</p>
+<ol type="1">
+<li>Markdown的设计理念是易读易写, 因此<strong>即便不渲染Markdown文件的可读性也很高</strong>, 这让没有Markdown渲染工具的人也能很好地阅读, 而如果要脑力渲染HTML, 一会就眼晕了.</li>
+<li>这种格式能让文档很方便的排列为很简洁好看的排版, <strong>能让人专注于书写内容</strong>, 不必费神排版</li>
+<li>支持代码按语言的语法高亮</li>
+<li><strong>能很方便的进行版本管理</strong>. 在要进行版本管理的项目中的Word文件简直是毒瘤, 不操作一番的话版本管理工具比如git并不能识别word文件具体变化, 而使用纯文本的 Markdown能让每次的更改被体现出来!</li>
+<li><strong>占用空间小</strong> (可以想一想一个word文档的大小)</li>
+<li><strong>能很容易地转为多种格式</strong>. Markdown和HTML是兄弟关系,因此Markdown文件能轻松转换成 <strong>HTML</strong>文件格式以及HTML文件能轻易转换为的格式(<strong>PDF</strong>, <strong>jpg</strong>, <strong>Epub</strong>等) 是显而易见的. 通过一些额外工具(比如<a href="https://pandoc.org/" target="_blank" rel="noopener">Pandoc</a>)的帮助, Markdown文件还能一键转化为更多文件格式,比如<strong>LaTeX</strong>, <strong>Word</strong>, <strong>OpenOffice</strong>, <strong>Media Wiki</strong>等.</li>
+<li>能方便的插入图片, 表格, 超链接等</li>
+<li>兼容HTML语法, 因此我们想让页面显示成什么样就可以显示成什么样</li>
+<li>可以兼容LaTeX语法, 可以很方便的显示复杂公式</li>
+<li>还可以兼容<strong>Graphviz</strong>, <strong>Mermaid</strong>等流程图工具等等...</li>
+</ol>
+<h3 id="markdown简明语法">Markdown简明语法</h3>
+<ul>
+<li><p>一个标题以几个<code>#</code>开头, 空格后是文字. 以#的个数来表示第几级标题</p></li>
+<li><p>以 - 开头接一个空格开始一个子弹列表, 以 1. 接空格开始一个有序列表</p></li>
+<li><p>在要加粗的词两侧加 ** 来加粗. 如果要打出 ** 等特殊字符要在星号前加 &nbsp;来转义</p></li>
+<li><p>在<strong>行内代码</strong>两侧加 ` . 注意这不是单引号, 在我键盘上在<kbd>Esc</kbd> 键下面. 当然这个不只是用来放行内代码的, 也可以放别的.</p></li>
+<li><p>在代码块上下行加 ``` , 第一个```后写代码的语言.</p></li>
+<li><p>在Typora这个软件里插入图片很容易, 直接<code>Ctrl V</code>粘贴就好了, 或者右键, 里面有插入图片的按键. 插入图片的markdown语法是</p>
+<figure class="highlight markdown"><table><tbody><tr><td class="code"><pre><span class="line">![<span class="string">当图片失效时此处显示的文字</span>](<span class="link">图片地址</span>)</span><br></pre></td></tr></tbody></table></figure></li>
+<li><p>插入超链接的语法和插入图片的语法很像, 此处举例说明. 这是点击进入百度的链接👉 <a href="https://www.baidu.com" target="_blank" rel="noopener">百度</a></p>
+<figure class="highlight plain"><table><tbody><tr><td class="code"><pre><span class="line">[百度](https://www.baidu.com)</span><br></pre></td></tr></tbody></table></figure></li>
+<li><p>表格用<code>|</code>分隔每个元素, 第一行是各列的名字, 第二行的 <code>|</code>间是<code>-</code>, 分隔列名和值. 以下是一个例子</p></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>第一列</th>
+<th>第二列</th>
+<th>第三列</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>a</td>
+<td>b</td>
+<td>c</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>更详细的语法说明在Typora内可以查看Typora自带的Markdown语法参考手册</li>
+</ul>
+<figure>
+<img alt="1569274096465" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569274096465.png"><figcaption>1569274096465</figcaption>
+</figure>
+<h2 id="typora安利">Typora安利</h2>
+<p>那么用什么软件来写Markdown呢? 认准<a href="https://typora.io/#download" target="_blank" rel="noopener"><strong>Typora</strong></a>!</p>
+<p>Typora的优点多到我不想写 (不其实是单纯不想写了), 最突出的优点我觉得是它的<strong>颜值</strong>, 以及<strong>能直接将图片粘贴到文件中</strong>.</p>
+<h3 id="typora快速入门">Typora快速入门</h3>
+<h4 id="主题">主题</h4>
+<p>在<strong>Themes</strong>一栏可以切换软件的主题</p>
+<figure>
+<img alt="1569271897771" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569271897771.png"><figcaption>1569271897771</figcaption>
+</figure>
+<h4 id="大纲视图">大纲视图</h4>
+<p>可以按这个<strong>OutLine</strong>或者按左下角的小圆圈触发大纲视图, 点击大纲视图里的标题可以快速跳转.</p>
+<figure>
+<img alt="1569272130639" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569272130639.png"><figcaption>1569272130639</figcaption>
+</figure>
+<h4 id="源代码视图">源代码视图</h4>
+<p>按左下角这个<kbd>&lt;/&gt;</kbd>可以切换到源代码视图</p>
+<figure>
+<img alt="1569272534032" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569272534032.png"><figcaption>1569272534032</figcaption>
+</figure>
+<h4 id="拼写检查">拼写检查</h4>
+<p>右下角这里可以选择进行拼写检查的语言或者关闭这个功能.</p>
+<figure>
+<img alt="1569272445049" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569272445049.png"><figcaption>1569272445049</figcaption>
+</figure>
+<h4 id="更多设置">更多设置</h4>
+<p>按这个<strong>Preference</strong>可以进行更多偏好设置.</p>
+<figure>
+<img alt="1569272312746" data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/1569272312746.png"><figcaption>1569272312746</figcaption>
+</figure>
+<p>以下是我的推荐设置</p>
+<p><img data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/TIM%E5%9B%BE%E7%89%8720190924051240.png"></p>
+<figure>
+<img alt="image-20200227124912356" data-src="Markdown安利-Typora简要使用教程/image-20200227124912356.png"><figcaption>image-20200227124912356</figcaption>
+</figure>
+<p>勾选<strong>对网络图片应用上述规则</strong>那直接粘贴从浏览器复制的图片时Typora会自动将该图片下载到这个指定文件夹.</p>
+<p>忽略单个换行让Typora遵循GFM: 单个换行不渲染为换行, 两个换行才渲染为换行</p>
+<p><img data-src="Markdown%E5%AE%89%E5%88%A9-Typora%E7%AE%80%E8%A6%81%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/TIM%E5%9B%BE%E7%89%8720190924051204.png"></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -5816,51 +5603,299 @@ D(x)=\begin{cases}
       </script>]]></content>
       <categories>
         <category>工具</category>
-        <category>软件配置</category>
-        <category>Web</category>
+        <category>杂记</category>
+        <category>语言</category>
+        <category>Markdown</category>
       </categories>
   </entry>
   <entry>
-    <title>当VSCode成为一种生活方式</title>
-    <url>/zh-CN/2019/01/07/%E5%BD%93VSCode%E6%88%90%E4%B8%BA%E4%B8%80%E7%A7%8D%E7%94%9F%E6%B4%BB%E6%96%B9%E5%BC%8F/</url>
-    <content><![CDATA[<div data-align="right">
-<p>Language: <a href="/2018/12/25/When-VSCode-Becomes-A-Lifestyle"><kbd>English</kbd></a> <a href="/zh-CN/2019/01/07/当VSCode成为一种生活方式"><kbd>中文</kbd></a></p>
-</div>
-<!-- TODO -->
-<p>VSCode是一款很强大的编辑器, 因为我现在的电脑性能不太好, 开规模很大的那些2IDE特别慢, 我很喜欢用VSCode. 而且用VSCode在某些方面确实能获得很不错的体验<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span> 本文算是VSCode 安利和我个人的使用技巧.</p>
+    <title>Python基础语法</title>
+    <url>/zh-CN/2019/09/12/Python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<p>前阵子带学弟学妹们入门Python时自己整理的一些觉得初学者需要知道的Python知识. 我本身既不是计算机专业的也说不出自己对Python还是挺了解的这样的话, 说实话心里还是有一点忐忑. 如有错误欢迎指出🙇</p>
 <a id="more"></a>
-<h1 id="why-vscode">Why VSCode</h1>
-<h2 id="写markdown">写Markdown</h2>
-<h2 id="写前端">写前端</h2>
-<h2 id="写小段代码">写小段代码</h2>
-<h3 id="写python">写Python</h3>
-<h3 id="写cc">写C/C++</h3>
-<h2 id="写latex">写LaTeX</h2>
-<h1 id="插件安利">插件安利</h1>
-<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 要注意的是最好不要在一个项目中使用过多插件, 这会让VSCode最开始的加载非常慢, 这是得不偿失的. 我们仍要记得VSCode只是一个编辑器. 而我们通常面临的尴尬情况是:有很多日常会用到的插件, 但并不是在每个项目中都需要用到全部的插件, 很多本工作区用不到的插件放在那里只会浪费资源. 而通过将一些插件设为<strong>禁用(工作区)</strong>可以仅在这个项目中禁用这个插件! 这样能大大缩短VSCode启动时间<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<h1 id="vscode-个性化设置">VSCode 个性化设置</h1>
-<h2 id="改编辑器选项卡关闭按钮位置至左边">改编辑器选项卡关闭按钮位置至左边</h2>
-<p>在这之前有一件让我很恼火的事: 我经常由于文件标题过长而选项卡关闭按钮在右侧而不能轻松地关闭一个选项卡, 因为关闭按钮没能显示出来! 而我将关闭按钮改至左侧后, <span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8">😆</span>爽到!</p>
-<p>:heavy_check_mark: 更改方法: 在设置中搜索 <code>workbench.editor.tabCloseButton</code>, 设置为<strong>left</strong></p>
-<h2 id="在一定数量的等宽字符后显示垂直标尺">在一定数量的等宽字符后显示垂直标尺</h2>
-<p>VSCode有许多很好用的功能!<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8">😆</span> 这是其中之一. 你可以设置任意多个标尺来作为字数的参考线!</p>
-<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>editor.rulers</code>, 选择后在数组中填入要画线处的字数.</p>
-<h2 id="代码格式化">代码格式化</h2>
-<p>统一用 <code>Alt+shift+F</code> 作为代码格式化快捷键</p>
-<h2 id="查看键盘快捷方式">查看键盘快捷方式</h2>
-<p>如果你新安装了一个插件, 其中几个快捷键不知道为什么不好用或者效果不对, 你应当到 <strong>键盘快捷方式</strong>查看一下这个快捷键在该情况下是不是对应了不止一个命令.</p>
-<h2 id="关闭enter键接受建议">关闭Enter键接受建议</h2>
-<p>很多时候原本想换行的, 但是按Enter却接受了VSCode的沙雕建议, 令人郁闷, 通过关掉Enter接受建议能让心情好很多<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f60f.png?v8">😏</span> 虽然习惯Enter接受建议突然改成只能用Tab接受建议会有点不适应, 但再适应一下就会觉得非常舒服了<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f44f.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f44f.png?v8">👏</span></p>
-<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>editor.acceptSuggestionOnEnter</code>, 改为 <strong>off</strong></p>
-<h2 id="设置git-commit成功即上传">设置git commit成功即上传</h2>
-<p>在使用个人repository时我认为commit和push是没必要分开进行的, 因为只有自己用, 在本地存着和在云端存着没什么区别. 甚至有可能发生代码忘记上传云端就把电脑格式化了因而损失大段代码的惨案<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8">😭</span> 因此git有一项选项特别适合我: commit成功即push</p>
-<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>git.postCommitCommand</code>, 设置为<strong>push</strong></p>
-<h2 id="打开用户设置的同时打开默认设置">打开用户设置的同时打开默认设置</h2>
-<p>虽然打开<strong>settings.json</strong>时同时打开默认设置的json文件应当是默认设置, 但我有一次安装 VSCode之后发现这个选项没被勾上.</p>
-<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>workbench.settings.openDefaultSettings</code>, 设置为<strong>true</strong>.</p>
-<h2 id="允许编辑器中水平滚动">允许编辑器中水平滚动</h2>
-<p>触摸板和一些鼠标 (比如我的Microsooft Arch) 是支持水平滚动界面的, 但VSCode默认禁止水平滚动, 只能滑动底下的滑条来左右滑, 但这个选项可以打开.</p>
-<p>:heavy_check_mark: 设置方法: 在设置中搜索<code>workbench.tree.horizontalScrolling</code>, 设置为<strong>true</strong></p>
+<h2 id="python解释器">Python解释器</h2>
+<h2 id="实现">实现</h2>
+<table>
+<thead>
+<tr class="header">
+<th>版本</th>
+<th>实现方式</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CPython</td>
+<td>C语言写的Python</td>
+<td>速度快</td>
+</tr>
+<tr class="even">
+<td>JPython</td>
+<td>由Java编写的Python</td>
+<td>可以直接调用Java的各种函数库</td>
+</tr>
+<tr class="odd">
+<td>PyPy</td>
+<td>由rPython编写的Python</td>
+<td>更灵活, 易于使用和试验</td>
+</tr>
+<tr class="even">
+<td>IronPython</td>
+<td>以. NET和Mono实现的Python</td>
+<td>面向NET和ECMA CLI的Python实现</td>
+</tr>
+<tr class="odd">
+<td>ZhPy</td>
+<td>只是把Python翻译了一遍而已</td>
+<td>又称中蟒, 可以完全用中文编程. 但中蟒目前已经停止更新了.</td>
+</tr>
+</tbody>
+</table>
+<p>我们通常所说的Python是<strong>CPython</strong>, 👇Python官方页面提供的是CPython</p>
+<figure>
+<img alt="1565579206457" data-src="Python基础语法/1565579206457.png"><figcaption>1565579206457</figcaption>
+</figure>
+<h2 id="版本">版本</h2>
+<p>Python这种语言有<strong>Python2</strong>和<strong>Python3</strong>两个版本, 两者语法有少许不同, 比如Python2和Python3中<code>print()</code>的使用有区别, Python2和Python3中<code>input()</code>接受的数据类型有区别等.</p>
+<p>最新的Python2对大部分Python2, 3不同的语法做了兼容, 而在Python3对Python2的语法兼容性很差, 但是提供了一个叫<a href="https://docs.python.org/zh-cn/3.7/library/2to3.html" target="_blank" rel="noopener">2to3</a>的脚本帮助我们将Python2的程序转换为Python3的程序.</p>
+<h2 id="哲学">哲学</h2>
+<p><strong>万物皆对象</strong></p>
+<p>python在设计初始是一种<strong>面向对象</strong>语言.</p>
+<p>💡 面向对象是一种<strong>编程范式</strong></p>
+<h2 id="数据类型">数据类型</h2>
+<p>Python是一门<strong>动态类型</strong>语言</p>
+<h3 id="类型注解">类型注解</h3>
+<p>在Python3中有了一个新特性: <strong>类型注解</strong></p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x:int, y:int)</span> -&gt; int:</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></tbody></table></figure>
+<p>正如其名, 注解只是标注一下, 有了类型注解的程序和没有类型注解的程序运行起来没有区别, 但它能帮助程序员更好的发现问题, 也能让IDE提供更准确的代码补全和语法检查.</p>
+<h3 id="类型检查">类型检查</h3>
+<p>有时候为了保证程序的严谨性我们会检查一下变量是不是我们设想它应该是的类型, 这个时候我们用 <code>isinstance()</code></p>
+<p>之所以不使用 <code>type()</code> 是因为 <code>type()</code> 不会认为子类是一种父类类型, 不考虑继承关系. 举例说明:</p>
+<figure>
+<img alt="1571027624789" data-src="Python基础语法/1571027624789.png"><figcaption>1571027624789</figcaption>
+</figure>
+<h3 id="不可变对象">不可变对象</h3>
+<p>❗️ <strong>我们可以给不可变对象重新赋值, 但其内存地址会改变</strong>. 以下是体现给可变对象/不可变对象重新赋值时它们的内存地址变化的例子.</p>
+<p>💡 <code>id()</code>能获取一个变量的内存地址</p>
+<figure>
+<img alt="1571022411897" data-src="Python基础语法/1571022411897.png"><figcaption>1571022411897</figcaption>
+</figure>
+<h4 id="number-数字">Number (数字)</h4>
+<ul>
+<li>int (整数)</li>
+<li>long (长整数)</li>
+<li>float (浮点数, 即小数)</li>
+<li>bool (布尔值, 即 <code>True</code> 和 <code>False</code> )</li>
+</ul>
+<p>Python中的Number我认为是比较特殊的, 因为它<strong>在内存中占用的空间大小是变动</strong>的.(在CPython中是如此, 但不知道为什么在IronPython下不是)</p>
+<p>💡 用<code>sys.getsizeof()</code>可以知道一个变量的占用的内存大小</p>
+<figure>
+<img alt="1571022628668" data-src="Python基础语法/1571022628668.png"><figcaption>1571022628668</figcaption>
+</figure>
+<h4 id="string-字符串">String (字符串)</h4>
+<h4 id="tuple-元组">Tuple (元组)</h4>
+<h3 id="可变对象">可变对象</h3>
+<p>可变对象可能带来的危险举例:</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myfunc</span><span class="params">(l = [])</span>:</span></span><br><span class="line">    l.append(<span class="string">'add'</span>)</span><br><span class="line">    print(l)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">myfunc([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">myfunc([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">myfunc()</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="list-列表">List (列表)</h4>
+<p>💡 <strong>string</strong>和<strong>tuple</strong>都是特殊的<strong>list</strong></p>
+<h4 id="set-集合">Set (集合)</h4>
+<h4 id="dictionary-字典">Dictionary (字典)</h4>
+<p>👇 在网上偷的<strong>string, tuple, list, dictionary的突出区别比较</strong>.</p>
+<table>
+<thead>
+<tr class="header">
+<th>名字</th>
+<th>是否可变</th>
+<th>是否可迭代</th>
+<th>是否可切片</th>
+<th>访问方式</th>
+<th>写法举例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>string</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>下标索引</td>
+<td>“abcd”</td>
+</tr>
+<tr class="even">
+<td>tuple</td>
+<td>no</td>
+<td>yes</td>
+<td>yes</td>
+<td>下标索引</td>
+<td>(‘a’,‘b’,‘c’,‘d’,‘abcd’)</td>
+</tr>
+<tr class="odd">
+<td>list</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>下标索引</td>
+<td>[‘a’,‘b’,‘c’,‘d’,‘abcd’]</td>
+</tr>
+<tr class="even">
+<td>dictionary</td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+<td>关键字索引</td>
+<td>{‘1’:‘a’,‘2’:‘b’}</td>
+</tr>
+</tbody>
+</table>
+<h3 id="python中有关对象需要注意的问题">Python中有关对象需要注意的问题</h3>
+<p>python中向函数传递参数只是<strong>引用传递</strong>: 如果参数为可变对象, 在函数中变化会影响引用的这个变量, 而不可变对象不会. 在向类传递参数时也是如此.</p>
+<figure>
+<img alt="1571033275137" data-src="Python基础语法/1571033275137.png"><figcaption>1571033275137</figcaption>
+</figure>
+<h2 id="基础语法">基础语法</h2>
+<h3 id="python内置帮助文档">Python内置帮助文档</h3>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">help()</span><br></pre></td></tr></tbody></table></figure>
+<p>调用<code>help()</code>后就会进入Python内置帮助文档, 然后输入想查的类名/函数名/属性名就可以看到对应的帮助文档.</p>
+<p>:bulb: 要注意输入的只有名字, 不带括号什么的, 以及要看一个包里的函数文档时需要先引用该包. 比如如果想查看<strong>time.time()</strong>的帮助文档, 首先<code>import time</code>, 然后输入<code>help()</code>进入帮助文档, 然后输入<code>time.time</code>, 就会看到<strong>time.time()</strong>函数的帮助文档. 按一次<kbd>q</kbd>退出<strong>time.time()</strong>的文档, 再按一次<kbd>q</kbd>退出帮助文档返回交互式Python界面.</p>
+<h3 id="注释">注释</h3>
+<p>在Python中 <code>#</code> 开头的为注释</p>
+<h4 id="特殊注释">特殊注释</h4>
+<h5 id="shebang">shebang</h5>
+<p>shenbang (hashbang) 指的是以 <code>#!</code> 开头的语句. Linux操作系统的程序加载器会分析 Shebang 后的内容，将这些内容作为解释器指令，并调用该指令，并将载有 Shebang 的文件路径作为该解释器的参数. 因为在很多语言中以 <code>#</code> 开头的是注释, 所以不会影响程序.</p>
+<h5 id="编码格式">编码格式</h5>
+<p>有的python文件是这么开头的:</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br></pre></td></tr></tbody></table></figure>
+<p>第一行是给<strong>Linux系统</strong>的程序加载器看的, 因此在Windows下不需要这句, 第二句是指定文件的编码格式为<strong>UTF-8</strong>, 避免文件中的<strong>非ASCII字符</strong>被识别为乱码.</p>
+<h5 id="docstring">docstring</h5>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(int x, int y)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    这里是docstring, 是特殊的注释, 能让IDE, 编辑器在鼠标移动到有docstring的函数, 类上时显示这段docstring</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">a = func(i)</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="条件语句及循环">条件语句及循环</h3>
+<h4 id="if-elif-else">if, elif, else</h4>
+<p>下面是按a &lt; 10, 10 &lt; a &lt; 20, 20 &lt; a &lt; 30, a &gt; 30分类的举例.</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> a &lt; <span class="number">10</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">elif</span> a &lt; <span class="number">20</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">elif</span> a &lt; <span class="number">30</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></tbody></table></figure>
+<p>另外有一种one liner会很喜欢的用法:</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">a = <span class="number">2</span> <span class="keyword">if</span> <span class="number">2</span> &gt; <span class="number">3</span> <span class="keyword">else</span> <span class="number">4</span></span><br></pre></td></tr></tbody></table></figure>
+<p>上面这句与下面这句等效.</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="number">2</span> &gt; <span class="number">3</span>:</span><br><span class="line">    a = <span class="number">2</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    a = <span class="number">4</span></span><br></pre></td></tr></tbody></table></figure>
+<h4 id="生成器-迭代器range">生成器 ·迭代器·range</h4>
+<p>语法类似于<a href="#切片">切片</a></p>
+<h3 id="推导式">推导式</h3>
+<p><strong>推导式comprehensions</strong>（又称解析式）, 是Python的一种独有特性.<strong>推导式是可以从一个数据序列构建另一个新的数据序列的结构体</strong>. 换句话说能从一组数据中求出满足条件的新数据, 比如a, b两个等长列表中都为偶数的项的乘积. 共有三种推导式, 在Python2和3 中都有支持:</p>
+<ul>
+<li>列表推导式</li>
+<li>字典推导式</li>
+<li>集合推导式</li>
+</ul>
+<p>列表推导式的语法:</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">l = [output_expression <span class="keyword">for</span> out_exp <span class="keyword">in</span> input_list <span class="keyword">if</span> expression]</span><br></pre></td></tr></tbody></table></figure>
+<p>使用举例:</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># 1</span></span><br><span class="line">a = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">30</span>) <span class="keyword">if</span> i % <span class="number">3</span> <span class="keyword">is</span> <span class="number">0</span>]</span><br><span class="line"><span class="comment"># 2</span></span><br><span class="line">names = [<span class="string">'Bob'</span>,<span class="string">'Tom'</span>,<span class="string">'alice'</span>,<span class="string">'Jerry'</span>,<span class="string">'Wendy'</span>,<span class="string">'Smith'</span>]</span><br><span class="line">LONG_NAMES = [name.upper() <span class="keyword">for</span> name <span class="keyword">in</span> names <span class="keyword">if</span> len(name)&gt;<span class="number">3</span>]</span><br><span class="line"><span class="comment"># 3</span></span><br><span class="line">a = [x*y <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">5</span>) <span class="keyword">if</span> x &gt; <span class="number">2</span> <span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">4</span>) <span class="keyword">if</span> y &lt; <span class="number">3</span>]</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="切片">切片</h3>
+<p>因为tuple, string其实都是特殊的列表, 所以列表, 字符串, 元组都可以进行切片.</p>
+<p>语法: l_sliced = a[begin : end : step]</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">l = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line">l_sliced = l[<span class="number">1</span>:<span class="number">5</span>:<span class="number">2</span>]</span><br></pre></td></tr></tbody></table></figure>
+<p>在没有<strong>numpy</strong>库的情况下<strong>多维切片</strong>是通过推导式实现的:</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">a = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]]</span><br><span class="line">b = [a[i][:<span class="number">-1</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">3</span>)]</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="函数">函数</h3>
+<p>💡 要注意函数名后的 <code>()</code> 也是一种运算符, 称为<strong>函数调用运算符</strong>. 如果调用函数的时候不加()只会创建一个该函数的对象而不会调用它.</p>
+<h4 id="定义函数">定义函数</h4>
+<p>python中以 <code>def</code> 关键字定义函数, 结构如下:</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> 函数名<span class="params">(参数列表)</span>:</span></span><br><span class="line">    函数主体</span><br></pre></td></tr></tbody></table></figure>
+<p>python中的函数可以有返回值也可以没有返回值</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func1</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func2</span><span class="params">(l)</span>:</span></span><br><span class="line">    l.appeend(<span class="string">'add'</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func3</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="用字典来实现case">用字典来实现case</h3>
+<p>示例:</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print1</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'111'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print2</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'222'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printDefault</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'default'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">switch = {</span><br><span class="line">    <span class="number">1</span>: print1,</span><br><span class="line">    <span class="number">2</span>: print2,</span><br><span class="line">    <span class="string">'default'</span>: printDefault</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">case = int(input(<span class="string">'input: '</span>))</span><br><span class="line">switch[case <span class="keyword">if</span> (case <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">3</span>)) <span class="keyword">else</span> <span class="string">'default'</span>]()</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="编码格式-1">编码格式</h3>
+<p>字符串经过<strong>编码（encode）</strong> 就成为了一堆数据, 反过来, 数据经过<strong>解码（decode）</strong> 就变回我们认识的字符串.</p>
+<figure>
+<img alt="img" data-src="Python基础语法/encode_decode.png"><figcaption>img</figcaption>
+</figure>
+<p>指定文件编码格式为 <code>utf-8</code></p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br></pre></td></tr></tbody></table></figure>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png?v8">💡</span> 如果不指定文件编码格式在有的Python2版本中无法识别中文, 即便是中文注释也会报错.</p>
+<figure>
+<img alt="Unicode Decoding and Encoding" data-src="Python基础语法/Unicode_Decoding_and_Encoding.png"><figcaption>Unicode Decoding and Encoding</figcaption>
+</figure>
+<p>Linux系统默认编码格式是<strong>UTF-8</strong>, 系统语言是简体中文时Windows10的编码格式是<strong>GB2312</strong> (也称GBK, 国标扩展, cp936)</p>
+<p>在python中 <code>str</code> 类型数据都以Unicode码点格式储存, 因此直接打印字符串会看到字符为'开头</p>
+<h3 id="基本读写">基本读写</h3>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line">f = open(<span class="string">"test.txt"</span>, <span class="string">"r+"</span>)</span><br><span class="line">f.read()</span><br><span class="line">f.write(<span class="string">"text"</span>)</span><br><span class="line">f.close()</span><br></pre></td></tr></tbody></table></figure>
+<p>或者</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">"test.txt"</span>, <span class="string">"r+"</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.read()</span><br><span class="line">    f.write(<span class="string">"test"</span>)</span><br></pre></td></tr></tbody></table></figure>
+<p>💡 <strong>使用with语句打开文件是最推荐的方式</strong>, 原因见<a href="https://www.cnblogs.com/ymjyqsx/p/6554817.html" target="_blank" rel="noopener">这里</a></p>
+<p>下表是open时要指定的读写模式的比较.</p>
+<table>
+<thead>
+<tr class="header">
+<th>读写模式</th>
+<th>是否可读</th>
+<th>是否可写</th>
+<th>文件指针位置</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>r</td>
+<td>是</td>
+<td>否</td>
+<td>文件开头</td>
+<td>读取文件, 如果文件不存在则报错</td>
+</tr>
+<tr class="even">
+<td>r+</td>
+<td>是</td>
+<td>是</td>
+<td>文件开头</td>
+<td>读取并写入文件, 如果文件不存在则报错</td>
+</tr>
+<tr class="odd">
+<td>w</td>
+<td>否</td>
+<td>是</td>
+<td>文件开头</td>
+<td>覆写原文件, 如果文件不存在则创建</td>
+</tr>
+<tr class="even">
+<td>w+</td>
+<td>是</td>
+<td>是</td>
+<td>文件开头</td>
+<td>读取并覆盖写原内容, 如果文件不存在则创建</td>
+</tr>
+<tr class="odd">
+<td>a</td>
+<td>否</td>
+<td>是</td>
+<td>文件末尾</td>
+<td>追加文件内容, 如果文件不存在则报错</td>
+</tr>
+<tr class="even">
+<td>a+</td>
+<td>是</td>
+<td>是</td>
+<td>文件末尾</td>
+<td>追加文件内容并且可读, 如果文件不存在则报错</td>
+</tr>
+</tbody>
+</table>
+<p>另外还有<code>b</code>模式, 以二进制打开, 允许我们对二进制文件进行编辑, <code>b</code>可以与其他模式组合使用, 比如 <code>rb</code></p>
+<p>🔗 <a href="https://www.cnblogs.com/nulige/p/6128948.html" target="_blank" rel="noopener">python基础-文件读写'r' 和 'rb'区别</a></p>
+<h2 id="脚本和普通程序的区别">脚本和普通程序的区别</h2>
+<p>脚本这个词来源于戏剧, 能用于舞台演出的戏剧文本就称为<strong>脚本</strong>. 在编程中的脚本是解释执行的程序, 通常只用来做简单的处理, 做自动化处理</p>
+<h2 id="解释器的使用技巧">解释器的使用技巧</h2>
+<p>在解释器中交互式编程时要注意缩进不要错</p>
+<h3 id="清屏">清屏</h3>
+<p>python解释器本身没有清屏命令, 只能通过调用命令行的清屏命令来达到效果</p>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="comment"># Windows下</span></span><br><span class="line">os.system(<span class="string">'cls'</span>)</span><br><span class="line"><span class="comment"># Linux下</span></span><br><span class="line">os.system(<span class="string">'clear'</span>)</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="代码风格">代码风格</h2>
+<p>我推荐遵从<a href="https://www.python.org/dev/peps/pep-0008/" target="_blank" rel="noopener">PEP8</a>. 当然一行一行看完这个规范不是一件令人愉快的事, 最简单的时刻遵守PEP8的方式是在代码工具里安一个<strong>代码风格检查器</strong> (linter). 检查你的代码是否符合PEP8的linter是<a href="http://pycodestyle.pycqa.org/en/latest/intro.html" target="_blank" rel="noopener">pycodestyle</a></p>
+<p>💡 在VSC中可以在设置中搜索<strong>python.linting.pycodestyle</strong>, 勾选<strong>Pycodestyle Enabled</strong>, 这样在VSC中编写Python代码时使用的linter就是pycodestyle啦</p>
+<figure>
+<img alt="1571142193232" data-src="Python基础语法/1571142193232.png"><figcaption>1571142193232</figcaption>
+</figure>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -5881,44 +5916,9 @@ D(x)=\begin{cases}
           });
       </script>]]></content>
       <categories>
-        <category>工具</category>
-        <category>软件配置</category>
-        <category>VSC</category>
-        <category>技巧</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>几个提高效率的小技巧</title>
-    <url>/zh-CN/2019/01/18/%E5%87%A0%E4%B8%AA%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<p>记录和分享一些我觉得提高了自己效率的技巧。</p>
-<a id="more"></a>
-<h1 id="虚拟桌面分割任务">虚拟桌面分割任务</h1>
-<p>Windows有一个我觉得蛮有意思的功能, <strong>虚拟桌面</strong>. 按 <code>Windows+Tab</code> 或者点击任务栏上有个长得有点奇怪的图标可以打开<strong>任务视图</strong>, 然后可以新建桌面, 管理桌面. 通过把应用界面分别放到不同桌面可以让任务栏不会堆积很多页面. 有时候同时写多个项目的时候会用浏览器搜好几个主题 (是的我就是浏览器选手) 如果都放到一起太乱太多了, 因此放到不同桌面是个非常不错的选择. 我经常将娱乐的玩意, 什么网易云, 百度云之类放一个桌面, 然后一个项目放一个桌面, 心情愉悦让效率大大提高<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<h1 id="更改输入法符号">更改输入法符号</h1>
-<p>有时, 比如写中文文档时, 我们需要频繁切换中英文输入法, 而代码中打符号的时候我总是忘记切换成英文输入法, 打出万恶的中文字符, 比如；什么的. 而我发现快捷键 <code>Ctrl+.</code>可以只切换符号的中英文! 也就是说你可以在中文输入法下打出英文标点 (比如我的句号是英文句号). 这样就解决了中英文标点易混淆的烦恼<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">😄</span></p>
-<!-- TODO -->
-<!-- chrom -->
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-      <categories>
-        <category>技巧</category>
+        <category>杂记</category>
+        <category>语言</category>
+        <category>Python</category>
       </categories>
   </entry>
 </search>
