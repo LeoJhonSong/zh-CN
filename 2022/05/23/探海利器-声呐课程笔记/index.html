@@ -541,9 +541,9 @@
 <blockquote>
 <p>测扫声呐工作原理 ⚠ 注意6的回波比5先回到换能器.</p>
 </blockquote></li>
-<li>多波束测深声呐: 探测海底地形地貌</li>
-<li>浅地层剖面声呐: 探测海底表面以下分层结构及分层介质的构成</li>
-<li>多功能集成: 基于参量阵, 实现地形, 底质, 地层构造等信息的一体化探测
+<li><p>多波束测深声呐: 探测海底地形地貌</p></li>
+<li><p>浅地层剖面声呐: 探测海底表面以下分层结构及分层介质的构成</p></li>
+<li><p>多功能集成: 基于参量阵, 实现地形, 底质, 地层构造等信息的一体化探测</p>
 <ul>
 <li>高频/原频: 地形/底质</li>
 <li>低频/差频: 地层构造</li>
@@ -653,7 +653,7 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/zh-CN/2022/11/06/微积分课程笔记/" rel="prev" title="微积分课程笔记">
+                <a href="/zh-CN/2025/01/03/微积分课程笔记/" rel="prev" title="微积分课程笔记">
                   微积分课程笔记 <i class="fa fa-chevron-right"></i>
                 </a>
               
@@ -837,7 +837,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2022</span>
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2025</span>
   <span class="with-love" id="animate">
     <i class="fa fa-hand-peace-o"></i>
   </span>
@@ -1000,6 +1000,57 @@ if (document.querySelectorAll('div.pdf').length) {
 
   
 
+  
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        extensions: ['color.js'],
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
   
 
   

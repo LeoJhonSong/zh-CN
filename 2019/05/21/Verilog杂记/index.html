@@ -510,11 +510,11 @@
 <p><code>always</code>实际上就是循环关键字, 而<code>always @()</code>则是条件循环关键字.</p>
 <p>always块的讲究很多:</p>
 <ol type="1">
-<li>写在括号内的称<strong>敏感事件列表</strong>, 当这些事件 (电平信号变化或者出现边沿信号) 发生时触发这个块. 一个敏感事件列表中不能同时包含电平敏感事件和边沿敏感事件. <strong>电平敏感事件意味着这是一个描述组合逻辑的always块</strong> (我们也可以在描述组合逻辑的always块的敏感事件列表中填<code>*</code>来让综合器根据always块内容来自动添加敏感事件), <strong>边沿敏感事件意味着这是一个描述时序逻辑的always 块</strong>.</li>
-<li><strong>尽量只使用主时钟 (clk, rst) 作为always块的边沿敏感事件</strong>, 避免出错. 如果有其他信号边沿触发的事件可以通过<a href="https://blog.csdn.net/phenixyf/article/details/46364193" target="_blank" rel="noopener">这里</a> 提到的clk周期延时法将边沿触发转换为电平触发.</li>
-<li><strong>不要将同一信号的上升沿敏感事件和下降沿包含在同一敏感事件列表</strong>, 因为它们可以合为一个电平敏感事件.</li>
-<li><strong>尽量不要在多个always块中给同一变量赋值</strong>, 这样容易产生竞争冒险 (所有always块同时运行), 且无法综合. 如果一个变量的值与两个always块都有关且这两个always块无法合并, 可以参考<a href="https://blog.csdn.net/gududeyhc/article/details/8795202" target="_blank" rel="noopener">这种方法</a>. 另外也可以考虑用两个 always块的敏感事件生成一组新的敏感事件 (参考第二条).</li>
-<li><strong>一个always块中不能混用阻塞赋值 (=) 和非阻塞赋值 (&lt;=)</strong>, 在描述组合逻辑的always块中使用 <code>=</code>, 在描述时序逻辑的always块中使用<code>&lt;=</code>.</li>
+<li><p>写在括号内的称<strong>敏感事件列表</strong>, 当这些事件 (电平信号变化或者出现边沿信号) 发生时触发这个块. 一个敏感事件列表中不能同时包含电平敏感事件和边沿敏感事件. <strong>电平敏感事件意味着这是一个描述组合逻辑的always块</strong> (我们也可以在描述组合逻辑的always块的敏感事件列表中填<code>*</code>来让综合器根据always块内容来自动添加敏感事件), <strong>边沿敏感事件意味着这是一个描述时序逻辑的always 块</strong>.</p></li>
+<li><p><strong>尽量只使用主时钟 (clk, rst) 作为always块的边沿敏感事件</strong>, 避免出错. 如果有其他信号边沿触发的事件可以通过<a href="https://blog.csdn.net/phenixyf/article/details/46364193" target="_blank" rel="noopener">这里</a> 提到的clk周期延时法将边沿触发转换为电平触发.</p></li>
+<li><p><strong>不要将同一信号的上升沿敏感事件和下降沿包含在同一敏感事件列表</strong>, 因为它们可以合为一个电平敏感事件.</p></li>
+<li><p><strong>尽量不要在多个always块中给同一变量赋值</strong>, 这样容易产生竞争冒险 (所有always块同时运行), 且无法综合. 如果一个变量的值与两个always块都有关且这两个always块无法合并, 可以参考<a href="https://blog.csdn.net/gududeyhc/article/details/8795202" target="_blank" rel="noopener">这种方法</a>. 另外也可以考虑用两个 always块的敏感事件生成一组新的敏感事件 (参考第二条).</p></li>
+<li><p><strong>一个always块中不能混用阻塞赋值 (=) 和非阻塞赋值 (&lt;=)</strong>, 在描述组合逻辑的always块中使用 <code>=</code>, 在描述时序逻辑的always块中使用<code>&lt;=</code>.</p></li>
 <li><p><strong>always块中的条件语句要与敏感事件相对应.</strong> 比如以下两段代码前者是错误的, 后者是正确的.</p>
 <figure class="highlight verilog"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rst)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(rst)</span><br><span class="line">        ...</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></tbody></table></figure>
 <figure class="highlight verilog"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">negedge</span> rst)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(!rst)</span><br><span class="line">        ...</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></tbody></table></figure></li>
@@ -802,7 +802,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2022</span>
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2025</span>
   <span class="with-love" id="animate">
     <i class="fa fa-hand-peace-o"></i>
   </span>

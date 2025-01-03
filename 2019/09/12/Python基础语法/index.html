@@ -510,7 +510,7 @@
 </table>
 <p>我们通常所说的Python是<strong>CPython</strong>, 👇Python官方页面提供的是CPython</p>
 <figure>
-<img alt="1565579206457" data-src="Python基础语法/1565579206457.png"><figcaption>1565579206457</figcaption>
+<img alt="" data-src="Python基础语法/1565579206457.png"><figcaption>1565579206457</figcaption>
 </figure>
 <h2 id="版本">版本</h2>
 <p>Python这种语言有<strong>Python2</strong>和<strong>Python3</strong>两个版本, 两者语法有少许不同, 比如Python2和Python3中<code>print()</code>的使用有区别, Python2和Python3中<code>input()</code>接受的数据类型有区别等.</p>
@@ -530,13 +530,13 @@
 <p>有时候为了保证程序的严谨性我们会检查一下变量是不是我们设想它应该是的类型, 这个时候我们用 <code>isinstance()</code></p>
 <p>之所以不使用 <code>type()</code> 是因为 <code>type()</code> 不会认为子类是一种父类类型, 不考虑继承关系. 举例说明:</p>
 <figure>
-<img alt="1571027624789" data-src="Python基础语法/1571027624789.png"><figcaption>1571027624789</figcaption>
+<img alt="" data-src="Python基础语法/1571027624789.png"><figcaption>1571027624789</figcaption>
 </figure>
 <h3 id="不可变对象">不可变对象</h3>
 <p>❗️ <strong>我们可以给不可变对象重新赋值, 但其内存地址会改变</strong>. 以下是体现给可变对象/不可变对象重新赋值时它们的内存地址变化的例子.</p>
 <p>💡 <code>id()</code>能获取一个变量的内存地址</p>
 <figure>
-<img alt="1571022411897" data-src="Python基础语法/1571022411897.png"><figcaption>1571022411897</figcaption>
+<img alt="" data-src="Python基础语法/1571022411897.png"><figcaption>1571022411897</figcaption>
 </figure>
 <h4 id="number-数字">Number (数字)</h4>
 <ul>
@@ -548,7 +548,7 @@
 <p>Python中的Number我认为是比较特殊的, 因为它<strong>在内存中占用的空间大小是变动</strong>的.(在CPython中是如此, 但不知道为什么在IronPython下不是)</p>
 <p>💡 用<code>sys.getsizeof()</code>可以知道一个变量的占用的内存大小</p>
 <figure>
-<img alt="1571022628668" data-src="Python基础语法/1571022628668.png"><figcaption>1571022628668</figcaption>
+<img alt="" data-src="Python基础语法/1571022628668.png"><figcaption>1571022628668</figcaption>
 </figure>
 <h4 id="string-字符串">String (字符串)</h4>
 <h4 id="tuple-元组">Tuple (元组)</h4>
@@ -609,7 +609,7 @@
 <h3 id="python中有关对象需要注意的问题">Python中有关对象需要注意的问题</h3>
 <p>python中向函数传递参数只是<strong>引用传递</strong>: 如果参数为可变对象, 在函数中变化会影响引用的这个变量, 而不可变对象不会. 在向类传递参数时也是如此.</p>
 <figure>
-<img alt="1571033275137" data-src="Python基础语法/1571033275137.png"><figcaption>1571033275137</figcaption>
+<img alt="" data-src="Python基础语法/1571033275137.png"><figcaption>1571033275137</figcaption>
 </figure>
 <h2 id="基础语法">基础语法</h2>
 <h3 id="python内置帮助文档">Python内置帮助文档</h3>
@@ -667,13 +667,13 @@
 <h3 id="编码格式-1">编码格式</h3>
 <p>字符串经过<strong>编码（encode）</strong> 就成为了一堆数据, 反过来, 数据经过<strong>解码（decode）</strong> 就变回我们认识的字符串.</p>
 <figure>
-<img alt="img" data-src="Python基础语法/encode_decode.png"><figcaption>img</figcaption>
+<img alt="" data-src="Python基础语法/encode_decode.png"><figcaption>img</figcaption>
 </figure>
 <p>指定文件编码格式为 <code>utf-8</code></p>
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br></pre></td></tr></tbody></table></figure>
 <p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png?v8">💡</span> 如果不指定文件编码格式在有的Python2版本中无法识别中文, 即便是中文注释也会报错.</p>
 <figure>
-<img alt="Unicode Decoding and Encoding" data-src="Python基础语法/Unicode_Decoding_and_Encoding.png"><figcaption>Unicode Decoding and Encoding</figcaption>
+<img alt="" data-src="Python基础语法/Unicode_Decoding_and_Encoding.png"><figcaption>Unicode Decoding and Encoding</figcaption>
 </figure>
 <p>Linux系统默认编码格式是<strong>UTF-8</strong>, 系统语言是简体中文时Windows10的编码格式是<strong>GB2312</strong> (也称GBK, 国标扩展, cp936)</p>
 <p>在python中 <code>str</code> 类型数据都以Unicode码点格式储存, 因此直接打印字符串会看到字符为'开头</p>
@@ -751,7 +751,7 @@
 <p>我推荐遵从<a href="https://www.python.org/dev/peps/pep-0008/" target="_blank" rel="noopener">PEP8</a>. 当然一行一行看完这个规范不是一件令人愉快的事, 最简单的时刻遵守PEP8的方式是在代码工具里安一个<strong>代码风格检查器</strong> (linter). 检查你的代码是否符合PEP8的linter是<a href="http://pycodestyle.pycqa.org/en/latest/intro.html" target="_blank" rel="noopener">pycodestyle</a></p>
 <p>💡 在VSC中可以在设置中搜索<strong>python.linting.pycodestyle</strong>, 勾选<strong>Pycodestyle Enabled</strong>, 这样在VSC中编写Python代码时使用的linter就是pycodestyle啦</p>
 <figure>
-<img alt="1571142193232" data-src="Python基础语法/1571142193232.png"><figcaption>1571142193232</figcaption>
+<img alt="" data-src="Python基础语法/1571142193232.png"><figcaption>1571142193232</figcaption>
 </figure>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -1004,7 +1004,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2022</span>
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2025</span>
   <span class="with-love" id="animate">
     <i class="fa fa-hand-peace-o"></i>
   </span>

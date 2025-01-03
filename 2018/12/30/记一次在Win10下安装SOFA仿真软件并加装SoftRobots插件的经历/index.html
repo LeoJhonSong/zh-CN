@@ -527,7 +527,7 @@
 <p>博主推荐先修改一下设定，打开<code>Options</code>下的<strong>Warning Messages...</strong>,像下面这样勾选抑制警告的两项，关掉可能很多条，干扰视线而不影响Cmake的Warning提示，有利于稍后更容易地找出报错原因。</p>
 </blockquote>
 <figure>
-<img alt="Warning设置" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/warning.jpg"><figcaption>Warning设置</figcaption>
+<img alt="" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/warning.jpg"><figcaption>Warning设置</figcaption>
 </figure>
 <p>首先在<em>where is the source code</em>一栏填上你的<strong>sofa/src</strong>的地址，在<em>where to build the binaries</em>一栏填上你的<strong>sofa/build</strong>的地址，然后点击<code>Configure</code>。 <img alt="CMake地址" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/cmake.jpg"></p>
 <p>然后为项目选择你将要使用的编译器，向下面这样选择。 <img alt="选择编译器" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/compiler.jpg"></p>
@@ -536,13 +536,13 @@
 <p>第一次Configure用时较长，，尤其是可能在<strong>Cloning into 'SofaHighOrder'...</strong>一行停留许久。你可以稍微歇息一下</p>
 </blockquote>
 <figure>
-<img alt="报错" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/error.jpg"><figcaption>报错</figcaption>
+<img alt="" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/error.jpg"><figcaption>报错</figcaption>
 </figure>
 <p>然后是频繁出现地报错。</p>
 <p>但不用担心，Configure这个操作本来就是要多次进行来逐渐更正错误，甚至可以在此期间调整要安装的插件。经过我的观察Generate多次也没有问题，只会在原本的基础上改动，不会出现重复的文件。因此放心大胆地来，每次你觉得修正了几个问题了就可以运行一次Configure。经过博主摸索发现了两种找报错原因的方式</p>
 <ul>
 <li>直接看<code>Configure</code>和<code>Generate</code>两个按键下面的信息框里的报错信息</li>
-<li><img alt="看报错信息方式1" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/checkerror.jpg"></li>
+<li><img title="fig:" alt="看报错信息方式1" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/checkerror.jpg"></li>
 <li>打开在<strong>sofa/src/build/CMakeFiles/</strong>下的<em>CMakeError.log</em>（错误日志）。这个日志会记录你在Cmake过程中所有的报错 (包括每一次Configure的报错)。我的经验是错误原因通常在”<strong>生成失败。</strong>“这句话附近。如果有多个错误，一个一个耐心解决。</li>
 </ul>
 <h2 id="sofa本体configure过程中遇到的一些报错及解决">SOFA本体Configure过程中遇到的一些报错及解决</h2>
@@ -552,19 +552,15 @@
 <p>不过即便安装pthread库后在<em>CMakeError.log</em>中仍然会有pthread相关报错。但不会影响SOFA的安装，可以忽略。</p>
 <h3 id="unable-to-find-the-boost-header-files"><span id="Boost">Unable to find the Boost header files</span></h3>
 <figure>
-<img alt="Boost报错" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/Boosterror.png"><figcaption>Boost报错</figcaption>
+<img alt="" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/Boosterror.png"><figcaption>Boost报错</figcaption>
 </figure>
 <p>如果你得到了类似这样的报错信息那你大概是像博主一样利用Vcpkg安装的Boost，Cmake没能找到你的Boost。(我错了，下次还犯)但用Vcpkg安装Boost真的很容易。Cmake给出了提示：</p>
 <h4 id="方法1">方法1：</h4>
 <figure>
-<img alt="添加Entry" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/addEntry.png"><figcaption>添加Entry</figcaption>
+<img alt="" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/addEntry.png"><figcaption>添加Entry</figcaption>
 </figure>
 <p>点击<code>Add Entry</code>按键添加一个下面这样的Entry。</p>
 <table>
-<colgroup>
-<col style="width: 15%">
-<col style="width: 84%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -576,24 +572,14 @@
 <td>Type</td>
 <td><strong>path</strong></td>
 </tr>
-<tr class="even">
-<td>Value</td>
-<td><strong>你安装Vcpkg的文件夹/vcpkg/installed/x64-windows/include</strong>(比如博主的是<em>D:64-windows\include</em>)</td>
-</tr>
-<tr class="odd">
-<td>Description</td>
-<td>空</td>
-</tr>
 </tbody>
 </table>
+| Value | <strong>你安装Vcpkg的文件夹/vcpkg/installed/x64-windows/include</strong>(比如博主的是*D:-windows
+<p>) | | Description | 空 |</p>
 <p><br> 注意Value不能填<b>你安装Vcpkg的文件夹/vcpkg/installed/x64-windows/include/boost</b>,需要填包含Boost文件夹的文件夹的路径，否则仍然会像上图那样报错。</p>
 <h4 id="方法2">方法2：</h4>
 <p>在环境变量中添加一个下面这样的系统变量</p>
 <table>
-<colgroup>
-<col style="width: 14%">
-<col style="width: 85%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>变量名</th>
@@ -601,20 +587,18 @@
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>Boost_ROOT</td>
-<td><strong>你安装Vcpkg的文件夹/vcpkg/installed/x64-windows/include</strong>(比如博主的是<em>D:64-windows\include</em>)</td>
-</tr>
 </tbody>
 </table>
+| Boost_ROOT | <strong>你安装Vcpkg的文件夹/vcpkg/installed/x64-windows/include</strong>(比如博主的是*D:-windows
+<p>) |</p>
 <h3 id="sofasrcapplicationspluginssofahighorderexternalprojectconfig.cmake.in-does-not-exist.">sofa/src/applications/plugins/SofaHighOrder/ExternalProjectConfig.cmake.in does not exist.</h3>
 <figure>
-<img alt="缺少CMake.in文件" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/lackCMake.png"><figcaption>缺少CMake.in文件</figcaption>
+<img alt="" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/lackCMake.png"><figcaption>缺少CMake.in文件</figcaption>
 </figure>
 <p>有可能当添加SofaHighOrder的子目录EXTERNAL的时候会发生这样的报错，有时候又不会发生。我怀疑<em>ExternalProjectConfig.cmake.in</em>这个文件特别容易丢包。但解决很容易，博主在前面下载SOFA源码的Github仓库里找到了这个<a href="https://github.com/sofa-framework/sofa/tree/master/applications/plugins/SofaHighOrder" target="_blank" rel="noopener">ExternalProjectConfig.cmake.in</a>你说神不神奇。把这个文件下载下来放到<b>sofa/src/applications/plugins/SofaHighOrder/</b>文件夹下即可。(其实博主不知道怎么下这个文件，就在sofa/src/applications/plugins/SofaHighOrder/文件夹下新建了一个ExternalProjectConfig.cmake.in并把Github上该文件里的内容复制粘贴了进去)</p>
 <p>在运行到SofaHighOrder这部分的时候你可能会碰到像下面这样的乱码，但不要紧，再Configure几次就没有了。</p>
 <figure>
-<img alt="乱码" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/messycode.png"><figcaption>乱码</figcaption>
+<img alt="" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/messycode.png"><figcaption>乱码</figcaption>
 </figure>
 <h3 id="找不到python">找不到Python</h3>
 <p>博主为此专门下了一个Python2.7。</p>
@@ -645,13 +629,13 @@
 </table>
 <p>再次运行Configure后刚添加的这个叫CMAKE_PREFIX_PATH的Entry会消失，取而代之的是一帮Qt的Entry</p>
 <figure>
-<img alt="那堆Qt的Entry" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/QtEntry.png"><figcaption>那堆Qt的Entry</figcaption>
+<img alt="" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/QtEntry.png"><figcaption>那堆Qt的Entry</figcaption>
 </figure>
 <p><strong>以上便是博主安装SOFA本体过程中遇到过的报错，如果你遇到了别的无法解决的报错也欢迎讨论</strong></p>
 <p><img alt="无误反馈信息" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/noError.png"> 这是博主在加装SoftRobots插件前得到的无误的反馈信息。并且你会发现本来一片红色的Entry列表此时全都是白/灰这种看起来就很OK的颜色。(如果还有红色的请再Configure一次。这之后如果还有，忽略)</p>
 <p>在此之前，在搜索框里输入python并确保你的<strong>PLUGIN_SOFAPYTHON</strong>打了勾，<strong>SofaPython_DIR</strong>不是not found</p>
 <figure>
-<img alt="确认SofaPython" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/checkPython.png"><figcaption>确认SofaPython</figcaption>
+<img alt="" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/checkPython.png"><figcaption>确认SofaPython</figcaption>
 </figure>
 <p>这样SOFA软件本体的安装就没有问题了，接下来添加SoftRobots插件(现在你在搜索框查找SoftRobots是什么也查不到的)。</p>
 <h2 id="添加softrobots插件">添加SoftRobots插件</h2>
@@ -660,14 +644,14 @@
 </blockquote>
 <p>正规方法是在搜索框搜索<strong>SOFA_EXTERNAL_DIRECTORIES</strong>，找到这个Entry并将Value填为<strong>你安装SOFA的文件夹/sofa/src/applications/plugins/SoftRobots</strong>(比如博主的是<em>D:/sofa/src/applications/plugins/SoftRobots</em>)，</p>
 <figure>
-<img alt="SoftRobots相关Entry" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/softRobotEntrry.jpg"><figcaption>SoftRobots相关Entry</figcaption>
+<img alt="" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/softRobotEntrry.jpg"><figcaption>SoftRobots相关Entry</figcaption>
 </figure>
 <p>再次Configure，你就得到了与SoftRobots相关的几个Entry。不勾选这几个可选组件orz博主研究了很久也没能成功安装他们。根据名字和需要的库博主猜测<strong>SOFTROBOTS_GAMETRAKCONTROLLER</strong>是一个实现可以通过usb设备或蓝牙和外设交互的组件，<strong>SOFTROBOTS_COMMUNICATIONCONTROLLER</strong>似乎是实现利用网络通信和外设交互的组件，而<strong>SOFTROBOTS_ROBOTINOCONTROLLER</strong>猜测需要配合<strong>Robotino</strong>使用。<strong>Robotino</strong>是一款商业化的移动机器人系统，明显买不起。博主暂时不需要这个插件。</p>
 <p>再次Configure。</p>
 <p>完美。</p>
 <p>这是博主最终的无误版<strong>Configure</strong>的反馈信息。</p>
 <figure>
-<img alt="最终版反馈信息" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/reaction.png"><figcaption>最终版反馈信息</figcaption>
+<img alt="" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/reaction.png"><figcaption>最终版反馈信息</figcaption>
 </figure>
 <p>现在安装已经接近尾声了(步骤方面，时间方面还得要一会)，你可以选择性的再安装几个部件。(报错了的话就放弃吧哈哈哈哈哈)给出官网上<a href="https://www.sofa-framework.org/community/doc/getting-started/build/build-options/" target="_blank" rel="noopener">相关网页</a>以供参考。</p>
 <p>当你对Configure的结果感到满意后，<code>Generate</code>，点击！</p>
@@ -678,19 +662,19 @@
 </blockquote>
 <p>进入<strong>sofa/build/</strong>,用VS打开<em>Sofa.sln</em>,经过一段令人尴尬的等待，</p>
 <figure>
-<img alt="编译操作顺序" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/howtocompile.png"><figcaption>编译操作顺序</figcaption>
+<img alt="" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/howtocompile.png"><figcaption>编译操作顺序</figcaption>
 </figure>
 <p>进入界面后先将解决方案配置调为<strong>Release</strong>，然后确保解决方案平台确实是你电脑的平台(博主的电脑是x64平台)，等待左下角显示<strong>就绪</strong>后，点击<strong>本地Windows调试器</strong>开始编译。</p>
 <p>然后你就可以去睡觉了。(即便你想用电脑做点别的应该也很难，不知道是我人品太差还是SOFA的编译真的很考验电脑，我的电脑呈现出了这样的尴尬局面 )</p>
 <figure>
-<img alt="编译车祸现场" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/mess.png"><figcaption>编译车祸现场</figcaption>
+<img alt="" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/mess.png"><figcaption>编译车祸现场</figcaption>
 </figure>
 <p>第二天(博主的电脑编译了两个多小时)，你会看到一个无法打开ALL_BUILD的报错，这是正常现象，无须在意。</p>
 <p><code>如果你没有看到其他报错，恭喜你编译成功了!</code></p>
 <h1 id="测试">测试</h1>
 <p>现在就可以来测试一下软件是否真的安装成功了。进入<strong>sofa/build/bin/release/</strong>，运行<em>rensofa.exe</em>,会进入这个蛇绕柱子的Demo。</p>
 <figure>
-<img alt="Demo" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/demo.jpg"><figcaption>Demo</figcaption>
+<img alt="" data-src="记一次在Win10下安装SOFA仿真软件并加装SoftRobots插件的经历/demo.jpg"><figcaption>Demo</figcaption>
 </figure>
 <p>你可以通过打开在SoftRobots下的几个Example来进一步测试。可以参考官网给出的<a href="https://project.inria.fr/softrobot/install-get-started-2/tutorial/" target="_blank" rel="noopener">样例教程</a>。或者你也可以探索SOFA官网上的<a href="https://www.sofa-framework.org/community/doc/getting-started/tutorials/" target="_blank" rel="noopener">入门教程</a>。</p>
 <p><br></p>
@@ -951,7 +935,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2022</span>
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2025</span>
   <span class="with-love" id="animate">
     <i class="fa fa-hand-peace-o"></i>
   </span>

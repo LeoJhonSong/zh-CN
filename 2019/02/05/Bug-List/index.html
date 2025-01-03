@@ -466,7 +466,7 @@
 <p>有以下几种可能 (总体来说是安装包的python环境和调用包的python环境不一样):</p>
 <ol type="1">
 <li><p>如果你是用命令行安装的 (或者你安装了Anaconda,用conda安装的), 在IDE中调用的, 那你应当检查一下你的IDE调用的pytohn interpreter和cmd调用的是不是一个了. 比如Anaconda自带的Spyder默认的是python2.7, 但我设置的cmd调用的是一个3.6.4的python</p>
-<span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> Anaconda中切换Spyder环境可以参考 <a href="https://www.zhihu.com/question/49144687" target="_blank" rel="noopener">这里</a></li>
+<p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8">✔</span> Anaconda中切换Spyder环境可以参考 <a href="https://www.zhihu.com/question/49144687" target="_blank" rel="noopener">这里</a></p></li>
 <li><p>如果环境中同时有python2和python3, 有可能将包安装到了python2的环境中但你的程序是 python3的程序, 可以将<code>pip install</code> 换为 <code>pip3 install</code> 试试</p></li>
 </ol>
 <p><span class="github-emoji" style="color: transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png?v8">⚠</span> 如果安装了conda那么安装python库最好使用conda, 尽量不要混用conda和pip, <strong>conda和pip的包格式不同, 两者是不兼容的, 甚至有的库在conda和pip中名字不同</strong>. 有关在conda中没有某库但pip中有的情况可以参考<a href="https://www.zhihu.com/question/49144687" target="_blank" rel="noopener">这里</a>, 而关于混用conda与pip的危害可以参考<a href="http://onoz000.hatenablog.com/entry/2018/02/11/142347" target="_blank" rel="noopener">这位日本兄弟的文章</a></p>
@@ -476,7 +476,7 @@
 <figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Xihua</span><span class="params">(image, array, num=<span class="number">1</span>)</span>:</span></span><br><span class="line">    iXihua = np.zeros(image.shape, np.uint8)</span><br><span class="line">    iXihua = image.copy()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num):</span><br><span class="line">        VThin(iXihua, array)</span><br><span class="line">    <span class="keyword">return</span> iXihua</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">VThin</span><span class="params">(image, array)</span>:</span></span><br><span class="line">    h = height</span><br><span class="line">    w = width</span><br><span class="line">    NEXT = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(h):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(w):</span><br><span class="line">            <span class="keyword">if</span> NEXT == <span class="number">0</span>:</span><br><span class="line">                NEXT = <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                M = (image[i, j<span class="number">-1</span>] + image[i, j] + image[i, j+<span class="number">1</span>]) <span class="keyword">if</span> <span class="number">0</span>&lt;j&lt;w<span class="number">-1</span> <span class="keyword">else</span> <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> image[i, j] == <span class="number">0</span> <span class="keyword">and</span> M != <span class="number">0</span>:</span><br><span class="line">                    a = [<span class="number">0</span>] * <span class="number">9</span></span><br><span class="line">                    <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">                        <span class="keyword">for</span> l <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">                            <span class="keyword">if</span> <span class="number">-1</span>&lt;(i<span class="number">-1</span>+k)&lt;h <span class="keyword">and</span> <span class="number">-1</span> &lt;(j<span class="number">-1</span>+l)&lt;w <span class="keyword">and</span> image[i<span class="number">-1</span>+k, j<span class="number">-1</span>+l]==<span class="number">255</span>:</span><br><span class="line">                                a[k*<span class="number">3</span>+l] = <span class="number">1</span></span><br><span class="line">                    sum = a[<span class="number">0</span>]*<span class="number">1</span>+a[<span class="number">1</span>]*<span class="number">2</span>+a[<span class="number">2</span>]*<span class="number">4</span>+a[<span class="number">3</span>]*<span class="number">8</span>+a[<span class="number">5</span>]*<span class="number">16</span>+a[<span class="number">6</span>]*<span class="number">32</span>+a[<span class="number">7</span>]*<span class="number">64</span>+a[<span class="number">8</span>]*<span class="number">128</span></span><br><span class="line">                    image[i, j] = array[sum] * <span class="number">255</span></span><br><span class="line">                    <span class="keyword">if</span> array[sum] == <span class="number">1</span>:</span><br><span class="line">                        NEXT = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> image</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="报错信息">报错信息</h2>
 <figure>
-<img alt="报错信息" data-src="Bug-List/图像细化代码的报错.png"><figcaption>报错信息</figcaption>
+<img alt="" data-src="Bug-List/图像细化代码的报错.png"><figcaption>报错信息</figcaption>
 </figure>
 <h2 id="原因">原因</h2>
 <p>M默认与image[i, j]同数据类型，而image[i, j]设定的是ubyte类型，范围-255~256，M极有可能数据溢出。</p>
@@ -533,7 +533,7 @@
 <p>而在网上搜图的时候我搜到了这段讲python中处理文本的各种方法的话.</p>
 <p>其中提到了如下图这样的方式防止出现乱码.</p>
 <figure>
-<img alt="Unicode Decoding and Encoding" data-src="Bug-List/Unicode_Decoding_and_Encoding.png"><figcaption>Unicode Decoding and Encoding</figcaption>
+<img alt="" data-src="Bug-List/Unicode_Decoding_and_Encoding.png"><figcaption>Unicode Decoding and Encoding</figcaption>
 </figure>
 <p>正如 "Python 2 字符串编码踩坑小结" 中提到的, 在python3中<code>str</code>类型数据都以Unicode码点格式储存. 实际上我们<a href="https://zh.wikipedia.org/wiki/Unicode#%E8%BE%93%E5%85%A5%E6%96%B9%E6%B3%95" target="_blank" rel="noopener">可以直接输入Unicode码点</a>.</p>
 <h1 id="verilog中要写完整控制语句">Verilog中要写完整控制语句</h1>
@@ -542,7 +542,7 @@
 <h1 id="verilog中因不同条件触发的变量应在不同always块中描述">Verilog中因不同条件触发的变量应在不同always块中描述</h1>
 <p>参见我的另一篇博客 <a href="https://leojhonsong.github.io/zh-CN/Verilog%E6%9D%82%E8%AE%B0/#%E6%9C%89%E5%85%B3%20always">Verilog 杂记-有关always</a></p>
 <h1 id="c字符串赋值坑">C++字符串赋值坑</h1>
-<p>在写一段C++代码时我遇到了这样的问题: 用如下代码给一个string类型的变量<code>str</code>赋值为 "0300003e", 也就是一个16进制表示的ASCII编码值为 fe fe 03 00 00 3e fd 的字符串,但这样做始终只能让<code>str</code>的值变为"03"!</p>
+<p>在写一段C++代码时我遇到了这样的问题: 用如下代码给一个string类型的变量<code>str</code>赋值为 "3e", 也就是一个16进制表示的ASCII编码值为 fe fe 03 00 00 3e fd 的字符串,但这样做始终只能让<code>str</code>的值变为""!</p>
 <figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> str = <span class="string">"\xfe\xfe\x03\x00\x00\x3e\xfd"</span>;</span><br></pre></td></tr></tbody></table></figure>
 <p>但同时我发现用<code>assign()</code>来指定长度赋值就不会出现这种问题:</p>
 <figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> str;</span><br><span class="line">str.assign(<span class="string">"\xfe\xfe\x03\x00\x00\x3e\xfd"</span>, <span class="number">7</span>);</span><br></pre></td></tr></tbody></table></figure>
@@ -551,7 +551,7 @@
 <p>我说: ? 我这字符串里哪有\0? 你别骗我读书少.</p>
 <p>然后他发了一张图来:</p>
 <figure>
-<img alt="C++字符串结束符" data-src="Bug-List/C++字符串结束符.jpg"><figcaption>C++字符串结束符</figcaption>
+<img alt="" data-src="Bug-List/C++字符串结束符.jpg"><figcaption>C++字符串结束符</figcaption>
 </figure>
 <p>...我是真的吃了读书少的亏, 竟然特么\0和00是一个意思🤦‍</p>
 <p>然后在string类型变量里写入\0的方法似乎只有用<code>assign()</code>和指定字符串长度的构造函数 . 其实用<code>=</code>赋值在变量声明和定义同时出现时是只有字符串值这个参数的构造函数, 否则就是只有字符串值这个参数的<code>assign()</code>函数.</p>
@@ -820,7 +820,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2022</span>
+        <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2025</span>
   <span class="with-love" id="animate">
     <i class="fa fa-hand-peace-o"></i>
   </span>
